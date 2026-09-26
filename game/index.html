@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#120e1a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Line &amp; Bell</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <canvas id="tela"></canvas>
+
+  <div id="carregando">
+    <h1>Line <span>&amp;</span> Bell</h1>
+    <div class="barra"><div id="progresso"></div></div>
+    <p>Carregando animações…</p>
+  </div>
+
+  <div id="menu" class="overlay oculto">
+    <div class="caixa">
+      <h1>Line <span>&amp;</span> Bell</h1>
+      <p class="sub">Uma aventura de resgate</p>
+      <button id="btn-continuar">Continuar</button>
+      <button id="btn-novo">Novo jogo</button>
+      <button id="btn-controles" class="sec">Controles</button>
+      <button id="btn-galeria" class="sec">Animações</button>
+      <button id="btn-tela-cheia" class="sec">Tela cheia</button>
+    </div>
+  </div>
+
+  <div id="controles" class="overlay oculto">
+    <div class="caixa larga">
+      <h2>Controles</h2>
+      <table>
+        <tr><th>Ação</th><th>Teclado</th><th>Controle</th><th>Celular</th></tr>
+        <tr><td>Andar</td><td>WASD ou setas</td><td>Analógico</td><td>Arraste no lado esquerdo</td></tr>
+        <tr><td>Correr</td><td>Shift (segure)</td><td>Gatilho ou analógico até o fim</td><td>Arraste até o fim</td></tr>
+        <tr><td>Atacar (3x = combo)</td><td>J ou Z</td><td>A</td><td>⚔</td></tr>
+        <tr><td>Ataque giratório</td><td>K ou X</td><td>X</td><td>🌀</td></tr>
+        <tr><td>Esquivar / dash</td><td>L ou C</td><td>B</td><td>💨</td></tr>
+        <tr><td>Defender (segure)</td><td>I ou V</td><td>LB / RB</td><td>🛡</td></tr>
+        <tr><td>Pular (+ atacar no ar)</td><td>Espaço</td><td>Y</td><td>⤴</td></tr>
+        <tr><td>Abrir / ler</td><td>E ou Enter</td><td>Select</td><td>botão que aparece</td></tr>
+        <tr><td>Pausar</td><td>Esc ou P</td><td>Start</td><td>⏸</td></tr>
+        <tr><td>Pular cena</td><td>Tab</td><td>—</td><td>botão “Pular cena”</td></tr>
+      </table>
+      <button id="btn-voltar-controles">Voltar</button>
+    </div>
+  </div>
+
+  <div id="galeria" class="overlay oculto">
+    <div class="caixa galeria">
+      <div class="topo">
+        <h2>Animações</h2>
+        <span id="galeria-total"></span>
+        <button id="btn-voltar-galeria" class="sec">Voltar</button>
+      </div>
+      <div class="corpo">
+        <div class="previa">
+          <canvas id="galeria-previa"></canvas>
+          <strong id="galeria-nome"></strong>
+          <p id="galeria-info"></p>
+        </div>
+        <div id="galeria-lista"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="pausa" class="overlay oculto">
+    <div class="caixa">
+      <h2>Pausado</h2>
+      <button id="btn-retomar">Continuar</button>
+      <button id="btn-pausa-controles" class="sec">Controles</button>
+      <button id="btn-pausa-menu" class="sec">Menu principal</button>
+    </div>
+  </div>
+
+  <div id="derrota" class="overlay oculto">
+    <div class="caixa">
+      <h2>A Line caiu…</h2>
+      <p class="sub">Mas a Bell ainda está esperando.</p>
+      <button id="btn-tentar">Tentar de novo</button>
+      <button id="btn-derrota-menu" class="sec">Menu principal</button>
+    </div>
+  </div>
+
+  <div id="cartela"><h2></h2><p></p></div>
+  <div id="banner"></div>
+  <div id="dica" class="oculto"></div>
+  <div id="dialogo" class="oculto"><div class="nome"></div><div class="texto"></div><div class="seta">▼</div></div>
+  <button id="pular-cena" class="oculto">Pular cena ⏭</button>
+
+  <div id="toque" class="oculto">
+    <div id="joystick"></div>
+    <div id="joystick-base"><div id="joystick-pino"></div></div>
+    <button id="btn-pausar" class="redondo pequeno" aria-label="Pausar">⏸</button>
+    <div class="botoes">
+      <button id="b-interagir" class="oculto" data-acao="interagir">Abrir</button>
+      <button id="b-defender" class="redondo" data-acao="defender" aria-label="Defender">🛡</button>
+      <button id="b-especial" class="redondo" data-acao="especial" aria-label="Giro">🌀</button>
+      <button id="b-esquivar" class="redondo" data-acao="esquivar" aria-label="Esquivar">💨</button>
+      <button id="b-pular" class="redondo" data-acao="pular" aria-label="Pular">⤴</button>
+      <button id="b-atacar" class="redondo grande" data-acao="atacar" aria-label="Atacar">⚔</button>
+    </div>
+  </div>
+
+  <script src="assets/sprites.js"></script>
+  <script src="js/animacoes.js"></script>
+  <script src="js/entrada.js"></script>
+  <script src="js/mapas.js"></script>
+  <script src="js/desenhos.js"></script>
+  <script src="js/entidades.js"></script>
+  <script src="js/dragao.js"></script>
+  <script src="js/cenas.js"></script>
+  <script src="js/jogo.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
