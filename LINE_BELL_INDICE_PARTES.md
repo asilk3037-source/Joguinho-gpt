@@ -1,4 +1,4 @@
-# Line & Bell — índice dos 38 HTMLs
+# Line & Bell — índice dos 42 HTMLs
 
 Cada arquivo é autossuficiente, possui menos de 25 MB e contém animações completas. Nenhuma animação foi dividida entre arquivos.
 
