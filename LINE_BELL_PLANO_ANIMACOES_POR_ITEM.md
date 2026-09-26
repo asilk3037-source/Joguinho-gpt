@@ -1,0 +1,211 @@
+# Line & Bell — plano de criação das animações por item
+
+## 1. Como os itens funcionarão
+
+- Cada item corresponde a um arquivo HTML autossuficiente.
+- Cada HTML deve ter no máximo 25 MB.
+- Nenhuma animação pode ser dividida no meio apenas para caber no arquivo.
+- Animações grandes ficam sozinhas em um item.
+- Animações curtas só podem compartilhar um item quando pertencem ao mesmo bloco de movimento.
+- Cada frame continua sendo produzido como PNG independente.
+- A produção deve seguir uma animação por vez e um frame por vez.
+- Só avançamos após assistir à animação lentamente, na velocidade normal, frame a frame e em loop.
+
+## 2. Regra obrigatória para caminhada e corrida
+
+Nas caminhadas e corridas laterais, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente. Ao mesmo tempo, a outra perna transfere o peso, impulsiona o corpo e dobra para trás.
+
+O ciclo precisa conter:
+
+1. contato;
+2. absorção do peso;
+3. apoio;
+4. passagem da perna traseira;
+5. impulso;
+6. elevação do pé;
+7. avanço completo;
+8. novo contato;
+9. repetição equivalente com a outra perna.
+
+Os braços trabalham de forma cruzada com as pernas. Cabelo, roupa, colar e tronco acompanham o movimento sem mudar a identidade da personagem.
+
+## 3. Itens 1 a 14 — pacote básico da Line
+
+| Item | Arquivo | Animações | Situação |
+|---:|---|---|---|
+| 1 | `LINE_BELL_ITEM_01.html` | `LINE_IDLE_FRONT` | Criado; revisar loop e estabilidade |
+| 2 | `LINE_BELL_ITEM_02.html` | `LINE_LOOK_SIDES_FRONT` | Criado; revisar sutileza do rosto |
+| 3 | `LINE_BELL_ITEM_03.html` | `LINE_BLINK_FRONT`, `LINE_IDLE_LEFT` | Criado; revisar rosto e perfil |
+| 4 | `LINE_BELL_ITEM_04.html` | `LINE_IDLE_RIGHT`, `LINE_IDLE_BACK` | Criado; revisar perfis e costas |
+| 5 | `LINE_BELL_ITEM_05.html` | `LINE_WALK_RIGHT` | Criado; aplicar e revisar regra das pernas |
+| 6 | `LINE_BELL_ITEM_06.html` | `LINE_WALK_LEFT` | Criado; aplicar e revisar regra das pernas |
+| 7 | `LINE_BELL_ITEM_07.html` | `LINE_WALK_FRONT`, `LINE_WALK_BACK` | Criado; revisar alternância e pés |
+| 8 | `LINE_BELL_ITEM_08.html` | `LINE_RUN_START_RIGHT` | Criado; revisar transferência de peso |
+| 9 | `LINE_BELL_ITEM_09.html` | `LINE_RUN_RIGHT` | Criado; aplicar e revisar regra das pernas |
+| 10 | `LINE_BELL_ITEM_10.html` | `LINE_RUN_LEFT` | Criado; aplicar e revisar regra das pernas |
+| 11 | `LINE_BELL_ITEM_11.html` | `LINE_RUN_FRONT`, `LINE_RUN_BACK` | Criado; revisar alternância e fase aérea |
+| 12 | `LINE_BELL_ITEM_12.html` | `LINE_RUN_STOP_RIGHT`, `LINE_RUN_STOP_LEFT` | Criado; revisar frenagem e inércia |
+| 13 | `LINE_BELL_ITEM_13.html` | `LINE_RUN_START_LEFT`, `LINE_RUN_START_FRONT`, `LINE_RUN_START_BACK`, `LINE_RUN_STOP_FRONT` | Criado; revisar transições |
+| 14 | `LINE_BELL_ITEM_14.html` | `LINE_RUN_STOP_BACK` | Criado; revisar transição para idle |
+
+## 4. Próximos itens — movimentos da Line
+
+| Item | Animação | Código planejado | Observação principal |
+|---:|---|---|---|
+| 15 | Pular para a direita | `LINE_JUMP_RIGHT` | Criado: 12 frames com preparação, impulso, subida, ápice, descida, aterrissagem e recuperação |
+| 16 | Aterrissar para a direita | `LINE_LAND_RIGHT` | Criado: 10 frames com descida, aproximação, contato, compressão e recuperação |
+| 17 | Agachar | `LINE_CROUCH` | Criado: 10 frames com transferência gradual de peso e sustentação no agachamento profundo |
+| 18 | Levantar do agachamento | `LINE_CROUCH_STAND` | Criado: 10 frames com retorno contínuo do agachamento profundo ao idle |
+| 19 | Tropeçar | `LINE_STUMBLE` | Criado: 12 frames com perda gradual de equilíbrio e mãos buscando o chão |
+| 20 | Cair | `LINE_FALL` | Criado: 12 frames conectados ao tropeço, com contato das mãos, descida aos antebraços e posição final no chão |
+| 21 | Levantar do chão | `LINE_GROUND_STAND` | Criado: 14 frames com apoio nos antebraços, mãos e joelhos, agachamento e recuperação até o idle |
+
+## 5. Combate da Line
+
+| Item | Animação | Código planejado | Observação principal |
+|---:|---|---|---|
+| 22 | Sacar espada | `LINE_SWORD_DRAW` | Criado: 12 frames com mão no cabo, saque parcial, retirada completa e postura pronta |
+| 23 | Guardar espada | `LINE_SWORD_SHEATHE` | Revisado: 14 frames com duas etapas adicionais da lâmina ainda visivelmente para fora do coldre |
+| 24 | Postura de combate | `LINE_COMBAT_IDLE` | Criado: 16 frames em loop com respiração discreta, ajuste de peso e pés fixos |
+| 25 | Ataque horizontal | `LINE_ATTACK_HORIZONTAL` | Criado: 16 frames com guarda, preparação, corte horizontal, extensão e recuperação |
+| 26 | Ataque vertical | `LINE_ATTACK_VERTICAL` | Revisado: 18 frames com elevação, início, meio e fim do golpe descendente e recuperação gradual |
+| 27 | Ataque diagonal | `LINE_ATTACK_DIAGONAL` | Revisado: 22 frames; as duas mãos permanecem fechadas no mesmo cabo e o arco diagonal recebeu novos intermediários |
+| 28 | Combo | `LINE_ATTACK_COMBO` | Revisado: 22 frames com novos intermediários na preparação, no corte horizontal, no redirecionamento e no final descendente |
+| 29 | Ataque giratório | `LINE_ATTACK_SPIN` | Criado: 18 frames com preparação, pivô, rotação corporal, corte circular e recuperação; espada e cabelo contínuos |
+| 30 | Ataque aéreo | `LINE_ATTACK_AIR` | Criado: 20 frames com preparação, impulso, subida, ápice, golpe descendente, queda e aterrissagem |
+| 31 | Bloquear | `LINE_BLOCK` | Criado: 16 frames com entrada da guarda, firmeza, impacto comprimido, recuo e saída |
+| 32 | Esquivar | `LINE_DODGE` | Criado: 16 frames com antecipação, impulso lateral, evasão aérea, aterrissagem e recuperação |
+| 33 | Dash | `LINE_DASH` | Corrigido: 16 frames; anatomia esquerda/direita revisada na guarda, arrancada e frenagem, com calçados espelhados corretamente |
+| 34 | Receber dano leve | `LINE_HIT_LIGHT` | Corrigido: 16 frames; pernas e calçados diferenciados no contato, recuo, recuperação e retorno à guarda |
+| 35 | Receber golpe forte | `LINE_HIT_HEAVY` | Criado: 14 frames com impacto maior, recuo amplo, perda progressiva do apoio e ponte direta ao arremesso |
+| 36 | Ser arremessada | `LINE_THROWN` | Criado: 14 frames com saída do último apoio, subida, ápice, rotação e descida antes do impacto no chão |
+| 37 | Cair após golpe | `LINE_KNOCKDOWN` | Revisado: 24 frames com descida detalhada, compressão do impacto, rebote, rotação e acomodação dolorida no chão |
+| 38 | Levantar machucada | `LINE_INJURED_STAND` | Revisado: 28 frames com elevação de cabeça e ombros, transferência de peso, ajoelhamento, subida e estabilização dolorida |
+| 39 | Exausta | `LINE_EXHAUSTED_IDLE` | Criado: 20 frames em loop com respiração forte, perda breve de força e retorno contínuo sem deformar o corpo; mão da espada com dedão para dentro |
+| 40 | Ataque final contra o dragão | `LINE_DRAGON_FINAL_ATTACK` | Criado: 32 frames com foco, preparação, arrancada, salto, golpe no ponto fraco, passagem, aterrissagem e recuperação; espada rígida e pegada corrigida |
+
+## 6. Emoções da Line
+
+| Item | Animação | Código planejado |
+|---:|---|---|
+| 41 | Feliz | `LINE_HAPPY` | Criado: 20 frames com sorriso gradual, abertura corporal, balanço leve, pequeno riso e retorno contínuo; espada totalmente embainhada |
+| 42 | Rindo | `LINE_LAUGH` | Criado: 24 frames com preparação, abertura do riso, pico, inclinação do tronco, balanço secundário e recuperação; espada totalmente embainhada |
+| 43 | Determinada | `LINE_DETERMINED` |
+| 44 | Brava | `LINE_ANGRY` |
+| 45 | Assustada | `LINE_SCARED` |
+| 46 | Triste | `LINE_SAD` |
+| 47 | Chorando | `LINE_CRY` |
+| 48 | Gritando por Bell | `LINE_CALL_BELL` |
+| 49 | Aliviada | `LINE_RELIEVED` |
+
+## 7. Pacote da Bell
+
+| Item | Animações | Códigos planejados |
+|---:|---|---|
+| 50 | Idle frontal, piscar e olhar para os lados | `BELL_IDLE_FRONT`, `BELL_BLINK_FRONT`, `BELL_LOOK_SIDES_FRONT` |
+| 51 | Idle esquerda, direita e costas | `BELL_IDLE_LEFT`, `BELL_IDLE_RIGHT`, `BELL_IDLE_BACK` |
+| 52 | Caminhar para a direita | `BELL_WALK_RIGHT` |
+| 53 | Caminhar para a esquerda | `BELL_WALK_LEFT` |
+| 54 | Caminhar para frente e costas | `BELL_WALK_FRONT`, `BELL_WALK_BACK` |
+| 55 | Correr para a direita | `BELL_RUN_RIGHT` |
+| 56 | Correr para a esquerda | `BELL_RUN_LEFT` |
+| 57 | Correr para frente e costas | `BELL_RUN_FRONT`, `BELL_RUN_BACK` |
+| 58 | Pular, aterrissar e levantar | `BELL_JUMP`, `BELL_LAND`, `BELL_GROUND_STAND` |
+| 59 | Assustada e fugir | `BELL_SCARED`, `BELL_FLEE` |
+| 60 | Cair | `BELL_FALL` |
+| 61 | Ser capturada | `BELL_CAPTURED` |
+| 62 | Ser carregada pelo dragão | `BELL_DRAGON_CARRIED` |
+| 63 | Presa e tentar escapar | `BELL_TRAPPED`, `BELL_ESCAPE_ATTEMPT` |
+| 64 | Conseguir se libertar | `BELL_BREAK_FREE` |
+| 65 | Chamar Line | `BELL_CALL_LINE` |
+| 66 | Ajudar Line | `BELL_HELP_LINE` |
+| 67 | Feliz, aliviada e chorando | `BELL_HAPPY`, `BELL_RELIEVED`, `BELL_CRY` |
+
+## 8. Interações entre Line e Bell
+
+| Item | Animações | Códigos planejados |
+|---:|---|---|
+| 68 | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| 69 | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
+| 70 | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| 71 | Conversando e rindo juntas | `LINE_BELL_TALK`, `LINE_BELL_LAUGH` |
+| 72 | Bell encostando na Line | `BELL_LEAN_ON_LINE` |
+| 73 | Segurando as mãos | `LINE_BELL_HOLD_HANDS` |
+| 74 | Abraço do resgate | `LINE_BELL_RESCUE_HUG` |
+| 75 | Separação do abraço | `LINE_BELL_HUG_RELEASE` |
+| 76 | Comemorando a vitória | `LINE_BELL_CELEBRATE` |
+| 77 | Sentando juntas | `LINE_BELL_SIT_DOWN` |
+| 78 | Bell apoiando a cabeça na Line | `BELL_HEAD_ON_LINE` |
+| 79 | Idle das duas sentadas | `LINE_BELL_SIT_IDLE` |
+
+## 9. Dragão
+
+| Item | Animações | Códigos planejados |
+|---:|---|---|
+| 80 | Idle, respiração e piscar | `DRAGON_IDLE`, `DRAGON_BLINK` |
+| 81 | Andar e virar | `DRAGON_WALK`, `DRAGON_TURN` |
+| 82 | Abrir asas e decolar | `DRAGON_WINGS_OPEN`, `DRAGON_TAKEOFF` |
+| 83 | Voar e planar | `DRAGON_FLY`, `DRAGON_GLIDE` |
+| 84 | Pousar | `DRAGON_LAND` |
+| 85 | Rugir | `DRAGON_ROAR` |
+| 86 | Morder | `DRAGON_BITE` |
+| 87 | Ataque de garra | `DRAGON_CLAW_ATTACK` |
+| 88 | Golpe de cauda | `DRAGON_TAIL_ATTACK` |
+| 89 | Preparar e cuspir fogo | `DRAGON_FIRE_CHARGE`, `DRAGON_FIRE_BREATH` |
+| 90 | Fogo contínuo | `DRAGON_FIRE_STREAM` |
+| 91 | Ataque aéreo | `DRAGON_AIR_ATTACK` |
+| 92 | Receber dano e ponto fraco atingido | `DRAGON_HIT`, `DRAGON_WEAK_POINT_HIT` |
+| 93 | Atordoado | `DRAGON_STUNNED` |
+| 94 | Ataque desesperado | `DRAGON_DESPERATE_ATTACK` |
+| 95 | Receber golpe final | `DRAGON_FINAL_HIT` |
+| 96 | Cair e ficar derrotado | `DRAGON_FALL`, `DRAGON_DEFEATED` |
+| 97 | Abrir um olho no final | `DRAGON_EYE_OPEN_END` |
+
+## 10. Efeitos independentes
+
+| Item | Efeitos | Códigos planejados |
+|---:|---|---|
+| 98 | Fogo, brasas e iluminação | `FX_FIRE`, `FX_EMBERS`, `FX_FIRE_LIGHT` |
+| 99 | Fumaça e poeira | `FX_SMOKE`, `FX_DUST` |
+| 100 | Impacto, faíscas e explosão | `FX_IMPACT`, `FX_SPARKS`, `FX_EXPLOSION` |
+| 101 | Rastro da espada e ponto fraco | `FX_SWORD_TRAIL`, `FX_DRAGON_WEAK_POINT` |
+| 102 | Lágrimas, corações e partículas ambientais | `FX_TEARS`, `FX_HEARTS`, `FX_AMBIENT_PARTICLES` |
+
+## 11. Ordem real de execução a partir de agora
+
+1. Revisar os itens 5, 6, 9 e 10 como um conjunto, corrigindo a alternância completa das pernas.
+2. Revisar os itens 7 e 11 nas direções frente e costas.
+3. Revisar as transições de começar e parar de correr nos itens 8, 12, 13 e 14.
+4. Fazer uma revisão final dos itens 1 a 4.
+5. Item 15 concluído e pronto para aprovação.
+6. Item 16 concluído e pronto para aprovação.
+7. Item 17 concluído e pronto para aprovação.
+8. Item 18 concluído e pronto para aprovação.
+9. Item 19 concluído e pronto para aprovação.
+10. Item 20 concluído e pronto para aprovação.
+11. Item 21 concluído e pronto para aprovação.
+12. Item 22 concluído e pronto para aprovação.
+13. Item 23 concluído e pronto para aprovação.
+14. Item 24 concluído e pronto para aprovação.
+15. Item 25 concluído e pronto para aprovação.
+16. Item 26 concluído e pronto para aprovação.
+17. Item 27 concluído e pronto para aprovação.
+18. Item 28 concluído e pronto para aprovação.
+19. Item 29 concluído e pronto para aprovação.
+20. Item 30 concluído e pronto para aprovação.
+21. Item 31 concluído e pronto para aprovação.
+22. Item 32 concluído e pronto para aprovação.
+23. Item 33 concluído e pronto para aprovação.
+24. Item 34 concluído e pronto para aprovação.
+25. Item 35 concluído e pronto para aprovação.
+26. Item 36 concluído e pronto para aprovação.
+27. Item 37 concluído e pronto para aprovação.
+28. Item 38 concluído e pronto para aprovação.
+29. Item 39 concluído e pronto para aprovação.
+30. Item 40 concluído e pronto para aprovação.
+31. Item 41 concluído e pronto para aprovação.
+32. Item 42 concluído e pronto para aprovação.
+
+## 12. Regra para alteração futura dos itens
+
+Se um HTML ultrapassar 25 MB, o item deve ser desmembrado antes de iniciar os seguintes. A numeração posterior será deslocada e este documento deverá ser atualizado imediatamente. Nenhuma animação já aprovada será comprimida, reduzida ou cortada apenas para preservar a numeração antiga.
