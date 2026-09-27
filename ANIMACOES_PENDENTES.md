@@ -2,7 +2,7 @@
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
-Status atual: **152** animações prontas (Line, Bell, dragão chibi, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+Status atual: **153** animações prontas (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
 
 ## Como mandar arte nova
 
@@ -24,10 +24,15 @@ O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_S
 - `BELL_RUN_FRONT/BACK`: a corrida de lado já chegou. De frente e de costas, ainda usa a caminhada.
 
 ### Dragão
-O dragão chibi já tem quase tudo (parado, andar, correr, voar, decolar, pousar, fogo, ataque aéreo, garras, dano, cair, dormir e ressurgir). Faltam:
-- `DRAGON_ROAR`: rugido (hoje usa a preparação do fogo).
-- `DRAGON_TAIL_ATTACK`: golpe de cauda (hoje usa o ataque de garra).
-- `DRAGON_STUNNED`: atordoado de verdade (hoje usa quadros do "tomar dano" em loop).
+O dragão agora é o **vermelho** da última prancha. Ela trouxe: parado, andar, decolar, voar, fogo e rugido. O resto usa quadros dessas mesmas animações:
+- `DRAGON_CLAW_ATTACK` (garra): usa o rugido + agachar.
+- `DRAGON_TAIL_ATTACK` (golpe de cauda): usa a garra.
+- `DRAGON_HIT`, `DRAGON_STUNNED` (dano, atordoado): usam o agachar.
+- `DRAGON_FALL`, `DRAGON_DEFEATED` (cair, derrotado): usam o pouso e o agachar. Falta ele **caído no chão** de verdade.
+- `DRAGON_SLEEP`: usa ele sentado. Falta de olho fechado.
+- `DRAGON_AIR_ATTACK` (mergulho com as garras): usa a decolagem.
+
+A prancha tem o dragão com ~130 px de altura. O ideal é **~400 px de corpo, em quadros de 512×512**.
 
 ### Line: emoções das cenas
 - `LINE_CALL_BELL` (gritando por Bell), `LINE_SCARED`, `LINE_SAD`, `LINE_DETERMINED`, `LINE_RELIEVED`.

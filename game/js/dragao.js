@@ -53,7 +53,7 @@
         case 'garra':
           if (this.t > 0.7 * R && !this.golpeFeito) {
             this.golpeFeito = true;
-            const cx = this.x + this.lado * 45, cy = this.y + 34;
+            const cx = this.x + this.lado * 62, cy = this.y + 30;
             jogo.particulas.emitir('poeira', cx, cy, 8, { vel: 80 });
             jogo.tremer(3, 0.15);
             if (Math.hypot(line.x - cx, line.y - cy) < 62) line.receberDano(jogo, 1, false, this.x, this.y);
@@ -181,7 +181,7 @@
         this.fogoAng += Math.max(-rastreio * dt, Math.min(rastreio * dt, delta));
       }
       this.anim.tocar('DRAGON_FIRE_STREAM');
-      const boca = LB.sprite('DRAGON_FIRE_STREAM') ? { x: this.x + this.lado * 52, z: 100 } : { x: this.x + Math.cos(this.fogoAng) * 30, z: 70 };
+      const boca = LB.sprite('DRAGON_FIRE_STREAM') ? { x: this.x + this.lado * 68, z: 102 } : { x: this.x + Math.cos(this.fogoAng) * 30, z: 70 };
       const ox = boca.x, oy = this.y + Math.sin(this.fogoAng) * 20 + 10;
       for (let i = 0; i < 3; i++) {
         jogo.particulas.emitir('fogo', ox, oy, 1, { angulo: this.fogoAng, abertura: 0.3, vel: 300, plano: true, vida: 0.75, z: boca.z, vz: -boca.z * 1.3, r: 6 });
@@ -237,7 +237,7 @@
       g.save();
       if (this.estado === 'garra' && this.t < 0.7 * R) {
         g.fillStyle = `rgba(255,60,60,${pisca})`;
-        g.beginPath(); g.ellipse(this.x + this.lado * 45, this.y + 34, 62, 26, 0, 0, TAU); g.fill();
+        g.beginPath(); g.ellipse(this.x + this.lado * 62, this.y + 30, 62, 26, 0, 0, TAU); g.fill();
       } else if (this.estado === 'cauda' && this.t < 1.05 * R) {
         const agora = this.t > 0.55 * R;
         g.strokeStyle = agora ? 'rgba(255,230,90,.85)' : `rgba(255,120,40,${pisca + 0.15})`; g.lineWidth = agora ? 18 : 12;
@@ -276,7 +276,7 @@
         if (this.flash > 0) g.filter = 'brightness(2)';
         LB.desenharSprite(g, st.r, st.quadro, this.x, y, ALTURA_DRAGAO);
         g.filter = 'none';
-        if (this.fraco) this.brilhoPeito(g, this.x + this.lado * 16, y - 62, jogo.tempo);
+        if (this.fraco) this.brilhoPeito(g, this.x + this.lado * 38, y - 66, jogo.tempo);
         return;
       }
       const img = LB.personagem('dragao');
@@ -341,7 +341,7 @@
       g.restore();
       if (/STUNNED/.test(b) && this.estado !== 'derrotado') {
         g.fillStyle = '#fff176';
-        for (let i = 0; i < 3; i++) { const a = t * 4 + i * 2.1; LB.desenho.estrela(g, this.x + this.lado * 60 + Math.cos(a) * 30, y - 120 + Math.sin(a) * 8, 5); }
+        for (let i = 0; i < 3; i++) { const a = t * 4 + i * 2.1; LB.desenho.estrela(g, this.x + this.lado * 64 + Math.cos(a) * 30, y - 138 + Math.sin(a) * 8, 5); }
       }
     }
   }

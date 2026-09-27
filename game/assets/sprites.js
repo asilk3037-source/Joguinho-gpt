@@ -1873,262 +1873,150 @@ window.SPRITES = {
  },
  "DRAGON_AIR_ATTACK": {
   "src": "assets/sprites/DRAGON_AIR_ATTACK.webp",
-  "cell": 184,
-  "count": 8,
+  "cell": 208,
+  "count": 2,
   "seq": [
    0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7
+   1
   ],
-  "ground": 160,
-  "groundEnd": 139,
-  "mundo": 322.0,
+  "ground": 207,
+  "groundEnd": 207,
+  "mundo": 239.2,
   "label": "DRAGON_AIR_ATTACK",
   "item": "arte/dragao/DRAGON_AIR_ATTACK"
  },
  "DRAGON_CLAW_ATTACK": {
   "src": "assets/sprites/DRAGON_CLAW_ATTACK.webp",
-  "cell": 134,
-  "count": 7,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6
-  ],
-  "ground": 111,
-  "groundEnd": 111,
-  "mundo": 234.5,
-  "label": "DRAGON_CLAW_ATTACK",
-  "item": "arte/dragao/DRAGON_CLAW_ATTACK"
- },
- "DRAGON_DEFEATED": {
-  "src": "assets/sprites/DRAGON_DEFEATED.webp",
-  "cell": 131,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 106,
-  "groundEnd": 106,
-  "mundo": 229.25,
-  "label": "DRAGON_DEFEATED",
-  "item": "arte/dragao/DRAGON_DEFEATED"
- },
- "DRAGON_EYE_OPEN_END": {
-  "src": "assets/sprites/DRAGON_EYE_OPEN_END.webp",
-  "cell": 131,
-  "count": 6,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5
-  ],
-  "ground": 105,
-  "groundEnd": 106,
-  "mundo": 229.25,
-  "label": "DRAGON_EYE_OPEN_END",
-  "item": "arte/dragao/DRAGON_EYE_OPEN_END"
- },
- "DRAGON_FALL": {
-  "src": "assets/sprites/DRAGON_FALL.webp",
-  "cell": 131,
-  "count": 6,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5
-  ],
-  "ground": 106,
-  "groundEnd": 106,
-  "mundo": 229.25,
-  "label": "DRAGON_FALL",
-  "item": "arte/dragao/DRAGON_FALL"
- },
- "DRAGON_FIRE_BREATH": {
-  "src": "assets/sprites/DRAGON_FIRE_BREATH.webp",
-  "cell": 186,
-  "count": 12,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11
-  ],
-  "ground": 169,
-  "groundEnd": 169,
-  "mundo": 325.5,
-  "label": "DRAGON_FIRE_BREATH",
-  "item": "arte/dragao/DRAGON_FIRE_BREATH"
- },
- "DRAGON_FIRE_CHARGE": {
-  "src": "assets/sprites/DRAGON_FIRE_CHARGE.webp",
-  "cell": 148,
+  "cell": 204,
   "count": 3,
   "seq": [
    0,
    1,
    2
   ],
-  "ground": 131,
-  "groundEnd": 131,
-  "mundo": 259.0,
-  "label": "DRAGON_FIRE_CHARGE",
-  "item": "arte/dragao/DRAGON_FIRE_CHARGE"
+  "ground": 204,
+  "groundEnd": 204,
+  "mundo": 234.6,
+  "label": "DRAGON_CLAW_ATTACK",
+  "item": "arte/dragao/DRAGON_CLAW_ATTACK"
  },
- "DRAGON_FIRE_STREAM": {
-  "src": "assets/sprites/DRAGON_FIRE_STREAM.webp",
-  "cell": 140,
+ "DRAGON_DEFEATED": {
+  "src": "assets/sprites/DRAGON_DEFEATED.webp",
+  "cell": 196,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 196,
+  "groundEnd": 196,
+  "mundo": 225.4,
+  "label": "DRAGON_DEFEATED",
+  "item": "arte/dragao/DRAGON_DEFEATED"
+ },
+ "DRAGON_EYE_OPEN_END": {
+  "src": "assets/sprites/DRAGON_EYE_OPEN_END.webp",
+  "cell": 204,
   "count": 2,
   "seq": [
    0,
    1
   ],
-  "ground": 122,
-  "groundEnd": 123,
-  "mundo": 245.0,
+  "ground": 204,
+  "groundEnd": 204,
+  "mundo": 234.6,
+  "label": "DRAGON_EYE_OPEN_END",
+  "item": "arte/dragao/DRAGON_EYE_OPEN_END"
+ },
+ "DRAGON_FALL": {
+  "src": "assets/sprites/DRAGON_FALL.webp",
+  "cell": 208,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 208,
+  "groundEnd": 208,
+  "mundo": 239.2,
+  "label": "DRAGON_FALL",
+  "item": "arte/dragao/DRAGON_FALL"
+ },
+ "DRAGON_FIRE_BREATH": {
+  "src": "assets/sprites/DRAGON_FIRE_BREATH.webp",
+  "cell": 180,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 180,
+  "groundEnd": 179,
+  "mundo": 207.0,
+  "label": "DRAGON_FIRE_BREATH",
+  "item": "arte/dragao/DRAGON_FIRE_BREATH"
+ },
+ "DRAGON_FIRE_CHARGE": {
+  "src": "assets/sprites/DRAGON_FIRE_CHARGE.webp",
+  "cell": 180,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 180,
+  "groundEnd": 180,
+  "mundo": 207.0,
+  "label": "DRAGON_FIRE_CHARGE",
+  "item": "arte/dragao/DRAGON_FIRE_CHARGE"
+ },
+ "DRAGON_FIRE_STREAM": {
+  "src": "assets/sprites/DRAGON_FIRE_STREAM.webp",
+  "cell": 180,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 179,
+  "groundEnd": 179,
+  "mundo": 207.0,
   "label": "DRAGON_FIRE_STREAM",
   "item": "arte/dragao/DRAGON_FIRE_STREAM"
  },
  "DRAGON_FLY": {
   "src": "assets/sprites/DRAGON_FLY.webp",
-  "cell": 130,
-  "count": 6,
+  "cell": 208,
+  "count": 5,
   "seq": [
    0,
    1,
    2,
    3,
-   4,
-   5
+   4
   ],
-  "ground": 109,
-  "groundEnd": 107,
-  "mundo": 227.5,
+  "ground": 208,
+  "groundEnd": 208,
+  "mundo": 239.2,
   "label": "DRAGON_FLY",
   "item": "arte/dragao/DRAGON_FLY"
  },
  "DRAGON_HIT": {
   "src": "assets/sprites/DRAGON_HIT.webp",
-  "cell": 131,
-  "count": 6,
+  "cell": 196,
+  "count": 2,
   "seq": [
    0,
-   1,
-   2,
-   3,
-   4,
-   5
+   1
   ],
-  "ground": 106,
-  "groundEnd": 105,
-  "mundo": 229.25,
+  "ground": 196,
+  "groundEnd": 196,
+  "mundo": 225.4,
   "label": "DRAGON_HIT",
   "item": "arte/dragao/DRAGON_HIT"
  },
  "DRAGON_IDLE": {
   "src": "assets/sprites/DRAGON_IDLE.webp",
-  "cell": 130,
-  "count": 9,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8
-  ],
-  "ground": 114,
-  "groundEnd": 114,
-  "mundo": 227.5,
-  "label": "DRAGON_IDLE",
-  "item": "arte/dragao/DRAGON_IDLE"
- },
- "DRAGON_LAND": {
-  "src": "assets/sprites/DRAGON_LAND.webp",
-  "cell": 128,
-  "count": 8,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7
-  ],
-  "ground": 109,
-  "groundEnd": 113,
-  "mundo": 224.0,
-  "label": "DRAGON_LAND",
-  "item": "arte/dragao/DRAGON_LAND"
- },
- "DRAGON_RUN": {
-  "src": "assets/sprites/DRAGON_RUN.webp",
-  "cell": 158,
-  "count": 7,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6
-  ],
-  "ground": 132,
-  "groundEnd": 134,
-  "mundo": 276.5,
-  "label": "DRAGON_RUN",
-  "item": "arte/dragao/DRAGON_RUN"
- },
- "DRAGON_SLEEP": {
-  "src": "assets/sprites/DRAGON_SLEEP.webp",
-  "cell": 128,
-  "count": 6,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5
-  ],
-  "ground": 101,
-  "groundEnd": 101,
-  "mundo": 224.0,
-  "label": "DRAGON_SLEEP",
-  "item": "arte/dragao/DRAGON_SLEEP"
- },
- "DRAGON_STUNNED": {
-  "src": "assets/sprites/DRAGON_STUNNED.webp",
-  "cell": 131,
+  "cell": 202,
   "count": 4,
   "seq": [
    0,
@@ -2136,49 +2024,120 @@ window.SPRITES = {
    2,
    3
   ],
-  "ground": 106,
-  "groundEnd": 106,
-  "mundo": 229.25,
+  "ground": 202,
+  "groundEnd": 201,
+  "mundo": 232.3,
+  "label": "DRAGON_IDLE",
+  "item": "arte/dragao/DRAGON_IDLE"
+ },
+ "DRAGON_LAND": {
+  "src": "assets/sprites/DRAGON_LAND.webp",
+  "cell": 208,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "ground": 207,
+  "groundEnd": 208,
+  "mundo": 239.2,
+  "label": "DRAGON_LAND",
+  "item": "arte/dragao/DRAGON_LAND"
+ },
+ "DRAGON_ROAR": {
+  "src": "assets/sprites/DRAGON_ROAR.webp",
+  "cell": 204,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 204,
+  "groundEnd": 204,
+  "mundo": 234.6,
+  "label": "DRAGON_ROAR",
+  "item": "arte/dragao/DRAGON_ROAR"
+ },
+ "DRAGON_RUN": {
+  "src": "assets/sprites/DRAGON_RUN.webp",
+  "cell": 218,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 218,
+  "groundEnd": 218,
+  "mundo": 250.7,
+  "label": "DRAGON_RUN",
+  "item": "arte/dragao/DRAGON_RUN"
+ },
+ "DRAGON_SLEEP": {
+  "src": "assets/sprites/DRAGON_SLEEP.webp",
+  "cell": 178,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 178,
+  "groundEnd": 178,
+  "mundo": 204.7,
+  "label": "DRAGON_SLEEP",
+  "item": "arte/dragao/DRAGON_SLEEP"
+ },
+ "DRAGON_STUNNED": {
+  "src": "assets/sprites/DRAGON_STUNNED.webp",
+  "cell": 196,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 196,
+  "groundEnd": 196,
+  "mundo": 225.4,
   "label": "DRAGON_STUNNED",
   "item": "arte/dragao/DRAGON_STUNNED"
  },
  "DRAGON_TAKEOFF": {
   "src": "assets/sprites/DRAGON_TAKEOFF.webp",
-  "cell": 132,
-  "count": 8,
+  "cell": 208,
+  "count": 5,
   "seq": [
    0,
    1,
    2,
    3,
-   4,
-   5,
-   6,
-   7
+   4
   ],
-  "ground": 114,
-  "groundEnd": 90,
-  "mundo": 231.0,
+  "ground": 208,
+  "groundEnd": 207,
+  "mundo": 239.2,
   "label": "DRAGON_TAKEOFF",
   "item": "arte/dragao/DRAGON_TAKEOFF"
  },
  "DRAGON_WALK": {
   "src": "assets/sprites/DRAGON_WALK.webp",
-  "cell": 140,
-  "count": 8,
+  "cell": 218,
+  "count": 6,
   "seq": [
    0,
    1,
    2,
    3,
    4,
-   5,
-   6,
-   7
+   5
   ],
-  "ground": 124,
-  "groundEnd": 125,
-  "mundo": 245.0,
+  "ground": 218,
+  "groundEnd": 218,
+  "mundo": 250.7,
   "label": "DRAGON_WALK",
   "item": "arte/dragao/DRAGON_WALK"
  },
