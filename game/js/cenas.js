@@ -325,12 +325,12 @@
 
       yield c.tingir('90,60,130', 0.26, 1.5);
       j.ambiente.anoitecer();
-      line.dir = 'FRONT'; line.anim.tocar('LINE_SAD', true);
+      line.dir = 'FRONT'; line.anim.tocar('LINE_CRY', true);
       yield c.espera(1);
       if (cao) { cao.seguir = true; cao.comeu = true; cao.x = line.x + 40; cao.y = line.y + 20; j.balao(cao, 'Auuu...', 2); }
       yield c.espera(1);
-      line.anim.tocar('LINE_DETERMINED', true);
       yield c.fala('Line', 'Ele voou pra montanha, do outro lado da floresta...', 'chorando');
+      line.anim.tocar('LINE_DETERMINED', true);
       yield c.fala('Line', 'Theo, cuida da fazenda pra mim. Eu vou buscar a Bell.', 'bravo');
       j.bell = null;
       j.flags.prologo = true;

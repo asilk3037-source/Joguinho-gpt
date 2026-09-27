@@ -50,6 +50,9 @@ Cada arquivo é autossuficiente, possui menos de 25 MB e contém animações com
 | 44 | `LINE_BELL_ITEM_44.html` | 1,79 MB | `LINE_ANGRY` |
 | 45 | `LINE_BELL_ITEM_45.html` | 2,19 MB | `LINE_SCARED` |
 | 46 | `LINE_BELL_ITEM_46.html` | 1,64 MB | `LINE_SAD` |
+| 47 | `LINE_BELL_ITEM_47.html` | 2,10 MB | `LINE_CRY` |
+| 48 | `LINE_BELL_ITEM_48.html` | 2,42 MB | `LINE_CALL_BELL` |
+| 49 | `LINE_BELL_ITEM_49.html` | 1,67 MB | `LINE_RELIEVED` |
 
 ## Regra de continuidade das pernas
 

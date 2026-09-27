@@ -68,9 +68,9 @@ window.LB = window.LB || {};
     ['LINE_ANGRY', 'Brava', { fps: 10, loop: true, quadros: 20, alt: 'LINE_COMBAT_IDLE' }],
     ['LINE_SCARED', 'Assustada', { fps: 10, loop: true, quadros: 20, alt: 'LINE_IDLE_FRONT' }],
     ['LINE_SAD', 'Triste', { fps: 8, loop: true, quadros: 20, alt: 'LINE_IDLE_FRONT' }],
-    ['LINE_CRY', 'Chorando', { loop: true, face: 'F', alt: 'LINE_SAD' }],
-    ['LINE_CALL_BELL', 'Gritando por Bell', { fps: 10, face: 'F', quadros: 16, alt: 'LINE_IDLE_BACK' }],
-    ['LINE_RELIEVED', 'Aliviada', { face: 'F', quadros: 16, alt: 'LINE_HAPPY' }],
+    ['LINE_CRY', 'Chorando', { fps: 8, loop: true, quadros: 24, alt: 'LINE_SAD' }],
+    ['LINE_CALL_BELL', 'Gritando por Bell', { fps: 12, quadros: 24, alt: 'LINE_IDLE_BACK' }],
+    ['LINE_RELIEVED', 'Aliviada', { fps: 10, quadros: 20, alt: 'LINE_HAPPY' }],
     ['LINE_VICTORY', 'Comemorando a vitória', { face: 'F', quadros: 1, alt: 'LINE_HAPPY', nova: true }],
   ]);
 

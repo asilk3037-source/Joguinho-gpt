@@ -2,7 +2,7 @@
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
-Status atual: **157** animações prontas (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+Status atual: **160** animações prontas (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
 
 ## Como mandar arte nova
 
@@ -35,7 +35,7 @@ O dragão agora é o **vermelho** da última prancha. Ela trouxe: parado, andar,
 A prancha tem o dragão com ~130 px de altura. O ideal é **~400 px de corpo, em quadros de 512×512**.
 
 ### Line: emoções das cenas
-- Chegaram `LINE_DETERMINED`, `LINE_ANGRY`, `LINE_SCARED` e `LINE_SAD` (itens 43–46). Faltam `LINE_CALL_BELL` (gritando por Bell), `LINE_CRY` (chorando; hoje usa a triste) e `LINE_RELIEVED` (aliviada; hoje usa a feliz).
+- Completas! Itens 43–49: determinada, brava, assustada, triste, chorando, gritando por Bell e aliviada.
 
 ## Prioridade 2 — deixam o jogo mais bonito
 
