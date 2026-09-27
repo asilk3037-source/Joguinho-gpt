@@ -2559,90 +2559,189 @@ window.SPRITES = {
   "label": "HEN_BROWN_WALK",
   "item": "arte/galinhas/HEN_BROWN_WALK"
  },
+ "THEO_ALERT": {
+  "src": "assets/sprites/THEO_ALERT.webp",
+  "cell": 80,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 80,
+  "groundEnd": 80,
+  "mundo": 36.48,
+  "label": "Theo alerta",
+  "item": "arte/theo/THEO_ALERT"
+ },
+ "THEO_BALL": {
+  "src": "assets/sprites/THEO_BALL.webp",
+  "cell": 68,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 68,
+  "groundEnd": 68,
+  "mundo": 30.72,
+  "label": "Theo com a bolinha",
+  "item": "arte/theo/THEO_BALL"
+ },
+ "THEO_BATH": {
+  "src": "assets/sprites/THEO_BATH.webp",
+  "cell": 98,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 98,
+  "groundEnd": 98,
+  "mundo": 44.64,
+  "label": "Theo no banho",
+  "item": "arte/theo/THEO_BATH"
+ },
+ "THEO_BONE": {
+  "src": "assets/sprites/THEO_BONE.webp",
+  "cell": 78,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 78,
+  "groundEnd": 78,
+  "mundo": 35.52,
+  "label": "Theo com o osso",
+  "item": "arte/theo/THEO_BONE"
+ },
  "THEO_IDLE_BACK": {
   "src": "assets/sprites/THEO_IDLE_BACK.webp",
-  "cell": 100,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
-  "label": "THEO_IDLE_BACK",
-  "item": "arte/theo/THEO_IDLE_BACK"
- },
- "THEO_IDLE_FRONT": {
-  "src": "assets/sprites/THEO_IDLE_FRONT.webp",
-  "cell": 100,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
-  "label": "THEO_IDLE_FRONT",
-  "item": "arte/theo/THEO_IDLE_FRONT"
- },
- "THEO_IDLE_LEFT": {
-  "src": "assets/sprites/THEO_IDLE_LEFT.webp",
-  "cell": 100,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
-  "label": "THEO_IDLE_LEFT",
-  "item": "arte/theo/THEO_IDLE_LEFT"
- },
- "THEO_IDLE_RIGHT": {
-  "src": "assets/sprites/THEO_IDLE_RIGHT.webp",
-  "cell": 100,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
-  "label": "THEO_IDLE_RIGHT",
-  "item": "arte/theo/THEO_IDLE_RIGHT"
- },
- "THEO_LIE": {
-  "src": "assets/sprites/THEO_LIE.webp",
-  "cell": 100,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
-  "label": "THEO_LIE",
-  "item": "arte/theo/THEO_LIE"
- },
- "THEO_RUN": {
-  "src": "assets/sprites/THEO_RUN.webp",
-  "cell": 100,
+  "cell": 62,
   "count": 3,
   "seq": [
    0,
    1,
    2
   ],
-  "ground": 94,
-  "groundEnd": 100,
-  "mundo": 50.0,
+  "ground": 62,
+  "groundEnd": 62,
+  "mundo": 28.32,
+  "label": "THEO_IDLE_BACK",
+  "item": "arte/theo/THEO_IDLE_BACK"
+ },
+ "THEO_IDLE_FRONT": {
+  "src": "assets/sprites/THEO_IDLE_FRONT.webp",
+  "cell": 72,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 72,
+  "groundEnd": 72,
+  "mundo": 32.88,
+  "label": "THEO_IDLE_FRONT",
+  "item": "arte/theo/THEO_IDLE_FRONT"
+ },
+ "THEO_IDLE_LEFT": {
+  "src": "assets/sprites/THEO_IDLE_LEFT.webp",
+  "cell": 75,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 75,
+  "groundEnd": 75,
+  "mundo": 34.08,
+  "label": "THEO_IDLE_LEFT",
+  "item": "arte/theo/THEO_IDLE_LEFT"
+ },
+ "THEO_IDLE_RIGHT": {
+  "src": "assets/sprites/THEO_IDLE_RIGHT.webp",
+  "cell": 69,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 69,
+  "groundEnd": 69,
+  "mundo": 31.2,
+  "label": "THEO_IDLE_RIGHT",
+  "item": "arte/theo/THEO_IDLE_RIGHT"
+ },
+ "THEO_LIE": {
+  "src": "assets/sprites/THEO_LIE.webp",
+  "cell": 78,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 78,
+  "groundEnd": 78,
+  "mundo": 35.52,
+  "label": "Theo deitado",
+  "item": "arte/theo/THEO_LIE"
+ },
+ "THEO_PLAY": {
+  "src": "assets/sprites/THEO_PLAY.webp",
+  "cell": 99,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 99,
+  "groundEnd": 99,
+  "mundo": 45.12,
+  "label": "Theo brincando",
+  "item": "arte/theo/THEO_PLAY"
+ },
+ "THEO_QUESTION": {
+  "src": "assets/sprites/THEO_QUESTION.webp",
+  "cell": 99,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 99,
+  "groundEnd": 99,
+  "mundo": 45.12,
+  "label": "Theo curioso",
+  "item": "arte/theo/THEO_QUESTION"
+ },
+ "THEO_ROLL": {
+  "src": "assets/sprites/THEO_ROLL.webp",
+  "cell": 124,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 124,
+  "groundEnd": 124,
+  "mundo": 56.16,
+  "label": "Theo de barriga pra cima",
+  "item": "arte/theo/THEO_ROLL"
+ },
+ "THEO_RUN": {
+  "src": "assets/sprites/THEO_RUN.webp",
+  "cell": 118,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 117,
+  "groundEnd": 118,
+  "mundo": 53.76,
   "label": "THEO_RUN",
   "item": "arte/theo/THEO_RUN"
  },
  "THEO_SIT": {
   "src": "assets/sprites/THEO_SIT.webp",
-  "cell": 100,
+  "cell": 65,
   "count": 4,
   "seq": [
    0,
@@ -2650,63 +2749,70 @@ window.SPRITES = {
    2,
    3
   ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
+  "ground": 65,
+  "groundEnd": 65,
+  "mundo": 29.76,
   "label": "THEO_SIT",
   "item": "arte/theo/THEO_SIT"
  },
  "THEO_SIT_FRONT": {
   "src": "assets/sprites/THEO_SIT_FRONT.webp",
-  "cell": 100,
-  "count": 4,
+  "cell": 69,
+  "count": 1,
   "seq": [
-   0,
-   1,
-   2,
-   3
+   0
   ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
-  "label": "THEO_SIT_FRONT",
+  "ground": 69,
+  "groundEnd": 69,
+  "mundo": 31.2,
+  "label": "Theo comendo",
   "item": "arte/theo/THEO_SIT_FRONT"
  },
  "THEO_SIT_IDLE": {
   "src": "assets/sprites/THEO_SIT_IDLE.webp",
-  "cell": 100,
-  "count": 4,
+  "cell": 87,
+  "count": 2,
   "seq": [
    0,
-   1,
-   2,
-   3
+   1
   ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
-  "label": "THEO_SIT_IDLE",
+  "ground": 87,
+  "groundEnd": 87,
+  "mundo": 39.36,
+  "label": "Theo apaixonado",
   "item": "arte/theo/THEO_SIT_IDLE"
+ },
+ "THEO_SLEEP": {
+  "src": "assets/sprites/THEO_SLEEP.webp",
+  "cell": 94,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 94,
+  "groundEnd": 94,
+  "mundo": 42.72,
+  "label": "Theo dormindo",
+  "item": "arte/theo/THEO_SLEEP"
  },
  "THEO_WALK_BACK": {
   "src": "assets/sprites/THEO_WALK_BACK.webp",
-  "cell": 100,
-  "count": 4,
+  "cell": 69,
+  "count": 3,
   "seq": [
    0,
    1,
-   2,
-   3
+   2
   ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
+  "ground": 69,
+  "groundEnd": 69,
+  "mundo": 31.44,
   "label": "THEO_WALK_BACK",
   "item": "arte/theo/THEO_WALK_BACK"
  },
  "THEO_WALK_FRONT": {
   "src": "assets/sprites/THEO_WALK_FRONT.webp",
-  "cell": 100,
+  "cell": 82,
   "count": 4,
   "seq": [
    0,
@@ -2714,31 +2820,33 @@ window.SPRITES = {
    2,
    3
   ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
+  "ground": 82,
+  "groundEnd": 82,
+  "mundo": 37.44,
   "label": "THEO_WALK_FRONT",
   "item": "arte/theo/THEO_WALK_FRONT"
  },
  "THEO_WALK_LEFT": {
   "src": "assets/sprites/THEO_WALK_LEFT.webp",
-  "cell": 100,
-  "count": 4,
+  "cell": 75,
+  "count": 6,
   "seq": [
    0,
    1,
    2,
-   3
+   3,
+   4,
+   5
   ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
+  "ground": 75,
+  "groundEnd": 75,
+  "mundo": 34.08,
   "label": "THEO_WALK_LEFT",
   "item": "arte/theo/THEO_WALK_LEFT"
  },
  "THEO_WALK_RIGHT": {
   "src": "assets/sprites/THEO_WALK_RIGHT.webp",
-  "cell": 100,
+  "cell": 92,
   "count": 4,
   "seq": [
    0,
@@ -2746,9 +2854,9 @@ window.SPRITES = {
    2,
    3
   ],
-  "ground": 100,
-  "groundEnd": 100,
-  "mundo": 50.0,
+  "ground": 92,
+  "groundEnd": 92,
+  "mundo": 41.76,
   "label": "THEO_WALK_RIGHT",
   "item": "arte/theo/THEO_WALK_RIGHT"
  }

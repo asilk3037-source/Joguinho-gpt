@@ -2,7 +2,7 @@
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
-Status atual: **132** animações prontas (Line, Bell, dragão chibi, Theo, galinhas, vacas, porcos e cavalo). A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+Status atual: **140** animações prontas (Line, Bell, dragão chibi, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
 
 ## Como mandar arte nova
 

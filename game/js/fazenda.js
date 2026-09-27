@@ -238,7 +238,10 @@
 
     desenharTigela(g, p) {
       const tf = this.flags.tarefas || {};
-      const cheia = tf.theo && !(this.bichos.find((b) => b.tipo === 'cachorro') || {}).comeu;
+      const cao = this.bichos.find((b) => b.tipo === 'cachorro') || {};
+      // O sprite do Theo comendo já traz a tigelinha dele.
+      if (cao.estado === 'comendo' && LB.sprite('THEO_SIT_FRONT')) return;
+      const cheia = tf.theo && !cao.comeu;
       LB.desenho.sombraChao(g, p.x, p.y + 1, 9, 0.2);
       g.fillStyle = '#d63a3a'; g.beginPath(); g.ellipse(p.x, p.y - 2, 9, 4, 0, 0, Math.PI * 2); g.fill();
       g.fillStyle = '#a82a2a'; g.beginPath(); g.ellipse(p.x, p.y - 3, 7, 2.6, 0, 0, Math.PI * 2); g.fill();
