@@ -2559,6 +2559,178 @@ window.SPRITES = {
   "label": "HEN_BROWN_WALK",
   "item": "arte/galinhas/HEN_BROWN_WALK"
  },
+ "BELL_CURTSY": {
+  "src": "assets/sprites/BELL_CURTSY.webp",
+  "cell": 103,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 103,
+  "groundEnd": 103,
+  "mundo": 46.8,
+  "label": "Bell fazendo reverência",
+  "item": "arte/linebell/BELL_CURTSY"
+ },
+ "BELL_DANCE": {
+  "src": "assets/sprites/BELL_DANCE.webp",
+  "cell": 110,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 109,
+  "groundEnd": 110,
+  "mundo": 49.95,
+  "label": "Bell dançando",
+  "item": "arte/linebell/BELL_DANCE"
+ },
+ "BELL_HIGH_FIVE": {
+  "src": "assets/sprites/BELL_HIGH_FIVE.webp",
+  "cell": 103,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 103,
+  "groundEnd": 103,
+  "mundo": 46.8,
+  "label": "Bell toca aqui",
+  "item": "arte/linebell/BELL_HIGH_FIVE"
+ },
+ "BELL_JUMP": {
+  "src": "assets/sprites/BELL_JUMP.webp",
+  "cell": 114,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 113,
+  "groundEnd": 113,
+  "mundo": 51.75,
+  "label": "Bell pulando",
+  "item": "arte/linebell/BELL_JUMP"
+ },
+ "BELL_LAND": {
+  "src": "assets/sprites/BELL_LAND.webp",
+  "cell": 105,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 105,
+  "groundEnd": 105,
+  "mundo": 47.7,
+  "label": "Bell aterrissando",
+  "item": "arte/linebell/BELL_LAND"
+ },
+ "BELL_RUN_LEFT": {
+  "src": "assets/sprites/BELL_RUN_LEFT.webp",
+  "cell": 106,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 106,
+  "groundEnd": 106,
+  "mundo": 48.15,
+  "label": "Bell correndo",
+  "item": "arte/linebell/BELL_RUN_LEFT"
+ },
+ "BELL_RUN_RIGHT": {
+  "src": "assets/sprites/BELL_RUN_RIGHT.webp",
+  "cell": 106,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 106,
+  "groundEnd": 106,
+  "mundo": 48.15,
+  "label": "Bell correndo",
+  "item": "arte/linebell/BELL_RUN_RIGHT"
+ },
+ "LINE_BELL_CELEBRATE": {
+  "src": "assets/sprites/LINE_BELL_CELEBRATE.webp",
+  "cell": 138,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 137,
+  "groundEnd": 137,
+  "mundo": 82.8,
+  "label": "Toca aqui!",
+  "item": "arte/linebell/LINE_BELL_CELEBRATE"
+ },
+ "LINE_BELL_DANCE": {
+  "src": "assets/sprites/LINE_BELL_DANCE.webp",
+  "cell": 154,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 154,
+  "groundEnd": 153,
+  "mundo": 92.4,
+  "label": "Dançando juntas",
+  "item": "arte/linebell/LINE_BELL_DANCE"
+ },
+ "LINE_BELL_HIGH_FIVE": {
+  "src": "assets/sprites/LINE_BELL_HIGH_FIVE.webp",
+  "cell": 132,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 131,
+  "groundEnd": 131,
+  "mundo": 79.2,
+  "label": "Toca aqui (com brilho)",
+  "item": "arte/linebell/LINE_BELL_HIGH_FIVE"
+ },
+ "LINE_BELL_TALK": {
+  "src": "assets/sprites/LINE_BELL_TALK.webp",
+  "cell": 134,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 134,
+  "groundEnd": 134,
+  "mundo": 80.4,
+  "label": "Conversando de mãos dadas",
+  "item": "arte/linebell/LINE_BELL_TALK"
+ },
+ "LINE_VICTORY": {
+  "src": "assets/sprites/LINE_VICTORY.webp",
+  "cell": 102,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 102,
+  "groundEnd": 102,
+  "mundo": 56.1,
+  "label": "Line comemorando",
+  "item": "arte/linebell/LINE_VICTORY"
+ },
  "THEO_ALERT": {
   "src": "assets/sprites/THEO_ALERT.webp",
   "cell": 80,
@@ -2861,4 +3033,4 @@ window.SPRITES = {
   "item": "arte/theo/THEO_WALK_RIGHT"
  }
 };
-window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3}};
+window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

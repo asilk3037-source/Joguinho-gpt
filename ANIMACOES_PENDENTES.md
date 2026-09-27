@@ -2,7 +2,7 @@
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
-Status atual: **140** animações prontas (Line, Bell, dragão chibi, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+Status atual: **152** animações prontas (Line, Bell, dragão chibi, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
 
 ## Como mandar arte nova
 
@@ -21,7 +21,7 @@ O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_S
 - `BELL_CAPTURED` e `BELL_DRAGON_CARRIED`: sendo agarrada e carregada. Hoje usa a Bell parada balançando.
 - `BELL_TRAPPED`, `BELL_CALL_LINE`, `BELL_ESCAPE_ATTEMPT`: presa na jaula chamando a Line. Hoje usa a Bell parada pulando.
 - `BELL_BREAK_FREE`, `BELL_HAPPY`, `BELL_RELIEVED`: saindo da jaula e feliz. Hoje usa a gargalhada.
-- `BELL_RUN_FRONT/BACK/LEFT/RIGHT`: hoje usa a caminhada mais rápida.
+- `BELL_RUN_FRONT/BACK`: a corrida de lado já chegou. De frente e de costas, ainda usa a caminhada.
 
 ### Dragão
 O dragão chibi já tem quase tudo (parado, andar, correr, voar, decolar, pousar, fogo, ataque aéreo, garras, dano, cair, dormir e ressurgir). Faltam:
@@ -31,10 +31,11 @@ O dragão chibi já tem quase tudo (parado, andar, correr, voar, decolar, pousar
 
 ### Line: emoções das cenas
 - `LINE_CALL_BELL` (gritando por Bell), `LINE_SCARED`, `LINE_SAD`, `LINE_DETERMINED`, `LINE_RELIEVED`.
+- Os **rostos** dos diálogos já têm brava e chorando. O que falta é o **corpo** fazendo essas emoções.
 
 ## Prioridade 2 — deixam o jogo mais bonito
 
-- **Line e Bell juntas:** `LINE_BELL_HUG_RELEASE`, `LINE_BELL_SIT_DOWN`, `LINE_BELL_SIT_IDLE` (sentadas no pôr do sol do epílogo), `LINE_BELL_RUN_TOGETHER_*`, `LINE_BELL_TALK`, `LINE_BELL_LAUGH`, `LINE_BELL_CELEBRATE`, `BELL_HEAD_ON_LINE`.
+- **Line e Bell juntas:** `LINE_BELL_HUG_RELEASE`, `LINE_BELL_SIT_DOWN`, `LINE_BELL_SIT_IDLE` (sentadas no pôr do sol do epílogo), `LINE_BELL_RUN_TOGETHER_*`, `LINE_BELL_LAUGH`, `BELL_HEAD_ON_LINE`. (`LINE_BELL_TALK`, `LINE_BELL_CELEBRATE`, `LINE_BELL_DANCE` e `LINE_BELL_HIGH_FIVE` já chegaram.)
 - **Abraço animado:** hoje o `LINE_BELL_RESCUE_HUG` tem só 1 quadro.
 - **Inimigo Sombra** (floresta): `SHADOW_IDLE`, `SHADOW_MOVE`, `SHADOW_ATTACK`, `SHADOW_HIT`, `SHADOW_DEATH`.
 - **Line com a espada na mão:** `LINE_COMBAT_WALK_*` e `LINE_COMBAT_RUN_*`.
@@ -51,5 +52,6 @@ A fazenda já usa o pacote: casa, celeiro, galinheiro, moinho, poço, árvores (
 
 ## Ajustes de arte percebidos
 1. **Dois estilos da Line.** Do item 36 em diante, ela aparece mais realista. O resto é chibi.
-2. **Deitada flutuando.** Em `LINE_FALL` e `LINE_KNOCKDOWN`, o corpo deitado fica um pouco acima do chão.
-3. **Dragão:** as pranchas de voo/pulo e a do golpe de cauda têm tamanhos diferentes. Ajustei a escala no jogo, mas pode ser que mude um pouco entre uma animação e outra.
+2. **Tamanho da Bell.** Na prancha "Line & Bell", as duas têm quase a mesma altura. No jogo, a Bell é menor. Nas animações do casal, deixei como está na prancha.
+3. **Deitada flutuando.** Em `LINE_FALL` e `LINE_KNOCKDOWN`, o corpo deitado fica um pouco acima do chão.
+4. **Dragão:** as pranchas de voo/pulo e a do golpe de cauda têm tamanhos diferentes. Ajustei a escala no jogo, mas pode ser que mude um pouco entre uma animação e outra.

@@ -233,6 +233,24 @@ def extrair_retratos(caminho):
     return retratos
 
 
+def extrair_retratos_extras(retratos):
+    """Rostos avulsos em arte/retratos/<quem>/<expressao>.png viram uma tira extra."""
+    destino = os.path.join(RAIZ, "game", "assets", "retratos")
+    for pasta in sorted(glob.glob(os.path.join(RAIZ, "arte", "retratos", "*"))):
+        quem = os.path.basename(pasta)
+        arquivos = sorted(glob.glob(os.path.join(pasta, "*.png")))
+        if not arquivos or quem not in retratos:
+            continue
+        cel = retratos[quem]["cell"]
+        tira = Image.new("RGBA", (cel * len(arquivos), cel), (0, 0, 0, 0))
+        for i, arq in enumerate(arquivos):
+            tira.paste(Image.open(arq).convert("RGBA").resize((cel, cel), Image.LANCZOS), (i * cel, 0))
+        tira.save(os.path.join(destino, f"{quem}_extra.webp"), "WEBP", quality=90, method=6)
+        rostos = [os.path.splitext(os.path.basename(a))[0] for a in arquivos]
+        retratos[quem]["extras"] = {"src": f"assets/retratos/{quem}_extra.webp", "rostos": rostos}
+        print(f"  retratos extras {quem}: {', '.join(rostos)}")
+
+
 def main():
     os.makedirs(SAIDA, exist_ok=True)
     arquivos = sorted(glob.glob(os.path.join(RAIZ, "*_ITEM_*.html")))
@@ -249,6 +267,7 @@ def main():
         retratos = json.loads(texto.split("window.RETRATOS = ", 1)[1].rstrip().rstrip(";"))
         manifesto = {k: v for k, v in antigo.items() if not v.get("item", "").startswith("arte")}
         extrair_pastas(manifesto)
+        extrair_retratos_extras(retratos)
         return gravar(manifesto, retratos)
     for caminho in sorted(glob.glob(os.path.join(RAIZ, "*LABORATORIO*.html"))):
         print(os.path.basename(caminho))
@@ -266,6 +285,7 @@ def main():
             m = manifesto[codigo]
             print(f"  {codigo}: {len(m['seq'])} frames ({m['count']} únicos)")
 
+    extrair_retratos_extras(retratos)
     gravar(manifesto, retratos)
 
 

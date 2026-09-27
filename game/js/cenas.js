@@ -6,6 +6,8 @@
 
   // Expressões dos retratos, na ordem da folha (3 colunas x 2 linhas).
   const ROSTOS = ['neutro', 'sorriso', 'riso', 'surpresa', 'apaixonada', 'maroto'];
+  // Rostos avulsos (tira extra); quem não tiver usa o parecido.
+  const PARECIDO = { bravo: 'neutro', chorando: 'surpresa', envergonhada: 'apaixonada' };
 
   // ---------- Caixa de diálogo ----------
   const dialogo = {
@@ -25,9 +27,18 @@
       const r = quem && window.RETRATOS && window.RETRATOS[quem];
       const el = this.el.querySelector('.retrato');
       if (r) {
-        const i = Math.max(0, ROSTOS.indexOf(rosto));
-        el.style.backgroundImage = `url(${r.src})`;
-        el.style.backgroundPosition = `${(i % 3) * 50}% ${Math.floor(i / 3) * 100}%`;
+        const extras = r.extras && r.extras.rostos || [];
+        const k = extras.indexOf(rosto);
+        if (k >= 0) {
+          el.style.backgroundImage = `url(${r.extras.src})`;
+          el.style.backgroundSize = `${extras.length * 100}% 100%`;
+          el.style.backgroundPosition = `${extras.length > 1 ? k / (extras.length - 1) * 100 : 0}% 0%`;
+        } else {
+          const i = Math.max(0, ROSTOS.indexOf(PARECIDO[rosto] || rosto));
+          el.style.backgroundImage = `url(${r.src})`;
+          el.style.backgroundSize = '';
+          el.style.backgroundPosition = `${(i % 3) * 50}% ${Math.floor(i / 3) * 100}%`;
+        }
       }
       this.el.className = 'visivel ' + (classe || '') + (r ? ' com-retrato' : '');
       this.texto.textContent = '';
@@ -87,7 +98,7 @@
     const c = {
       espera(seg) { let t = 0; return { atualizar: (dt) => { t += dt; }, pronto: () => t >= seg }; },
 
-      // `rosto`: neutro, sorriso, riso, surpresa, apaixonada ou maroto.
+      // `rosto`: neutro, sorriso, riso, surpresa, apaixonada, maroto, bravo, chorando ou envergonhada.
       fala(nome, texto, rosto) {
         let ok = false;
         dialogo.mostrar(nome, texto, nome === 'Bell' ? 'bell' : nome === 'Line' ? 'line' : 'sistema', rosto || 'sorriso');
@@ -206,8 +217,9 @@
       yield c.espera(0.8);
       line.dir = 'FRONT'; line.anim.tocar('LINE_LAUGH', true);
       yield c.fala('Line', 'Tá bom, tá bom. Bora, fazendeira.', 'riso');
-      bell.anim.tocar('BELL_IDLE', true);
+      bell.dir = 'FRONT'; bell.anim.tocar('BELL_CURTSY', true);
       yield c.fala('Bell', 'E faz carinho nos bichinhos, que eles ficam com ciúme de mim.', 'apaixonada');
+      bell.anim.tocar('BELL_IDLE', true);
       j.flags.manhaVista = true;
       bell.seguir = true;
       j.salvar();
@@ -221,8 +233,14 @@
       const line = j.line, bell = j.bell;
       bell.seguir = false;
       bell.anim.tocar('BELL_LAUGH', true);
+      const meio = { x: line.x + 11, y: line.y };
+      if (c.duo('LINE_BELL_CELEBRATE', meio.x, meio.y)) {
+        yield c.espera(0.9);
+        j.particulas.emitir('faisca', meio.x, meio.y - 62, 10, { vel: 90, vz: 60, vida: 0.5 });
+      }
       yield c.fala('Bell', 'Missão cumprida, fazendeira! Bora almoçar?', 'riso');
       yield c.escurecer(1, 0.8);
+      c.fimDuo();
       const mesa = j.pontoMapa('mesa');
       j.mesaOculta = c.duo('LINE_BELL_EAT', mesa.x, mesa.y + 8);
       if (!j.mesaOculta) { line.x = mesa.x - 24; line.y = mesa.y + 20; bell.x = mesa.x + 24; bell.y = mesa.y + 20; }
@@ -232,7 +250,7 @@
       yield c.espera(1.6);
       yield c.fala('Bell', 'Não é BK... mas tá uma delícia.', 'riso');
       yield c.fala('Line', 'Tudo fica mais gostoso com você do lado.', 'apaixonada');
-      yield c.fala('Bell', 'Para, boba!', 'apaixonada');
+      yield c.fala('Bell', 'Para, boba!', 'envergonhada');
       yield c.espera(1.2);
       yield c.fala('Line', 'Depois do almoço... bora ver o pôr do sol lá no lago?', 'sorriso');
       yield c.fala('Bell', 'Só se for de mãos dadas.', 'apaixonada');
@@ -259,6 +277,10 @@
       yield c.fala('Bell', 'O pôr do sol daqui é o meu favorito. Promete que amanhã a gente volta?', 'apaixonada');
       yield c.fala('Line', 'Prometo. Amanhã, depois de amanhã... todo dia que você quiser.', 'apaixonada');
       c.fimDuo();
+      if (c.duo('LINE_BELL_DANCE', cx, lago.y)) {
+        yield c.espera(3);
+        c.fimDuo();
+      }
       if (c.duo('LINE_BELL_KISS', cx, lago.y)) yield c.espera(1.7);
       j.particulas.emitir('coracao', cx, lago.y - 70, 7, { vel: 30, vida: 1.8 });
       c.fimDuo(); c.duo('LINE_BELL_HOLD_HANDS', cx, lago.y);
@@ -308,8 +330,8 @@
       if (cao) { cao.seguir = true; cao.comeu = true; cao.x = line.x + 40; cao.y = line.y + 20; j.balao(cao, 'Auuu...', 2); }
       yield c.espera(1);
       line.anim.tocar('LINE_DETERMINED', true);
-      yield c.fala('Line', 'Ele voou pra montanha, do outro lado da floresta...', 'neutro');
-      yield c.fala('Line', 'Theo, cuida da fazenda pra mim. Eu vou buscar a Bell.', 'neutro');
+      yield c.fala('Line', 'Ele voou pra montanha, do outro lado da floresta...', 'chorando');
+      yield c.fala('Line', 'Theo, cuida da fazenda pra mim. Eu vou buscar a Bell.', 'bravo');
       j.bell = null;
       j.flags.prologo = true;
       j.flags.etapa = null;
@@ -420,7 +442,7 @@
       dr.anim.tocar('DRAGON_IDLE', true);
       if (!line.armada) { line.anim.tocar('LINE_SWORD_DRAW', true); yield c.animacao(line); line.armada = true; }
       line.anim.tocar('LINE_DETERMINED', true);
-      yield c.fala('Line', 'Solta ela. AGORA.', 'neutro');
+      yield c.fala('Line', 'Solta ela. AGORA.', 'bravo');
       bell.anim.tocar('BELL_SCARED', true);
       yield c.fala('Bell', 'Cuidado! Quando ele cansa, o peito dele brilha. Esse é o ponto fraco!', 'surpresa');
       bell.anim.tocar('BELL_TRAPPED', true);
@@ -435,6 +457,11 @@
       line.anim.tocar('LINE_SWORD_SHEATHE', true);
       yield c.animacao(line);
       line.armada = false;
+      if (LB.sprite('LINE_VICTORY')) {
+        line.anim.tocar('LINE_VICTORY', true);
+        j.particulas.emitir('faisca', line.x, line.y - 70, 12, { vel: 110, vz: 80, vida: 0.6 });
+        yield c.espera(1.3);
+      }
       line.anim.tocar('LINE_EXHAUSTED_IDLE', true);
       yield c.espera(0.6);
       j.jaulaAberta = true;
@@ -466,6 +493,8 @@
       j.epilogo();
       yield c.escurecer(0, 1.8);
       yield c.espera(1.2);
+      const par = j.duo;
+      if (c.duo('LINE_BELL_DANCE', par.x, par.y)) { yield c.espera(3.2); j.duo = par; }
       j.particulas.emitir('coracao', (j.line.x + j.bell.x) / 2, j.line.y - 60, 5, { vel: 25, vida: 2 });
       yield c.espera(2.2);
       yield c.titulo('Fim', 'Obrigada por jogar!', 3.2);

@@ -71,6 +71,7 @@ window.LB = window.LB || {};
     ['LINE_CRY', 'Chorando', { loop: true, face: 'F', alt: 'LINE_SAD' }],
     ['LINE_CALL_BELL', 'Gritando por Bell', { fps: 10, face: 'F', quadros: 16, alt: 'LINE_IDLE_BACK' }],
     ['LINE_RELIEVED', 'Aliviada', { face: 'F', quadros: 16, alt: 'LINE_HAPPY' }],
+    ['LINE_VICTORY', 'Comemorando a vitória', { face: 'F', quadros: 1, alt: 'LINE_HAPPY', nova: true }],
   ]);
 
   // Enquanto não houver arte própria, cada animação da Bell usa a mais parecida que já existe.
@@ -79,10 +80,10 @@ window.LB = window.LB || {};
     ['BELL_BLINK_FRONT', 'Piscar', { face: 'F', alt: 'BELL_IDLE_FRONT' }],
     ['BELL_LOOK_SIDES_FRONT', 'Olhar para os lados', { face: 'F', fps: 8, quadros: 24, alt: 'BELL_IDLE_FRONT' }],
     ['BELL_WALK', 'Andar', { dir: QUATRO, fps: 10, loop: true, quadros: 8 }],
-    ['BELL_RUN', 'Correr', { dir: QUATRO, fps: 16, loop: true, quadros: 8, alt: 'BELL_WALK' }],
+    ['BELL_RUN', 'Correr', { dir: QUATRO, fps: 10, loop: true, quadros: 4, alt: 'BELL_WALK' }],
     ['BELL_LAUGH', 'Gargalhada', { fps: 10, loop: true, face: 'F', quadros: 16, nova: true }],
-    ['BELL_JUMP', 'Pular', { alt: 'BELL_IDLE' }],
-    ['BELL_LAND', 'Aterrissar', { alt: 'BELL_IDLE' }],
+    ['BELL_JUMP', 'Pular', { fps: 6, quadros: 2, alt: 'BELL_IDLE' }],
+    ['BELL_LAND', 'Aterrissar', { fps: 6, quadros: 1, alt: 'BELL_IDLE' }],
     ['BELL_GROUND_STAND', 'Levantar do chão', { alt: 'BELL_IDLE' }],
     ['BELL_SCARED', 'Assustada', { loop: true, face: 'F', alt: 'BELL_IDLE', tremer: true }],
     ['BELL_FLEE', 'Fugir', { loop: true, alt: 'BELL_RUN' }],
@@ -97,13 +98,16 @@ window.LB = window.LB || {};
     ['BELL_HAPPY', 'Feliz', { loop: true, face: 'F', alt: 'BELL_LAUGH' }],
     ['BELL_RELIEVED', 'Aliviada', { face: 'F', alt: 'BELL_LAUGH' }],
     ['BELL_CRY', 'Chorando', { loop: true, face: 'F', alt: 'BELL_IDLE_FRONT' }],
+    ['BELL_CURTSY', 'Reverência', { face: 'F', quadros: 1, alt: 'BELL_IDLE_FRONT', nova: true }],
+    ['BELL_HIGH_FIVE', 'Toca aqui', { face: 'F', quadros: 1, alt: 'BELL_LAUGH', nova: true }],
+    ['BELL_DANCE', 'Dançando (giro)', { fps: 5, loop: true, face: 'F', quadros: 4, alt: 'BELL_LAUGH', nova: true }],
   ]);
 
   grupo('Line e Bell juntas', [
     ['LINE_BELL_WALK_TOGETHER', 'Andando lado a lado', { dir: QUATRO, loop: true }],
     ['LINE_BELL_WALK_HANDS', 'Andando de mãos dadas', { dir: QUATRO, fps: 10, loop: true, quadros: 10 }],
     ['LINE_BELL_RUN_TOGETHER', 'Correndo juntas', { dir: QUATRO, loop: true }],
-    ['LINE_BELL_TALK', 'Conversando', { loop: true }],
+    ['LINE_BELL_TALK', 'Conversando', { fps: 1.2, loop: true, face: 'F', quadros: 2 }],
     ['LINE_BELL_LAUGH', 'Rindo juntas', { loop: true }],
     ['LINE_BELL_EAT', 'Almoçando juntas', { fps: 6, loop: true, face: 'F', quadros: 24, nova: true }],
     ['LINE_BELL_KISS', 'Bitoquinha', { fps: 5, face: 'F', quadros: 8, nova: true }],
@@ -111,7 +115,9 @@ window.LB = window.LB || {};
     ['LINE_BELL_HOLD_HANDS', 'Segurando as mãos', { loop: true, face: 'F' }],
     ['LINE_BELL_RESCUE_HUG', 'Abraço do resgate', { quadros: 24, loop: true, face: 'F' }],
     ['LINE_BELL_HUG_RELEASE', 'Separação do abraço'],
-    ['LINE_BELL_CELEBRATE', 'Comemorando a vitória', { loop: true }],
+    ['LINE_BELL_CELEBRATE', 'Comemorando (toca aqui)', { fps: 2.5, face: 'F', quadros: 3 }],
+    ['LINE_BELL_HIGH_FIVE', 'Toca aqui com brilho', { face: 'F', quadros: 1, nova: true }],
+    ['LINE_BELL_DANCE', 'Dançando juntas', { fps: 4, loop: true, face: 'F', quadros: 4, nova: true }],
     ['LINE_BELL_SIT_DOWN', 'Sentando juntas'],
     ['BELL_HEAD_ON_LINE', 'Bell apoiando a cabeça na Line'],
     ['LINE_BELL_SIT_IDLE', 'Idle das duas sentadas', { loop: true }],
