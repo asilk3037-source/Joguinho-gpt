@@ -13,7 +13,7 @@
     'Depois a gente toma um café na varanda?',
     'Te amo, sabia?',
     'Cuidado com o galo, ele é ciumento!',
-    'O Biscoito não para de te seguir, hein.',
+    'O Theo não para de te seguir, hein.',
     'Adoro quando você fica toda concentrada.',
     'Olha as borboletas!',
   ];
@@ -28,8 +28,10 @@
     },
 
     tarefas() {
-      if (!this.flags.tarefas) this.flags.tarefas = { ovos: 0, regador: false, regados: [], racao: false, biscoito: false, carinhos: [] };
-      return this.flags.tarefas;
+      if (!this.flags.tarefas) this.flags.tarefas = { ovos: 0, regador: false, regados: [], racao: false, theo: false, carinhos: [] };
+      const tf = this.flags.tarefas;
+      if ('biscoito' in tf) { tf.theo = tf.biscoito; delete tf.biscoito; }
+      return tf;
     },
 
     prepararArea(id, semCena) {
@@ -41,7 +43,7 @@
           const tf = this.tarefas();
           const etapa = this.flags.etapa || 'manha';
           this.tint = etapa === 'tarde' ? { cor: '255,180,100', a: 0.14 } : { cor: '255,240,200', a: 0.05 };
-          if (cao && tf.biscoito) { cao.comeu = true; cao.seguir = true; }
+          if (cao && tf.theo) { cao.comeu = true; cao.seguir = true; }
           const a = this.mapa.def.areas.galinhas;
           for (let i = tf.ovos; i < TOTAL_OVOS; i++) {
             for (let k = 0; k < 30; k++) {
@@ -50,7 +52,7 @@
             }
           }
         } else {
-          // Depois que o dragão passou: fim de tarde, vaga-lumes e o Biscoito esperando.
+          // Depois que o dragão passou: fim de tarde, vaga-lumes e o Theo esperando.
           this.tint = { cor: '90,60,130', a: 0.26 };
           this.ambiente.anoitecer();
           if (cao) { cao.comeu = true; cao.seguir = true; }
@@ -115,7 +117,7 @@
         if (this.proximaFala <= 0) { this.proximaFala = 12 + Math.random() * 10; this.balao(this.bell, FALAS_BELL[Math.floor(Math.random() * FALAS_BELL.length)], 3); }
       }
       if (this.flags.etapa === 'manha') {
-        const pronto = tf.ovos >= TOTAL_OVOS && tf.regados.length >= this.mapa.def.canteiros.length && tf.biscoito && tf.carinhos.length >= TOTAL_CARINHOS;
+        const pronto = tf.ovos >= TOTAL_OVOS && tf.regados.length >= this.mapa.def.canteiros.length && tf.theo && tf.carinhos.length >= TOTAL_CARINHOS;
         if (pronto) { this.esperaAlmoco = (this.esperaAlmoco || 0) + dt; if (this.esperaAlmoco > 1.2) { this.esperaAlmoco = 0; this.iniciarCena(LB.HISTORIA.almoco); } }
       } else if (this.flags.etapa === 'tarde') {
         const lago = this.pontoMapa('lago');
@@ -137,7 +139,7 @@
         html = '<b>Tarefas do dia</b>' +
           item(tf.ovos >= TOTAL_OVOS, `Pegar os ovos (${Math.min(tf.ovos, TOTAL_OVOS)}/${TOTAL_OVOS})`) +
           item(tf.regados.length >= nC, tf.regador ? `Regar a horta (${tf.regados.length}/${nC})` : 'Pegar o regador no poço') +
-          item(tf.biscoito, tf.racao ? 'Pôr a ração na tigela' : 'Pegar a ração no celeiro') +
+          item(tf.theo, tf.racao ? 'Pôr a ração do Theo na tigela' : 'Pegar a ração do Theo no celeiro') +
           item(tf.carinhos.length >= TOTAL_CARINHOS, `Carinho nos bichinhos (${Math.min(tf.carinhos.length, TOTAL_CARINHOS)}/${TOTAL_CARINHOS})`);
       }
       if (forcar || html !== this.painelHtml) { el.innerHTML = html; this.painelHtml = html; }
@@ -188,10 +190,10 @@
         }) });
       }
       const racao = this.pontoMapa('racao');
-      if (!tf.racao && !tf.biscoito && perto(racao.x, racao.y, 46)) acoes.push({ prio: 1, texto: 'Pegar ração', x: racao.x, y: racao.y - 60, fazer: () => { tf.racao = true; if (this.bell) this.balao(this.bell, 'O Biscoito já tá sentindo o cheiro!', 2.4); } });
+      if (!tf.racao && !tf.theo && perto(racao.x, racao.y, 46)) acoes.push({ prio: 1, texto: 'Pegar ração', x: racao.x, y: racao.y - 60, fazer: () => { tf.racao = true; if (this.bell) this.balao(this.bell, 'O Theo já tá sentindo o cheiro!', 2.4); } });
       const tigela = this.pontoMapa('tigela');
-      if (tf.racao && !tf.biscoito && perto(tigela.x, tigela.y, 44)) acoes.push({ prio: 1, texto: 'Servir ração', x: tigela.x, y: tigela.y - 30, fazer: () => l.agachar(() => {
-        tf.racao = false; tf.biscoito = true;
+      if (tf.racao && !tf.theo && perto(tigela.x, tigela.y, 44)) acoes.push({ prio: 1, texto: 'Servir ração', x: tigela.x, y: tigela.y - 30, fazer: () => l.agachar(() => {
+        tf.racao = false; tf.theo = true;
         const cao = this.bichos.find((b) => b.tipo === 'cachorro');
         if (cao) { cao.estado = 'indoComer'; cao.ignorarColisao = true; this.balao(cao, 'AU AU AU!', 1.4); setTimeout(() => { cao.seguir = true; }, 4500); }
         this.salvar();
@@ -236,7 +238,7 @@
 
     desenharTigela(g, p) {
       const tf = this.flags.tarefas || {};
-      const cheia = tf.biscoito && !(this.bichos.find((b) => b.tipo === 'cachorro') || {}).comeu;
+      const cheia = tf.theo && !(this.bichos.find((b) => b.tipo === 'cachorro') || {}).comeu;
       LB.desenho.sombraChao(g, p.x, p.y + 1, 9, 0.2);
       g.fillStyle = '#d63a3a'; g.beginPath(); g.ellipse(p.x, p.y - 2, 9, 4, 0, 0, Math.PI * 2); g.fill();
       g.fillStyle = '#a82a2a'; g.beginPath(); g.ellipse(p.x, p.y - 3, 7, 2.6, 0, 0, Math.PI * 2); g.fill();

@@ -200,7 +200,7 @@
       yield c.fala('Bell', 'Bom dia, dorminhoca! O galo já cantou três vezes.', 'riso');
       yield c.fala('Line', 'Bom dia, amor... só mais cinco minutinhos?', 'maroto');
       bell.anim.tocar('BELL_LAUGH', true);
-      yield c.fala('Bell', 'Nada disso! Tem ovo pra pegar, horta pra regar e o Biscoito tá morrendo de fome.', 'sorriso');
+      yield c.fala('Bell', 'Nada disso! Tem ovo pra pegar, horta pra regar e o Theo tá morrendo de fome.', 'sorriso');
       const cao = j.bichos.find((b) => b.tipo === 'cachorro');
       if (cao) j.balao(cao, 'Au! Au!', 1.6);
       yield c.espera(0.8);
@@ -309,7 +309,7 @@
       yield c.espera(1);
       line.anim.tocar('LINE_DETERMINED', true);
       yield c.fala('Line', 'Ele voou pra montanha, do outro lado da floresta...', 'neutro');
-      yield c.fala('Line', 'Biscoito, cuida da fazenda pra mim. Eu vou buscar a Bell.', 'neutro');
+      yield c.fala('Line', 'Theo, cuida da fazenda pra mim. Eu vou buscar a Bell.', 'neutro');
       j.bell = null;
       j.flags.prologo = true;
       j.flags.etapa = null;

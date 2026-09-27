@@ -42,7 +42,7 @@ O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_S
 - **Inimigo Sombra** (floresta): `SHADOW_IDLE`, `SHADOW_MOVE`, `SHADOW_ATTACK`, `SHADOW_HIT`, `SHADOW_DEATH`.
 - **Line com a espada na mão:** `LINE_COMBAT_WALK_*` e `LINE_COMBAT_RUN_*`.
 - **Mago:** hoje é uma imagem parada que respira e brilha. Animações de falar ou acenar ajudariam.
-- **Bichinhos da fazenda:** galinha, pintinho, vaca, ovelha, porco, Biscoito (cachorro), gato e pato são desenhados no código. Se quiser arte própria: andar, comer e carinho de cada um.
+- **Bichinhos da fazenda:** galinha, pintinho, vaca, ovelha, porco, Theo (cachorro), gato e pato são desenhados no código. Se quiser arte própria: andar, comer e carinho de cada um.
 
 ## Prioridade 3 — opcionais
 - Efeitos (`FX_*`): hoje são partículas feitas no código.

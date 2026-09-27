@@ -237,7 +237,7 @@
     g.fillStyle = '#e8c9a0'; g.fillRect(x - 13, y - 22, 26, 22);
     g.fillStyle = '#c0392b'; g.beginPath(); g.moveTo(x - 17, y - 20); g.lineTo(x, y - 36); g.lineTo(x + 17, y - 20); g.closePath(); g.fill();
     g.fillStyle = '#3a2418'; g.beginPath(); g.arc(x, y - 8, 7, Math.PI, 0); g.fillRect(x - 7, y - 8, 14, 8); g.fill();
-    g.fillStyle = '#5a3a20'; g.font = 'bold 5px sans-serif'; g.textAlign = 'center'; g.fillText('BISCOITO', x, y - 17);
+    g.fillStyle = '#5a3a20'; g.font = 'bold 6px sans-serif'; g.textAlign = 'center'; g.fillText('THEO', x, y - 17);
   }
 
   function varal(g, p, t) {
