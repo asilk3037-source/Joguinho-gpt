@@ -2,7 +2,7 @@
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
-Status atual: **153** animações prontas (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+Status atual: **157** animações prontas (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
 
 ## Como mandar arte nova
 
@@ -35,8 +35,7 @@ O dragão agora é o **vermelho** da última prancha. Ela trouxe: parado, andar,
 A prancha tem o dragão com ~130 px de altura. O ideal é **~400 px de corpo, em quadros de 512×512**.
 
 ### Line: emoções das cenas
-- `LINE_CALL_BELL` (gritando por Bell), `LINE_SCARED`, `LINE_SAD`, `LINE_DETERMINED`, `LINE_RELIEVED`.
-- Os **rostos** dos diálogos já têm brava e chorando. O que falta é o **corpo** fazendo essas emoções.
+- Chegaram `LINE_DETERMINED`, `LINE_ANGRY`, `LINE_SCARED` e `LINE_SAD` (itens 43–46). Faltam `LINE_CALL_BELL` (gritando por Bell), `LINE_CRY` (chorando; hoje usa a triste) e `LINE_RELIEVED` (aliviada; hoje usa a feliz).
 
 ## Prioridade 2 — deixam o jogo mais bonito
 
@@ -56,7 +55,6 @@ A prancha tem o dragão com ~130 px de altura. O ideal é **~400 px de corpo, em
 A fazenda já usa o pacote: casa, celeiro, galinheiro, moinho, poço, árvores (normais, macieiras, cerejeiras e pinheiros na floresta), horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho e trigo. Ainda desenhados no código: cercas, chão, água, flores pequenas e o covil.
 
 ## Ajustes de arte percebidos
-1. **Dois estilos da Line.** Do item 36 em diante, ela aparece mais realista. O resto é chibi.
+1. **Estilo da Line:** os itens 35–42 foram refeitos no estilo chibi. Agora todas as animações da Line estão no mesmo estilo.
 2. **Tamanho da Bell.** Na prancha "Line & Bell", as duas têm quase a mesma altura. No jogo, a Bell é menor. Nas animações do casal, deixei como está na prancha.
-3. **Deitada flutuando.** Em `LINE_FALL` e `LINE_KNOCKDOWN`, o corpo deitado fica um pouco acima do chão.
-4. **Dragão:** as pranchas de voo/pulo e a do golpe de cauda têm tamanhos diferentes. Ajustei a escala no jogo, mas pode ser que mude um pouco entre uma animação e outra.
+3. **Quedas:** nas quedas, cada quadro agora encosta no chão sozinho. Assim a Line deitada não fica mais flutuando.

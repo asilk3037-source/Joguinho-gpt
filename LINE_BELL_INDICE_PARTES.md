@@ -1,4 +1,4 @@
-# Line & Bell — índice dos 42 HTMLs
+# Line & Bell — índice dos HTMLs produzidos
 
 Cada arquivo é autossuficiente, possui menos de 25 MB e contém animações completas. Nenhuma animação foi dividida entre arquivos.
 
@@ -38,14 +38,18 @@ Cada arquivo é autossuficiente, possui menos de 25 MB e contém animações com
 | 32 | `LINE_BELL_ITEM_32.html` | 13,66 MB | `LINE_DODGE` |
 | 33 | `LINE_BELL_ITEM_33.html` | 14,23 MB | `LINE_DASH` |
 | 34 | `LINE_BELL_ITEM_34.html` | 13,77 MB | `LINE_HIT_LIGHT` |
-| 35 | `LINE_BELL_ITEM_35.html` | 13,61 MB | `LINE_HIT_HEAVY` |
-| 36 | `LINE_BELL_ITEM_36.html` | 14,50 MB | `LINE_THROWN` |
-| 37 | `LINE_BELL_ITEM_37.html` | 3,12 MB | `LINE_KNOCKDOWN` |
-| 38 | `LINE_BELL_ITEM_38.html` | 3,75 MB | `LINE_INJURED_STAND` |
-| 39 | `LINE_BELL_ITEM_39.html` | 2,63 MB | `LINE_EXHAUSTED_IDLE` |
-| 40 | `LINE_BELL_ITEM_40.html` | 4,66 MB | `LINE_DRAGON_FINAL_ATTACK` |
-| 41 | `LINE_BELL_ITEM_41.html` | 2,36 MB | `LINE_HAPPY` |
-| 42 | `LINE_BELL_ITEM_42.html` | 2,93 MB | `LINE_LAUGH` |
+| 35 | `LINE_BELL_ITEM_35.html` | 1,27 MB | `LINE_HIT_HEAVY` |
+| 36 | `LINE_BELL_ITEM_36.html` | 1,25 MB | `LINE_THROWN` |
+| 37 | `LINE_BELL_ITEM_37.html` | 1,99 MB | `LINE_KNOCKDOWN` |
+| 38 | `LINE_BELL_ITEM_38.html` | 2,27 MB | `LINE_INJURED_STAND` |
+| 39 | `LINE_BELL_ITEM_39.html` | 2,09 MB | `LINE_EXHAUSTED_IDLE` |
+| 40 | `LINE_BELL_ITEM_40.html` | 3,42 MB | `LINE_DRAGON_FINAL_ATTACK` |
+| 41 | `LINE_BELL_ITEM_41.html` | 1,69 MB | `LINE_HAPPY` |
+| 42 | `LINE_BELL_ITEM_42.html` | 2,10 MB | `LINE_LAUGH` |
+| 43 | `LINE_BELL_ITEM_43.html` | 1,74 MB | `LINE_DETERMINED` |
+| 44 | `LINE_BELL_ITEM_44.html` | 1,79 MB | `LINE_ANGRY` |
+| 45 | `LINE_BELL_ITEM_45.html` | 2,19 MB | `LINE_SCARED` |
+| 46 | `LINE_BELL_ITEM_46.html` | 1,64 MB | `LINE_SAD` |
 
 ## Regra de continuidade das pernas
 

@@ -81,6 +81,8 @@ def processar(codigo, dados, origem):
         "seq": sequencia,
         "ground": chao,
         "groundEnd": chao_final,
+        # Chão de cada quadro (para quedas, em que o corpo deitado muda de altura).
+        "bases": [base_dos_pes(c) for c in celulas],
         "label": dados.get("label", codigo),
         "item": origem,
     }

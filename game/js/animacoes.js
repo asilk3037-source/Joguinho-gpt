@@ -32,8 +32,8 @@ window.LB = window.LB || {};
     ['LINE_CROUCH', 'Agachar', { fps: 20, quadros: 10 }],
     ['LINE_CROUCH_STAND', 'Levantar do agachamento', { fps: 20, quadros: 10 }],
     ['LINE_STUMBLE', 'Tropeçar', { fps: 16 }],
-    ['LINE_FALL', 'Cair', { fps: 14, chao: 236 }],
-    ['LINE_GROUND_STAND', 'Levantar do chão', { fps: 14, quadros: 14, chao: 236 }],
+    ['LINE_FALL', 'Cair', { fps: 14, chao: 'quadro' }],
+    ['LINE_GROUND_STAND', 'Levantar do chão', { fps: 14, quadros: 14, chao: 'quadro' }],
   ]);
 
   grupo('Line — combate', [
@@ -52,10 +52,10 @@ window.LB = window.LB || {};
     ['LINE_DODGE', 'Esquivar', { fps: 30, quadros: 16 }],
     ['LINE_DASH', 'Dash', { fps: 30, quadros: 16 }],
     ['LINE_HIT_LIGHT', 'Receber dano leve', { fps: 32, quadros: 16 }],
-    ['LINE_HIT_HEAVY', 'Receber golpe forte', { fps: 22, quadros: 14 }],
-    ['LINE_THROWN', 'Ser arremessada', { fps: 22, quadros: 14, chao: 235 }],
-    ['LINE_KNOCKDOWN', 'Cair após golpe', { fps: 26, quadros: 24, chao: 235 }],
-    ['LINE_INJURED_STAND', 'Levantar machucada', { fps: 26, quadros: 28, chao: 235 }],
+    ['LINE_HIT_HEAVY', 'Receber golpe forte', { fps: 22, quadros: 14, chao: 'quadro' }],
+    ['LINE_THROWN', 'Ser arremessada', { fps: 22, quadros: 14, chao: 'quadro' }],
+    ['LINE_KNOCKDOWN', 'Cair após golpe', { fps: 26, quadros: 24, chao: 'quadro' }],
+    ['LINE_INJURED_STAND', 'Levantar machucada', { fps: 26, quadros: 28, chao: 'quadro' }],
     ['LINE_EXHAUSTED_IDLE', 'Exausta', { fps: 10, loop: true, quadros: 20 }],
     ['LINE_DRAGON_FINAL_ATTACK', 'Ataque final contra o dragão', { fps: 14, quadros: 32 }],
     ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16, nova: true }],
@@ -64,10 +64,10 @@ window.LB = window.LB || {};
   grupo('Line — emoções', [
     ['LINE_HAPPY', 'Feliz', { fps: 12, face: 'F', quadros: 20 }],
     ['LINE_LAUGH', 'Rindo', { fps: 12, face: 'F', quadros: 24 }],
-    ['LINE_DETERMINED', 'Determinada', { loop: true, alt: 'LINE_COMBAT_IDLE' }],
-    ['LINE_ANGRY', 'Brava', { loop: true, alt: 'LINE_COMBAT_IDLE' }],
-    ['LINE_SCARED', 'Assustada', { loop: true, face: 'F', alt: 'LINE_IDLE_FRONT' }],
-    ['LINE_SAD', 'Triste', { loop: true, face: 'F', alt: 'LINE_IDLE_FRONT' }],
+    ['LINE_DETERMINED', 'Determinada', { fps: 10, loop: true, quadros: 20, alt: 'LINE_COMBAT_IDLE' }],
+    ['LINE_ANGRY', 'Brava', { fps: 10, loop: true, quadros: 20, alt: 'LINE_COMBAT_IDLE' }],
+    ['LINE_SCARED', 'Assustada', { fps: 10, loop: true, quadros: 20, alt: 'LINE_IDLE_FRONT' }],
+    ['LINE_SAD', 'Triste', { fps: 8, loop: true, quadros: 20, alt: 'LINE_IDLE_FRONT' }],
     ['LINE_CRY', 'Chorando', { loop: true, face: 'F', alt: 'LINE_SAD' }],
     ['LINE_CALL_BELL', 'Gritando por Bell', { fps: 10, face: 'F', quadros: 16, alt: 'LINE_IDLE_BACK' }],
     ['LINE_RELIEVED', 'Aliviada', { face: 'F', quadros: 16, alt: 'LINE_HAPPY' }],
@@ -285,7 +285,7 @@ window.LB = window.LB || {};
     // `mundo`: tamanho fixo da célula no mundo (arte avulsa), independe da altura pedida.
     const esc = (s.mundo ? s.mundo : altura * (s.escala || 1)) / s.cell;
     const inf = info(r.codigo);
-    const chao = inf.chao === 'fim' ? s.groundEnd : typeof inf.chao === 'number' ? inf.chao : s.ground;
+    const chao = inf.chao === 'fim' ? s.groundEnd : inf.chao === 'quadro' ? (s.bases ? s.bases[quadro] : s.ground) : typeof inf.chao === 'number' ? inf.chao : s.ground;
     ctx.save();
     ctx.translate(x, y);
     if (r.flip) ctx.scale(-1, 1);

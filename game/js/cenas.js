@@ -441,7 +441,7 @@
       yield c.espera(1.4);
       dr.anim.tocar('DRAGON_IDLE', true);
       if (!line.armada) { line.anim.tocar('LINE_SWORD_DRAW', true); yield c.animacao(line); line.armada = true; }
-      line.anim.tocar('LINE_DETERMINED', true);
+      line.anim.tocar('LINE_ANGRY', true);
       yield c.fala('Line', 'Solta ela. AGORA.', 'bravo');
       bell.anim.tocar('BELL_SCARED', true);
       yield c.fala('Bell', 'Cuidado! Quando ele cansa, o peito dele brilha. Esse é o ponto fraco!', 'surpresa');

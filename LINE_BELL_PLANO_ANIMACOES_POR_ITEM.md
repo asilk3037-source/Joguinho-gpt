@@ -77,23 +77,23 @@ Os braços trabalham de forma cruzada com as pernas. Cabelo, roupa, colar e tron
 | 32 | Esquivar | `LINE_DODGE` | Criado: 16 frames com antecipação, impulso lateral, evasão aérea, aterrissagem e recuperação |
 | 33 | Dash | `LINE_DASH` | Corrigido: 16 frames; anatomia esquerda/direita revisada na guarda, arrancada e frenagem, com calçados espelhados corretamente |
 | 34 | Receber dano leve | `LINE_HIT_LIGHT` | Corrigido: 16 frames; pernas e calçados diferenciados no contato, recuo, recuperação e retorno à guarda |
-| 35 | Receber golpe forte | `LINE_HIT_HEAVY` | Criado: 14 frames com impacto maior, recuo amplo, perda progressiva do apoio e ponte direta ao arremesso |
-| 36 | Ser arremessada | `LINE_THROWN` | Criado: 14 frames com saída do último apoio, subida, ápice, rotação e descida antes do impacto no chão |
-| 37 | Cair após golpe | `LINE_KNOCKDOWN` | Revisado: 24 frames com descida detalhada, compressão do impacto, rebote, rotação e acomodação dolorida no chão |
-| 38 | Levantar machucada | `LINE_INJURED_STAND` | Revisado: 28 frames com elevação de cabeça e ombros, transferência de peso, ajoelhamento, subida e estabilização dolorida |
-| 39 | Exausta | `LINE_EXHAUSTED_IDLE` | Criado: 20 frames em loop com respiração forte, perda breve de força e retorno contínuo sem deformar o corpo; mão da espada com dedão para dentro |
-| 40 | Ataque final contra o dragão | `LINE_DRAGON_FINAL_ATTACK` | Criado: 32 frames com foco, preparação, arrancada, salto, golpe no ponto fraco, passagem, aterrissagem e recuperação; espada rígida e pegada corrigida |
+| 35 | Receber golpe forte | `LINE_HIT_HEAVY` | Refeito: 14 frames no pixel art dos itens 1–20, com impacto maior, recuo amplo, perda progressiva do apoio e ponte direta ao arremesso |
+| 36 | Ser arremessada | `LINE_THROWN` | Refeito: 14 frames no pixel art dos itens 1–20, com saída do último apoio, subida, ápice, rotação e descida antes do impacto no chão |
+| 37 | Cair após golpe | `LINE_KNOCKDOWN` | Refeito: 24 frames no pixel art dos itens 1–20, com descida, compressão do impacto, rebote, rotação e acomodação dolorida no chão |
+| 38 | Levantar machucada | `LINE_INJURED_STAND` | Refeito: 28 frames no pixel art dos itens 1–20, com apoio dos braços, transferência de peso, ajoelhamento, subida e estabilização dolorida |
+| 39 | Exausta | `LINE_EXHAUSTED_IDLE` | Refeito: 20 frames no pixel art dos itens 1–20, em loop com respiração, perda breve de força, recuperação, espada rígida e dedão para dentro |
+| 40 | Ataque final contra o dragão | `LINE_DRAGON_FINAL_ATTACK` | Refeito: 32 frames no pixel art dos itens 1–20, com foco, arrancada, salto, golpe, passagem, aterrissagem, espada rígida e pegada corrigida |
 
 ## 6. Emoções da Line
 
 | Item | Animação | Código planejado |
 |---:|---|---|
-| 41 | Feliz | `LINE_HAPPY` | Criado: 20 frames com sorriso gradual, abertura corporal, balanço leve, pequeno riso e retorno contínuo; espada totalmente embainhada |
-| 42 | Rindo | `LINE_LAUGH` | Criado: 24 frames com preparação, abertura do riso, pico, inclinação do tronco, balanço secundário e recuperação; espada totalmente embainhada |
-| 43 | Determinada | `LINE_DETERMINED` |
-| 44 | Brava | `LINE_ANGRY` |
-| 45 | Assustada | `LINE_SCARED` |
-| 46 | Triste | `LINE_SAD` |
+| 41 | Feliz | `LINE_HAPPY` | Refeito: 20 frames no pixel art dos itens 1–20, com sorriso progressivo, gesto, impulso leve e retorno suave |
+| 42 | Rindo | `LINE_LAUGH` | Refeito: 24 frames no pixel art dos itens 1–20, com início, dois pulsos de risada, pico, alívio e retorno sorrindo |
+| 43 | Determinada | `LINE_DETERMINED` | Refeito: 20 frames no pixel art dos itens 1–20, com foco crescente, postura firme, avanço curto e retorno controlado |
+| 44 | Brava | `LINE_ANGRY` | Refeito: 20 frames no pixel art dos itens 1–20, com irritação crescente, punhos fechados, explosão curta e retorno tenso |
+| 45 | Assustada — concluída, 20 frames em pixel art alinhada aos itens 1–20 | `LINE_SCARED` |
+| 46 | Triste — concluída, 20 frames em pixel art alinhada aos itens 1–20 | `LINE_SAD` |
 | 47 | Chorando | `LINE_CRY` |
 | 48 | Gritando por Bell | `LINE_CALL_BELL` |
 | 49 | Aliviada | `LINE_RELIEVED` |
@@ -203,8 +203,8 @@ Os braços trabalham de forma cruzada com as pernas. Cabelo, roupa, colar e tron
 28. Item 38 concluído e pronto para aprovação.
 29. Item 39 concluído e pronto para aprovação.
 30. Item 40 concluído e pronto para aprovação.
-31. Item 41 concluído e pronto para aprovação.
-32. Item 42 concluído e pronto para aprovação.
+31. Item 45 concluído com 20 frames e retomada do visual pixel art dos itens 1 a 20.
+32. Item 46 concluído com 20 frames e retomada do visual pixel art dos itens 1 a 20.
 
 ## 12. Regra para alteração futura dos itens
 
