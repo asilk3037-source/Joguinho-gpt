@@ -134,8 +134,10 @@
   function casaFazenda(g, p, t) {
     const larg = p.w + 40;
     if (objeto(g, 'casa', p.x + p.w / 2, p.y + 6, larg)) {
-      const im = img('casa'), esc = larg / im.naturalWidth;
-      p.chamine = { x: p.x + p.w / 2 - larg / 2 + 148 * esc, y: p.y + 6 - im.naturalHeight * esc + 40 * esc };
+      // Topo das duas chaminés, em pixels da imagem da casa.
+      const im = img('casa'), esc = larg / im.naturalWidth, x0 = p.x + p.w / 2 - larg / 2, y0 = p.y + 6 - im.naturalHeight * esc;
+      p.chamines = [[252, 2], [432, 60]].map(([cx, cy]) => ({ x: x0 + cx * esc, y: y0 + cy * esc }));
+      p.chamine = p.chamines[0];
       return;
     }
     const x = p.x, y = p.y, w = p.w, h = p.h, topo = y - h;
@@ -373,7 +375,9 @@
       }
       // Fumaça da chaminé.
       const casa = m.props.find((p) => p.tipo === 'casaFazenda' && p.chamine);
-      if (casa && Math.random() < dt * 5) jogo.particulas.emitir('fumaca', casa.chamine.x + (Math.random() - 0.5) * 4, casa.chamine.y + 60, 1, { z: 60, vz: 18, vel: 6, vida: 2.6, r: 4 });
+      if (casa) for (const ch of casa.chamines || [casa.chamine]) {
+        if (Math.random() < dt * 4) jogo.particulas.emitir('fumaca', ch.x + (Math.random() - 0.5) * 4, ch.y + 60, 1, { z: 60, vz: 18, vel: 6, vida: 2.6, r: 4 });
+      }
     }
 
     // Sombras das nuvens (por baixo dos personagens).

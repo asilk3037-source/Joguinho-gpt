@@ -48,7 +48,7 @@
       ],
       saidas: [{ x: 22, y: 0, w: 2, h: 1, para: 'floresta', chegada: { x: 17.5, y: 27.6, dir: 'BACK' } }],
       inicio: { x: 22.5, y: 3.6, dir: 'FRONT' },
-      porta: { x: 9.5, y: 11.2 },
+      porta: { x: 10.7, y: 11.2 },
       placas: {},
       pontos: {
         tigela: { x: 15.6, y: 11.3 },
