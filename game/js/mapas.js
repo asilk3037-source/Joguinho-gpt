@@ -7,34 +7,63 @@
   // w riacho (dá para pular) · ~ água funda · R pedra · H casa · D porta · X espinheiro (corta com espada)
   // C baú · S placa · # parede da caverna · _ chão da caverna · L lava · o estalagmite · G jaula
   const MAPAS = {
-    campina: {
-      nome: 'Campina',
-      tema: 'campo',
+    fazenda: {
+      nome: 'Fazendinha',
+      tema: 'fazenda',
       linhas: [
-        'TTTTTTTTTTTTTT::TTTTTTTTTTTTTTTT',
-        'T,,....F.....T::T......,,,.....T',
-        'T....TT.......::......TT.....F.T',
-        'T....TT.......::......TT.......T',
-        'T..F..........::...F.......,,,.T',
-        'T.............::..........,,,,.T',
-        'T..HHHHH......::....R..........T',
-        'T..HHHHH......::...............T',
-        'T..HHHHH......::.....TT....F...T',
-        'T..HHDHH......::.....TT........T',
-        'T....:::::::::::...F...........T',
-        'T..........,,......~~~~........T',
-        'T.........,,,.....~~~~~~.......T',
-        'T..F......,,......~~~~~~....F..T',
-        'T.................~~~~~........T',
-        'T......R...........~~..........T',
-        'T....TT.............F.......,,.T',
-        'T....TT......F.........TT...,,.T',
-        'T......................TT......T',
-        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTT',
+        'TT.T.TT.TTTTT.TT...T.T::TTT.T..T.TTT.TT.TT..TT',
+        'TT.....F....,.........::....,.......,..F,...TT',
+        'TT..F...............T.::.,........,.fffffff.TT',
+        'TT....F.,,...,,T.F.,..::...BBBBBBB..fuuuuuf.TT',
+        'TT...FHHHHHHHF....,...::.,.BBBBBBB..fuuuuuf.TT',
+        'TT....HHHHHHH.....T...::...BBBBBBB..,uuuuuf,TT',
+        'TT....HHHHHHH.........::...BBBBBBB..fuuuuuf.TT',
+        'TTF...HHHHHHH.........::...BBBBBBB..fffffff.TT',
+        'TT....HHHDHHH.k...,...::..n...:...n.........TT',
+        'TT..T.FF,:FF,.........::F.....:....n........TT',
+        'TT.......::::::::::::::::::::::...F.F......TTT',
+        'TT................,..,:...,...F.,........M..TT',
+        'TT.vF,.v.F...F.,.P....:....F.,........,.,...TT',
+        'TT..F..............,.F:...Ffffffffffffffff..TT',
+        'TT...............,....:.,.Ff.,,..........f..TT',
+        'TTffffffffff..ccccccc,:....f............,f..TT',
+        'TTfKKKF....f..hhhhhhh,:....f.,..F........f..TT',
+        'TTfKKK..F..f..ccccccc.:,,..f......F....,.f..TT',
+        'TTf...........hhhhhhh.:.....,,.......,...f..TT',
+        'TTf.........,Fccccccc.:.T..............,.f..TT',
+        'TTf..,.....f..hhhhhhh.:....f...........F.fF.TT',
+        'TTf........f.,........:.mm.f....,,....,..f..TT',
+        'TTffffffffff..F.......:..,.f........FF...f..TT',
+        'TT,........~~~~~~~...,.....f..,..........f..TT',
+        'TT.T......~~~~~~~~~........fffffffffffffff,,TT',
+        'TT.......~~~~~~~~~~~...,.....,..........,...TT',
+        'TT...T,..~~~~~~~~~~~.,,,............,....T,.TT',
+        'TT........~~~~~~~~~......T...T.F...,,T......TT',
+        'TTFF.......~~~~~~~...............T........F.TT',
+        'TT...,.F..........F..........,.......,F...F.TT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
       ],
-      saidas: [{ x: 14, y: 0, w: 2, h: 1, para: 'floresta', chegada: { x: 17.5, y: 27.6, dir: 'BACK' } }],
-      inicio: { x: 15, y: 14, dir: 'FRONT' },
+      saidas: [{ x: 22, y: 0, w: 2, h: 1, para: 'floresta', chegada: { x: 17.5, y: 27.6, dir: 'BACK' } }],
+      inicio: { x: 22.5, y: 3.6, dir: 'FRONT' },
+      porta: { x: 9.5, y: 11.2 },
       placas: {},
+      pontos: {
+        tigela: { x: 15.6, y: 11.3 },
+        racao: { x: 30.5, y: 10.4 },
+        regador: { x: 17.5, y: 15.5 },
+        mesa: { x: 25, y: 23.9 },
+        lago: { x: 21.2, y: 27.4 },
+      },
+      canteiros: ['15,17', '18,19', '14,21', '20,21'],
+      areas: {
+        galinhas: { x0: 3, y0: 18, x1: 10, y1: 23 },
+        pasto: { x0: 28, y0: 16, x1: 40, y1: 25 },
+        chiqueiro: { x0: 37, y0: 5, x1: 41, y1: 8 },
+        lago: { x0: 10, y0: 25, x1: 19, y1: 30 },
+      },
     },
 
     floresta: {
@@ -73,7 +102,7 @@
         'TTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTT',
       ],
       saidas: [
-        { x: 17, y: 29, w: 2, h: 1, para: 'campina', chegada: { x: 15, y: 1.6, dir: 'FRONT' } },
+        { x: 17, y: 29, w: 2, h: 1, para: 'fazenda', chegada: { x: 22.5, y: 3.6, dir: 'FRONT' } },
         { x: 30, y: 0, w: 2, h: 1, para: 'covil', chegada: { x: 13, y: 18.5, dir: 'BACK' } },
       ],
       inicio: { x: 17.5, y: 27.6, dir: 'BACK' },
@@ -120,7 +149,7 @@
     },
   };
 
-  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o']);
+  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v']);
 
   // Gerador pseudoaleatório estável por posição (o cenário não "pisca" entre quadros).
   function ruido(x, y, s) {
@@ -131,6 +160,7 @@
 
   const CORES = {
     campo: { grama: '#6aa84f', grama2: '#5b9642', grama3: '#7dbb5e', caminho: '#d2b07a', caminho2: '#b8955f' },
+    fazenda: { grama: '#72ae52', grama2: '#62a046', grama3: '#86c162', caminho: '#d8b47c', caminho2: '#bf9862' },
     floresta: { grama: '#4f8a3f', grama2: '#437a35', grama3: '#5e9c4b', caminho: '#b99867', caminho2: '#9c7c50' },
     covil: { chao: '#4b403c', chao2: '#3d3431', parede: '#241c1a', parede2: '#352b28' },
   };
@@ -179,23 +209,56 @@
       this.renderizarChao();
     }
 
+    // Retângulo formado por tiles vizinhos com as letras dadas (a partir do canto superior esquerdo).
+    bloco(tx, ty, letras, usados) {
+      let x1 = tx, y1 = ty;
+      while (letras.includes(this.tile(x1 + 1, ty))) x1++;
+      while (letras.includes(this.tile(tx, y1 + 1))) y1++;
+      for (let yy = ty; yy <= y1; yy++) for (let xx = tx; xx <= x1; xx++) usados.add(xx + ',' + yy);
+      return { tx, ty, x: tx * TILE, y: (y1 + 1) * TILE, w: (x1 - tx + 1) * TILE, h: (y1 - ty + 1) * TILE };
+    }
+
     criarProps() {
       const casas = new Set();
+      const canteiros = new Set(this.def.canteiros || []);
       for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) {
         const t = this.l[ty][tx];
         const cx = (tx + 0.5) * TILE, base = (ty + 1) * TILE;
-        if (t === 'T') this.props.push({ tipo: 'arvore', tx, ty, x: cx, y: base - 4, v: ruido(tx, ty, 1) });
+        const v = ruido(tx, ty, 1);
+        if (casas.has(tx + ',' + ty)) continue;
+        if (t === 'B') { this.props.push(Object.assign({ tipo: 'celeiro' }, this.bloco(tx, ty, 'B', casas))); continue; }
+        if (t === 'K') { this.props.push(Object.assign({ tipo: 'galinheiro' }, this.bloco(tx, ty, 'K', casas))); continue; }
+        if (t === 'f') {
+          const liga = (c) => c === 'f';
+          this.props.push({ tipo: 'cerca', tx, ty, x: cx, y: base - 6, d: liga(this.tile(tx + 1, ty)), e: liga(this.tile(tx - 1, ty)), b: liga(this.tile(tx, ty + 1)), c: liga(this.tile(tx, ty - 1)) });
+          continue;
+        }
+        if (t === ',') { this.props.push({ tipo: 'mato', tx, ty, x: cx, y: base - 8, v }); continue; }
+        if (t === 'F') { this.props.push({ tipo: 'flores', tx, ty, x: cx, y: base - 10, v }); continue; }
+        if (t === 'c') { this.props.push({ tipo: 'planta', tx, ty, x: cx, y: base - 8, v, canteiro: canteiros.has(tx + ',' + ty) }); continue; }
+        if (t === 'P') { this.props.push({ tipo: 'poco', tx, ty, x: cx, y: base - 4 }); continue; }
+        if (t === 'M') { this.props.push({ tipo: 'moinho', tx, ty, x: cx, y: base - 2, v }); continue; }
+        if (t === 'n') { this.props.push({ tipo: 'feno', tx, ty, x: cx, y: base - 4, v }); continue; }
+        if (t === 'k') { this.props.push({ tipo: 'casinha', tx, ty, x: cx, y: base - 3 }); continue; }
+        if (t === 'm' && this.tile(tx - 1, ty) !== 'm') { this.props.push(Object.assign({ tipo: 'mesa' }, this.bloco(tx, ty, 'm', casas))); continue; }
+        if (t === 'v' && !casas.has(tx + ',' + ty)) {
+          let x2 = tx + 1;
+          while (x2 < this.w && this.tile(x2, ty) !== 'v') x2++;
+          casas.add(x2 + ',' + ty);
+          this.props.push({ tipo: 'varal', tx, ty, x: cx, x2: (x2 + 0.5) * TILE, y: base - 4, v });
+          continue;
+        }
+        if (t === 'T') this.props.push({ tipo: 'arvore', tx, ty, x: cx, y: base - 4, v });
         else if (t === 'R') this.props.push({ tipo: 'pedra', tx, ty, x: cx, y: base - 6, v: ruido(tx, ty, 2) });
         else if (t === 'o') this.props.push({ tipo: 'estalagmite', tx, ty, x: cx, y: base - 4, v: ruido(tx, ty, 3) });
         else if (t === 'X') this.props.push({ tipo: 'espinheiro', tx, ty, x: cx, y: base - 2, v: ruido(tx, ty, 4) });
         else if (t === 'C') this.props.push({ tipo: 'bau', tx, ty, x: cx, y: base - 6, conteudo: (this.def.baus || {})[tx + ',' + ty] });
         else if (t === 'S') this.props.push({ tipo: 'placa', tx, ty, x: cx, y: base - 6, texto: (this.def.placas || {})[tx + ',' + ty] || '...' });
-        else if ((t === 'H' || t === 'D') && !casas.has(tx + ',' + ty)) {
-          let x1 = tx, y1 = ty;
-          while ('HD'.includes(this.tile(x1 + 1, ty))) x1++;
-          while ('HD'.includes(this.tile(tx, y1 + 1))) y1++;
-          for (let yy = ty; yy <= y1; yy++) for (let xx = tx; xx <= x1; xx++) casas.add(xx + ',' + yy);
-          this.props.push({ tipo: 'casa', tx, ty, x: tx * TILE, y: (y1 + 1) * TILE, w: (x1 - tx + 1) * TILE, h: (y1 - ty + 1) * TILE });
+        else if (t === 'H' || t === 'D') {
+          const b = this.bloco(tx, ty, 'HD', casas);
+          let porta = tx;
+          for (let xx = tx; xx < tx + b.w / TILE; xx++) if (this.tile(xx, ty + b.h / TILE - 1) === 'D') porta = xx;
+          this.props.push(Object.assign({ tipo: this.tema === 'fazenda' ? 'casaFazenda' : 'casa', porta: (porta + 0.5) * TILE }, b));
         }
       }
     }
@@ -264,20 +327,17 @@
             g.fillRect(px, py, 3 + rnd(k + i) * 3, 3);
           }
         });
-      } else if (t === ',') {
-        for (let i = 0; i < 6; i++) {
-          const bx = x + 2 + rnd(i + 30) * 26, by = y + 8 + rnd(i + 40) * 22;
-          g.strokeStyle = i % 2 ? '#3f7a31' : '#4c8c3a'; g.lineWidth = 1.6;
-          g.beginPath(); g.moveTo(bx, by); g.lineTo(bx - 3, by - 9); g.moveTo(bx + 2, by); g.lineTo(bx + 3, by - 10); g.moveTo(bx + 4, by); g.lineTo(bx + 8, by - 7); g.stroke();
-        }
-      } else if (t === 'F') {
-        const paleta = ['#ff8fb1', '#ffe066', '#ffffff', '#c9a0ff'];
-        for (let i = 0; i < 5; i++) {
-          g.fillStyle = paleta[Math.floor(rnd(i + 50) * 4)];
-          const fx = x + 4 + rnd(i + 60) * 24, fy = y + 4 + rnd(i + 70) * 24;
-          g.beginPath(); g.arc(fx, fy, 2.2, 0, 7); g.fill();
-          g.fillStyle = '#f7c948'; g.fillRect(fx - 0.6, fy - 0.6, 1.2, 1.2);
-        }
+      } else if (t === 'u') {
+        g.fillStyle = '#7a5536'; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = '#654329';
+        for (let i = 0; i < 3; i++) { g.beginPath(); g.ellipse(x + 5 + rnd(i + 120) * 22, y + 5 + rnd(i + 121) * 22, 5 + rnd(i) * 4, 3, 0, 0, 7); g.fill(); }
+        g.fillStyle = 'rgba(160,190,210,.35)'; g.beginPath(); g.ellipse(x + 16, y + 18, 6, 2.5, 0, 0, 7); g.fill();
+      } else if (t === 'h' || t === 'c') {
+        g.fillStyle = '#8a5f3c'; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = '#74492c';
+        for (let i = 0; i < 4; i++) g.fillRect(x, y + 3 + i * 8, TILE, 3);
+        g.fillStyle = '#9b6e48';
+        for (let i = 0; i < 5; i++) g.fillRect(x + rnd(i + 130) * 28, y + rnd(i + 131) * 28, 2, 2);
       } else if (t === 'r') {
         g.fillStyle = cor.caminho2; g.globalAlpha = 0.35; g.fillRect(x, y, TILE, TILE); g.globalAlpha = 1;
         g.strokeStyle = '#6b4a2b'; g.lineWidth = 3.2; g.lineCap = 'round';

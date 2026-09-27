@@ -43,15 +43,15 @@
     temSave() { try { return !!localStorage.getItem(CHAVE_SAVE); } catch (e) { return false; } }
 
     salvar() {
-      try { localStorage.setItem(CHAVE_SAVE, JSON.stringify({ area: this.mapa ? this.mapa.id : 'campina', flags: this.flags })); } catch (e) { /* sem armazenamento */ }
+      try { localStorage.setItem(CHAVE_SAVE, JSON.stringify({ area: this.mapa ? this.mapa.id : 'fazenda', flags: this.flags })); } catch (e) { /* sem armazenamento */ }
     }
 
     novoJogo() {
       try { localStorage.removeItem(CHAVE_SAVE); } catch (e) { /* ok */ }
       this.flags = {};
       this.dicasVistas.clear();
-      this.iniciarArea('campina');
-      this.iniciarCena(LB.HISTORIA.prologo);
+      this.iniciarArea('fazenda', null, true);
+      this.iniciarCapitulo();
     }
 
     continuar() {
@@ -59,8 +59,10 @@
       try { s = JSON.parse(localStorage.getItem(CHAVE_SAVE)); } catch (e) { /* ok */ }
       if (!s) return this.novoJogo();
       this.flags = s.flags || {};
-      this.iniciarArea(s.area || 'campina');
-      if (!this.flags.prologo) this.iniciarCena(LB.HISTORIA.prologo);
+      let area = s.area === 'campina' || !s.area ? 'fazenda' : s.area;
+      if (!this.flags.prologo) area = 'fazenda';
+      this.iniciarArea(area, null, !this.flags.prologo);
+      if (!this.flags.prologo) this.iniciarCapitulo();
     }
 
     tentarDeNovo() {
@@ -76,7 +78,7 @@
       LB.ui.mostrarMenu();
     }
 
-    iniciarArea(id, chegada) {
+    iniciarArea(id, chegada, semCenaDeEntrada) {
       this.estado = 'jogo';
       this.mapa = new LB.Mapa(id);
       this.particulas.lista = [];
@@ -88,6 +90,8 @@
       this.fade = 0; this.flashTela = 0; this.congelado = 0;
       this.tint = id === 'covil' ? { cor: '255,90,30', a: 0.08 } : null;
       this.cena = null;
+      this.ambiente = new LB.cenario.Ambiente(this.mapa);
+      this.bichos = []; this.npcs = []; this.baloes = []; this.rastroLine = []; this.acaoAtual = null;
       $('#derrota').classList.add('oculto');
 
       // Mudanças que ficam salvas (espinhos cortados, baú aberto).
@@ -110,6 +114,7 @@
       this.line.voltarLivre();
       this.cameraEm(this.line.x, this.line.y - 24);
       this.criarInimigos();
+      this.prepararArea(id, semCenaDeEntrada);
 
       this.flags.area = id;
       this.salvar();
@@ -120,7 +125,7 @@
         const jl = this.mapa.def.jaula;
         this.bell = new LB.Bell(T(jl.x), T(jl.y) - 4, 'FRONT');
         this.bell.anim.tocar('BELL_TRAPPED', true);
-        this.dragao = new LB.Dragao(T(13), T(8));
+        this.dragao = new LB.Dragao(T(13), T(9.2));
         this.dragao.alturaVoo = 320; this.dragao.visivel = false;
         this.iniciarCena(LB.HISTORIA.covil, { semPular: false });
       }
@@ -176,16 +181,22 @@
     }
 
     epilogo() {
-      this.mapa = new LB.Mapa('campina');
+      this.mapa = new LB.Mapa('fazenda');
+      this.ambiente = new LB.cenario.Ambiente(this.mapa);
+      this.ambiente.anoitecer();
       this.inimigos = []; this.dragao = null; this.chefeAtivo = false; this.promptFinal = false; this.jaulaAberta = false;
-      this.particulas.lista = [];
-      this.line.x = T(15.6); this.line.y = T(10.9); this.line.dir = 'FRONT'; this.line.visivel = true;
-      this.bell = new LB.Bell(T(16.4), T(10.9), 'FRONT');
-      this.tint = { cor: '255,130,60', a: 0.3 };
-      const sentadas = LB.resolver('LINE_BELL_SIT_IDLE', null, 1).sprite;
-      if (sentadas) { this.duo = { anim: new LB.Animador('LINE_BELL_SIT_IDLE'), x: T(16), y: T(10.9) }; this.line.visivel = false; this.bell.visivel = false; }
-      else { this.line.anim.tocar('LINE_HAPPY', true); this.bell.anim.tocar('BELL_HAPPY', true); }
-      this.cameraEm(T(16), T(11));
+      this.particulas.lista = []; this.baloes = [];
+      this.bichos = LB.bichos.povoar(this); this.npcs = [];
+      const lago = this.pontoMapa('lago');
+      this.line.x = lago.x; this.line.y = lago.y; this.line.dir = 'LEFT'; this.line.lado = -1; this.line.visivel = true;
+      this.bell = new LB.Bell(lago.x + 20, lago.y, 'LEFT');
+      this.tint = { cor: '255,120,60', a: 0.3 };
+      const base = LB.resolver('LINE_BELL_SIT_IDLE', null, 1).sprite ? 'LINE_BELL_SIT_IDLE' : 'LINE_BELL_HOLD_HANDS';
+      this.duo = { anim: new LB.Animador(base), x: lago.x + 10, y: lago.y };
+      this.line.visivel = false; this.bell.visivel = false;
+      const cao = this.bichos.find((b) => b.tipo === 'cachorro');
+      if (cao) { cao.x = lago.x + 50; cao.y = lago.y + 10; cao.estado = 'parado'; cao.comeu = true; }
+      this.cameraEm(lago.x - 30, lago.y - 20);
     }
 
     // ---------------- Combate ----------------
@@ -249,6 +260,7 @@
     }
 
     bloqueia(x, y, ent) {
+      for (const n of this.npcs || []) if (Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 8) return true;
       if (this.mapa.id === 'covil' && !this.jaulaAberta) {
         const jl = this.mapa.def.jaula;
         if (Math.hypot(x - T(jl.x), (y - T(jl.y)) * 1.6) < 32) return true;
@@ -257,7 +269,7 @@
     }
 
     rastro(line, golpe) {
-      this.efeitos.push({ tipo: 'rastro', x: line.x, y: line.y, lado: line.lado, t: 0, dur: 0.16, alcance: golpe.alcance, anim: line.anim.base });
+      this.efeitos.push({ tipo: 'rastro', x: line.x, y: line.y, lado: line.lado, t: 0, dur: 0.22, alcance: golpe.alcance, anim: line.anim.base });
     }
 
     aoDerrotarInimigo(e) {
@@ -312,30 +324,36 @@
     }
 
     // ---------------- Interação ----------------
-    objetoProximo() {
-      const l = this.line;
-      let melhor = null, md = 46;
+    // Tudo o que dá para fazer perto da Line: { texto, x, y, fazer }.
+    acoesPossiveis() {
+      const l = this.line, acoes = [];
+      const perto = (x, y, r) => Math.hypot(x - l.x, (y - l.y) * 1.2) < (r || 46);
       for (const p of this.mapa.props) {
-        if (p.tipo !== 'bau' && p.tipo !== 'placa') continue;
-        if (p.tipo === 'bau' && p.aberto) continue;
-        const d = Math.hypot(p.x - l.x, (p.y + 12 - l.y) * 1.2);
-        if (d < md) { md = d; melhor = p; }
+        if (p.tipo === 'placa' && perto(p.x, p.y + 12)) acoes.push({ texto: 'Ler', x: p.x, y: p.y - 40, fazer: () => this.iniciarCena(LB.HISTORIA.placa, { semPular: true }, p.texto) });
+        if (p.tipo === 'bau' && !p.aberto && perto(p.x, p.y + 12)) acoes.push({ texto: 'Abrir', x: p.x, y: p.y - 40, fazer: () => {
+          l.dir = LB.dirDe(p.x - l.x, p.y - l.y, l.dir);
+          if (p.x !== l.x) l.lado = p.x < l.x ? -1 : 1;
+          this.iniciarCena(LB.HISTORIA.espada, { semPular: true }, p);
+        } });
+      }
+      this.acoesExtras(acoes, perto);
+      // Tarefas e objetos têm prioridade sobre carinho; entre iguais, vence o mais perto.
+      let melhor = null, md = Infinity;
+      for (const a of acoes) {
+        const d = Math.hypot((a.px != null ? a.px : a.x) - l.x, (a.py != null ? a.py : a.y + 40) - l.y) - (a.prio || 0) * 1000;
+        if (d < md) { md = d; melhor = a; }
       }
       return melhor;
     }
 
+    objetoProximo() { return this.acoesPossiveis(); }
+
     interagir(line, viaAtaque) {
       if (viaAtaque && line.temEspada) return false;
-      const obj = this.objetoProximo();
-      if (!obj) return false;
-      if (obj.tipo === 'placa') { this.iniciarCena(LB.HISTORIA.placa, { semPular: true }, obj.texto); return true; }
-      if (obj.tipo === 'bau') {
-        line.dir = LB.dirDe(obj.x - line.x, obj.y - line.y, line.dir);
-        if (obj.x !== line.x) line.lado = obj.x < line.x ? -1 : 1;
-        this.iniciarCena(LB.HISTORIA.espada, { semPular: true }, obj);
-        return true;
-      }
-      return false;
+      const acao = this.acoesPossiveis();
+      if (!acao) return false;
+      acao.fazer();
+      return true;
     }
 
     // ---------------- Efeitos de tela ----------------
@@ -382,6 +400,7 @@
       if (this.estado !== 'jogo') { E.limpar(); return; }
 
       this.line.atualizar(dt, this);
+      this.atualizarVida(dt);
       for (const e of this.inimigos) e.atualizar(dt, this);
       if (this.dragao) this.dragao.atualizar(dt, this);
       if (this.bell) this.bell.atualizar(dt, this);
@@ -412,6 +431,7 @@
       }
       // Itens.
       for (const it of this.itens) {
+        if (it.tipo !== 'coracao') continue;
         it.t += dt;
         if (Math.hypot(it.x - l.x, it.y - l.y) < 20 && l.hp < l.hpMax) {
           it.pego = true; l.hp = Math.min(l.hpMax, l.hp + 2);
@@ -430,7 +450,7 @@
     atualizarCamera(dt) {
       let alvoX, alvoY;
       if (this.camAlvo) { alvoX = this.camAlvo.x; alvoY = this.camAlvo.y; }
-      else if (this.chefeAtivo && this.dragao) { alvoX = this.line.x * 0.7 + this.dragao.x * 0.3; alvoY = this.line.y * 0.65 + (this.dragao.y - 60) * 0.35; }
+      else if (this.chefeAtivo && this.dragao) { alvoX = this.line.x * 0.7 + this.dragao.x * 0.3; alvoY = this.line.y * 0.6 + (this.dragao.y - 60 - this.dragao.alturaVoo * 0.8) * 0.4; }
       else { alvoX = this.line.x; alvoY = this.line.y - 24; }
       const k = Math.min(1, dt * (this.cena ? 3 : 6));
       this.cam.x += (alvoX - this.vw / 2 - this.cam.x) * k;
@@ -466,11 +486,12 @@
       if (x1 > x0 && y1 > y0) g.drawImage(m.chao, x0 * R, y0 * R, (x1 - x0) * R, (y1 - y0) * R, x0, y0, x1 - x0, y1 - y0);
       const vis = { x: cx - 40, y: cy - 40, w: this.vw + 80, h: this.vh + 120 };
       m.desenharAnimado(g, this.tempo, vis);
+      this.ambiente.desenharChao(g);
 
       // Avisos e sombras.
       if (this.dragao && this.chefeAtivo) this.dragao.desenharAvisos(g, this);
-      for (const it of this.itens) LB.desenho.sombraChao(g, it.x, it.y, 6, 0.2);
-      const atores = [this.line, ...this.inimigos];
+      for (const it of this.itens) if (it.tipo === 'coracao') LB.desenho.sombraChao(g, it.x, it.y, 6, 0.2);
+      const atores = [this.line, ...this.inimigos, ...this.bichos, ...this.npcs];
       if (this.bell) atores.push(this.bell);
       if (this.dragao) atores.push(this.dragao);
       for (const a of atores) if (a.visivel !== false && a.desenharSombra) a.desenharSombra(g);
@@ -482,19 +503,25 @@
       for (const a of atores) lista.push({ y: a.y, a });
       for (const it of this.itens) lista.push({ y: it.y, item: it });
       if (m.def.jaula) lista.push({ y: T(m.def.jaula.y) + 2, jaula: true });
+      const tigela = this.pontoMapa('tigela');
+      if (tigela) lista.push({ y: tigela.y - 2, tigela });
       if (this.duo) lista.push({ y: this.duo.y, duo: this.duo });
       if (this.presa) { const i = lista.findIndex((o) => o.a === this.presa.bell); if (i >= 0) lista[i].y = this.presa.dragao.y + 1; }
       lista.sort((a, b) => a.y - b.y);
       for (const o of lista) {
         if (o.p) this.desenharProp(g, o.p);
         else if (o.a) o.a.desenhar(g, this);
+        else if (o.item && o.item.tipo === 'ovo') this.desenharOvo(g, o.item);
         else if (o.item) LB.desenho.coracaoForma(g, o.item.x, o.item.y - 12 - Math.sin(this.tempo * 4) * 3, 7, o.item.t > 11 && Math.floor(this.tempo * 8) % 2 ? 'rgba(255,93,143,.4)' : '#ff5d8f');
+        else if (o.tigela) this.desenharTigela(g, o.tigela);
         else if (o.jaula) LB.desenho.jaula(g, T(m.def.jaula.x), T(m.def.jaula.y) + 2, this.jaulaAberta, this.tempo);
-        else if (o.duo) { const st = o.duo.anim.estado(o.duo.dir, 1); LB.desenharSprite(g, st.r, st.quadro, o.duo.x, o.duo.y, LB.ALTURA_LINE * 1.25); }
+        else if (o.duo) { const st = o.duo.anim.estado(o.duo.dir, 1); LB.desenharSprite(g, st.r, st.quadro, o.duo.x, o.duo.y, LB.ALTURA_LINE); }
       }
 
       for (const f of this.efeitos) this.desenharEfeito(g, f);
       this.particulas.desenhar(g);
+      this.ambiente.desenharCeu(g);
+      this.desenharBaloes(g);
 
       // Camadas de tela.
       g.setTransform(1, 0, 0, 1, 0, 0);
@@ -514,7 +541,20 @@
     desenharProp(g, p) {
       const d = LB.desenho;
       switch (p.tipo) {
-        case 'arvore': d.arvore(g, p, this.mapa.tema); break;
+        case 'arvore': LB.cenario.arvore(g, p, this.mapa.tema, this.tempo); break;
+        case 'mato': LB.cenario.mato(g, p, this.tempo); break;
+        case 'flores': LB.cenario.flores(g, p, this.tempo); break;
+        case 'planta': LB.cenario.planta(g, p, this.tempo, this.estadoCanteiro(p)); break;
+        case 'casaFazenda': LB.cenario.casaFazenda(g, p, this.tempo); break;
+        case 'celeiro': LB.cenario.celeiro(g, p); break;
+        case 'galinheiro': LB.cenario.galinheiro(g, p); break;
+        case 'cerca': LB.cenario.cerca(g, p); break;
+        case 'poco': LB.cenario.poco(g, p, this.tempo); break;
+        case 'moinho': LB.cenario.moinho(g, p, this.tempo); break;
+        case 'feno': LB.cenario.feno(g, p); break;
+        case 'mesa': LB.cenario.mesa(g, p, this.tempo, this.mesaOculta); break;
+        case 'casinha': LB.cenario.casinha(g, p); break;
+        case 'varal': LB.cenario.varal(g, p, this.tempo); break;
         case 'pedra': d.pedra(g, p); break;
         case 'estalagmite': d.estalagmite(g, p); break;
         case 'espinheiro': d.espinheiro(g, p, this.tempo); break;
@@ -528,15 +568,20 @@
       if (f.tipo !== 'rastro') return;
       const k = f.t / f.dur;
       const vertical = /VERTICAL|DIAGONAL/.test(f.anim);
+      const a = 1 - k;
       g.save();
       g.translate(this.line.x, this.line.y - 34);
       g.scale(f.lado, 1);
-      g.strokeStyle = `rgba(255,255,255,${0.75 * (1 - k)})`;
-      g.lineWidth = 7 * (1 - k) + 1; g.lineCap = 'round';
-      g.beginPath();
-      if (vertical) g.arc(14, 0, f.alcance * 0.6, -1.6 + k * 0.6, 1.0 + k * 0.6);
-      else g.ellipse(18, 6, f.alcance * 0.75, 20, 0, -1.2 + k * 0.5, 1.4 + k * 0.5);
-      g.stroke();
+      g.globalCompositeOperation = 'lighter';
+      // Meia-lua azul: várias camadas para o brilho, fina nas pontas e grossa no meio.
+      const r = vertical ? f.alcance * 0.62 : f.alcance * 0.78, ry = vertical ? r : 22;
+      const ini = (vertical ? -1.7 : -1.25) + k * 0.7, fim = (vertical ? 1.1 : 1.35) + k * 0.7;
+      for (const [cor, larg] of [['rgba(40,110,255,', 14], ['rgba(90,170,255,', 8], ['rgba(210,240,255,', 3]]) {
+        g.strokeStyle = cor + (0.55 * a) + ')'; g.lineWidth = larg * (0.6 + a * 0.6); g.lineCap = 'round';
+        g.beginPath(); g.ellipse(vertical ? 14 : 18, vertical ? 0 : 6, r, ry, 0, ini, fim); g.stroke();
+      }
+      g.fillStyle = `rgba(170,220,255,${a})`;
+      for (let i = 0; i < 5; i++) { const t = ini + (fim - ini) * (i / 4 + 0.05 * Math.sin(this.tempo * 40 + i)); g.beginPath(); g.arc((vertical ? 14 : 18) + Math.cos(t) * (r + 6), (vertical ? 0 : 6) + Math.sin(t) * (ry + 4), 1.4, 0, Math.PI * 2); g.fill(); }
       g.restore();
     }
 
@@ -544,6 +589,7 @@
       const s = this.escala;
       const l = this.line;
       if (!l || (this.cena && !this.chefeAtivo && this.line.estado === 'cena')) return;
+      if (!this.flags.prologo) return;
       for (let i = 0; i < l.hpMax / 2; i++) {
         const x = (22 + i * 24) * s, y = 24 * s;
         const valor = Math.max(0, Math.min(2, l.hp - i * 2));
@@ -566,7 +612,7 @@
       if (this.cena || !this.line || this.line.estado !== 'livre') { this.textoPrompt = null; return; }
       const obj = this.objetoProximo();
       let texto = null, x, y;
-      if (obj) { texto = obj.tipo === 'bau' ? 'Abrir' : 'Ler'; x = obj.x; y = obj.y - 40; }
+      if (obj) { texto = obj.texto; x = obj.x; y = obj.y; }
       else if (this.promptFinal && this.dragao) { texto = 'GOLPE FINAL!'; x = this.dragao.x; y = this.dragao.y - 170; }
       this.textoPrompt = texto;
       if (!texto) return;

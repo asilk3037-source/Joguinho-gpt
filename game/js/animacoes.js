@@ -58,6 +58,7 @@ window.LB = window.LB || {};
     ['LINE_INJURED_STAND', 'Levantar machucada', { fps: 26, quadros: 28, chao: 235 }],
     ['LINE_EXHAUSTED_IDLE', 'Exausta', { fps: 10, loop: true, quadros: 20 }],
     ['LINE_DRAGON_FINAL_ATTACK', 'Ataque final contra o dragão', { fps: 14, quadros: 32 }],
+    ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16, nova: true }],
   ]);
 
   grupo('Line — emoções', [
@@ -72,39 +73,43 @@ window.LB = window.LB || {};
     ['LINE_RELIEVED', 'Aliviada', { face: 'F', quadros: 16, alt: 'LINE_HAPPY' }],
   ]);
 
+  // Enquanto não houver arte própria, cada animação da Bell usa a mais parecida que já existe.
   grupo('Bell', [
     ['BELL_IDLE', 'Parada', { dir: QUATRO, fps: 8, loop: true, quadros: 16 }],
-    ['BELL_BLINK_FRONT', 'Piscar', { face: 'F' }],
-    ['BELL_LOOK_SIDES_FRONT', 'Olhar para os lados', { face: 'F', fps: 8, quadros: 24 }],
-    ['BELL_WALK', 'Andar', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
-    ['BELL_RUN', 'Correr', { dir: QUATRO, fps: 20, loop: true, quadros: 16 }],
-    ['BELL_JUMP', 'Pular'],
-    ['BELL_LAND', 'Aterrissar'],
-    ['BELL_GROUND_STAND', 'Levantar do chão'],
-    ['BELL_SCARED', 'Assustada', { loop: true, face: 'F' }],
-    ['BELL_FLEE', 'Fugir', { loop: true }],
-    ['BELL_FALL', 'Cair'],
-    ['BELL_CAPTURED', 'Ser capturada'],
-    ['BELL_DRAGON_CARRIED', 'Ser carregada pelo dragão', { loop: true }],
-    ['BELL_TRAPPED', 'Presa', { loop: true, face: 'F' }],
-    ['BELL_ESCAPE_ATTEMPT', 'Tentar escapar', { loop: true, face: 'F' }],
-    ['BELL_BREAK_FREE', 'Conseguir se libertar', { face: 'F' }],
-    ['BELL_CALL_LINE', 'Chamar Line', { loop: true, face: 'F' }],
-    ['BELL_HELP_LINE', 'Ajudar Line'],
-    ['BELL_HAPPY', 'Feliz', { loop: true, face: 'F' }],
-    ['BELL_RELIEVED', 'Aliviada', { face: 'F' }],
-    ['BELL_CRY', 'Chorando', { loop: true, face: 'F' }],
+    ['BELL_BLINK_FRONT', 'Piscar', { face: 'F', alt: 'BELL_IDLE_FRONT' }],
+    ['BELL_LOOK_SIDES_FRONT', 'Olhar para os lados', { face: 'F', fps: 8, quadros: 24, alt: 'BELL_IDLE_FRONT' }],
+    ['BELL_WALK', 'Andar', { dir: QUATRO, fps: 10, loop: true, quadros: 8 }],
+    ['BELL_RUN', 'Correr', { dir: QUATRO, fps: 16, loop: true, quadros: 8, alt: 'BELL_WALK' }],
+    ['BELL_LAUGH', 'Gargalhada', { fps: 10, loop: true, face: 'F', quadros: 16, nova: true }],
+    ['BELL_JUMP', 'Pular', { alt: 'BELL_IDLE' }],
+    ['BELL_LAND', 'Aterrissar', { alt: 'BELL_IDLE' }],
+    ['BELL_GROUND_STAND', 'Levantar do chão', { alt: 'BELL_IDLE' }],
+    ['BELL_SCARED', 'Assustada', { loop: true, face: 'F', alt: 'BELL_IDLE', tremer: true }],
+    ['BELL_FLEE', 'Fugir', { loop: true, alt: 'BELL_RUN' }],
+    ['BELL_FALL', 'Cair', { alt: 'BELL_IDLE' }],
+    ['BELL_CAPTURED', 'Ser capturada', { alt: 'BELL_IDLE_FRONT', tremer: true }],
+    ['BELL_DRAGON_CARRIED', 'Ser carregada pelo dragão', { loop: true, alt: 'BELL_IDLE_FRONT', balancar: true }],
+    ['BELL_TRAPPED', 'Presa', { loop: true, face: 'F', alt: 'BELL_IDLE_FRONT' }],
+    ['BELL_ESCAPE_ATTEMPT', 'Tentar escapar', { loop: true, face: 'F', alt: 'BELL_IDLE_FRONT', tremer: true }],
+    ['BELL_BREAK_FREE', 'Conseguir se libertar', { face: 'F', alt: 'BELL_LAUGH' }],
+    ['BELL_CALL_LINE', 'Chamar Line', { loop: true, face: 'F', alt: 'BELL_IDLE_FRONT', pular: true }],
+    ['BELL_HELP_LINE', 'Ajudar Line', { alt: 'BELL_IDLE' }],
+    ['BELL_HAPPY', 'Feliz', { loop: true, face: 'F', alt: 'BELL_LAUGH' }],
+    ['BELL_RELIEVED', 'Aliviada', { face: 'F', alt: 'BELL_LAUGH' }],
+    ['BELL_CRY', 'Chorando', { loop: true, face: 'F', alt: 'BELL_IDLE_FRONT' }],
   ]);
 
   grupo('Line e Bell juntas', [
     ['LINE_BELL_WALK_TOGETHER', 'Andando lado a lado', { dir: QUATRO, loop: true }],
-    ['LINE_BELL_WALK_HANDS', 'Andando de mãos dadas', { dir: QUATRO, loop: true }],
+    ['LINE_BELL_WALK_HANDS', 'Andando de mãos dadas', { dir: QUATRO, fps: 10, loop: true, quadros: 10 }],
     ['LINE_BELL_RUN_TOGETHER', 'Correndo juntas', { dir: QUATRO, loop: true }],
     ['LINE_BELL_TALK', 'Conversando', { loop: true }],
     ['LINE_BELL_LAUGH', 'Rindo juntas', { loop: true }],
+    ['LINE_BELL_EAT', 'Almoçando juntas', { fps: 6, loop: true, face: 'F', quadros: 24, nova: true }],
+    ['LINE_BELL_KISS', 'Bitoquinha', { fps: 5, face: 'F', quadros: 8, nova: true }],
     ['BELL_LEAN_ON_LINE', 'Bell encostando na Line'],
-    ['LINE_BELL_HOLD_HANDS', 'Segurando as mãos', { loop: true }],
-    ['LINE_BELL_RESCUE_HUG', 'Abraço do resgate', { quadros: 24 }],
+    ['LINE_BELL_HOLD_HANDS', 'Segurando as mãos', { loop: true, face: 'F' }],
+    ['LINE_BELL_RESCUE_HUG', 'Abraço do resgate', { quadros: 24, loop: true, face: 'F' }],
     ['LINE_BELL_HUG_RELEASE', 'Separação do abraço'],
     ['LINE_BELL_CELEBRATE', 'Comemorando a vitória', { loop: true }],
     ['LINE_BELL_SIT_DOWN', 'Sentando juntas'],
@@ -117,18 +122,18 @@ window.LB = window.LB || {};
     ['DRAGON_BLINK', 'Piscar'],
     ['DRAGON_WALK', 'Andar', { loop: true }],
     ['DRAGON_TURN', 'Virar'],
-    ['DRAGON_WINGS_OPEN', 'Abrir asas'],
-    ['DRAGON_TAKEOFF', 'Decolar'],
-    ['DRAGON_FLY', 'Voar', { loop: true }],
-    ['DRAGON_GLIDE', 'Planar', { loop: true }],
-    ['DRAGON_LAND', 'Pousar'],
+    ['DRAGON_WINGS_OPEN', 'Abrir asas', { alt: 'DRAGON_TAKEOFF' }],
+    ['DRAGON_TAKEOFF', 'Decolar', { fps: 16, quadros: 10 }],
+    ['DRAGON_FLY', 'Voar', { loop: true, fps: 12, quadros: 15 }],
+    ['DRAGON_GLIDE', 'Planar', { loop: true, alt: 'DRAGON_FLY' }],
+    ['DRAGON_LAND', 'Pousar', { fps: 12, quadros: 12, chao: 'fim' }],
     ['DRAGON_ROAR', 'Rugir', { quadros: 18 }],
     ['DRAGON_BITE', 'Morder'],
     ['DRAGON_CLAW_ATTACK', 'Ataque de garra'],
-    ['DRAGON_TAIL_ATTACK', 'Golpe de cauda'],
-    ['DRAGON_FIRE_CHARGE', 'Preparar fogo'],
-    ['DRAGON_FIRE_BREATH', 'Cuspir fogo'],
-    ['DRAGON_FIRE_STREAM', 'Fogo contínuo', { loop: true }],
+    ['DRAGON_TAIL_ATTACK', 'Golpe de cauda', { fps: 9.5, quadros: 18 }],
+    ['DRAGON_FIRE_CHARGE', 'Preparar fogo', { fps: 6, quadros: 6 }],
+    ['DRAGON_FIRE_BREATH', 'Cuspir fogo voando', { fps: 10, quadros: 20 }],
+    ['DRAGON_FIRE_STREAM', 'Fogo contínuo', { loop: true, fps: 9, quadros: 4 }],
     ['DRAGON_AIR_ATTACK', 'Ataque aéreo'],
     ['DRAGON_HIT', 'Receber dano'],
     ['DRAGON_WEAK_POINT_HIT', 'Ponto fraco atingido'],
@@ -244,7 +249,19 @@ window.LB = window.LB || {};
 
   const imagens = {};
 
+  // Personagens de imagem única (animados por movimento no código).
+  const PERSONAGENS = {
+    dragao: 'assets/personagens/dragao.png', mago: 'assets/personagens/mago.png',
+    arvore1: 'assets/cenario/arvore1.png', arvore2: 'assets/cenario/arvore2.png', arvore3: 'assets/cenario/arvore3.png', arvore4: 'assets/cenario/arvore4.png',
+  };
+  const personagens = {};
+  function personagem(nome) {
+    const img = personagens[nome];
+    return img && img.complete && img.naturalWidth ? img : null;
+  }
+
   function carregarSprites(aoProgredir) {
+    for (const [nome, src] of Object.entries(PERSONAGENS)) { const img = new Image(); img.src = src; personagens[nome] = img; }
     const lista = Object.entries(window.SPRITES || {});
     let prontos = 0;
     return Promise.all(lista.map(([codigo, s]) => new Promise((ok) => {
@@ -259,7 +276,8 @@ window.LB = window.LB || {};
   function desenharSprite(ctx, r, quadro, x, y, altura) {
     const s = r.sprite, img = imagens[r.codigo];
     if (!s || !img || !img.complete || !img.naturalWidth) return false;
-    const esc = altura / s.cell;
+    // `mundo`: tamanho fixo da célula no mundo (arte avulsa), independe da altura pedida.
+    const esc = (s.mundo ? s.mundo : altura * (s.escala || 1)) / s.cell;
     const inf = info(r.codigo);
     const chao = inf.chao === 'fim' ? s.groundEnd : typeof inf.chao === 'number' ? inf.chao : s.ground;
     ctx.save();
@@ -288,5 +306,5 @@ window.LB = window.LB || {};
     return saida;
   }
 
-  Object.assign(LB, { CATALOGO, info, sprite, resolver, Animador, carregarSprites, desenharSprite, inventario, imagens });
+  Object.assign(LB, { CATALOGO, info, sprite, resolver, Animador, carregarSprites, desenharSprite, inventario, imagens, personagem });
 })(window.LB);

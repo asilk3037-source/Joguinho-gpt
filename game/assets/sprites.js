@@ -1,5 +1,466 @@
 // Gerado por tools/extrair_sprites.py. Não edite à mão.
 window.SPRITES = {
+ "BELL_WALK_FRONT": {
+  "src": "assets/sprites/BELL_WALK_FRONT.webp",
+  "cell": 320,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 267,
+  "groundEnd": 267,
+  "escala": 1.6158,
+  "label": "BELL_WALK_FRONT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_IDLE_FRONT": {
+  "src": "assets/sprites/BELL_IDLE_FRONT.webp",
+  "cell": 320,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 267,
+  "groundEnd": 267,
+  "escala": 1.6158,
+  "label": "BELL_IDLE_FRONT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_WALK_LEFT": {
+  "src": "assets/sprites/BELL_WALK_LEFT.webp",
+  "cell": 320,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 267,
+  "groundEnd": 267,
+  "escala": 1.6158,
+  "label": "BELL_WALK_LEFT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_IDLE_LEFT": {
+  "src": "assets/sprites/BELL_IDLE_LEFT.webp",
+  "cell": 320,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 267,
+  "groundEnd": 267,
+  "escala": 1.6158,
+  "label": "BELL_IDLE_LEFT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_WALK_BACK": {
+  "src": "assets/sprites/BELL_WALK_BACK.webp",
+  "cell": 320,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 264,
+  "groundEnd": 264,
+  "escala": 1.6158,
+  "label": "BELL_WALK_BACK",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_IDLE_BACK": {
+  "src": "assets/sprites/BELL_IDLE_BACK.webp",
+  "cell": 320,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 264,
+  "groundEnd": 264,
+  "escala": 1.6158,
+  "label": "BELL_IDLE_BACK",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_WALK_RIGHT": {
+  "src": "assets/sprites/BELL_WALK_RIGHT.webp",
+  "cell": 320,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 265,
+  "groundEnd": 267,
+  "escala": 1.6158,
+  "label": "BELL_WALK_RIGHT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_IDLE_RIGHT": {
+  "src": "assets/sprites/BELL_IDLE_RIGHT.webp",
+  "cell": 320,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 265,
+  "groundEnd": 265,
+  "escala": 1.6158,
+  "label": "BELL_IDLE_RIGHT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_WALK_HANDS_FRONT": {
+  "src": "assets/sprites/LINE_BELL_WALK_HANDS_FRONT.webp",
+  "cell": 420,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1
+  ],
+  "ground": 374,
+  "groundEnd": 374,
+  "escala": 3.0797,
+  "label": "LINE_BELL_WALK_HANDS_FRONT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_WALK_HANDS_LEFT": {
+  "src": "assets/sprites/LINE_BELL_WALK_HANDS_LEFT.webp",
+  "cell": 420,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1
+  ],
+  "ground": 370,
+  "groundEnd": 374,
+  "escala": 3.0797,
+  "label": "LINE_BELL_WALK_HANDS_LEFT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_WALK_HANDS_BACK": {
+  "src": "assets/sprites/LINE_BELL_WALK_HANDS_BACK.webp",
+  "cell": 420,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1
+  ],
+  "ground": 374,
+  "groundEnd": 374,
+  "escala": 3.0797,
+  "label": "LINE_BELL_WALK_HANDS_BACK",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_WALK_HANDS_RIGHT": {
+  "src": "assets/sprites/LINE_BELL_WALK_HANDS_RIGHT.webp",
+  "cell": 420,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1
+  ],
+  "ground": 373,
+  "groundEnd": 374,
+  "escala": 3.0797,
+  "label": "LINE_BELL_WALK_HANDS_RIGHT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "BELL_LAUGH": {
+  "src": "assets/sprites/BELL_LAUGH.webp",
+  "cell": 276,
+  "count": 16,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "ground": 253,
+  "groundEnd": 252,
+  "escala": 1.0669,
+  "label": "BELL_LAUGH",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_KISS": {
+  "src": "assets/sprites/LINE_BELL_KISS.webp",
+  "cell": 288,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 266,
+  "groundEnd": 265,
+  "escala": 1.1129,
+  "label": "LINE_BELL_KISS",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_EAT": {
+  "src": "assets/sprites/LINE_BELL_EAT.webp",
+  "cell": 327,
+  "count": 12,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5,
+   6,
+   6,
+   7,
+   7,
+   8,
+   8,
+   9,
+   9,
+   10,
+   10,
+   11,
+   11
+  ],
+  "ground": 301,
+  "groundEnd": 301,
+  "escala": 1.2636,
+  "label": "LINE_BELL_EAT",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_PUNCH_MACHINE": {
+  "src": "assets/sprites/LINE_PUNCH_MACHINE.webp",
+  "cell": 404,
+  "count": 16,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "ground": 370,
+  "groundEnd": 369,
+  "escala": 1.5605,
+  "label": "LINE_PUNCH_MACHINE",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_RESCUE_HUG": {
+  "src": "assets/sprites/LINE_BELL_RESCUE_HUG.webp",
+  "cell": 259,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 238,
+  "groundEnd": 238,
+  "escala": 1.0011,
+  "label": "LINE_BELL_RESCUE_HUG",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "LINE_BELL_HOLD_HANDS": {
+  "src": "assets/sprites/LINE_BELL_HOLD_HANDS.webp",
+  "cell": 259,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 238,
+  "groundEnd": 238,
+  "escala": 1.0011,
+  "label": "LINE_BELL_HOLD_HANDS",
+  "item": "BELL_LINE_LABORATORIO_V7.html"
+ },
+ "DRAGON_FLY": {
+  "src": "assets/sprites/DRAGON_FLY.webp",
+  "cell": 300,
+  "count": 15,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14
+  ],
+  "ground": 284,
+  "groundEnd": 295,
+  "mundo": 420.0,
+  "label": "Voar",
+  "item": "arte/dragao_vermelho/DRAGON_FLY"
+ },
+ "DRAGON_LAND": {
+  "src": "assets/sprites/DRAGON_LAND.webp",
+  "cell": 300,
+  "count": 12,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "ground": 264,
+  "groundEnd": 300,
+  "mundo": 420.0,
+  "label": "Cair / aterrissar",
+  "item": "arte/dragao_vermelho/DRAGON_LAND"
+ },
+ "DRAGON_TAIL_ATTACK": {
+  "src": "assets/sprites/DRAGON_TAIL_ATTACK.webp",
+  "cell": 371,
+  "count": 18,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17
+  ],
+  "ground": 367,
+  "groundEnd": 360,
+  "mundo": 229.13,
+  "label": "Golpe de cauda",
+  "item": "arte/dragao_vermelho/DRAGON_TAIL_ATTACK"
+ },
+ "DRAGON_TAKEOFF": {
+  "src": "assets/sprites/DRAGON_TAKEOFF.webp",
+  "cell": 300,
+  "count": 10,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "ground": 297,
+  "groundEnd": 292,
+  "mundo": 420.0,
+  "label": "Pular / decolar",
+  "item": "arte/dragao_vermelho/DRAGON_TAKEOFF"
+ },
  "LINE_IDLE_FRONT": {
   "src": "assets/sprites/LINE_IDLE_FRONT.webp",
   "cell": 256,
@@ -1325,3 +1786,4 @@ window.SPRITES = {
   "item": "LINE_BELL_ITEM_42.html"
  }
 };
+window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3}};

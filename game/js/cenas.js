@@ -2,6 +2,10 @@
 
 (function (LB) {
   const T = (n) => n * LB.TILE;
+  const $ = (sel) => document.querySelector(sel);
+
+  // Expressões dos retratos, na ordem da folha (3 colunas x 2 linhas).
+  const ROSTOS = ['neutro', 'sorriso', 'riso', 'surpresa', 'apaixonada', 'maroto'];
 
   // ---------- Caixa de diálogo ----------
   const dialogo = {
@@ -13,11 +17,19 @@
       this.el.addEventListener('click', () => { this.clicou = true; });
       this.el.addEventListener('touchstart', (e) => { e.preventDefault(); this.clicou = true; }, { passive: false });
     },
-    mostrar(nome, texto, classe) {
+    mostrar(nome, texto, classe, rosto) {
       this.completo = texto; this.pos = 0; this.clicou = false;
       this.nome.textContent = nome || '';
       this.nome.style.display = nome ? '' : 'none';
-      this.el.className = 'visivel ' + (classe || '');
+      const quem = nome === 'Line' ? 'line' : nome === 'Bell' ? 'bell' : null;
+      const r = quem && window.RETRATOS && window.RETRATOS[quem];
+      const el = this.el.querySelector('.retrato');
+      if (r) {
+        const i = Math.max(0, ROSTOS.indexOf(rosto));
+        el.style.backgroundImage = `url(${r.src})`;
+        el.style.backgroundPosition = `${(i % 3) * 50}% ${Math.floor(i / 3) * 100}%`;
+      }
+      this.el.className = 'visivel ' + (classe || '') + (r ? ' com-retrato' : '');
       this.texto.textContent = '';
     },
     esconder() { this.el.className = 'oculto'; },
@@ -75,9 +87,10 @@
     const c = {
       espera(seg) { let t = 0; return { atualizar: (dt) => { t += dt; }, pronto: () => t >= seg }; },
 
-      fala(nome, texto, classe) {
+      // `rosto`: neutro, sorriso, riso, surpresa, apaixonada ou maroto.
+      fala(nome, texto, rosto) {
         let ok = false;
-        dialogo.mostrar(nome, texto, classe || (nome === 'Bell' ? 'bell' : nome === 'Line' ? 'line' : 'sistema'));
+        dialogo.mostrar(nome, texto, nome === 'Bell' ? 'bell' : nome === 'Line' ? 'line' : 'sistema', rosto || 'sorriso');
         return {
           atualizar: (dt) => { if (dialogo.atualizar(dt)) ok = true; },
           pronto: () => ok,
@@ -167,36 +180,106 @@
 
   // ---------- História ----------
   const HISTORIA = {
-    *prologo(c, j) {
-      const line = j.line;
-      const bell = j.criarBell(16.3, 14.25, 'LEFT');
-      line.x = T(14.7); line.y = T(14.25); line.dir = 'RIGHT'; line.lado = 1;
-      line.anim.tocar('LINE_IDLE', true); bell.anim.tocar('BELL_IDLE', true);
-      j.cameraEm(T(15.5), T(13));
+    // Manhã na fazenda: acorda, conversa com a Bell e recebe as tarefas do dia.
+    *manha(c, j) {
+      const line = j.line, bell = j.bell;
+      const porta = { x: line.x, y: line.y };
       j.fade = 1;
-      j.tint = { cor: '255,160,80', a: 0.2 };
+      line.visivel = false;
+      bell.dir = 'FRONT'; bell.anim.tocar('BELL_IDLE', true);
+      j.cameraEm(line.x + 20, line.y);
       yield c.escurecer(0, 1.4);
-      yield c.titulo('Line & Bell', 'Capítulo 1 — O resgate', 2.6);
-      bell.anim.tocar('BELL_HAPPY', true);
-      yield c.fala('Bell', 'O pôr do sol daqui é o meu favorito. Promete que amanhã a gente volta?');
-      line.dir = 'FRONT';
-      line.anim.tocar('LINE_HAPPY', true);
-      yield c.fala('Line', 'Prometo. Amanhã, depois de amanhã... todo dia que você quiser.');
-      line.anim.tocar('LINE_LAUGH', true);
-      yield c.fala('Bell', 'Boba...');
-      yield c.espera(0.6);
+      yield c.titulo('Line & Bell', 'Capítulo 1 — Nossa vidinha', 2.6);
+      const galo = j.bichos.find((b) => b.tipo === 'galinha');
+      if (galo) j.balao(galo, 'Cocoricóóó!', 2.2);
+      yield c.espera(1.4);
+      line.visivel = true; line.y = porta.y - 12; line.dir = 'FRONT';
+      yield c.andar(line, porta.x / LB.TILE, (porta.y + 18) / LB.TILE, { vel: 60, anim: 'LINE_WALK', parar: 'LINE_IDLE' });
+      line.dir = 'RIGHT'; line.lado = 1; line.anim.tocar('LINE_IDLE', true);
+      bell.dir = 'LEFT'; bell.lado = -1; bell.anim.tocar('BELL_IDLE', true);
+      yield c.fala('Bell', 'Bom dia, dorminhoca! O galo já cantou três vezes.', 'riso');
+      yield c.fala('Line', 'Bom dia, amor... só mais cinco minutinhos?', 'maroto');
+      bell.anim.tocar('BELL_LAUGH', true);
+      yield c.fala('Bell', 'Nada disso! Tem ovo pra pegar, horta pra regar e o Biscoito tá morrendo de fome.', 'sorriso');
+      const cao = j.bichos.find((b) => b.tipo === 'cachorro');
+      if (cao) j.balao(cao, 'Au! Au!', 1.6);
+      yield c.espera(0.8);
+      line.dir = 'FRONT'; line.anim.tocar('LINE_LAUGH', true);
+      yield c.fala('Line', 'Tá bom, tá bom. Bora, fazendeira.', 'riso');
+      bell.anim.tocar('BELL_IDLE', true);
+      yield c.fala('Bell', 'E faz carinho nos bichinhos, que eles ficam com ciúme de mim.', 'apaixonada');
+      j.flags.manhaVista = true;
+      bell.seguir = true;
+      j.salvar();
+      j.atualizarPainel(true);
+      j.dica('fazenda', LB.entrada.usandoToque()
+        ? 'Arraste o dedo à esquerda para andar. Chegue perto das coisas e toque no botão que aparecer. As tarefas ficam no canto.'
+        : 'WASD ou setas para andar, Shift para correr, E para interagir. As tarefas ficam no canto da tela.');
+    },
+
+    *almoco(c, j) {
+      const line = j.line, bell = j.bell;
+      bell.seguir = false;
+      bell.anim.tocar('BELL_LAUGH', true);
+      yield c.fala('Bell', 'Missão cumprida, fazendeira! Bora almoçar?', 'riso');
+      yield c.escurecer(1, 0.8);
+      const mesa = j.pontoMapa('mesa');
+      j.mesaOculta = c.duo('LINE_BELL_EAT', mesa.x, mesa.y + 8);
+      if (!j.mesaOculta) { line.x = mesa.x - 24; line.y = mesa.y + 20; bell.x = mesa.x + 24; bell.y = mesa.y + 20; }
+      j.cameraEm(mesa.x, mesa.y - 30);
+      j.camAlvo = { x: mesa.x, y: mesa.y - 30 };
+      yield c.escurecer(0, 0.8);
+      yield c.espera(1.6);
+      yield c.fala('Bell', 'Não é BK... mas tá uma delícia.', 'riso');
+      yield c.fala('Line', 'Tudo fica mais gostoso com você do lado.', 'apaixonada');
+      yield c.fala('Bell', 'Para, boba!', 'apaixonada');
+      yield c.espera(1.2);
+      yield c.fala('Line', 'Depois do almoço... bora ver o pôr do sol lá no lago?', 'sorriso');
+      yield c.fala('Bell', 'Só se for de mãos dadas.', 'apaixonada');
+      yield c.escurecer(1, 0.9);
+      c.fimDuo(); j.mesaOculta = false;
+      line.x = mesa.x; line.y = mesa.y + 34; line.dir = 'FRONT';
+      bell.x = line.x; bell.y = line.y;
+      j.comecarTarde();
+      j.salvar();
+      yield c.escurecer(0, 0.9);
+    },
+
+    // Pôr do sol no lago, o beijo... e o dragão.
+    *porDoSol(c, j) {
+      const line = j.line, bell = j.bell, lago = j.pontoMapa('lago');
+      line.modoDuo = false;
+      line.x = lago.x; line.y = lago.y; line.dir = 'LEFT'; line.lado = -1;
+      bell.x = lago.x + 22; bell.y = lago.y; bell.dir = 'LEFT'; bell.lado = -1; bell.visivel = true;
+      const cx = lago.x + 11;
+      c.duo('LINE_BELL_HOLD_HANDS', cx, lago.y);
+      j.camAlvo = { x: cx - 40, y: lago.y - 36 };
+      $('#tarefas').classList.add('oculto');
+      yield c.tingir('255,130,60', 0.26, 2.5);
+      yield c.fala('Bell', 'O pôr do sol daqui é o meu favorito. Promete que amanhã a gente volta?', 'apaixonada');
+      yield c.fala('Line', 'Prometo. Amanhã, depois de amanhã... todo dia que você quiser.', 'apaixonada');
+      c.fimDuo();
+      if (c.duo('LINE_BELL_KISS', cx, lago.y)) yield c.espera(1.7);
+      j.particulas.emitir('coracao', cx, lago.y - 70, 7, { vel: 30, vida: 1.8 });
+      c.fimDuo(); c.duo('LINE_BELL_HOLD_HANDS', cx, lago.y);
+      yield c.fala('Bell', 'Boba...', 'riso');
+      yield c.espera(0.7);
 
       j.tremer(3, 1.6);
       yield c.tingir('40,30,60', 0.42, 1.4);
-      bell.dir = 'BACK'; bell.anim.tocar('BELL_SCARED', true);
+      c.fimDuo();
       line.dir = 'BACK'; line.anim.tocar('LINE_IDLE', true);
-      yield c.fala('Bell', 'Line... que barulho foi esse?');
+      bell.dir = 'BACK'; bell.anim.tocar('BELL_SCARED', true);
+      for (const b of j.bichos) b.assustado = true;
+      const cao = j.bichos.find((b) => b.tipo === 'cachorro');
+      if (cao) j.balao(cao, 'AU! AU! AU!', 2);
+      yield c.fala('Bell', 'Line... que barulho foi esse?', 'surpresa');
 
-      const dr = j.criarDragaoCena(T(15.5), T(6), 280);
-      dr.anim.tocar('DRAGON_FLY', true);
-      yield c.voar(dr, T(16.3), T(12.2), 110, 1.5);
+      const dr = j.criarDragaoCena(bell.x + 10, bell.y - 300, 280);
+      dr.anim.tocar('DRAGON_FLY', true); dr.lado = -1;
+      yield c.voar(dr, bell.x, bell.y - 60, 110, 1.5);
       line.anim.tocar('LINE_SCARED', true);
-      yield c.fala('Line', 'BELL! CORRE!');
+      yield c.fala('Line', 'BELL! CORRE!', 'surpresa');
       dr.anim.tocar('DRAGON_AIR_ATTACK', true);
       yield c.voar(dr, bell.x, bell.y - 4, 30, 0.45);
       bell.anim.tocar('BELL_CAPTURED', true);
@@ -206,40 +289,68 @@
       j.prender(bell, dr);
       bell.anim.tocar('BELL_DRAGON_CARRIED', true);
       dr.anim.tocar('DRAGON_TAKEOFF', true);
-      yield c.voar(dr, bell.x, T(12.5), 190, 0.9);
-      yield c.fala('Bell', 'LIIINE!');
+      yield c.voar(dr, bell.x, bell.y - 30, 190, 0.9);
+      yield c.fala('Bell', 'LIIINE!', 'surpresa');
       dr.anim.tocar('DRAGON_FLY', true);
-      c.junto(c.voar(dr, T(15), T(-5), 300, 2.4));
-      c.junto(c.andar(line, 15, 9.2, { vel: 168, anim: 'LINE_RUN', parar: 'LINE_RUN_STOP' }));
-      yield c.espera(1.7);
+      c.junto(c.voar(dr, T(22.5), T(-6), 300, 2.6));
+      c.junto(c.andar(line, 22.5, 20, { vel: 168, anim: 'LINE_RUN', parar: 'LINE_RUN_STOP' }));
+      yield c.espera(1.8);
       line.anim.tocar('LINE_CALL_BELL', true);
-      yield c.fala('Line', 'BELL!!!');
+      yield c.fala('Line', 'BELL!!!', 'surpresa');
       yield c.espera(0.8);
       j.soltar(); bell.visivel = false; j.removerDragaoCena();
+      for (const b of j.bichos) b.assustado = false;
 
-      yield c.tingir('255,160,80', 0.22, 1.5);
+      yield c.tingir('90,60,130', 0.26, 1.5);
+      j.ambiente.anoitecer();
       line.dir = 'FRONT'; line.anim.tocar('LINE_SAD', true);
       yield c.espera(1);
+      if (cao) { cao.seguir = true; cao.comeu = true; cao.x = line.x + 40; cao.y = line.y + 20; j.balao(cao, 'Auuu...', 2); }
+      yield c.espera(1);
       line.anim.tocar('LINE_DETERMINED', true);
-      yield c.fala('Line', 'Ele voou para a montanha, do outro lado da floresta...');
-      yield c.fala('Line', 'Aguenta firme, Bell. Eu vou te buscar.');
+      yield c.fala('Line', 'Ele voou pra montanha, do outro lado da floresta...', 'neutro');
+      yield c.fala('Line', 'Biscoito, cuida da fazenda pra mim. Eu vou buscar a Bell.', 'neutro');
       j.bell = null;
       j.flags.prologo = true;
+      j.flags.etapa = null;
       j.salvar();
       j.dica('mover', LB.entrada.usandoToque()
-        ? 'Arraste o dedo no lado esquerdo para andar. Empurre até o fim para correr. Siga para o norte!'
-        : 'WASD ou setas para andar, Shift para correr. Siga pelo caminho ao norte, até a floresta!');
+        ? 'Siga pelo caminho ao norte, até a floresta.'
+        : 'Siga pelo caminho ao norte, até a floresta. (Shift para correr)');
     },
 
     *floresta(c, j) {
       yield c.espera(0.4);
-      yield c.fala('Line', 'A Floresta Sussurrante... O dragão foi para a montanha, do outro lado.');
-      yield c.fala('Line', 'Sem uma arma eu não tenho chance contra aquilo. Deve ter alguma coisa útil por aqui.');
+      yield c.fala('Line', 'A Floresta Sussurrante... O dragão foi pra montanha, do outro lado.', 'neutro');
+      yield c.fala('Line', 'Tem uma luz azul ali na clareira, a oeste. Será que mora alguém aqui?', 'surpresa');
       j.flags.florestaVista = true;
     },
 
+    *mago(c, j) {
+      if (!j.flags.espada && !j.flags.magoVisto) {
+        yield c.fala('Mago', 'Ora, ora... uma fazendeira na Floresta Sussurrante?');
+        yield c.fala('Line', 'Um dragão levou a Bell! Eu preciso chegar na montanha.', 'surpresa');
+        yield c.fala('Mago', 'O dragão verde acordou, então... Fazia cem anos que ele dormia.');
+        yield c.fala('Mago', 'Naquele baú aqui do lado guardei uma espada que espera por um coração corajoso. Ela é sua.');
+        yield c.fala('Mago', 'E lembre-se: quando o dragão se cansa, o peito dele brilha. É ali que você deve acertar.');
+        yield c.fala('Line', 'Obrigada! Eu vou trazer ela de volta.', 'sorriso');
+        j.flags.magoVisto = true;
+        j.salvar();
+      } else if (!j.flags.espada) {
+        yield c.fala('Mago', 'O baú, menina! A espada está no baú.');
+      } else {
+        const falas = [
+          'Os espinhos ao norte não resistem a uma boa lâmina.',
+          'Pule o riacho, corte os espinhos, suba a montanha. Simples, não?',
+          'O peito do dragão, lembre-se: quando ele cansar, o peito brilha.',
+          'Quando ele encher o peito de ar, saia da frente. Fogo de dragão não se segura com espada.',
+        ];
+        yield c.fala('Mago', falas[Math.floor(Math.random() * falas.length)]);
+      }
+    },
+
     *espinhos(c, j) {
-      yield c.fala('Line', 'Espinhos demais pra passar... Preciso de algo afiado para abrir caminho.');
+      yield c.fala('Line', 'Espinhos demais pra passar... Preciso de algo afiado para abrir caminho.', 'neutro');
     },
 
     *espada(c, j, bau) {
@@ -257,7 +368,7 @@
       line.armada = true;
       line.anim.tocar('LINE_HAPPY', true);
       yield c.titulo('Espada encontrada!', 'Agora a Line pode lutar', 2);
-      yield c.fala('Line', 'Uma espada! Com isso eu consigo cortar os espinhos no caminho do norte.');
+      yield c.fala('Line', 'Uma espada! Com isso eu consigo cortar os espinhos no caminho do norte.', 'riso');
       yield c.fala('', LB.entrada.usandoToque()
         ? 'ATACAR: golpe (aperte 3x para combo) · GIRO: ataque em volta · ESQUIVA: desvia (correndo vira dash) · DEFESA: segure para bloquear · PULAR + ATACAR: ataque aéreo'
         : 'J ou Z: atacar (3x = combo) · K ou X: giro · L ou C: esquivar (correndo = dash) · I ou V: defender (segure) · Espaço e depois J: ataque aéreo');
@@ -266,7 +377,7 @@
       j.criarInimigos();
       line.dir = 'FRONT'; line.anim.tocar('LINE_COMBAT_IDLE', true);
       yield c.espera(0.6);
-      yield c.fala('Line', 'Sombras?! Só podem ser coisa do dragão... Vem!');
+      yield c.fala('Line', 'Sombras?! Só podem ser coisa do dragão... Vem!', 'surpresa');
     },
 
     *placa(c, j, texto) {
@@ -278,11 +389,11 @@
       if (j.flags.covilVisto) {
         // Tentando de novo: vai direto para a luta.
         line.x = T(13); line.y = T(14.6); line.dir = 'BACK'; line.armada = true;
-        dr.visivel = true; dr.alturaVoo = 0; dr.y = T(8);
+        dr.visivel = true; dr.alturaVoo = 0; dr.y = T(9.2);
         j.selarEntrada();
         dr.anim.tocar('DRAGON_ROAR', true); j.tremer(6, 1);
         line.anim.tocar('LINE_DETERMINED', true);
-        yield c.fala('Line', 'De novo. Dessa vez eu não caio.');
+        yield c.fala('Line', 'De novo. Dessa vez eu não caio.', 'neutro');
         j.iniciarChefe();
         return;
       }
@@ -291,13 +402,13 @@
       yield c.andar(line, 13, 14.6, { vel: 80, anim: 'LINE_WALK', parar: 'LINE_IDLE' });
       yield c.camera(T(13), T(4.5), 1.4);
       bell.anim.tocar('BELL_CALL_LINE', true);
-      yield c.fala('Bell', 'Line?! LINE! Você veio!');
-      yield c.fala('Line', 'Eu prometi, não prometi?');
+      yield c.fala('Bell', 'Line?! LINE! Você veio!', 'surpresa');
+      yield c.fala('Line', 'Eu prometi, não prometi?', 'maroto');
       bell.anim.tocar('BELL_TRAPPED', true);
       yield c.camera(T(13), T(9), 0.6);
       dr.visivel = true;
       dr.anim.tocar('DRAGON_GLIDE', true);
-      yield c.voar(dr, T(13), T(8), 0, 1.4);
+      yield c.voar(dr, T(13), T(9.2), 0, 1.4);
       dr.anim.tocar('DRAGON_LAND', true);
       j.tremer(8, 0.5);
       j.particulas.emitir('poeira', dr.x, dr.y, 26, { vel: 170, vida: 0.8, r: 6 });
@@ -309,9 +420,9 @@
       dr.anim.tocar('DRAGON_IDLE', true);
       if (!line.armada) { line.anim.tocar('LINE_SWORD_DRAW', true); yield c.animacao(line); line.armada = true; }
       line.anim.tocar('LINE_DETERMINED', true);
-      yield c.fala('Line', 'Solta ela. AGORA.');
+      yield c.fala('Line', 'Solta ela. AGORA.', 'neutro');
       bell.anim.tocar('BELL_SCARED', true);
-      yield c.fala('Bell', 'Cuidado! Quando ele cansa, o peito dele brilha. Esse é o ponto fraco!');
+      yield c.fala('Bell', 'Cuidado! Quando ele cansa, o peito dele brilha. Esse é o ponto fraco!', 'surpresa');
       bell.anim.tocar('BELL_TRAPPED', true);
       j.flags.covilVisto = true;
       j.iniciarChefe();
@@ -337,21 +448,21 @@
       if (!abraco) { line.anim.tocar('LINE_HAPPY', true); bell.anim.tocar('BELL_HAPPY', true); bell.x = line.x + 16; }
       j.particulas.emitir('coracao', (line.x + bell.x) / 2, line.y - 60, 8, { vel: 40, vida: 1.6 });
       yield c.espera(1.2);
-      yield c.fala('Bell', 'Eu sabia que você vinha. Eu sabia!');
+      yield c.fala('Bell', 'Eu sabia que você vinha. Eu sabia!', 'riso');
       line.anim.tocar('LINE_RELIEVED', true);
-      yield c.fala('Line', 'Você tá bem? Ele te machucou?');
+      yield c.fala('Line', 'Você tá bem? Ele te machucou?', 'surpresa');
       bell.anim.tocar('BELL_RELIEVED', true);
-      yield c.fala('Bell', 'Agora que você tá aqui, eu tô ótima.');
+      yield c.fala('Bell', 'Agora que você tá aqui, eu tô ótima.', 'apaixonada');
       if (abraco) { c.fimDuo(); c.duo('LINE_BELL_HUG_RELEASE', (line.x + bell.x) / 2, line.y); yield c.espera(1); c.fimDuo(); }
       line.anim.tocar('LINE_LAUGH', true);
-      yield c.fala('Line', 'Então... será que ainda dá tempo de ver o pôr do sol?');
+      yield c.fala('Line', 'Então... será que ainda dá tempo de ver o pôr do sol?', 'maroto');
       bell.anim.tocar('BELL_HAPPY', true);
-      yield c.fala('Bell', 'Só se for de mãos dadas.');
+      yield c.fala('Bell', 'Só se for de mãos dadas. Sempre.', 'apaixonada');
       j.particulas.emitir('coracao', (line.x + bell.x) / 2, line.y - 60, 6, { vel: 30, vida: 1.6 });
       yield c.espera(1);
       yield c.escurecer(1, 1.6);
 
-      // Epílogo: de volta à campina, no fim da tarde.
+      // Epílogo: de volta à fazenda, no pôr do sol do lago.
       j.epilogo();
       yield c.escurecer(0, 1.8);
       yield c.espera(1.2);

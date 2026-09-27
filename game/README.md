@@ -1,6 +1,6 @@
 # Line & Bell — o jogo
 
-Aventura com visão de cima para navegador (PC e celular). Um dragão leva a Bell, e a Line atravessa a campina e a floresta, encontra uma espada e enfrenta o dragão no covil para resgatá-la.
+Aventura com visão de cima para navegador (PC e celular). Começa com a vidinha da Line e da Bell na fazenda: tarefas do dia, bichinhos, almoço e passeio de mãos dadas até o lago. No pôr do sol um dragão leva a Bell, e a Line atravessa a floresta, conversa com o mago, encontra uma espada e enfrenta o dragão no covil.
 
 ## Como jogar
 
@@ -33,7 +33,7 @@ O progresso fica salvo no navegador ao entrar em cada área. O botão **Continua
 
 ## Como entram as animações novas
 
-1. Coloque o HTML novo (`*_ITEM_*.html`) na raiz do repositório, no mesmo formato dos atuais.
+1. Coloque o HTML novo na raiz do repositório (`*_ITEM_*.html` ou `*LABORATORIO*.html`) ou crie uma pasta `arte/<grupo>/<CODIGO>/` com os PNGs e um `config.json`.
 2. Rode, na raiz:
    ```bash
    pip install pillow
@@ -50,6 +50,9 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 | `js/animacoes.js` | Catálogo de todas as animações (velocidade, loop, substituta) e o sistema que acha a arte certa para cada direção |
 | `js/entrada.js` | Teclado, toque (joystick e botões) e controle |
 | `js/mapas.js` | Os três mapas (em texto, fáceis de editar) e o desenho do chão |
+| `js/cenario.js` | Construções da fazenda, vento nas plantas, borboletas, pássaros, nuvens, vaga-lumes |
+| `js/bichos.js` | Bichinhos da fazenda e o mago da floresta |
+| `js/fazenda.js` | Capítulo da fazenda: tarefas, balões de fala, interações |
 | `js/desenhos.js` | Desenhos provisórios: Bell, dragão, sombras, árvores, casa, baú, jaula… |
 | `js/entidades.js` | Line (movimento e combate), inimigos Sombra, Bell e partículas |
 | `js/dragao.js` | O chefe: ataques, avisos no chão, atordoamento e ponto fraco |
@@ -62,4 +65,4 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 
 Os mapas ficam em `js/mapas.js`, como texto. Cada letra é um tile:
 
-`T` árvore · `.` grama · `,` mato alto · `F` flores · `:` caminho · `r` raízes · `w` riacho (dá para pular) · `~` água funda · `R` pedra · `H`/`D` casa e porta · `X` espinheiro (corta com a espada) · `C` baú · `S` placa · `#` parede da caverna · `_` chão da caverna · `L` lava · `o` estalagmite
+`B` celeiro · `K` galinheiro · `f` cerca · `h`/`c` horta · `u` lama · `P` poço · `M` moinho · `n` feno · `k` casinha do cachorro · `m` mesa · `v` varal · `T` árvore · `.` grama · `,` mato alto · `F` flores · `:` caminho · `r` raízes · `w` riacho (dá para pular) · `~` água funda · `R` pedra · `H`/`D` casa e porta · `X` espinheiro (corta com a espada) · `C` baú · `S` placa · `#` parede da caverna · `_` chão da caverna · `L` lava · `o` estalagmite

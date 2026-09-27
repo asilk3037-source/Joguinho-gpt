@@ -36,6 +36,10 @@
         if (p.tipo === 'fogo' || p.tipo === 'fumaca') { p.vz += 20 * dt; p.vx *= 0.97; p.vy *= 0.97; }
         else if (p.tipo === 'folha' || p.tipo === 'faisca' || p.tipo === 'pedra') { p.vz -= 260 * dt; if (p.z < 0) { p.z = 0; p.vz *= -0.3; p.vx *= 0.6; p.vy *= 0.6; } }
         else if (p.tipo === 'coracao') { p.vz = 30; p.vx *= 0.98; }
+        else if (p.tipo === 'folhaCai') {
+          if (p.z > 0) { p.vx = Math.sin(p.vida * 3 + p.r * 5) * 22; p.vy = 4; p.z = Math.max(0, p.z + p.vz * dt); }
+          else { p.vx = 0; p.vy = 0; }
+        } else if (p.tipo === 'brasa') { p.vx = Math.sin(p.vida * 4 + p.r * 9) * 10; }
         else { p.vx *= 0.92; p.vy *= 0.92; }
       }
       this.lista = this.lista.filter((p) => p.vida < p.max);
@@ -61,6 +65,12 @@
           case 'brilho': g.fillStyle = `rgba(255,255,200,${a})`; D().estrela(g, X, Y, p.r * (1 - k * 0.5)); break;
           case 'agua': g.fillStyle = `rgba(160,210,255,${a})`; g.beginPath(); g.arc(X, Y, p.r, 0, TAU); g.fill(); break;
           case 'sombra': g.fillStyle = `rgba(60,30,90,${a * 0.7})`; g.beginPath(); g.arc(X, Y, p.r * (1 + k * 2), 0, TAU); g.fill(); break;
+          case 'folhaCai':
+            g.globalAlpha = Math.min(1, a * 3); g.fillStyle = p.cor || '#51a043';
+            g.save(); g.translate(X, Y); g.rotate(Math.sin(p.vida * 4) * 0.9); g.beginPath(); g.ellipse(0, 0, 3.2, 1.8, 0, 0, TAU); g.fill(); g.restore();
+            g.globalAlpha = 1; break;
+          case 'brasa': g.fillStyle = `rgba(255,${150 + Math.floor(80 * a)},60,${a})`; g.beginPath(); g.arc(X, Y, p.r, 0, TAU); g.fill(); break;
+          case 'gota': g.fillStyle = `rgba(110,180,255,${a})`; g.beginPath(); g.arc(X, Y, p.r, 0, TAU); g.fill(); break;
         }
       }
     }
@@ -288,7 +298,10 @@
       const eixo = controlavel ? E.eixo() : { x: 0, y: 0, correr: false };
       const movendo = eixo.x !== 0 || eixo.y !== 0;
 
-      if (controlavel) {
+      if (this.modoDuo) {
+        eixo.correr = false;
+        if (controlavel && (E.apertou('interagir') || E.apertou('atacar'))) jogo.interagir(this);
+      } else if (controlavel) {
         if (E.apertou('interagir') && jogo.interagir(this)) return;
         if (E.apertou('pular')) { this.pular(jogo, eixo); return; }
         if (E.apertou('atacar')) {
@@ -536,6 +549,13 @@
     desenhar(g, jogo) {
       if (!this.visivel) return;
       if (this.invul > 0 && this.estado === 'livre' && Math.floor(jogo.tempo * 20) % 2) g.globalAlpha = 0.45;
+      if (this.modoDuo) {
+        if (!this.animDuo) this.animDuo = new LB.Animador('LINE_BELL_WALK_HANDS');
+        this.animDuo.t = this.moviaAntes ? this.animDuo.t + (jogo.tempo - (this.tDuo || jogo.tempo)) : 0;
+        this.tDuo = jogo.tempo;
+        const sd = this.animDuo.estado(this.dir, this.lado);
+        if (LB.desenharSprite(g, sd.r, sd.quadro, this.x, this.y, ALTURA_LINE)) { g.globalAlpha = 1; return; }
+      }
       const st = this.estadoAnim();
       if (!LB.desenharSprite(g, st.r, st.quadro, this.x, this.y, ALTURA_LINE)) D().lineProvisoria(g, this.x, this.y, { base: st.r.codigo });
       g.globalAlpha = 1;
@@ -642,8 +662,9 @@
       this.visivel = true; this.z = 0; this.alvoCena = null;
     }
 
-    atualizar(dt) {
+    atualizar(dt, jogo) {
       this.anim.atualizar(dt);
+      if (this.seguir && jogo && !jogo.cena) { this.acompanhar(dt, jogo); return; }
       const alvo = this.alvoCena;
       if (!alvo) return;
       const dx = alvo.x - this.x, dy = alvo.y - this.y, d = Math.hypot(dx, dy), passo = alvo.vel * dt;
@@ -658,13 +679,45 @@
       }
     }
 
+    // Segue o rastro da Line (assim contorna casas e cercas do mesmo jeito que ela).
+    acompanhar(dt, jogo) {
+      const l = jogo.line;
+      const rastro = jogo.rastroLine;
+      let alvo = null, acum = 0;
+      for (let i = rastro.length - 1; i > 0; i--) {
+        acum += Math.hypot(rastro[i].x - rastro[i - 1].x, rastro[i].y - rastro[i - 1].y);
+        if (acum >= 34) { alvo = rastro[i - 1]; break; }
+      }
+      const dLine = Math.hypot(l.x - this.x, l.y - this.y);
+      if (dLine > 320) { this.x = l.x - (l.lado || 1) * 30; this.y = l.y; }
+      if (!alvo || dLine < 30) { this.anim.tocar('BELL_IDLE'); return; }
+      const dx = alvo.x - this.x, dy = alvo.y - this.y, d = Math.hypot(dx, dy);
+      if (d < 2) { this.anim.tocar('BELL_IDLE'); return; }
+      const vel = Math.min(d * 6, l.correndo ? 175 : 95);
+      this.x += dx / d * vel * dt; this.y += dy / d * vel * dt;
+      this.dir = dirDe(dx, dy, this.dir); if (Math.abs(dx) > 1) this.lado = dx < 0 ? -1 : 1;
+      this.anim.tocar(vel > 120 ? 'BELL_RUN' : 'BELL_WALK');
+    }
+
     desenharSombra(g) { if (this.visivel) D().sombraChao(g, this.x, this.y + this.z * 0, this.z > 5 ? 10 : 14, 0.25); }
 
     desenhar(g, jogo) {
       if (!this.visivel) return;
       const st = this.anim.estado(this.dir, this.lado);
-      const y = this.y - this.z;
-      if (st.r.sprite) { LB.desenharSprite(g, st.r, st.quadro, this.x, y, ALTURA_LINE); return; }
+      let x = this.x, y = this.y - this.z;
+      if (st.r.sprite) {
+        // Enquanto a animação própria não existe, a substituta ganha um movimento que lembra a original.
+        const inf = LB.info(this.anim.base);
+        if (st.r.via || st.r.codigo !== this.anim.base) {
+          if (inf.tremer) x += Math.sin(jogo.tempo * 40) * 1.2;
+          if (inf.pular) y -= Math.abs(Math.sin(jogo.tempo * 7)) * 5;
+          if (inf.balancar) {
+            g.save(); g.translate(x, y - 30); g.rotate(Math.sin(jogo.tempo * 5) * 0.25); g.translate(-x, -(y - 30));
+            LB.desenharSprite(g, st.r, st.quadro, x, y, ALTURA_LINE); g.restore(); return;
+          }
+        }
+        LB.desenharSprite(g, st.r, st.quadro, x, y, ALTURA_LINE); return;
+      }
       D().bell(g, this.x, y, { base: this.anim.base, t: jogo.tempo, progresso: st.progresso, dir: this.dir === 'FRONT' || this.dir === 'BACK' ? this.dir : this.dir });
     }
   }

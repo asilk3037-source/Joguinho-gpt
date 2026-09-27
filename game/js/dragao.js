@@ -92,10 +92,10 @@
 
         case 'voo':
           if (this.t < 0.5) this.anim.tocar('DRAGON_WINGS_OPEN');
-          else if (this.t < 1.1) { this.anim.tocar('DRAGON_TAKEOFF'); this.alturaVoo = Math.min(170, this.alturaVoo + 320 * dt); }
+          else if (this.t < 1.1) { this.anim.tocar('DRAGON_TAKEOFF'); this.alturaVoo = Math.min(140, this.alturaVoo + 320 * dt); }
           else if (this.t < 1.1 + 1.8 * R) {
             this.anim.tocar('DRAGON_FLY');
-            this.alturaVoo = 170 + Math.sin(this.t * 3) * 6;
+            this.alturaVoo = 140 + Math.sin(this.t * 3) * 6;
             this.x += (line.x - this.x) * Math.min(1, dt * 1.8); this.y += (line.y - this.y) * Math.min(1, dt * 1.8);
             this.limitar();
           } else { this.mudar('mergulho', 'DRAGON_AIR_ATTACK'); }
@@ -251,7 +251,7 @@
           g.closePath(); g.fill();
         }
       } else if (this.estado === 'voo' || this.estado === 'mergulho') {
-        const k = Math.min(1, this.alturaVoo / 170);
+        const k = Math.min(1, this.alturaVoo / 140);
         g.fillStyle = `rgba(0,0,0,${0.45 - k * 0.2})`;
         g.beginPath(); g.ellipse(this.x, this.y, 80 - k * 25, 32 - k * 10, 0, 0, TAU); g.fill();
         if (this.estado === 'voo' && this.t > 1.1 + 1.2 * R) {
@@ -275,9 +275,73 @@
         if (this.flash > 0) g.filter = 'brightness(2)';
         LB.desenharSprite(g, st.r, st.quadro, this.x, y, ALTURA_DRAGAO);
         g.filter = 'none';
+        if (this.fraco) this.brilhoPeito(g, this.x + this.lado * 40, y - 55, jogo.tempo);
         return;
       }
+      const img = LB.personagem('dragao');
+      if (img) { this.desenharImagem(g, img, jogo, st); return; }
       LB.desenho.dragao(g, this.x, this.y, { base: this.anim.base, t: jogo.tempo, progresso: st.progresso, lado: this.lado, fraco: this.fraco, flash: this.flash, alturaVoo: this.alturaVoo });
+    }
+
+    brilhoPeito(g, px, py, t) {
+      const k = 0.6 + 0.4 * Math.sin(t * 10);
+      const gr = g.createRadialGradient(px, py, 0, px, py, 26);
+      gr.addColorStop(0, `rgba(160,245,255,${0.95 * k})`); gr.addColorStop(0.4, `rgba(90,220,255,${0.55 * k})`); gr.addColorStop(1, 'rgba(90,220,255,0)');
+      g.fillStyle = gr; g.beginPath(); g.arc(px, py, 26, 0, Math.PI * 2); g.fill();
+      g.strokeStyle = `rgba(200,250,255,${k})`; g.lineWidth = 2; g.beginPath(); g.arc(px, py, 14 + Math.sin(t * 10) * 3, 0, Math.PI * 2); g.stroke();
+    }
+
+    // Anima a ilustração do dragão (uma imagem só) com movimentos por animação.
+    desenharImagem(g, img, jogo, st) {
+      const t = jogo.tempo, p = st.progresso, b = this.anim.base;
+      const W = img.naturalWidth, H = img.naturalHeight;
+      const ESC = 210 / 340;           // corpo do dragão com ~210 unidades de comprimento
+      const PES = H - 3, BOCA = [W - 22, H * 0.46], PEITO = [W * 0.62, H * 0.66];
+      let rot = 0, sx = 1, sy = 1, dx = 0, dy = 0, tremor = 0, brilhoBoca = 0, flash = this.flash > 0 ? 2.6 : 1;
+      const resp = Math.sin(t * 2.2);
+      dy = resp * 2.5; sy = 1 + resp * 0.018; sx = 1 - resp * 0.01;
+      if (/WALK/.test(b)) { dy += Math.abs(Math.sin(t * 6)) * -4; rot = Math.sin(t * 6) * 0.03; }
+      if (/ROAR/.test(b)) { const k = Math.sin(Math.min(1, p * 1.5) * Math.PI); rot = -0.12 * k; sx = sy = 1 + 0.07 * k; tremor = 2.5 * k; }
+      if (/CLAW|BITE/.test(b)) { rot = p < 0.45 ? -0.14 * (p / 0.45) : 0.22 * Math.max(0, 1 - (p - 0.45) * 2.2); dx = p < 0.45 ? -8 * p : 26 * Math.max(0, 1 - (p - 0.45) * 2); }
+      if (/TAIL/.test(b)) { sx = Math.cos(Math.min(1, p * 1.25) * Math.PI * 2); sy = 1 - Math.abs(Math.sin(p * Math.PI)) * 0.06; if (Math.abs(sx) < 0.15) sx = 0.15 * Math.sign(sx || 1); }
+      if (/FIRE_CHARGE/.test(b)) { rot = -0.1 * Math.min(1, p * 1.5); brilhoBoca = p; }
+      if (/FIRE_STREAM|FIRE_BREATH|DESPERATE/.test(b)) { rot = 0.07; tremor = /DESPERATE/.test(b) ? 3 : 1.2; brilhoBoca = 1; }
+      if (/WINGS_OPEN|TAKEOFF|FLY|GLIDE/.test(b)) { dy += Math.sin(t * 4) * 5; sy *= 1 + Math.sin(t * 9) * 0.035; }
+      if (/AIR_ATTACK/.test(b)) { rot = 0.4; }
+      if (/LAND/.test(b)) { sy *= 0.88 + 0.12 * p; sx *= 1.06 - 0.06 * p; }
+      if (/^DRAGON_HIT$|WEAK_POINT_HIT/.test(b)) { rot = -0.12 * (1 - p); dx = -10 * (1 - p); }
+      if (/STUNNED/.test(b)) { rot = Math.sin(t * 2.6) * 0.1 + 0.08; dy += 6; }
+      if (/FINAL_HIT/.test(b)) { rot = -0.28; tremor = 4; flash = Math.max(flash, 2.2 - p); }
+      if (/FALL/.test(b)) { rot = -1.35 * Math.min(1, p * 1.1); dy += 28 * p; }
+      if (/DEFEATED/.test(b)) { rot = -1.4; dy += 30; sy *= 0.97 + Math.sin(t * 1.5) * 0.015; }
+      if (tremor) { dx += (Math.random() - 0.5) * tremor * 2; dy += (Math.random() - 0.5) * tremor; }
+
+      const y = this.y - this.alturaVoo;
+      g.save();
+      g.translate(this.x, y);
+      g.scale(this.lado, 1);
+      g.translate(dx, dy);
+      g.rotate(rot);
+      g.scale(sx, sy);
+      if (flash > 1) g.filter = `brightness(${flash})`;
+      if (/DESPERATE/.test(b)) g.filter = 'saturate(1.6) hue-rotate(-40deg)';
+      g.imageSmoothingEnabled = false;
+      const ox = -W / 2 * ESC, oy = -PES * ESC;
+      g.drawImage(img, ox, oy, W * ESC, H * ESC);
+      g.imageSmoothingEnabled = true;
+      g.filter = 'none';
+      if (brilhoBoca > 0) {
+        const bx = ox + BOCA[0] * ESC, by = oy + BOCA[1] * ESC, r = 6 + brilhoBoca * 14;
+        const gr = g.createRadialGradient(bx, by, 0, bx, by, r);
+        gr.addColorStop(0, `rgba(255,240,160,${0.9 * brilhoBoca})`); gr.addColorStop(1, 'rgba(255,120,0,0)');
+        g.fillStyle = gr; g.beginPath(); g.arc(bx, by, r, 0, Math.PI * 2); g.fill();
+      }
+      if (this.fraco) this.brilhoPeito(g, ox + PEITO[0] * ESC, oy + PEITO[1] * ESC, t);
+      g.restore();
+      if (/STUNNED/.test(b) && this.estado !== 'derrotado') {
+        g.fillStyle = '#fff176';
+        for (let i = 0; i < 3; i++) { const a = t * 4 + i * 2.1; LB.desenho.estrela(g, this.x + this.lado * 60 + Math.cos(a) * 30, y - 120 + Math.sin(a) * 8, 5); }
+      }
     }
   }
 
