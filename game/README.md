@@ -1,6 +1,8 @@
 # Line & Bell — o jogo
 
-Aventura com visão de cima para navegador (PC e celular). Começa com a vidinha da Line e da Bell na fazenda: tarefas do dia, bichinhos, almoço e passeio de mãos dadas até o lago. No pôr do sol um dragão leva a Bell, e a Line atravessa a floresta, conversa com o mago, encontra uma espada e enfrenta o dragão no covil.
+Aventura com visão de cima para navegador (PC e celular). Começa com a vidinha da Line e da Bell na fazenda: tarefas do dia, bichinhos, almoço e passeio de mãos dadas até o lago. No pôr do sol um dragão leva a Bell. A Line atravessa a floresta, conversa com o mago e encontra uma espada. Nas **Ruínas Encantadas** ela aprende magia (Raio de Luz), acende cristais para desfazer barreiras e enfrenta o **Guardião de Pedra**, que dá a Chuva de Estrelas. Na **Montanha de Brasa** ela pula fendas, acende três tochas e abre o portão do covil, onde enfrenta o dragão.
+
+Pelo caminho: dois baús com coração extra (mais vida máxima) e fontes que recuperam vida e magia e viram ponto de retorno.
 
 ## Como jogar
 
@@ -25,7 +27,9 @@ O progresso fica salvo no navegador ao entrar em cada área. O botão **Continua
 | Atacar (3x = combo) | J / Z | A | ⚔ |
 | Giro | K / X | X | 🌀 |
 | Esquivar (correndo = dash) | L / C | B | 💨 |
-| Defender (segurar) | I / V | LB / RB | 🛡 |
+| Defender (segurar) | I / V | LB | 🛡 |
+| Magia: Raio de Luz | Q / U | RB | ✨ |
+| Chuva de Estrelas (segurar a magia e soltar) | Q / U | RB | ✨ |
 | Pular (+ atacar no ar) | Espaço | Y | ⤴ |
 | Abrir / ler | E / Enter | Select | botão que aparece |
 | Pausar | Esc / P | Start | ⏸ |

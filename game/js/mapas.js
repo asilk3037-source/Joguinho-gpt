@@ -112,7 +112,7 @@
       ],
       saidas: [
         { x: 17, y: 29, w: 2, h: 1, para: 'fazenda', chegada: { x: 22.5, y: 3.6, dir: 'FRONT' } },
-        { x: 30, y: 0, w: 2, h: 1, para: 'covil', chegada: { x: 13, y: 18.5, dir: 'BACK' } },
+        { x: 30, y: 0, w: 2, h: 1, para: 'ruinas', requer: 'espada', chegada: { x: 19.5, y: 34.2, dir: 'BACK' } },
       ],
       inicio: { x: 17.5, y: 27.6, dir: 'BACK' },
       placas: {
@@ -156,9 +156,139 @@
       placas: {},
       jaula: { x: 13, y: 2.6 },
     },
+
+    // Barreiras ('Z') somem quando todos os cristais ('Q') ou tochas ('Y') do grupo acendem.
+    ruinas: {
+      nome: 'Ruínas Encantadas',
+      tema: 'ruinas',
+      linhas: [
+        '###################..###################',
+        '###################ZZ###################',
+        '####................................####',
+        '####.,........I..........I........,.####',
+        '####....I......................I....####',
+        '####................................####',
+        '####................................####',
+        '####................................####',
+        '####................................####',
+        '####....I......................I....####',
+        '####.,......,..............,......,.####',
+        '####................................####',
+        '##################::::##################',
+        '##################ZZZZ##################',
+        '###..F.........................F..######',
+        '###.,...........................,.######',
+        '###...~~~~~~~......Q....~~~~~~~.Q.######',
+        '###...~~~~~~~..I.......I~~~~~~~...######',
+        '###..U~~~Q~~~...........~~~Q~~~...######',
+        '###...~~~~~~~...........~~~~~~~...Z.C###',
+        '###...~~~~~~~...........~~~~~~~...Z..###',
+        '###.,..........I.......I........,.######',
+        '###..........,.......,............######',
+        '##################::::##################',
+        '##################ZZZZ##################',
+        '########...........::...........########',
+        '##.......,.........::.........,.########',
+        '##..A.......Q......::......Q....########',
+        '##........F........::........F..########',
+        '##.................::...........########',
+        '##.,..F....I.......::.......I...########',
+        '##.................::...........########',
+        '########...........::..U........########',
+        '########.,.......S.::.........,.########',
+        '########......,....::....,......########',
+        '###################::###################',
+      ],
+      saidas: [
+        { x: 19, y: 35, w: 2, h: 1, para: 'floresta', chegada: { x: 30.5, y: 1.8, dir: 'FRONT' } },
+        { x: 19, y: 0, w: 2, h: 1, para: 'montanha', chegada: { x: 17.5, y: 37.4, dir: 'BACK' } },
+      ],
+      inicio: { x: 19.5, y: 34.2, dir: 'BACK' },
+      placas: {
+        '17,33': 'Ruínas Encantadas. Só a luz atravessa as barreiras. O altar da luz fica na sala a oeste.',
+      },
+      baus: { '36,19': 'coracao' },
+      barreiras: [
+        { id: 'sul', fontes: ['12,27', '27,27'], tiles: [[18, 24, 21, 24]] },
+        { id: 'meio', fontes: ['9,18', '27,18', '19,16'], tiles: [[18, 13, 21, 13]] },
+        { id: 'bau', fontes: ['32,16'], tiles: [[34, 19, 34, 20]] },
+        { id: 'golem', fontes: [], tiles: [[19, 1, 20, 1]] },
+      ],
+      golem: { x: 19.5, y: 7.2 },
+      inimigos: [
+        { x: 14, y: 31, depoisDe: 'magia' }, { x: 25, y: 31, depoisDe: 'magia' },
+        { x: 10, y: 15, tipo: 'luz', depoisDe: 'magia' }, { x: 28, y: 21, tipo: 'luz', depoisDe: 'magia' },
+        { x: 20, y: 20, depoisDe: 'magia' }, { x: 14, y: 15, depoisDe: 'magia' }, { x: 30, y: 15, tipo: 'luz', depoisDe: 'magia' },
+      ],
+    },
+
+    montanha: {
+      nome: 'Montanha de Brasa',
+      tema: 'montanha',
+      linhas: [
+        '################::::################',
+        '################::::################',
+        '###############......###############',
+        '###############......###############',
+        '###############ZZZZZZ###############',
+        '##.........###........###.........##',
+        '##............R...................##',
+        '##jjjjjjjj..................R.....##',
+        '##.......j........................##',
+        '##...C...j........Y...............##',
+        '##.......j...............R........##',
+        '##.......j..R.................o...##',
+        '##.......j............o...........##',
+        '##jjjjjjjj........................##',
+        '##jjjjjjjjjjjjj......jjjjjjjjjjjjj##',
+        '##................................##',
+        '##................................##',
+        '##................................##',
+        '##................................##',
+        '##.........................LLLLLLL##',
+        '##.........LLLL.R..........LLLLLLL##',
+        '##.........LLLL............LL...LL##',
+        '##.........................LL.Y.LL##',
+        '##....................R....LL...LL##',
+        '##LLLLLLL...o..............LLLLLLL##',
+        '##LLLLLLL..................LLLLLLL##',
+        '##LLLLLLLU........................##',
+        '##LLLLLLL.........R...............##',
+        '##LLLLLLL.S.............o.........##',
+        '##LLLLLLL.........................##',
+        '##................................##',
+        '######........................######',
+        '##jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj##',
+        '##....................R...........##',
+        '##........R....................R..##',
+        '##....Y........S............o.....##',
+        '##.R.....................R........##',
+        '##..........o.....................##',
+        '################::::################',
+        '################::::################',
+      ],
+      saidas: [
+        { x: 16, y: 39, w: 4, h: 1, para: 'ruinas', chegada: { x: 19.5, y: 2.4, dir: 'FRONT' } },
+        { x: 16, y: 0, w: 4, h: 1, para: 'covil', chegada: { x: 13, y: 18.5, dir: 'BACK' } },
+      ],
+      inicio: { x: 17.5, y: 37.4, dir: 'BACK' },
+      placas: {
+        '15,35': 'Fendas na rocha! Pule para atravessar (Espaço). Correndo, o pulo vai mais longe.',
+        '10,28': 'Fonte das brasas: beba para recuperar vida e magia. Se cair, você volta para cá.',
+      },
+      baus: { '5,9': 'coracao' },
+      barreiras: [
+        { id: 'portao', fontes: ['6,35', '30,22', '18,9'], tiles: [[15, 4, 20, 4]] },
+      ],
+      inimigos: [
+        { x: 24, y: 34, tipo: 'fogo' }, { x: 9, y: 34 },
+        { x: 18, y: 25, tipo: 'fogo' }, { x: 14, y: 28 }, { x: 23, y: 18 },
+        { x: 10, y: 17, tipo: 'fogo' }, { x: 26, y: 12, tipo: 'fogo' }, { x: 14, y: 9 }, { x: 22, y: 7 },
+      ],
+    },
   };
 
-  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v']);
+  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v', 'I', 'Q', 'A', 'Y', 'U', 'Z', 'j']);
 
   // Gerador pseudoaleatório estável por posição (o cenário não "pisca" entre quadros).
   function ruido(x, y, s) {
@@ -172,6 +302,8 @@
     fazenda: { grama: '#72ae52', grama2: '#62a046', grama3: '#86c162', caminho: '#d8b47c', caminho2: '#bf9862' },
     floresta: { grama: '#4f8a3f', grama2: '#437a35', grama3: '#5e9c4b', caminho: '#b99867', caminho2: '#9c7c50' },
     covil: { chao: '#4b403c', chao2: '#3d3431', parede: '#241c1a', parede2: '#352b28' },
+    ruinas: { chao: '#6f7a68', chao2: '#626d5b', junta: '#566150', musgo: '#6e8f4c', parede: '#343b33', parede2: '#434b40', topo: '#5a6553', caminho: '#8d8a78', margem: '#a3a690' },
+    montanha: { chao: '#5c4b44', chao2: '#4f403a', junta: '#3d302b', musgo: '#7a5a3a', parede: '#231b19', parede2: '#33282a', topo: '#6b554b', caminho: '#7a6558', margem: '#8a6f5f' },
   };
 
   class Mapa {
@@ -192,7 +324,7 @@
     }
 
     tile(tx, ty) {
-      if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return this.tema === 'covil' ? '#' : 'T';
+      if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return this.tema === 'covil' || this.tema === 'ruinas' || this.tema === 'montanha' ? '#' : 'T';
       return this.l[ty][tx];
     }
 
@@ -200,7 +332,7 @@
 
     solido(tx, ty, noAr) {
       const t = this.tile(tx, ty);
-      if (noAr && t === 'w') return false;
+      if (noAr && (t === 'w' || t === 'j')) return false;
       return SOLIDOS.has(t);
     }
 
@@ -260,6 +392,13 @@
           this.props.push({ tipo: 'varal', tx, ty, x: cx, x2: (x2 + 0.5) * TILE, y: base - 4, v });
           continue;
         }
+        // Ruínas e montanha: pilares, cristais, altar, tochas, fonte e barreiras mágicas.
+        if (t === 'I') { this.props.push({ tipo: 'pilar', tx, ty, x: cx, y: base - 3, v }); continue; }
+        if (t === 'Q') { this.props.push({ tipo: 'cristal', tx, ty, x: cx, y: base - 4, v, aceso: false }); continue; }
+        if (t === 'A') { this.props.push({ tipo: 'altar', tx, ty, x: cx, y: base - 3 }); continue; }
+        if (t === 'Y') { this.props.push({ tipo: 'tocha', tx, ty, x: cx, y: base - 3, v, aceso: false }); continue; }
+        if (t === 'U') { this.props.push({ tipo: 'fonte', tx, ty, x: cx, y: base - 3 }); continue; }
+        if (t === 'Z') { this.props.push({ tipo: 'barreira', tx, ty, x: cx, y: base - 1, v, tema: this.tema }); continue; }
         if (t === 'T') this.props.push({ tipo: 'arvore', tx, ty, x: cx, y: base - 4, v });
         else if (t === 'R') this.props.push({ tipo: 'pedra', tx, ty, x: cx, y: base - 6, v: ruido(tx, ty, 2) });
         else if (t === 'o') this.props.push({ tipo: 'estalagmite', tx, ty, x: cx, y: base - 4, v: ruido(tx, ty, 3) });
@@ -292,6 +431,7 @@
       const cor = CORES[this.tema];
       const rnd = (s) => ruido(tx, ty, s);
 
+      if (this.tema === 'ruinas' || this.tema === 'montanha') { this.desenharTilePedra(g, tx, ty, t, x, y, cor, rnd); return; }
       if (this.tema === 'covil') {
         if (t === '#') {
           g.fillStyle = cor.parede; g.fillRect(x, y, TILE, TILE);
@@ -372,6 +512,70 @@
         if (!'w~'.includes(this.tile(tx, ty + 1))) g.fillRect(x, y + TILE - 3, TILE, 3);
         if (!'w~'.includes(this.tile(tx - 1, ty))) g.fillRect(x, y, 3, TILE);
         if (!'w~'.includes(this.tile(tx + 1, ty))) g.fillRect(x + TILE - 3, y, 3, TILE);
+      }
+    }
+
+    // Chão de pedra das ruínas e da montanha (paredes, lajes, água, lava e fendas).
+    desenharTilePedra(g, tx, ty, t, x, y, cor, rnd) {
+      const ruinas = this.tema === 'ruinas';
+      if (t === '#') {
+        g.fillStyle = cor.parede; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = cor.parede2;
+        if (ruinas) { for (let i = 0; i < 2; i++) g.fillRect(x + 2, y + 2 + i * 16, TILE - 4, 12); g.fillStyle = cor.parede; g.fillRect(x + (ty % 2 ? 10 : 22), y, 2, TILE); }
+        else for (let i = 0; i < 3; i++) g.fillRect(x + rnd(i) * 24, y + rnd(i + 5) * 24, 8, 5);
+        if (this.tile(tx, ty + 1) !== '#') {
+          g.fillStyle = cor.topo; g.fillRect(x, y + TILE - 12, TILE, 12);
+          g.fillStyle = 'rgba(255,255,255,.12)'; g.fillRect(x, y + TILE - 12, TILE, 2);
+          g.fillStyle = 'rgba(0,0,0,.25)'; g.fillRect(x, y + TILE - 3, TILE, 3);
+          if (ruinas && rnd(40) > 0.55) { g.fillStyle = cor.musgo; g.fillRect(x + rnd(41) * 20, y + TILE - 12, 8 + rnd(42) * 8, 4); }
+        }
+        return;
+      }
+      // Laje do chão.
+      g.fillStyle = rnd(30) > 0.5 ? cor.chao : cor.chao2; g.fillRect(x, y, TILE, TILE);
+      if (ruinas) {
+        g.fillStyle = cor.junta; g.fillRect(x, y, TILE, 1.5); g.fillRect(x, y, 1.5, TILE);
+        if (rnd(31) > 0.5) g.fillRect(x + 16, y, 1, TILE);
+        if (rnd(32) > 0.72) { g.fillStyle = cor.musgo; g.globalAlpha = 0.55; g.beginPath(); g.ellipse(x + 6 + rnd(33) * 20, y + 6 + rnd(34) * 20, 6, 3.5, 0, 0, 7); g.fill(); g.globalAlpha = 1; }
+      } else {
+        g.fillStyle = cor.junta;
+        for (let i = 0; i < 4; i++) g.fillRect(x + rnd(i + 50) * 28, y + rnd(i + 51) * 28, 3, 2);
+        if (rnd(35) > 0.7) { g.strokeStyle = cor.junta; g.lineWidth = 1; g.beginPath(); g.moveTo(x + rnd(36) * 10, y + rnd(37) * 32); g.lineTo(x + 16, y + 16); g.lineTo(x + 22 + rnd(38) * 10, y + rnd(39) * 32); g.stroke(); }
+      }
+      if (t === ':') {
+        g.fillStyle = cor.caminho; g.fillRect(x + 1, y + 1, TILE - 2, TILE - 2);
+        g.fillStyle = cor.junta;
+        for (let i = 0; i < 3; i++) g.fillRect(x + 2, y + 3 + i * 10, TILE - 4, 1.2);
+      } else if (t === '~') {
+        g.fillStyle = '#2f6f8f'; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = '#3f88a8'; for (let i = 0; i < 3; i++) g.fillRect(x + rnd(i + 100) * 22, y + rnd(i + 110) * 28, 8, 2);
+        g.fillStyle = cor.margem;
+        if (this.tile(tx, ty - 1) !== '~' && this.tile(tx, ty - 1) !== 'Q') g.fillRect(x, y, TILE, 4);
+        if (this.tile(tx, ty + 1) !== '~' && this.tile(tx, ty + 1) !== 'Q') g.fillRect(x, y + TILE - 3, TILE, 3);
+        if (this.tile(tx - 1, ty) !== '~' && this.tile(tx - 1, ty) !== 'Q') g.fillRect(x, y, 3, TILE);
+        if (this.tile(tx + 1, ty) !== '~' && this.tile(tx + 1, ty) !== 'Q') g.fillRect(x + TILE - 3, y, 3, TILE);
+      } else if (t === 'L') {
+        g.fillStyle = '#ff6a1a'; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = '#ffb347';
+        for (let i = 0; i < 3; i++) { g.beginPath(); g.arc(x + rnd(i) * TILE, y + rnd(i + 3) * TILE, 3 + rnd(i + 6) * 4, 0, 7); g.fill(); }
+        g.fillStyle = 'rgba(60,20,10,.55)';
+        for (let i = 0; i < 2; i++) g.fillRect(x + rnd(i + 11) * 24, y + rnd(i + 13) * 24, 9, 5);
+        g.fillStyle = cor.topo;
+        if (this.tile(tx, ty - 1) !== 'L') g.fillRect(x, y, TILE, 3);
+        if (this.tile(tx - 1, ty) !== 'L') g.fillRect(x, y, 3, TILE);
+        if (this.tile(tx + 1, ty) !== 'L') g.fillRect(x + TILE - 3, y, 3, TILE);
+      } else if (t === 'j') {
+        g.fillStyle = '#0e0a0c'; g.fillRect(x, y, TILE, TILE);
+        // Brasa lá no fundo: deixa claro que é um buraco.
+        const fundo = g.createLinearGradient(x, y, x, y + TILE); fundo.addColorStop(0, 'rgba(255,80,20,0)'); fundo.addColorStop(0.7, 'rgba(255,80,20,.28)'); fundo.addColorStop(1, 'rgba(255,140,40,.4)');
+        g.fillStyle = fundo; g.fillRect(x + 4, y + 8, TILE - 8, TILE - 10);
+        g.fillStyle = 'rgba(255,170,80,.5)'; for (let i = 0; i < 2; i++) g.fillRect(x + 6 + rnd(i + 60) * 18, y + 18 + rnd(i + 61) * 10, 2, 2);
+        const gr = g.createLinearGradient(x, y, x, y + TILE); gr.addColorStop(0, 'rgba(60,40,40,.9)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+        if (this.tile(tx, ty - 1) !== 'j') { g.fillStyle = gr; g.fillRect(x, y, TILE, 14); g.fillStyle = cor.topo; g.fillRect(x, y, TILE, 3); }
+        g.fillStyle = cor.topo;
+        if (this.tile(tx, ty + 1) !== 'j') g.fillRect(x, y + TILE - 2, TILE, 2);
+        if (this.tile(tx - 1, ty) !== 'j') g.fillRect(x, y, 2, TILE);
+        if (this.tile(tx + 1, ty) !== 'j') g.fillRect(x + TILE - 2, y, 2, TILE);
       }
     }
 

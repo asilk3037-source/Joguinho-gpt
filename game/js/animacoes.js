@@ -153,6 +153,22 @@ window.LB = window.LB || {};
     ['DRAGON_EYE_OPEN_END', 'Ressurgir no final', { fps: 2, quadros: 2 }],
   ]);
 
+  grupo('Magia e criaturas (novo)', [
+    ['LINE_CAST_SPELL', 'Line lança o Raio de Luz', { fps: 34, quadros: 18, alt: 'LINE_ATTACK_VERTICAL', nova: true }],
+    ['LINE_CAST_CHARGE', 'Line carregando a Chuva de Estrelas', { fps: 10, loop: true, quadros: 16, alt: 'LINE_COMBAT_IDLE', nova: true }],
+    ['LINE_CAST_STARS', 'Line solta a Chuva de Estrelas', { fps: 30, quadros: 18, alt: 'LINE_ATTACK_SPIN', nova: true }],
+    ['GOLEM_SLEEP', 'Guardião de Pedra dormindo', { loop: true, fps: 4, nova: true }],
+    ['GOLEM_IDLE', 'Guardião parado', { loop: true, fps: 6, nova: true }],
+    ['GOLEM_WALK', 'Guardião andando', { loop: true, fps: 8, nova: true }],
+    ['GOLEM_SLAM', 'Guardião: pisão (onda no chão)', { fps: 8, nova: true }],
+    ['GOLEM_THROW', 'Guardião: arremessar pedra', { fps: 10, nova: true }],
+    ['GOLEM_STUNNED', 'Guardião tonto (cristal rachado)', { loop: true, fps: 6, nova: true }],
+    ['GOLEM_DEATH', 'Guardião desmoronando', { fps: 8, nova: true }],
+    ['WISP_IDLE', 'Fogo-fátuo flutuando', { loop: true, fps: 8, nova: true }],
+    ['WISP_ATTACK', 'Fogo-fátuo atirando', { fps: 10, nova: true }],
+    ['WISP_DEATH', 'Fogo-fátuo apagando', { fps: 10, nova: true }],
+  ]);
+
   grupo('Inimigos (novo)', [
     ['SHADOW_IDLE', 'Sombra — parada', { loop: true, nova: true }],
     ['SHADOW_MOVE', 'Sombra — andar', { loop: true, nova: true }],

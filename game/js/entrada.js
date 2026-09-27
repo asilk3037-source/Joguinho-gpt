@@ -11,6 +11,7 @@
     KeyK: 'especial', KeyX: 'especial',
     KeyL: 'esquivar', KeyC: 'esquivar',
     KeyI: 'defender', KeyV: 'defender',
+    KeyQ: 'magia', KeyU: 'magia',
     Space: 'pular',
     KeyE: 'interagir', Enter: 'interagir',
     Escape: 'pausa', KeyP: 'pausa',
@@ -92,7 +93,7 @@
     }
   }
 
-  const BOTOES_CONTROLE = { 0: 'atacar', 1: 'esquivar', 2: 'especial', 3: 'pular', 4: 'defender', 5: 'defender', 6: 'correr', 7: 'correr', 9: 'pausa', 8: 'interagir' };
+  const BOTOES_CONTROLE = { 0: 'atacar', 1: 'esquivar', 2: 'especial', 3: 'pular', 4: 'defender', 5: 'magia', 6: 'correr', 7: 'correr', 9: 'pausa', 8: 'interagir' };
   let controleAnterior = new Set();
   let eixoControle = { x: 0, y: 0 };
 

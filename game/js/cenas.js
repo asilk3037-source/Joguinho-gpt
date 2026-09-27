@@ -361,9 +361,26 @@
       } else if (!j.flags.espada) {
         yield c.fala('Mago', 'O baú, menina! A espada está no baú.');
       } else {
-        const falas = [
+        if (!j.flags.magoRuinas) {
+          yield c.fala('Mago', 'Espere! Tem mais uma coisa. O dragão selou o caminho da montanha com magia antiga.');
+          yield c.fala('Mago', 'Depois dos espinhos ficam as Ruínas Encantadas. No altar da luz, a sua espada pode aprender a brilhar.');
+          yield c.fala('Line', 'Magia? Eu? Eu só sei plantar cenoura...', 'surpresa');
+          yield c.fala('Mago', 'Quem atravessa uma floresta por amor já tem o que a magia pede. Vá!');
+          j.flags.magoRuinas = true;
+          j.salvar();
+          return;
+        }
+        const falas = !j.flags.magia ? [
           'Os espinhos ao norte não resistem a uma boa lâmina.',
-          'Pule o riacho, corte os espinhos, suba a montanha. Simples, não?',
+          'As barreiras das ruínas só se desfazem com luz. Procure o altar na sala a oeste.',
+          'Pule o riacho, corte os espinhos, ache o altar. Simples, não?',
+        ] : !j.flags.golem ? [
+          'Cristais apagados, barreiras de pé. Acenda todos e o caminho se abre.',
+          'O Guardião de Pedra não sente a espada... mas a luz, ah, a luz ele sente.',
+          'Sua magia volta sozinha, devagarinho. Não gaste tudo de uma vez!',
+        ] : [
+          'Três tochas guardam o portão da montanha. Acenda as três.',
+          'Segure a magia até brilhar e solte: chuva de estrelas! Eu mesmo não faria melhor.',
           'O peito do dragão, lembre-se: quando ele cansar, o peito brilha.',
           'Quando ele encher o peito de ar, saia da frente. Fogo de dragão não se segura com espada.',
         ];
@@ -400,6 +417,111 @@
       line.dir = 'FRONT'; line.anim.tocar('LINE_COMBAT_IDLE', true);
       yield c.espera(0.6);
       yield c.fala('Line', 'Sombras?! Só podem ser coisa do dragão... Vem!', 'surpresa');
+    },
+
+    *ruinas(c, j) {
+      yield c.espera(0.4);
+      yield c.fala('Line', 'Ruínas... e essas pedras brilhando? Parece que o lugar tá respirando.', 'surpresa');
+      yield c.fala('Line', 'Paredes de luz fechando o caminho... O mago falou de um altar na sala a oeste.', 'neutro');
+      j.flags.ruinasVistas = true;
+      j.salvar();
+    },
+
+    *altar(c, j, p) {
+      const line = j.line;
+      line.dir = 'BACK';
+      line.anim.tocar('LINE_IDLE', true);
+      yield c.fala('???', 'Coração corajoso... vieste de longe.');
+      yield c.fala('Line', 'Quem tá falando?!', 'surpresa');
+      yield c.fala('Espírito das Ruínas', 'Sou a luz que dorme nesta pedra. Estende a tua espada.');
+      line.anim.tocar('LINE_SWORD_DRAW', true);
+      yield c.animacao(line);
+      line.armada = true;
+      for (let i = 0; i < 4; i++) { j.particulas.emitir('brilho', p.x, p.y - 46, 10, { vel: 110, vida: 0.7, r: 6 }); yield c.espera(0.25); }
+      j.flashTela = 0.6; j.tremer(4, 0.4);
+      j.flags.magia = true;
+      line.temMagia = true; line.mana = line.manaMax;
+      line.anim.tocar('LINE_HAPPY', true);
+      yield c.titulo('Magia aprendida!', 'Raio de Luz', 2.2);
+      yield c.fala('Espírito das Ruínas', 'A luz agora corre na tua lâmina. Acende os cristais apagados e as barreiras cairão.');
+      yield c.fala('', LB.entrada.usandoToque()
+        ? '✨ MAGIA: lança um Raio de Luz na direção que a Line olha (ou no inimigo/cristal mais perto). Gasta 1 ◆ de magia, que volta sozinha. Sombras odeiam a luz!'
+        : 'Q ou U: Raio de Luz (mira no inimigo ou cristal mais perto). Gasta 1 ◆ de magia, que volta sozinha. Sombras odeiam a luz!');
+      j.salvar();
+      j.criarInimigos();
+      if (!j.flags.golem) { const gm = j.mapa.def.golem; if (!j.inimigos.some((e) => e.golem)) j.inimigos.push(new LB.Golem(T(gm.x), T(gm.y))); }
+      line.dir = 'FRONT'; line.anim.tocar('LINE_COMBAT_IDLE', true);
+      yield c.espera(0.5);
+      yield c.fala('Line', 'Ih... as ruínas acordaram junto. Bora, espada brilhante!', 'maroto');
+    },
+
+    *golem(c, j, gm) {
+      const line = j.line;
+      line.anim.tocar('LINE_IDLE', true);
+      yield c.camera(gm.x, gm.y - 40, 1);
+      j.tremer(5, 1.2);
+      j.particulas.emitir('pedra', gm.x, gm.y - 30, 14, { vel: 90, vz: 150, vida: 1 });
+      yield c.espera(0.8);
+      gm.dormindo = false; gm.estado = 'cena';
+      yield c.fala('Guardião de Pedra', 'Quem... acorda... o guardião...?');
+      yield c.fala('Line', 'Desculpa o barulho! Eu só preciso passar. O dragão levou a Bell!', 'surpresa');
+      yield c.fala('Guardião de Pedra', 'Ninguém... passa. Só a luz... atravessa... a pedra.');
+      line.anim.tocar('LINE_DETERMINED', true);
+      yield c.fala('Line', 'Então vai ser na luz mesmo.', 'bravo');
+      j.dica('golem', 'Acerte o cristal do peito com a magia (Q) para abrir a guarda. Pule a onda do pisão!');
+      gm.acordar();
+    },
+
+    *golemVencido(c, j, gm) {
+      const line = j.line;
+      yield c.espera(0.6);
+      j.particulas.emitir('brilho', gm.x, gm.y - 40, 24, { vel: 120, vida: 1, r: 7 });
+      yield c.fala('Guardião de Pedra', 'A luz... é tua... Que ela... te guie... até o céu...');
+      line.anim.tocar('LINE_RELIEVED', true);
+      yield c.espera(0.8);
+      j.flashTela = 0.6;
+      j.flags.estrela = true;
+      line.temEstrela = true; line.mana = line.manaMax;
+      yield c.titulo('Nova magia!', 'Chuva de Estrelas', 2.2);
+      yield c.fala('', LB.entrada.usandoToque()
+        ? 'Segure ✨ até a Line brilhar e solte: estrelas explodem em volta, atingindo tudo por perto. Gasta 3 ◆.'
+        : 'Segure Q (ou U) até a Line brilhar e solte: estrelas explodem em volta, atingindo tudo por perto. Gasta 3 ◆.');
+      line.anim.tocar('LINE_HAPPY', true);
+      yield c.fala('Line', 'O caminho pro norte abriu! Espera só, Bell.', 'riso');
+      j.salvar();
+    },
+
+    *montanha(c, j) {
+      yield c.espera(0.4);
+      yield c.fala('Line', 'A Montanha de Brasa... O covil do dragão fica lá no topo.', 'neutro');
+      yield c.fala('Line', 'Tem um portão de fogo lá em cima... e três tochas apagadas pelo caminho. Aposto que a luz acende.', 'maroto');
+      j.flags.montanhaVista = true;
+      j.salvar();
+    },
+
+    *portaoAberto(c, j) {
+      yield c.camera(T(17.5), T(4), 1.2);
+      yield c.espera(0.6);
+      yield c.camera(j.line.x, j.line.y - 24, 0.8);
+      j.line.anim.tocar('LINE_DETERMINED', true);
+      yield c.fala('Line', 'O portão abriu! Aguenta firme, Bell. Tô chegando.', 'bravo');
+    },
+
+    *bauCoracao(c, j, bau) {
+      const line = j.line;
+      line.anim.tocar('LINE_CROUCH', true);
+      yield c.animacao(line);
+      bau.aberto = true;
+      j.flags.baus = (j.flags.baus || []).concat(j.mapa.id + ':' + bau.tx + ',' + bau.ty);
+      j.flags.coracoes = (j.flags.coracoes || 0) + 1;
+      j.particulas.emitir('coracao', bau.x, bau.y - 20, 8, { vel: 50, vida: 1.2 });
+      yield c.espera(0.4);
+      line.anim.tocar('LINE_CROUCH_STAND', true);
+      yield c.animacao(line);
+      line.hpMax = 6 + 2 * j.flags.coracoes; line.hp = line.hpMax;
+      line.anim.tocar('LINE_HAPPY', true);
+      yield c.titulo('Coração extra!', 'A vida máxima da Line aumentou', 2);
+      j.salvar();
     },
 
     *placa(c, j, texto) {

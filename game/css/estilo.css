@@ -111,6 +111,7 @@ th { color: var(--destaque); }
 #b-esquivar { right: 8px; bottom: 94px; }
 #b-especial { right: 92px; bottom: 78px; }
 #b-defender { right: 166px; bottom: 30px; }
+#b-magia { right: 172px; bottom: 108px; background: rgba(90, 140, 255, 0.55); }
 #b-interagir { right: 0; bottom: 172px; pointer-events: auto; padding: 10px 16px; border-radius: 12px; border: 2px solid #ffcf9a; background: rgba(240, 138, 75, 0.85); color: #2a1305; font-weight: 700; }
 
 #tarefas { position: fixed; left: max(14px, env(safe-area-inset-left)); top: 58px; background: rgba(22, 17, 32, 0.82); border: 1px solid var(--borda); border-radius: 12px; padding: 8px 12px; font-size: 14px; z-index: 9; pointer-events: none; min-width: 190px; }

@@ -26,6 +26,8 @@
       this.tint = null;
       this.inimigos = [];
       this.itens = [];
+      this.projeteis = [];
+      this.avisoMana = 0;
       this.redimensionar();
       window.addEventListener('resize', () => this.redimensionar());
     }
@@ -85,10 +87,11 @@
       this.efeitos = [];
       this.inimigos = [];
       this.itens = [];
+      this.projeteis = [];
       this.bell = null; this.dragao = null; this.duo = null; this.olho = null;
       this.chefeAtivo = false; this.promptFinal = false; this.presa = null; this.jaulaAberta = false;
       this.fade = 0; this.flashTela = 0; this.congelado = 0;
-      this.tint = id === 'covil' ? { cor: '255,90,30', a: 0.08 } : null;
+      this.tint = { covil: { cor: '255,90,30', a: 0.08 }, montanha: { cor: '255,110,40', a: 0.07 }, ruinas: { cor: '110,190,255', a: 0.05 } }[id] || null;
       this.cena = null;
       this.ambiente = new LB.cenario.Ambiente(this.mapa);
       this.bichos = []; this.npcs = []; this.baloes = []; this.rastroLine = []; this.acaoAtual = null;
@@ -103,18 +106,27 @@
         this.mapa.props = this.mapa.props.filter((p) => !(p.tipo === 'espinheiro' && this.mapa.l[p.ty][p.tx] === '.'));
         this.mapa.renderizarChao();
       }
-      for (const p of this.mapa.props) if (p.tipo === 'bau' && this.flags.espada) p.aberto = true;
+      const baus = this.flags.baus || [];
+      for (const p of this.mapa.props) if (p.tipo === 'bau' && ((p.conteudo === 'espada' && this.flags.espada) || baus.includes(id + ':' + p.tx + ',' + p.ty))) p.aberto = true;
 
-      const ini = chegada || this.mapa.def.inicio;
+      // Sem ponto de chegada (continuar / tentar de novo): volta para a última fonte bebida nesta área.
+      const cp = !chegada && this.flags.checkpoint && this.flags.checkpoint.area === id ? this.flags.checkpoint : null;
+      const ini = chegada || cp || this.mapa.def.inicio;
       const hp = this.line ? this.line.hp : 6;
+      const mana = this.line ? this.line.mana : 6;
       this.line = new LB.Line(T(ini.x), T(ini.y), ini.dir);
       this.line.temEspada = !!this.flags.espada;
-      this.line.hp = id === 'covil' ? this.line.hpMax : Math.max(3, hp);
+      this.line.temMagia = !!this.flags.magia;
+      this.line.temEstrela = !!this.flags.estrela;
+      this.line.hpMax = 6 + 2 * (this.flags.coracoes || 0);
+      this.line.hp = id === 'covil' || cp ? this.line.hpMax : Math.max(3, Math.min(this.line.hpMax, hp));
+      this.line.mana = cp ? this.line.manaMax : Math.min(this.line.manaMax, mana);
       if (this.line.dir === 'LEFT') this.line.lado = -1;
       this.line.voltarLivre();
       this.cameraEm(this.line.x, this.line.y - 24);
       this.criarInimigos();
       this.prepararArea(id, semCenaDeEntrada);
+      LB.magia.prepararArea(this, id);
 
       this.flags.area = id;
       this.salvar();
@@ -135,7 +147,8 @@
       this.inimigos = [];
       for (const d of this.mapa.def.inimigos || []) {
         if (d.depoisDe && !this.flags[d.depoisDe]) continue;
-        this.inimigos.push(new LB.Sombra(T(d.x + 0.5), T(d.y + 0.9)));
+        const x = T(d.x + 0.5), y = T(d.y + 0.9);
+        this.inimigos.push(d.tipo === 'fogo' || d.tipo === 'luz' ? new LB.FogoFatuo(x, y, d.tipo) : new LB.Sombra(x, y));
       }
     }
 
@@ -201,7 +214,7 @@
 
     // ---------------- Combate ----------------
     alvos() {
-      const lista = this.inimigos.filter((e) => e.vivo && e.estado !== 'morrendo');
+      const lista = this.inimigos.filter((e) => e.vivo && e.estado !== 'morrendo' && !e.dormindo);
       if (this.dragao && this.chefeAtivo) lista.push(this.dragao);
       return lista;
     }
@@ -224,6 +237,10 @@
           // O dragão é grande: vale acertar qualquer parte do corpo à frente da Line.
           const dx = (alvo.x - line.x) * (golpe.raio ? 1 : line.lado);
           dentro = Math.hypot(alvo.x - line.x, (cy - line.y) * 0.9) < (golpe.raio || golpe.alcance) + 72 && (golpe.raio || dx > -50);
+        } else if (alvo.golem) {
+          // O guardião é grande: vale acertar de frente ou por baixo, dentro do alcance.
+          const dx = (alvo.x - line.x) * line.lado;
+          dentro = Math.hypot(alvo.x - line.x, (alvo.y - line.y) * 0.8) < (golpe.raio || golpe.alcance) + tr && (golpe.raio || dx > -26 || Math.abs(alvo.x - line.x) < 30);
         } else if (golpe.raio) dentro = Math.hypot(alvo.x - line.x, (cy - line.y) * 1.4) < golpe.raio + tr;
         else {
           const dx = (alvo.x - line.x) * line.lado, dy = cy - line.y;
@@ -274,9 +291,18 @@
     }
 
     aoDerrotarInimigo(e) {
-      if (Math.random() < 0.4) this.itens.push({ tipo: 'coracao', x: e.x, y: e.y, t: 0 });
-      this.particulas.emitir('sombra', e.x, e.y - 14, 12, { vel: 80, vida: 0.7, r: 5 });
       this.inimigos = this.inimigos.filter((i) => i !== e);
+      if (e.golem) {
+        this.flags.golem = true;
+        LB.magia.abrirBarreira(this, 'golem');
+        this.iniciarCena(LB.HISTORIA.golemVencido, { semPular: false }, e);
+        return;
+      }
+      const r = Math.random();
+      if (r < 0.35) this.itens.push({ tipo: 'coracao', x: e.x, y: e.y, t: 0 });
+      else if (this.flags.magia && r < 0.7) this.itens.push({ tipo: 'mana', x: e.x, y: e.y, t: 0 });
+      if (e instanceof LB.FogoFatuo) this.particulas.emitir(e.tipo === 'fogo' ? 'brasa' : 'brilho', e.x, e.y - 30, 12, { vel: 80, vida: 0.6, r: 4 });
+      else this.particulas.emitir('sombra', e.x, e.y - 14, 12, { vel: 80, vida: 0.7, r: 5 });
     }
 
     aoVencerDragao() {
@@ -334,8 +360,10 @@
         if (p.tipo === 'bau' && !p.aberto && perto(p.x, p.y + 12)) acoes.push({ texto: 'Abrir', x: p.x, y: p.y - 40, fazer: () => {
           l.dir = LB.dirDe(p.x - l.x, p.y - l.y, l.dir);
           if (p.x !== l.x) l.lado = p.x < l.x ? -1 : 1;
-          this.iniciarCena(LB.HISTORIA.espada, { semPular: true }, p);
+          this.iniciarCena(p.conteudo === 'coracao' ? LB.HISTORIA.bauCoracao : LB.HISTORIA.espada, { semPular: true }, p);
         } });
+        if (p.tipo === 'altar' && !this.flags.magia && perto(p.x, p.y + 14, 54)) acoes.push({ texto: 'Tocar a luz', x: p.x, y: p.y - 70, prio: 1, fazer: () => this.iniciarCena(LB.HISTORIA.altar, { semPular: true }, p) });
+        if (p.tipo === 'fonte' && perto(p.x, p.y + 14, 50)) acoes.push({ texto: 'Beber da fonte', x: p.x, y: p.y - 56, fazer: () => this.beberFonte(p) });
       }
       this.acoesExtras(acoes, perto);
       // Tarefas e objetos têm prioridade sobre carinho; entre iguais, vence o mais perto.
@@ -348,6 +376,17 @@
     }
 
     objetoProximo() { return this.acoesPossiveis(); }
+
+    // Fonte: recupera vida e magia e vira ponto de retorno.
+    beberFonte(p) {
+      const l = this.line;
+      l.hp = l.hpMax; l.mana = l.manaMax;
+      this.flags.checkpoint = { area: this.mapa.id, x: p.x / TILE, y: (p.y + 26) / TILE, dir: 'FRONT' };
+      this.salvar();
+      this.particulas.emitir('agua', p.x, p.y - 20, 14, { vel: 60, vz: 90, vida: 0.8 });
+      this.particulas.emitir('coracao', l.x, l.y - 50, 3, { vel: 30, vida: 1 });
+      this.dica('fonte_' + this.mapa.id, 'Vida e magia renovadas! Se a Line cair nesta área, ela volta para esta fonte.');
+    }
 
     interagir(line, viaAtaque) {
       if (viaAtaque && line.temEspada) return false;
@@ -404,6 +443,8 @@
       this.atualizarVida(dt);
       for (const e of this.inimigos) e.atualizar(dt, this);
       if (this.dragao) this.dragao.atualizar(dt, this);
+      LB.magia.atualizarProjeteis(this, dt);
+      this.avisoMana = Math.max(0, this.avisoMana - dt);
       if (this.bell) this.bell.atualizar(dt, this);
       if (this.duo) this.duo.anim.atualizar(dt);
       if (this.presa) { const { bell, dragao } = this.presa; bell.x = dragao.x; bell.y = dragao.y + 6; bell.z = Math.max(0, dragao.alturaVoo + 10); }
@@ -425,18 +466,22 @@
       for (const s of this.mapa.def.saidas) {
         const tx = l.x / TILE, ty = (l.y - 4) / TILE;
         if (tx >= s.x && tx < s.x + s.w && ty >= s.y - 0.5 && ty < s.y + s.h) {
-          if (s.para === 'covil' && !this.flags.espada) continue;
+          if (s.requer && !this.flags[s.requer]) continue;
           this.iniciarArea(s.para, s.chegada);
           return;
         }
       }
       // Itens.
       for (const it of this.itens) {
-        if (it.tipo !== 'coracao') continue;
+        if (it.tipo !== 'coracao' && it.tipo !== 'mana') continue;
         it.t += dt;
-        if (Math.hypot(it.x - l.x, it.y - l.y) < 20 && l.hp < l.hpMax) {
+        if (Math.hypot(it.x - l.x, it.y - l.y) > 20) continue;
+        if (it.tipo === 'coracao' && l.hp < l.hpMax) {
           it.pego = true; l.hp = Math.min(l.hpMax, l.hp + 2);
           this.particulas.emitir('coracao', it.x, it.y - 20, 3, { vel: 30, vida: 1 });
+        } else if (it.tipo === 'mana' && l.mana < l.manaMax) {
+          it.pego = true; l.mana = Math.min(l.manaMax, l.mana + 2);
+          this.particulas.emitir('brilho', it.x, it.y - 20, 6, { vel: 40, vida: 0.6, r: 4 });
         }
       }
       this.itens = this.itens.filter((i) => !i.pego && i.t < 14);
@@ -491,7 +536,8 @@
 
       // Avisos e sombras.
       if (this.dragao && this.chefeAtivo) this.dragao.desenharAvisos(g, this);
-      for (const it of this.itens) if (it.tipo === 'coracao') LB.desenho.sombraChao(g, it.x, it.y, 6, 0.2);
+      for (const e of this.inimigos) if (e.desenharAvisos) e.desenharAvisos(g, this);
+      for (const it of this.itens) if (it.tipo === 'coracao' || it.tipo === 'mana') LB.desenho.sombraChao(g, it.x, it.y, 6, 0.2);
       const atores = [this.line, ...this.inimigos, ...this.bichos, ...this.npcs];
       if (this.bell) atores.push(this.bell);
       if (this.dragao) atores.push(this.dragao);
@@ -503,6 +549,7 @@
       for (const p of m.props) if (p.x > vis.x - 60 && p.x < vis.x + vis.w + 60 && p.y > vis.y && p.y < vis.y + vis.h + 80) lista.push({ y: p.y, p });
       for (const a of atores) lista.push({ y: a.y, a });
       for (const it of this.itens) lista.push({ y: it.y, item: it });
+      for (const pr of this.projeteis) lista.push({ y: pr.y, proj: pr });
       if (m.def.jaula) lista.push({ y: T(m.def.jaula.y) + 2, jaula: true });
       const tigela = this.pontoMapa('tigela');
       if (tigela) lista.push({ y: tigela.y - 2, tigela });
@@ -512,7 +559,9 @@
       for (const o of lista) {
         if (o.p) this.desenharProp(g, o.p);
         else if (o.a) o.a.desenhar(g, this);
+        else if (o.proj) LB.magia.desenharProjetil(g, o.proj, this.tempo);
         else if (o.item && o.item.tipo === 'ovo') this.desenharOvo(g, o.item);
+        else if (o.item && o.item.tipo === 'mana') LB.magia.desenharItemMana(g, o.item, this.tempo);
         else if (o.item) LB.desenho.coracaoForma(g, o.item.x, o.item.y - 12 - Math.sin(this.tempo * 4) * 3, 7, o.item.t > 11 && Math.floor(this.tempo * 8) % 2 ? 'rgba(255,93,143,.4)' : '#ff5d8f');
         else if (o.tigela) this.desenharTigela(g, o.tigela);
         else if (o.jaula) LB.desenho.jaula(g, T(m.def.jaula.x), T(m.def.jaula.y) + 2, this.jaulaAberta, this.tempo);
@@ -529,6 +578,7 @@
       const W = this.canvas.width, H = this.canvas.height;
       if (this.tint && this.tint.a > 0) { g.fillStyle = `rgba(${this.tint.cor},${this.tint.a})`; g.fillRect(0, 0, W, H); }
       if (m.tema === 'floresta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,20,0,.35)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
+      if (m.tema === 'ruinas' || m.tema === 'montanha') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, m.tema === 'ruinas' ? 'rgba(0,15,30,.4)' : 'rgba(30,5,0,.45)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (m.tema === 'covil') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.85); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,.6)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (this.flashTela > 0) { g.fillStyle = `rgba(255,255,255,${this.flashTela * 1.6})`; g.fillRect(0, 0, W, H); }
 
@@ -563,11 +613,12 @@
         case 'casa': d.casa(g, p); break;
         case 'bau': d.bau(g, p.x, p.y, p.aberto, this.tempo); break;
         case 'placa': d.placa(g, p.x, p.y); break;
+        case 'pilar': case 'cristal': case 'altar': case 'tocha': case 'fonte': case 'barreira': LB.magia.desenharProp(g, p, this); break;
       }
     }
 
     desenharEfeito(g, f) {
-      if (f.tipo !== 'rastro') return;
+      if (f.tipo !== 'rastro') { LB.magia.desenharEfeito(g, f, this); return; }
       const k = f.t / f.dur;
       const vertical = /VERTICAL|DIAGONAL/.test(f.anim);
       const a = 1 - k;
@@ -598,6 +649,17 @@
         LB.desenho.coracaoForma(g, x, y, 9 * s, 'rgba(0,0,0,.45)');
         if (valor === 2) LB.desenho.coracaoForma(g, x, y, 8 * s, '#ff4d6d');
         else if (valor === 1) { g.save(); g.beginPath(); g.rect(x - 9 * s, y - 12 * s, 9 * s, 24 * s); g.clip(); LB.desenho.coracaoForma(g, x, y, 8 * s, '#ff4d6d'); g.restore(); }
+      }
+      LB.magia.desenharHudMana(g, this, s);
+      const golem = this.inimigos.find((e) => e.golem && !e.dormindo);
+      if (golem) {
+        const W = this.canvas.width;
+        const bw = Math.min(W * 0.5, 340 * s), bh = 9 * s, bx = (W - bw) / 2, by = this.canvas.height - 26 * s;
+        g.fillStyle = 'rgba(0,0,0,.6)'; g.fillRect(bx - 3 * s, by - 3 * s, bw + 6 * s, bh + 6 * s);
+        g.fillStyle = '#3b3a33'; g.fillRect(bx, by, bw, bh);
+        g.fillStyle = golem.estado === 'atordoado' ? '#7fd6ff' : '#b8b09a'; g.fillRect(bx, by, bw * golem.hp / golem.hpMax, bh);
+        g.fillStyle = '#fff'; g.font = `600 ${11 * s}px system-ui, sans-serif`; g.textAlign = 'center';
+        g.fillText(golem.nome, W / 2, by - 6 * s);
       }
       if (this.chefeAtivo && this.dragao) {
         const W = this.canvas.width;

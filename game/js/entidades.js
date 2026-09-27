@@ -112,6 +112,8 @@
       this.cooldownGiro = 0;
       this.raio = 12;
       this.visivel = true;
+      this.temMagia = false; this.temEstrela = false;
+      this.manaMax = 6; this.mana = 6;
     }
 
     mudar(estado, anim, reiniciar) {
@@ -142,6 +144,7 @@
       this.t += dt;
       this.invul = Math.max(0, this.invul - dt);
       this.cooldownGiro = Math.max(0, this.cooldownGiro - dt);
+      if (this.temMagia && this.mana < this.manaMax && this.estado !== 'carregar') this.mana = Math.min(this.manaMax, this.mana + dt / 2.6);
       this.anim.atualizar(dt);
       const st = this.estadoAnim();
       const controlavel = !jogo.cena && this.estado !== 'morta';
@@ -269,6 +272,34 @@
           } else if (this.anim.base === 'LINE_CROUCH_STAND' && st.acabou) this.voltarLivre();
           break;
 
+        case 'magia':
+          if (!this.lancou && st.progresso >= 0.4) { this.lancou = true; LB.magia.raio(jogo, this); }
+          if (controlavel && st.progresso > 0.55 && E.apertou('magia')) { this.lancarRaio(jogo); break; }
+          if (st.acabou) this.voltarLivre();
+          break;
+
+        case 'carregar': {
+          // Segurando o botão de magia: carrega a Chuva de Estrelas; soltando cedo vira Raio de Luz.
+          const cheia = this.t >= 0.9 && this.mana >= LB.magia.CUSTO_ESTRELA;
+          if (!this.efeitoCarga) { this.efeitoCarga = { tipo: 'carga', t: 0, dur: 0.12 }; jogo.efeitos.push(this.efeitoCarga); }
+          this.efeitoCarga.carga = this.t / 0.9; this.efeitoCarga.t = 0;
+          if (Math.random() < dt * 20) {
+            const a = Math.random() * TAU, r = 40;
+            jogo.particulas.emitir(cheia ? 'brilho' : 'gota', this.x + Math.cos(a) * r, this.y - 30 + Math.sin(a) * r * 0.5, 1, { angulo: a + Math.PI, abertura: 0.1, vel: 70, vida: 0.4, r: cheia ? 3 : 2 });
+          }
+          if (!controlavel || !E.segura('magia')) {
+            this.efeitoCarga.t = this.efeitoCarga.dur; this.efeitoCarga = null;
+            if (cheia) { this.mana -= LB.magia.CUSTO_ESTRELA; this.mudar('estrela', 'LINE_CAST_STARS'); this.estrelaFeita = false; }
+            else this.lancarRaio(jogo);
+          }
+          break;
+        }
+
+        case 'estrela':
+          if (!this.estrelaFeita && st.progresso >= 0.3) { this.estrelaFeita = true; LB.magia.estrela(jogo, this); }
+          if (st.acabou) this.voltarLivre();
+          break;
+
         case 'final': jogo.passoFinal(this, st, dt); break;
 
         case 'cena': this.cena(dt, jogo, st); break;
@@ -278,7 +309,7 @@
 
       if (!this.noAr && this.estado !== 'forte' && this.estado !== 'morta') {
         const tile = jogo.mapa.tileEm(this.x, this.y - 3);
-        if (tile === 'w' || tile === '~') this.cairNaAgua(jogo);
+        if (tile === 'w' || tile === '~' || tile === 'j') this.cairNaAgua(jogo);
         else if (this.estado === 'livre') this.seguro = { x: this.x, y: this.y };
       }
     }
@@ -316,6 +347,11 @@
         if (E.apertou('especial') && this.temEspada) {
           if (!this.armada) { this.mudar('sacar', 'LINE_SWORD_DRAW'); return; }
           if (this.cooldownGiro <= 0) { this.mirar(jogo); this.mudar('giro', 'LINE_ATTACK_SPIN'); this.alvosAtingidos.clear(); this.janela = -1; return; }
+        }
+        if (E.apertou('magia')) {
+          if (!this.temMagia) { jogo.dica('semMagia', this.temEspada ? 'A Line ainda não sabe magia. Dizem que as Ruínas Encantadas guardam uma luz antiga...' : 'A Line ainda não sabe magia.'); }
+          else if (this.temEstrela) { this.armada = this.temEspada; this.efeitoCarga = null; this.mudar('carregar', 'LINE_CAST_CHARGE'); return; }
+          else { this.lancarRaio(jogo); return; }
         }
         if (E.apertou('esquivar')) {
           if (this.correndo && movendo) this.dash(jogo, eixo); else this.esquivar(jogo, eixo);
@@ -402,6 +438,19 @@
       this.semCombate = 0;
     }
 
+    lancarRaio(jogo) {
+      if (this.mana < LB.magia.CUSTO_RAIO) {
+        jogo.avisoMana = 0.6;
+        jogo.dica('semMana', 'Sem magia! Ela volta sozinha aos poucos, e os cristais azuis que os inimigos soltam recarregam.');
+        this.voltarLivre(); return;
+      }
+      this.mana -= LB.magia.CUSTO_RAIO;
+      this.mirar(jogo);
+      this.armada = this.temEspada;
+      this.lancou = false;
+      this.mudar('magia', 'LINE_CAST_SPELL');
+    }
+
     atacarCorrendo(jogo) {
       this.passo = SEQUENCIA.length - 1;
       this.mirar(jogo);
@@ -430,7 +479,7 @@
       this.noAr = false;
       jogo.particulas.emitir('poeira', this.x, this.y, 6, { vel: 50, vida: 0.4 });
       const tile = jogo.mapa.tileEm(this.x, this.y - 3);
-      if (tile === 'w' || tile === '~') { this.cairNaAgua(jogo); return; }
+      if (tile === 'w' || tile === '~' || tile === 'j') { this.cairNaAgua(jogo); return; }
       this.voltarLivre();
     }
 
@@ -466,11 +515,13 @@
     }
 
     cairNaAgua(jogo) {
-      jogo.particulas.emitir('agua', this.x, this.y, 14, { vel: 90, vz: 120, vida: 0.6 });
+      const fenda = jogo.mapa.tileEm(this.x, this.y - 3) === 'j';
+      jogo.particulas.emitir(fenda ? 'poeira' : 'agua', this.x, this.y, 14, { vel: 90, vz: fenda ? 0 : 120, vida: 0.6 });
       this.x = this.seguro.x; this.y = this.seguro.y;
       this.noAr = false;
       this.receberDano(jogo, 1, false, this.x, this.y - 1, { ignorarDefesa: true, agua: true });
-      jogo.dica('agua', 'Caiu na água! Pule (Espaço) para atravessar o riacho.');
+      if (fenda) jogo.dica('fenda', 'Caiu na fenda! Pule (Espaço) para atravessar. Correndo, o pulo vai mais longe.');
+      else jogo.dica('agua', 'Caiu na água! Pule (Espaço) para atravessar o riacho.');
     }
 
     // Retorna 'bloqueado', true (tomou dano) ou false (ignorado).
@@ -644,6 +695,9 @@
       else { this.estado = 'atordoada'; this.t = 0; }
       return true;
     }
+
+    // Sombras são fracas contra a luz: a magia dói mais.
+    receberMagia(jogo, dano, ox, oy) { return this.receberGolpe(jogo, dano + 1, ox, oy, 140); }
 
     desenharSombra(g) { D().sombraChao(g, this.x, this.y, 13, 0.3); }
 

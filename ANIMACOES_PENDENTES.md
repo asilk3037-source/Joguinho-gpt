@@ -2,7 +2,7 @@
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
-Status atual: **160** animações prontas (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+Status atual: **160** animações prontas, mais 13 novas pedidas para as fases de magia (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
 
 ## Como mandar arte nova
 
@@ -36,6 +36,21 @@ A prancha tem o dragão com ~130 px de altura. O ideal é **~400 px de corpo, em
 
 ### Line: emoções das cenas
 - Completas! Itens 43–49: determinada, brava, assustada, triste, chorando, gritando por Bell e aliviada.
+
+## Capítulo novo — magia e aventura
+
+Duas fases novas entre a floresta e o covil: **Ruínas Encantadas** e **Montanha de Brasa**. Tudo nelas está desenhado no código por enquanto. A arte abaixo entra sozinha quando chegar, com o código exato.
+
+- **Line lançando magia:**
+  - `LINE_CAST_SPELL`: lança o Raio de Luz. Hoje usa o ataque vertical.
+  - `LINE_CAST_CHARGE`: carregando a Chuva de Estrelas, em loop. Hoje usa a postura de combate.
+  - `LINE_CAST_STARS`: solta a Chuva de Estrelas. Hoje usa o giro.
+- **Guardião de Pedra** (chefe das ruínas), virado para a direita: `GOLEM_SLEEP`, `GOLEM_IDLE`, `GOLEM_WALK`, `GOLEM_SLAM` (pisão), `GOLEM_THROW` (arremessar pedra), `GOLEM_STUNNED` (tonto, com o cristal do peito rachado) e `GOLEM_DEATH` (desmoronando). Ele tem um cristal azul no peito, que brilha quando está protegido.
+- **Fogo-fátuo** (luzinha que atira orbes): `WISP_IDLE`, `WISP_ATTACK` e `WISP_DEATH`. Há duas cores, azul nas ruínas e de fogo na montanha, então pode vir só uma, em tons claros, para eu recolorir.
+- **Cenário:**
+  - Ruínas: chão de lajes, paredes, pilares, cristal num pedestal (apagado e aceso), altar com orbe de luz, fonte mágica e barreira de luz.
+  - Montanha: chão de rocha vulcânica, paredes, fendas, tocha num pedestal (apagada e acesa) e portão de fogo.
+  - Pode vir numa prancha, como o pacote da fazenda.
 
 ## Prioridade 2 — deixam o jogo mais bonito
 
