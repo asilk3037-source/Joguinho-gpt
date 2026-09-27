@@ -2,7 +2,7 @@
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
-Status atual: **72 de 166** animações prontas. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+Status atual: **132** animações prontas (Line, Bell, dragão chibi, Theo, galinhas, vacas, porcos e cavalo). A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
 
 ## Como mandar arte nova
 
@@ -23,14 +23,11 @@ O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_S
 - `BELL_BREAK_FREE`, `BELL_HAPPY`, `BELL_RELIEVED`: saindo da jaula e feliz. Hoje usa a gargalhada.
 - `BELL_RUN_FRONT/BACK/LEFT/RIGHT`: hoje usa a caminhada mais rápida.
 
-### Dragão vermelho (faltam só estas)
-- `DRAGON_IDLE` e `DRAGON_WALK`: parado respirando e andando. Hoje usa a pose parada com movimento de respiração.
-- `DRAGON_ROAR`: rugido.
-- `DRAGON_CLAW_ATTACK` ou `DRAGON_BITE`: ataque de perto.
-- `DRAGON_FIRE_CHARGE` e `DRAGON_FIRE_STREAM`: cuspir fogo **no chão**. A prancha "ataque voando" tinha o fogo misturado com o fundo preto e não recortou bem. Se vier com fundo transparente, eu uso.
-- `DRAGON_STUNNED` e `DRAGON_WEAK_POINT_HIT`: atordoado, com o peito brilhando.
-- `DRAGON_HIT`, `DRAGON_FINAL_HIT`, `DRAGON_FALL`, `DRAGON_DEFEATED`: tomando dano e caindo.
-- `DRAGON_EYE_OPEN_END`: o olho abrindo no escuro, na cena final.
+### Dragão
+O dragão chibi já tem quase tudo (parado, andar, correr, voar, decolar, pousar, fogo, ataque aéreo, garras, dano, cair, dormir e ressurgir). Faltam:
+- `DRAGON_ROAR`: rugido (hoje usa a preparação do fogo).
+- `DRAGON_TAIL_ATTACK`: golpe de cauda (hoje usa o ataque de garra).
+- `DRAGON_STUNNED`: atordoado de verdade (hoje usa quadros do "tomar dano" em loop).
 
 ### Line: emoções das cenas
 - `LINE_CALL_BELL` (gritando por Bell), `LINE_SCARED`, `LINE_SAD`, `LINE_DETERMINED`, `LINE_RELIEVED`.
@@ -42,7 +39,7 @@ O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_S
 - **Inimigo Sombra** (floresta): `SHADOW_IDLE`, `SHADOW_MOVE`, `SHADOW_ATTACK`, `SHADOW_HIT`, `SHADOW_DEATH`.
 - **Line com a espada na mão:** `LINE_COMBAT_WALK_*` e `LINE_COMBAT_RUN_*`.
 - **Mago:** hoje é uma imagem parada que respira e brilha. Animações de falar ou acenar ajudariam.
-- **Bichinhos da fazenda:** galinha, pintinho, vaca, ovelha, porco, Theo (cachorro), gato e pato são desenhados no código. Se quiser arte própria: andar, comer e carinho de cada um.
+- **Bichinhos:** galinhas, pintinhos, vacas, porcos, cavalo e o Theo já usam a arte que você mandou. Ainda são desenhados no código: **ovelha, pato e gato**.
 
 ## Prioridade 3 — opcionais
 - Efeitos (`FX_*`): hoje são partículas feitas no código.
@@ -50,7 +47,7 @@ O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_S
 
 ## Cenário
 
-As árvores já usam o tileset da fazenda que você mandou. O resto (casa, celeiro, galinheiro, cercas, poço, moinho, horta, lago) ainda é desenhado no código. Se o tileset vier com as peças separadas e fundo transparente (casa, celeiro, cerca, poço, pedras, flores, píer, barco…), eu troco tudo pela arte.
+A fazenda já usa o pacote: casa, celeiro, galinheiro, moinho, poço, árvores (normais, macieiras, cerejeiras e pinheiros na floresta), horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho e trigo. Ainda desenhados no código: cercas, chão, água, flores pequenas e o covil.
 
 ## Ajustes de arte percebidos
 1. **Dois estilos da Line.** Do item 36 em diante, ela aparece mais realista. O resto é chibi.

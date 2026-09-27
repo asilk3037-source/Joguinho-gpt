@@ -181,9 +181,10 @@
         this.fogoAng += Math.max(-rastreio * dt, Math.min(rastreio * dt, delta));
       }
       this.anim.tocar('DRAGON_FIRE_STREAM');
-      const ox = this.x + Math.cos(this.fogoAng) * 30, oy = this.y + Math.sin(this.fogoAng) * 20 + 10;
+      const boca = LB.sprite('DRAGON_FIRE_STREAM') ? { x: this.x + this.lado * 52, z: 100 } : { x: this.x + Math.cos(this.fogoAng) * 30, z: 70 };
+      const ox = boca.x, oy = this.y + Math.sin(this.fogoAng) * 20 + 10;
       for (let i = 0; i < 3; i++) {
-        jogo.particulas.emitir('fogo', ox, oy, 1, { angulo: this.fogoAng, abertura: 0.3, vel: 300, plano: true, vida: 0.75, z: 70, vz: -90, r: 6 });
+        jogo.particulas.emitir('fogo', ox, oy, 1, { angulo: this.fogoAng, abertura: 0.3, vel: 300, plano: true, vida: 0.75, z: boca.z, vz: -boca.z * 1.3, r: 6 });
       }
       this.fogoTick -= dt;
       if (this.fogoTick <= 0 && this.naChama(line.x, line.y)) {
@@ -275,7 +276,7 @@
         if (this.flash > 0) g.filter = 'brightness(2)';
         LB.desenharSprite(g, st.r, st.quadro, this.x, y, ALTURA_DRAGAO);
         g.filter = 'none';
-        if (this.fraco) this.brilhoPeito(g, this.x + this.lado * 40, y - 55, jogo.tempo);
+        if (this.fraco) this.brilhoPeito(g, this.x + this.lado * 16, y - 62, jogo.tempo);
         return;
       }
       const img = LB.personagem('dragao');

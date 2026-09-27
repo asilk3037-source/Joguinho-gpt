@@ -15,7 +15,46 @@
     cachorro: { vel: 70, fuga: 0, sons: ['Au! Au!', 'Au!', 'Auuu~'], nome: 'Theo', altura: 28 },
     gato: { vel: 0, fuga: 0, sons: ['Miau~', 'Rrrrr...'], nome: 'gato', altura: 22 },
     pato: { vel: 16, fuga: 0, sons: ['Quack!', 'Quack quack!'], nome: 'pato', altura: 20 },
+    cavalo: { vel: 22, fuga: 0, sons: ['Iiirrííí!', 'Frrr...'], nome: 'cavalo', altura: 50 },
   };
+
+  // Para que lado a arte de cada bicho olha (1 = direita, -1 = esquerda).
+  const FACE = { galinha: 1, pintinho: 1, vaca: 1, porco: -1, cavalo: 1, cachorro: 1 };
+
+  // Escolhe o código de animação do sprite para o estado atual (null = usa o desenho do código).
+  function animacaoDe(b, jogo) {
+    const andando = b.estado === 'andando' || b.estado === 'indoComer';
+    const noite = jogo.flags.prologo && jogo.mapa.id === 'fazenda';
+    switch (b.tipo) {
+      case 'galinha': {
+        const p = b.marrom ? 'HEN_BROWN' : 'CHICKEN';
+        if (b.estado === 'fugindo') return p + '_RUN';
+        if (andando) return p + '_WALK';
+        if (b.estado === 'carinho') return p + '_SCARED';
+        if (noite) return p + '_SLEEP';
+        if (b.estado === 'comendo') return p + ['_PECK', '_EAT', '_SCRATCH', '_LAY_EGG'][b.jeito % 4];
+        return p + '_IDLE';
+      }
+      case 'pintinho': return b.estado === 'fugindo' ? 'CHICK_RUN' : andando ? 'CHICK_WALK' : 'CHICK_IDLE';
+      case 'vaca': return b.estado === 'fugindo' ? 'COW_RUN' : andando ? 'COW_WALK' : b.estado === 'comendo' ? 'COW_EAT' : 'COW_IDLE';
+      case 'porco': return b.estado === 'fugindo' || andando ? 'PIG_WALK' : b.estado === 'comendo' ? 'PIG_MUD' : b.estado === 'carinho' ? 'PIG_FRONT' : noite ? 'PIG_LIE' : 'PIG_IDLE';
+      case 'cavalo': return b.estado === 'fugindo' ? 'HORSE_RUN' : andando ? 'HORSE_WALK' : b.estado === 'comendo' ? 'HORSE_EAT' : 'HORSE_IDLE';
+      case 'cachorro': {
+        const rapido = b.velAtual > 110;
+        if (b.estado === 'fugindo' || (andando && rapido)) return 'THEO_RUN';
+        if (andando) {
+          const vert = Math.abs(b.vy || 0) > Math.abs(b.vx || 0) * 1.2;
+          return vert ? (b.vy < 0 ? 'THEO_WALK_BACK' : 'THEO_WALK_FRONT') : (b.lado < 0 ? 'THEO_WALK_LEFT' : 'THEO_WALK_RIGHT');
+        }
+        if (b.estado === 'comendo') return 'THEO_SIT_FRONT';
+        if (b.estado === 'carinho') return 'THEO_SIT_IDLE';
+        if (!b.seguir && !b.comeu) return 'THEO_LIE';
+        return 'THEO_SIT';
+      }
+    }
+    return null;
+  }
+  const FPS = { WALK: 8, RUN: 12, IDLE: 5, EAT: 6, PECK: 7, SCRATCH: 7, LAY_EGG: 4, SLEEP: 3, SCARED: 10, MUD: 4, FRONT: 4, SIT: 3, SIT_IDLE: 6, SIT_FRONT: 4, LIE: 1.5 };
 
   class Bicho {
     constructor(tipo, x, y, area, o) {
@@ -24,7 +63,8 @@
       this.lado = Math.random() < 0.5 ? -1 : 1;
       this.t = Math.random() * 3; this.f = Math.random() * 10;
       this.estado = 'parado'; this.alvo = null; this.espera = Math.random() * 2;
-      this.bicho = true; this.raio = tipo === 'vaca' ? 22 : 12;
+      this.bicho = true; this.raio = tipo === 'vaca' || tipo === 'cavalo' ? 22 : 12;
+      this.jeito = Math.floor(Math.random() * 4); this.tAnim = Math.random() * 5; this.animAtual = null;
       Object.assign(this, o || {});
     }
 
@@ -51,12 +91,13 @@
       if (d < 3) return true;
       const p = Math.min(d, vel * dt), nx = this.x + dx / d * p, ny = this.y + dy / d * p;
       if (Math.abs(dx) > 1) this.lado = dx < 0 ? -1 : 1;
+      this.vx = dx / d; this.vy = dy / d; this.velAtual = vel;
       if (this.livre(jogo, nx, ny) || this.ignorarColisao) { this.x = nx; this.y = ny; return false; }
       return true;
     }
 
     atualizar(dt, jogo) {
-      this.t += dt; this.f += dt;
+      this.t += dt; this.f += dt; this.tAnim += dt;
       const l = jogo.line, c = this.cfg;
       const dl = Math.hypot(l.x - this.x, l.y - this.y);
       if (this.pulo > 0) this.pulo = Math.max(0, this.pulo - dt);
@@ -147,8 +188,26 @@
       if (r) LB.desenho.sombraChao(g, this.x, this.y, r, 0.22);
     }
 
+    desenharSprite(g, jogo, hop) {
+      const cod = animacaoDe(this, jogo);
+      const s = cod && LB.sprite(cod);
+      if (!s) return false;
+      if (cod !== this.animAtual) { this.animAtual = cod; this.tAnim = 0; }
+      const sufixo = cod.replace(/^(CHICKEN|HEN_BROWN|CHICK|COW|PIG|HORSE|THEO)_/, '').replace(/_(FRONT|BACK|LEFT|RIGHT)$/, (m) => (cod.startsWith('THEO_SIT') ? m : ''));
+      const fps = FPS[sufixo] || FPS[sufixo.split('_')[0]] || 6;
+      const n = s.seq.length;
+      let i = Math.floor(this.tAnim * fps);
+      i = /LAY_EGG|FRONT$|SIT_FRONT/.test(cod) && !/WALK/.test(cod) ? Math.min(i, n - 1) % n : i % n;
+      const direcional = /_(FRONT|BACK|LEFT|RIGHT)$/.test(cod) && cod.startsWith('THEO_WALK');
+      const flip = !direcional && (FACE[this.tipo] || 1) !== this.lado;
+      LB.desenharSprite(g, { codigo: cod, sprite: s, flip }, s.seq[i], this.x, this.y - hop, 64);
+      return true;
+    }
+
     desenhar(g, jogo) {
       const t = jogo.tempo + this.f;
+      const hop0 = this.pulo > 0 ? Math.sin((0.4 - this.pulo) / 0.4 * Math.PI) * 8 : 0;
+      if (this.desenharSprite(g, jogo, hop0)) return;
       const hop = this.pulo > 0 ? Math.sin((0.4 - this.pulo) / 0.4 * Math.PI) * 8 : 0;
       g.save();
       g.translate(this.x, this.y - hop);
@@ -265,6 +324,12 @@
         g.strokeStyle = '#6d6d6d'; g.lineWidth = 2.5; g.lineCap = 'round'; g.beginPath(); g.moveTo(-5, -3); g.quadraticCurveTo(-12, -6, -10, -14 + Math.sin(t * 3) * 2); g.stroke();
       }
     },
+    cavalo(g, t, estado, andando) {
+      pernas(g, t, andando, [-12, -7, 8, 13], 0, 18, '#7a4a24', 7);
+      E(g, 0, -26, 18, 10, '#9c5f30');
+      g.strokeStyle = '#9c5f30'; g.lineWidth = 9; g.beginPath(); g.moveTo(12, -30); g.lineTo(20, -46); g.stroke();
+      E(g, 23, -46, 7, 5, '#9c5f30');
+    },
     pato(g, t) {
       const b = Math.sin(t * 2) * 0.8;
       g.strokeStyle = `rgba(255,255,255,${0.35 + 0.2 * Math.sin(t * 3)})`; g.lineWidth = 1;
@@ -283,12 +348,13 @@
     const lista = [];
     const em = (area) => ({ x: T(area.x0 + 1 + Math.random() * (area.x1 - area.x0 - 1)), y: T(area.y0 + 1 + Math.random() * (area.y1 - area.y0 - 1)) });
     if (a.galinhas) {
-      for (let i = 0; i < 5; i++) { const p = em(a.galinhas); lista.push(new Bicho('galinha', p.x, p.y, a.galinhas)); }
+      for (let i = 0; i < 5; i++) { const p = em(a.galinhas); lista.push(new Bicho('galinha', p.x, p.y, a.galinhas, { marrom: i % 2 === 1 })); }
       const mae = lista[0];
       for (let i = 0; i < 4; i++) lista.push(new Bicho('pintinho', mae.x - 12 - i * 8, mae.y + 4, a.galinhas, { mae, ordem: i }));
     }
     if (a.pasto) {
       for (let i = 0; i < 2; i++) { const p = em(a.pasto); lista.push(new Bicho('vaca', p.x, p.y, a.pasto)); }
+      { const p = em(a.pasto); lista.push(new Bicho('cavalo', p.x, p.y, a.pasto)); }
       for (let i = 0; i < 4; i++) { const p = em(a.pasto); lista.push(new Bicho('ovelha', p.x, p.y, a.pasto)); }
     }
     if (a.chiqueiro) for (let i = 0; i < 2; i++) { const p = em(a.chiqueiro); lista.push(new Bicho('porco', p.x, p.y, a.chiqueiro)); }

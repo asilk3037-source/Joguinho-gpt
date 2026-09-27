@@ -260,6 +260,7 @@
     }
 
     bloqueia(x, y, ent) {
+      for (const p of this.mapa.props) if (p.tipo === 'decoracao' && p.raio && Math.hypot(x - p.x, (y - p.y) * 1.6) < p.raio + 6) return true;
       for (const n of this.npcs || []) if (Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 8) return true;
       if (this.mapa.id === 'covil' && !this.jaulaAberta) {
         const jl = this.mapa.def.jaula;
@@ -555,6 +556,7 @@
         case 'mesa': LB.cenario.mesa(g, p, this.tempo, this.mesaOculta); break;
         case 'casinha': LB.cenario.casinha(g, p); break;
         case 'varal': LB.cenario.varal(g, p, this.tempo); break;
+        case 'decoracao': LB.cenario.decoracao(g, p, this.tempo); break;
         case 'pedra': d.pedra(g, p); break;
         case 'estalagmite': d.estalagmite(g, p); break;
         case 'espinheiro': d.espinheiro(g, p, this.tempo); break;
@@ -632,7 +634,7 @@
       const r = LB.resolver('DRAGON_EYE_OPEN_END', null, 1);
       if (r.sprite) {
         const n = r.sprite.seq.length, i = Math.min(n - 1, Math.floor(this.olho.abertura * (n - 1)));
-        g.save(); g.translate(W / 2, H / 2 + H * 0.3); LB.desenharSprite(g, r, r.sprite.seq[i], 0, 0, H * 0.8); g.restore();
+        g.save(); g.translate(W / 2, H * 0.7); g.scale(this.escala * 1.3, this.escala * 1.3); g.imageSmoothingEnabled = false; LB.desenharSprite(g, r, r.sprite.seq[i], 0, 0, 100); g.restore();
       } else LB.desenho.olhoDragao(g, W / 2, H / 2, this.olho.abertura, this.tempo);
     }
   }

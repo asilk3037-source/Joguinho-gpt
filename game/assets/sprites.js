@@ -358,109 +358,6 @@ window.SPRITES = {
   "label": "LINE_BELL_HOLD_HANDS",
   "item": "BELL_LINE_LABORATORIO_V7.html"
  },
- "DRAGON_FLY": {
-  "src": "assets/sprites/DRAGON_FLY.webp",
-  "cell": 300,
-  "count": 15,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11,
-   12,
-   13,
-   14
-  ],
-  "ground": 284,
-  "groundEnd": 295,
-  "mundo": 420.0,
-  "label": "Voar",
-  "item": "arte/dragao_vermelho/DRAGON_FLY"
- },
- "DRAGON_LAND": {
-  "src": "assets/sprites/DRAGON_LAND.webp",
-  "cell": 300,
-  "count": 12,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11
-  ],
-  "ground": 264,
-  "groundEnd": 300,
-  "mundo": 420.0,
-  "label": "Cair / aterrissar",
-  "item": "arte/dragao_vermelho/DRAGON_LAND"
- },
- "DRAGON_TAIL_ATTACK": {
-  "src": "assets/sprites/DRAGON_TAIL_ATTACK.webp",
-  "cell": 371,
-  "count": 18,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11,
-   12,
-   13,
-   14,
-   15,
-   16,
-   17
-  ],
-  "ground": 367,
-  "groundEnd": 360,
-  "mundo": 229.13,
-  "label": "Golpe de cauda",
-  "item": "arte/dragao_vermelho/DRAGON_TAIL_ATTACK"
- },
- "DRAGON_TAKEOFF": {
-  "src": "assets/sprites/DRAGON_TAKEOFF.webp",
-  "cell": 300,
-  "count": 10,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9
-  ],
-  "ground": 297,
-  "groundEnd": 292,
-  "mundo": 420.0,
-  "label": "Pular / decolar",
-  "item": "arte/dragao_vermelho/DRAGON_TAKEOFF"
- },
  "LINE_IDLE_FRONT": {
   "src": "assets/sprites/LINE_IDLE_FRONT.webp",
   "cell": 256,
@@ -1784,6 +1681,1076 @@ window.SPRITES = {
   "groundEnd": 248,
   "label": "Line — Rindo",
   "item": "LINE_BELL_ITEM_42.html"
+ },
+ "COW_EAT": {
+  "src": "assets/sprites/COW_EAT.webp",
+  "cell": 115,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 115,
+  "groundEnd": 115,
+  "mundo": 57.5,
+  "label": "COW_EAT",
+  "item": "arte/bichos/COW_EAT"
+ },
+ "COW_IDLE": {
+  "src": "assets/sprites/COW_IDLE.webp",
+  "cell": 103,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 103,
+  "groundEnd": 100,
+  "mundo": 51.5,
+  "label": "COW_IDLE",
+  "item": "arte/bichos/COW_IDLE"
+ },
+ "COW_RUN": {
+  "src": "assets/sprites/COW_RUN.webp",
+  "cell": 140,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 140,
+  "groundEnd": 140,
+  "mundo": 70.0,
+  "label": "COW_RUN",
+  "item": "arte/bichos/COW_RUN"
+ },
+ "COW_WALK": {
+  "src": "assets/sprites/COW_WALK.webp",
+  "cell": 103,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 103,
+  "groundEnd": 103,
+  "mundo": 51.5,
+  "label": "COW_WALK",
+  "item": "arte/bichos/COW_WALK"
+ },
+ "HORSE_EAT": {
+  "src": "assets/sprites/HORSE_EAT.webp",
+  "cell": 139,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 139,
+  "groundEnd": 139,
+  "mundo": 76.45,
+  "label": "HORSE_EAT",
+  "item": "arte/bichos/HORSE_EAT"
+ },
+ "HORSE_IDLE": {
+  "src": "assets/sprites/HORSE_IDLE.webp",
+  "cell": 106,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 99,
+  "groundEnd": 99,
+  "mundo": 58.3,
+  "label": "HORSE_IDLE",
+  "item": "arte/bichos/HORSE_IDLE"
+ },
+ "HORSE_RUN": {
+  "src": "assets/sprites/HORSE_RUN.webp",
+  "cell": 117,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 115,
+  "groundEnd": 115,
+  "mundo": 64.35,
+  "label": "HORSE_RUN",
+  "item": "arte/bichos/HORSE_RUN"
+ },
+ "HORSE_WALK": {
+  "src": "assets/sprites/HORSE_WALK.webp",
+  "cell": 115,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 108,
+  "groundEnd": 115,
+  "mundo": 63.25,
+  "label": "HORSE_WALK",
+  "item": "arte/bichos/HORSE_WALK"
+ },
+ "PIG_FRONT": {
+  "src": "assets/sprites/PIG_FRONT.webp",
+  "cell": 60,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 60,
+  "groundEnd": 59,
+  "mundo": 27.3,
+  "label": "PIG_FRONT",
+  "item": "arte/bichos/PIG_FRONT"
+ },
+ "PIG_IDLE": {
+  "src": "assets/sprites/PIG_IDLE.webp",
+  "cell": 79,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 72,
+  "groundEnd": 72,
+  "mundo": 35.7,
+  "label": "PIG_IDLE",
+  "item": "arte/bichos/PIG_IDLE"
+ },
+ "PIG_LIE": {
+  "src": "assets/sprites/PIG_LIE.webp",
+  "cell": 88,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 88,
+  "groundEnd": 88,
+  "mundo": 39.9,
+  "label": "PIG_LIE",
+  "item": "arte/bichos/PIG_LIE"
+ },
+ "PIG_MUD": {
+  "src": "assets/sprites/PIG_MUD.webp",
+  "cell": 96,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 95,
+  "groundEnd": 89,
+  "mundo": 43.68,
+  "label": "PIG_MUD",
+  "item": "arte/bichos/PIG_MUD"
+ },
+ "PIG_WALK": {
+  "src": "assets/sprites/PIG_WALK.webp",
+  "cell": 79,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 72,
+  "groundEnd": 79,
+  "mundo": 36.12,
+  "label": "PIG_WALK",
+  "item": "arte/bichos/PIG_WALK"
+ },
+ "DRAGON_AIR_ATTACK": {
+  "src": "assets/sprites/DRAGON_AIR_ATTACK.webp",
+  "cell": 184,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 160,
+  "groundEnd": 139,
+  "mundo": 322.0,
+  "label": "DRAGON_AIR_ATTACK",
+  "item": "arte/dragao/DRAGON_AIR_ATTACK"
+ },
+ "DRAGON_CLAW_ATTACK": {
+  "src": "assets/sprites/DRAGON_CLAW_ATTACK.webp",
+  "cell": 134,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 111,
+  "groundEnd": 111,
+  "mundo": 234.5,
+  "label": "DRAGON_CLAW_ATTACK",
+  "item": "arte/dragao/DRAGON_CLAW_ATTACK"
+ },
+ "DRAGON_DEFEATED": {
+  "src": "assets/sprites/DRAGON_DEFEATED.webp",
+  "cell": 131,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 106,
+  "groundEnd": 106,
+  "mundo": 229.25,
+  "label": "DRAGON_DEFEATED",
+  "item": "arte/dragao/DRAGON_DEFEATED"
+ },
+ "DRAGON_EYE_OPEN_END": {
+  "src": "assets/sprites/DRAGON_EYE_OPEN_END.webp",
+  "cell": 131,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 105,
+  "groundEnd": 106,
+  "mundo": 229.25,
+  "label": "DRAGON_EYE_OPEN_END",
+  "item": "arte/dragao/DRAGON_EYE_OPEN_END"
+ },
+ "DRAGON_FALL": {
+  "src": "assets/sprites/DRAGON_FALL.webp",
+  "cell": 131,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 106,
+  "groundEnd": 106,
+  "mundo": 229.25,
+  "label": "DRAGON_FALL",
+  "item": "arte/dragao/DRAGON_FALL"
+ },
+ "DRAGON_FIRE_BREATH": {
+  "src": "assets/sprites/DRAGON_FIRE_BREATH.webp",
+  "cell": 186,
+  "count": 12,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "ground": 169,
+  "groundEnd": 169,
+  "mundo": 325.5,
+  "label": "DRAGON_FIRE_BREATH",
+  "item": "arte/dragao/DRAGON_FIRE_BREATH"
+ },
+ "DRAGON_FIRE_CHARGE": {
+  "src": "assets/sprites/DRAGON_FIRE_CHARGE.webp",
+  "cell": 148,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 131,
+  "groundEnd": 131,
+  "mundo": 259.0,
+  "label": "DRAGON_FIRE_CHARGE",
+  "item": "arte/dragao/DRAGON_FIRE_CHARGE"
+ },
+ "DRAGON_FIRE_STREAM": {
+  "src": "assets/sprites/DRAGON_FIRE_STREAM.webp",
+  "cell": 140,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 122,
+  "groundEnd": 123,
+  "mundo": 245.0,
+  "label": "DRAGON_FIRE_STREAM",
+  "item": "arte/dragao/DRAGON_FIRE_STREAM"
+ },
+ "DRAGON_FLY": {
+  "src": "assets/sprites/DRAGON_FLY.webp",
+  "cell": 130,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 109,
+  "groundEnd": 107,
+  "mundo": 227.5,
+  "label": "DRAGON_FLY",
+  "item": "arte/dragao/DRAGON_FLY"
+ },
+ "DRAGON_HIT": {
+  "src": "assets/sprites/DRAGON_HIT.webp",
+  "cell": 131,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 106,
+  "groundEnd": 105,
+  "mundo": 229.25,
+  "label": "DRAGON_HIT",
+  "item": "arte/dragao/DRAGON_HIT"
+ },
+ "DRAGON_IDLE": {
+  "src": "assets/sprites/DRAGON_IDLE.webp",
+  "cell": 130,
+  "count": 9,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "ground": 114,
+  "groundEnd": 114,
+  "mundo": 227.5,
+  "label": "DRAGON_IDLE",
+  "item": "arte/dragao/DRAGON_IDLE"
+ },
+ "DRAGON_LAND": {
+  "src": "assets/sprites/DRAGON_LAND.webp",
+  "cell": 128,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 109,
+  "groundEnd": 113,
+  "mundo": 224.0,
+  "label": "DRAGON_LAND",
+  "item": "arte/dragao/DRAGON_LAND"
+ },
+ "DRAGON_RUN": {
+  "src": "assets/sprites/DRAGON_RUN.webp",
+  "cell": 158,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 132,
+  "groundEnd": 134,
+  "mundo": 276.5,
+  "label": "DRAGON_RUN",
+  "item": "arte/dragao/DRAGON_RUN"
+ },
+ "DRAGON_SLEEP": {
+  "src": "assets/sprites/DRAGON_SLEEP.webp",
+  "cell": 128,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 101,
+  "groundEnd": 101,
+  "mundo": 224.0,
+  "label": "DRAGON_SLEEP",
+  "item": "arte/dragao/DRAGON_SLEEP"
+ },
+ "DRAGON_STUNNED": {
+  "src": "assets/sprites/DRAGON_STUNNED.webp",
+  "cell": 131,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 106,
+  "groundEnd": 106,
+  "mundo": 229.25,
+  "label": "DRAGON_STUNNED",
+  "item": "arte/dragao/DRAGON_STUNNED"
+ },
+ "DRAGON_TAKEOFF": {
+  "src": "assets/sprites/DRAGON_TAKEOFF.webp",
+  "cell": 132,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 114,
+  "groundEnd": 90,
+  "mundo": 231.0,
+  "label": "DRAGON_TAKEOFF",
+  "item": "arte/dragao/DRAGON_TAKEOFF"
+ },
+ "DRAGON_WALK": {
+  "src": "assets/sprites/DRAGON_WALK.webp",
+  "cell": 140,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 124,
+  "groundEnd": 125,
+  "mundo": 245.0,
+  "label": "DRAGON_WALK",
+  "item": "arte/dragao/DRAGON_WALK"
+ },
+ "CHICKEN_EAT": {
+  "src": "assets/sprites/CHICKEN_EAT.webp",
+  "cell": 98,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "ground": 87,
+  "groundEnd": 87,
+  "mundo": 44.52,
+  "label": "CHICKEN_EAT",
+  "item": "arte/galinhas/CHICKEN_EAT"
+ },
+ "CHICKEN_IDLE": {
+  "src": "assets/sprites/CHICKEN_IDLE.webp",
+  "cell": 73,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 69,
+  "groundEnd": 69,
+  "mundo": 33.04,
+  "label": "CHICKEN_IDLE",
+  "item": "arte/galinhas/CHICKEN_IDLE"
+ },
+ "CHICKEN_LAY_EGG": {
+  "src": "assets/sprites/CHICKEN_LAY_EGG.webp",
+  "cell": 98,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 83,
+  "groundEnd": 85,
+  "mundo": 44.52,
+  "label": "CHICKEN_LAY_EGG",
+  "item": "arte/galinhas/CHICKEN_LAY_EGG"
+ },
+ "CHICKEN_PECK": {
+  "src": "assets/sprites/CHICKEN_PECK.webp",
+  "cell": 73,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 68,
+  "groundEnd": 68,
+  "mundo": 33.04,
+  "label": "CHICKEN_PECK",
+  "item": "arte/galinhas/CHICKEN_PECK"
+ },
+ "CHICKEN_RUN": {
+  "src": "assets/sprites/CHICKEN_RUN.webp",
+  "cell": 73,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 69,
+  "groundEnd": 68,
+  "mundo": 33.04,
+  "label": "CHICKEN_RUN",
+  "item": "arte/galinhas/CHICKEN_RUN"
+ },
+ "CHICKEN_SCARED": {
+  "src": "assets/sprites/CHICKEN_SCARED.webp",
+  "cell": 98,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 88,
+  "groundEnd": 89,
+  "mundo": 44.52,
+  "label": "CHICKEN_SCARED",
+  "item": "arte/galinhas/CHICKEN_SCARED"
+ },
+ "CHICKEN_SCRATCH": {
+  "src": "assets/sprites/CHICKEN_SCRATCH.webp",
+  "cell": 99,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 92,
+  "groundEnd": 93,
+  "mundo": 45.08,
+  "label": "CHICKEN_SCRATCH",
+  "item": "arte/galinhas/CHICKEN_SCRATCH"
+ },
+ "CHICKEN_SLEEP": {
+  "src": "assets/sprites/CHICKEN_SLEEP.webp",
+  "cell": 98,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 89,
+  "groundEnd": 88,
+  "mundo": 44.52,
+  "label": "CHICKEN_SLEEP",
+  "item": "arte/galinhas/CHICKEN_SLEEP"
+ },
+ "CHICKEN_WALK": {
+  "src": "assets/sprites/CHICKEN_WALK.webp",
+  "cell": 73,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 70,
+  "groundEnd": 68,
+  "mundo": 33.04,
+  "label": "CHICKEN_WALK",
+  "item": "arte/galinhas/CHICKEN_WALK"
+ },
+ "CHICK_IDLE": {
+  "src": "assets/sprites/CHICK_IDLE.webp",
+  "cell": 86,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 78,
+  "groundEnd": 78,
+  "mundo": 39.12,
+  "label": "CHICK_IDLE",
+  "item": "arte/galinhas/CHICK_IDLE"
+ },
+ "CHICK_RUN": {
+  "src": "assets/sprites/CHICK_RUN.webp",
+  "cell": 86,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "ground": 78,
+  "groundEnd": 78,
+  "mundo": 39.12,
+  "label": "CHICK_RUN",
+  "item": "arte/galinhas/CHICK_RUN"
+ },
+ "CHICK_WALK": {
+  "src": "assets/sprites/CHICK_WALK.webp",
+  "cell": 86,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 78,
+  "groundEnd": 79,
+  "mundo": 39.12,
+  "label": "CHICK_WALK",
+  "item": "arte/galinhas/CHICK_WALK"
+ },
+ "HEN_BROWN_EAT": {
+  "src": "assets/sprites/HEN_BROWN_EAT.webp",
+  "cell": 98,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "ground": 87,
+  "groundEnd": 87,
+  "mundo": 44.52,
+  "label": "HEN_BROWN_EAT",
+  "item": "arte/galinhas/HEN_BROWN_EAT"
+ },
+ "HEN_BROWN_IDLE": {
+  "src": "assets/sprites/HEN_BROWN_IDLE.webp",
+  "cell": 73,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 69,
+  "groundEnd": 69,
+  "mundo": 33.04,
+  "label": "HEN_BROWN_IDLE",
+  "item": "arte/galinhas/HEN_BROWN_IDLE"
+ },
+ "HEN_BROWN_LAY_EGG": {
+  "src": "assets/sprites/HEN_BROWN_LAY_EGG.webp",
+  "cell": 98,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 83,
+  "groundEnd": 85,
+  "mundo": 44.52,
+  "label": "HEN_BROWN_LAY_EGG",
+  "item": "arte/galinhas/HEN_BROWN_LAY_EGG"
+ },
+ "HEN_BROWN_PECK": {
+  "src": "assets/sprites/HEN_BROWN_PECK.webp",
+  "cell": 73,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 68,
+  "groundEnd": 68,
+  "mundo": 33.04,
+  "label": "HEN_BROWN_PECK",
+  "item": "arte/galinhas/HEN_BROWN_PECK"
+ },
+ "HEN_BROWN_RUN": {
+  "src": "assets/sprites/HEN_BROWN_RUN.webp",
+  "cell": 73,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 69,
+  "groundEnd": 68,
+  "mundo": 33.04,
+  "label": "HEN_BROWN_RUN",
+  "item": "arte/galinhas/HEN_BROWN_RUN"
+ },
+ "HEN_BROWN_SCARED": {
+  "src": "assets/sprites/HEN_BROWN_SCARED.webp",
+  "cell": 98,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 88,
+  "groundEnd": 89,
+  "mundo": 44.52,
+  "label": "HEN_BROWN_SCARED",
+  "item": "arte/galinhas/HEN_BROWN_SCARED"
+ },
+ "HEN_BROWN_SCRATCH": {
+  "src": "assets/sprites/HEN_BROWN_SCRATCH.webp",
+  "cell": 99,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 92,
+  "groundEnd": 93,
+  "mundo": 45.08,
+  "label": "HEN_BROWN_SCRATCH",
+  "item": "arte/galinhas/HEN_BROWN_SCRATCH"
+ },
+ "HEN_BROWN_SLEEP": {
+  "src": "assets/sprites/HEN_BROWN_SLEEP.webp",
+  "cell": 98,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 89,
+  "groundEnd": 88,
+  "mundo": 44.52,
+  "label": "HEN_BROWN_SLEEP",
+  "item": "arte/galinhas/HEN_BROWN_SLEEP"
+ },
+ "HEN_BROWN_WALK": {
+  "src": "assets/sprites/HEN_BROWN_WALK.webp",
+  "cell": 73,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "ground": 70,
+  "groundEnd": 68,
+  "mundo": 33.04,
+  "label": "HEN_BROWN_WALK",
+  "item": "arte/galinhas/HEN_BROWN_WALK"
+ },
+ "THEO_IDLE_BACK": {
+  "src": "assets/sprites/THEO_IDLE_BACK.webp",
+  "cell": 100,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_IDLE_BACK",
+  "item": "arte/theo/THEO_IDLE_BACK"
+ },
+ "THEO_IDLE_FRONT": {
+  "src": "assets/sprites/THEO_IDLE_FRONT.webp",
+  "cell": 100,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_IDLE_FRONT",
+  "item": "arte/theo/THEO_IDLE_FRONT"
+ },
+ "THEO_IDLE_LEFT": {
+  "src": "assets/sprites/THEO_IDLE_LEFT.webp",
+  "cell": 100,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_IDLE_LEFT",
+  "item": "arte/theo/THEO_IDLE_LEFT"
+ },
+ "THEO_IDLE_RIGHT": {
+  "src": "assets/sprites/THEO_IDLE_RIGHT.webp",
+  "cell": 100,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_IDLE_RIGHT",
+  "item": "arte/theo/THEO_IDLE_RIGHT"
+ },
+ "THEO_LIE": {
+  "src": "assets/sprites/THEO_LIE.webp",
+  "cell": 100,
+  "count": 2,
+  "seq": [
+   0,
+   1
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_LIE",
+  "item": "arte/theo/THEO_LIE"
+ },
+ "THEO_RUN": {
+  "src": "assets/sprites/THEO_RUN.webp",
+  "cell": 100,
+  "count": 3,
+  "seq": [
+   0,
+   1,
+   2
+  ],
+  "ground": 94,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_RUN",
+  "item": "arte/theo/THEO_RUN"
+ },
+ "THEO_SIT": {
+  "src": "assets/sprites/THEO_SIT.webp",
+  "cell": 100,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_SIT",
+  "item": "arte/theo/THEO_SIT"
+ },
+ "THEO_SIT_FRONT": {
+  "src": "assets/sprites/THEO_SIT_FRONT.webp",
+  "cell": 100,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_SIT_FRONT",
+  "item": "arte/theo/THEO_SIT_FRONT"
+ },
+ "THEO_SIT_IDLE": {
+  "src": "assets/sprites/THEO_SIT_IDLE.webp",
+  "cell": 100,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_SIT_IDLE",
+  "item": "arte/theo/THEO_SIT_IDLE"
+ },
+ "THEO_WALK_BACK": {
+  "src": "assets/sprites/THEO_WALK_BACK.webp",
+  "cell": 100,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_WALK_BACK",
+  "item": "arte/theo/THEO_WALK_BACK"
+ },
+ "THEO_WALK_FRONT": {
+  "src": "assets/sprites/THEO_WALK_FRONT.webp",
+  "cell": 100,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_WALK_FRONT",
+  "item": "arte/theo/THEO_WALK_FRONT"
+ },
+ "THEO_WALK_LEFT": {
+  "src": "assets/sprites/THEO_WALK_LEFT.webp",
+  "cell": 100,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_WALK_LEFT",
+  "item": "arte/theo/THEO_WALK_LEFT"
+ },
+ "THEO_WALK_RIGHT": {
+  "src": "assets/sprites/THEO_WALK_RIGHT.webp",
+  "cell": 100,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 100,
+  "groundEnd": 100,
+  "mundo": 50.0,
+  "label": "THEO_WALK_RIGHT",
+  "item": "arte/theo/THEO_WALK_RIGHT"
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3}};

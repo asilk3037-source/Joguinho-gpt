@@ -241,6 +241,15 @@ def main():
 
     manifesto = {}
     retratos = {}
+    if "--so-arte" in sys.argv:
+        # Refaz só as pastas de arte/, mantendo o resto do manifesto atual.
+        with open(MANIFESTO, encoding="utf-8") as f:
+            texto = f.read()
+        antigo = json.loads(texto.split("window.SPRITES = ", 1)[1].split(";\nwindow.RETRATOS", 1)[0])
+        retratos = json.loads(texto.split("window.RETRATOS = ", 1)[1].rstrip().rstrip(";"))
+        manifesto = {k: v for k, v in antigo.items() if not v.get("item", "").startswith("arte")}
+        extrair_pastas(manifesto)
+        return gravar(manifesto, retratos)
     for caminho in sorted(glob.glob(os.path.join(RAIZ, "*LABORATORIO*.html"))):
         print(os.path.basename(caminho))
         extrair_laboratorio(caminho, manifesto)
@@ -257,6 +266,10 @@ def main():
             m = manifesto[codigo]
             print(f"  {codigo}: {len(m['seq'])} frames ({m['count']} únicos)")
 
+    gravar(manifesto, retratos)
+
+
+def gravar(manifesto, retratos):
     with open(MANIFESTO, "w", encoding="utf-8") as f:
         f.write("// Gerado por tools/extrair_sprites.py. Não edite à mão.\n")
         f.write("window.SPRITES = ")

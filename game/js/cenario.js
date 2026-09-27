@@ -40,6 +40,16 @@
   function planta(g, p, t, estado) {
     const w = vento(t, p.x, p.y) * 1.5;
     const regada = estado && estado.regada;
+    const tipo = (p.ty % 4 === 1 ? 'tomate_' : 'cenoura_'), max = tipo === 'tomate_' ? 5 : 3;
+    const fase = regada ? max : Math.floor(p.v * (max - 1));
+    if (objeto(g, tipo + fase, p.x, p.y + 10, 24, { inclina: w * 0.03 })) {
+      if (estado && estado.marcar && !regada) {
+        const b = Math.sin(t * 4 + p.x) * 2;
+        g.fillStyle = '#5ab4ff'; g.beginPath(); g.moveTo(p.x, p.y - 30 + b); g.quadraticCurveTo(p.x + 6, p.y - 20 + b, p.x, p.y - 17 + b); g.quadraticCurveTo(p.x - 6, p.y - 20 + b, p.x, p.y - 30 + b); g.fill();
+      }
+      if (regada && Math.sin(t * 3 + p.x) > 0.95) { g.fillStyle = 'rgba(255,255,255,.8)'; LB.desenho.estrela(g, p.x + 8, p.y - 14, 3); }
+      return;
+    }
     if (regada) E(g, p.x, p.y + 4, 14, 5, 'rgba(60,40,25,.45)');
     const verde = regada ? '#3fa34d' : '#5a9a3c', verde2 = regada ? '#58c25f' : '#78b04a';
     for (let i = 0; i < 3; i++) {
@@ -59,12 +69,34 @@
   }
 
   // Árvores do tileset (pixel art), balançando: a copa inclina com o vento e o tronco fica firme.
+  const ARVORES = {
+    fazenda: ['arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'arvore_a', 'arvore_c', 'macieira_a', 'macieira_b', 'macieira_c', 'cerejeira_a', 'cerejeira_b', 'florida'],
+    floresta: ['pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'arvore_a', 'arvore_b', 'arvore_d', 'pinheiro_a', 'pinheiro_b'],
+  };
+  const img = (n) => LB.personagem(n);
+
+  // Desenha uma imagem do pacote com a base (pés) em (x, y) e largura `larg` no mundo.
+  function objeto(g, nome, x, y, larg, o) {
+    const im = img(nome);
+    if (!im) return false;
+    o = o || {};
+    const W = larg, H = im.naturalHeight * larg / im.naturalWidth;
+    g.save();
+    g.translate(x, y);
+    if (o.inclina) g.transform(1, 0, o.inclina, 1, 0, 0);
+    if (o.flip) g.scale(-1, 1);
+    g.drawImage(im, -W / 2, -H + (o.baixo || 0), W, H);
+    g.restore();
+    return true;
+  }
+
   function arvoreImagem(g, p, tema, t) {
-    const n = 1 + Math.floor(p.v * 4) % 4;
-    const img = LB.personagem('arvore' + n);
+    const lista = ARVORES[tema] || ARVORES.fazenda;
+    const nome = lista[Math.floor(p.v * 997) % lista.length];
+    const img = LB.personagem(nome);
     if (!img) return false;
     const w = vento(t, p.x, p.y);
-    const esc = (tema === 'floresta' ? 0.62 : 0.56) + (p.v * 7 % 1) * 0.08;
+    const esc = (tema === 'floresta' ? 0.66 : 0.6) + (p.v * 7 % 1) * 0.1;
     const W = img.naturalWidth * esc, H = img.naturalHeight * esc;
     E(g, p.x, p.y, W * 0.32, 5, 'rgba(0,0,0,.28)');
     g.save();
@@ -100,6 +132,12 @@
 
   // ---------- Construções ----------
   function casaFazenda(g, p, t) {
+    const larg = p.w + 40;
+    if (objeto(g, 'casa', p.x + p.w / 2, p.y + 6, larg)) {
+      const im = img('casa'), esc = larg / im.naturalWidth;
+      p.chamine = { x: p.x + p.w / 2 - larg / 2 + 148 * esc, y: p.y + 6 - im.naturalHeight * esc + 40 * esc };
+      return;
+    }
     const x = p.x, y = p.y, w = p.w, h = p.h, topo = y - h;
     g.fillStyle = 'rgba(0,0,0,.25)'; g.fillRect(x + 6, y - 6, w, 10);
     // Paredes de tábuas.
@@ -138,6 +176,7 @@
   }
 
   function celeiro(g, p) {
+    if (objeto(g, 'celeiro', p.x + p.w / 2, p.y + 4, p.w + 20)) return;
     const x = p.x, y = p.y, w = p.w, h = p.h, topo = y - h;
     g.fillStyle = 'rgba(0,0,0,.25)'; g.fillRect(x + 6, y - 6, w, 10);
     const paredeY = topo + h * 0.25;
@@ -161,6 +200,7 @@
   }
 
   function galinheiro(g, p) {
+    if (objeto(g, 'galinheiro', p.x + p.w / 2, p.y + 6, p.w + 18)) return;
     const x = p.x, y = p.y, w = p.w, h = p.h;
     g.fillStyle = 'rgba(0,0,0,.25)'; g.fillRect(x + 4, y - 4, w, 8);
     g.fillStyle = '#c99a62'; g.fillRect(x + 4, y - h + 12, w - 8, h - 12);
@@ -181,6 +221,7 @@
   }
 
   function poco(g, p, t) {
+    if (objeto(g, 'poco', p.x, p.y + 4, 40)) return;
     const x = p.x, y = p.y;
     E(g, x, y + 2, 16, 6, 'rgba(0,0,0,.25)');
     g.fillStyle = '#8f8f97'; g.fillRect(x - 14, y - 14, 28, 14);
@@ -194,6 +235,7 @@
   }
 
   function moinho(g, p, t) {
+    if (objeto(g, 'moinho', p.x, p.y + 3, 54)) return;
     const x = p.x, y = p.y;
     E(g, x, y + 2, 16, 5, 'rgba(0,0,0,.25)');
     g.strokeStyle = '#8a8a92'; g.lineWidth = 2.5;
@@ -211,6 +253,7 @@
   }
 
   function feno(g, p) {
+    if (objeto(g, p.v > 0.5 ? 'feno_pilha' : 'feno', p.x, p.y + 4, p.v > 0.5 ? 40 : 30)) return;
     const x = p.x, y = p.y;
     E(g, x, y + 1, 16, 5, 'rgba(0,0,0,.25)');
     E(g, x, y - 12, 16, 14, '#e2bd55');
@@ -367,5 +410,19 @@
     }
   }
 
-  LB.cenario = { vento, mato, flores, planta, arvore, casaFazenda, celeiro, galinheiro, cerca, poco, moinho, feno, mesa, casinha, varal, Ambiente };
+  // Objetos soltos do pacote (carroça, lampião, píer, barco...).
+  function decoracao(g, p, t) {
+    const o = { inclina: p.balanca ? vento(t, p.x, p.y) * 0.02 : 0, flip: p.flip };
+    if (p.nome === 'lampiao') {
+      objeto(g, 'lampiao', p.x, p.y, p.larg, o);
+      const lx = p.x + (p.flip ? -1 : 1) * p.larg * 0.18, ly = p.y - p.larg * 0.95, k = 0.55 + 0.1 * Math.sin(t * 7);
+      const gr = g.createRadialGradient(lx, ly, 0, lx, ly, 26); gr.addColorStop(0, `rgba(255,210,120,${k})`); gr.addColorStop(1, 'rgba(255,210,120,0)');
+      g.fillStyle = gr; g.beginPath(); g.arc(lx, ly, 26, 0, TAU); g.fill();
+      return;
+    }
+    if (p.nome === 'barco') { objeto(g, 'barco', p.x, p.y + Math.sin(t * 1.6) * 1.2, p.larg, o); return; }
+    objeto(g, p.nome, p.x, p.y, p.larg, o);
+  }
+
+  LB.cenario = { decoracao, objeto, vento, mato, flores, planta, arvore, casaFazenda, celeiro, galinheiro, cerca, poco, moinho, feno, mesa, casinha, varal, Ambiente };
 })(window.LB);

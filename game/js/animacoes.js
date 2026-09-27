@@ -118,31 +118,33 @@ window.LB = window.LB || {};
   ]);
 
   grupo('Dragão', [
-    ['DRAGON_IDLE', 'Idle e respiração', { loop: true, fps: 8, quadros: 16 }],
-    ['DRAGON_BLINK', 'Piscar'],
-    ['DRAGON_WALK', 'Andar', { loop: true }],
-    ['DRAGON_TURN', 'Virar'],
+    ['DRAGON_IDLE', 'Parado respirando', { loop: true, fps: 8, quadros: 9 }],
+    ['DRAGON_BLINK', 'Piscar', { alt: 'DRAGON_IDLE' }],
+    ['DRAGON_WALK', 'Andar', { loop: true, fps: 10, quadros: 8 }],
+    ['DRAGON_RUN', 'Correr', { loop: true, fps: 12, quadros: 7 }],
+    ['DRAGON_TURN', 'Virar', { alt: 'DRAGON_IDLE' }],
     ['DRAGON_WINGS_OPEN', 'Abrir asas', { alt: 'DRAGON_TAKEOFF' }],
-    ['DRAGON_TAKEOFF', 'Decolar', { fps: 16, quadros: 10 }],
-    ['DRAGON_FLY', 'Voar', { loop: true, fps: 12, quadros: 15 }],
+    ['DRAGON_TAKEOFF', 'Decolar', { fps: 12, quadros: 8 }],
+    ['DRAGON_FLY', 'Voar', { loop: true, fps: 10, quadros: 6 }],
     ['DRAGON_GLIDE', 'Planar', { loop: true, alt: 'DRAGON_FLY' }],
-    ['DRAGON_LAND', 'Pousar', { fps: 12, quadros: 12, chao: 'fim' }],
-    ['DRAGON_ROAR', 'Rugir', { quadros: 18 }],
-    ['DRAGON_BITE', 'Morder'],
-    ['DRAGON_CLAW_ATTACK', 'Ataque de garra'],
-    ['DRAGON_TAIL_ATTACK', 'Golpe de cauda', { fps: 9.5, quadros: 18 }],
-    ['DRAGON_FIRE_CHARGE', 'Preparar fogo', { fps: 6, quadros: 6 }],
-    ['DRAGON_FIRE_BREATH', 'Cuspir fogo voando', { fps: 10, quadros: 20 }],
-    ['DRAGON_FIRE_STREAM', 'Fogo contínuo', { loop: true, fps: 9, quadros: 4 }],
-    ['DRAGON_AIR_ATTACK', 'Ataque aéreo'],
-    ['DRAGON_HIT', 'Receber dano'],
-    ['DRAGON_WEAK_POINT_HIT', 'Ponto fraco atingido'],
-    ['DRAGON_STUNNED', 'Atordoado', { loop: true }],
-    ['DRAGON_DESPERATE_ATTACK', 'Ataque desesperado'],
-    ['DRAGON_FINAL_HIT', 'Receber golpe final'],
-    ['DRAGON_FALL', 'Cair'],
-    ['DRAGON_DEFEATED', 'Derrotado', { loop: true }],
-    ['DRAGON_EYE_OPEN_END', 'Abrir um olho no final'],
+    ['DRAGON_LAND', 'Pousar', { fps: 12, quadros: 8, chao: 'fim' }],
+    ['DRAGON_ROAR', 'Rugir', { alt: 'DRAGON_FIRE_CHARGE' }],
+    ['DRAGON_BITE', 'Morder', { alt: 'DRAGON_CLAW_ATTACK' }],
+    ['DRAGON_CLAW_ATTACK', 'Ataque de garra', { fps: 5.5, quadros: 7 }],
+    ['DRAGON_TAIL_ATTACK', 'Golpe de cauda', { fps: 4, quadros: 7, alt: 'DRAGON_CLAW_ATTACK' }],
+    ['DRAGON_FIRE_CHARGE', 'Preparar fogo', { fps: 3, quadros: 3 }],
+    ['DRAGON_FIRE_BREATH', 'Cuspir fogo', { fps: 10, quadros: 12 }],
+    ['DRAGON_FIRE_STREAM', 'Fogo contínuo', { loop: true, fps: 6, quadros: 2 }],
+    ['DRAGON_AIR_ATTACK', 'Ataque aéreo', { fps: 12, quadros: 8 }],
+    ['DRAGON_HIT', 'Receber dano', { fps: 14, quadros: 6 }],
+    ['DRAGON_WEAK_POINT_HIT', 'Ponto fraco atingido', { alt: 'DRAGON_HIT' }],
+    ['DRAGON_STUNNED', 'Atordoado', { loop: true, fps: 6, quadros: 4 }],
+    ['DRAGON_DESPERATE_ATTACK', 'Ataque desesperado', { alt: 'DRAGON_FIRE_STREAM' }],
+    ['DRAGON_FINAL_HIT', 'Receber golpe final', { alt: 'DRAGON_HIT' }],
+    ['DRAGON_FALL', 'Cair', { fps: 6, quadros: 6 }],
+    ['DRAGON_DEFEATED', 'Derrotado', { loop: true, quadros: 1 }],
+    ['DRAGON_SLEEP', 'Dormir', { loop: true, fps: 4, quadros: 6, nova: true }],
+    ['DRAGON_EYE_OPEN_END', 'Ressurgir no final', { fps: 5, quadros: 6 }],
   ]);
 
   grupo('Inimigos (novo)', [
@@ -250,10 +252,8 @@ window.LB = window.LB || {};
   const imagens = {};
 
   // Personagens de imagem única (animados por movimento no código).
-  const PERSONAGENS = {
-    dragao: 'assets/personagens/dragao.png', mago: 'assets/personagens/mago.png',
-    arvore1: 'assets/cenario/arvore1.png', arvore2: 'assets/cenario/arvore2.png', arvore3: 'assets/cenario/arvore3.png', arvore4: 'assets/cenario/arvore4.png',
-  };
+  const PERSONAGENS = { dragao: 'assets/personagens/dragao.png', mago: 'assets/personagens/mago.png' };
+  for (const n of ['arbusto_a', 'arbusto_b', 'arbusto_c', 'arbusto_d', 'arbusto_e', 'arbusto_f', 'arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'barco', 'barril', 'cachoeira', 'caixa', 'carroca', 'casa', 'celeiro', 'cenoura_0', 'cenoura_1', 'cenoura_2', 'cenoura_3', 'cerca', 'cerejeira_a', 'cerejeira_b', 'feno', 'feno_pilha', 'florida', 'galinheiro', 'girassol_0', 'girassol_1', 'girassol_2', 'lago', 'lampiao', 'macieira_a', 'macieira_b', 'macieira_c', 'milho_0', 'milho_1', 'milho_2', 'moinho', 'moita', 'pedra1', 'pedra2', 'pier', 'pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'placa', 'placa2', 'poco', 'porteira', 'tomate_0', 'tomate_1', 'tomate_2', 'tomate_3', 'tomate_4', 'tomate_5', 'trigo_0', 'trigo_1', 'trigo_2']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
   const personagens = {};
   function personagem(nome) {
     const img = personagens[nome];

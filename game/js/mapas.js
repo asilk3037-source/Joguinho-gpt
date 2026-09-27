@@ -58,6 +58,15 @@
         lago: { x: 21.2, y: 27.4 },
       },
       canteiros: ['15,17', '18,19', '14,21', '20,21'],
+      // Objetos soltos do pacote de arte: [nome, x, y (base, em tiles), largura, raio de colisão].
+      decoracoes: [
+        ['carroca', 35.5, 12.9, 70, 16], ['lampiao', 13.5, 11.9, 26, 5], ['lampiao', 20.6, 25.4, 26, 5],
+        ['barril', 26.4, 11.8, 14, 6], ['caixa', 27.2, 11.9, 16, 6], ['placa2', 21.3, 3.9, 30, 6],
+        ['arbusto_c', 4.5, 13.9, 26, 8], ['arbusto_b', 12.5, 15.9, 24, 8], ['arbusto_d', 26.5, 30.9, 28, 8],
+        ['girassol_0', 5.5, 11.9, 16, 0], ['girassol_1', 13.2, 10.9, 16, 0], ['girassol_2', 32.5, 13.9, 16, 0],
+        ['milho_1', 24.5, 17.9, 15, 0], ['trigo_1', 24.5, 19.9, 15, 0], ['pedra1', 8.5, 31.9, 24, 8], ['moita', 41.5, 31.9, 26, 0],
+        ['pier', 17.2, 28.9, 120, 0], ['barco', 13.6, 29.6, 38, 0],
+      ],
       areas: {
         galinhas: { x0: 3, y0: 18, x1: 10, y1: 23 },
         pasto: { x0: 28, y0: 16, x1: 40, y1: 25 },
@@ -219,6 +228,9 @@
     }
 
     criarProps() {
+      for (const [nome, x, y, larg, raio] of this.def.decoracoes || []) {
+        this.props.push({ tipo: 'decoracao', nome, x: x * TILE, y: y * TILE, larg, raio, balanca: /girassol|milho|trigo|moita|arbusto/.test(nome), flip: ruido(Math.round(x * 3), Math.round(y * 3), 9) > 0.5 && nome !== 'placa2' });
+      }
       const casas = new Set();
       const canteiros = new Set(this.def.canteiros || []);
       for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) {
