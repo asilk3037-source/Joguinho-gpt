@@ -144,7 +144,7 @@
       this.t += dt;
       this.invul = Math.max(0, this.invul - dt);
       this.cooldownGiro = Math.max(0, this.cooldownGiro - dt);
-      if (this.temMagia && this.mana < this.manaMax && this.estado !== 'carregar') this.mana = Math.min(this.manaMax, this.mana + dt / 2.6);
+      if (this.temMagia && this.mana < this.manaMax && this.estado !== 'carregar') this.mana = Math.min(this.manaMax, this.mana + dt / 2.6 * LB.dif().regen);
       this.anim.atualizar(dt);
       const st = this.estadoAnim();
       const controlavel = !jogo.cena && this.estado !== 'morta';
@@ -654,7 +654,7 @@
           this.mover(dx / d * 62 * dt, dy / d * 62 * dt, jogo);
           break;
         case 'preparar':
-          if (this.t > 0.55) {
+          if (this.t > 0.55 * LB.dif().ritmo) {
             this.estado = 'investir'; this.t = 0;
             const k = Math.max(d, 1);
             this.vx = dx / k * 250; this.vy = dy / k * 250;

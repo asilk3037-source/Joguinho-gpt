@@ -149,4 +149,22 @@
   };
 
   LB.entrada = entrada;
+
+  // ---------- Dificuldade (fica salva no navegador, vale para qualquer jogo salvo) ----------
+  const NIVEIS = {
+    facil: { nome: 'Fácil', desc: 'Chefes com menos vida e mais lentos, um coração a mais, mais corações caindo e magia que recarrega rápido. A espada arranha até o Guardião.', vidaChefe: 0.6, ritmo: 1.35, coracoesExtra: 1, drop: 0.55, regen: 1.7, golemEspada: true, guarda: 1.3 },
+    normal: { nome: 'Normal', desc: 'A aventura do jeito que foi pensada.', vidaChefe: 1, ritmo: 1, coracoesExtra: 0, drop: 0.35, regen: 1, golemEspada: false, guarda: 1 },
+    dificil: { nome: 'Difícil', desc: 'Chefes com mais vida e mais rápidos, menos corações caindo e magia mais lenta.', vidaChefe: 1.35, ritmo: 0.85, coracoesExtra: 0, drop: 0.2, regen: 0.75, golemEspada: false, guarda: 0.8 },
+  };
+  const ORDEM = ['facil', 'normal', 'dificil'];
+  let nivel = 'normal';
+  try { const n = localStorage.getItem('lineBell.dificuldade'); if (NIVEIS[n]) nivel = n; } catch (e) { /* sem armazenamento */ }
+  LB.dificuldade = {
+    NIVEIS, ORDEM,
+    get id() { return nivel; },
+    get atual() { return NIVEIS[nivel]; },
+    definir(n) { if (!NIVEIS[n]) return; nivel = n; try { localStorage.setItem('lineBell.dificuldade', n); } catch (e) { /* ok */ } },
+    proxima() { this.definir(ORDEM[(ORDEM.indexOf(nivel) + 1) % ORDEM.length]); return nivel; },
+  };
+  LB.dif = () => NIVEIS[nivel];
 })(window.LB);

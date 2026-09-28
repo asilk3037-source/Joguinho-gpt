@@ -93,6 +93,8 @@
       this.fade = 0; this.flashTela = 0; this.congelado = 0;
       this.tint = { covil: { cor: '255,90,30', a: 0.08 }, montanha: { cor: '255,110,40', a: 0.07 }, ruinas: { cor: '110,190,255', a: 0.05 } }[id] || null;
       this.cena = null;
+      if (LB.dialogo.el) LB.dialogo.esconder();
+      this.esconderTitulo();
       this.ambiente = new LB.cenario.Ambiente(this.mapa);
       this.bichos = []; this.npcs = []; this.baloes = []; this.rastroLine = []; this.acaoAtual = null;
       $('#derrota').classList.add('oculto');
@@ -118,7 +120,7 @@
       this.line.temEspada = !!this.flags.espada;
       this.line.temMagia = !!this.flags.magia;
       this.line.temEstrela = !!this.flags.estrela;
-      this.line.hpMax = 6 + 2 * (this.flags.coracoes || 0);
+      this.line.hpMax = this.hpMaxLine();
       this.line.hp = id === 'covil' || cp ? this.line.hpMax : Math.max(3, Math.min(this.line.hpMax, hp));
       this.line.mana = cp ? this.line.manaMax : Math.min(this.line.manaMax, mana);
       if (this.line.dir === 'LEFT') this.line.lado = -1;
@@ -299,8 +301,8 @@
         return;
       }
       const r = Math.random();
-      if (r < 0.35) this.itens.push({ tipo: 'coracao', x: e.x, y: e.y, t: 0 });
-      else if (this.flags.magia && r < 0.7) this.itens.push({ tipo: 'mana', x: e.x, y: e.y, t: 0 });
+      if (r < LB.dif().drop) this.itens.push({ tipo: 'coracao', x: e.x, y: e.y, t: 0 });
+      else if (this.flags.magia && r < LB.dif().drop + 0.35) this.itens.push({ tipo: 'mana', x: e.x, y: e.y, t: 0 });
       if (e instanceof LB.FogoFatuo) this.particulas.emitir(e.tipo === 'fogo' ? 'brasa' : 'brilho', e.x, e.y - 30, 12, { vel: 80, vida: 0.6, r: 4 });
       else this.particulas.emitir('sombra', e.x, e.y - 14, 12, { vel: 80, vida: 0.7, r: 5 });
     }
@@ -376,6 +378,20 @@
     }
 
     objetoProximo() { return this.acoesPossiveis(); }
+
+    // Vida máxima: 3 corações + baús + um coração a mais no fácil.
+    hpMaxLine() { return 6 + 2 * (this.flags.coracoes || 0) + 2 * LB.dif().coracoesExtra; }
+
+    // Troca de dificuldade no meio do jogo (pela pausa).
+    aplicarDificuldade() {
+      const l = this.line;
+      if (!l) return;
+      const antes = l.hpMax;
+      l.hpMax = this.hpMaxLine();
+      l.hp = Math.max(1, Math.min(l.hpMax, l.hp + Math.max(0, l.hpMax - antes)));
+      if (this.dragao) { const k = this.dragao.hp / this.dragao.hpMax; this.dragao.hpMax = Math.round(70 * LB.dif().vidaChefe); this.dragao.hp = Math.max(1, Math.round(k * this.dragao.hpMax)); }
+      for (const e of this.inimigos) if (e.golem) { const k = e.hp / e.hpMax; e.hpMax = Math.round(14 * LB.dif().vidaChefe); e.hp = Math.max(1, Math.round(k * e.hpMax)); }
+    }
 
     // Fonte: recupera vida e magia e vira ponto de retorno.
     beberFonte(p) {

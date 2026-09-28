@@ -7,7 +7,7 @@
   class Dragao {
     constructor(x, y) {
       this.x = x; this.y = y; this.x0 = x; this.y0 = y;
-      this.hpMax = 70; this.hp = 70;
+      this.hpMax = Math.round(70 * LB.dif().vidaChefe); this.hp = this.hpMax;
       this.anim = new LB.Animador('DRAGON_IDLE');
       this.estado = 'cena'; this.t = 0;
       this.lado = 1; this.flash = 0; this.fraco = false;
@@ -18,7 +18,7 @@
       this.proximo = 0;
     }
 
-    get ritmo() { return this.hp < this.hpMax * 0.5 ? 0.8 : 1; }
+    get ritmo() { return (this.hp < this.hpMax * 0.5 ? 0.8 : 1) * LB.dif().ritmo; }
     get noAlto() { return this.alturaVoo > 30; }
     get vulneravel() { return ['observar', 'garra', 'cauda', 'fogo', 'pouso', 'atordoado', 'rugido', 'desesperado'].includes(this.estado) && !this.noAlto; }
 

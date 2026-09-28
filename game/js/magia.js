@@ -377,7 +377,7 @@
         case 'mirar':
           if (this.t > 0.6) {
             lancar(jogo, { dono: 'inimigo', tipo: this.tipo === 'fogo' ? 'fogo' : 'orbe', x: this.x, y: this.y, z: 26, vx: dx / d * 140, vy: dy / d * 140, r: 5, max: 2.6 });
-            this.cd = 2 + Math.random() * 1; this.estado = 'cacar'; this.t = 0;
+            this.cd = (2 + Math.random() * 1) * LB.dif().ritmo; this.estado = 'cacar'; this.t = 0;
           }
           break;
         case 'atordoado':
@@ -430,7 +430,7 @@
   class Golem {
     constructor(x, y) {
       this.x = x; this.y = y; this.x0 = x; this.y0 = y;
-      this.hpMax = 14; this.hp = 14; this.recarga = 0; this.raio = 30; this.vivo = true; this.inimigo = true;
+      this.hpMax = Math.round(14 * LB.dif().vidaChefe); this.hp = this.hpMax; this.recarga = 0; this.raio = 30; this.vivo = true; this.inimigo = true;
       this.estado = 'dormindo'; this.dormindo = true; this.t = 0; this.exposto = 0; this.flash = 0; this.lado = 1;
       this.ondas = []; this.nome = 'Guardião de Pedra'; this.golem = true; this.passo = 0;
       this.anim = new LB.Animador('GOLEM_SLEEP');
@@ -467,7 +467,7 @@
       switch (this.estado) {
         case 'observar':
           if (d > 80) { this.mover(dx / d * (raiva ? 42 : 34) * dt, dy / d * (raiva ? 42 : 34) * dt, jogo); this.passo += dt; }
-          if (this.t > (raiva ? 1.8 : 2.3)) { this.t = 0; this.estado = d < 130 || Math.random() < 0.45 ? 'pisao' : 'pedra'; this.tiros = 1; }
+          if (this.t > (raiva ? 1.8 : 2.3) * LB.dif().ritmo) { this.t = 0; this.estado = d < 130 || Math.random() < 0.45 ? 'pisao' : 'pedra'; this.tiros = 1; }
           break;
         case 'pisao':
           if (this.t > 1.15 && !this.bateu) {
@@ -508,6 +508,12 @@
 
     receberGolpe(jogo, dano) {
       if (this.dormindo || this.estado === 'morrendo') return false;
+      if (this.estado !== 'atordoado' && LB.dif().golemEspada) {
+        // Fácil: a espada arranha a pedra mesmo com a guarda fechada (sem derrubar de vez).
+        jogo.particulas.emitir('faisca', this.x - this.lado * 10, this.y - 40, 6, { vel: 100, vz: 60, vida: 0.3 });
+        this.hp = Math.max(1, this.hp - 0.5); this.flash = 0.1;
+        return true;
+      }
       if (this.estado !== 'atordoado') {
         jogo.particulas.emitir('faisca', this.x - this.lado * 10, this.y - 40, 8, { vel: 120, vz: 80, vida: 0.35 });
         jogo.dica('golemPedra', 'Clang! A espada não arranha a pedra. Acerte o cristal do peito com a magia (Q) para abrir a guarda!');
@@ -529,7 +535,7 @@
         jogo.dica('golemRecarga', 'O cristal do guardião ainda está brilhando forte. Desvie e tente de novo daqui a pouco!');
         return true;
       }
-      this.estado = 'atordoado'; this.t = 0; this.exposto = 4.5; this.bateu = false;
+      this.estado = 'atordoado'; this.t = 0; this.exposto = 4.5 * LB.dif().guarda; this.bateu = false;
       jogo.dica('golemAberto', 'O cristal rachou e o guardião ficou tonto! Agora a espada funciona: ataque!');
       return true;
     }

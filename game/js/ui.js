@@ -28,6 +28,10 @@
       $('#btn-derrota-menu').onclick = () => { $('#derrota').classList.add('oculto'); jogo.voltarAoMenu(); };
       $('#btn-pausar').addEventListener('click', () => { if (jogo.estado === 'jogo') this.pausar(); });
       $('#pular-cena').addEventListener('click', () => { if (jogo.cena) jogo.cena.pular(); });
+      const trocar = () => { LB.dificuldade.proxima(); this.mostrarDificuldade(); if (jogo.estado === 'pausa') jogo.aplicarDificuldade(); };
+      $('#btn-dificuldade').onclick = trocar;
+      $('#btn-pausa-dificuldade').onclick = trocar;
+      this.mostrarDificuldade();
       $('#btn-tela-cheia').onclick = () => {
         const el = document.documentElement;
         if (document.fullscreenElement) document.exitFullscreen();
@@ -48,6 +52,12 @@
       $('#pular-cena').classList.add('oculto');
       $('#dica').classList.add('oculto');
       mostrar('#menu');
+    },
+
+    mostrarDificuldade() {
+      const d = LB.dificuldade.atual, icone = { facil: '🌸', normal: '⚔', dificil: '🔥' }[LB.dificuldade.id];
+      for (const id of ['#btn-dificuldade', '#btn-pausa-dificuldade']) $(id).textContent = `Dificuldade: ${d.nome} ${icone}`;
+      for (const id of ['#dif-desc', '#pausa-dif-desc']) $(id).textContent = d.desc;
     },
 
     pausar() {

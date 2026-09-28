@@ -352,7 +352,7 @@
       if (!j.flags.espada && !j.flags.magoVisto) {
         yield c.fala('Mago', 'Ora, ora... uma fazendeira na Floresta Sussurrante?');
         yield c.fala('Line', 'Um dragão levou a Bell! Eu preciso chegar na montanha.', 'surpresa');
-        yield c.fala('Mago', 'O dragão verde acordou, então... Fazia cem anos que ele dormia.');
+        yield c.fala('Mago', 'O dragão vermelho acordou, então... Fazia cem anos que ele dormia.');
         yield c.fala('Mago', 'Naquele baú aqui do lado guardei uma espada que espera por um coração corajoso. Ela é sua.');
         yield c.fala('Mago', 'E lembre-se: quando o dragão se cansa, o peito dele brilha. É ali que você deve acertar.');
         yield c.fala('Line', 'Obrigada! Eu vou trazer ela de volta.', 'sorriso');
@@ -518,7 +518,7 @@
       yield c.espera(0.4);
       line.anim.tocar('LINE_CROUCH_STAND', true);
       yield c.animacao(line);
-      line.hpMax = 6 + 2 * j.flags.coracoes; line.hp = line.hpMax;
+      line.hpMax = j.hpMaxLine(); line.hp = line.hpMax;
       line.anim.tocar('LINE_HAPPY', true);
       yield c.titulo('Coração extra!', 'A vida máxima da Line aumentou', 2);
       j.salvar();

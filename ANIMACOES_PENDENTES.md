@@ -1,5 +1,7 @@
 # Line & Bell — o que falta criar
 
+> A lista completa (todas as 260 animações, uma por uma, com status) está em **[docs/LINE_E_BELL_DOCUMENTACAO.md](docs/LINE_E_BELL_DOCUMENTACAO.md)**. Todas as animações atuais são temporárias até finalizar a criação de todas.
+
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
 Status atual: **160** animações prontas, mais 13 novas pedidas para as fases de magia (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
