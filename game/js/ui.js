@@ -44,6 +44,8 @@
       LB.entrada.ligarToque();
       LB.dialogo.ligar();
       LB.mochila.tela.ligar(jogo);
+      LB.loja.ligar(jogo);
+      LB.carrinho.ligar();
       this.mostrarMenu();
     },
 

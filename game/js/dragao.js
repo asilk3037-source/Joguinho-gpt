@@ -207,7 +207,7 @@
       let total = dano;
       const noPonto = this.fraco && Math.hypot(ox - this.x, oy - (this.y + 10)) < 95;
       if (noPonto) {
-        total = dano + 1;
+        total = dano + 1 + (LB.mochila && LB.mochila.temConclusao(jogo, 'peito') ? 1 : 0);
         this.anim.tocar('DRAGON_WEAK_POINT_HIT', true);
         jogo.particulas.emitir('brilho', this.x, this.y - 60, 8, { vel: 90, vida: 0.5, r: 5 });
       } else if (this.estado === 'observar') this.anim.tocar('DRAGON_HIT', true);
@@ -223,7 +223,7 @@
         this.acumulado += total;
         if (this.acumulado >= 14) {
           this.acumulado = 0; this.mudar('atordoado', 'DRAGON_STUNNED'); this.alturaVoo = 0;
-          if (jogo.line.hp < jogo.line.hpMax) jogo.itens.push({ tipo: 'coracao', x: this.x + (Math.random() < 0.5 ? -120 : 120), y: this.y + 120, t: 0 });
+          if (jogo.line.hp <= jogo.line.hpMax / 2 && Math.random() < 0.6) jogo.itens.push({ tipo: 'coracao', x: this.x + (Math.random() < 0.5 ? -120 : 120), y: this.y + 120, t: 0 });
           jogo.dica('pontoFraco', 'O dragão está atordoado! Ataque o ponto fraco brilhando no peito dele.');
         }
       }

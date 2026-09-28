@@ -379,7 +379,7 @@
       if (movendo && this.sub && this.sub.anim === 'LINE_RUN_STOP') this.sub = null;
       this.correndo = correr;
 
-      let vel = correr ? VEL_CORRER : VEL_ANDAR;
+      let vel = correr ? (this.botas ? VEL_CORRER * 1.2 : VEL_CORRER) : VEL_ANDAR;
       if (this.sub && this.sub.anim === 'LINE_RUN_START') vel *= 0.55 + 0.45 * Math.min(1, this.anim.t / 0.3);
       if (movendo) {
         this.ultVx = eixo.x * vel; this.ultVy = eixo.y * vel;
@@ -389,7 +389,7 @@
         this.mover(this.sub.vx * 0.5 * k * dt, this.sub.vy * 0.5 * k * dt, jogo);
       }
 
-      if (correr && jogo.mapa.tileEm(this.x, this.y - 3) === 'r') { this.tropecar(jogo); return; }
+      if (correr && !this.botas && jogo.mapa.tileEm(this.x, this.y - 3) === 'r') { this.tropecar(jogo); return; }
 
       // Escolha da animação.
       if (this.sub) {
@@ -541,6 +541,20 @@
         jogo.pausaImpacto(0.05); jogo.tremer(forte ? 4 : 2, 0.12);
         return 'bloqueado';
       }
+      this.semDano = 0; this.recargaEscudo = 0;
+      if (this.escudos > 0) {
+        const seg = Math.min(this.escudos, qtd);
+        this.escudos -= seg; qtd -= seg;
+        jogo.particulas.emitir('brilho', this.x, this.y - 36, 8, { vel: 90, vida: 0.4, r: 4 });
+        jogo.particulas.emitir('faisca', this.x, this.y - 30, 6, { vel: 110, vz: 60, vida: 0.3 });
+        if (qtd <= 0) {
+          jogo.pausaImpacto(0.05); jogo.tremer(2, 0.12);
+          this.invul = 0.8; this.vx = Math.cos(ang) * 110; this.vy = Math.sin(ang) * 110;
+          this.noAr = false; this.correndo = false; this.sub = null;
+          this.mudar('dano', 'LINE_HIT_LIGHT');
+          return true;
+        }
+      }
       this.hp = Math.max(0, this.hp - qtd);
       jogo.pausaImpacto(0.08); jogo.tremer(forte ? 7 : 4, 0.2);
       jogo.particulas.emitir('impacto', this.x, this.y - 30, 1, { r: 6, vida: 0.3, vel: 0 });
@@ -570,6 +584,15 @@
         this.anim.tocar('LINE_KNOCKDOWN', true);
         jogo.particulas.emitir('poeira', this.x, this.y, 12, { vel: 70 }); jogo.tremer(4, 0.2);
       } else if (b === 'LINE_KNOCKDOWN') {
+        if (this.hp <= 0 && LB.mochila && LB.mochila.qtd(jogo, 'pena') > 0) {
+          LB.mochila.tirar(jogo, 'pena', 1);
+          this.hp = Math.max(2, Math.round(this.hpMax / 4) * 2);
+          jogo.flashTela = 0.5;
+          jogo.particulas.emitir('fogo', this.x, this.y - 20, 30, { vel: 120, vz: 80, vida: 0.8, r: 6 });
+          jogo.particulas.emitir('coracao', this.x, this.y - 50, 6, { vel: 40, vida: 1.2 });
+          LB.mochila.aviso('🪶 A Pena de Fênix queimou: a Line levantou de novo!');
+          jogo.salvar();
+        }
         if (this.hp <= 0) { this.estado = 'morta'; jogo.derrota(); }
         else this.anim.tocar('LINE_INJURED_STAND', true);
       } else { this.invul = 1.0; this.voltarLivre(); }
@@ -616,6 +639,8 @@
   }
 
   // ---------------- Sombra (inimigo) ----------------
+  // Vaga pela área; ao ver a Line (linha de visão) avisa as vizinhas, persegue contornando paredes,
+  // cerca pelos lados quando há outra sombra atacando, investe, recua e foge quando está quase sumindo.
   class Sombra {
     constructor(x, y) {
       this.x = x; this.y = y; this.x0 = x; this.y0 = y;
@@ -623,43 +648,53 @@
       this.anim = new LB.Animador('SHADOW_IDLE');
       this.raio = 13; this.lado = 1; this.flash = 0; this.vx = 0; this.vy = 0;
       this.inimigo = true; this.vivo = true;
-      this.alvo = null;
+      this.alvo = null; this.visto = null; this.semVer = 0; this.flanco = Math.random() < 0.5 ? -1 : 1;
     }
 
     mover(dx, dy, jogo) {
       const m = jogo.mapa;
-      if (!m.colide(this.x + dx, this.y - 5, 9, 5)) this.x += dx;
-      if (!m.colide(this.x, this.y + dy - 5, 9, 5)) this.y += dy;
+      const livre = (x, y) => !m.colide(x, y - 5, 9, 5) && m.tileEm(x, y - 3) !== 'l';
+      if (livre(this.x + dx, this.y)) this.x += dx;
+      if (livre(this.x, this.y + dy)) this.y += dy;
+    }
+
+    aoAlerta(jogo) {
+      if (['vagar', 'voltar'].includes(this.estado)) { this.estado = 'perseguir'; this.t = 0; this.visto = { x: jogo.line.x, y: jogo.line.y }; }
     }
 
     atualizar(dt, jogo) {
       this.t += dt; this.flash = Math.max(0, this.flash - dt);
       this.anim.atualizar(dt);
-      const line = jogo.line;
-      const dx = line.x - this.x, dy = line.y - this.y, d = Math.hypot(dx, dy);
+      const line = jogo.line, IA = LB.ia;
+      const dx = line.x - this.x, dy = line.y - this.y, d = Math.hypot(dx, dy) || 1;
       if (Math.abs(dx) > 2) this.lado = dx < 0 ? -1 : 1;
       if (jogo.cena) { this.anim.tocar('SHADOW_IDLE'); return; }
+      const ve = line.estado !== 'morta' && d < 230 && IA.linhaDeVisao(jogo.mapa, this.x, this.y, line.x, line.y);
+      if (ve) { this.visto = { x: line.x, y: line.y }; this.semVer = 0; } else this.semVer += dt;
 
       switch (this.estado) {
         case 'vagar': {
           this.anim.tocar('SHADOW_MOVE');
-          if (!this.alvo || this.t > 2.5) { this.t = 0; this.alvo = { x: this.x0 + (Math.random() - 0.5) * 120, y: this.y0 + (Math.random() - 0.5) * 80 }; }
-          const ax = this.alvo.x - this.x, ay = this.alvo.y - this.y, ad = Math.hypot(ax, ay);
-          if (ad > 4) this.mover(ax / ad * 30 * dt, ay / ad * 30 * dt, jogo);
-          if (d < 170 && line.estado !== 'morta') { this.estado = 'perseguir'; this.t = 0; }
+          if (!this.alvo || this.t > 3) { this.t = 0; this.alvo = { x: this.x0 + (Math.random() - 0.5) * 160, y: this.y0 + (Math.random() - 0.5) * 110 }; }
+          if (Math.hypot(this.alvo.x - this.x, this.alvo.y - this.y) > 6) IA.seguir(this, jogo, this.alvo.x, this.alvo.y, 32, dt);
+          if (ve && d < 180) { this.estado = 'perseguir'; this.t = 0; jogo.balao(this, '!', 0.6); IA.alertar(jogo, this, 240); }
           break;
         }
-        case 'perseguir':
+        case 'perseguir': {
           this.anim.tocar('SHADOW_MOVE');
-          if (d > 260) { this.estado = 'vagar'; break; }
-          if (d < 70 && this.t > 0.4) { this.estado = 'preparar'; this.t = 0; this.anim.tocar('SHADOW_ATTACK', true); break; }
-          this.mover(dx / d * 62 * dt, dy / d * 62 * dt, jogo);
+          if (this.semVer > 4 || d > 420) { this.estado = 'voltar'; this.t = 0; break; }
+          // Se outra sombra já está colada na Line, esta vai pelo lado.
+          const outra = jogo.inimigos.find((e) => e !== this && e instanceof Sombra && ['preparar', 'investir'].includes(e.estado) && Math.hypot(e.x - line.x, e.y - line.y) < 90);
+          let ax = this.visto ? this.visto.x : line.x, ay = this.visto ? this.visto.y : line.y;
+          if (outra && ve) { const k = 1 / d; ax = line.x - dy * k * 70 * this.flanco; ay = line.y + dx * k * 50 * this.flanco; }
+          if (ve && d < 72 && this.t > 0.35) { this.estado = 'preparar'; this.t = 0; this.anim.tocar('SHADOW_ATTACK', true); break; }
+          IA.seguir(this, jogo, ax, ay, ve ? 64 : 58, dt);
           break;
+        }
         case 'preparar':
           if (this.t > 0.55 * LB.dif().ritmo) {
             this.estado = 'investir'; this.t = 0;
-            const k = Math.max(d, 1);
-            this.vx = dx / k * 250; this.vy = dy / k * 250;
+            this.vx = dx / d * 250; this.vy = dy / d * 250;
           }
           break;
         case 'investir':
@@ -668,11 +703,24 @@
             const r = line.receberDano(jogo, 1, false, this.x, this.y);
             if (r === 'bloqueado') { this.vx = -this.vx * 0.8; this.vy = -this.vy * 0.8; this.estado = 'atordoada'; this.t = 0; this.flash = 0.2; break; }
           }
-          if (this.t > 0.32) { this.estado = 'recuar'; this.t = 0; }
+          if (this.t > 0.32) { this.estado = 'recuar'; this.t = 0; this.flanco = -this.flanco; }
           break;
         case 'recuar':
-          this.anim.tocar('SHADOW_IDLE');
-          if (this.t > 0.7) { this.estado = 'perseguir'; this.t = 0; }
+          // Depois do ataque se afasta um pouco, para não ficar colada.
+          this.anim.tocar('SHADOW_MOVE');
+          if (this.t < 0.5) this.mover(-dx / d * 70 * dt, -dy / d * 70 * dt, jogo);
+          if (this.t > 0.8) { this.estado = this.hp === 1 && Math.random() < 0.5 ? 'fugir' : 'perseguir'; this.t = 0; }
+          break;
+        case 'fugir':
+          // Quase sumindo: foge por um tempo e depois volta à carga.
+          this.anim.tocar('SHADOW_MOVE');
+          this.mover(-dx / d * 80 * dt, -dy / d * 80 * dt, jogo);
+          if (this.t > 1.6) { this.estado = 'perseguir'; this.t = 0; }
+          break;
+        case 'voltar':
+          this.anim.tocar('SHADOW_MOVE');
+          if (IA.seguir(this, jogo, this.x0, this.y0, 40, dt) < 10) { this.estado = 'vagar'; this.t = 0; this.alvo = null; }
+          if (ve && d < 180) { this.estado = 'perseguir'; this.t = 0; }
           break;
         case 'atordoada':
           this.anim.tocar('SHADOW_HIT');
@@ -691,10 +739,10 @@
       if (this.estado === 'morrendo') return false;
       this.hp -= dano; this.flash = 0.2;
       const d = Math.hypot(this.x - ox, this.y - oy) || 1;
-      this.vx = (this.x - ox) / d * empurra * 1.6; this.vy = (this.y - oy) / d * empurra * 1.6;
+      this.vx = (this.x - ox) / d * (empurra || 110) * 1.6; this.vy = (this.y - oy) / d * (empurra || 110) * 1.6;
       jogo.particulas.emitir('sombra', this.x, this.y - 14, 6, { vel: 70, vida: 0.4 });
       if (this.hp <= 0) { this.estado = 'morrendo'; this.t = 0; }
-      else { this.estado = 'atordoada'; this.t = 0; }
+      else { this.estado = 'atordoada'; this.t = 0; LB.ia.alertar(jogo, this, 260); }
       return true;
     }
 

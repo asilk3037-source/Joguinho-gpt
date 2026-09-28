@@ -8,7 +8,7 @@
   const T = (n) => n * TILE;
   const D = () => LB.desenho;
   // A luz passa por cima de água, lava e fendas, mas para em paredes e objetos altos.
-  const BLOQUEIA_LUZ = new Set(['#', 'T', 'I', 'Z', 'R', 'H', 'D', 'B', 'K', 'o', 'A', 'U', 'C', 'S', 'P', 'M', 'f', 'n', 'm', 'k', 'v', 'g', 'q']);
+  const BLOQUEIA_LUZ = new Set(['#', 'T', 'I', 'Z', 'R', 'H', 'D', 'B', 'K', 'o', 'A', 'U', 'C', 'S', 'P', 'M', 'f', 'n', 'm', 'k', 'v', 'g', 'q', '%', 'p', 'E', 'b', 'W']);
   const CUSTO_RAIO = 1, CUSTO_ESTRELA = 3;
 
   // ---------------- Projéteis ----------------
@@ -50,6 +50,11 @@
       const d = Math.hypot(e.x - line.x, (e.y - line.y) * 1.2);
       if (d > R + (e.chefe ? 60 : e.raio || 12)) continue;
       acertarComLuz(jogo, e, 3, line.x, line.y);
+      if (e.chefe && ['fogo', 'desesperado'].includes(e.estado) && LB.mochila.temConclusao(jogo, 'estrelas')) {
+        e.mudar('observar', 'DRAGON_HIT'); e.t = -0.6;
+        jogo.particulas.emitir('fumaca', e.x, e.y - 60, 14, { vel: 60, vz: 40, vida: 1, r: 6 });
+        LB.mochila.aviso('✨ As estrelas apagaram o fogo do dragão!');
+      }
     }
     for (const p of jogo.mapa.props) if ((p.tipo === 'cristal' || p.tipo === 'tocha') && !p.aceso && Math.hypot(p.x - line.x, p.y - line.y) < R) acender(jogo, p);
   }
@@ -370,6 +375,8 @@
       this.anim = new LB.Animador('WISP_IDLE');
     }
 
+    aoAlerta() { if (this.estado === 'vagar') { this.estado = 'cacar'; this.t = 0; } }
+
     mover(dx, dy, jogo) {
       const bloqueado = (x, y) => BLOQUEIA_LUZ.has(jogo.mapa.tileEm(x, y - 4));
       if (!bloqueado(this.x + dx, this.y)) this.x += dx;
@@ -388,11 +395,14 @@
           if (!this.alvo || this.t > 2.4) { this.t = 0; this.alvo = { x: this.x0 + (Math.random() - 0.5) * 120, y: this.y0 + (Math.random() - 0.5) * 80 }; }
           const ax = this.alvo.x - this.x, ay = this.alvo.y - this.y, ad = Math.hypot(ax, ay);
           if (ad > 4) this.mover(ax / ad * 28 * dt, ay / ad * 28 * dt, jogo);
-          if (d < 210 && l.estado !== 'morta') { this.estado = 'cacar'; this.t = 0; }
+          if (d < 210 && l.estado !== 'morta' && LB.ia.linhaDeVisao(jogo.mapa, this.x, this.y + 20, l.x, l.y)) { this.estado = 'cacar'; this.t = 0; LB.ia.alertar(jogo, this, 200); }
           break;
         }
         case 'cacar': {
-          if (d > 320) { this.estado = 'vagar'; break; }
+          if (d > 360) { this.estado = 'vagar'; break; }
+          // Só atira se enxerga a Line; senão procura um ângulo contornando as paredes.
+          const ve = LB.ia.linhaDeVisao(jogo.mapa, this.x, this.y + 20, l.x, l.y);
+          if (!ve) { LB.ia.seguir(this, jogo, l.x, l.y, 60, dt); this.cd = Math.max(this.cd, 0.4); break; }
           const k = d > 170 ? 1 : d < 110 ? -1 : 0;
           const lat = Math.sin(this.f * 1.3);
           this.mover((dx / d * k * 55 - dy / d * lat * 30) * dt, (dy / d * k * 55 + dx / d * lat * 30) * dt, jogo);

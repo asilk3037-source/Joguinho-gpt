@@ -6,12 +6,17 @@
 > Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.
 
 > 🆕 **Novidades desta versão:**
-> - **Gruta dos Ecos**, área nova a leste da floresta (seção 7.1).
-> - **Mochila com 7 itens usáveis**: Poção de Vida, Pão da Bell, Maçã, Elixir de Luz, Flor da Lua, Chave antiga e Bússola do Mago (seção 7.3).
-> - **Caderno de 8 pistas** para investigar o dragão e achar a Bell (seção 7.4).
-> - **Mapa com névoa** que vai abrindo com a exploração, e mapa do mundo (seção 7.5).
-> - **13 baús e 3 portas trancadas** (seção 7.2), áreas maiores nas ruínas e na montanha.
-> - As **três tochas** da montanha agora são fáceis de achar (seção 7.6).
+> - **Fases bem maiores e interligadas**: a floresta, a gruta, as ruínas e a montanha dobraram de tamanho e ganharam atalhos entre si (seções 6 e 7.1).
+> - **Vilarejo do Riacho**, área nova com cinco moradores, a **loja da Dona Rosa** e a **ferraria do Seu Bento** (seções 6.2, 7.3 e 7.4).
+> - **Moedas** e **armaduras** que dão escudos (seções 7.2 e 7.3).
+> - **Carrinho de mina** entre três estações, que só anda depois de achar a Alavanca de Ferro na montanha (seção 7.7).
+> - **Dez itens, cada um com uma função**: poção, elixir, bomba, Pena de Fênix, chave, lanterna, gancho, bússola, botas e alavanca, com atalho **F** para o item equipado (seção 7.5).
+> - **Bombas, gancho, chão em brasa e galerias escuras** que abrem caminhos novos (seção 7.8).
+> - **12 documentos de investigação** com tipo, autor e data, que se juntam em **8 conclusões**; algumas ajudam contra o dragão (seção 7.6).
+> - O **mapa só acende os lugares visitados** (seção 7.9).
+> - **Menos vida espalhada**: sem comida de cura pelo chão e corações caindo bem menos (seção 7.5).
+> - **Inimigos mais espertos**: contornam paredes, avisam os vizinhos, flanqueiam e fogem; morcegos novos nas Minas (seção 9).
+> - **Testes automatizados** de todas as telas (seção 15).
 
 ![Tela inicial, com a escolha de dificuldade](imagens/01-menu.jpg)
 *Tela inicial, com a escolha de dificuldade*
@@ -26,14 +31,19 @@
 - [4. Roteiro completo, cena a cena](#4-roteiro-completo-cena-a-cena)
 - [5. O primeiro encontro (prólogo)](#5-o-primeiro-encontro-prologo)
 - [6. As fases](#6-as-fases)
-- [7. Exploração: Gruta dos Ecos, mochila, itens, pistas e mapa](#7-exploracao-gruta-dos-ecos-mochila-itens-pistas-e-mapa)
-  - [7.1 Gruta dos Ecos](#71-gruta-dos-ecos-area-nova)
-  - [7.2 Baús, portas, chaves e pistas](#72-todos-os-baus-portas-chaves-e-pistas)
-  - [7.3 Mochila e itens](#73-mochila-e-itens)
-  - [7.4 Caderno de pistas](#74-caderno-de-pistas-investigacao)
-  - [7.5 Mapa com névoa](#75-mapa-com-nevoa)
-  - [7.6 Tochas e cristais](#76-tochas-e-cristais-como-achar)
-  - [7.7 Arte necessária](#77-arte-necessaria-para-a-exploracao)
+- [7. Exploração: mundo interligado, vilarejo, loja, carrinho, itens, documentos e mapa](#7-exploracao-mundo-interligado-vilarejo-loja-carrinho-itens-documentos-e-mapa)
+  - [7.1 Como as fases se ligam](#71-como-as-fases-se-ligam)
+  - [7.2 Moedas](#72-moedas)
+  - [7.3 Loja e ferraria](#73-loja-da-dona-rosa-e-ferraria-do-seu-bento)
+  - [7.4 Moradores](#74-moradores-do-vilarejo)
+  - [7.5 Mochila e itens](#75-mochila-e-itens-um-item-uma-funcao)
+  - [7.6 Documentos e conclusões](#76-documentos-de-investigacao-e-conclusoes)
+  - [7.7 Carrinho de mina](#77-carrinho-de-mina)
+  - [7.8 Bombas, gancho, brasa e escuro](#78-bombas-gancho-chao-em-brasa-e-galerias-escuras)
+  - [7.9 Mapa](#79-mapa-so-acende-onde-a-line-passou)
+  - [7.10 Todos os baús](#710-todos-os-baus)
+  - [7.11 Tochas e cristais](#711-tochas-e-cristais-como-achar)
+  - [7.12 Arte necessária](#712-arte-necessaria-para-a-exploracao)
 - [8. Como se joga](#8-como-se-joga)
 - [9. Inimigos e chefes](#9-inimigos-e-chefes)
 - [10. Lista completa de animações](#10-lista-completa-de-animacoes)
@@ -45,18 +55,20 @@
 
 ## 1. Visão geral
 
-**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). Tudo começa com um prólogo jogável, **O primeiro encontro**, que conta como as duas se conheceram em 09/05/2024. Depois, a Line e a Bell já são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa uma floresta, uma gruta, ruínas mágicas e uma montanha de lava para resgatá-la, juntando pistas num caderno de investigação, abrindo baús e portas trancadas e usando os itens da mochila.
+**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). Tudo começa com um prólogo jogável, **O primeiro encontro**, que conta como as duas se conheceram em 09/05/2024. Depois, a Line e a Bell já são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa um vilarejo, uma floresta, uma gruta com minas abandonadas, ruínas mágicas e uma montanha de lava para resgatá-la. No caminho ela junta documentos de investigação, tira conclusões, compra armaduras, conserta um carrinho de mina e usa os itens da mochila para abrir caminhos novos.
 
 | | |
 |---|---|
 | Gênero | Aventura / ação com exploração, visão de cima |
 | Plataformas | Navegador no PC (teclado ou controle) e no celular (toque) |
-| Duração | Cerca de 45 a 70 minutos explorando tudo (o prólogo leva uns 3 minutos) |
+| Duração | Cerca de 1h30 a 2h explorando tudo (o prólogo leva uns 3 minutos) |
 | Prólogo | *O primeiro encontro* (09/05/2024): Minas Shopping, Playground e Túnel |
-| Áreas | 3 do prólogo e 6 da aventura: Fazendinha, Gruta dos Ecos, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |
+| Áreas | 3 do prólogo e 7 da aventura, todas interligadas: Fazendinha, Vilarejo do Riacho, Floresta Sussurrante, Gruta dos Ecos e Minas de Cristal, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |
 | Chefes | Guardião de Pedra e o Dragão Vermelho |
-| Exploração | 13 baús, 3 portas trancadas (3 chaves), 8 pistas de investigação, mapa com névoa que vai abrindo |
-| Mochila | 7 tipos de item (curas, elixir, chave, bússola, Flor da Lua), caderno de pistas e mapa |
+| Exploração | 24 baús, 3 portas trancadas, paredes rachadas, postes do gancho, chão em brasa, galerias escuras, carrinho de mina entre 3 estações |
+| Investigação | 12 documentos (com tipo, autor e data) e 8 conclusões |
+| Vilarejo | 5 moradores, loja de itens e ferraria com 3 armaduras; moedas caem dos inimigos e saem dos baús |
+| Mochila | 10 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
 | Animações catalogadas | **267**: 160 com arte (temporária), 47 usando uma substituta, 60 desenhadas no código ou sem imagem |
@@ -144,7 +156,9 @@ O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no t
 
 **O rapto.** O céu escurece, os bichos se assustam e um dragão vermelho mergulha do céu e leva a Bell. A Line corre atrás, grita por ela, chora e decide ir buscá-la. Pede ao Theo que cuide da fazenda.
 
-**A investigação.** Desde o rapto, a Line anota pistas num caderno: marcas de garra no píer, a carta do Mago, a lenda da montanha, um mapa rasgado, as páginas do diário do Guardião, uma escama vermelha e a fita de cabelo da Bell. Cada pista conta um pedaço da história do dragão e aponta o caminho. Com as oito, a Line entende tudo e ganha um coração extra.
+**A investigação.** Desde o rapto, a Line junta documentos: as marcas de garra no píer, o cartaz do vilarejo, a carta do Mago, o bilhete do caçador Tobias, a lenda da montanha, o mapa rasgado, o relatório do capataz das minas, as páginas do diário do Guardião, a receita do Mestre Aurélio, uma escama vermelha e a fita de cabelo da Bell. Quando dois documentos combinam, ela tira uma conclusão: que a Bell está viva, que o dragão teme a luz, onde está a alavanca do carrinho, quem forja a Armadura de Brasa, onde fica o ponto fraco do dragão. Com os doze, a Line entende tudo e ganha um coração extra.
+
+**O vilarejo.** A leste da fazenda fica o Vilarejo do Riacho. A Dona Rosa vende poções e bombas, o Seu Bento forja armaduras, o Seu Zé conta que o carrinho de mina parou quando o capataz levou a alavanca do freio para a Forja Antiga, a Dona Lurdes aponta a cabana do marido caçador e o Pedrinho conta de uma pedra rachada na floresta. Achando a alavanca na montanha, a Line conserta o carrinho e passa a viajar entre o vilarejo, as minas e a forja.
 
 **Capítulo 2 — A floresta.** Na Floresta Sussurrante, um mago conta que o dragão acordou depois de cem anos e entrega uma espada guardada num baú. Sombras aparecem. Espinhos fecham o caminho do norte, e a espada abre passagem. A leste da floresta fica a **Gruta dos Ecos**, onde o Mago guardou uma bússola, um elixir e uma sala trancada com um coração extra e o mapa rasgado.
 
@@ -378,7 +392,7 @@ Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depoi
 - “As barreiras das ruínas só se desfazem com luz. Procure o altar na sala a oeste.”
 - “Pule o riacho, corte os espinhos, ache o altar. Simples, não?”
 - “Baús trancados? Não. Portas trancadas! Três, pelo mundo. E três chaves antigas escondidas em baús.”
-- “Cada pista que você anota no caderno conta um pedaço da história do dragão. Junte as oito.”
+- “Cada documento que você guarda conta um pedaço da história. Junte dois que combinam e você entende mais do que imagina.”
 - “Cristais apagados, barreiras de pé. Acenda todos e o caminho se abre.”
 - “O Guardião de Pedra não sente a espada... mas a luz, ah, a luz ele sente.”
 - “Sua magia volta sozinha, devagarinho. Não gaste tudo de uma vez!”
@@ -486,7 +500,7 @@ Quando a terceira tocha acende.
 
 ### 4.21 Baú de coração extra
 
-Há dois: um na alcova leste das ruínas e outro na plataforma cercada de fendas na montanha.
+Há três: na sala trancada da gruta, na alcova leste das ruínas e na plataforma cercada de fendas na montanha.
 
 > ▶ `LINE_CROUCH`  
 > ▶ `LINE_CROUCH_STAND`  
@@ -555,26 +569,32 @@ Todos os baús que não são a espada nem o coração extra. A Line agacha, o ba
 > ▶ `LINE_HAPPY`  
 > **Line** *(surpresa)*: Uma bússola! A agulha aponta pra... um baú? Deve mostrar os tesouros que ainda não achei.  
 > **Line** *(marota)*: Uma chave antiga. Deve abrir alguma daquelas portas trancadas.  
-> **Line** *(apaixonada)*: Uma Flor da Lua... a Bell ia amar. Vou guardar pra uma hora de aperto.  
+> **Line** *(sorrindo)*: Uma lanterna! Agora as galerias escuras das minas não me assustam.  
+> **Line** *(surpresa)*: Um gancho com corda! Com ele dá pra atravessar de um poste até outro, por cima da água.  
+> **Line** *(surpresa)*: Uma alavanca de ferro, pesada... Tem um carrinho desenhado no cabo.  
+> **Line** *(sorrindo)*: É a alavanca do freio do carrinho de mina! Se eu encaixar numa estação, ele volta a andar.  
+> **Line** *(apaixonada)*: Uma Pena de Fênix... Se eu cair, ela me levanta. Ufa.  
+> **Line** *(marota)*: Bombas! Com elas eu quebro aquelas paredes rachadas. Ficam no atalho: é só apertar F (ou o botão do item).  
 
-### 4.25 Pista encontrada
+### 4.25 Documento encontrado
 
-Ao pegar um papel brilhando no chão, examinar um lugar ou abrir um baú com pista. A pista vai para o caderno. Com as 8, coração extra.
+Ao pegar um papel brilhando no chão, examinar um lugar ou abrir um baú com documento. O texto aparece parágrafo por parágrafo; se ele completar uma conclusão, aparece o título “💡 Conclusão!”. Com os 12, coração extra.
 
 > ▶ `LINE_CROUCH`  
 > ▶ `LINE_CROUCH_STAND`  
 > ▶ `LINE_IDLE`  
 > 🎬 **Título na tela:** Pista encontrada! — … …  
+> **Line**: surpresa  
 > ▶ `LINE_HAPPY`  
 > 🎬 **Título na tela:** Caderno completo! — A Line entendeu tudo: coração extra  
 > **Line** *(brava)*: Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.  
 > **Line** *(surpresa)*: Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!  
 > **Line** *(chorando)*: Bell...  
-> **Line** *(neutro)*: Vou guardar isso no caderno. … de … pistas.  
+> **Line** *(neutro)*: Vou guardar isso no caderno. … de … documentos.  
 
 ### 4.26 Examinar um lugar
 
-Pontos de exame (as marcas de garra no píer).
+Pontos de exame: as marcas de garra no píer, o cartaz do vilarejo e o bilhete na porta da cabana do caçador.
 
 > ▶ `LINE_CROUCH`  
 > ▶ `LINE_CROUCH_STAND`  
@@ -587,7 +607,34 @@ Nas três portas trancadas: sem chave a Line comenta; com chave, a porta abre e 
 > ▶ `LINE_HAPPY`  
 > **Line** *(marota)*: Abriu! Vamos ver o que tem aí dentro.  
 
-### 4.28 Placas
+### 4.28 Poste de gancho sem o gancho
+
+Ao chegar num poste do gancho antes de achar o gancho (sala leste das ruínas).
+
+> **Line** *(neutro)*: Um poste com uma argola de ferro... e outro igual do outro lado. Com um gancho e corda eu passaria.  
+
+### 4.29 Conversa com os moradores
+
+Ao falar com qualquer morador do vilarejo. As falas mudam com o progresso e estão na seção 7.4. Com a Dona Rosa e o Seu Bento, a conversa termina abrindo a loja.
+
+
+### 4.30 O carrinho de mina
+
+Numa estação, antes de consertar o carrinho. Sem a alavanca, a Line comenta o que falta; com ela, encaixa a alavanca e o carrinho volta a andar.
+
+![O carrinho de mina](imagens/40-estacao.jpg)
+*O carrinho de mina*
+
+> **Line** *(neutro)*: Um carrinho de mina nos trilhos. Falta a alavanca do freio... sem ela não sai do lugar.  
+> **Line** *(neutro)*: Alguém deve saber onde foi parar essa alavanca.  
+> **Line** *(neutro)*: O relatório do capataz disse que a alavanca ficou na Forja Antiga, na montanha.  
+> ▶ `LINE_CROUCH`  
+> ▶ `LINE_CROUCH_STAND`  
+> ▶ `LINE_HAPPY`  
+> 🎬 **Título na tela:** Carrinho consertado! — Agora dá para viajar entre as estações descobertas  
+> **Line** *(sorrindo)*: Clique! Encaixou. Agora o carrinho me leva de estação em estação.  
+
+### 4.31 Placas
 
 | Onde | Texto |
 |---|---|
@@ -597,7 +644,7 @@ Nas três portas trancadas: sem chave a Line comenta; com chave, a porta abre e 
 | Montanha, início | Fendas na rocha! Pule para atravessar (Espaço). Correndo, o pulo vai mais longe. |
 | Montanha, fonte | Fonte das brasas: beba para recuperar vida e magia. Se cair, você volta para cá. |
 
-### 4.29 Balões dos bichos e da Bell (na fazenda)
+### 4.32 Balões dos bichos e da Bell (na fazenda)
 
 - Cocoricóóó! (galo, de manhã)
 - Au! / Au! Au! / Au! Au! ♥ / Auuu~ (fome) / Auuu... / AU! AU! AU! (Theo)
@@ -608,7 +655,7 @@ Nas três portas trancadas: sem chave a Line comenta; com chave, a porta abre e 
 - O Theo já tá sentindo o cheiro! (Bell)
 - Os bichinhos te amam. Eu entendo eles. (Bell)
 
-### 4.30 Dicas que aparecem durante o jogo
+### 4.33 Dicas que aparecem durante o jogo
 
 | Quando | Texto |
 |---|---|
@@ -803,41 +850,97 @@ O HTML do primeiro encontro já traz ilustrações das duas juntas: o abraço, o
 
 ## 6. As fases
 
-Os três lugares do prólogo (Minas Shopping, Playground e Túnel) estão na seção 5. Estas são as áreas da aventura:
+Os três lugares do prólogo (Minas Shopping, Playground e Túnel) estão na seção 5. A aventura tem **sete áreas**, todas ligadas entre si (a seção 7.1 mostra como). As áreas ficaram bem maiores nesta versão:
+
+| Área | Tamanho (tiles) | Baús | Inimigos | Novidades |
+|---|---|---|---|---|
+| Fazendinha | 46 × 34 | 1 | — | estrada nova para o vilarejo, a leste |
+| Vilarejo do Riacho | 60 × 40 | 1 | — | área nova: moradores, loja, ferraria, fonte e estação do carrinho |
+| Floresta Sussurrante | 76 × 44 | 5 | 10 sombras | cabana do caçador, lago com ilha (gancho), pedra rachada (bomba), saída para o vilarejo |
+| Gruta dos Ecos | 64 × 44 | 7 | 5 sombras, 2 fogos-fátuos azuis, 5 morcegos | metade nova: as **Minas de Cristal**, escuras, com morcegos, trilhos, estação e abismo (gancho) |
+| Ruínas Encantadas | 70 × 36 | 5 | 8 sombras, 6 fogos-fátuos azuis | torre nordeste (gancho), sala leste, atalho para as Minas |
+| Montanha de Brasa | 72 × 40 | 5 | 8 fogos-fátuos de fogo, 9 sombras | Forja Antiga, estação, chão em brasa, atalho para as Minas |
+| Covil do Dragão | 26 × 20 | 0 | — | — |
 
 ### 6.1 Fazendinha
 Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho, pasto, chiqueiro, lago com píer e barco, varal, casinha do Theo, mesa de piquenique, árvores frutíferas e flores. Tem borboletas, pássaros, nuvens, folhas caindo e fumaça nas chaminés. De manhã, a luz é clara. À tarde, o céu fica alaranjado, e depois do rapto vira noite com vaga-lumes.
 
+Depois do rapto, abre a **estrada do leste**, que leva ao Vilarejo do Riacho. Antes disso a estrada fica fechada: a Line não sai da fazenda no meio do dia com a Bell.
+
 ![Pasto com vacas, cavalo e ovelhas](imagens/04-pasto.jpg)
 *Pasto com vacas, cavalo e ovelhas*
 
-### 6.2 Floresta Sussurrante
-Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega. **Nova ala leste:** uma clareira escondida além do riacho, com um baú de poções, maçãs no chão e a entrada da Gruta dos Ecos. Na clareira do Mago há um segundo baú, com a Carta do Mago.
+![Mapa da fazendinha: saída norte para a floresta e estrada leste para o vilarejo](imagens/mapa-fazenda.jpg)
+*Mapa da fazendinha: saída norte para a floresta e estrada leste para o vilarejo*
 
-![Ala leste da floresta, com o baú e o caminho para a gruta](imagens/34-floresta-leste.jpg)
-*Ala leste da floresta, com o baú e o caminho para a gruta*
+### 6.2 Vilarejo do Riacho (área nova)
+Um vilarejo pequeno a leste da fazenda, com uma praça de terra batida no meio, fonte, quadro de avisos, casinhas de telhado colorido, barraca de feira, um riacho ao sul e a estação do carrinho de mina a leste. Não tem inimigos: é o lugar seguro da aventura.
+
+- **Praça:** a fonte (cura e vira ponto de retorno) e o **cartaz do vilarejo**, que é um documento de investigação.
+- **Loja da Dona Rosa** (casa do oeste, com letreiro): vende poções, elixir, bombas, a Pena de Fênix e as Botas de Andarilha.
+- **Ferraria do Seu Bento** (casa do leste, com letreiro e bigorna): vende as armaduras.
+- **Estação do Vilarejo:** o carrinho de mina parado nos trilhos, esperando a alavanca do freio.
+- **Moradores:** Dona Rosa, Seu Bento, Seu Zé (o mais velho, conta a história do carrinho), Dona Lurdes (mulher do caçador) e o Pedrinho (que corre de um lado para o outro e conta da pedra rachada).
+- **Saídas:** oeste para a fazenda e norte para a floresta.
+
+![O Vilarejo do Riacho: praça, fonte e moradores](imagens/37-vilarejo.jpg)
+*O Vilarejo do Riacho: praça, fonte e moradores*
+
+![Mapa do vilarejo: loja (oeste), ferraria (leste), praça, riacho e estação](imagens/mapa-vilarejo.jpg)
+*Mapa do vilarejo: loja (oeste), ferraria (leste), praça, riacho e estação*
+
+### 6.3 Floresta Sussurrante
+Trilha com raízes (correr sobre elas faz a Line tropeçar, a não ser com as Botas de Andarilha), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega. Ela cresceu para o leste e para o sul:
+
+- **Clareira do Mago (oeste):** o Mago, o baú da espada e o baú da **Carta do Mago**.
+- **Trilha leste:** leva à entrada da Gruta dos Ecos.
+- **Cabana do caçador (nordeste):** na porta está pregado o **bilhete do caçador** Tobias.
+- **Clareira do lago (sudeste):** um lago com uma **ilha no meio**, alcançada com o **gancho** entre dois postes. Mais ao sul, uma **pedra rachada** esconde um baú: precisa de **bomba**.
+- **Saídas:** sul para a fazenda, norte para as ruínas (depois da espada), leste para a gruta e sudeste para o vilarejo.
 
 ![Sombras na floresta](imagens/11-floresta-sombras.jpg)
 *Sombras na floresta*
 
-### 6.3 Gruta dos Ecos (nova)
-Caverna a leste da floresta, com baús, uma sala trancada e duas pistas. Está descrita em detalhes na **seção 7.1**.
+![O poste do gancho na beira do lago: do outro lado fica a ilha](imagens/45-gancho.jpg)
+*O poste do gancho na beira do lago: do outro lado fica a ilha*
 
-### 6.4 Ruínas Encantadas
+![Mapa da floresta: clareira do Mago, cabana do caçador, lago com ilha e as quatro saídas](imagens/mapa-floresta.jpg)
+*Mapa da floresta: clareira do Mago, cabana do caçador, lago com ilha e as quatro saídas*
+
+### 6.4 Gruta dos Ecos e Minas de Cristal
+A gruta ficou com o dobro do tamanho. A metade oeste é a caverna azulada de antes; a metade leste são as **Minas de Cristal**, abandonadas desde que o dragão acordou.
+
+- **Gruta (oeste):** fonte, pergaminho da **Lenda da Montanha**, a bússola, um elixir, uma chave e a sala trancada com o coração extra e o **Mapa rasgado**.
+- **Salão de entrada das Minas:** o baú da **lanterna**, a placa das minas, a **Estação das Minas** e o **relatório do capataz**.
+- **Galerias escuras:** sem a lanterna, a Line só enxerga um pouquinho em volta; com ela, a luz fica bem maior. Moram ali os **morcegos**. No meio, um baú de bombas.
+- **Abismo:** uma fenda funda que só se atravessa com o **gancho**. Do outro lado, a **Pena de Fênix**.
+- **Paredes rachadas:** duas, que abrem com **bomba** o atalho para a **Montanha de Brasa** (leste).
+- **Saídas:** oeste para a floresta, norte para as ruínas (um atalho que só abre acendendo o cristal do lado das ruínas) e leste para a montanha (depois das paredes rachadas).
+
+![A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda](imagens/26-gruta.jpg)
+*A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda*
+
+![Galeria escura sem lanterna: a Line quase não enxerga](imagens/43-minas-escuro.jpg)
+*Galeria escura sem lanterna: a Line quase não enxerga*
+
+![A mesma galeria com a lanterna](imagens/44-minas-lanterna.jpg)
+*A mesma galeria com a lanterna*
+
+![Mapa da gruta e das Minas: a gruta azul a oeste, as minas a leste, a estação, o abismo e os atalhos](imagens/mapa-gruta.jpg)
+*Mapa da gruta e das Minas: a gruta azul a oeste, as minas a leste, a estação, o abismo e os atalhos*
+
+### 6.5 Ruínas Encantadas
 Um templo antigo de pedra e musgo, organizado em salas:
 
-- **Salão sul (entrada):**
-  - A placa, uma fonte e dois cristais que abrem a barreira do meio.
-  - A oeste fica a **sala do altar**, onde a Line aprende a magia.
-- **Salão do meio:**
-  - Dois lagos com um cristal numa ilhota em cada um. Eles só podem ser acesos de longe, com o Raio de Luz.
-  - Mais um cristal, pilares, sombras e fogos-fátuos.
-  - A leste fica uma **alcova com o baú de coração extra**, aberta por um cristal próprio.
-  - Tem uma fonte.
+- **Salão sul (entrada):** a placa, uma fonte e dois cristais que abrem a barreira do meio. A oeste fica a **sala do altar**, onde a Line aprende a magia, e no chão, perto dele, a **página 1 do diário do Guardião**.
+- **Salão do meio:** dois lagos com um cristal numa ilhota em cada um (só acendem de longe, com o Raio de Luz), mais um cristal, pilares, sombras e fogos-fátuos. A leste fica a **alcova com o coração extra**.
 - **Salão norte:** arena com pilares onde dorme o **Guardião de Pedra**. Vencido, ele desfaz a última barreira, que leva à montanha.
-- **Ala leste da entrada (nova):** uma sala com pilares e sombras, e um baú com **chave antiga** e poção.
-- **Biblioteca (nova, trancada):** um corredor a leste do salão do meio termina numa porta de ferro. Dentro, a placa da biblioteca e o baú com a **página 2 do diário do Guardião** e um elixir.
-- No chão, perto do altar, está a **página 1 do diário**.
+- **Ala leste da entrada:** pilares, sombras e um baú com **chave antiga** e moedas.
+- **Biblioteca (trancada):** o baú com a **página 2 do diário** e um elixir.
+- **Sala leste (nova):** o baú do **gancho**.
+- **Torre nordeste (nova):** do outro lado de um fosso, alcançada com o gancho entre dois postes. Tem um baú com elixir e 60 moedas.
+- **Atalho sudeste (novo):** um corredor fechado por uma barreira de luz; acendendo o cristal da sala do lado, ele abre a passagem para as Minas.
+- **Saídas:** sul para a floresta, norte para a montanha (depois do Guardião) e sudeste para as Minas.
 
 ![A biblioteca trancada das ruínas](imagens/33-biblioteca.jpg)
 *A biblioteca trancada das ruínas*
@@ -845,211 +948,398 @@ Um templo antigo de pedra e musgo, organizado em salas:
 ![Cristais acesos e barreira desfeita](imagens/15-barreira-aberta.jpg)
 *Cristais acesos e barreira desfeita*
 
-### 6.5 Montanha de Brasa
+![Mapa das ruínas: salões, biblioteca, torre do gancho e o atalho para as Minas](imagens/mapa-ruinas.jpg)
+*Mapa das ruínas: salões, biblioteca, torre do gancho e o atalho para as Minas*
+
+### 6.6 Montanha de Brasa
 Rocha vulcânica, rios de lava e brasas subindo:
 
-- **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a **primeira tocha**, perto da placa.
-- **Meio:**
-  - Lava dos dois lados.
-  - A **fonte das brasas**, que é o ponto de retorno.
-  - A segunda tocha, numa **ilha no meio da lava**, que só pode ser acesa de longe.
-- **Topo:**
-  - A **terceira tocha**, na praça de cima, perto do portão.
-  - Uma **plataforma cercada de fendas com o segundo baú de coração**.
-  - O **portão de fogo**, que abre com as três tochas acesas. Perto dele, no chão, a **fita de cabelo da Bell**.
-- **Encosta leste (nova):** uma fenda comprida para pular, um baú com **chave antiga** e poção, e uma porta de ferro que leva a uma **caverna escondida** com lava, o baú da **Flor da Lua** e a **escama vermelha**.
-
-As três tochas são mostradas pela câmera na primeira chegada, e o jogo conta quantas já foram acesas (veja a seção 7.6).
+- **Início:** uma fenda para pular e a **primeira tocha**, perto da placa.
+- **Meio:** lava dos dois lados, a **fonte das brasas** e a segunda tocha, numa **ilha no meio da lava**, que só acende de longe.
+- **Topo:** a **terceira tocha**, a **plataforma com o coração extra** e o **portão de fogo**, que abre com as três tochas. Perto dele, a **fita de cabelo da Bell**.
+- **Encosta leste:** um baú com **chave antiga** e a porta de ferro da **caverna escondida**, onde estão a **escama vermelha** e uma poção.
+- **Forja Antiga (nova):** a sala do X vermelho do mapa rasgado. Tem a bigorna do Mestre Aurélio, a **receita da Armadura de Brasa** e o baú da **Alavanca de Ferro**.
+- **Estação da Forja (nova):** a terceira estação do carrinho.
+- **Chão em brasa (novo):** um caminho de brasa rasa que queima a Line (meio coração a cada meio segundo). Só com a **Armadura de Brasa** dá para atravessar até o baú do fundo, com 90 moedas e um elixir.
+- **Saídas:** sul para as ruínas, norte para o covil (pelo portão de fogo) e leste para as Minas.
 
 ![A tocha da ilha de lava, que só acende de longe](imagens/21-tocha-na-lava.jpg)
 *A tocha da ilha de lava, que só acende de longe*
 
-![A encosta leste, com a fenda e a porta trancada](imagens/35-montanha-encosta.jpg)
-*A encosta leste, com a fenda e a porta trancada*
+![O chão em brasa da montanha](imagens/47-brasa.jpg)
+*O chão em brasa da montanha*
 
-![A caverna escondida da montanha](imagens/32-montanha-caverna.jpg)
-*A caverna escondida da montanha*
+![Mapa da montanha: as três tochas, o portão, a Forja Antiga, a estação e o chão em brasa](imagens/mapa-montanha.jpg)
+*Mapa da montanha: as três tochas, o portão, a Forja Antiga, a estação e o chão em brasa*
 
-### 6.6 Covil do Dragão
-Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao fundo. Quando a Line entra, a entrada desmorona e a luta começa.
+### 6.7 Covil do Dragão
+Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao fundo. Quando a Line entra, a entrada desmorona e a luta começa. É a única área sem volta.
 
 ![O dragão cospe fogo no covil](imagens/23-dragao-fogo.jpg)
 *O dragão cospe fogo no covil*
 
-## 7. Exploração: Gruta dos Ecos, mochila, itens, pistas e mapa
+## 7. Exploração: mundo interligado, vilarejo, loja, carrinho, itens, documentos e mapa
 
-> ⚠️ Tudo desta seção também é **temporário**: os itens aparecem como emojis e os objetos novos são desenhados no código até a arte final chegar.
+> ⚠️ Tudo desta seção também é **temporário**: os itens aparecem como emojis e os objetos novos (moradores, carrinho, postes, bombas, paredes rachadas) são desenhados no código até a arte final chegar.
 
-Depois do rapto, o jogo vira uma aventura de exploração: áreas maiores, uma área nova (a Gruta dos Ecos), 13 baús, 3 portas trancadas com 3 chaves, itens que a Line guarda na mochila e usa quando quiser, 8 pistas de investigação que contam a história do dragão e um mapa que vai se abrindo conforme ela explora.
+Depois do rapto, o jogo vira uma aventura de exploração: sete áreas ligadas por vários caminhos, um vilarejo com loja e ferraria, moedas, armaduras, dez itens (cada um com uma função), doze documentos de investigação que se juntam em oito conclusões, um carrinho de mina que liga três estações e um mapa que só acende onde a Line já passou.
 
-### 7.1 Gruta dos Ecos (área nova)
-Caverna azulada e úmida a leste da floresta, com poças fundas, estalagmites, cogumelos que brilham e luzinhas azuis flutuando. Não tem nuvens nem pássaros: só o eco. Sombras vagam por ela depois da espada, e fogos-fátuos azuis depois da magia.
+### 7.1 Como as fases se ligam
 
-- **Entrada (oeste):** a placa, a fonte e o pergaminho com a **Lenda da Montanha**.
-- **Salão norte:** o baú com a **Bússola do Mago**.
-- **Canto oeste:** baú com Elixir de Luz e uma poção.
-- **Nicho leste:** baú com uma **chave antiga**.
-- **Sala trancada (sul):** atrás de uma porta de ferro. Dentro: baú de **coração extra** e o **Mapa rasgado**, que completa o mapa do mundo.
+```
+                         [ Covil ]
+                             │ portão de fogo (3 tochas)
+                    [ Montanha de Brasa ]══ estação da Forja
+                     │               │ paredes rachadas (bomba)
+        Guardião ─── │               │
+                [ Ruínas ]──atalho──[ Gruta dos Ecos + Minas ]══ estação das Minas
+                     │  (cristal)     │
+         espinhos ── │                │
+                [ Floresta Sussurrante ]
+                     │           │
+               [ Fazendinha ]──[ Vilarejo do Riacho ]══ estação do Vilarejo
+                        estrada leste (depois do rapto)
+```
 
-![A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda](imagens/26-gruta.jpg)
-*A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda*
+| De | Para | O que abre o caminho |
+|---|---|---|
+| Fazendinha | Floresta | livre |
+| Fazendinha | Vilarejo | depois do rapto |
+| Vilarejo | Floresta | livre |
+| Floresta | Gruta | livre |
+| Floresta | Ruínas | cortar os espinhos com a espada |
+| Gruta (Minas) | Ruínas | acender o cristal da sala sudeste das ruínas; antes disso a barreira fecha a passagem |
+| Gruta (Minas) | Montanha | explodir as duas paredes rachadas com bombas |
+| Ruínas | Montanha | vencer o Guardião de Pedra |
+| Montanha | Covil | acender as três tochas |
+| Vilarejo · Minas · Forja | (carrinho) | encaixar a Alavanca de Ferro numa estação e descobrir as outras |
 
-![A porta trancada da sala do sul](imagens/27-gruta-porta.jpg)
-*A porta trancada da sala do sul*
+Toda saída tem caminho de volta (menos o covil), e os testes automatizados conferem isso em cada mudança (seção 15).
 
-**Como chegar:** pela saída leste da Floresta Sussurrante, na clareira nova depois do riacho. A Carta do Mago avisa que ela existe, e o Mago também fala dela depois de entregar a espada.
+### 7.2 Moedas
 
-**Mapa completo da gruta** (como aparece no mapa do jogo depois de explorada):
+- **De onde vêm:** inimigos derrotados soltam moedas (sombra 1 a 3, fogo-fátuo 2 a 3, morcego 1 a 2, Guardião 30); quase todos os baús têm moedas; e há montinhos brilhando pelo chão.
+- As moedas soltas voam até a Line quando ela chega perto e somem depois de 25 segundos.
+- **HUD:** o total fica embaixo dos corações e da magia.
+- **Para que servem:** comprar na loja da Dona Rosa e na ferraria do Seu Bento.
 
-![Mapa da Gruta dos Ecos: baús (amarelo), fonte (azul), pistas (papel), porta trancada e a saída para a floresta](imagens/gruta-mapa.jpg)
-*Mapa da Gruta dos Ecos: baús (amarelo), fonte (azul), pistas (papel), porta trancada e a saída para a floresta*
+### 7.3 Loja da Dona Rosa e ferraria do Seu Bento
 
-| Parte | O que tem |
-|---|---|
-| Entrada (oeste) | chegada pela floresta, placa, fonte (cura e vira ponto de retorno), pergaminho da **Lenda da Montanha**, cogumelos |
-| Salão norte | poça funda no meio, estalagmites, baú da **Bússola do Mago**, um pão no chão |
-| Canto oeste | baú com **Elixir de Luz** e **Poção de Vida** |
-| Nicho leste | corredor estreito com o baú da **chave antiga** |
-| Salão sul | segunda poça, cogumelos e sombras |
-| Sala trancada | porta de ferro (precisa de chave); dentro, baú de **coração extra** e o **Mapa rasgado** |
+Falando com a Dona Rosa ou com o Seu Bento, a conversa termina com a janela da loja. Cada produto mostra o preço, a descrição e quanto a Line já tem. Se faltar dinheiro, a loja diz quanto falta. **Esc** ou **Sair** fecha.
 
-**Inimigos:** 3 sombras (depois da espada) e 2 fogos-fátuos azuis (depois da magia).
+![A loja da Dona Rosa](imagens/38-loja-rosa.jpg)
+*A loja da Dona Rosa*
 
-**Ambientação:** pedra cinza-azulada e úmida, paredes com musgo esverdeado, água funda azul-escura, cogumelos que pulsam em azul-claro e luzinhas azuis flutuando no ar. Vinheta escura nas bordas da tela e um leve tom azul. Não tem nuvens, pássaros nem folhas caindo.
+| Loja | Produto | Preço | Observação |
+|---|---|---|---|
+| Loja da Dona Rosa | 🧪 Poção de Vida | 20 | — |
+| Loja da Dona Rosa | 💧 Elixir de Luz | 25 | — |
+| Loja da Dona Rosa | 💣 Bombas (3) | 30 | vem com 3 |
+| Loja da Dona Rosa | 🪶 Pena de Fênix | 80 | máximo 1 |
+| Loja da Dona Rosa | 👢 Botas de Andarilha | 60 | máximo 1 |
+| Ferraria do Seu Bento | 🥋 Túnica Acolchoada | 40 | 1 escudo |
+| Ferraria do Seu Bento | ⛓️ Cota de Malha | 90 | 2 escudos |
+| Ferraria do Seu Bento | 🔥 Armadura de Brasa | 160 | 3 escudos · não queima na brasa · só com a receita do Mestre Aurélio |
 
-**Arte que a gruta precisa (hoje tudo é desenhado no código):** chão e paredes de caverna azulada, poças de água, estalagmites, cogumelos luminosos (com brilho animado), a porta de ferro, a fonte e as luzinhas.
+**Armaduras e escudos 🛡:** cada escudo segura um golpe inteiro antes de chegar nos corações. Os escudos aparecem em azul ao lado dos corações e voltam sozinhos, um por vez (6 segundos cada), depois de 5 segundos sem apanhar. Beber de uma fonte enche todos. Só dá para comprar uma armadura melhor que a atual.
 
-### 7.2 Todos os baús, portas, chaves e pistas
+![A ferraria do Seu Bento com as três armaduras](imagens/39-ferraria.jpg)
+*A ferraria do Seu Bento com as três armaduras*
 
-| Área | Baús | Portas trancadas | Pistas | Itens no chão |
-|---|---|---|---|---|
-| Fazendinha | 1: 2 pães e 1 maçã (atrás do chiqueiro, depois do rapto) | — | Marcas de garra (examinar o píer) | 2 maçãs |
-| Floresta | 3: espada · Carta do Mago + 2 maçãs · 2 poções (ala leste) | — | Carta do Mago (baú) | 2 maçãs, 1 pão |
-| Gruta dos Ecos | 4: bússola · elixir + poção · chave · coração extra (sala trancada) | 1 (sala do sul) | Lenda da Montanha (chão) · Mapa rasgado (sala trancada) | 1 pão |
-| Ruínas | 3: coração extra · chave + poção (ala leste) · diário pág. 2 + elixir (biblioteca) | 1 (biblioteca) | Diário pág. 1 (chão, perto do altar) · Diário pág. 2 (baú) | 1 maçã |
-| Montanha | 3: coração extra · chave + poção (encosta) · Flor da Lua (caverna) | 1 (caverna escondida) | Fita da Bell (chão, perto do portão) · Escama vermelha (caverna) | 1 maçã, 1 poção |
-| Covil | — | — | — | — |
+![HUD: corações, escudos da armadura, magia, moedas e o item do atalho](imagens/48-hud-escudos.jpg)
+*HUD: corações, escudos da armadura, magia, moedas e o item do atalho*
 
-São **13 baús** (2 deles com coração extra), **3 portas** e **3 chaves**: qualquer chave abre qualquer porta, e a chave some depois de usada. As 8 pistas juntas dão mais um coração.
+### 7.4 Moradores do vilarejo
 
-### 7.3 Mochila e itens
+| Morador | Quem é | O que conta |
+|---|---|---|
+| Dona Rosa 🧪 | mercadora | fica sabendo da Bell e oferece poções e bombas; depois lembra para que servem as bombas |
+| Seu Bento ⚒️ | ferreiro | explica os escudos; ao ver a receita do Mestre Aurélio, reconhece a letra do mestre e passa a forjar a Armadura de Brasa |
+| Seu Zé | o morador mais velho | a história do carrinho de mina e da alavanca levada para a Forja; depois comemora o carrinho andando |
+| Dona Lurdes | mulher do caçador Tobias | aponta a cabana do caçador, na floresta, onde está o bilhete |
+| Pedrinho | menino curioso | conta da pedra rachada da floresta; depois que ela explode, fica encantado |
+
+As falas mudam conforme o progresso (itens, documentos e o carrinho), e o jogo guarda com quem a Line já conversou.
+
+### 7.5 Mochila e itens (um item, uma função)
 
 A mochila abre com **I** (ou o botão 🎒 no celular, que mostra quantos itens novos chegaram) e pausa o jogo. Tem três abas: **Itens**, **Pistas** e **Mapa**. Também dá para abrir pela pausa.
 
-![A aba de itens da mochila](imagens/28-mochila-itens.jpg)
-*A aba de itens da mochila*
+No topo da aba Itens fica o **equipamento**: moedas, armadura e o item que está no **atalho**. Itens usáveis podem ser equipados no atalho e usados a qualquer momento com **F** (ou o botão do item no celular). A **poção** tem o atalho próprio **H** (botão 🧪).
 
-![Os itens, a pista, as portas, o cogumelo, as tochas e o baú como estão desenhados no jogo hoje (temporários)](imagens/itens-no-jogo.jpg)
-*Os itens, a pista, as portas, o cogumelo, as tochas e o baú como estão desenhados no jogo hoje (temporários)*
+![A aba de itens: equipamento no topo, grade de itens e o detalhe do item escolhido](imagens/49-mochila-itens.jpg)
+*A aba de itens: equipamento no topo, grade de itens e o detalhe do item escolhido*
 
-| Item | Ícone | O que faz | Onde achar |
+| Item | Tipo | O que faz | Onde achar |
 |---|---|---|---|
-| Poção de Vida | 🧪 | cura 2 corações | baús da floresta, gruta, ruínas e montanha; chão da montanha |
-| Pão da Bell | 🍞 | cura 1 coração | baú da fazenda; chão da floresta e da gruta |
-| Maçã | 🍎 | cura meio coração | chão da fazenda, floresta, ruínas e montanha; baú da carta |
-| Elixir de Luz | 💧 | enche toda a magia | baú da gruta e da biblioteca |
-| Flor da Lua | 🌸 | cura tudo e enche a magia | caverna escondida da montanha |
-| Chave antiga | 🗝️ | abre uma porta trancada (some depois) | baús da gruta, das ruínas e da montanha |
-| Bússola do Mago | 🧭 | mostra no mapa os baús fechados, mesmo onde a Line não passou | salão norte da gruta |
+| 🧪 Poção de Vida | gasta ao usar · vai no atalho F | Cura 2 corações. Use pela mochila, pela cura rápida (H) ou deixe equipada (F). | loja da Dona Rosa (20); baús da floresta e da montanha |
+| 💧 Elixir de Luz | gasta ao usar · vai no atalho F | Enche toda a magia de uma vez. | loja (25); baús da gruta, biblioteca, torre das ruínas e montanha |
+| 💣 Bomba | gasta ao usar · vai no atalho F | Explode 2 segundos depois de colocada: quebra paredes e pedras rachadas e fere inimigos em volta. Afaste-se! Equipe e use com F. | loja (3 por 30); baús da floresta, vilarejo e Minas |
+| 🪶 Pena de Fênix | gasta ao usar | Se a Line cair, a pena queima e ela se levanta com metade da vida. Funciona sozinha. | loja (80); do outro lado do abismo das Minas |
+| 🗝️ Chave antiga | chave (some ao abrir) | Abre uma porta trancada e some. Há três portas trancadas pelo mundo. | baús da gruta, das ruínas e da montanha |
+| 🏮 Lanterna | ferramenta (fica para sempre) | Clareia as galerias escuras das Minas de Cristal. Funciona sozinha. | salão de entrada das Minas |
+| 🪝 Gancho | ferramenta (fica para sempre) | Perto de um poste de gancho, puxa a Line até o outro poste, por cima de rios e abismos. | sala leste das ruínas |
+| 🧭 Bússola do Mago | ferramenta (fica para sempre) | Marca no mapa os baús que ainda não foram abertos, mesmo onde a Line ainda não passou. | salão norte da gruta |
+| 👢 Botas de Andarilha | ferramenta (fica para sempre) | A Line corre mais rápido e não tropeça mais nas raízes. | loja da Dona Rosa (60) |
+| ⚙️ Alavanca de Ferro | item da história | A alavanca do freio do carrinho de mina. Com ela encaixada, o carrinho volta a andar entre as estações. | Forja Antiga, na montanha |
 
-- **Usar:** na aba Itens, escolha o item e aperte **Usar**. As curas também podem ser usadas rápido com **H** (ou o botão 🧪, que mostra quantas curas restam): o jogo escolhe a cura que melhor cabe na vida que falta.
-- **Avisos:** cada item ou pista nova aparece num aviso no canto da tela.
-- **HUD:** embaixo dos corações fica o contador de curas.
-- Itens no chão brilham e são pegos só de passar por cima. Papéis no chão são pistas.
+**Menos vida espalhada:** não existem mais pães, maçãs nem flores de cura pelo mapa. A vida volta nas **fontes**, nas **poções** (compradas ou achadas) e em corações que caem dos inimigos só de vez em quando (e nunca com a vida cheia). A chance de cair coração baixou para 25% no Fácil, 10% no Normal e 4% no Difícil.
 
-### 7.4 Caderno de pistas (investigação)
+### 7.6 Documentos de investigação e conclusões
 
-A aba **Pistas** mostra o objetivo atual, quantas pistas a Line já achou e o texto de cada uma, num papel. As pistas ainda não achadas aparecem como “???”. O painel **Objetivo**, no canto da tela, diz o próximo passo e o total de pistas.
+A aba **Pistas** virou um caderno de investigação. São **12 documentos**, cada um com **tipo** (anotação, cartaz, carta, diário, pergaminho, mapa, relatório, receita, objeto), **autor**, **data**, o lugar onde foi achado e o texto completo em parágrafos. Cada tipo tem cara de papel diferente no leitor (o relatório é datilografado, o diário tem lombada, o cartaz tem moldura). Alguns documentos **marcam um lugar no mapa** com um alfinete 📍, sem acender a área.
 
-![O caderno de pistas](imagens/29-mochila-pistas.jpg)
-*O caderno de pistas*
+Quando dois documentos combinam, a Line tira uma **conclusão** (aparece um título “💡 Conclusão!” e ela fica anotada no caderno). Algumas conclusões mudam o jogo.
 
-| # | Pista | Onde | O que revela |
-|---|---|---|---|
-| 1 | 🐾 Marcas de garra no píer | Fazendinha, no píer do lago | o dragão foi para o norte e a Bell está viva |
-| 2 | ✉️ Carta do Mago | Floresta Sussurrante, baú na clareira do Mago | quem é o dragão, o selo da montanha e a gruta |
-| 3 | 📜 A lenda da Montanha | Gruta dos Ecos, pergaminho perto da fonte | o dragão teme a luz; cansado, o peito abre |
-| 4 | 🗺️ Mapa rasgado | Gruta dos Ecos, sala trancada | completa o mapa do mundo e mostra a caverna escondida |
-| 5 | 📖 Diário do Guardião, página 1 | Ruínas Encantadas, no chão perto do altar | os cristais são as chaves das barreiras |
-| 6 | 📖 Diário do Guardião, página 2 | Ruínas Encantadas, biblioteca trancada | a Chuva de Estrelas apaga o fogo do dragão |
-| 7 | 🔥 Escama vermelha | Montanha de Brasa, caverna escondida | o peito rachado é o ponto fraco; ele cansa ao mergulhar |
-| 8 | 🎀 Fita de cabelo da Bell | Montanha de Brasa, perto do portão de fogo | a Bell deixou um sinal: está perto |
+![O caderno de investigação com o relatório do capataz aberto](imagens/50-documento-relatorio.jpg)
+*O caderno de investigação com o relatório do capataz aberto*
 
-**Textos completos das pistas:**
+| # | Documento | Tipo | Autor | Onde | Marca no mapa |
+|---|---|---|---|---|---|
+| 1 | 🐾 Marcas de garra no píer | Anotação | Anotação da Line | Fazendinha, no píer do lago | — |
+| 2 | 📌 Cartaz do vilarejo | Cartaz | Conselho do Vilarejo do Riacho | Vilarejo do Riacho, no quadro de avisos | 📍 Clareira do Mago |
+| 3 | ✉️ Carta do Mago | Carta | O Mago | Floresta Sussurrante, baú na clareira do Mago | 📍 Gruta dos Ecos |
+| 4 | 🪓 Bilhete do caçador | Anotação | Tobias, caçador da floresta | Floresta Sussurrante, na porta da cabana a leste | 📍 Topo da montanha |
+| 5 | 📜 A lenda da Montanha | Pergaminho | Autor desconhecido | Gruta dos Ecos, pergaminho perto da fonte | — |
+| 6 | 🗺️ Mapa rasgado | Mapa | Cartógrafo das minas | Gruta dos Ecos, sala trancada | 📍 X vermelho da Forja |
+| 7 | 🛤️ Relatório do capataz | Relatório | Mestre Ivo, capataz das Minas de Cristal | Minas de Cristal, perto da estação | 📍 Alavanca de Ferro |
+| 8 | 📖 Diário do Guardião, página 1 | Diário | O Guardião de Pedra | Ruínas Encantadas, no chão perto do altar | — |
+| 9 | 📖 Diário do Guardião, página 2 | Diário | O Guardião de Pedra | Ruínas Encantadas, biblioteca trancada | — |
+| 10 | 📋 Receita da Armadura de Brasa | Receita | Mestre Aurélio, ferreiro da forja | Montanha de Brasa, Forja Antiga | 📍 Ferraria do Seu Bento |
+| 11 | 🔥 Escama vermelha | Objeto encontrado | Anotação da Line | Montanha de Brasa, caverna escondida | — |
+| 12 | 🎀 Fita de cabelo da Bell | Objeto encontrado | Anotação da Line | Montanha de Brasa, perto do portão de fogo | — |
 
-> **🐾 Marcas de garra no píer** *(Fazendinha, no píer do lago)*  
-> Três riscos fundos na madeira do píer, e um rastro de brasa apagada apontando para o norte. Ele passou baixo, pesado... e foi na direção da floresta. A Bell está viva: ele a levou, não a machucou. Eu vou atrás.  
+**Conclusões:**
 
-> **✉️ Carta do Mago** *(Floresta Sussurrante, baú na clareira do Mago)*  
-> “Para quem encontrar esta carta: o dragão vermelho dorme há cem anos na Montanha de Brasa. Quando acorda, leva o que mais brilha aos olhos dele. Selou a montanha com magia antiga; só a luz das Ruínas Encantadas atravessa o selo. Há também uma gruta a leste da floresta, onde guardei coisas que podem ajudar. — O Mago”  
+| Conclusão | Junta | Efeito no jogo |
+|---|---|---|
+| 💡 A Bell está viva: o dragão a levou para o topo da Montanha de Brasa. | Marcas de garra no píer + Bilhete do caçador | — |
+| 💡 O dragão teme a luz. A magia das Ruínas é a arma certa contra ele. | Carta do Mago + A lenda da Montanha | — |
+| 💡 Os cristais são as chaves das barreiras, e o Guardião guarda a Chuva de Estrelas no peito. | Diário do Guardião, página 1 + Diário do Guardião, página 2 | — |
+| 💡 A Alavanca de Ferro está na Forja Antiga. Encaixada numa estação, o carrinho volta a andar. | Relatório do capataz + Mapa rasgado | — |
+| 💡 O Seu Bento, do vilarejo, sabe forjar a Armadura de Brasa: com ela, o chão em brasa não queima. | Receita da Armadura de Brasa + Cartaz do vilarejo | A Armadura de Brasa aparece na ferraria. |
+| 💡 Quando o dragão cansa, o peito racha e fica exposto. | A lenda da Montanha + Escama vermelha | Golpes no peito do dragão tiram 1 de vida a mais. |
+| 💡 A Chuva de Estrelas apaga o fogo do dragão por um instante. | Diário do Guardião, página 2 + Escama vermelha | A Chuva de Estrelas interrompe o fogo do dragão. |
+| 💡 A Bell deixou a fita de propósito: ela está logo depois do portão de fogo. | Fita de cabelo da Bell + Mapa rasgado | — |
 
-> **📜 A lenda da Montanha** *(Gruta dos Ecos, pergaminho perto da fonte)*  
-> “A cada cem anos o dragão desperta com fome de luz. Leva para o covil a pessoa de coração mais brilhante e a guarda numa jaula de ferro. Dizem que o dragão não teme a espada: teme a luz, que o cansa, e quando cansa o peito dele se abre.”  
+![As conclusões da Line, embaixo da lista de documentos](imagens/51-conclusoes.jpg)
+*As conclusões da Line, embaixo da lista de documentos*
 
-> **🗺️ Mapa rasgado** *(Gruta dos Ecos, sala trancada)*  
-> Um pedaço de mapa antigo. Mostra a Montanha de Brasa, um portão de fogo com três tochas e, no topo, o covil do dragão. Também marca uma caverna escondida na encosta leste da montanha. Com ele, o mapa do mundo ficou completo.  
+Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”
 
-> **📖 Diário do Guardião, página 1** *(Ruínas Encantadas, no chão perto do altar)*  
-> “Fui feito de pedra para guardar a luz. Os cristais do templo são minhas chaves: acesos, as barreiras caem. Se alguém chegar aqui com um coração corajoso, que a luz do altar o escolha.”  
+**Textos completos dos documentos:**
 
-> **📖 Diário do Guardião, página 2** *(Ruínas Encantadas, biblioteca trancada)*  
-> “O dragão tem medo da Chuva de Estrelas. Quando as estrelas caem em volta dele, o fogo dele apaga por um instante. Guardo essa magia no meu peito; só a entrego para quem me vencer sem ódio.”  
+> **🐾 Marcas de garra no píer** · *Anotação · Anotação da Line · Ontem, depois do pôr do sol*  
+> Três riscos fundos na madeira do píer, e um rastro de brasa apagada apontando para o norte, na direção da floresta.  
+>
+> Não tem sangue em lugar nenhum. Ele levou a Bell, não machucou. Ela está viva.  
+>
+> Anotei a direção. Eu vou atrás.  
+>
+> *Encontrado em: Fazendinha, no píer do lago*
 
-> **🔥 Escama vermelha** *(Montanha de Brasa, caverna escondida)*  
-> Uma escama do tamanho da minha mão, ainda morna. Está rachada no meio: o peito dele é o lugar mais fraco, exatamente como o Mago disse. E ele perde escamas quando voa alto... então ele se cansa quando mergulha.  
+> **📌 Cartaz do vilarejo** · *Cartaz · Conselho do Vilarejo do Riacho · Pregado hoje de manhã*  
+> PROCURA-SE quem viu um dragão vermelho voando baixo sobre o riacho ontem, ao pôr do sol.  
+>
+> Os mais velhos contam que isso já aconteceu há cem anos, e que só o velho Mago da Floresta Sussurrante sabe o que fazer. Ele mora na clareira a oeste da trilha.  
+>
+> A Dona Rosa vende poções e bombas para a viagem. O Seu Bento forja armaduras. Coragem, vizinhos!  
+>
+> *Encontrado em: Vilarejo do Riacho, no quadro de avisos*
 
-> **🎀 Fita de cabelo da Bell** *(Montanha de Brasa, perto do portão de fogo)*  
-> A fita azul que a Bell usava hoje de manhã. Ela deixou cair de propósito, eu sei: é o jeito dela de dizer “tô aqui, vem me buscar”. Falta pouco, amor.  
+> **✉️ Carta do Mago** · *Carta · O Mago · Sem data*  
+> Para quem encontrar esta carta:  
+>
+> O dragão vermelho dorme há cem anos na Montanha de Brasa. Quando acorda, leva o que mais brilha aos olhos dele. Selou a montanha com magia antiga: só a luz das Ruínas Encantadas atravessa o selo.  
+>
+> Há também uma gruta a leste desta floresta, onde guardei coisas que podem ajudar.  
+>
+> — O Mago  
+>
+> *Encontrado em: Floresta Sussurrante, baú na clareira do Mago*
 
-Ao juntar as 8: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”
+> **🪓 Bilhete do caçador** · *Anotação · Tobias, caçador da floresta · Ontem à noite*  
+> Vi de novo o clarão vermelho. Ao pôr do sol ele passou por cima da cabana carregando alguém: uma moça de óculos, gritando um nome. Foi direto para o topo da Montanha de Brasa.  
+>
+> Fui avisar no vilarejo.  
+>
+> Se alguém ler isto: o caminho mais curto até a montanha passa pelas Ruínas. As Minas, a leste, também chegam lá, para quem tiver luz e coragem.  
+>
+> *Encontrado em: Floresta Sussurrante, na porta da cabana a leste*
 
-### 7.5 Mapa com névoa
+> **📜 A lenda da Montanha** · *Pergaminho · Autor desconhecido · Há cem anos*  
+> A cada cem anos o dragão desperta com fome de luz. Leva para o covil a pessoa de coração mais brilhante e a guarda numa jaula de ferro.  
+>
+> Dizem que o dragão não teme a espada: teme a luz, que o cansa. E quando cansa, o peito dele se abre.  
+>
+> *Encontrado em: Gruta dos Ecos, pergaminho perto da fonte*
+
+> **🗺️ Mapa rasgado** · *Mapa · Cartógrafo das minas · Há cem anos*  
+> Um pedaço de mapa antigo. Mostra a Montanha de Brasa: um portão de fogo guardado por três tochas e, depois dele, o covil no topo.  
+>
+> Na encosta leste, uma porta de ferro esconde uma caverna. E há um X vermelho numa sala chamada Forja Antiga.  
+>
+> *Encontrado em: Gruta dos Ecos, sala trancada*
+
+> **🛤️ Relatório do capataz** · *Relatório · Mestre Ivo, capataz das Minas de Cristal · Há cem anos*  
+> RELATÓRIO FINAL.  
+>
+> A linha do carrinho liga três estações: Vilarejo, Minas e Forja.  
+>
+> Depois que o dragão acordou, fechamos a mina. Levei a Alavanca de Ferro do freio para a Forja Antiga, na montanha, para ninguém se arriscar nos trilhos.  
+>
+> Quem a trouxer de volta pode viajar de novo: basta encaixar a alavanca numa estação.  
+>
+> *Encontrado em: Minas de Cristal, perto da estação*
+
+> **📖 Diário do Guardião, página 1** · *Diário · O Guardião de Pedra · Há mil anos*  
+> Fui feito de pedra para guardar a luz.  
+>
+> Os cristais do templo são minhas chaves: acesos, as barreiras caem.  
+>
+> Se alguém chegar aqui com um coração corajoso, que a luz do altar o escolha.  
+>
+> *Encontrado em: Ruínas Encantadas, no chão perto do altar*
+
+> **📖 Diário do Guardião, página 2** · *Diário · O Guardião de Pedra · Há mil anos*  
+> O dragão tem medo da Chuva de Estrelas. Quando as estrelas caem em volta dele, o fogo dele apaga por um instante.  
+>
+> Guardo essa magia no meu peito. Só a entrego para quem me vencer sem ódio.  
+>
+> *Encontrado em: Ruínas Encantadas, biblioteca trancada*
+
+> **📋 Receita da Armadura de Brasa** · *Receita · Mestre Aurélio, ferreiro da forja · Há cem anos*  
+> Receita da Armadura de Brasa: cota de malha temperada no calor da montanha, com placas de cobre por cima.  
+>
+> Resiste à brasa rasa: quem a veste atravessa o chão em brasa sem se queimar.  
+>
+> Meu aprendiz, o jovem Bento, sabe fazer. Se ainda estiver vivo, mostrem esta receita a ele no vilarejo.  
+>
+> *Encontrado em: Montanha de Brasa, Forja Antiga*
+
+> **🔥 Escama vermelha** · *Objeto encontrado · Anotação da Line · Hoje*  
+> Uma escama do tamanho da minha mão, ainda morna.  
+>
+> Está rachada no meio. O peito dele é o lugar mais fraco, exatamente como a lenda diz.  
+>
+> E ele perde escamas quando voa alto: então ele se cansa quando mergulha.  
+>
+> *Encontrado em: Montanha de Brasa, caverna escondida*
+
+> **🎀 Fita de cabelo da Bell** · *Objeto encontrado · Anotação da Line · Hoje*  
+> A fita azul que a Bell usava hoje de manhã.  
+>
+> Ela deixou cair de propósito, eu sei: é o jeito dela de dizer “tô aqui, vem me buscar”.  
+>
+> Falta pouco, amor.  
+>
+> *Encontrado em: Montanha de Brasa, perto do portão de fogo*
+
+### 7.7 Carrinho de mina
+
+Três estações ligadas por trilhos: **Vilarejo**, **Minas** (na gruta) e **Forja** (na montanha). O carrinho começa quebrado: falta a **Alavanca de Ferro** do freio, que o capataz levou para a Forja Antiga quando o dragão acordou.
+
+1. Chegar perto de uma estação a marca como **descoberta** (aviso “🛤️ Estação descoberta”).
+2. Sem a alavanca, o botão diz **Ver o carrinho** e a Line comenta o que falta (e, se já leu o relatório do capataz, lembra onde a alavanca está).
+3. Com a alavanca, o botão diz **Encaixar a alavanca**: a Line encaixa, aparece “Carrinho consertado!” e a alavanca sai da mochila.
+4. Daí em diante, **Viajar de carrinho** abre a escolha do destino. Só aparecem as estações já descobertas; as outras ficam com cadeado.
+5. A viagem é uma cena: a Line entra no carrinho, ele desce os trilhos e sai da tela, e chega na outra estação do mesmo jeito.
+
+![A estação do vilarejo com a alavanca encaixada](imagens/40-estacao.jpg)
+*A estação do vilarejo com a alavanca encaixada*
+
+![Escolha do destino](imagens/41-carrinho-destinos.jpg)
+*Escolha do destino*
+
+![A Line andando de carrinho](imagens/42-carrinho-andando.jpg)
+*A Line andando de carrinho*
+
+### 7.8 Bombas, gancho, chão em brasa e galerias escuras
+
+- **Paredes e pedras rachadas 🪨:** têm rachaduras desenhadas. Uma **bomba** (atalho **F**) explode 2 segundos depois de colocada, quebra as rachaduras num raio de 2 tiles, fere inimigos em volta (o Guardião só quando está tonto) e machuca a Line se ela ficar perto. Cabem 2 bombas acesas ao mesmo tempo. O que explodiu fica salvo. Há uma pedra rachada na floresta e duas paredes nas Minas.
+- **Postes do gancho 🪝:** vêm em pares, um de cada lado da água ou do abismo. Com o **gancho** na mochila, perto de um poste aparece **Usar o gancho** e a Line é puxada pela corda até depois do outro poste. Dá para ir e voltar. Pares: lago da floresta, fosso das ruínas e abismo das Minas.
+- **Chão em brasa 🔥:** queima meio coração a cada meio segundo, sem defesa. Só a **Armadura de Brasa** protege.
+- **Galerias escuras:** nas Minas, a tela escurece em volta da Line. Sem a lanterna ela enxerga um círculo pequeno e o mapa abre bem devagar; com a lanterna, a luz fica quente e bem maior.
+
+![Bomba acesa perto da pedra rachada da floresta](imagens/46-bomba.jpg)
+*Bomba acesa perto da pedra rachada da floresta*
+
+### 7.9 Mapa: só acende onde a Line passou
 
 A aba **Mapa** (tecla **M**) tem duas visões:
 
-- **Área:** o lugar atual, desenhado em miniatura. Só aparece o que a Line já viu: a névoa vai abrindo num raio de 7 tiles enquanto ela anda, e o que foi explorado fica salvo. Ícones: baús (fechados e abertos), fontes, cristais e tochas (apagados ou acesos), altar, portas trancadas, pistas e itens no chão, placas, o Mago, o Guardião, a Bell e as saídas com o nome do lugar. A Line é a bolinha rosa; a fonte de retorno tem um anel azul. Com a **Bússola do Mago**, os baús fechados aparecem mesmo na névoa. Os lugares já visitados podem ser escolhidos em chips no topo.
-- **Mundo:** um pergaminho com os lugares ligados por trilhas. Os lugares aparecem conforme a Line os visita; os vizinhos ainda não visitados aparecem como “?”. O **Mapa rasgado** revela a montanha, o covil e a gruta de uma vez. Embaixo de cada lugar: porcentagem explorada, baús abertos e pistas achadas.
+- **Área:** o lugar atual em miniatura. **Só aparece o que a Line já viu**: a névoa abre num raio de 7 tiles enquanto ela anda (3 no escuro sem lanterna), e o que foi explorado fica salvo. Ícones: baús, fontes, cristais e tochas, portas trancadas, documentos, paredes rachadas, postes do gancho, estações, lojas, placas, moradores, saídas e a Line (bolinha rosa). Com a **Bússola do Mago**, os baús fechados aparecem mesmo na névoa. Os documentos põem **alfinetes 📍** nos lugares que citam, mesmo em áreas ainda apagadas, **sem acender a área**.
+- **Mundo:** um pergaminho com os lugares ligados por trilhas. **Só acendem os lugares visitados** (e a fazenda); os vizinhos aparecem como “Lugar desconhecido”. Depois que o carrinho é consertado, a linha dos trilhos aparece ligando as três estações. Embaixo de cada lugar: porcentagem explorada, baús abertos e documentos achados.
 
-![Mapa da área, com a névoa abrindo](imagens/30-mapa-area.jpg)
-*Mapa da área, com a névoa abrindo*
+![Mapa do mundo: só os lugares visitados acendem](imagens/52-mapa-mundo.jpg)
+*Mapa do mundo: só os lugares visitados acendem*
 
-![Mapa do mundo](imagens/31-mapa-mundo.jpg)
-*Mapa do mundo*
+### 7.10 Todos os baús
 
-### 7.6 Tochas e cristais: como achar
+| Área | Onde | O que tem |
+|---|---|---|
+| Fazendinha | atrás do chiqueiro (aparece depois do rapto) | 🪙 20 moedas |
+| Vilarejo do Riacho | canto sudeste do vilarejo, perto do riacho | 💣 Bomba ×2 + 🪙 30 moedas |
+| Floresta Sussurrante | clareira do Mago | ⚔️ a espada |
+| Floresta Sussurrante | clareira do Mago, mais ao sul | ✉️ Carta do Mago + 🪙 10 moedas |
+| Floresta Sussurrante | meio da trilha leste | 🪙 25 moedas |
+| Floresta Sussurrante | ilha no lago da clareira leste (só com o **gancho**) | 🧪 Poção de Vida + 🪙 30 moedas |
+| Floresta Sussurrante | canto sudeste, atrás da **pedra rachada** (precisa de **bomba**) | 💣 Bomba ×2 + 🪙 45 moedas |
+| Gruta dos Ecos | salão norte | 🧭 Bússola do Mago |
+| Gruta dos Ecos | canto oeste | 💧 Elixir de Luz |
+| Gruta dos Ecos | nicho leste | 🗝️ Chave antiga |
+| Gruta dos Ecos | sala trancada do sul (precisa de **chave**) | ❤️ coração extra |
+| Gruta dos Ecos | salão de entrada das Minas | 🏮 Lanterna |
+| Gruta dos Ecos | galeria escura das Minas (precisa de **lanterna** para achar) | 💣 Bomba ×3 |
+| Gruta dos Ecos | do outro lado do abismo das Minas (só com o **gancho**) | 🪶 Pena de Fênix + 🪙 40 moedas |
+| Ruínas Encantadas | alcova do salão do meio (abre com um cristal) | ❤️ coração extra |
+| Ruínas Encantadas | ala leste da entrada | 🗝️ Chave antiga + 🪙 20 moedas |
+| Ruínas Encantadas | biblioteca trancada (precisa de **chave**) | 💧 Elixir de Luz + 📖 Diário do Guardião, página 2 |
+| Ruínas Encantadas | sala leste nova | 🪝 Gancho |
+| Ruínas Encantadas | torre nordeste, do outro lado do fosso (só com o **gancho**) | 💧 Elixir de Luz + 🪙 60 moedas |
+| Montanha de Brasa | plataforma cercada de fendas, no topo | ❤️ coração extra |
+| Montanha de Brasa | encosta leste | 🗝️ Chave antiga + 🪙 20 moedas |
+| Montanha de Brasa | caverna escondida (precisa de **chave**) | 🧪 Poção de Vida + 🪙 30 moedas |
+| Montanha de Brasa | Forja Antiga (sala do X vermelho do mapa) | ⚙️ Alavanca de Ferro |
+| Montanha de Brasa | depois do chão em brasa (só com a **Armadura de Brasa**) | 💧 Elixir de Luz + 🪙 90 moedas |
 
-As barreiras das ruínas e o portão de fogo da montanha só abrem com todas as luzes do grupo acesas. Para não se perder:
+São **24 baús** (3 com coração extra), **3 portas trancadas** e **3 chaves** (qualquer chave abre qualquer porta e some depois de usada).
 
-- **Tochas apagadas** têm brasa fraca, soltam fumaça e têm um anel laranja pulsando no chão, para serem vistas de longe.
-- Ao chegar na montanha pela primeira vez, a câmera mostra as **três tochas**: uma perto da entrada, uma numa ilha no meio da lava e a última lá em cima, perto do portão.
-- Cada luz acesa mostra um aviso com a contagem: **🔥 Tocha acesa (1/3)**, **💎 Cristal aceso (1/2)**. A dica diz quantas faltam.
-- O painel **Objetivo** mostra **(n/3 acesas)** e onde fica cada tocha.
-- No **mapa (M)**, as tochas da montanha aparecem mesmo onde a Line ainda não passou, e as apagadas piscam.
+### 7.11 Tochas e cristais: como achar
+
+- **Tochas apagadas** têm brasa fraca, soltam fumaça e têm um anel laranja pulsando no chão.
+- Ao chegar na montanha pela primeira vez, a câmera mostra as **três tochas**.
+- Cada luz acesa mostra a contagem: **🔥 Tocha acesa (1/3)**, **💎 Cristal aceso (1/2)**. O painel **Objetivo** mostra **(n/3 acesas)**.
+- No mapa, as tochas da montanha aparecem mesmo onde a Line ainda não passou, e as apagadas piscam.
 
 | Grupo | Onde | Luzes | Abre |
 |---|---|---|---|
 | Barreira sul | Ruínas, salão de entrada | 2 cristais | o salão do meio |
 | Barreira do meio | Ruínas, salão do meio (2 nas ilhotas dos lagos) | 3 cristais | o salão norte (Guardião) |
 | Alcova | Ruínas, salão do meio (leste) | 1 cristal | o baú de coração extra |
-| Portão de fogo | Montanha: entrada (6,35), ilha de lava (30,22), topo (18,9) | 3 tochas | o caminho para o covil |
+| Atalho das Minas | Ruínas, sala sudeste | 1 cristal | o corredor para as Minas |
+| Portão de fogo | Montanha: entrada, ilha de lava e topo | 3 tochas | o caminho para o covil |
 
-### 7.7 Arte necessária para a exploração
+### 7.12 Arte necessária para a exploração
 
 | Objeto | Como está hoje | Arte final sugerida |
 |---|---|---|
-| Poção de Vida 🧪 | emoji + bolinha rosa no chão | frasco rosa com coração, ícone 64×64 e versão no chão |
-| Pão da Bell 🍞 | emoji + bolinha bege | pãozinho caseiro embrulhado num paninho xadrez |
-| Maçã 🍎 | emoji + bolinha vermelha | maçã vermelha brilhante com folhinha |
-| Elixir de Luz 💧 | emoji + bolinha azul | frasco azul com brilho de estrelinhas dentro |
-| Flor da Lua 🌸 | emoji + bolinha lilás | flor lilás que brilha, com pétalas de luz |
-| Chave antiga 🗝️ | emoji + bolinha dourada | chave de ferro antiga com argola dourada |
-| Bússola do Mago 🧭 | emoji + bolinha azul-clara | bússola de latão com cristal azul no centro |
-| Pista no chão | papel com linhas | pergaminho enrolado com fita e brilho |
-| Porta trancada | grade de ferro com cadeado (2 cores) | porta de ferro com cadeado; versão de pedra (gruta/ruínas) e de rocha vulcânica (montanha); animação de abrir |
-| Cogumelo luminoso | 3 cogumelos com brilho | tufo de cogumelos azuis que pulsam |
-| Tocha apagada / acesa | braseiro com brasa e fumaça / fogo | braseiro de pedra; apagado com brasa fraca e fumaça; aceso com fogo animado |
-| Mapa do mundo | pergaminho com círculos | pergaminho ilustrado com os 6 lugares desenhados |
-| Line examinando (`LINE_INSPECT`) | usa o agachar | agachada olhando o chão com a mão no queixo (sugestão nova) |
+| Itens da mochila (10) | emojis + bolinha colorida no chão | ícone 64×64 de cada item e versão pequena no chão |
+| Moedas | moedinhas amarelas desenhadas no código | moeda dourada com brilho girando (4 a 6 quadros) |
+| Moradores (5) | bonecos simples desenhados no código | sprites parados e andando (frente/lado/costas) no estilo da Line e da Bell; retratos para os diálogos |
+| Casas do vilarejo, loja e ferraria | casa genérica com letreiro | casas de telhado colorido; loja com toldo e prateleira; ferraria com fornalha |
+| Barraca de feira, bigorna | desenho simples | barraca com toldo listrado e frutas; bigorna com brasa animada |
+| Carrinho de mina e estação | caixa com rodas, placa e alavanca | carrinho de madeira com ferragens; estação com plataforma; animação do carrinho andando e da Line dentro |
+| Trilhos | tiles desenhados no código | tiles de trilho retos e curvos |
+| Parede e pedra rachada | rachaduras desenhadas | versão de caverna (gruta, ruínas, montanha) e de floresta; animação de desmoronar |
+| Bomba | bolinha preta com pavio | bomba redonda com pavio aceso piscando e explosão (6 a 8 quadros) |
+| Poste do gancho e corda | poste de madeira com argola | poste com argola de ferro; corda e gancho; Line pendurada atravessando (`LINE_GRAPPLE`, sugestão nova) |
+| Chão em brasa | tiles com brasa pulsando | tiles de brasa rasa com brilho animado |
+| Morcego | desenhado no código | morcego dormindo pendurado, voando e dando rasante |
+| Escuro e lanterna | gradiente em volta da Line | a própria Line segurando a lanterna (`LINE_LANTERN_WALK`, sugestão nova) |
+| Escudos da armadura | escudos azuis no HUD | ícone de escudo cheio e vazio |
+| Armaduras na Line | não aparecem no sprite | variações de roupa da Line para túnica, malha e brasa (opcional) |
+| Documentos no chão | papel com linhas | um ícone por tipo: bilhete, pergaminho, mapa, relatório, receita, objeto |
 
 ## 8. Como se joga
 
@@ -1067,9 +1357,10 @@ As barreiras das ruínas e o portão de fogo da montanha só abrem com todas as 
 | Magia: Raio de Luz | Q / U | RB | ✨ |
 | Chuva de Estrelas | segurar Q / U e soltar | segurar RB | segurar ✨ |
 | Interagir / ler / abrir | E / Enter | Select | botão que aparece |
-| Mochila (itens e pistas) | I | — | 🎒 |
+| Mochila (itens e documentos) | I | — | 🎒 |
 | Mapa | M | — | 🎒 → Mapa |
-| Cura rápida | H | — | 🧪 |
+| Usar poção | H | — | 🧪 |
+| Usar o item do atalho (bomba, elixir…) | F | — | botão do item (💣) |
 | Pausar | Esc / P | Start | ⏸ |
 | Pular cena | Tab | — | Pular cena |
 
@@ -1115,12 +1406,15 @@ As barreiras das ruínas e o portão de fogo da montanha só abrem com todas as 
   - Começam em 3 (6 metades), e cada baú de coração extra dá mais 1.
   - No Fácil, a Line ganha 1 coração a mais.
   - Com 1 coração ou menos, ela fica com a animação de exausta.
-- **Coração no chão:** cura 1 coração. Às vezes cai dos inimigos.
+- **Coração no chão:** cura 1 coração. Cai dos inimigos só de vez em quando (e nunca com a vida cheia).
+- **Escudos (armadura):** cada escudo segura um golpe antes dos corações e volta sozinho depois de um tempo sem apanhar (seção 7.3).
+- **Moedas:** caem dos inimigos e saem dos baús; servem na loja e na ferraria (seção 7.2).
+- **Pena de Fênix:** se estiver na mochila quando a Line cair, ela queima e a Line levanta com metade da vida.
 - **Cristal azul:** +2 ◆ de magia. Também cai dos inimigos.
 - **Fontes:** curam tudo, enchem a magia e viram ponto de retorno. Se a Line cair, ela volta para a última fonte bebida naquela área.
 - **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.
 - **Portas trancadas:** três portas de ferro (gruta, ruínas e montanha). Chegue perto: com uma chave antiga aparece **Abrir com a chave**; sem chave, **Trancada**.
-- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e pistas, abrir portas, acender cristais e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as pistas e o mapa explorado.
+- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e documentos, comprar, abrir portas, explodir paredes, acender cristais, descobrir estações e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as moedas, a armadura, os documentos e o mapa explorado. Saves de versões antigas são convertidos sozinhos (pães e maçãs viram moedas, a Flor da Lua vira poção, e as áreas que cresceram recomeçam do zero).
 
 ### 8.5 Dificuldade
 
@@ -1129,7 +1423,7 @@ As barreiras das ruínas e o portão de fogo da montanha só abrem com todas as 
 | Vida dos chefes | 60% | 100% | 135% |
 | Velocidade dos ataques | mais lentos (1,35×) | normal | mais rápidos (0,85×) |
 | Corações extras | +1 | — | — |
-| Chance de cair coração | 55% | 35% | 20% |
+| Chance de cair coração (só com a vida incompleta) | 25% | 10% | 4% |
 | Recarga da magia | 1,7× | 1× | 0,75× |
 | Guarda aberta do Guardião | +30% | normal | −20% |
 | Espada no Guardião com a guarda fechada | arranha um pouco | não | não |
@@ -1138,9 +1432,11 @@ A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, tam
 
 ## 9. Inimigos e chefes
 
+**Inteligência dos inimigos (nova):** todos enxergam de verdade, com linha de visão, e não veem a Line através de paredes, árvores e casas. Quando perdem a Line de vista, procuram um caminho pela grade do mapa e contornam os obstáculos. Quem vê a Line primeiro **avisa os vizinhos**, e eles não se amontoam uns em cima dos outros. Ninguém entra no chão em brasa.
+
 ### Sombra
 - **Vida:** 3.
-- **Comportamento:** vaga até ver a Line. Então persegue, se prepara e dá uma investida.
+- **Comportamento:** vaga até ver a Line. Então persegue pelo caminho mais curto, tenta **chegar pelo lado** quando há outra sombra atacando de frente, se prepara e dá uma investida. Com 1 de vida, **foge** e volta depois. Se a Line some por muito tempo, volta para o seu canto.
 - **Defesa:** bloquear a investida deixa a sombra tonta.
 - **Fraqueza:** leva dano extra da luz.
 - **Onde aparece:** na floresta (depois da espada), nas ruínas (depois da magia) e na montanha.
@@ -1148,7 +1444,13 @@ A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, tam
 ### Fogo-fátuo
 - **Vida:** 2.
 - **Comportamento:** flutua, mantém distância, se prepara brilhando e atira um orbe lento, que dá para pular ou bloquear.
-- **Onde aparece:** nas ruínas (azul) e na montanha (de fogo).
+- **Onde aparece:** nas ruínas e na gruta (azul) e na montanha (de fogo).
+- **Novo:** só atira quando enxerga a Line; se ela se esconde atrás de uma parede, ele contorna até achar um ângulo.
+
+### Morcego (novo)
+- **Vida:** 1.
+- **Comportamento:** dorme pendurado nas galerias escuras das Minas. Acorda quando a Line chega perto (de mais longe se ela estiver com a lanterna), voa em círculos em volta dela e dá **rasantes**. Se ela se afasta, volta a dormir no mesmo lugar.
+- **Onde aparece:** nas Minas de Cristal, depois da espada.
 
 ### Guardião de Pedra (chefe das ruínas)
 - **Vida:** 14 no Normal.
@@ -1156,7 +1458,7 @@ A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, tam
 - **Ataques:**
   - **Pisão:** levanta os braços, com um círculo vermelho de aviso, e solta uma onda no chão. Precisa pular.
   - **Arremesso de pedra:** uma por vez. Dá para desviar ou bloquear.
-- **Ajuda:** ao sair do atordoamento, ele solta um cristal de magia (e um coração, se a Line estiver fraca).
+- **Ajuda:** ao sair do atordoamento, ele solta um cristal de magia (e um coração, se a Line estiver com metade da vida ou menos). Vencido, dá 30 moedas.
 
 ![Guardião de Pedra durante a luta](imagens/17-guardiao-tonto.jpg)
 *Guardião de Pedra durante a luta*
@@ -1170,7 +1472,8 @@ A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, tam
   - **Voo e mergulho:** a sombra dele segue a Line.
   - **Poeira.**
   - **Fogo em círculo desesperado:** quando está com pouca vida.
-- **Ponto fraco:** depois de levar dano suficiente, ele fica atordoado e o peito brilha em azul. É o ponto fraco.
+- **Ponto fraco:** depois de levar dano suficiente, ele fica atordoado e o peito brilha em azul. É o ponto fraco. Com a conclusão **do peito** (lenda + escama), cada golpe ali tira 1 a mais.
+- **Fogo:** com a conclusão **das estrelas** (diário pág. 2 + escama), a Chuva de Estrelas apaga o fogo dele no meio do sopro.
 - **Fim da luta:** aparece o botão **GOLPE FINAL**.
 
 ## 10. Lista completa de animações
@@ -1595,7 +1898,7 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 | Montanha de Brasa | — | chão vulcânico, paredes, fendas, lava, tochas (apagada e acesa), portão de fogo, pedras, estalagmites, fonte, baú |
 | Covil | — | chão, paredes, lava, estalagmites, jaula da Bell |
 
-**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada, cogumelos luminosos, pista no chão, os 7 itens da mochila (hoje emojis), tochas e o mapa do mundo. A lista completa, com o que cada um deve mostrar, está na **seção 7.7**.
+**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada, cogumelos luminosos, documentos no chão, os 10 itens da mochila (hoje emojis), moedas, tochas, moradores, casas do vilarejo, carrinho, estações e trilhos, postes do gancho, bombas, paredes rachadas, chão em brasa, morcegos e o mapa do mundo. A lista completa, com o que cada um deve mostrar, está na **seção 7.12**.
 
 Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.
 
@@ -1660,8 +1963,14 @@ Os códigos `FX_*` da seção 10.10 são para quando esses efeitos ganharem arte
 | `game/js/fazenda.js` | capítulo da fazenda e tarefas |
 | `game/js/encontro.js` | prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas |
 | `game/js/cenas.js` | cenas e falas da aventura (roteiro) |
-| `game/js/mochila.js` | mochila: itens, caderno de pistas, mapa com névoa, objetivo, avisos |
-| `game/js/mapas.js` | os mapas das 6 áreas da aventura (com a Gruta dos Ecos) |
+| `game/js/mochila.js` | mochila: itens, moedas, documentos e conclusões, mapa com névoa, objetivo, avisos |
+| `game/js/mapas.js` | os mapas das 7 áreas da aventura |
+| `game/js/mundo.js` | bombas e paredes rachadas, gancho, chão em brasa, escuro das minas, moedas soltas, casas e objetos novos |
+| `game/js/loja.js` | vilarejo: moradores e falas, loja, ferraria, armaduras e escudos |
+| `game/js/carrinho.js` | carrinho de mina: estações, escolha do destino e a viagem |
+| `game/js/ia.js` | inteligência dos inimigos: linha de visão, caminho pela grade, alerta, separação, e o Morcego |
+| `tests/rodar.js` | testes automatizados de todas as telas (Playwright) |
+| `tools/fotos_documentacao.js` | tira as capturas das partes novas para este documento |
 | `game/js/cenario.js` | árvores, casa, objetos e ambiente |
 | `game/js/animacoes.js` | catálogo de animações, substitutas e desenho dos sprites |
 | `game/js/entrada.js` | teclado, controle, toque e dificuldade |
@@ -1669,8 +1978,30 @@ Os códigos `FX_*` da seção 10.10 são para quando esses efeitos ganharem arte
 | `tools/extrair_sprites.py` | converte a arte recebida em folhas para o jogo |
 | `tools/gerar_documentacao.py` | gera este documento |
 
+### Testes automatizados
+
+A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verdade (Chromium, pelo Playwright) e passa por **todas as telas**. Ele sobe sozinho um servidor para a pasta `game/`. Para rodar: `cd tests && npm install && npm test` (ou `node rodar.js loja carrinho` para rodar só alguns). `npm run fotos` salva uma captura de cada tela em `tests/fotos/`. Um teste falha se qualquer erro aparecer no console.
+
+| Grupo | O que é testado |
+|---|---|
+| Menu | botões, troca de dificuldade, tela de controles e galeria de animações |
+| Prólogo e fazenda | Novo jogo abre o Primeiro Encontro; manhã na fazenda com a Bell; estrada do vilarejo fechada antes do rapto e aberta depois |
+| Pausa | abrir, abrir a mochila pela pausa, voltar com Esc, retomar |
+| Mochila | itens, equipar no atalho, usar poção, 12 documentos, 8 conclusões, mapa da área e do mundo, teclas I, M, H, F e Esc |
+| Mapa | só acende áreas visitadas; documento marca sem acender |
+| Todas as áreas | cada uma das 7 áreas carrega, desenha e roda sem erros, e a Line não nasce dentro de parede |
+| Tamanho e conectividade | tamanho das fases; todo baú, documento, morador, estação e saída alcançável (contando pulos, gancho, bombas, chaves e barreiras); toda saída chega em chão livre, fora de outra saída, e tem caminho de volta |
+| Vilarejo | loja da Dona Rosa (comprar, falta de dinheiro, botas), ferraria (armadura, escudo segurando golpe, Armadura de Brasa liberada pela receita), conversas com os moradores |
+| Carrinho | quebrado sem alavanca, encaixar a alavanca, tela de destino só com estações descobertas, viagem até as Minas |
+| Bombas, gancho, brasa, escuro | bomba quebra a parede e fica salvo; gancho atravessa; brasa queima sem a armadura e não queima com ela; galeria escura |
+| Inimigos | caminho pela grade, alerta aos vizinhos, moedas caindo e sendo pegas, morcego acordando, coração não cai com a vida cheia |
+| Derrota | tela de derrota e Tentar de novo; Pena de Fênix levanta a Line |
+| Documentos e dragão | a cena de documento forma conclusão; a luta no covil começa |
+| Save | Continuar volta com área, moedas e itens; save antigo é convertido |
+| Celular | controles de toque, botão da poção e do item, mochila cabendo na tela |
+
 ### Como atualizar este documento
-As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json`, `python3 tools/extrair_roteiro.py roteiro.json` , `python3 tools/gerar_documentacao.py inventario.json roteiro.json` e, para a versão HTML, `python3 tools/gerar_documentacao_html.py`.
+As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json` (também exporta mapas, baús, itens, documentos e loja), `python3 tools/extrair_roteiro.py roteiro.json`, `node tools/fotos_documentacao.js pasta` (capturas das partes novas, depois convertidas para JPG em `docs/imagens`), `python3 tools/gerar_documentacao.py inventario.json roteiro.json` e, para a versão HTML, `python3 tools/gerar_documentacao_html.py`.
 
 ![No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma](imagens/25-galeria.jpg)
 *No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma*

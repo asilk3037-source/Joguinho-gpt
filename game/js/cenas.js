@@ -376,7 +376,7 @@
           'As barreiras das ruínas só se desfazem com luz. Procure o altar na sala a oeste.',
           'Pule o riacho, corte os espinhos, ache o altar. Simples, não?',
           'Baús trancados? Não. Portas trancadas! Três, pelo mundo. E três chaves antigas escondidas em baús.',
-          'Cada pista que você anota no caderno conta um pedaço da história do dragão. Junte as oito.',
+          'Cada documento que você guarda conta um pedaço da história. Junte dois que combinam e você entende mais do que imagina.',
         ] : !j.flags.golem ? [
           'Cristais apagados, barreiras de pé. Acenda todos e o caminho se abre.',
           'O Guardião de Pedra não sente a espada... mas a luz, ah, a luz ele sente.',
@@ -552,13 +552,20 @@
       line.anim.tocar('LINE_CROUCH_STAND', true);
       yield c.animacao(line);
       const nomes = [];
-      for (const [id, n] of cont.itens || []) { M.dar(j, id, n); nomes.push(`${M.ITENS[id].icone} ${M.ITENS[id].nome}${n > 1 ? ' ×' + n : ''}`); }
+      for (const [id, n] of cont.itens || []) { if (!M.ITENS[id]) continue; M.dar(j, id, n); nomes.push(`${M.ITENS[id].icone} ${M.ITENS[id].nome}${n > 1 ? ' ×' + n : ''}`); }
+      if (cont.moedas) { M.darMoedas(j, cont.moedas, true); nomes.push(`🪙 ${cont.moedas} moedas`); }
       line.anim.tocar('LINE_HAPPY', true);
       if (nomes.length) yield c.titulo('Encontrou!', nomes.join(' · '), 2);
       for (const id of cont.pistas || []) yield* HISTORIA.pista(c, j, id, true);
       if ((cont.itens || []).some(([id]) => id === 'bussola')) yield c.fala('Line', 'Uma bússola! A agulha aponta pra... um baú? Deve mostrar os tesouros que ainda não achei.', 'surpresa');
       else if ((cont.itens || []).some(([id]) => id === 'chave')) yield c.fala('Line', 'Uma chave antiga. Deve abrir alguma daquelas portas trancadas.', 'maroto');
-      else if ((cont.itens || []).some(([id]) => id === 'flor')) yield c.fala('Line', 'Uma Flor da Lua... a Bell ia amar. Vou guardar pra uma hora de aperto.', 'apaixonada');
+      else if ((cont.itens || []).some(([id]) => id === 'lanterna')) yield c.fala('Line', 'Uma lanterna! Agora as galerias escuras das minas não me assustam.', 'sorriso');
+      else if ((cont.itens || []).some(([id]) => id === 'gancho')) yield c.fala('Line', 'Um gancho com corda! Com ele dá pra atravessar de um poste até outro, por cima da água.', 'surpresa');
+      else if ((cont.itens || []).some(([id]) => id === 'alavanca')) {
+        yield c.fala('Line', 'Uma alavanca de ferro, pesada... Tem um carrinho desenhado no cabo.', 'surpresa');
+        yield c.fala('Line', 'É a alavanca do freio do carrinho de mina! Se eu encaixar numa estação, ele volta a andar.', 'sorriso');
+      } else if ((cont.itens || []).some(([id]) => id === 'pena')) yield c.fala('Line', 'Uma Pena de Fênix... Se eu cair, ela me levanta. Ufa.', 'apaixonada');
+      else if ((cont.itens || []).some(([id]) => id === 'bomba') && !j.flags.dicaBomba) { j.flags.dicaBomba = true; yield c.fala('Line', 'Bombas! Com elas eu quebro aquelas paredes rachadas. Ficam no atalho: é só apertar F (ou o botão do item).', 'maroto'); }
       j.salvar();
     },
 
@@ -569,8 +576,13 @@
       const nova = M.darPista(j, id);
       line.anim.tocar('LINE_IDLE', true);
       yield c.titulo('Pista encontrada!', `${p.icone} ${p.titulo}`, 2);
-      yield c.fala(p.titulo, p.texto, 'sistema');
+      for (const par of p.texto.split('\n\n')) yield c.fala(p.titulo, par, 'sistema');
       const n = M.inv(j).pistas.length;
+      const novas = nova ? M.verificarConclusoes(j) : [];
+      for (const cc of novas) {
+        yield c.titulo('💡 Conclusão!', cc.texto, 2.4);
+        if (cc.fala) yield c.fala('Line', cc.fala, 'surpresa');
+      }
       if (nova && n >= M.totalPistas() && !j.flags.cadernoCompleto) {
         j.flags.cadernoCompleto = true;
         j.flags.coracoes = (j.flags.coracoes || 0) + 1;
@@ -581,7 +593,7 @@
         yield c.fala('Line', 'Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.', 'bravo');
       } else if (nova && id === 'mapa') yield c.fala('Line', 'Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!', 'surpresa');
       else if (nova && id === 'fita') yield c.fala('Line', 'Bell...', 'chorando');
-      else if (nova) yield c.fala('Line', `Vou guardar isso no caderno. ${n} de ${M.totalPistas()} pistas.`, 'neutro');
+      else if (nova && !novas.length) yield c.fala('Line', `Vou guardar isso no caderno. ${n} de ${M.totalPistas()} documentos.`, 'neutro');
       j.salvar();
     },
 
@@ -595,6 +607,50 @@
       line.anim.tocar('LINE_CROUCH_STAND', true);
       yield c.animacao(line);
       yield* HISTORIA.pista(c, j, e.doc, true);
+    },
+
+    // Poste de gancho sem o gancho.
+    *semGancho(c, j) {
+      yield c.fala('Line', 'Um poste com uma argola de ferro... e outro igual do outro lado. Com um gancho e corda eu passaria.', 'neutro');
+    },
+
+    // Conversa com morador do vilarejo; os lojistas abrem a loja no fim.
+    *morador(c, j, m) {
+      const line = j.line;
+      line.dir = LB.dirDe(m.x - line.x, m.y - line.y, line.dir);
+      if (m.x !== line.x) line.lado = m.x < line.x ? -1 : 1;
+      const falas = LB.loja.falasDe(j, m);
+      for (const [quem, texto, humor] of falas) yield c.fala(quem, texto, quem === 'Line' ? humor || 'neutro' : undefined);
+      j.flags.conversas = j.flags.conversas || [];
+      if (!j.flags.conversas.includes(m.id)) j.flags.conversas.push(m.id);
+      j.salvar();
+      if (m.loja) { j.terminarCena(); LB.loja.tela.abrir(j, m.loja); }
+    },
+
+    // Estação do carrinho sem a alavanca (ou encaixando a alavanca).
+    *carrinhoQuebrado(c, j, e) {
+      const line = j.line, M = LB.mochila;
+      if (!M.tem(j, 'alavanca')) {
+        yield c.fala('Line', 'Um carrinho de mina nos trilhos. Falta a alavanca do freio... sem ela não sai do lugar.', 'neutro');
+        if (!M.temPista(j, 'minerador')) yield c.fala('Line', 'Alguém deve saber onde foi parar essa alavanca.', 'neutro');
+        else yield c.fala('Line', 'O relatório do capataz disse que a alavanca ficou na Forja Antiga, na montanha.', 'neutro');
+        return;
+      }
+      line.anim.tocar('LINE_CROUCH', true);
+      yield c.animacao(line);
+      M.tirar(j, 'alavanca', 1);
+      j.flags.alavanca = true;
+      j.flags.estacoes = j.flags.estacoes || [];
+      if (!j.flags.estacoes.includes(e.id)) j.flags.estacoes.push(e.id);
+      j.particulas.emitir('faisca', LB.TILE * (e.x + 1.2), LB.TILE * (e.y + 0.6), 14, { vel: 90, vz: 70, vida: 0.5 });
+      j.tremer(3, 0.3);
+      yield c.espera(0.5);
+      line.anim.tocar('LINE_CROUCH_STAND', true);
+      yield c.animacao(line);
+      line.anim.tocar('LINE_HAPPY', true);
+      yield c.titulo('Carrinho consertado!', 'Agora dá para viajar entre as estações descobertas', 2.4);
+      yield c.fala('Line', 'Clique! Encaixou. Agora o carrinho me leva de estação em estação.', 'sorriso');
+      j.salvar();
     },
 
     // Porta trancada: abre com uma chave antiga.

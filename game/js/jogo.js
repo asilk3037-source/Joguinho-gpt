@@ -68,12 +68,36 @@
       try { s = JSON.parse(localStorage.getItem(CHAVE_SAVE)); } catch (e) { /* ok */ }
       if (!s) return this.novoJogo();
       this.flags = s.flags || {};
+      this.migrarSave();
       // Parou no meio do primeiro encontro: recomeça o prólogo (é curtinho).
       if (!this.flags.encontroFeito && !this.flags.manhaVista && !this.flags.prologo) return LB.encontro.iniciar(this);
       let area = s.area === 'campina' || !s.area || LB.MAPAS[s.area] && LB.MAPAS[s.area].tema === 'encontro' ? 'fazenda' : s.area;
       if (!this.flags.prologo) area = 'fazenda';
       this.iniciarArea(area, null, !this.flags.prologo);
       if (!this.flags.prologo) this.iniciarCapitulo();
+    }
+
+    // Saves de versões antigas: mapas mudaram de tamanho, itens viraram outros.
+    migrarSave() {
+      const f = this.flags;
+      if ((f.versaoMundo || 1) >= 2) return;
+      f.versaoMundo = 2;
+      const it = (f.inv && f.inv.itens) || {};
+      // Pão, maçã e flor viraram moedas e poções.
+      const moedas = (it.pao || 0) * 5 + (it.maca || 0) * 5;
+      if (it.flor) it.pocao = (it.pocao || 0) + it.flor;
+      delete it.pao; delete it.maca; delete it.flor;
+      if (moedas) f.moedas = (f.moedas || 0) + moedas;
+      if (f.inv && f.inv.equipado && !LB.mochila.ITENS[f.inv.equipado]) f.inv.equipado = null;
+      // Baús, itens do chão e névoa guardados por coordenada: as áreas que cresceram recomeçam do zero.
+      const mudaram = ['floresta', 'gruta', 'ruinas', 'montanha'];
+      const fora = (k) => mudaram.includes(k.split(':')[0]);
+      f.baus = (f.baus || []).filter((k) => !fora(k));
+      f.pegos = (f.pegos || []).filter((k) => !fora(k));
+      f.cortados = [];
+      f.portas = (f.portas || []).filter((k) => !fora(k));
+      if (f.vistos) for (const a of mudaram) delete f.vistos[a];
+      if (f.checkpoint && mudaram.includes(f.checkpoint.area)) f.checkpoint = null;
     }
 
     tentarDeNovo() {
@@ -85,6 +109,9 @@
       this.estado = 'menu';
       $('#objetivo').classList.add('oculto');
       $('#mochila').classList.add('oculto');
+      $('#loja').classList.add('oculto');
+      $('#viagem').classList.add('oculto');
+      this.viagem = null;
       LB.encontro.mostrarEtiquetas(this);
       this.cena = null;
       LB.dialogo.esconder();
@@ -109,8 +136,11 @@
       if (LB.dialogo.el) LB.dialogo.esconder();
       this.esconderTitulo();
       this.ambiente = new LB.cenario.Ambiente(this.mapa);
-      this.bichos = []; this.npcs = []; this.baloes = []; this.rastroLine = []; this.acaoAtual = null;
+      this.bichos = []; this.npcs = []; this.moradores = []; this.baloes = []; this.rastroLine = []; this.acaoAtual = null;
+      this.bombas = []; this.viagem = null;
       $('#derrota').classList.add('oculto');
+      $('#loja').classList.add('oculto');
+      $('#viagem').classList.add('oculto');
 
       // Mudanças que ficam salvas (espinhos cortados, baú aberto).
       for (const k of this.flags.cortados || []) {
@@ -135,7 +165,7 @@
       for (const it of this.mapa.def.chao || []) {
         if ((this.flags.pegos || []).includes(id + ':' + it.x + ',' + it.y) || (it.requer && !this.flags[it.requer])) continue;
         if (it.doc && LB.mochila.temPista(this, it.doc)) continue;
-        this.itens.push({ tipo: 'chao', x: T(it.x + 0.5), y: T(it.y + 0.9), t: 0, item: it.item, doc: it.doc, chave: id + ':' + it.x + ',' + it.y });
+        this.itens.push({ tipo: 'chao', x: T(it.x + 0.5), y: T(it.y + 0.9), t: 0, item: it.item, doc: it.doc, moedas: it.moedas, chave: id + ':' + it.x + ',' + it.y });
       }
 
       // Sem ponto de chegada (continuar / tentar de novo): volta para a última fonte bebida nesta área.
@@ -143,6 +173,7 @@
       const ini = chegada || cp || this.mapa.def.inicio;
       const hp = this.line ? this.line.hp : 6;
       const mana = this.line ? this.line.mana : 6;
+      const escudos = this.line ? this.line.escudos : null;
       this.line = new LB.Line(T(ini.x), T(ini.y), ini.dir);
       this.line.temEspada = !!this.flags.espada;
       this.line.temMagia = !!this.flags.magia;
@@ -150,11 +181,16 @@
       this.line.hpMax = this.hpMaxLine();
       this.line.hp = id === 'covil' || cp ? this.line.hpMax : Math.max(3, Math.min(this.line.hpMax, hp));
       this.line.mana = cp ? this.line.manaMax : Math.min(this.line.manaMax, mana);
+      this.line.botas = LB.mochila.tem(this, 'botas');
+      this.line.escudos = escudos;
+      LB.loja.vestir(this, !!cp || escudos == null);
       if (this.line.dir === 'LEFT') this.line.lado = -1;
       this.line.voltarLivre();
       this.cameraEm(this.line.x, this.line.y - 24);
       this.criarInimigos();
       this.prepararArea(id, semCenaDeEntrada);
+      LB.mundo.prepararArea(this, id);
+      this.moradores = LB.loja.criarMoradores(this);
       LB.magia.prepararArea(this, id);
       if (this.mapa.tema === 'encontro') LB.encontro.prepararArea(this, id); else LB.encontro.mostrarEtiquetas(this);
       LB.mochila.explorar(this, 1);
@@ -181,7 +217,8 @@
       for (const d of this.mapa.def.inimigos || []) {
         if (d.depoisDe && !this.flags[d.depoisDe]) continue;
         const x = T(d.x + 0.5), y = T(d.y + 0.9);
-        this.inimigos.push(d.tipo === 'fogo' || d.tipo === 'luz' ? new LB.FogoFatuo(x, y, d.tipo) : new LB.Sombra(x, y));
+        if (d.tipo === 'morcego') this.inimigos.push(new LB.Morcego(x, y));
+        else this.inimigos.push(d.tipo === 'fogo' || d.tipo === 'luz' ? new LB.FogoFatuo(x, y, d.tipo) : new LB.Sombra(x, y));
       }
     }
 
@@ -313,6 +350,13 @@
       if (this.mapa.tema === 'encontro') return LB.encontro.bloqueia(this, x, y);
       for (const p of this.mapa.props) if (p.tipo === 'decoracao' && p.raio && Math.hypot(x - p.x, (y - p.y) * 1.6) < p.raio + 6) return true;
       for (const n of this.npcs || []) if (Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 8) return true;
+      if (ent === this.line || !ent) for (const n of this.moradores || []) if (Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 6) return true;
+      // Saída que ainda não abriu (ex.: a estrada do vilarejo antes do rapto).
+      for (const sd of this.mapa.def.saidas) {
+        if (!sd.requer || this.flags[sd.requer]) continue;
+        const tx = x / TILE, ty = y / TILE;
+        if (tx >= sd.x - 0.3 && tx < sd.x + sd.w + 0.3 && ty >= sd.y - 0.3 && ty < sd.y + sd.h + 0.3) return true;
+      }
       if (this.mapa.id === 'covil' && !this.jaulaAberta) {
         const jl = this.mapa.def.jaula;
         if (Math.hypot(x - T(jl.x), (y - T(jl.y)) * 1.6) < 32) return true;
@@ -328,14 +372,19 @@
       this.inimigos = this.inimigos.filter((i) => i !== e);
       if (e.golem) {
         this.flags.golem = true;
+        LB.mochila.darMoedas(this, 30);
         LB.magia.abrirBarreira(this, 'golem');
         this.iniciarCena(LB.HISTORIA.golemVencido, { semPular: false }, e);
         return;
       }
       const r = Math.random();
-      if (r < LB.dif().drop) this.itens.push({ tipo: 'coracao', x: e.x, y: e.y, t: 0 });
-      else if (this.flags.magia && r < LB.dif().drop + 0.35) this.itens.push({ tipo: 'mana', x: e.x, y: e.y, t: 0 });
-      if (e instanceof LB.FogoFatuo) this.particulas.emitir(e.tipo === 'fogo' ? 'brasa' : 'brilho', e.x, e.y - 30, 12, { vel: 80, vida: 0.6, r: 4 });
+      // Coração só cai de vez em quando (e nunca com a vida cheia); moedas sempre.
+      if (r < LB.dif().drop && this.line.hp < this.line.hpMax) this.itens.push({ tipo: 'coracao', x: e.x, y: e.y, t: 0 });
+      else if (this.flags.magia && r < LB.dif().drop + 0.3) this.itens.push({ tipo: 'mana', x: e.x, y: e.y, t: 0 });
+      const n = e instanceof LB.Morcego ? 1 + Math.floor(Math.random() * 2) : e instanceof LB.FogoFatuo ? 2 + Math.floor(Math.random() * 2) : 1 + Math.floor(Math.random() * 3);
+      LB.mundo.soltarMoedas(this, e.x + 8, e.y, n);
+      if (e instanceof LB.Morcego) this.particulas.emitir('sombra', e.x, e.y - 20, 8, { vel: 60, vida: 0.5, r: 3 });
+      else if (e instanceof LB.FogoFatuo) this.particulas.emitir(e.tipo === 'fogo' ? 'brasa' : 'brilho', e.x, e.y - 30, 12, { vel: 80, vida: 0.6, r: 4 });
       else this.particulas.emitir('sombra', e.x, e.y - 14, 12, { vel: 80, vida: 0.7, r: 5 });
     }
 
@@ -410,6 +459,9 @@
       }
       this.acoesExtras(acoes, perto);
       LB.encontro.acoes(this, acoes, perto);
+      LB.mundo.acoes(this, acoes, perto);
+      LB.loja.acoes(this, acoes, perto);
+      LB.carrinho.acoes(this, acoes, perto);
       // Tarefas e objetos têm prioridade sobre carinho; entre iguais, vence o mais perto.
       let melhor = null, md = Infinity;
       for (const a of acoes) {
@@ -439,6 +491,7 @@
     beberFonte(p) {
       const l = this.line;
       l.hp = l.hpMax; l.mana = l.manaMax;
+      LB.loja.vestir(this, true);
       this.flags.checkpoint = { area: this.mapa.id, x: p.x / TILE, y: (p.y + 26) / TILE, dir: 'FRONT' };
       this.salvar();
       this.particulas.emitir('agua', p.x, p.y - 20, 14, { vel: 60, vz: 90, vida: 0.8 });
@@ -500,7 +553,12 @@
       this.line.atualizar(dt, this);
       this.atualizarVida(dt);
       for (const e of this.inimigos) e.atualizar(dt, this);
+      if (!this.cena) LB.ia.separar(this, dt);
+      for (const m of this.moradores) m.atualizar(dt, this);
       if (this.dragao) this.dragao.atualizar(dt, this);
+      LB.mundo.atualizar(this, dt);
+      LB.loja.atualizarEscudos(this, dt);
+      LB.carrinho.atualizar(this);
       LB.magia.atualizarProjeteis(this, dt);
       if (Math.abs(this.zoom - this.zoomAlvo) > 0.001) { this.zoom += (this.zoomAlvo - this.zoom) * Math.min(1, dt * 3); this.aplicarZoom(); }
       this.avisoMana = Math.max(0, this.avisoMana - dt);
@@ -541,7 +599,16 @@
           this.flags.pegos = (this.flags.pegos || []).concat(it.chave);
           this.particulas.emitir('brilho', it.x, it.y - 14, 8, { vel: 50, vida: 0.6, r: 4 });
           if (it.doc) this.iniciarCena(LB.HISTORIA.pista, { semPular: true }, it.doc);
+          else if (it.moedas) { LB.mochila.darMoedas(this, it.moedas); this.salvar(); }
           else { LB.mochila.dar(this, it.item, 1); this.salvar(); }
+          continue;
+        }
+        if (it.tipo === 'moeda') {
+          it.t += dt;
+          // As moedas voam até a Line quando ela chega perto.
+          const d = Math.hypot(it.x - l.x, it.y - l.y);
+          if (d < 60 && d > 1) { it.x += (l.x - it.x) / d * Math.min(d, 220 * dt); it.y += (l.y - it.y) / d * Math.min(d, 220 * dt); }
+          if (d < 16) { it.pego = true; LB.mochila.darMoedas(this, it.moedas, true); LB.mochila.aviso(`+${it.moedas} 🪙`); this.particulas.emitir('brilho', it.x, it.y - 10, 4, { vel: 30, vida: 0.4, r: 3 }); }
           continue;
         }
         if (it.tipo !== 'coracao' && it.tipo !== 'mana') continue;
@@ -555,7 +622,7 @@
           this.particulas.emitir('brilho', it.x, it.y - 20, 6, { vel: 40, vida: 0.6, r: 4 });
         }
       }
-      this.itens = this.itens.filter((i) => !i.pego && i.t < 14);
+      this.itens = this.itens.filter((i) => !i.pego && (i.tipo === 'moeda' ? i.t < 25 : i.t < 14));
       // Espinhos sem espada.
       const perto = this.mapa.tileEm(l.x, l.y - 34) === 'X';
       if (!l.temEspada && perto && !this.avisouEspinhos) { this.avisouEspinhos = true; this.iniciarCena(LB.HISTORIA.espinhos, { semPular: true }); }
@@ -610,7 +677,7 @@
       if (this.dragao && this.chefeAtivo) this.dragao.desenharAvisos(g, this);
       for (const e of this.inimigos) if (e.desenharAvisos) e.desenharAvisos(g, this);
       for (const it of this.itens) if (it.tipo === 'coracao' || it.tipo === 'mana') LB.desenho.sombraChao(g, it.x, it.y, 6, 0.2);
-      const atores = [this.line, ...this.inimigos, ...this.bichos, ...this.npcs];
+      const atores = [this.line, ...this.inimigos, ...this.bichos, ...this.npcs, ...this.moradores];
       if (this.bell) atores.push(this.bell);
       if (this.dragao) atores.push(this.dragao);
       for (const a of atores) if (a.visivel !== false && a.desenharSombra) a.desenharSombra(g);
@@ -627,6 +694,8 @@
       const tigela = this.pontoMapa('tigela');
       if (tigela) lista.push({ y: tigela.y - 2, tigela });
       if (this.duo) lista.push({ y: this.duo.y, duo: this.duo });
+      for (const b of this.bombas || []) lista.push({ y: b.y, bomba: b });
+      if (this.viagem) lista.push({ y: this.viagem.y + 1, viagem: true });
       if (this.presa) { const i = lista.findIndex((o) => o.a === this.presa.bell); if (i >= 0) lista[i].y = this.presa.dragao.y + 1; }
       lista.sort((a, b) => a.y - b.y);
       for (const o of lista) {
@@ -640,6 +709,8 @@
         else if (o.item) LB.desenho.coracaoForma(g, o.item.x, o.item.y - 12 - Math.sin(this.tempo * 4) * 3, 7, o.item.t > 11 && Math.floor(this.tempo * 8) % 2 ? 'rgba(255,93,143,.4)' : '#ff5d8f');
         else if (o.tigela) this.desenharTigela(g, o.tigela);
         else if (o.jaula) LB.desenho.jaula(g, T(m.def.jaula.x), T(m.def.jaula.y) + 2, this.jaulaAberta, this.tempo);
+        else if (o.bomba) LB.mundo.desenharBomba(g, o.bomba, this.tempo);
+        else if (o.viagem) LB.carrinho.desenharViagem(g, this);
         else if (o.duo) { const st = o.duo.anim.estado(o.duo.dir, 1); LB.desenharSprite(g, st.r, st.quadro, o.duo.x, o.duo.y, LB.ALTURA_LINE); }
       }
 
@@ -651,6 +722,7 @@
       // Camadas de tela.
       g.setTransform(1, 0, 0, 1, 0, 0);
       const W = this.canvas.width, H = this.canvas.height;
+      LB.mundo.desenharEscuro(g, this);
       if (this.tint && this.tint.a > 0) { g.fillStyle = `rgba(${this.tint.cor},${this.tint.a})`; g.fillRect(0, 0, W, H); }
       if (m.tema === 'floresta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,20,0,.35)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (m.tema === 'ruinas' || m.tema === 'montanha') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, m.tema === 'ruinas' ? 'rgba(0,15,30,.4)' : 'rgba(30,5,0,.45)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
@@ -692,11 +764,12 @@
         case 'porta': LB.mochila.desenharPorta(g, p, this.tempo, this.mapa.tema); break;
         case 'cogumelo': LB.mochila.desenharCogumelo(g, p, this.tempo); break;
         case 'pilar': case 'cristal': case 'altar': case 'tocha': case 'fonte': case 'barreira': LB.magia.desenharProp(g, p, this); break;
+        default: LB.mundo.desenharProp(g, p, this);
       }
     }
 
     desenharEfeito(g, f) {
-      if (f.tipo !== 'rastro') { LB.magia.desenharEfeito(g, f, this); return; }
+      if (f.tipo !== 'rastro') { if (!LB.mundo.desenharEfeito(g, f, this)) LB.magia.desenharEfeito(g, f, this); return; }
       const k = f.t / f.dur;
       const vertical = /VERTICAL|DIAGONAL/.test(f.anim);
       const a = 1 - k;
@@ -728,6 +801,7 @@
         if (valor === 2) LB.desenho.coracaoForma(g, x, y, 8 * s, '#ff4d6d');
         else if (valor === 1) { g.save(); g.beginPath(); g.rect(x - 9 * s, y - 12 * s, 9 * s, 24 * s); g.clip(); LB.desenho.coracaoForma(g, x, y, 8 * s, '#ff4d6d'); g.restore(); }
       }
+      LB.loja.desenharEscudos(g, this, s);
       LB.magia.desenharHudMana(g, this, s);
       LB.mochila.desenharHud(g, this, s);
       const golem = this.inimigos.find((e) => e.golem && !e.dormindo);

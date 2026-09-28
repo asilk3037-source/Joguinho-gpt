@@ -1,0 +1,12 @@
+{
+  "name": "line-e-bell-testes",
+  "private": true,
+  "description": "Testes automatizados de todas as telas do Line & Bell (Playwright + Chromium).",
+  "scripts": {
+    "test": "node rodar.js",
+    "fotos": "FOTOS=1 node rodar.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

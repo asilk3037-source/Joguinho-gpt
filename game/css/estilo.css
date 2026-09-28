@@ -158,7 +158,7 @@ th { color: var(--destaque); }
 .mochila .coluna { overflow: auto; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
 .objetivo-caixa { background: #2a2238; border-left: 3px solid var(--destaque); padding: 8px 12px; border-radius: 8px; font-size: 14px; }
 .objetivo-caixa b { color: var(--destaque); display: block; margin-bottom: 2px; }
-.caixa.mochila button.pista { display: grid; grid-template-columns: 28px 1fr; width: auto; margin: 0; padding: 7px 9px; border-radius: 10px; border: 1px solid var(--borda); background: #1d1729; color: var(--texto); font-size: 13px; font-weight: 600; text-align: left; }
+.caixa.mochila button.pista { display: grid; grid-template-columns: 28px 1fr; width: 100%; margin: 0; padding: 7px 9px; border-radius: 10px; border: 1px solid var(--borda); background: #1d1729; color: var(--texto); font-size: 13px; font-weight: 600; text-align: left; }
 .pista .ic { grid-row: span 2; font-size: 20px; }
 .pista .onde { font-size: 11.5px; color: var(--suave); font-weight: 400; }
 .caixa.mochila button.pista.falta { opacity: 0.55; cursor: default; }
@@ -204,3 +204,57 @@ th { color: var(--destaque); }
 .botoes { width: 290px; }
 #b-pocao { right: 246px; bottom: 6px; background: rgba(255, 111, 159, 0.5); font-size: 15px; }
 #toque.passeio #b-pocao { display: none; }
+
+/* Equipamento na mochila */
+.equipamento { display: flex; flex-wrap: wrap; gap: 6px; }
+.equipamento span { background: #241c33; border: 1px solid var(--borda); border-radius: 20px; padding: 5px 11px; font-size: 13px; font-weight: 600; }
+#equip-moedas { color: #ffd166; }
+.caixa.mochila button.slot.equipado { box-shadow: inset 0 0 0 2px #7fd6ff; }
+.caixa.mochila button.slot.equipado::after { content: 'atalho'; font-size: 10px; color: #7fd6ff; }
+.mochila .detalhe .linha2 button { margin: 8px 0 4px; padding: 9px 10px; font-size: 14px; }
+.mochila .subtitulo { margin: 10px 0 2px; font-size: 15px; color: var(--destaque); }
+.conclusao { background: #1d1729; border: 1px dashed var(--borda); border-radius: 10px; padding: 7px 10px; font-size: 13px; }
+.conclusao b { display: block; font-weight: 600; color: var(--suave); }
+.conclusao.ok { border-style: solid; border-color: #ffd166; background: #2a2238; }
+.conclusao.ok b { color: #ffe9a8; }
+.conclusao span { display: block; color: #7fd6ff; font-size: 12px; margin-top: 3px; }
+
+/* Documentos: cada tipo tem cara de papel diferente */
+.mochila .papel .tipo-doc { font: 700 11px system-ui, sans-serif; letter-spacing: 1px; text-transform: uppercase; color: #9a6a30; margin: 0 0 4px; }
+.mochila .papel .autor { font-style: italic; color: #7a5a30; margin: 0 0 10px; font-size: 13px; }
+.mochila .papel.doc-anotacao { background: #fbf6e3; background-image: repeating-linear-gradient(#fbf6e3 0 23px, #cfe0f0 23px 24px); }
+.mochila .papel.doc-diario { background: #efe0bd; border-left: 10px solid #7b4a2a; }
+.mochila .papel.doc-mapa { background: #e8d9a8; box-shadow: inset 0 0 50px rgba(110, 70, 20, 0.45); }
+.mochila .papel.doc-cartaz { background: #f6ecd0; border: 3px double #9a6a30; }
+.mochila .papel.doc-carta { background: #fff8ec; }
+.mochila .papel.doc-pergaminho { background: #eadcb2; border-radius: 4px 18px 4px 18px; }
+.mochila .papel.doc-relatorio { background: #eef0f2; color: #22303a; font-family: 'Courier New', monospace; }
+.mochila .papel.doc-relatorio p { font-size: 14px; }
+.mochila .papel.doc-objeto { background: #e9e4f2; color: #2e2440; border: 2px solid #b8aecb; }
+.mochila .papel.doc-receita { background: #f5e0c0; border-top: 6px solid #c0392b; }
+
+/* Loja do vilarejo */
+.caixa.loja { width: min(620px, 96vw); max-height: 94vh; display: flex; flex-direction: column; text-align: left; padding: 16px; }
+.loja .topo { display: flex; align-items: center; gap: 10px; }
+.loja .topo h2 { margin: 0; flex: 1; font-size: 20px; }
+.loja .moedas { color: #ffd166; font-weight: 700; font-size: 17px; }
+.caixa.loja .topo button { width: auto; margin: 0; padding: 7px 14px; font-size: 14px; }
+.fala-loja { color: var(--suave); font-style: italic; margin: 8px 0 10px; min-height: 1.2em; }
+#loja-lista { overflow: auto; display: flex; flex-direction: column; gap: 8px; }
+.produto { display: grid; grid-template-columns: 40px 1fr auto; gap: 10px; align-items: center; background: #1d1729; border: 1px solid var(--borda); border-radius: 12px; padding: 9px 10px; }
+.produto .ic { font-size: 28px; text-align: center; }
+.produto .info b { display: block; }
+.produto .info small { display: block; color: var(--suave); font-size: 12px; line-height: 1.35; }
+.produto .info small.falta { color: #ff9d9d; }
+.produto.bloqueado { opacity: 0.7; }
+.caixa.loja button.comprar { width: auto; margin: 0; padding: 8px 12px; font-size: 14px; white-space: nowrap; }
+.caixa.loja button.comprar.caro { background: #3a2a2a; color: #ffb0a0; border-color: #6a3a3a; }
+.caixa.loja button.comprar:disabled { background: #2a2238; color: var(--suave); border-color: var(--borda); cursor: default; }
+@media (max-width: 520px) { .produto { grid-template-columns: 30px 1fr; } .caixa.loja button.comprar { grid-column: 1 / -1; } }
+
+/* Carrinho */
+#viagem-lista button:disabled { opacity: 0.55; cursor: default; }
+
+/* Botão do item do atalho */
+#b-item { right: 246px; bottom: 58px; background: rgba(127, 214, 255, 0.45); font-size: 15px; }
+#toque.passeio #b-item { display: none; }

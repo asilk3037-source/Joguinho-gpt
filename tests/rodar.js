@@ -1,0 +1,651 @@
+'use strict';
+
+// Testes automatizados do Line & Bell.
+// Sobe um servidor estático para a pasta game/, abre o jogo num Chromium (Playwright)
+// e passa por todas as telas: menu, controles, galeria, prólogo, fazenda, pausa, mochila
+// (itens, documentos, mapa), cada área, loja, ferraria, carrinho, bombas, gancho, derrota,
+// save/continuar/migração, celular, IA dos inimigos e a conectividade de todos os mapas.
+//
+// Uso:  cd tests && npm test            (todos)
+//       node rodar.js loja carrinho       (só os testes cujo nome contém essas palavras)
+// Variáveis: PLAYWRIGHT=/caminho/do/playwright  CHROMIUM=/caminho/do/chromium  FOTOS=1 (salva capturas)
+
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+
+function carregarPlaywright() {
+  const tentativas = [process.env.PLAYWRIGHT, 'playwright', '@playwright/test', '/opt/node22/lib/node_modules/playwright'].filter(Boolean);
+  for (const t of tentativas) { try { return require(t); } catch (e) { /* próxima */ } }
+  console.error('Playwright não encontrado. Rode `npm install` dentro de tests/ ou defina PLAYWRIGHT.');
+  process.exit(2);
+}
+const { chromium } = carregarPlaywright();
+
+const RAIZ = path.resolve(__dirname, '..', 'game');
+const FOTOS = process.env.FOTOS ? path.join(__dirname, 'fotos') : null;
+if (FOTOS) fs.mkdirSync(FOTOS, { recursive: true });
+
+// ---------------- Servidor estático ----------------
+const TIPOS = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.json': 'application/json', '.svg': 'image/svg+xml' };
+function servidor() {
+  return new Promise((ok) => {
+    const s = http.createServer((req, res) => {
+      const url = decodeURIComponent(req.url.split('?')[0]);
+      let arq = path.join(RAIZ, url === '/' ? 'index.html' : url);
+      if (!arq.startsWith(RAIZ)) { res.writeHead(403); res.end(); return; }
+      fs.readFile(arq, (err, dados) => {
+        if (err) { res.writeHead(404); res.end('404'); return; }
+        res.writeHead(200, { 'Content-Type': TIPOS[path.extname(arq)] || 'application/octet-stream' });
+        res.end(dados);
+      });
+    });
+    s.listen(0, '127.0.0.1', () => ok(s));
+  });
+}
+
+// ---------------- Mini framework ----------------
+const testes = [];
+const teste = (nome, fn, o) => testes.push({ nome, fn, o: o || {} });
+
+class Falha extends Error {}
+function afirmar(cond, msg) { if (!cond) throw new Falha(msg); }
+function igual(a, b, msg) { if (JSON.stringify(a) !== JSON.stringify(b)) throw new Falha(`${msg}: esperado ${JSON.stringify(b)}, veio ${JSON.stringify(a)}`); }
+
+let BASE = '';
+let navegador = null;
+
+// Abre o jogo numa página nova (armazenamento limpo, a não ser que `save` seja passado).
+async function abrir(o) {
+  o = o || {};
+  const ctx = await navegador.newContext({
+    viewport: o.celular ? { width: 844, height: 390 } : { width: 1280, height: 720 },
+    hasTouch: !!o.celular, isMobile: !!o.celular, deviceScaleFactor: 1,
+  });
+  const p = await ctx.newPage();
+  const erros = [];
+  p.on('pageerror', (e) => erros.push('pageerror: ' + (e.stack || e)));
+  p.on('console', (m) => { if (m.type() === 'error' && !/favicon/.test(m.text())) erros.push('console: ' + m.text()); });
+  if (o.save) await ctx.addInitScript((s) => { try { localStorage.setItem('lineBell.save.v1', s); } catch (e) { /* ok */ } }, JSON.stringify(o.save));
+  await p.goto(BASE + '/');
+  await p.waitForFunction(() => window.LB && LB.jogo && !document.querySelector('#menu').classList.contains('oculto'), null, { timeout: 30000 });
+  const ev = (fn, arg) => p.evaluate(fn, arg);
+  const h = {
+    p, erros, ev, ctx,
+    espera: (ms) => p.waitForTimeout(ms),
+    visivel: (sel) => ev((s) => { const e = document.querySelector(s); return !!e && !e.classList.contains('oculto') && getComputedStyle(e).display !== 'none'; }, sel),
+    estado: () => ev(() => LB.jogo.estado),
+    // Acelera as cenas até acabarem (ou até `max` passos).
+    async avancar(max) {
+      for (let i = 0; i < (max || 200); i++) {
+        const tem = await ev(() => { const j = LB.jogo; if (j.cena) { j.cena.rapido = true; LB.dialogo.clicou = true; return true; } return false; });
+        if (!tem) return;
+        await p.waitForTimeout(40);
+      }
+    },
+    // Vai direto para uma área com as flags dadas (pula o prólogo).
+    async area(id, flags, chegada) {
+      await ev(([id, flags, chegada]) => {
+        const j = LB.jogo;
+        document.querySelector('#menu').classList.add('oculto');
+        j.flags = Object.assign({ encontroFeito: true, manhaVista: true, prologo: true, florestaVista: true, versaoMundo: 2 }, flags || {});
+        j.iniciarArea(id, chegada || null, true);
+      }, [id, flags, chegada]);
+      await p.waitForTimeout(150);
+      await h.avancar();
+    },
+    // Teleporta a Line (em tiles).
+    async ir(tx, ty) {
+      await ev(([x, y]) => { const j = LB.jogo; j.line.x = x * 32; j.line.y = y * 32; j.line.voltarLivre(); j.cameraEm(j.line.x, j.line.y); }, [tx, ty]);
+      await p.waitForTimeout(120);
+    },
+    prompt: () => ev(() => { const a = LB.jogo.acoesPossiveis(); return a ? a.texto : null; }),
+    async interagir() { await ev(() => { const a = LB.jogo.acoesPossiveis(); if (a) a.fazer(); }); await p.waitForTimeout(120); await h.avancar(); await p.waitForTimeout(80); },
+    async foto(nome) { if (FOTOS) await p.screenshot({ path: path.join(FOTOS, nome + '.png') }); },
+    fechar: () => ctx.close(),
+  };
+  return h;
+}
+
+// ================= Telas do menu =================
+teste('menu: botões, dificuldade, controles e galeria', async (h) => {
+  afirmar(await h.visivel('#menu'), 'menu deveria aparecer');
+  afirmar(await h.visivel('#btn-novo'), 'botão Novo jogo');
+  const d0 = await h.ev(() => document.querySelector('#btn-dificuldade').textContent);
+  await h.p.click('#btn-dificuldade');
+  const d1 = await h.ev(() => document.querySelector('#btn-dificuldade').textContent);
+  afirmar(d0 !== d1, 'dificuldade deveria mudar ao clicar');
+  await h.p.click('#btn-controles');
+  afirmar(await h.visivel('#controles'), 'tela de controles');
+  const txt = await h.ev(() => document.querySelector('#controles').textContent);
+  afirmar(/item do atalho/.test(txt) && /Mochila/.test(txt), 'controles devem listar mochila e item do atalho');
+  await h.p.click('#btn-voltar-controles');
+  afirmar(await h.visivel('#menu'), 'volta ao menu');
+  await h.p.click('#btn-galeria');
+  afirmar(await h.visivel('#galeria'), 'galeria de animações');
+  await h.espera(400);
+  const n = await h.ev(() => document.querySelectorAll('#galeria-lista button').length);
+  afirmar(n > 20, `galeria deveria listar animações (veio ${n})`);
+  await h.foto('galeria');
+  await h.p.click('#btn-voltar-galeria');
+  afirmar(await h.visivel('#menu'), 'volta ao menu depois da galeria');
+});
+
+// ================= Prólogo e fazenda =================
+teste('prólogo: Novo jogo abre o Primeiro Encontro', async (h) => {
+  await h.p.click('#btn-novo');
+  await h.espera(600);
+  const r = await h.ev(() => ({ tema: LB.jogo.mapa.tema, estado: LB.jogo.estado }));
+  igual(r.tema, 'encontro', 'tema do prólogo');
+  igual(r.estado, 'jogo', 'estado');
+  await h.avancar(60);
+  await h.espera(300);
+  await h.foto('prologo');
+});
+
+teste('fazenda: capítulo da manhã começa com a Bell', async (h) => {
+  await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = { encontroFeito: true }; j.iniciarArea('fazenda', null, true); j.iniciarCapitulo(); });
+  await h.espera(300);
+  await h.avancar();
+  const r = await h.ev(() => ({ area: LB.jogo.mapa.id, bell: !!LB.jogo.bell, etapa: LB.jogo.flags.etapa, manha: LB.jogo.flags.manhaVista }));
+  igual(r.area, 'fazenda', 'área');
+  afirmar(r.bell, 'a Bell deveria estar na fazenda');
+  igual(r.etapa, 'manha', 'etapa');
+  afirmar(r.manha, 'cena da manhã deveria marcar manhaVista');
+  await h.foto('fazenda');
+});
+
+teste('fazenda: estrada do vilarejo fica fechada antes do rapto', async (h) => {
+  await h.area('fazenda', { prologo: false });
+  const bloqueado = await h.ev(() => LB.jogo.bloqueia(44.9 * 32, 13.9 * 32, LB.jogo.line));
+  afirmar(bloqueado, 'a saída leste deveria bloquear antes do prólogo');
+  await h.area('fazenda', {});
+  const livre = await h.ev(() => LB.jogo.bloqueia(44.9 * 32, 13.9 * 32, LB.jogo.line));
+  afirmar(!livre, 'depois do rapto a estrada abre');
+  await h.ir(45.3, 14.2);
+  await h.espera(300);
+  igual(await h.ev(() => LB.jogo.mapa.id), 'vilarejo', 'a estrada leva ao vilarejo');
+});
+
+// ================= Pausa =================
+teste('pausa: abre, abre a mochila e volta', async (h) => {
+  await h.area('floresta', { espada: true, magoVisto: true });
+  await h.ev(() => LB.ui.pausar());
+  afirmar(await h.visivel('#pausa'), 'tela de pausa');
+  igual(await h.estado(), 'pausa', 'estado pausa');
+  await h.foto('pausa');
+  await h.p.click('#btn-pausa-mochila');
+  afirmar(await h.visivel('#mochila'), 'mochila pela pausa');
+  await h.p.keyboard.press('Escape');
+  await h.espera(100);
+  afirmar(await h.visivel('#pausa'), 'fechar a mochila volta para a pausa');
+  await h.p.click('#btn-retomar');
+  igual(await h.estado(), 'jogo', 'retomou');
+});
+
+// ================= Mochila =================
+teste('mochila: itens, equipar, usar, documentos, conclusões e mapa', async (h) => {
+  await h.area('floresta', { espada: true, magoVisto: true, magia: true });
+  await h.ev(() => { const j = LB.jogo, M = LB.mochila; M.dar(j, 'pocao', 2); M.dar(j, 'bomba', 3); M.dar(j, 'elixir', 1); M.dar(j, 'lanterna', 1); M.darMoedas(j, 50); j.line.hp = 2; });
+  await h.p.keyboard.press('KeyI');
+  await h.espera(200);
+  afirmar(await h.visivel('#mochila'), 'I abre a mochila');
+  igual(await h.estado(), 'mochila', 'estado mochila');
+  const slots = await h.ev(() => document.querySelectorAll('#itens-grade .slot').length);
+  igual(slots, 4, 'quatro itens diferentes');
+  afirmar(/50/.test(await h.ev(() => document.querySelector('#equip-moedas').textContent)), 'moedas no painel');
+  // Seleciona a bomba e equipa.
+  await h.ev(() => { [...document.querySelectorAll('#itens-grade .slot')].find((b) => /Bomba/.test(b.textContent)).click(); });
+  await h.p.click('#btn-equipar-item');
+  igual(await h.ev(() => LB.mochila.inv(LB.jogo).equipado), 'bomba', 'bomba no atalho');
+  // Usa a poção pela mochila.
+  await h.ev(() => { [...document.querySelectorAll('#itens-grade .slot')].find((b) => /Poção/.test(b.textContent)).click(); });
+  await h.p.click('#btn-usar-item');
+  const r = await h.ev(() => ({ hp: LB.jogo.line.hp, pocao: LB.mochila.qtd(LB.jogo, 'pocao') }));
+  igual(r.hp, 6, 'poção cura 2 corações');
+  igual(r.pocao, 1, 'sobra uma poção');
+  await h.foto('mochila-itens');
+  // Documentos e conclusões.
+  await h.ev(() => { const j = LB.jogo, M = LB.mochila; M.darPista(j, 'pegadas'); M.darPista(j, 'cacador'); M.verificarConclusoes(j); });
+  await h.p.click('#mochila nav button[data-aba="pistas"]');
+  const docs = await h.ev(() => ({ n: document.querySelectorAll('#pistas-lista .pista').length, falta: document.querySelectorAll('#pistas-lista .pista.falta').length, conc: document.querySelectorAll('#conclusoes-lista .conclusao').length, ok: document.querySelectorAll('#conclusoes-lista .conclusao.ok').length, tipo: document.querySelector('#pista-tipo').textContent }));
+  igual(docs.n, 12, 'doze documentos no caderno');
+  igual(docs.falta, 10, 'dez ainda faltam');
+  igual(docs.conc, 8, 'oito conclusões');
+  igual(docs.ok, 1, 'uma conclusão formada (pegadas + bilhete do caçador)');
+  afirmar(docs.tipo.length > 0, 'leitor mostra o tipo do documento');
+  await h.foto('mochila-documentos');
+  // Mapa: área e mundo.
+  await h.p.keyboard.press('KeyM');
+  await h.espera(200);
+  afirmar(await h.visivel('#aba-mapa'), 'M abre o mapa');
+  const cv = await h.ev(() => document.querySelector('#mapa-canvas').width);
+  afirmar(cv > 0, 'canvas do mapa desenhado');
+  await h.p.click('#btn-mapa-mundo');
+  await h.espera(150);
+  await h.foto('mochila-mapa-mundo');
+  await h.p.keyboard.press('Escape');
+  await h.espera(100);
+  igual(await h.estado(), 'jogo', 'Esc fecha a mochila');
+  // Atalhos H e F.
+  await h.ev(() => { LB.jogo.line.hp = 2; });
+  await h.p.keyboard.press('KeyH');
+  igual(await h.ev(() => LB.jogo.line.hp), 6, 'H usa a poção');
+  await h.p.keyboard.press('KeyF');
+  igual(await h.ev(() => LB.jogo.bombas.length), 1, 'F coloca a bomba equipada');
+});
+
+teste('mapa: só acende as áreas visitadas', async (h) => {
+  await h.area('floresta', { espada: true });
+  const vistos = await h.ev(() => Object.keys(LB.jogo.flags.vistos || {}));
+  afirmar(vistos.includes('floresta'), 'a floresta foi vista');
+  afirmar(!vistos.includes('montanha') && !vistos.includes('gruta'), 'áreas não visitadas continuam apagadas');
+  // Um documento põe alfinete, mas não acende a área.
+  await h.ev(() => { LB.mochila.darPista(LB.jogo, 'cacador'); });
+  const depois = await h.ev(() => Object.keys(LB.jogo.flags.vistos || {}));
+  afirmar(!depois.includes('montanha'), 'documento não acende a montanha');
+});
+
+// ================= Todas as áreas =================
+const TODAS = { espada: true, magoVisto: true, magoRuinas: true, ruinasVistas: true, magia: true, golem: true, estrela: true, montanhaVista: true };
+for (const area of ['fazenda', 'vilarejo', 'floresta', 'gruta', 'ruinas', 'montanha', 'covil']) {
+  teste(`área: ${area} carrega, desenha e roda sem erros`, async (h) => {
+    await h.area(area, TODAS);
+    await h.espera(700);
+    await h.avancar();
+    const r = await h.ev(() => {
+      const j = LB.jogo, l = j.line;
+      return { id: j.mapa.id, preso: j.mapa.colide(l.x, l.y - 4, 6, 4), w: j.mapa.w, h: j.mapa.h, inimigos: j.inimigos.length, nome: j.mapa.def.nome };
+    });
+    igual(r.id, area, 'área');
+    afirmar(!r.preso, 'a Line não pode nascer dentro de parede');
+    await h.foto('area-' + area);
+  });
+}
+
+teste('fases maiores: tamanhos das áreas', async (h) => {
+  const t = await h.ev(() => Object.fromEntries(Object.entries(LB.MAPAS).filter(([, d]) => d.tema !== 'encontro').map(([id, d]) => [id, [Math.max(...d.linhas.map((l) => l.length)), d.linhas.length]])));
+  afirmar(t.floresta[0] >= 70 && t.floresta[1] >= 40, 'floresta grande');
+  afirmar(t.gruta[0] >= 60, 'minas grandes');
+  afirmar(t.montanha[0] >= 70, 'montanha grande');
+  afirmar(t.ruinas[0] >= 65, 'ruínas grandes');
+  afirmar(t.vilarejo, 'vilarejo existe');
+  // Todas as linhas com a mesma largura.
+  const tortas = await h.ev(() => Object.entries(LB.MAPAS).filter(([, d]) => new Set(d.linhas.map((l) => l.length)).size > 1).map(([id]) => id));
+  igual(tortas, [], 'mapas com linhas de larguras diferentes');
+});
+
+// ================= Conectividade =================
+teste('mapas: tudo alcançável e saídas ligadas nos dois sentidos', async (h) => {
+  const r = await h.ev(() => {
+    const problemas = [];
+    const PORTAO = new Set(['Z', 'g', '%', 'X']); // barreira de luz, porta trancada, parede rachada, espinhos: abrem com progresso
+    for (const [id, def] of Object.entries(LB.MAPAS)) {
+      if (def.tema === 'encontro') continue;
+      const m = new LB.Mapa(id, { prologo: true, espada: true });
+      const L = m.l, w = m.w, hh = m.h;
+      const passa = (x, y) => x >= 0 && y >= 0 && x < w && y < hh && (!m.solido(x, y) || PORTAO.has(L[y][x]));
+      const vis = new Set();
+      const fila = [];
+      const marcar = (x, y) => { const k = x + ',' + y; if (!vis.has(k)) { vis.add(k); fila.push([x, y]); } };
+      marcar(Math.floor(def.inicio.x), Math.floor(def.inicio.y));
+      // Postes do gancho: pares em linha reta.
+      const postes = [];
+      for (let y = 0; y < hh; y++) for (let x = 0; x < w; x++) if (L[y][x] === 'p') postes.push({ tx: x, ty: y });
+      while (fila.length) {
+        const [x, y] = fila.shift();
+        for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+          const nx = x + dx, ny = y + dy;
+          if (passa(nx, ny)) { marcar(nx, ny); continue; }
+          // Pulo: por cima de até 3 tiles de riacho/fenda.
+          if (L[ny] && 'wj'.includes(L[ny][nx])) for (let s = 2; s <= 4; s++) { const px = x + dx * s, py = y + dy * s; if (passa(px, py)) { marcar(px, py); break; } if (!(L[py] && 'wj'.includes(L[py][px]))) break; }
+        }
+        // Gancho: de perto de um poste até o lado de lá do par.
+        for (const p of postes) {
+          if (Math.abs(p.tx - x) + Math.abs(p.ty - y) !== 1) continue;
+          const par = LB.mundo.parDoPoste(m, p);
+          if (par) { const ax = par.tx + par.dx, ay = par.ty + par.dy; if (passa(ax, ay)) marcar(ax, ay); }
+        }
+      }
+      const perto = (x, y) => vis.has(x + ',' + y) || [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => vis.has((x + dx) + ',' + (y + dy)));
+      const falta = (o, x, y) => problemas.push(`${id}: ${o} em (${x},${y}) inalcançável`);
+      for (let y = 0; y < hh; y++) for (let x = 0; x < w; x++) if ('CSU'.includes(L[y][x]) && !perto(x, y)) falta('objeto ' + L[y][x], x, y);
+      for (const it of def.chao || []) if (!perto(it.x, it.y)) falta('item do chão', it.x, it.y);
+      for (const e of def.exames || []) if (!perto(e.x, e.y)) falta('exame ' + e.id, e.x, e.y);
+      for (const n of def.npcs || []) if (!perto(Math.floor(n.x), Math.floor(n.y))) falta('morador ' + n.id, n.x, n.y);
+      if (def.estacao && !perto(def.estacao.x, def.estacao.y + 1)) falta('estação', def.estacao.x, def.estacao.y);
+      for (const s of def.saidas || []) {
+        let ok = false;
+        for (let x = s.x; x < s.x + s.w; x++) for (let y = s.y; y < s.y + s.h; y++) if (perto(x, y)) ok = true;
+        if (!ok) falta('saída para ' + s.para, s.x, s.y);
+        // A chegada do outro lado: chão livre, fora das saídas de lá, e existe caminho de volta.
+        const dest = LB.MAPAS[s.para];
+        if (!dest) { problemas.push(`${id}: saída para área inexistente ${s.para}`); continue; }
+        if (!s.chegada) continue;
+        const md = new LB.Mapa(s.para, { prologo: true, espada: true });
+        const cx = s.chegada.x, cy = s.chegada.y;
+        if (md.colide(cx * 32, cy * 32 - 4, 6, 4)) problemas.push(`${id} → ${s.para}: chegada (${cx},${cy}) dentro de parede`);
+        for (const s2 of dest.saidas || []) if (cx >= s2.x && cx < s2.x + s2.w && (cy * 32 - 4) / 32 >= s2.y - 0.5 && (cy * 32 - 4) / 32 < s2.y + s2.h) problemas.push(`${id} → ${s.para}: chegada cai dentro da saída para ${s2.para}`);
+        if (s.para !== 'covil' && !(dest.saidas || []).some((s2) => s2.para === id)) problemas.push(`${s.para} não tem saída de volta para ${id}`);
+      }
+    }
+    return problemas;
+  });
+  igual(r, [], 'problemas de conectividade');
+});
+
+// ================= Vilarejo, loja e ferraria =================
+teste('loja da Dona Rosa: conversa abre a loja e compra funciona', async (h) => {
+  await h.area('vilarejo', { espada: true, moedas: 100 });
+  await h.ir(15.5, 12.6);
+  const pr = await h.prompt();
+  afirmar(/Comprar/.test(pr || ''), `prompt da Dona Rosa (veio ${pr})`);
+  await h.interagir();
+  afirmar(await h.visivel('#loja'), 'loja aberta depois da conversa');
+  igual(await h.estado(), 'loja', 'estado loja');
+  const n = await h.ev(() => document.querySelectorAll('#loja-lista .produto').length);
+  igual(n, 5, 'cinco produtos na Dona Rosa');
+  await h.foto('loja-rosa');
+  await h.ev(() => document.querySelectorAll('#loja-lista .comprar')[0].click()); // poção 20
+  const r = await h.ev(() => ({ moedas: LB.mochila.moedas(LB.jogo), pocao: LB.mochila.qtd(LB.jogo, 'pocao') }));
+  igual(r, { moedas: 80, pocao: 1 }, 'comprou uma poção');
+  await h.ev(() => document.querySelectorAll('#loja-lista .comprar')[4].click()); // botas 60
+  igual(await h.ev(() => LB.jogo.line.botas), true, 'botas calçadas');
+  await h.ev(() => document.querySelectorAll('#loja-lista .comprar')[3].click()); // pena 80 (sem dinheiro)
+  afirmar(/Faltam 60 moedas/.test(await h.ev(() => document.querySelector('#loja-msg').textContent)), 'avisa quando falta dinheiro');
+  await h.p.keyboard.press('Escape');
+  await h.espera(100);
+  igual(await h.estado(), 'jogo', 'Esc sai da loja');
+  afirmar(!(await h.visivel('#pausa')), 'Esc da loja não abre a pausa');
+});
+
+teste('ferraria do Seu Bento: armaduras dão escudos que seguram golpes', async (h) => {
+  await h.area('vilarejo', { espada: true, moedas: 200 });
+  await h.ir(44.5, 12.6);
+  await h.interagir();
+  afirmar(await h.visivel('#loja'), 'ferraria aberta');
+  const bloq = await h.ev(() => document.querySelectorAll('#loja-lista .produto')[2].classList.contains('bloqueado'));
+  afirmar(bloq, 'Armadura de Brasa bloqueada sem a receita');
+  await h.ev(() => document.querySelectorAll('#loja-lista .comprar')[1].click()); // malha 90
+  const r = await h.ev(() => ({ arm: LB.jogo.flags.armadura, esc: LB.jogo.line.escudos, max: LB.jogo.line.escudosMax, moedas: LB.mochila.moedas(LB.jogo) }));
+  igual(r, { arm: 'malha', esc: 2, max: 2, moedas: 110 }, 'cota de malha');
+  const tunica = await h.ev(() => document.querySelectorAll('#loja-lista .comprar')[0].textContent);
+  afirmar(/melhor/.test(tunica), 'túnica fica indisponível depois da malha');
+  await h.foto('loja-bento');
+  await h.ev(() => LB.loja.tela.fechar());
+  // Escudo absorve o golpe.
+  const d = await h.ev(() => { const j = LB.jogo, l = j.line; const hp = l.hp; l.invul = 0; l.receberDano(j, 1, false, l.x + 10, l.y); return { hp: l.hp, antes: hp, esc: l.escudos }; });
+  igual(d.hp, d.antes, 'vida intacta: o escudo segurou');
+  igual(d.esc, 1, 'um escudo gasto');
+  // E a receita libera a Armadura de Brasa.
+  await h.ev(() => { LB.mochila.darPista(LB.jogo, 'receita'); LB.loja.tela.abrir(LB.jogo, 'bento'); });
+  const brasa = await h.ev(() => ({ bloq: document.querySelectorAll('#loja-lista .produto')[2].classList.contains('bloqueado'), txt: document.querySelectorAll('#loja-lista .comprar')[2].textContent }));
+  afirmar(!brasa.bloq && /160/.test(brasa.txt), `com a receita a Armadura de Brasa aparece (${brasa.txt})`);
+  await h.ev(() => document.querySelectorAll('#loja-lista .comprar')[2].click());
+  afirmar(/Faltam 50 moedas/.test(await h.ev(() => document.querySelector('#loja-msg').textContent)), 'diz quanto falta');
+});
+
+teste('moradores do vilarejo conversam', async (h) => {
+  await h.area('vilarejo', { espada: true });
+  for (const id of ['ze', 'lurdes', 'pedro']) {
+    const pos = await h.ev((id) => { const m = LB.jogo.moradores.find((x) => x.id === id); return [m.x / 32, m.y / 32]; }, id);
+    await h.ir(pos[0], pos[1] + 0.9);
+    const pr = await h.prompt();
+    igual(pr, 'Conversar', `prompt de ${id}`);
+    await h.interagir();
+  }
+  const conv = await h.ev(() => LB.jogo.flags.conversas);
+  igual(conv.sort(), ['lurdes', 'pedro', 'ze'], 'conversas registradas');
+});
+
+// ================= Carrinho =================
+teste('carrinho: quebrado sem alavanca, conserta e viaja entre estações', async (h) => {
+  await h.area('vilarejo', { espada: true });
+  await h.ir(52.7, 21.9);
+  const p1 = await h.prompt();
+  igual(p1, 'Ver o carrinho', 'sem alavanca');
+  await h.interagir();
+  igual(await h.ev(() => !!LB.jogo.flags.alavanca), false, 'continua quebrado');
+  await h.ev(() => { const j = LB.jogo; LB.mochila.dar(j, 'alavanca', 1); j.flags.estacoes = ['vilarejo', 'minas']; });
+  igual(await h.prompt(), 'Encaixar a alavanca', 'com a alavanca');
+  await h.interagir();
+  const r = await h.ev(() => ({ ok: LB.jogo.flags.alavanca, tem: LB.mochila.tem(LB.jogo, 'alavanca') }));
+  igual(r, { ok: true, tem: false }, 'alavanca encaixada');
+  igual(await h.prompt(), 'Viajar de carrinho', 'agora viaja');
+  await h.ev(() => LB.jogo.acoesPossiveis().fazer());
+  afirmar(await h.visivel('#viagem'), 'tela de destino');
+  const botoes = await h.ev(() => [...document.querySelectorAll('#viagem-lista button')].map((b) => [b.textContent, b.disabled]));
+  igual(botoes.length, 2, 'duas outras estações');
+  afirmar(botoes.some(([t, d]) => /Minas/.test(t) && !d), 'Minas liberada');
+  afirmar(botoes.some(([, d]) => d), 'Forja ainda não descoberta');
+  await h.foto('carrinho-destinos');
+  await h.ev(() => [...document.querySelectorAll('#viagem-lista button')].find((b) => /Minas/.test(b.textContent)).click());
+  for (let i = 0; i < 60 && (await h.ev(() => LB.jogo.mapa.id)) !== 'gruta'; i++) { await h.avancar(5); await h.espera(100); }
+  await h.avancar();
+  igual(await h.ev(() => LB.jogo.mapa.id), 'gruta', 'chegou nas Minas de carrinho');
+  const l = await h.ev(() => ({ vis: LB.jogo.line.visivel !== false, viagem: LB.jogo.viagem }));
+  afirmar(l.vis && !l.viagem, 'a Line desce do carrinho');
+});
+
+// ================= Bombas, gancho, brasa, escuro =================
+teste('bomba quebra a parede rachada e fica salvo', async (h) => {
+  await h.area('floresta', { espada: true });
+  const alvo = await h.ev(() => { const m = LB.jogo.mapa; for (let y = 0; y < m.h; y++) for (let x = 0; x < m.w; x++) if (m.tile(x, y) === '%') return [x, y]; return null; });
+  afirmar(alvo, 'a floresta tem uma parede rachada');
+  await h.ev(([x, y]) => { const j = LB.jogo; LB.mochila.dar(j, 'bomba', 1); j.bombas.push({ x: x * 32 + 16, y: y * 32 + 40, t: 1.9 }); }, alvo);
+  await h.espera(500);
+  const r = await h.ev(([x, y]) => ({ tile: LB.jogo.mapa.tile(x, y), salvo: (LB.jogo.flags.rachaduras || []).includes('floresta:' + x + ',' + y) }), alvo);
+  afirmar(r.tile !== '%', 'a parede sumiu');
+  afirmar(r.salvo, 'a parede quebrada fica salva');
+  await h.area('floresta', { espada: true, rachaduras: ['floresta:' + alvo.join(',')] });
+  afirmar((await h.ev(([x, y]) => LB.jogo.mapa.tile(x, y), alvo)) !== '%', 'continua quebrada ao voltar');
+});
+
+teste('gancho atravessa entre dois postes', async (h) => {
+  await h.area('floresta', { espada: true });
+  const postes = await h.ev(() => LB.jogo.mapa.props.filter((p) => p.tipo === 'poste').map((p) => [p.tx, p.ty]));
+  afirmar(postes.length >= 2, 'postes na floresta');
+  const [a, b] = postes.sort((p, q) => p[1] - q[1]);
+  await h.ir(a[0] + 0.5, a[1] - 0.2);
+  igual(await h.prompt(), 'Poste de gancho', 'sem gancho');
+  await h.interagir();
+  await h.ev(() => LB.mochila.dar(LB.jogo, 'gancho', 1));
+  igual(await h.prompt(), 'Usar o gancho', 'com gancho');
+  await h.interagir();
+  const y = await h.ev(() => LB.jogo.line.y / 32);
+  afirmar(y > b[1], `a Line atravessou para depois do outro poste (y=${y.toFixed(1)}, poste em ${b[1]})`);
+});
+
+teste('brasa queima sem a Armadura de Brasa', async (h) => {
+  await h.area('montanha', TODAS);
+  const t = await h.ev(() => { const m = LB.jogo.mapa; for (let y = 0; y < m.h; y++) for (let x = 0; x < m.w; x++) if (m.tile(x, y) === 'l') return [x, y]; return null; });
+  afirmar(t, 'a montanha tem brasa rasa');
+  await h.ir(t[0] + 0.5, t[1] + 0.6);
+  const hp0 = await h.ev(() => LB.jogo.line.hp);
+  await h.espera(1400);
+  afirmar((await h.ev(() => LB.jogo.line.hp)) < hp0, 'perdeu vida na brasa');
+  await h.area('montanha', Object.assign({ armadura: 'brasa' }, TODAS));
+  await h.ir(t[0] + 0.5, t[1] + 0.6);
+  const hp1 = await h.ev(() => ({ hp: LB.jogo.line.hp, esc: LB.jogo.line.escudos }));
+  await h.espera(1400);
+  igual(await h.ev(() => ({ hp: LB.jogo.line.hp, esc: LB.jogo.line.escudos })), hp1, 'com a armadura não queima');
+});
+
+teste('galerias escuras das minas precisam da lanterna', async (h) => {
+  await h.area('gruta', { espada: true });
+  const def = await h.ev(() => LB.jogo.mapa.def.escuro[0]);
+  const esc = await h.ev(([x, y]) => LB.mundo.noEscuro(LB.jogo, x * 32, y * 32), [def[0] + 2, def[1] + 2]);
+  afirmar(esc, 'ponto dentro da galeria está no escuro');
+});
+
+// ================= Combate, IA, moedas, derrota =================
+teste('IA: sombra contorna parede, alerta vizinhos e larga moedas', async (h) => {
+  await h.area('floresta', { espada: true });
+  const cam = await h.ev(() => { const m = LB.jogo.mapa; return LB.ia.caminho(m, 5 * 32, 3 * 32, 25 * 32, 3 * 32, 3000); });
+  afirmar(Array.isArray(cam) && cam.length > 5, 'encontra caminho pela grade');
+  const alerta = await h.ev(() => {
+    const j = LB.jogo;
+    j.inimigos = [new LB.Sombra(10 * 32, 10 * 32), new LB.Sombra(12 * 32, 10 * 32)];
+    j.inimigos.forEach((e) => { e.estado = 'vagar'; });
+    LB.ia.alertar(j, j.inimigos[0], 220);
+    return j.inimigos[1].estado;
+  });
+  afirmar(alerta !== 'vagar', `vizinho alertado (estado ${alerta})`);
+  const m0 = await h.ev(() => LB.mochila.moedas(LB.jogo));
+  await h.ev(() => { const j = LB.jogo, e = j.inimigos[0]; e.vivo = false; j.aoDerrotarInimigo(e); const it = j.itens.find((i) => i.tipo === 'moeda'); j.line.x = it.x; j.line.y = it.y; });
+  await h.espera(300);
+  afirmar((await h.ev(() => LB.mochila.moedas(LB.jogo))) > m0, 'moedas coletadas');
+});
+
+teste('morcego acorda e ataca', async (h) => {
+  await h.area('gruta', { espada: true });
+  const r = await h.ev(() => { const j = LB.jogo; const b = new LB.Morcego(j.line.x + 60, j.line.y); j.inimigos = [b]; return b.estado; });
+  igual(r, 'dormindo', 'começa dormindo');
+  await h.espera(400);
+  const e = await h.ev(() => LB.jogo.inimigos[0] && LB.jogo.inimigos[0].estado);
+  afirmar(e && e !== 'dormindo', `acordou (estado ${e})`);
+});
+
+teste('menos vida espalhada: coração nunca cai com a vida cheia', async (h) => {
+  await h.area('floresta', { espada: true });
+  const n = await h.ev(() => { const j = LB.jogo; let c = 0; for (let i = 0; i < 200; i++) { const e = new LB.Sombra(100, 100); e.vivo = false; j.inimigos.push(e); j.aoDerrotarInimigo(e); } c = j.itens.filter((i) => i.tipo === 'coracao').length; return c; });
+  igual(n, 0, 'nenhum coração com a vida cheia');
+  const dif = await h.ev(() => LB.dif().drop);
+  afirmar(dif <= 0.12, `chance de coração baixa no normal (${dif})`);
+});
+
+teste('derrota: tela aparece e Tentar de novo volta à fonte', async (h) => {
+  await h.area('floresta', { espada: true });
+  await h.ev(() => { const j = LB.jogo, l = j.line; l.hp = 1; l.invul = 0; l.receberDano(j, 2, true, l.x + 10, l.y, { ignorarDefesa: true, bloqueavel: false }); });
+  await h.p.waitForFunction(() => !document.querySelector('#derrota').classList.contains('oculto'), null, { timeout: 8000 }).catch(() => {});
+  afirmar(await h.visivel('#derrota'), `tela de derrota (estado da Line: ${await h.ev(() => LB.jogo.line.estado + ' ' + LB.jogo.line.anim.base + ' hp ' + LB.jogo.line.hp)})`);
+  await h.foto('derrota');
+  await h.p.click('#btn-tentar');
+  await h.espera(200);
+  const r = await h.ev(() => ({ hp: LB.jogo.line.hp, estado: LB.jogo.line.estado }));
+  afirmar(r.hp > 0 && r.estado !== 'morta', 'a Line volta viva');
+});
+
+teste('pena de fênix levanta a Line', async (h) => {
+  await h.area('floresta', { espada: true });
+  await h.ev(() => { const j = LB.jogo, l = j.line; LB.mochila.dar(j, 'pena', 1); l.hp = 1; l.invul = 0; l.receberDano(j, 2, true, l.x + 10, l.y, { ignorarDefesa: true, bloqueavel: false }); });
+  await h.espera(2500);
+  const r = await h.ev(() => ({ hp: LB.jogo.line.hp, pena: LB.mochila.qtd(LB.jogo, 'pena'), morta: LB.jogo.line.estado === 'morta' }));
+  afirmar(!r.morta && r.hp > 0, 'a Line levantou');
+  igual(r.pena, 0, 'a pena queimou');
+  afirmar(!(await h.visivel('#derrota')), 'sem tela de derrota');
+});
+
+// ================= Documentos e dragão =================
+teste('documentos: cena de pista forma conclusão com efeito no dragão', async (h) => {
+  await h.area('montanha', TODAS);
+  await h.ev(() => { LB.mochila.darPista(LB.jogo, 'lenda'); });
+  await h.ev(() => LB.jogo.iniciarCena(LB.HISTORIA.pista, { semPular: true }, 'escama'));
+  await h.avancar();
+  const c = await h.ev(() => LB.mochila.inv(LB.jogo).conclusoes);
+  afirmar(c.includes('peito'), 'conclusão do peito do dragão');
+});
+
+teste('covil: luta com o dragão começa', async (h) => {
+  await h.area('covil', TODAS);
+  await h.avancar(300);
+  await h.espera(300);
+  const r = await h.ev(() => ({ chefe: LB.jogo.chefeAtivo, dragao: !!LB.jogo.dragao, bell: !!LB.jogo.bell }));
+  afirmar(r.dragao && r.bell, 'dragão e Bell no covil');
+  afirmar(r.chefe, 'luta ativa depois da cena');
+  await h.foto('covil');
+});
+
+// ================= Save =================
+teste('save: continuar volta para a mesma área com os itens', async (h) => {
+  await h.area('vilarejo', { espada: true, moedas: 33 });
+  await h.ev(() => { LB.mochila.dar(LB.jogo, 'bomba', 2); LB.jogo.salvar(); });
+  const save = await h.ev(() => localStorage.getItem('lineBell.save.v1'));
+  await h.fechar();
+  const h2 = await abrir({ save: JSON.parse(save) });
+  try {
+    await h2.p.click('#btn-continuar');
+    await h2.espera(300);
+    await h2.avancar();
+    const r = await h2.ev(() => ({ area: LB.jogo.mapa.id, moedas: LB.mochila.moedas(LB.jogo), bomba: LB.mochila.qtd(LB.jogo, 'bomba') }));
+    igual(r, { area: 'vilarejo', moedas: 33, bomba: 2 }, 'estado restaurado');
+    afirmar(!h2.erros.length, h2.erros.join('\n'));
+  } finally { await h2.fechar(); }
+}, { semFechar: true });
+
+teste('save antigo: pão, maçã e flor viram moedas e poções', async () => {
+  const antigo = { area: 'floresta', flags: { encontroFeito: true, manhaVista: true, prologo: true, espada: true, inv: { itens: { pao: 2, maca: 1, flor: 1, chave: 1 }, pistas: ['carta'], novos: 0, equipado: 'pao' }, baus: ['floresta:3,12', 'fazenda:41,10'], vistos: { floresta: 'ff', fazenda: 'ff' } } };
+  const h = await abrir({ save: antigo });
+  try {
+    await h.p.click('#btn-continuar');
+    await h.espera(300);
+    await h.avancar();
+    const r = await h.ev(() => { const f = LB.jogo.flags; return { itens: f.inv.itens, moedas: f.moedas, eq: f.inv.equipado, baus: f.baus, v: f.versaoMundo, vistos: Object.keys(f.vistos || {}) }; });
+    igual(r.itens, { chave: 1, pocao: 1 }, 'itens convertidos');
+    igual(r.moedas, 15, 'pão e maçã viram moedas');
+    afirmar(r.eq !== 'pao', 'item equipado inválido removido');
+    igual(r.baus, ['fazenda:41,10'], 'baús da floresta (mapa novo) recomeçam');
+    igual(r.v, 2, 'versão do mundo');
+    afirmar(!h.erros.length, h.erros.join('\n'));
+  } finally { await h.fechar(); }
+}, { semPagina: true });
+
+// ================= Celular =================
+teste('celular: controles de toque, mochila e botão do item', async () => {
+  const h = await abrir({ celular: true });
+  try {
+    await h.area('floresta', { espada: true });
+    await h.ev(() => { LB.mochila.dar(LB.jogo, 'bomba', 2); LB.mochila.dar(LB.jogo, 'pocao', 1); LB.entrada.usandoToque = () => true; LB.ui.atualizarToque(LB.jogo); });
+    await h.espera(200);
+    afirmar(await h.visivel('#toque'), 'controles de toque visíveis');
+    afirmar(await h.visivel('#b-item'), 'botão do item (bomba)');
+    afirmar(await h.visivel('#b-pocao'), 'botão da poção');
+    await h.foto('celular-jogo');
+    await h.p.tap('#b-mochila');
+    await h.espera(200);
+    afirmar(await h.visivel('#mochila'), 'mochila pelo toque');
+    await h.foto('celular-mochila');
+    const larg = await h.ev(() => document.querySelector('.caixa.mochila').getBoundingClientRect().width);
+    afirmar(larg <= 844, 'mochila cabe na tela');
+    await h.p.click('#btn-fechar-mochila');
+    await h.p.tap('#b-item');
+    igual(await h.ev(() => LB.jogo.bombas.length), 1, 'botão do item coloca bomba');
+    afirmar(!h.erros.length, h.erros.join('\n'));
+  } finally { await h.fechar(); }
+}, { semPagina: true });
+
+// ================= Execução =================
+(async () => {
+  const filtros = process.argv.slice(2).map((s) => s.toLowerCase());
+  const lista = testes.filter((t) => !filtros.length || filtros.some((f) => t.nome.toLowerCase().includes(f)));
+  const srv = await servidor();
+  BASE = 'http://127.0.0.1:' + srv.address().port;
+  navegador = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
+  let ok = 0;
+  const falhas = [];
+  const t0 = Date.now();
+  for (const t of lista) {
+    const ini = Date.now();
+    let h = null;
+    try {
+      if (t.o.semPagina) await t.fn();
+      else {
+        h = await abrir();
+        await t.fn(h);
+        afirmar(!h.erros.length, 'erros no console:\n' + h.erros.join('\n'));
+      }
+      ok++;
+      console.log(`  ✔ ${t.nome} (${Date.now() - ini} ms)`);
+    } catch (e) {
+      falhas.push(t.nome);
+      console.log(`  ✘ ${t.nome}\n      ${String(e instanceof Falha ? e.message : e.stack || e).split('\n').join('\n      ')}`);
+      if (h && h.erros.length) console.log('      console: ' + h.erros.slice(0, 3).join('\n      '));
+    } finally {
+      if (h && !t.o.semFechar) await h.fechar().catch(() => {});
+    }
+  }
+  await navegador.close();
+  srv.close();
+  console.log(`\n${ok}/${lista.length} testes passaram em ${((Date.now() - t0) / 1000).toFixed(1)} s`);
+  if (falhas.length) { console.log('Falharam:\n  - ' + falhas.join('\n  - ')); process.exit(1); }
+})();

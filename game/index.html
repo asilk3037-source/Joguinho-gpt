@@ -48,7 +48,8 @@
         <tr><td>Pular (+ atacar no ar)</td><td>Espaço</td><td>Y</td><td>⤴</td></tr>
         <tr><td>Mochila (itens e pistas)</td><td>I</td><td>—</td><td>🎒</td></tr>
         <tr><td>Mapa</td><td>M</td><td>—</td><td>🎒 → Mapa</td></tr>
-        <tr><td>Usar cura rápida</td><td>H</td><td>—</td><td>🧪</td></tr>
+        <tr><td>Usar poção</td><td>H</td><td>—</td><td>🧪</td></tr>
+        <tr><td>Usar item do atalho (bomba, elixir…)</td><td>F</td><td>—</td><td>botão do item</td></tr>
         <tr><td>Abrir / ler</td><td>E ou Enter</td><td>Select</td><td>botão que aparece</td></tr>
         <tr><td>Pausar</td><td>Esc ou P</td><td>Start</td><td>⏸</td></tr>
         <tr><td>Pular cena</td><td>Tab</td><td>—</td><td>botão “Pular cena”</td></tr>
@@ -95,12 +96,19 @@
         <button id="btn-fechar-mochila" class="sec">Fechar</button>
       </div>
       <section id="aba-itens" class="aba">
-        <div id="itens-grade" class="grade"></div>
+        <div class="coluna">
+          <div id="equipamento" class="equipamento">
+            <span id="equip-moedas"></span>
+            <span id="equip-armadura"></span>
+            <span id="equip-item"></span>
+          </div>
+          <div id="itens-grade" class="grade"></div>
+        </div>
         <div id="item-detalhe" class="detalhe oculto">
           <h3 id="item-nome"></h3>
           <p id="item-desc"></p>
           <p id="item-vida" class="mini"></p>
-          <button id="btn-usar-item">Usar</button>
+          <div class="linha2"><button id="btn-usar-item">Usar</button><button id="btn-equipar-item" class="sec">Equipar no atalho</button></div>
           <p id="item-msg" class="mini"></p>
         </div>
       </section>
@@ -109,11 +117,16 @@
           <div id="pistas-objetivo" class="objetivo-caixa"></div>
           <p id="pistas-total" class="mini"></p>
           <div id="pistas-lista"></div>
+          <h3 class="subtitulo">Conclusões da Line</h3>
+          <div id="conclusoes-lista"></div>
         </div>
         <div id="pista-leitor" class="papel oculto">
+          <p id="pista-tipo" class="tipo-doc"></p>
           <h3 id="pista-titulo"></h3>
+          <p id="pista-autor" class="autor"></p>
+          <div id="pista-texto"></div>
           <p id="pista-onde" class="mini"></p>
-          <p id="pista-texto"></p>
+          <p id="pista-marca" class="mini"></p>
         </div>
       </section>
       <section id="aba-mapa" class="aba oculto">
@@ -124,8 +137,29 @@
         </div>
         <div id="mapa-areas" class="chips"></div>
         <canvas id="mapa-canvas"></canvas>
-        <div id="mapa-legenda" class="mini">🟨 baú fechado · 🟫 baú aberto · 🔵 fonte · 🔶 tocha/cristal · 🔑 porta trancada · 📄 pista · 🔺 saída · 🩷 Line</div>
+        <div id="mapa-legenda" class="mini">🟨 baú fechado · 🟫 baú aberto · 🔵 fonte · 🔶 tocha/cristal · 🔑 porta trancada · 📄 documento · 📍 marcado por documento · 🪨 parede rachada · 🪝 poste do gancho · 🛒 estação · 🔺 saída · 🩷 Line</div>
       </section>
+    </div>
+  </div>
+
+  <div id="loja" class="overlay oculto">
+    <div class="caixa loja">
+      <div class="topo">
+        <h2 id="loja-titulo">Loja</h2>
+        <span id="loja-moedas" class="moedas"></span>
+        <button id="btn-fechar-loja" class="sec">Sair</button>
+      </div>
+      <p id="loja-msg" class="fala-loja"></p>
+      <div id="loja-lista"></div>
+    </div>
+  </div>
+
+  <div id="viagem" class="overlay oculto">
+    <div class="caixa">
+      <h2>🛒 Carrinho de mina</h2>
+      <p id="viagem-msg" class="sub"></p>
+      <div id="viagem-lista"></div>
+      <button id="btn-fechar-viagem" class="sec">Ficar aqui</button>
     </div>
   </div>
 
@@ -163,6 +197,7 @@
       <button id="b-atacar" class="redondo grande" data-acao="atacar" aria-label="Atacar">⚔</button>
       <button id="b-magia" class="redondo" data-acao="magia" aria-label="Magia">✨</button>
       <button id="b-pocao" class="redondo pequeno oculto" aria-label="Usar poção">🧪</button>
+      <button id="b-item" class="redondo pequeno oculto" aria-label="Usar item do atalho">💣</button>
     </div>
   </div>
 
@@ -178,7 +213,11 @@
   <script src="js/bichos.js"></script>
   <script src="js/cenas.js"></script>
   <script src="js/encontro.js"></script>
+  <script src="js/ia.js"></script>
   <script src="js/mochila.js"></script>
+  <script src="js/mundo.js"></script>
+  <script src="js/loja.js"></script>
+  <script src="js/carrinho.js"></script>
   <script src="js/jogo.js"></script>
   <script src="js/fazenda.js"></script>
   <script src="js/ui.js"></script>
