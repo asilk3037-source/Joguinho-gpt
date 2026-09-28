@@ -47,6 +47,18 @@ def roteiro(cena, mostrar_anim=True):
             w(f"> ▶ `{texto}`  ")
     w()
 
+# Pistas do caderno (lidas direto do jogo: game/js/mochila.js).
+import re as _re
+_src = open(os.path.join(RAIZ, "game", "js", "mochila.js"), encoding="utf-8").read()
+PISTAS_DOC = {}
+for m in _re.finditer(r"(\w+): \{ titulo: '([^']*)', icone: '([^']*)', onde: '([^']*)', texto: '((?:[^'\\]|\\.)*)' \}", _src):
+    PISTAS_DOC[m.group(1)] = {"titulo": m.group(2), "icone": m.group(3), "onde": m.group(4), "texto": m.group(5).replace("\\'", "'")}
+ORDEM_PISTAS_DOC = ["pegadas", "carta", "lenda", "mapa", "diario1", "diario2", "escama", "fita"]
+RESUMOS = {"pegadas": "o dragão foi para o norte e a Bell está viva", "carta": "quem é o dragão, o selo da montanha e a gruta", "lenda": "o dragão teme a luz; cansado, o peito abre",
+           "mapa": "completa o mapa do mundo e mostra a caverna escondida", "diario1": "os cristais são as chaves das barreiras", "diario2": "a Chuva de Estrelas apaga o fogo do dragão",
+           "escama": "o peito rachado é o ponto fraco; ele cansa ao mergulhar", "fita": "a Bell deixou um sinal: está perto"}
+for k, v in RESUMOS.items(): PISTAS_DOC.setdefault(k, {"titulo": k, "icone": "", "onde": "", "texto": ""})["resumo"] = v
+
 # Totais do catálogo.
 tot = sum(len(g["itens"]) for g in inv["grupos"])
 NUM_FX = next((k + 1 for k, g in enumerate(inv["grupos"]) if g["nome"].startswith("Efeitos")), 0)
@@ -80,16 +92,18 @@ w()
 # =====================================================================
 w("## 1. Visão geral")
 w()
-w("**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). Tudo começa com um prólogo jogável, **O primeiro encontro**, que conta como as duas se conheceram em 09/05/2024. Depois, a Line e a Bell já são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa uma floresta, ruínas mágicas e uma montanha de lava para resgatá-la.")
+w("**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). Tudo começa com um prólogo jogável, **O primeiro encontro**, que conta como as duas se conheceram em 09/05/2024. Depois, a Line e a Bell já são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa uma floresta, uma gruta, ruínas mágicas e uma montanha de lava para resgatá-la, juntando pistas num caderno de investigação, abrindo baús e portas trancadas e usando os itens da mochila.")
 w()
 w("| | |")
 w("|---|---|")
 w("| Gênero | Aventura / ação com exploração, visão de cima |")
 w("| Plataformas | Navegador no PC (teclado ou controle) e no celular (toque) |")
-w("| Duração | Cerca de 35 a 50 minutos (o prólogo leva uns 3 minutos) |")
+w("| Duração | Cerca de 45 a 70 minutos explorando tudo (o prólogo leva uns 3 minutos) |")
 w("| Prólogo | *O primeiro encontro* (09/05/2024): Minas Shopping, Playground e Túnel |")
-w("| Áreas | 3 do prólogo e 5 da aventura: Fazendinha, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |")
+w("| Áreas | 3 do prólogo e 6 da aventura: Fazendinha, Gruta dos Ecos, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |")
 w("| Chefes | Guardião de Pedra e o Dragão Vermelho |")
+w("| Exploração | 13 baús, 3 portas trancadas (3 chaves), 8 pistas de investigação, mapa com névoa que vai abrindo |")
+w("| Mochila | 7 tipos de item (curas, elixir, chave, bússola, Flor da Lua), caderno de pistas e mapa |")
 w("| Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |")
 w("| Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |")
 w(f"| Animações catalogadas | **{tot}**: {prontas} com arte (temporária), {subst} usando uma substituta, {faltam - subst} desenhadas no código ou sem imagem |")
@@ -167,7 +181,9 @@ w("**Capítulo 1 — Nossa vidinha.** Amanhece na fazenda. A Bell acorda a Line,
 w()
 w("**O rapto.** O céu escurece, os bichos se assustam e um dragão vermelho mergulha do céu e leva a Bell. A Line corre atrás, grita por ela, chora e decide ir buscá-la. Pede ao Theo que cuide da fazenda.")
 w()
-w("**Capítulo 2 — A floresta.** Na Floresta Sussurrante, um mago conta que o dragão acordou depois de cem anos e entrega uma espada guardada num baú. Sombras aparecem. Espinhos fecham o caminho do norte, e a espada abre passagem.")
+w("**A investigação.** Desde o rapto, a Line anota pistas num caderno: marcas de garra no píer, a carta do Mago, a lenda da montanha, um mapa rasgado, as páginas do diário do Guardião, uma escama vermelha e a fita de cabelo da Bell. Cada pista conta um pedaço da história do dragão e aponta o caminho. Com as oito, a Line entende tudo e ganha um coração extra.")
+w()
+w("**Capítulo 2 — A floresta.** Na Floresta Sussurrante, um mago conta que o dragão acordou depois de cem anos e entrega uma espada guardada num baú. Sombras aparecem. Espinhos fecham o caminho do norte, e a espada abre passagem. A leste da floresta fica a **Gruta dos Ecos**, onde o Mago guardou uma bússola, um elixir e uma sala trancada com um coração extra e o mapa rasgado.")
 w()
 w("**Capítulo 3 — Magia.** O dragão selou a montanha com magia antiga. Nas Ruínas Encantadas, o Espírito das Ruínas ensina a Line a lançar luz pela espada. Ela acende cristais para desfazer barreiras, encontra um coração extra e enfrenta o Guardião de Pedra. Vencido, ele entrega a Chuva de Estrelas.")
 w()
@@ -207,6 +223,10 @@ CENAS = [
     ("bauCoracao", "Baú de coração extra", "Há dois: um na alcova leste das ruínas e outro na plataforma cercada de fendas na montanha.", None),
     ("covil", "O covil do dragão", "Na primeira vez a cena é completa. Nas próximas tentativas, a luta começa direto.", "22-covil-dragao"),
     ("vitoria", "Vitória e epílogo", "Depois do golpe final.", "24-epilogo"),
+    ("bauItem", "Baú com itens ou pistas", "Todos os baús que não são a espada nem o coração extra. A Line agacha, o baú abre e aparece o que ela encontrou.", None),
+    ("pista", "Pista encontrada", "Ao pegar um papel brilhando no chão, examinar um lugar ou abrir um baú com pista. A pista vai para o caderno. Com as 8, coração extra.", None),
+    ("exame", "Examinar um lugar", "Pontos de exame (as marcas de garra no píer).", None),
+    ("porta", "Porta trancada", "Nas três portas trancadas: sem chave a Line comenta; com chave, a porta abre e a chave some.", None),
 ]
 for num, (chave, titulo, intro, foto) in enumerate(CENAS, 1):
     titulo = f"4.{num} {titulo}"
@@ -263,6 +283,8 @@ w()
 w(f"### 4.{len(CENAS) + 3} Dicas que aparecem durante o jogo")
 w()
 DICAS = [
+    ("Item novo", "Aviso no canto: “🧪 Poção de Vida ×2”, “📜 Pista: Carta do Mago”…"),
+    ("Cura rápida sem item", "🎒 Nenhum item de cura na mochila / ❤️ A vida já está cheia"),
     ("Prólogo, no shopping", "Aproxime-se da Bell e pressione E para falar com ela. (No celular: toque no botão.)"),
     ("Prólogo, no playground", "Pressione E para a Line tentar. (No celular: toque no botão.)"),
     ("Primeiros passos", "WASD ou setas para andar, Shift para correr, E para interagir. As tarefas ficam no canto da tela."),
@@ -473,10 +495,23 @@ w("Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho,
 w()
 img("04-pasto", "Pasto com vacas, cavalo e ovelhas")
 w("### 6.2 Floresta Sussurrante")
-w("Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega.")
+w("Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega. **Nova ala leste:** uma clareira escondida além do riacho, com um baú de poções, maçãs no chão e a entrada da Gruta dos Ecos. Na clareira do Mago há um segundo baú, com a Carta do Mago.")
 w()
+img("34-floresta-leste", "Ala leste da floresta, com o baú e o caminho para a gruta")
+w("### 6.3 Gruta dos Ecos (nova)")
+w("Caverna azulada e úmida a leste da floresta, com poças fundas, estalagmites, cogumelos que brilham e luzinhas azuis flutuando. Não tem nuvens nem pássaros: só o eco. Sombras vagam por ela depois da espada, e fogos-fátuos azuis depois da magia.")
+w()
+w("- **Entrada (oeste):** a placa, a fonte e o pergaminho com a **Lenda da Montanha**.")
+w("- **Salão norte:** o baú com a **Bússola do Mago**.")
+w("- **Canto oeste:** baú com Elixir de Luz e uma poção.")
+w("- **Nicho leste:** baú com uma **chave antiga**.")
+w("- **Sala trancada (sul):** atrás de uma porta de ferro. Dentro: baú de **coração extra** e o **Mapa rasgado**, que completa o mapa do mundo.")
+w()
+img("26-gruta", "A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda")
+img("27-gruta-porta", "A porta trancada da sala do sul")
+
 img("11-floresta-sombras", "Sombras na floresta")
-w("### 6.3 Ruínas Encantadas (nova)")
+w("### 6.4 Ruínas Encantadas")
 w("Um templo antigo de pedra e musgo, organizado em salas:")
 w()
 w("- **Salão sul (entrada):**")
@@ -488,9 +523,14 @@ w("  - Mais um cristal, pilares, sombras e fogos-fátuos.")
 w("  - A leste fica uma **alcova com o baú de coração extra**, aberta por um cristal próprio.")
 w("  - Tem uma fonte.")
 w("- **Salão norte:** arena com pilares onde dorme o **Guardião de Pedra**. Vencido, ele desfaz a última barreira, que leva à montanha.")
+w("- **Ala leste da entrada (nova):** uma sala com pilares e sombras, e um baú com **chave antiga** e poção.")
+w("- **Biblioteca (nova, trancada):** um corredor a leste do salão do meio termina numa porta de ferro. Dentro, a placa da biblioteca e o baú com a **página 2 do diário do Guardião** e um elixir.")
+w("- No chão, perto do altar, está a **página 1 do diário**.")
 w()
+img("33-biblioteca", "A biblioteca trancada das ruínas")
+
 img("15-barreira-aberta", "Cristais acesos e barreira desfeita")
-w("### 6.4 Montanha de Brasa (nova)")
+w("### 6.5 Montanha de Brasa")
 w("Rocha vulcânica, rios de lava e brasas subindo:")
 w()
 w("- **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a primeira tocha.")
@@ -501,12 +541,32 @@ w("  - A segunda tocha, numa **ilha no meio da lava**, que só pode ser acesa de
 w("- **Topo:**")
 w("  - A terceira tocha, na praça central.")
 w("  - Uma **plataforma cercada de fendas com o segundo baú de coração**.")
-w("  - O **portão de fogo**, que abre com as três tochas acesas.")
+w("  - O **portão de fogo**, que abre com as três tochas acesas. Perto dele, no chão, a **fita de cabelo da Bell**.")
+w("- **Encosta leste (nova):** uma fenda comprida para pular, um baú com **chave antiga** e poção, e uma porta de ferro que leva a uma **caverna escondida** com lava, o baú da **Flor da Lua** e a **escama vermelha**.")
 w()
-w("### 6.5 Covil do Dragão")
+img("35-montanha-encosta", "A encosta leste, com a fenda e a porta trancada")
+img("32-montanha-caverna", "A caverna escondida da montanha")
+
+w("### 6.6 Covil do Dragão")
 w("Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao fundo. Quando a Line entra, a entrada desmorona e a luta começa.")
 w()
 img("23-dragao-fogo", "O dragão cospe fogo no covil")
+w("### 6.7 Todos os baús, portas e pistas")
+w()
+w("| Área | Baús | Portas trancadas | Pistas | Itens no chão |")
+w("|---|---|---|---|---|")
+for l in [
+    ("Fazendinha", "1: 2 pães e 1 maçã (atrás do chiqueiro, depois do rapto)", "—", "Marcas de garra (examinar o píer)", "2 maçãs"),
+    ("Floresta", "3: espada · Carta do Mago + 2 maçãs · 2 poções (ala leste)", "—", "Carta do Mago (baú)", "2 maçãs, 1 pão"),
+    ("Gruta dos Ecos", "4: bússola · elixir + poção · chave · coração extra (sala trancada)", "1 (sala do sul)", "Lenda da Montanha (chão) · Mapa rasgado (sala trancada)", "1 pão"),
+    ("Ruínas", "3: coração extra · chave + poção (ala leste) · diário pág. 2 + elixir (biblioteca)", "1 (biblioteca)", "Diário pág. 1 (chão, perto do altar) · Diário pág. 2 (baú)", "1 maçã"),
+    ("Montanha", "3: coração extra · chave + poção (encosta) · Flor da Lua (caverna)", "1 (caverna escondida)", "Fita da Bell (chão, perto do portão) · Escama vermelha (caverna)", "1 maçã, 1 poção"),
+    ("Covil", "—", "—", "—", "—"),
+]:
+    w("| " + " | ".join(l) + " |")
+w()
+w("São **13 baús** (2 deles com coração extra), **3 portas** e **3 chaves**: qualquer chave abre qualquer porta, e a chave some depois de usada. As 8 pistas juntas dão mais um coração.")
+w()
 
 # =====================================================================
 w("## 7. Como se joga")
@@ -517,8 +577,8 @@ w("| Ação | Teclado | Controle | Celular |")
 w("|---|---|---|---|")
 for l in [("Andar", "WASD / setas", "analógico", "arrastar no lado esquerdo"), ("Correr", "Shift (segurar)", "gatilho / analógico até o fim", "arrastar até o fim"),
           ("Atacar (3x = combo)", "J / Z", "A", "⚔"), ("Ataque giratório", "K / X", "X", "🌀"), ("Esquivar (correndo = dash)", "L / C", "B", "💨"),
-          ("Defender (segurar)", "I / V", "LB", "🛡"), ("Pular (+ atacar no ar)", "Espaço", "Y", "⤴"), ("Magia: Raio de Luz", "Q / U", "RB", "✨"),
-          ("Chuva de Estrelas", "segurar Q / U e soltar", "segurar RB", "segurar ✨"), ("Interagir / ler / abrir", "E / Enter", "Select", "botão que aparece"),
+          ("Defender (segurar)", "V / B", "LB", "🛡"), ("Pular (+ atacar no ar)", "Espaço", "Y", "⤴"), ("Magia: Raio de Luz", "Q / U", "RB", "✨"),
+          ("Chuva de Estrelas", "segurar Q / U e soltar", "segurar RB", "segurar ✨"), ("Interagir / ler / abrir", "E / Enter", "Select", "botão que aparece"), ("Mochila (itens e pistas)", "I", "—", "🎒"), ("Mapa", "M", "—", "🎒 → Mapa"), ("Cura rápida", "H", "—", "🧪"),
           ("Pausar", "Esc / P", "Start", "⏸"), ("Pular cena", "Tab", "—", "Pular cena")]:
     w("| " + " | ".join(l) + " |")
 w()
@@ -564,9 +624,61 @@ w("- **Coração no chão:** cura 1 coração. Às vezes cai dos inimigos.")
 w("- **Cristal azul:** +2 ◆ de magia. Também cai dos inimigos.")
 w("- **Fontes:** curam tudo, enchem a magia e viram ponto de retorno. Se a Line cair, ela volta para a última fonte bebida naquela área.")
 w("- **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.")
-w("- **Salvamento automático:** ao entrar em cada área, ao abrir baús, acender cristais e beber das fontes. O botão **Continuar** retoma dali.")
+w("- **Portas trancadas:** três portas de ferro (gruta, ruínas e montanha). Chegue perto: com uma chave antiga aparece **Abrir com a chave**; sem chave, **Trancada**.")
+w("- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e pistas, abrir portas, acender cristais e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as pistas e o mapa explorado.")
 w()
-w("### 7.5 Dificuldade")
+w("### 7.5 Mochila e itens")
+w()
+w("A mochila abre com **I** (ou o botão 🎒 no celular, que mostra quantos itens novos chegaram) e pausa o jogo. Tem três abas: **Itens**, **Pistas** e **Mapa**. Também dá para abrir pela pausa.")
+w()
+img("28-mochila-itens", "A aba de itens da mochila")
+w("| Item | Ícone | O que faz | Onde achar |")
+w("|---|---|---|---|")
+for l in [
+    ("Poção de Vida", "🧪", "cura 2 corações", "baús da floresta, gruta, ruínas e montanha; chão da montanha"),
+    ("Pão da Bell", "🍞", "cura 1 coração", "baú da fazenda; chão da floresta e da gruta"),
+    ("Maçã", "🍎", "cura meio coração", "chão da fazenda, floresta, ruínas e montanha; baú da carta"),
+    ("Elixir de Luz", "💧", "enche toda a magia", "baú da gruta e da biblioteca"),
+    ("Flor da Lua", "🌸", "cura tudo e enche a magia", "caverna escondida da montanha"),
+    ("Chave antiga", "🗝️", "abre uma porta trancada (some depois)", "baús da gruta, das ruínas e da montanha"),
+    ("Bússola do Mago", "🧭", "mostra no mapa os baús fechados, mesmo onde a Line não passou", "salão norte da gruta"),
+]:
+    w("| " + " | ".join(l) + " |")
+w()
+w("- **Usar:** na aba Itens, escolha o item e aperte **Usar**. As curas também podem ser usadas rápido com **H** (ou o botão 🧪, que mostra quantas curas restam): o jogo escolhe a cura que melhor cabe na vida que falta.")
+w("- **Avisos:** cada item ou pista nova aparece num aviso no canto da tela.")
+w("- **HUD:** embaixo dos corações fica o contador de curas.")
+w("- Itens no chão brilham e são pegos só de passar por cima. Papéis no chão são pistas.")
+w()
+w("### 7.6 Caderno de pistas (investigação)")
+w()
+w("A aba **Pistas** mostra o objetivo atual, quantas pistas a Line já achou e o texto de cada uma, num papel. As pistas ainda não achadas aparecem como “???”. O painel **Objetivo**, no canto da tela, diz o próximo passo e o total de pistas.")
+w()
+img("29-mochila-pistas", "O caderno de pistas")
+w("| # | Pista | Onde | O que revela |")
+w("|---|---|---|---|")
+for k, (id_, p) in enumerate([(i, PISTAS_DOC[i]) for i in ORDEM_PISTAS_DOC], 1):
+    w(f"| {k} | {p['icone']} {p['titulo']} | {p['onde']} | {p['resumo']} |")
+w()
+w("**Textos completos das pistas:**")
+w()
+for id_ in ORDEM_PISTAS_DOC:
+    p = PISTAS_DOC[id_]
+    w(f"> **{p['icone']} {p['titulo']}** *({p['onde']})*  ")
+    w(f"> {p['texto']}  ")
+    w()
+w("Ao juntar as 8: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”")
+w()
+w("### 7.7 Mapa com névoa")
+w()
+w("A aba **Mapa** (tecla **M**) tem duas visões:")
+w()
+w("- **Área:** o lugar atual, desenhado em miniatura. Só aparece o que a Line já viu: a névoa vai abrindo num raio de 7 tiles enquanto ela anda, e o que foi explorado fica salvo. Ícones: baús (fechados e abertos), fontes, cristais e tochas (apagados ou acesos), altar, portas trancadas, pistas e itens no chão, placas, o Mago, o Guardião, a Bell e as saídas com o nome do lugar. A Line é a bolinha rosa; a fonte de retorno tem um anel azul. Com a **Bússola do Mago**, os baús fechados aparecem mesmo na névoa. Os lugares já visitados podem ser escolhidos em chips no topo.")
+w("- **Mundo:** um pergaminho com os lugares ligados por trilhas. Os lugares aparecem conforme a Line os visita; os vizinhos ainda não visitados aparecem como “?”. O **Mapa rasgado** revela a montanha, o covil e a gruta de uma vez. Embaixo de cada lugar: porcentagem explorada, baús abertos e pistas achadas.")
+w()
+img("30-mapa-area", "Mapa da área, com a névoa abrindo")
+img("31-mapa-mundo", "Mapa do mundo")
+w("### 7.8 Dificuldade")
 w()
 w("| | Fácil 🌸 | Normal ⚔ | Difícil 🔥 |")
 w("|---|---|---|---|")
@@ -716,9 +828,12 @@ w("| Playground (prólogo) | máquina de soco (recortada da animação `LINE_PUN
 w("| Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |")
 w("| Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |")
 w("| Floresta | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras |")
+w("| Gruta dos Ecos | — | chão e paredes azuladas, água funda, estalagmites, cogumelos luminosos, fonte, placa, porta de ferro, baús |")
 w("| Ruínas Encantadas | — | chão de lajes, paredes, pilares, cristais (apagado e aceso), altar com orbe, fonte, barreira de luz, lagos, baú |")
 w("| Montanha de Brasa | — | chão vulcânico, paredes, fendas, lava, tochas (apagada e acesa), portão de fogo, pedras, estalagmites, fonte, baú |")
 w("| Covil | — | chão, paredes, lava, estalagmites, jaula da Bell |")
+w()
+w("**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada (versão de pedra e de montanha), cogumelos luminosos da gruta, papel/pergaminho de pista no chão, saquinho de item no chão, ícones dos 7 itens da mochila (hoje são emojis), o pergaminho do mapa do mundo e os ícones do mapa da área.")
 w()
 w("Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.")
 w()
@@ -783,7 +898,7 @@ w("|---|---|")
 for a, b in [("game/index.html", "página do jogo, menus, controles de toque"), ("game/js/jogo.js", "motor: áreas, câmera, combate, HUD, salvamento"),
              ("game/js/entidades.js", "Line, Bell, Sombra, partículas"), ("game/js/magia.js", "magia, cristais, tochas, barreiras, fontes, Fogo-fátuo e Guardião"),
              ("game/js/dragao.js", "o dragão e seus ataques"), ("game/js/bichos.js", "bichos da fazenda e o Mago"), ("game/js/fazenda.js", "capítulo da fazenda e tarefas"),
-             ("game/js/encontro.js", "prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas"), ("game/js/cenas.js", "cenas e falas da aventura (roteiro)"), ("game/js/mapas.js", "os mapas das 5 áreas da aventura"), ("game/js/cenario.js", "árvores, casa, objetos e ambiente"),
+             ("game/js/encontro.js", "prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas"), ("game/js/cenas.js", "cenas e falas da aventura (roteiro)"), ("game/js/mochila.js", "mochila: itens, caderno de pistas, mapa com névoa, objetivo, avisos"), ("game/js/mapas.js", "os mapas das 6 áreas da aventura (com a Gruta dos Ecos)"), ("game/js/cenario.js", "árvores, casa, objetos e ambiente"),
              ("game/js/animacoes.js", "catálogo de animações, substitutas e desenho dos sprites"), ("game/js/entrada.js", "teclado, controle, toque e dificuldade"),
              ("game/assets/", "folhas de sprites, retratos, cenário (inclui `cenario/encontro_*.webp` do prólogo)"), ("tools/extrair_sprites.py", "converte a arte recebida em folhas para o jogo"),
              ("tools/gerar_documentacao.py", "gera este documento")]:

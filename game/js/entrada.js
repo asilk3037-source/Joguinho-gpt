@@ -10,7 +10,7 @@
     KeyJ: 'atacar', KeyZ: 'atacar',
     KeyK: 'especial', KeyX: 'especial',
     KeyL: 'esquivar', KeyC: 'esquivar',
-    KeyI: 'defender', KeyV: 'defender',
+    KeyV: 'defender', KeyB: 'defender',
     KeyQ: 'magia', KeyU: 'magia',
     Space: 'pular',
     KeyE: 'interagir', Enter: 'interagir',

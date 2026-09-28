@@ -43,11 +43,13 @@
       });
       LB.entrada.ligarToque();
       LB.dialogo.ligar();
+      LB.mochila.tela.ligar(jogo);
       this.mostrarMenu();
     },
 
     mostrarMenu() {
       $('#btn-continuar').style.display = jogo.temSave() ? '' : 'none';
+      $('#objetivo').classList.add('oculto');
       $('#toque').classList.add('oculto');
       $('#pular-cena').classList.add('oculto');
       $('#dica').classList.add('oculto');
@@ -83,6 +85,7 @@
       if (j.textoPrompt) $('#b-interagir').textContent = j.textoPrompt;
       $('#toque').classList.toggle('em-cena', !!j.cena);
       $('#toque').classList.toggle('passeio', !!(l && l.modoPasseio));
+      $('#b-mochila').classList.toggle('oculto', !(j.mapa && j.mapa.tema !== 'encontro'));
     },
   };
 

@@ -366,6 +366,7 @@
           yield c.fala('Mago', 'Depois dos espinhos ficam as Ruínas Encantadas. No altar da luz, a sua espada pode aprender a brilhar.');
           yield c.fala('Line', 'Magia? Eu? Eu só sei plantar cenoura...', 'surpresa');
           yield c.fala('Mago', 'Quem atravessa uma floresta por amor já tem o que a magia pede. Vá!');
+          yield c.fala('Mago', 'Ah, e na gruta a leste desta floresta deixei umas coisinhas úteis. Uma bússola, quem sabe... Aperte I para ver a mochila e M para o mapa.');
           j.flags.magoRuinas = true;
           j.salvar();
           return;
@@ -374,6 +375,8 @@
           'Os espinhos ao norte não resistem a uma boa lâmina.',
           'As barreiras das ruínas só se desfazem com luz. Procure o altar na sala a oeste.',
           'Pule o riacho, corte os espinhos, ache o altar. Simples, não?',
+          'Baús trancados? Não. Portas trancadas! Três, pelo mundo. E três chaves antigas escondidas em baús.',
+          'Cada pista que você anota no caderno conta um pedaço da história do dragão. Junte as oito.',
         ] : !j.flags.golem ? [
           'Cristais apagados, barreiras de pé. Acenda todos e o caminho se abre.',
           'O Guardião de Pedra não sente a espada... mas a luz, ah, a luz ele sente.',
@@ -410,7 +413,7 @@
       yield c.fala('Line', 'Uma espada! Com isso eu consigo cortar os espinhos no caminho do norte.', 'riso');
       yield c.fala('', LB.entrada.usandoToque()
         ? 'ATACAR: golpe (aperte 3x para combo) · GIRO: ataque em volta · ESQUIVA: desvia (correndo vira dash) · DEFESA: segure para bloquear · PULAR + ATACAR: ataque aéreo'
-        : 'J ou Z: atacar (3x = combo) · K ou X: giro · L ou C: esquivar (correndo = dash) · I ou V: defender (segure) · Espaço e depois J: ataque aéreo');
+        : 'J ou Z: atacar (3x = combo) · K ou X: giro · L ou C: esquivar (correndo = dash) · V ou B: defender (segure) · Espaço e depois J: ataque aéreo');
       j.flags.espada = true;
       j.salvar();
       j.criarInimigos();
@@ -526,6 +529,84 @@
 
     *placa(c, j, texto) {
       yield c.fala('Placa', texto, 'sistema');
+    },
+
+    // Baú com itens e/ou pistas (todos os baús que não são a espada nem o coração).
+    *bauItem(c, j, bau) {
+      const line = j.line, M = LB.mochila;
+      const cont = bau.conteudo || {};
+      line.anim.tocar('LINE_CROUCH', true);
+      yield c.animacao(line);
+      bau.aberto = true;
+      j.flags.baus = (j.flags.baus || []).concat(j.mapa.id + ':' + bau.tx + ',' + bau.ty);
+      j.particulas.emitir('brilho', bau.x, bau.y - 20, 12, { vel: 70, vida: 0.8, r: 6 });
+      yield c.espera(0.4);
+      line.anim.tocar('LINE_CROUCH_STAND', true);
+      yield c.animacao(line);
+      const nomes = [];
+      for (const [id, n] of cont.itens || []) { M.dar(j, id, n); nomes.push(`${M.ITENS[id].icone} ${M.ITENS[id].nome}${n > 1 ? ' ×' + n : ''}`); }
+      line.anim.tocar('LINE_HAPPY', true);
+      if (nomes.length) yield c.titulo('Encontrou!', nomes.join(' · '), 2);
+      for (const id of cont.pistas || []) yield* HISTORIA.pista(c, j, id, true);
+      if ((cont.itens || []).some(([id]) => id === 'bussola')) yield c.fala('Line', 'Uma bússola! A agulha aponta pra... um baú? Deve mostrar os tesouros que ainda não achei.', 'surpresa');
+      else if ((cont.itens || []).some(([id]) => id === 'chave')) yield c.fala('Line', 'Uma chave antiga. Deve abrir alguma daquelas portas trancadas.', 'maroto');
+      else if ((cont.itens || []).some(([id]) => id === 'flor')) yield c.fala('Line', 'Uma Flor da Lua... a Bell ia amar. Vou guardar pra uma hora de aperto.', 'apaixonada');
+      j.salvar();
+    },
+
+    // Pista encontrada (documento do caderno de investigação).
+    *pista(c, j, id, semCrouch) {
+      const line = j.line, M = LB.mochila, p = M.PISTAS[id];
+      if (!semCrouch) { line.anim.tocar('LINE_CROUCH', true); yield c.animacao(line); line.anim.tocar('LINE_CROUCH_STAND', true); yield c.animacao(line); }
+      const nova = M.darPista(j, id);
+      line.anim.tocar('LINE_IDLE', true);
+      yield c.titulo('Pista encontrada!', `${p.icone} ${p.titulo}`, 2);
+      yield c.fala(p.titulo, p.texto, 'sistema');
+      const n = M.inv(j).pistas.length;
+      if (nova && n >= M.totalPistas() && !j.flags.cadernoCompleto) {
+        j.flags.cadernoCompleto = true;
+        j.flags.coracoes = (j.flags.coracoes || 0) + 1;
+        line.hpMax = j.hpMaxLine(); line.hp = line.hpMax;
+        j.particulas.emitir('coracao', line.x, line.y - 50, 10, { vel: 50, vida: 1.4 });
+        line.anim.tocar('LINE_HAPPY', true);
+        yield c.titulo('Caderno completo!', 'A Line entendeu tudo: coração extra', 2.6);
+        yield c.fala('Line', 'Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.', 'bravo');
+      } else if (nova && id === 'mapa') yield c.fala('Line', 'Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!', 'surpresa');
+      else if (nova && id === 'fita') yield c.fala('Line', 'Bell...', 'chorando');
+      else if (nova) yield c.fala('Line', `Vou guardar isso no caderno. ${n} de ${M.totalPistas()} pistas.`, 'neutro');
+      j.salvar();
+    },
+
+    // Ponto de exame (marcas, rastros): a Line olha de perto e anota a pista.
+    *exame(c, j, e) {
+      const line = j.line;
+      j.flags.exames = (j.flags.exames || []).concat(e.id);
+      line.anim.tocar('LINE_CROUCH', true);
+      yield c.animacao(line);
+      yield c.espera(0.5);
+      line.anim.tocar('LINE_CROUCH_STAND', true);
+      yield c.animacao(line);
+      yield* HISTORIA.pista(c, j, e.doc, true);
+    },
+
+    // Porta trancada: abre com uma chave antiga.
+    *porta(c, j, p) {
+      const line = j.line, M = LB.mochila;
+      line.dir = LB.dirDe(p.x - line.x, p.y - line.y, line.dir);
+      if (M.qtd(j, 'chave') <= 0) {
+        yield c.fala('Line', 'Trancada. Tem uma fechadura antiga... preciso de uma chave.', 'neutro');
+        return;
+      }
+      M.tirar(j, 'chave', 1);
+      j.particulas.emitir('faisca', p.x, p.y - 22, 10, { vel: 80, vz: 60, vida: 0.4 });
+      yield c.espera(0.5);
+      j.tremer(3, 0.3);
+      j.mapa.trocar(p.tx, p.ty, '.');
+      j.flags.portas = (j.flags.portas || []).concat(j.mapa.id + ':' + p.tx + ',' + p.ty);
+      j.particulas.emitir('poeira', p.x, p.y, 12, { vel: 70, vida: 0.6, r: 4 });
+      line.anim.tocar('LINE_HAPPY', true);
+      yield c.fala('Line', 'Abriu! Vamos ver o que tem aí dentro.', 'maroto');
+      j.salvar();
     },
 
     *covil(c, j) {

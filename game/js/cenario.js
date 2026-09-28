@@ -312,8 +312,8 @@
       this.t = 0;
       const n = this.tema === 'fazenda' ? 12 : this.tema === 'floresta' ? 5 : this.tema === 'ruinas' ? 3 : 0;
       for (let i = 0; i < n; i++) this.borboletas.push(this.novaBorboleta());
-      if (!['covil', 'montanha', 'encontro'].includes(this.tema)) for (let i = 0; i < 5; i++) this.nuvens.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, r: 90 + Math.random() * 90, v: 12 + Math.random() * 10 });
-      const nl = this.tema === 'floresta' ? 26 : this.tema === 'ruinas' ? 22 : 0;
+      if (!['covil', 'montanha', 'encontro', 'gruta'].includes(this.tema)) for (let i = 0; i < 5; i++) this.nuvens.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, r: 90 + Math.random() * 90, v: 12 + Math.random() * 10 });
+      const nl = this.tema === 'floresta' ? 26 : this.tema === 'ruinas' ? 22 : this.tema === 'gruta' ? 34 : 0;
       for (let i = 0; i < nl; i++) this.luzes.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, f: Math.random() * TAU, z: 10 + Math.random() * 30 });
       this.proximoBando = 3;
     }
@@ -346,7 +346,7 @@
       for (const n of this.nuvens) { n.x += n.v * dt; if (n.x - n.r > m.larg) { n.x = -n.r; n.y = Math.random() * m.alt; } }
       for (const f of this.luzes) { f.f += dt; f.x += Math.sin(f.f * 0.7) * 10 * dt; f.y += Math.cos(f.f * 0.5) * 8 * dt; }
       // Bando de pássaros atravessando o céu de vez em quando.
-      if (!['covil', 'montanha', 'encontro'].includes(this.tema)) {
+      if (!['covil', 'montanha', 'encontro', 'gruta'].includes(this.tema)) {
         this.proximoBando -= dt;
         if (this.proximoBando <= 0) {
           this.proximoBando = 9 + Math.random() * 10;
@@ -359,7 +359,7 @@
         this.passaros = this.passaros.filter((p) => p.vida < 30);
       }
       // Folhas caindo das árvores visíveis.
-      if (this.tema !== 'covil' && Math.random() < dt * (this.tema === 'floresta' ? 4 : 2.2)) {
+      if (this.tema !== 'covil' && this.tema !== 'gruta' && Math.random() < dt * (this.tema === 'floresta' ? 4 : 2.2)) {
         const vis = m.props.filter((p) => p.tipo === 'arvore' && p.x > jogo.cam.x && p.x < jogo.cam.x + jogo.vw && p.y > jogo.cam.y && p.y < jogo.cam.y + jogo.vh + 60);
         if (vis.length) {
           const a = vis[Math.floor(Math.random() * vis.length)];
@@ -408,7 +408,8 @@
         const a = 0.3 + 0.7 * Math.max(0, Math.sin(f.f * 2.3));
         const x = f.x, y = f.y - f.z;
         const gr = g.createRadialGradient(x, y, 0, x, y, 8);
-        gr.addColorStop(0, `rgba(230,255,140,${a})`); gr.addColorStop(1, 'rgba(230,255,140,0)');
+        const cor = this.tema === 'gruta' ? '140,220,255' : '230,255,140';
+        gr.addColorStop(0, `rgba(${cor},${a})`); gr.addColorStop(1, `rgba(${cor},0)`);
         g.fillStyle = gr; g.beginPath(); g.arc(x, y, 8, 0, TAU); g.fill();
       }
     }

@@ -10,6 +10,8 @@ STR=r"'((?:[^'\\]|\\.)*)'"
 out={}
 for i in range(1,len(cenas),2):
     nome=cenas[i]; b=cenas[i+1]
+    # Template strings viram strings simples (expressões ${...} viram “…”).
+    b=re.sub(r"`((?:[^`\\]|\\.)*)`", lambda m: "'"+re.sub(r'\$\{[^}]*\}','…',m.group(1)).replace("'","\\'")+"'", b)
     ev=[]
     for m in re.finditer(r"c\.fala\(\s*"+STR+r",\s*(.*?)\);\n", b, re.S):
         quem=m.group(1); resto=m.group(2)

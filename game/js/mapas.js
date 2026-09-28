@@ -5,7 +5,8 @@
 
   // Legenda: T árvore · . grama · , mato alto · F flores · : caminho · r raízes (correr derruba)
   // w riacho (dá para pular) · ~ água funda · R pedra · H casa · D porta · X espinheiro (corta com espada)
-  // C baú · S placa · # parede da caverna · _ chão da caverna · L lava · o estalagmite · G jaula
+  // C baú · S placa · # parede da caverna · _ chão da caverna · L lava · o estalagmite · j fenda
+  // g porta trancada (chave antiga) · q cogumelo luminoso (gruta) · Q cristal · Y tocha · U fonte · Z barreira · A altar · I pilar
   const MAPAS = {
     fazenda: {
       nome: 'Fazendinha',
@@ -21,7 +22,7 @@
         'TT....HHHHHHH.....T...::...BBBBBBB..,uuuuuf,TT',
         'TT....HHHHHHH.........::...BBBBBBB..fuuuuuf.TT',
         'TTF...HHHHHHH.........::...BBBBBBB..fffffff.TT',
-        'TT....HHHDHHH.k...,...::..n...:...n.........TT',
+        'TT....HHHDHHH.k...,...::..n...:...n......C..TT',
         'TT..T.FF,:FF,.........::F.....:....n........TT',
         'TT.......::::::::::::::::::::::...F.F......TTT',
         'TT................,..,:...,...F.,........M..TT',
@@ -58,6 +59,9 @@
         lago: { x: 21.2, y: 27.4 },
       },
       canteiros: ['15,17', '18,19', '14,21', '20,21'],
+      baus: { '41,10': { itens: [['pao', 2], ['maca', 1]], depoisDe: 'prologo' } },
+      chao: [{ x: 5, y: 14, item: 'maca', requer: 'prologo' }, { x: 40, y: 29, item: 'maca', requer: 'prologo' }],
+      exames: [{ id: 'pegadas', x: 21, y: 27, texto: 'Examinar as marcas', doc: 'pegadas', requer: 'prologo' }],
       // Objetos soltos do pacote de arte: [nome, x, y (base, em tiles), largura, raio de colisão].
       decoracoes: [
         ['carroca', 35.5, 12.9, 70, 16], ['lampiao', 13.5, 11.9, 26, 5], ['lampiao', 20.6, 25.4, 26, 5],
@@ -79,50 +83,99 @@
       nome: 'Floresta Sussurrante',
       tema: 'floresta',
       linhas: [
-        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTT',
-        'TTTT....,,......TTTTT.........::..TT',
-        'TT........,,,.........TT......::..TT',
-        'T..........F..........TT......::...T',
-        'T....TT.....R.............,,..::...T',
-        'T....TT..........::::::::::::::..TTT',
-        'TT....,,.........::..........,,...TT',
-        'TTTTTTTTTTTTT....::....TTTTTTTTTTTTT',
-        'TTTTTTTTTTTTTTXXXXXXXXTTTTTTTTTTTTTT',
-        'TTTTTTTTTTTTTT...::...TTTTTTTTTTTTTT',
-        'TTTTT.....TTTT...::...TTTT......TTTT',
-        'TT...F...........::...............TT',
-        'TT.C:............::....,,.........TT',
-        'TT..:......F.....::...............TT',
-        'T...:....,,......::....R...........T',
-        'T...:TTTT........::........TTTT....T',
-        'T...:::::::::::::::........TTTT....T',
-        'T....TTTT........::........TTTT....T',
-        'T.....,,.........::.........,,.....T',
-        'T~~~wwwwwwwwwwwwwwwwwwwwwwwwwwww~~~T',
-        'T..............S.::................T',
-        'T................::.........F......T',
-        'T....R.......rrrr::rrrr.......TT...T',
-        'T............rrrrrrrrrr.......TT...T',
-        'T..F.........rrrr::rrrr............T',
-        'T................::................T',
-        'T....TT........S.::.......TT...F...T',
-        'T....TT..........::.......TT.......T',
-        'TT...,,..........::..........,,...TT',
-        'TTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTT',
+        'TTTT....,,......TTTTT.........::..TTTTTTTTTTTTTTTT',
+        'TT........,,,.........TT......::..TTTTTTTTTTTTTTTT',
+        'T..........F..........TT......::...TTTTTTTTTTTTTTT',
+        'T....TT.....R.............,,..::...TTTTTTTTTTTTTTT',
+        'T....TT..........::::::::::::::..TTTTTTTTTTTTTTTTT',
+        'TT....,,.........::..........,,...TTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTT....::....TTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTXXXXXXXXTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTT...::...TTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTT.....TTTT...::...TTTT......TTTTTTTT.....TTTTT',
+        'TT...F...........::...............TTTT....,....TTT',
+        'TT.C:............::....,,................R......TT',
+        'TT..:......F.....::.......................F..C...:',
+        'T...:....,,......::....R.................,.......:',
+        'T...:TTTT........::........TTTT.......R........,TT',
+        'T...:::::::::::::::........TTTT....TTT.........TTT',
+        'T.C..TTTT........::........TTTT....TTTT.......TTTT',
+        'T.....,,.........::.........,,.....TTTTTTTTTTTTTTT',
+        'T~~~wwwwwwwwwwwwwwwwwwwwwwwwwwww~~~TTTTTTTTTTTTTTT',
+        'T..............S.::................TTTTTTTTTTTTTTT',
+        'T................::.........F......TTTTTTTTTTTTTTT',
+        'T....R.......rrrr::rrrr.......TT...TTTTTTTTTTTTTTT',
+        'T............rrrrrrrrrr.......TT...TTTTTTTTTTTTTTT',
+        'T..F.........rrrr::rrrr............TTTTTTTTTTTTTTT',
+        'T................::................TTTTTTTTTTTTTTT',
+        'T....TT........S.::.......TT...F...TTTTTTTTTTTTTTT',
+        'T....TT..........::.......TT.......TTTTTTTTTTTTTTT',
+        'TT...,,..........::..........,,...TTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
       ],
       saidas: [
         { x: 17, y: 29, w: 2, h: 1, para: 'fazenda', chegada: { x: 22.5, y: 3.6, dir: 'FRONT' } },
         { x: 30, y: 0, w: 2, h: 1, para: 'ruinas', requer: 'espada', chegada: { x: 19.5, y: 34.2, dir: 'BACK' } },
+        { x: 49, y: 13, w: 1, h: 2, para: 'gruta', chegada: { x: 1.6, y: 14.4, dir: 'RIGHT' } },
       ],
       inicio: { x: 17.5, y: 27.6, dir: 'BACK' },
       placas: {
         '15,26': 'Cuidado com as raízes! Correndo por cima delas você pode tropeçar. Ande devagar (solte o correr).',
         '15,20': 'Riacho à frente. Para atravessar, pule! (Espaço ou botão Pular). Correndo, o pulo vai mais longe.',
       },
-      baus: { '3,12': 'espada' },
+      baus: { '3,12': 'espada', '2,17': { pistas: ['carta'], itens: [['maca', 2]] }, '45,13': { itens: [['pocao', 2]] } },
+      chao: [{ x: 40, y: 11, item: 'maca' }, { x: 44, y: 16, item: 'maca' }, { x: 5, y: 3, item: 'pao' }],
       inimigos: [
         { x: 8, y: 3, depoisDe: 'espada' }, { x: 25, y: 3, depoisDe: 'espada' }, { x: 20, y: 6, depoisDe: 'espada' },
-        { x: 9, y: 13, depoisDe: 'espada' }, { x: 26, y: 12, depoisDe: 'espada' },
+        { x: 9, y: 13, depoisDe: 'espada' }, { x: 26, y: 12, depoisDe: 'espada' }, { x: 41, y: 14, depoisDe: 'espada' },
+      ],
+    },
+
+    // Gruta dos Ecos: caverna a leste da floresta. Cogumelos ('q') brilham, a porta ('g') precisa de chave.
+    gruta: {
+      nome: 'Gruta dos Ecos',
+      tema: 'gruta',
+      linhas: [
+        '####################################',
+        '##########______######_______#######',
+        '########__________####____C____#####',
+        '#######_____o_______##__________####',
+        '######_______________________o__####',
+        '######___q_______________________###',
+        '#######_______~~~~~______________###',
+        '#######______~~~~~~~____o________###',
+        '######_______~~~~~~~_____________###',
+        '#####_________~~~~~____q_____#######',
+        '####_C_________________________#####',
+        '###_____o____________#########__####',
+        '##_____________U_____#________C_####',
+        ':______S______________________#_####',
+        ':_____________________________#_####',
+        '##________q____________#______#_####',
+        '###___________________#####____#####',
+        '####____~~~~~___________________####',
+        '#####___~~~~~~______o___________####',
+        '######___~~~~______________q____####',
+        '#######________________________#####',
+        '########______________________######',
+        '##############g#####################',
+        '##########_________#################',
+        '##########___C_____#################',
+        '##########______q__#################',
+        '##########_________#################',
+        '####################################',
+      ],
+      saidas: [{ x: 0, y: 13, w: 1, h: 2, para: 'floresta', chegada: { x: 47.5, y: 14.4, dir: 'LEFT' } }],
+      inicio: { x: 1.6, y: 14.4, dir: 'RIGHT' },
+      placas: {
+        '7,13': 'Gruta dos Ecos. Fale baixo: os cogumelos acordam com barulho. A sala ao sul está trancada há cem anos.',
+      },
+      baus: { '26,2': { itens: [['bussola', 1]] }, '5,10': { itens: [['elixir', 1], ['pocao', 1]] }, '30,12': { itens: [['chave', 1]] }, '13,24': 'coracao' },
+      chao: [{ x: 17, y: 13, doc: 'lenda' }, { x: 15, y: 25, doc: 'mapa' }, { x: 24, y: 4, item: 'pao' }],
+      inimigos: [
+        { x: 20, y: 5, depoisDe: 'espada' }, { x: 28, y: 16, depoisDe: 'espada' }, { x: 12, y: 20, depoisDe: 'espada' },
+        { x: 24, y: 8, tipo: 'luz', depoisDe: 'magia' }, { x: 24, y: 19, tipo: 'luz', depoisDe: 'magia' },
       ],
     },
 
@@ -162,42 +215,42 @@
       nome: 'Ruínas Encantadas',
       tema: 'ruinas',
       linhas: [
-        '###################..###################',
-        '###################ZZ###################',
-        '####................................####',
-        '####.,........I..........I........,.####',
-        '####....I......................I....####',
-        '####................................####',
-        '####................................####',
-        '####................................####',
-        '####................................####',
-        '####....I......................I....####',
-        '####.,......,..............,......,.####',
-        '####................................####',
-        '##################::::##################',
-        '##################ZZZZ##################',
-        '###..F.........................F..######',
-        '###.,...........................,.######',
-        '###...~~~~~~~......Q....~~~~~~~.Q.######',
-        '###...~~~~~~~..I.......I~~~~~~~...######',
-        '###..U~~~Q~~~...........~~~Q~~~...######',
-        '###...~~~~~~~...........~~~~~~~...Z.C###',
-        '###...~~~~~~~...........~~~~~~~...Z..###',
-        '###.,..........I.......I........,.######',
-        '###..........,.......,............######',
-        '##################::::##################',
-        '##################ZZZZ##################',
-        '########...........::...........########',
-        '##.......,.........::.........,.########',
-        '##..A.......Q......::......Q....########',
-        '##........F........::........F..########',
-        '##.................::...........########',
-        '##.,..F....I.......::.......I...########',
-        '##.................::...........########',
-        '########...........::..U........########',
-        '########.,.......S.::.........,.########',
-        '########......,....::....,......########',
-        '###################::###################',
+        '###################..###############################',
+        '###################ZZ###############################',
+        '####................................################',
+        '####.,........I..........I........,.################',
+        '####....I......................I....################',
+        '####................................################',
+        '####................................################',
+        '####................................################',
+        '####................................################',
+        '####....I......................I....################',
+        '####.,......,..............,......,.################',
+        '####................................################',
+        '##################::::##############################',
+        '##################ZZZZ##############################',
+        '###..F.........................F..##################',
+        '###.,...........................,.#######I....I....#',
+        '###...~~~~~~~......Q....~~~~~~~.Q.......g......C...#',
+        '###...~~~~~~~..I.......I~~~~~~~...#######...S......#',
+        '###..U~~~Q~~~...........~~~Q~~~...##################',
+        '###...~~~~~~~...........~~~~~~~...Z.C###############',
+        '###...~~~~~~~...........~~~~~~~...Z..###############',
+        '###.,..........I.......I........,.##################',
+        '###..........,.......,............##################',
+        '##################::::##############################',
+        '##################ZZZZ##############################',
+        '########...........::...........#.........I......I.#',
+        '##.......,.........::.........,.#..................#',
+        '##..A.......Q......::......Q....#..............C...#',
+        '##........F........::........F.....................#',
+        '##.................::.........................,....#',
+        '##.,..F....I.......::.......I......................#',
+        '##.................::...........#.........I......I.#',
+        '########...........::..U........#............F.....#',
+        '########.,.......S.::.........,.#..................#',
+        '########......,....::....,......####################',
+        '###################::###############################',
       ],
       saidas: [
         { x: 19, y: 35, w: 2, h: 1, para: 'floresta', chegada: { x: 30.5, y: 1.8, dir: 'FRONT' } },
@@ -206,8 +259,10 @@
       inicio: { x: 19.5, y: 34.2, dir: 'BACK' },
       placas: {
         '17,33': 'Ruínas Encantadas. Só a luz atravessa as barreiras. O altar da luz fica na sala a oeste.',
+        '44,17': 'Biblioteca das Ruínas. Os livros viraram pó, mas o diário do Guardião resistiu ao tempo.',
       },
-      baus: { '36,19': 'coracao' },
+      baus: { '36,19': 'coracao', '47,27': { itens: [['chave', 1], ['pocao', 1]] }, '47,16': { pistas: ['diario2'], itens: [['elixir', 1]] } },
+      chao: [{ x: 6, y: 28, doc: 'diario1' }, { x: 29, y: 32, item: 'maca' }],
       barreiras: [
         { id: 'sul', fontes: ['12,27', '27,27'], tiles: [[18, 24, 21, 24]] },
         { id: 'meio', fontes: ['9,18', '27,18', '19,16'], tiles: [[18, 13, 21, 13]] },
@@ -219,6 +274,7 @@
         { x: 14, y: 31, depoisDe: 'magia' }, { x: 25, y: 31, depoisDe: 'magia' },
         { x: 10, y: 15, tipo: 'luz', depoisDe: 'magia' }, { x: 28, y: 21, tipo: 'luz', depoisDe: 'magia' },
         { x: 20, y: 20, depoisDe: 'magia' }, { x: 14, y: 15, depoisDe: 'magia' }, { x: 30, y: 15, tipo: 'luz', depoisDe: 'magia' },
+        { x: 38, y: 27, depoisDe: 'magia' }, { x: 45, y: 31, depoisDe: 'magia' }, { x: 44, y: 16, tipo: 'luz', depoisDe: 'magia' },
       ],
     },
 
@@ -226,46 +282,46 @@
       nome: 'Montanha de Brasa',
       tema: 'montanha',
       linhas: [
-        '################::::################',
-        '################::::################',
-        '###############......###############',
-        '###############......###############',
-        '###############ZZZZZZ###############',
-        '##.........###........###.........##',
-        '##............R...................##',
-        '##jjjjjjjj..................R.....##',
-        '##.......j........................##',
-        '##...C...j........Y...............##',
-        '##.......j...............R........##',
-        '##.......j..R.................o...##',
-        '##.......j............o...........##',
-        '##jjjjjjjj........................##',
-        '##jjjjjjjjjjjjj......jjjjjjjjjjjjj##',
-        '##................................##',
-        '##................................##',
-        '##................................##',
-        '##................................##',
-        '##.........................LLLLLLL##',
-        '##.........LLLL.R..........LLLLLLL##',
-        '##.........LLLL............LL...LL##',
-        '##.........................LL.Y.LL##',
-        '##....................R....LL...LL##',
-        '##LLLLLLL...o..............LLLLLLL##',
-        '##LLLLLLL..................LLLLLLL##',
-        '##LLLLLLLU........................##',
-        '##LLLLLLL.........R...............##',
-        '##LLLLLLL.S.............o.........##',
-        '##LLLLLLL.........................##',
-        '##................................##',
-        '######........................######',
-        '##jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj##',
-        '##....................R...........##',
-        '##........R....................R..##',
-        '##....Y........S............o.....##',
-        '##.R.....................R........##',
-        '##..........o.....................##',
-        '################::::################',
-        '################::::################',
+        '################::::############################',
+        '################::::############################',
+        '###############......###########################',
+        '###############......###########################',
+        '###############ZZZZZZ###########################',
+        '##.........###........###.........##############',
+        '##............R...................##############',
+        '##jjjjjjjj..................R.....##############',
+        '##.......j........................##############',
+        '##...C...j........Y...............##############',
+        '##.......j...............R........##############',
+        '##.......j..R.................o...##############',
+        '##.......j............o...........##############',
+        '##jjjjjjjj........................##############',
+        '##jjjjjjjjjjjjj......jjjjjjjjjjjjj##############',
+        '##................................#####......###',
+        '##......................................j.....##',
+        '##......................................j..R..##',
+        '##................................####..j...C.##',
+        '##.........................LLLLLLL####..j.....##',
+        '##.........LLLL.R..........LLLLLLL####..j.....##',
+        '##.........LLLL............LL...LL####..j.....##',
+        '##.........................LL.Y.LL####..j.....##',
+        '##....................R....LL...LL#######g######',
+        '##LLLLLLL...o..............LLLLLLL####........##',
+        '##LLLLLLL..................LLLLLLL####.LL.....##',
+        '##LLLLLLLU........................####.LL..C..##',
+        '##LLLLLLL.........R...............####......o.##',
+        '##LLLLLLL.S.............o.........####........##',
+        '##LLLLLLL.........................##############',
+        '##................................##############',
+        '######........................##################',
+        '##jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj##############',
+        '##....................R...........##############',
+        '##........R....................R..##############',
+        '##....Y........S............o.....##############',
+        '##.R.....................R........##############',
+        '##..........o.....................##############',
+        '################::::############################',
+        '################::::############################',
       ],
       saidas: [
         { x: 16, y: 39, w: 4, h: 1, para: 'ruinas', chegada: { x: 19.5, y: 2.4, dir: 'FRONT' } },
@@ -276,7 +332,8 @@
         '15,35': 'Fendas na rocha! Pule para atravessar (Espaço). Correndo, o pulo vai mais longe.',
         '10,28': 'Fonte das brasas: beba para recuperar vida e magia. Se cair, você volta para cá.',
       },
-      baus: { '5,9': 'coracao' },
+      baus: { '5,9': 'coracao', '44,18': { itens: [['chave', 1], ['pocao', 1]] }, '43,26': { itens: [['flor', 1]] } },
+      chao: [{ x: 22, y: 6, doc: 'fita' }, { x: 40, y: 27, doc: 'escama' }, { x: 30, y: 30, item: 'maca' }, { x: 8, y: 31, item: 'pocao' }],
       barreiras: [
         { id: 'portao', fontes: ['6,35', '30,22', '18,9'], tiles: [[15, 4, 20, 4]] },
       ],
@@ -284,11 +341,12 @@
         { x: 24, y: 34, tipo: 'fogo' }, { x: 9, y: 34 },
         { x: 18, y: 25, tipo: 'fogo' }, { x: 14, y: 28 }, { x: 23, y: 18 },
         { x: 10, y: 17, tipo: 'fogo' }, { x: 26, y: 12, tipo: 'fogo' }, { x: 14, y: 9 }, { x: 22, y: 7 },
+        { x: 42, y: 20, tipo: 'fogo' }, { x: 42, y: 25 },
       ],
     },
   };
 
-  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v', 'I', 'Q', 'A', 'Y', 'U', 'Z', 'j']);
+  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v', 'I', 'Q', 'A', 'Y', 'U', 'Z', 'j', 'g', 'q']);
 
   // Gerador pseudoaleatório estável por posição (o cenário não "pisca" entre quadros).
   function ruido(x, y, s) {
@@ -303,13 +361,15 @@
     floresta: { grama: '#4f8a3f', grama2: '#437a35', grama3: '#5e9c4b', caminho: '#b99867', caminho2: '#9c7c50' },
     covil: { chao: '#4b403c', chao2: '#3d3431', parede: '#241c1a', parede2: '#352b28' },
     ruinas: { chao: '#6f7a68', chao2: '#626d5b', junta: '#566150', musgo: '#6e8f4c', parede: '#343b33', parede2: '#434b40', topo: '#5a6553', caminho: '#8d8a78', margem: '#a3a690' },
+    gruta: { chao: '#46545c', chao2: '#3c4950', parede: '#1b2228', parede2: '#2b363d', topo: '#5a6b74', musgo: '#3f7d78' },
     montanha: { chao: '#5c4b44', chao2: '#4f403a', junta: '#3d302b', musgo: '#7a5a3a', parede: '#231b19', parede2: '#33282a', topo: '#6b554b', caminho: '#7a6558', margem: '#8a6f5f' },
   };
 
   class Mapa {
-    constructor(id) {
+    constructor(id, flags) {
       const def = MAPAS[id];
       this.id = id;
+      this.flags = flags || {};
       this.def = def;
       this.tema = def.tema;
       this.l = def.linhas.map((r) => r.split(''));
@@ -324,7 +384,7 @@
     }
 
     tile(tx, ty) {
-      if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return this.tema === 'covil' || this.tema === 'ruinas' || this.tema === 'montanha' ? '#' : 'T';
+      if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return this.tema === 'covil' || this.tema === 'ruinas' || this.tema === 'montanha' || this.tema === 'gruta' ? '#' : 'T';
       return this.l[ty][tx];
     }
 
@@ -399,11 +459,18 @@
         if (t === 'Y') { this.props.push({ tipo: 'tocha', tx, ty, x: cx, y: base - 3, v, aceso: false }); continue; }
         if (t === 'U') { this.props.push({ tipo: 'fonte', tx, ty, x: cx, y: base - 3 }); continue; }
         if (t === 'Z') { this.props.push({ tipo: 'barreira', tx, ty, x: cx, y: base - 1, v, tema: this.tema }); continue; }
+        if (t === 'g') { this.props.push({ tipo: 'porta', tx, ty, x: cx, y: base - 2 }); continue; }
+        if (t === 'q') { this.props.push({ tipo: 'cogumelo', tx, ty, x: cx, y: base - 4, v }); continue; }
         if (t === 'T') this.props.push({ tipo: 'arvore', tx, ty, x: cx, y: base - 4, v });
         else if (t === 'R') this.props.push({ tipo: 'pedra', tx, ty, x: cx, y: base - 6, v: ruido(tx, ty, 2) });
         else if (t === 'o') this.props.push({ tipo: 'estalagmite', tx, ty, x: cx, y: base - 4, v: ruido(tx, ty, 3) });
         else if (t === 'X') this.props.push({ tipo: 'espinheiro', tx, ty, x: cx, y: base - 2, v: ruido(tx, ty, 4) });
-        else if (t === 'C') this.props.push({ tipo: 'bau', tx, ty, x: cx, y: base - 6, conteudo: (this.def.baus || {})[tx + ',' + ty] });
+        else if (t === 'C') {
+          const conteudo = (this.def.baus || {})[tx + ',' + ty];
+          // Baús que só aparecem depois de certo ponto da história (ex.: na fazenda, depois do rapto).
+          if (conteudo && conteudo.depoisDe && !(this.flags || {})[conteudo.depoisDe]) { this.l[ty][tx] = '.'; continue; }
+          this.props.push({ tipo: 'bau', tx, ty, x: cx, y: base - 6, conteudo });
+        }
         else if (t === 'S') this.props.push({ tipo: 'placa', tx, ty, x: cx, y: base - 6, texto: (this.def.placas || {})[tx + ',' + ty] || '...' });
         else if (t === 'H' || t === 'D') {
           const b = this.bloco(tx, ty, 'HD', casas);
@@ -433,6 +500,7 @@
 
       if (this.tema === 'encontro') return;
       if (this.tema === 'ruinas' || this.tema === 'montanha') { this.desenharTilePedra(g, tx, ty, t, x, y, cor, rnd); return; }
+      if (this.tema === 'gruta') { this.desenharTileGruta(g, tx, ty, t, x, y, cor, rnd); return; }
       if (this.tema === 'covil') {
         if (t === '#') {
           g.fillStyle = cor.parede; g.fillRect(x, y, TILE, TILE);
@@ -513,6 +581,37 @@
         if (!'w~'.includes(this.tile(tx, ty + 1))) g.fillRect(x, y + TILE - 3, TILE, 3);
         if (!'w~'.includes(this.tile(tx - 1, ty))) g.fillRect(x, y, 3, TILE);
         if (!'w~'.includes(this.tile(tx + 1, ty))) g.fillRect(x + TILE - 3, y, 3, TILE);
+      }
+    }
+
+    // Gruta dos Ecos: pedra azulada e úmida, água funda e brilho de cogumelos.
+    desenharTileGruta(g, tx, ty, t, x, y, cor, rnd) {
+      if (t === '#') {
+        g.fillStyle = cor.parede; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = cor.parede2;
+        for (let i = 0; i < 3; i++) g.fillRect(x + rnd(i) * 24, y + rnd(i + 5) * 24, 6 + rnd(i + 9) * 6, 4);
+        if (this.tile(tx, ty + 1) !== '#') {
+          g.fillStyle = cor.topo; g.fillRect(x, y + TILE - 12, TILE, 12);
+          g.fillStyle = 'rgba(255,255,255,.1)'; g.fillRect(x, y + TILE - 12, TILE, 2);
+          g.fillStyle = 'rgba(0,0,0,.3)'; g.fillRect(x, y + TILE - 3, TILE, 3);
+          if (rnd(40) > 0.5) { g.fillStyle = cor.musgo; g.fillRect(x + rnd(41) * 20, y + TILE - 12, 6 + rnd(42) * 8, 3); }
+        }
+        return;
+      }
+      g.fillStyle = rnd(30) > 0.5 ? cor.chao : cor.chao2; g.fillRect(x, y, TILE, TILE);
+      g.fillStyle = 'rgba(0,0,0,.18)';
+      for (let i = 0; i < 4; i++) g.fillRect(x + rnd(i + 50) * 28, y + rnd(i + 51) * 28, 3, 2);
+      if (rnd(35) > 0.8) { g.fillStyle = 'rgba(120,200,255,.18)'; g.beginPath(); g.ellipse(x + 8 + rnd(36) * 16, y + 8 + rnd(37) * 16, 5, 3, 0, 0, Math.PI * 2); g.fill(); }
+      if (t === '~' || t === 'w') {
+        g.fillStyle = t === '~' ? '#1f4f6e' : '#2f7a9a'; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = '#2e6a8c'; for (let i = 0; i < 3; i++) g.fillRect(x + rnd(i + 100) * 22, y + rnd(i + 110) * 28, 8, 2);
+        g.fillStyle = cor.topo;
+        if (!'~w'.includes(this.tile(tx, ty - 1))) g.fillRect(x, y, TILE, 4);
+        if (!'~w'.includes(this.tile(tx, ty + 1))) g.fillRect(x, y + TILE - 3, TILE, 3);
+        if (!'~w'.includes(this.tile(tx - 1, ty))) g.fillRect(x, y, 3, TILE);
+        if (!'~w'.includes(this.tile(tx + 1, ty))) g.fillRect(x + TILE - 3, y, 3, TILE);
+      } else if (t === ':') {
+        g.fillStyle = '#5a6a72'; g.fillRect(x + 1, y + 1, TILE - 2, TILE - 2);
       }
     }
 

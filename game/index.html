@@ -42,10 +42,13 @@
         <tr><td>Atacar (3x = combo)</td><td>J ou Z</td><td>A</td><td>⚔</td></tr>
         <tr><td>Ataque giratório</td><td>K ou X</td><td>X</td><td>🌀</td></tr>
         <tr><td>Esquivar / dash</td><td>L ou C</td><td>B</td><td>💨</td></tr>
-        <tr><td>Defender (segure)</td><td>I ou V</td><td>LB</td><td>🛡</td></tr>
+        <tr><td>Defender (segure)</td><td>V ou B</td><td>LB</td><td>🛡</td></tr>
         <tr><td>Magia: Raio de Luz</td><td>Q ou U</td><td>RB</td><td>✨</td></tr>
         <tr><td>Chuva de Estrelas (segure a magia e solte)</td><td>Q ou U (segure)</td><td>RB (segure)</td><td>✨ (segure)</td></tr>
         <tr><td>Pular (+ atacar no ar)</td><td>Espaço</td><td>Y</td><td>⤴</td></tr>
+        <tr><td>Mochila (itens e pistas)</td><td>I</td><td>—</td><td>🎒</td></tr>
+        <tr><td>Mapa</td><td>M</td><td>—</td><td>🎒 → Mapa</td></tr>
+        <tr><td>Usar cura rápida</td><td>H</td><td>—</td><td>🧪</td></tr>
         <tr><td>Abrir / ler</td><td>E ou Enter</td><td>Select</td><td>botão que aparece</td></tr>
         <tr><td>Pausar</td><td>Esc ou P</td><td>Start</td><td>⏸</td></tr>
         <tr><td>Pular cena</td><td>Tab</td><td>—</td><td>botão “Pular cena”</td></tr>
@@ -76,10 +79,53 @@
     <div class="caixa">
       <h2>Pausado</h2>
       <button id="btn-retomar">Continuar</button>
+      <div class="linha2"><button id="btn-pausa-mochila" class="sec">🎒 Mochila</button><button id="btn-pausa-mapa" class="sec">🗺 Mapa</button></div>
       <button id="btn-pausa-dificuldade" class="sec dificuldade">Dificuldade: Normal</button>
       <p id="pausa-dif-desc" class="dif-desc"></p>
       <button id="btn-pausa-controles" class="sec">Controles</button>
       <button id="btn-pausa-menu" class="sec">Menu principal</button>
+    </div>
+  </div>
+
+  <div id="mochila" class="overlay oculto">
+    <div class="caixa mochila">
+      <div class="topo">
+        <h2>Mochila</h2>
+        <nav><button data-aba="itens">🎒 Itens</button><button data-aba="pistas">📜 Pistas</button><button data-aba="mapa">🗺 Mapa</button></nav>
+        <button id="btn-fechar-mochila" class="sec">Fechar</button>
+      </div>
+      <section id="aba-itens" class="aba">
+        <div id="itens-grade" class="grade"></div>
+        <div id="item-detalhe" class="detalhe oculto">
+          <h3 id="item-nome"></h3>
+          <p id="item-desc"></p>
+          <p id="item-vida" class="mini"></p>
+          <button id="btn-usar-item">Usar</button>
+          <p id="item-msg" class="mini"></p>
+        </div>
+      </section>
+      <section id="aba-pistas" class="aba oculto">
+        <div class="coluna">
+          <div id="pistas-objetivo" class="objetivo-caixa"></div>
+          <p id="pistas-total" class="mini"></p>
+          <div id="pistas-lista"></div>
+        </div>
+        <div id="pista-leitor" class="papel oculto">
+          <h3 id="pista-titulo"></h3>
+          <p id="pista-onde" class="mini"></p>
+          <p id="pista-texto"></p>
+        </div>
+      </section>
+      <section id="aba-mapa" class="aba oculto">
+        <div class="mapa-topo">
+          <button id="btn-mapa-area" class="chip sel">Área</button>
+          <button id="btn-mapa-mundo" class="chip">Mundo</button>
+          <span id="mapa-info" class="mini"></span>
+        </div>
+        <div id="mapa-areas" class="chips"></div>
+        <canvas id="mapa-canvas"></canvas>
+        <div id="mapa-legenda" class="mini">🟨 baú fechado · 🟫 baú aberto · 🔵 fonte · 🔶 tocha/cristal · 🔑 porta trancada · 📄 pista · 🔺 saída · 🩷 Line</div>
+      </section>
     </div>
   </div>
 
@@ -95,6 +141,8 @@
   <div id="cartela"><h2></h2><p></p></div>
   <div id="banner"></div>
   <div id="dica" class="oculto"></div>
+  <div id="objetivo" class="oculto"></div>
+  <div id="avisos"></div>
   <div id="tarefas" class="oculto"></div>
   <div id="dialogo" class="oculto"><div class="retrato"></div><div class="nome"></div><div class="texto"></div><div class="seta">▼</div></div>
   <button id="pular-cena" class="oculto">Pular cena ⏭</button>
@@ -105,6 +153,7 @@
     <div id="joystick"></div>
     <div id="joystick-base"><div id="joystick-pino"></div></div>
     <button id="btn-pausar" class="redondo pequeno" aria-label="Pausar">⏸</button>
+    <button id="b-mochila" class="redondo pequeno" aria-label="Mochila e mapa">🎒</button>
     <div class="botoes">
       <button id="b-interagir" class="oculto" data-acao="interagir">Abrir</button>
       <button id="b-defender" class="redondo" data-acao="defender" aria-label="Defender">🛡</button>
@@ -113,6 +162,7 @@
       <button id="b-pular" class="redondo" data-acao="pular" aria-label="Pular">⤴</button>
       <button id="b-atacar" class="redondo grande" data-acao="atacar" aria-label="Atacar">⚔</button>
       <button id="b-magia" class="redondo" data-acao="magia" aria-label="Magia">✨</button>
+      <button id="b-pocao" class="redondo pequeno oculto" aria-label="Usar poção">🧪</button>
     </div>
   </div>
 
@@ -128,6 +178,7 @@
   <script src="js/bichos.js"></script>
   <script src="js/cenas.js"></script>
   <script src="js/encontro.js"></script>
+  <script src="js/mochila.js"></script>
   <script src="js/jogo.js"></script>
   <script src="js/fazenda.js"></script>
   <script src="js/ui.js"></script>

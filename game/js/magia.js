@@ -8,7 +8,7 @@
   const T = (n) => n * TILE;
   const D = () => LB.desenho;
   // A luz passa por cima de água, lava e fendas, mas para em paredes e objetos altos.
-  const BLOQUEIA_LUZ = new Set(['#', 'T', 'I', 'Z', 'R', 'H', 'D', 'B', 'K', 'o', 'A', 'U', 'C', 'S', 'P', 'M', 'f', 'n', 'm', 'k', 'v']);
+  const BLOQUEIA_LUZ = new Set(['#', 'T', 'I', 'Z', 'R', 'H', 'D', 'B', 'K', 'o', 'A', 'U', 'C', 'S', 'P', 'M', 'f', 'n', 'm', 'k', 'v', 'g', 'q']);
   const CUSTO_RAIO = 1, CUSTO_ESTRELA = 3;
 
   // ---------------- Projéteis ----------------

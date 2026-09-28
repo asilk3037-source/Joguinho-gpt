@@ -86,6 +86,15 @@ Duas fases novas entre a floresta e o covil: **Ruínas Encantadas** e **Montanha
 - Efeitos (`FX_*`): hoje são partículas feitas no código.
 - `LINE_JUMP_LEFT`, `LINE_LAND_LEFT`: o jogo espelha as versões da direita.
 
+## Exploração nova (mochila, pistas, gruta)
+Tudo desenhado no código por enquanto:
+- **Gruta dos Ecos:** chão e paredes azuladas, água, cogumelos luminosos.
+- **Porta de ferro trancada** (pedra e montanha) e a animação de abrir.
+- **Itens no chão:** saquinho de item e papel/pergaminho de pista brilhando.
+- **Ícones dos 7 itens** da mochila (hoje são emojis): Poção de Vida, Pão da Bell, Maçã, Elixir de Luz, Flor da Lua, Chave antiga, Bússola do Mago.
+- **Mapa:** o pergaminho do mapa do mundo e os ícones do mapa da área.
+- **Line examinando** (`LINE_INSPECT`, sugestão): agachada olhando o chão, para os pontos de exame. Hoje usa o agachar.
+
 ## Cenário
 
 A fazenda já usa o pacote: casa, celeiro, galinheiro, moinho, poço, árvores (normais, macieiras, cerejeiras e pinheiros na floresta), horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho e trigo. Ainda desenhados no código: cercas, chão, água, flores pequenas e o covil.

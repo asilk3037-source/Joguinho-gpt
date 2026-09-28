@@ -83,6 +83,8 @@
 
     voltarAoMenu() {
       this.estado = 'menu';
+      $('#objetivo').classList.add('oculto');
+      $('#mochila').classList.add('oculto');
       LB.encontro.mostrarEtiquetas(this);
       this.cena = null;
       LB.dialogo.esconder();
@@ -92,7 +94,7 @@
 
     iniciarArea(id, chegada, semCenaDeEntrada) {
       this.estado = 'jogo';
-      this.mapa = new LB.Mapa(id);
+      this.mapa = new LB.Mapa(id, this.flags);
       this.particulas.lista = [];
       this.efeitos = [];
       this.inimigos = [];
@@ -102,7 +104,7 @@
       this.chefeAtivo = false; this.promptFinal = false; this.presa = null; this.jaulaAberta = false;
       this.fade = 0; this.flashTela = 0; this.congelado = 0;
       this.zoom = this.zoomAlvo = 1; this.aplicarZoom();
-      this.tint = { covil: { cor: '255,90,30', a: 0.08 }, montanha: { cor: '255,110,40', a: 0.07 }, ruinas: { cor: '110,190,255', a: 0.05 } }[id] || null;
+      this.tint = { covil: { cor: '255,90,30', a: 0.08 }, montanha: { cor: '255,110,40', a: 0.07 }, ruinas: { cor: '110,190,255', a: 0.05 }, gruta: { cor: '80,150,255', a: 0.07 } }[id] || null;
       this.cena = null;
       if (LB.dialogo.el) LB.dialogo.esconder();
       this.esconderTitulo();
@@ -121,6 +123,20 @@
       }
       const baus = this.flags.baus || [];
       for (const p of this.mapa.props) if (p.tipo === 'bau' && ((p.conteudo === 'espada' && this.flags.espada) || baus.includes(id + ':' + p.tx + ',' + p.ty))) p.aberto = true;
+      // Portas trancadas já abertas com a chave.
+      for (const k of this.flags.portas || []) {
+        const [area, pos] = k.split(':');
+        if (area !== id) continue;
+        const [x, y] = pos.split(',').map(Number);
+        if (this.mapa.l[y] && this.mapa.l[y][x] === 'g') this.mapa.l[y][x] = '.';
+      }
+      if ((this.flags.portas || []).some((k) => k.startsWith(id + ':'))) { this.mapa.props = this.mapa.props.filter((p) => !(p.tipo === 'porta' && this.mapa.l[p.ty][p.tx] !== 'g')); this.mapa.renderizarChao(); }
+      // Itens e pistas soltos pelo chão (os já pegos não voltam).
+      for (const it of this.mapa.def.chao || []) {
+        if ((this.flags.pegos || []).includes(id + ':' + it.x + ',' + it.y) || (it.requer && !this.flags[it.requer])) continue;
+        if (it.doc && LB.mochila.temPista(this, it.doc)) continue;
+        this.itens.push({ tipo: 'chao', x: T(it.x + 0.5), y: T(it.y + 0.9), t: 0, item: it.item, doc: it.doc, chave: id + ':' + it.x + ',' + it.y });
+      }
 
       // Sem ponto de chegada (continuar / tentar de novo): volta para a última fonte bebida nesta área.
       const cp = !chegada && this.flags.checkpoint && this.flags.checkpoint.area === id ? this.flags.checkpoint : null;
@@ -141,6 +157,9 @@
       this.prepararArea(id, semCenaDeEntrada);
       LB.magia.prepararArea(this, id);
       if (this.mapa.tema === 'encontro') LB.encontro.prepararArea(this, id); else LB.encontro.mostrarEtiquetas(this);
+      LB.mochila.explorar(this, 1);
+      LB.mochila.atualizarPainel(this);
+      LB.mochila.atualizarBotoes(this);
 
       this.flags.area = id;
       this.salvar();
@@ -208,7 +227,7 @@
     }
 
     epilogo() {
-      this.mapa = new LB.Mapa('fazenda');
+      this.mapa = new LB.Mapa('fazenda', this.flags);
       this.ambiente = new LB.cenario.Ambiente(this.mapa);
       this.ambiente.anoitecer();
       this.inimigos = []; this.dragao = null; this.chefeAtivo = false; this.promptFinal = false; this.jaulaAberta = false;
@@ -372,13 +391,22 @@
       const perto = (x, y, r) => Math.hypot(x - l.x, (y - l.y) * 1.2) < (r || 46);
       for (const p of this.mapa.props) {
         if (p.tipo === 'placa' && perto(p.x, p.y + 12)) acoes.push({ texto: 'Ler', x: p.x, y: p.y - 40, fazer: () => this.iniciarCena(LB.HISTORIA.placa, { semPular: true }, p.texto) });
-        if (p.tipo === 'bau' && !p.aberto && perto(p.x, p.y + 12)) acoes.push({ texto: 'Abrir', x: p.x, y: p.y - 40, fazer: () => {
+        if (p.tipo === 'bau' && !p.aberto && perto(p.x, p.y - 4, 52)) acoes.push({ texto: 'Abrir', x: p.x, y: p.y - 40, fazer: () => {
           l.dir = LB.dirDe(p.x - l.x, p.y - l.y, l.dir);
           if (p.x !== l.x) l.lado = p.x < l.x ? -1 : 1;
-          this.iniciarCena(p.conteudo === 'coracao' ? LB.HISTORIA.bauCoracao : LB.HISTORIA.espada, { semPular: true }, p);
+          const cena = p.conteudo === 'coracao' ? LB.HISTORIA.bauCoracao : p.conteudo === 'espada' ? LB.HISTORIA.espada : LB.HISTORIA.bauItem;
+          this.iniciarCena(cena, { semPular: true }, p);
         } });
+        if (p.tipo === 'porta' && perto(p.x, p.y - 6, 56)) {
+          const temChave = LB.mochila.qtd(this, 'chave') > 0;
+          acoes.push({ texto: temChave ? 'Abrir com a chave' : 'Trancada', x: p.x, y: p.y - 62, prio: 1, fazer: () => this.iniciarCena(LB.HISTORIA.porta, { semPular: true }, p) });
+        }
         if (p.tipo === 'altar' && !this.flags.magia && perto(p.x, p.y + 14, 54)) acoes.push({ texto: 'Tocar a luz', x: p.x, y: p.y - 70, prio: 1, fazer: () => this.iniciarCena(LB.HISTORIA.altar, { semPular: true }, p) });
         if (p.tipo === 'fonte' && perto(p.x, p.y + 14, 50)) acoes.push({ texto: 'Beber da fonte', x: p.x, y: p.y - 56, fazer: () => this.beberFonte(p) });
+      }
+      for (const e of this.mapa.def.exames || []) {
+        if ((this.flags.exames || []).includes(e.id) || (e.requer && !this.flags[e.requer]) || !perto(T(e.x + 0.5), T(e.y + 0.5), 48)) continue;
+        acoes.push({ texto: e.texto, x: T(e.x + 0.5), y: T(e.y) - 30, prio: 1, fazer: () => this.iniciarCena(LB.HISTORIA.exame, { semPular: true }, e) });
       }
       this.acoesExtras(acoes, perto);
       LB.encontro.acoes(this, acoes, perto);
@@ -487,6 +515,8 @@
 
       if (!this.cena) this.verificarMundo(dt);
       this.atualizarCamera(dt);
+      LB.mochila.explorar(this, dt);
+      LB.mochila.atualizarPainel(this);
       LB.ui.atualizarToque(this);
       E.limpar();
     }
@@ -502,8 +532,18 @@
           return;
         }
       }
-      // Itens.
+      // Itens e pistas no chão.
       for (const it of this.itens) {
+        if (it.tipo === 'chao') {
+          it.t = 0;
+          if (Math.hypot(it.x - l.x, it.y - l.y) > 22) continue;
+          it.pego = true;
+          this.flags.pegos = (this.flags.pegos || []).concat(it.chave);
+          this.particulas.emitir('brilho', it.x, it.y - 14, 8, { vel: 50, vida: 0.6, r: 4 });
+          if (it.doc) this.iniciarCena(LB.HISTORIA.pista, { semPular: true }, it.doc);
+          else { LB.mochila.dar(this, it.item, 1); this.salvar(); }
+          continue;
+        }
         if (it.tipo !== 'coracao' && it.tipo !== 'mana') continue;
         it.t += dt;
         if (Math.hypot(it.x - l.x, it.y - l.y) > 20) continue;
@@ -596,6 +636,7 @@
         else if (o.proj) LB.magia.desenharProjetil(g, o.proj, this.tempo);
         else if (o.item && o.item.tipo === 'ovo') this.desenharOvo(g, o.item);
         else if (o.item && o.item.tipo === 'mana') LB.magia.desenharItemMana(g, o.item, this.tempo);
+        else if (o.item && o.item.tipo === 'chao') LB.mochila.desenharItemChao(g, o.item, this.tempo);
         else if (o.item) LB.desenho.coracaoForma(g, o.item.x, o.item.y - 12 - Math.sin(this.tempo * 4) * 3, 7, o.item.t > 11 && Math.floor(this.tempo * 8) % 2 ? 'rgba(255,93,143,.4)' : '#ff5d8f');
         else if (o.tigela) this.desenharTigela(g, o.tigela);
         else if (o.jaula) LB.desenho.jaula(g, T(m.def.jaula.x), T(m.def.jaula.y) + 2, this.jaulaAberta, this.tempo);
@@ -613,6 +654,7 @@
       if (this.tint && this.tint.a > 0) { g.fillStyle = `rgba(${this.tint.cor},${this.tint.a})`; g.fillRect(0, 0, W, H); }
       if (m.tema === 'floresta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,20,0,.35)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (m.tema === 'ruinas' || m.tema === 'montanha') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, m.tema === 'ruinas' ? 'rgba(0,15,30,.4)' : 'rgba(30,5,0,.45)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
+      if (m.tema === 'gruta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,10,30,.55)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (m.tema === 'covil') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.85); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,.6)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (this.flashTela > 0) { g.fillStyle = `rgba(255,255,255,${this.flashTela * 1.6})`; g.fillRect(0, 0, W, H); }
 
@@ -647,6 +689,8 @@
         case 'casa': d.casa(g, p); break;
         case 'bau': d.bau(g, p.x, p.y, p.aberto, this.tempo); break;
         case 'placa': d.placa(g, p.x, p.y); break;
+        case 'porta': LB.mochila.desenharPorta(g, p, this.tempo, this.mapa.tema); break;
+        case 'cogumelo': LB.mochila.desenharCogumelo(g, p, this.tempo); break;
         case 'pilar': case 'cristal': case 'altar': case 'tocha': case 'fonte': case 'barreira': LB.magia.desenharProp(g, p, this); break;
       }
     }
@@ -685,6 +729,7 @@
         else if (valor === 1) { g.save(); g.beginPath(); g.rect(x - 9 * s, y - 12 * s, 9 * s, 24 * s); g.clip(); LB.desenho.coracaoForma(g, x, y, 8 * s, '#ff4d6d'); g.restore(); }
       }
       LB.magia.desenharHudMana(g, this, s);
+      LB.mochila.desenharHud(g, this, s);
       const golem = this.inimigos.find((e) => e.golem && !e.dormindo);
       if (golem) {
         const W = this.canvas.width;

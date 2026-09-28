@@ -133,3 +133,74 @@ th { color: var(--destaque); }
 #etiquetas .etiqueta { background: #fff8edee; color: #4c354e; border: 2px solid #6f4c67; border-radius: 12px; padding: 7px 12px; font-size: 12px; font-weight: 800; box-shadow: 0 4px 0 #3f2b46; white-space: nowrap; }
 #etiquetas .coracao { color: #e85b73; }
 #toque.passeio #b-especial, #toque.passeio #b-defender, #toque.passeio #b-esquivar, #toque.passeio #b-pular, #toque.passeio #b-magia, #toque.passeio #b-atacar { display: none; }
+
+/* Mochila (itens, pistas e mapa) */
+.linha2 { display: flex; gap: 8px; }
+.linha2 button { flex: 1; }
+.caixa.mochila { width: min(980px, 98vw); height: min(680px, 96vh); display: flex; flex-direction: column; padding: 14px 16px; text-align: left; }
+.mochila .topo { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.mochila .topo h2 { margin: 0; }
+.mochila .topo nav { display: flex; gap: 6px; flex: 1; }
+.caixa.mochila .topo button { width: auto; margin: 0; padding: 8px 14px; font-size: 15px; }
+.caixa.mochila nav button { background: #241c33; color: var(--suave); border-color: var(--borda); }
+.caixa.mochila nav button.sel { background: linear-gradient(#ffb86b, #f08a4b); color: #2a1305; border-color: #ffcf9a; }
+.mochila .aba { flex: 1; min-height: 0; margin-top: 12px; display: grid; grid-template-columns: 1fr 300px; gap: 14px; }
+#aba-mapa { display: flex; flex-direction: column; }
+.mochila .grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; align-content: start; overflow: auto; }
+.caixa.mochila button.slot { display: flex; flex-direction: column; align-items: center; gap: 2px; width: auto; margin: 0; padding: 10px 6px; border-radius: 12px; border: 1px solid var(--borda); background: #1d1729; color: var(--texto); font-weight: 600; font-size: 13px; }
+.caixa.mochila button.slot.sel { border-color: var(--destaque); background: #33253f; }
+.slot .ic { font-size: 30px; line-height: 1; }
+.slot .qt { color: var(--destaque); font-size: 12px; }
+.mochila .detalhe { background: #1d1729; border: 1px solid var(--borda); border-radius: 12px; padding: 14px; align-self: start; }
+.mochila .detalhe h3 { margin: 0 0 8px; }
+.mochila .mini { color: var(--suave); font-size: 12.5px; margin: 4px 0; }
+.mochila .vazio { color: var(--suave); grid-column: 1 / -1; }
+.mochila .coluna { overflow: auto; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.objetivo-caixa { background: #2a2238; border-left: 3px solid var(--destaque); padding: 8px 12px; border-radius: 8px; font-size: 14px; }
+.objetivo-caixa b { color: var(--destaque); display: block; margin-bottom: 2px; }
+.caixa.mochila button.pista { display: grid; grid-template-columns: 28px 1fr; width: auto; margin: 0; padding: 7px 9px; border-radius: 10px; border: 1px solid var(--borda); background: #1d1729; color: var(--texto); font-size: 13px; font-weight: 600; text-align: left; }
+.pista .ic { grid-row: span 2; font-size: 20px; }
+.pista .onde { font-size: 11.5px; color: var(--suave); font-weight: 400; }
+.caixa.mochila button.pista.falta { opacity: 0.55; cursor: default; }
+.caixa.mochila button.pista.sel { border-color: var(--destaque); background: #33253f; }
+.mochila .papel { background: #f3e7c8; color: #3a2718; border-radius: 10px; padding: 16px 18px; overflow: auto; font-family: Georgia, 'Times New Roman', serif; box-shadow: inset 0 0 40px rgba(120, 90, 40, 0.25); }
+.mochila .papel h3 { margin: 0 0 4px; }
+.mochila .papel .mini { color: #7a5a30; }
+.mochila .papel p { line-height: 1.5; font-size: 15px; }
+.mapa-topo { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.caixa.mochila button.chip { width: auto; margin: 0; padding: 5px 12px; font-size: 13px; border-radius: 20px; background: #241c33; color: var(--suave); border: 1px solid var(--borda); font-weight: 600; }
+.caixa.mochila button.chip.sel { background: linear-gradient(#ffb86b, #f08a4b); color: #2a1305; border-color: #ffcf9a; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 6px; }
+#mapa-canvas { flex: 1; min-height: 200px; width: 100%; border-radius: 12px; background: #17121f; border: 1px solid var(--borda); }
+#mapa-legenda { margin-top: 6px; }
+@media (max-width: 720px) {
+  .caixa.mochila { padding: 10px; height: 100vh; height: 100dvh; width: 100vw; border-radius: 0; }
+  .mochila .aba { grid-template-columns: 1fr; overflow: auto; }
+  .mochila .grade { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); overflow: visible; }
+  .slot .ic { font-size: 24px; }
+  .mochila .papel p { font-size: 14px; }
+  .caixa.mochila .topo button { padding: 6px 10px; font-size: 13px; }
+  #mapa-canvas { min-height: 260px; }
+}
+
+/* Painel de objetivo (depois do rapto) */
+#objetivo { position: fixed; left: max(14px, env(safe-area-inset-left)); top: 84px; background: rgba(22, 17, 32, 0.82); border: 1px solid var(--borda); border-radius: 12px; padding: 8px 12px; font-size: 13px; z-index: 9; pointer-events: none; max-width: min(300px, 44vw); line-height: 1.3; }
+#objetivo b { color: var(--destaque); display: block; margin-bottom: 3px; }
+#objetivo .mini { color: var(--suave); font-size: 11px; margin-top: 4px; }
+#objetivo kbd { background: #2a2238; border: 1px solid var(--borda); border-radius: 4px; padding: 0 4px; font-family: inherit; font-size: 10px; }
+@media (max-width: 700px), (max-height: 520px) { #objetivo { font-size: 10.5px; padding: 5px 8px; top: 70px; max-width: 42vw; } #objetivo .mini { font-size: 9.5px; } }
+
+/* Avisos de item novo */
+#avisos { position: fixed; right: max(14px, env(safe-area-inset-right)); top: 60px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; z-index: 17; pointer-events: none; }
+#avisos .aviso { background: rgba(22, 17, 32, 0.92); border: 1px solid var(--destaque); color: #ffe9c7; border-radius: 10px; padding: 7px 12px; font-size: 13px; font-weight: 600; animation: aviso-entra 0.3s ease; max-width: 60vw; }
+#avisos .aviso.sumindo { opacity: 0; transition: opacity 0.6s; }
+@keyframes aviso-entra { from { opacity: 0; transform: translateX(12px); } }
+@media (max-width: 700px) { #avisos { top: 56px; } #avisos .aviso { font-size: 11px; padding: 5px 9px; } }
+
+/* Botões de toque novos */
+#b-mochila { position: absolute; top: max(12px, env(safe-area-inset-top)); right: calc(max(12px, env(safe-area-inset-right)) + 54px); pointer-events: auto; }
+#b-mochila.novo::after { content: attr(data-novos); position: absolute; top: -4px; right: -4px; background: var(--rosa); color: #fff; font-size: 10px; font-weight: 700; border-radius: 10px; min-width: 16px; height: 16px; line-height: 16px; text-align: center; padding: 0 3px; }
+#toque.em-cena #b-mochila, #toque.passeio #b-mochila { visibility: hidden; }
+.botoes { width: 290px; }
+#b-pocao { right: 246px; bottom: 6px; background: rgba(255, 111, 159, 0.5); font-size: 15px; }
+#toque.passeio #b-pocao { display: none; }

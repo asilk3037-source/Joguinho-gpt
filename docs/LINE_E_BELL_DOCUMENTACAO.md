@@ -29,16 +29,18 @@
 
 ## 1. Visão geral
 
-**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). Tudo começa com um prólogo jogável, **O primeiro encontro**, que conta como as duas se conheceram em 09/05/2024. Depois, a Line e a Bell já são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa uma floresta, ruínas mágicas e uma montanha de lava para resgatá-la.
+**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). Tudo começa com um prólogo jogável, **O primeiro encontro**, que conta como as duas se conheceram em 09/05/2024. Depois, a Line e a Bell já são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa uma floresta, uma gruta, ruínas mágicas e uma montanha de lava para resgatá-la, juntando pistas num caderno de investigação, abrindo baús e portas trancadas e usando os itens da mochila.
 
 | | |
 |---|---|
 | Gênero | Aventura / ação com exploração, visão de cima |
 | Plataformas | Navegador no PC (teclado ou controle) e no celular (toque) |
-| Duração | Cerca de 35 a 50 minutos (o prólogo leva uns 3 minutos) |
+| Duração | Cerca de 45 a 70 minutos explorando tudo (o prólogo leva uns 3 minutos) |
 | Prólogo | *O primeiro encontro* (09/05/2024): Minas Shopping, Playground e Túnel |
-| Áreas | 3 do prólogo e 5 da aventura: Fazendinha, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |
+| Áreas | 3 do prólogo e 6 da aventura: Fazendinha, Gruta dos Ecos, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |
 | Chefes | Guardião de Pedra e o Dragão Vermelho |
+| Exploração | 13 baús, 3 portas trancadas (3 chaves), 8 pistas de investigação, mapa com névoa que vai abrindo |
+| Mochila | 7 tipos de item (curas, elixir, chave, bússola, Flor da Lua), caderno de pistas e mapa |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
 | Animações catalogadas | **267**: 160 com arte (temporária), 47 usando uma substituta, 60 desenhadas no código ou sem imagem |
@@ -126,7 +128,9 @@ O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no t
 
 **O rapto.** O céu escurece, os bichos se assustam e um dragão vermelho mergulha do céu e leva a Bell. A Line corre atrás, grita por ela, chora e decide ir buscá-la. Pede ao Theo que cuide da fazenda.
 
-**Capítulo 2 — A floresta.** Na Floresta Sussurrante, um mago conta que o dragão acordou depois de cem anos e entrega uma espada guardada num baú. Sombras aparecem. Espinhos fecham o caminho do norte, e a espada abre passagem.
+**A investigação.** Desde o rapto, a Line anota pistas num caderno: marcas de garra no píer, a carta do Mago, a lenda da montanha, um mapa rasgado, as páginas do diário do Guardião, uma escama vermelha e a fita de cabelo da Bell. Cada pista conta um pedaço da história do dragão e aponta o caminho. Com as oito, a Line entende tudo e ganha um coração extra.
+
+**Capítulo 2 — A floresta.** Na Floresta Sussurrante, um mago conta que o dragão acordou depois de cem anos e entrega uma espada guardada num baú. Sombras aparecem. Espinhos fecham o caminho do norte, e a espada abre passagem. A leste da floresta fica a **Gruta dos Ecos**, onde o Mago guardou uma bússola, um elixir e uma sala trancada com um coração extra e o mapa rasgado.
 
 **Capítulo 3 — Magia.** O dragão selou a montanha com magia antiga. Nas Ruínas Encantadas, o Espírito das Ruínas ensina a Line a lançar luz pela espada. Ela acende cristais para desfazer barreiras, encontra um coração extra e enfrenta o Guardião de Pedra. Vencido, ele entrega a Chuva de Estrelas.
 
@@ -148,7 +152,7 @@ Começa ao escolher **Novo jogo**, antes de tudo. A Line entra no shopping de co
 *Prólogo 1: o Minas Shopping*
 
 > ▶ `LINE_IDLE`  
-> 🎬 **Título na tela:** O primeiro encontro — Minas Shopping · 09/05/2024  
+> 🎬 **Título na tela:** O primeiro encontro — Minas Shopping · …  
 > ▶ `LINE_ADMIRE`  
 > **Line** *(apaixonada)*: puxa ela é tão linda  
 > ▶ `LINE_IDLE`  
@@ -350,12 +354,15 @@ Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depoi
 > **Mago**: Depois dos espinhos ficam as Ruínas Encantadas. No altar da luz, a sua espada pode aprender a brilhar.  
 > **Line** *(surpresa)*: Magia? Eu? Eu só sei plantar cenoura...  
 > **Mago**: Quem atravessa uma floresta por amor já tem o que a magia pede. Vá!  
+> **Mago**: Ah, e na gruta a leste desta floresta deixei umas coisinhas úteis. Uma bússola, quem sabe... Aperte I para ver a mochila e M para o mapa.  
 
 **Falas sorteadas do Mago** (mudam conforme o progresso):
 
 - “Os espinhos ao norte não resistem a uma boa lâmina.”
 - “As barreiras das ruínas só se desfazem com luz. Procure o altar na sala a oeste.”
 - “Pule o riacho, corte os espinhos, ache o altar. Simples, não?”
+- “Baús trancados? Não. Portas trancadas! Três, pelo mundo. E três chaves antigas escondidas em baús.”
+- “Cada pista que você anota no caderno conta um pedaço da história do dragão. Junte as oito.”
 - “Cristais apagados, barreiras de pé. Acenda todos e o caminho se abre.”
 - “O Guardião de Pedra não sente a espada... mas a luz, ah, a luz ele sente.”
 - “Sua magia volta sozinha, devagarinho. Não gaste tudo de uma vez!”
@@ -383,7 +390,7 @@ Ao abrir o baú ao lado do Mago.
 > ▶ `LINE_HAPPY`  
 > 🎬 **Título na tela:** Espada encontrada! — Agora a Line pode lutar  
 > **Line** *(rindo)*: Uma espada! Com isso eu consigo cortar os espinhos no caminho do norte.  
-> 🎮 *Tutorial na tela:* J ou Z: atacar (3x = combo) · K ou X: giro · L ou C: esquivar (correndo = dash) · I ou V: defender (segure) · Espaço e depois J: ataque aéreo  
+> 🎮 *Tutorial na tela:* J ou Z: atacar (3x = combo) · K ou X: giro · L ou C: esquivar (correndo = dash) · V ou B: defender (segure) · Espaço e depois J: ataque aéreo  
 > ▶ `LINE_COMBAT_IDLE`  
 > **Line** *(surpresa)*: Sombras?! Só podem ser coisa do dragão... Vem!  
 
@@ -521,7 +528,48 @@ Depois do golpe final.
 > 🎬 **Título na tela:** Fim — Obrigada por jogar!  
 > 🎬 **Título na tela:** Fim?  
 
-### 4.24 Placas
+### 4.24 Baú com itens ou pistas
+
+Todos os baús que não são a espada nem o coração extra. A Line agacha, o baú abre e aparece o que ela encontrou.
+
+> ▶ `LINE_CROUCH`  
+> ▶ `LINE_CROUCH_STAND`  
+> ▶ `LINE_HAPPY`  
+> **Line** *(surpresa)*: Uma bússola! A agulha aponta pra... um baú? Deve mostrar os tesouros que ainda não achei.  
+> **Line** *(marota)*: Uma chave antiga. Deve abrir alguma daquelas portas trancadas.  
+> **Line** *(apaixonada)*: Uma Flor da Lua... a Bell ia amar. Vou guardar pra uma hora de aperto.  
+
+### 4.25 Pista encontrada
+
+Ao pegar um papel brilhando no chão, examinar um lugar ou abrir um baú com pista. A pista vai para o caderno. Com as 8, coração extra.
+
+> ▶ `LINE_CROUCH`  
+> ▶ `LINE_CROUCH_STAND`  
+> ▶ `LINE_IDLE`  
+> 🎬 **Título na tela:** Pista encontrada! — … …  
+> ▶ `LINE_HAPPY`  
+> 🎬 **Título na tela:** Caderno completo! — A Line entendeu tudo: coração extra  
+> **Line** *(brava)*: Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.  
+> **Line** *(surpresa)*: Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!  
+> **Line** *(chorando)*: Bell...  
+> **Line** *(neutro)*: Vou guardar isso no caderno. … de … pistas.  
+
+### 4.26 Examinar um lugar
+
+Pontos de exame (as marcas de garra no píer).
+
+> ▶ `LINE_CROUCH`  
+> ▶ `LINE_CROUCH_STAND`  
+
+### 4.27 Porta trancada
+
+Nas três portas trancadas: sem chave a Line comenta; com chave, a porta abre e a chave some.
+
+> **Line** *(neutro)*: Trancada. Tem uma fechadura antiga... preciso de uma chave.  
+> ▶ `LINE_HAPPY`  
+> **Line** *(marota)*: Abriu! Vamos ver o que tem aí dentro.  
+
+### 4.28 Placas
 
 | Onde | Texto |
 |---|---|
@@ -531,7 +579,7 @@ Depois do golpe final.
 | Montanha, início | Fendas na rocha! Pule para atravessar (Espaço). Correndo, o pulo vai mais longe. |
 | Montanha, fonte | Fonte das brasas: beba para recuperar vida e magia. Se cair, você volta para cá. |
 
-### 4.25 Balões dos bichos e da Bell (na fazenda)
+### 4.29 Balões dos bichos e da Bell (na fazenda)
 
 - Cocoricóóó! (galo, de manhã)
 - Au! / Au! Au! / Au! Au! ♥ / Auuu~ (fome) / Auuu... / AU! AU! AU! (Theo)
@@ -542,10 +590,12 @@ Depois do golpe final.
 - O Theo já tá sentindo o cheiro! (Bell)
 - Os bichinhos te amam. Eu entendo eles. (Bell)
 
-### 4.26 Dicas que aparecem durante o jogo
+### 4.30 Dicas que aparecem durante o jogo
 
 | Quando | Texto |
 |---|---|
+| Item novo | Aviso no canto: “🧪 Poção de Vida ×2”, “📜 Pista: Carta do Mago”… |
+| Cura rápida sem item | 🎒 Nenhum item de cura na mochila / ❤️ A vida já está cheia |
 | Prólogo, no shopping | Aproxime-se da Bell e pressione E para falar com ela. (No celular: toque no botão.) |
 | Prólogo, no playground | Pressione E para a Line tentar. (No celular: toque no botão.) |
 | Primeiros passos | WASD ou setas para andar, Shift para correr, E para interagir. As tarefas ficam no canto da tela. |
@@ -744,12 +794,30 @@ Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho, pa
 *Pasto com vacas, cavalo e ovelhas*
 
 ### 6.2 Floresta Sussurrante
-Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega.
+Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega. **Nova ala leste:** uma clareira escondida além do riacho, com um baú de poções, maçãs no chão e a entrada da Gruta dos Ecos. Na clareira do Mago há um segundo baú, com a Carta do Mago.
+
+![Ala leste da floresta, com o baú e o caminho para a gruta](imagens/34-floresta-leste.jpg)
+*Ala leste da floresta, com o baú e o caminho para a gruta*
+
+### 6.3 Gruta dos Ecos (nova)
+Caverna azulada e úmida a leste da floresta, com poças fundas, estalagmites, cogumelos que brilham e luzinhas azuis flutuando. Não tem nuvens nem pássaros: só o eco. Sombras vagam por ela depois da espada, e fogos-fátuos azuis depois da magia.
+
+- **Entrada (oeste):** a placa, a fonte e o pergaminho com a **Lenda da Montanha**.
+- **Salão norte:** o baú com a **Bússola do Mago**.
+- **Canto oeste:** baú com Elixir de Luz e uma poção.
+- **Nicho leste:** baú com uma **chave antiga**.
+- **Sala trancada (sul):** atrás de uma porta de ferro. Dentro: baú de **coração extra** e o **Mapa rasgado**, que completa o mapa do mundo.
+
+![A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda](imagens/26-gruta.jpg)
+*A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda*
+
+![A porta trancada da sala do sul](imagens/27-gruta-porta.jpg)
+*A porta trancada da sala do sul*
 
 ![Sombras na floresta](imagens/11-floresta-sombras.jpg)
 *Sombras na floresta*
 
-### 6.3 Ruínas Encantadas (nova)
+### 6.4 Ruínas Encantadas
 Um templo antigo de pedra e musgo, organizado em salas:
 
 - **Salão sul (entrada):**
@@ -761,11 +829,17 @@ Um templo antigo de pedra e musgo, organizado em salas:
   - A leste fica uma **alcova com o baú de coração extra**, aberta por um cristal próprio.
   - Tem uma fonte.
 - **Salão norte:** arena com pilares onde dorme o **Guardião de Pedra**. Vencido, ele desfaz a última barreira, que leva à montanha.
+- **Ala leste da entrada (nova):** uma sala com pilares e sombras, e um baú com **chave antiga** e poção.
+- **Biblioteca (nova, trancada):** um corredor a leste do salão do meio termina numa porta de ferro. Dentro, a placa da biblioteca e o baú com a **página 2 do diário do Guardião** e um elixir.
+- No chão, perto do altar, está a **página 1 do diário**.
+
+![A biblioteca trancada das ruínas](imagens/33-biblioteca.jpg)
+*A biblioteca trancada das ruínas*
 
 ![Cristais acesos e barreira desfeita](imagens/15-barreira-aberta.jpg)
 *Cristais acesos e barreira desfeita*
 
-### 6.4 Montanha de Brasa (nova)
+### 6.5 Montanha de Brasa
 Rocha vulcânica, rios de lava e brasas subindo:
 
 - **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a primeira tocha.
@@ -776,13 +850,33 @@ Rocha vulcânica, rios de lava e brasas subindo:
 - **Topo:**
   - A terceira tocha, na praça central.
   - Uma **plataforma cercada de fendas com o segundo baú de coração**.
-  - O **portão de fogo**, que abre com as três tochas acesas.
+  - O **portão de fogo**, que abre com as três tochas acesas. Perto dele, no chão, a **fita de cabelo da Bell**.
+- **Encosta leste (nova):** uma fenda comprida para pular, um baú com **chave antiga** e poção, e uma porta de ferro que leva a uma **caverna escondida** com lava, o baú da **Flor da Lua** e a **escama vermelha**.
 
-### 6.5 Covil do Dragão
+![A encosta leste, com a fenda e a porta trancada](imagens/35-montanha-encosta.jpg)
+*A encosta leste, com a fenda e a porta trancada*
+
+![A caverna escondida da montanha](imagens/32-montanha-caverna.jpg)
+*A caverna escondida da montanha*
+
+### 6.6 Covil do Dragão
 Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao fundo. Quando a Line entra, a entrada desmorona e a luta começa.
 
 ![O dragão cospe fogo no covil](imagens/23-dragao-fogo.jpg)
 *O dragão cospe fogo no covil*
+
+### 6.7 Todos os baús, portas e pistas
+
+| Área | Baús | Portas trancadas | Pistas | Itens no chão |
+|---|---|---|---|---|
+| Fazendinha | 1: 2 pães e 1 maçã (atrás do chiqueiro, depois do rapto) | — | Marcas de garra (examinar o píer) | 2 maçãs |
+| Floresta | 3: espada · Carta do Mago + 2 maçãs · 2 poções (ala leste) | — | Carta do Mago (baú) | 2 maçãs, 1 pão |
+| Gruta dos Ecos | 4: bússola · elixir + poção · chave · coração extra (sala trancada) | 1 (sala do sul) | Lenda da Montanha (chão) · Mapa rasgado (sala trancada) | 1 pão |
+| Ruínas | 3: coração extra · chave + poção (ala leste) · diário pág. 2 + elixir (biblioteca) | 1 (biblioteca) | Diário pág. 1 (chão, perto do altar) · Diário pág. 2 (baú) | 1 maçã |
+| Montanha | 3: coração extra · chave + poção (encosta) · Flor da Lua (caverna) | 1 (caverna escondida) | Fita da Bell (chão, perto do portão) · Escama vermelha (caverna) | 1 maçã, 1 poção |
+| Covil | — | — | — | — |
+
+São **13 baús** (2 deles com coração extra), **3 portas** e **3 chaves**: qualquer chave abre qualquer porta, e a chave some depois de usada. As 8 pistas juntas dão mais um coração.
 
 ## 7. Como se joga
 
@@ -795,11 +889,14 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 | Atacar (3x = combo) | J / Z | A | ⚔ |
 | Ataque giratório | K / X | X | 🌀 |
 | Esquivar (correndo = dash) | L / C | B | 💨 |
-| Defender (segurar) | I / V | LB | 🛡 |
+| Defender (segurar) | V / B | LB | 🛡 |
 | Pular (+ atacar no ar) | Espaço | Y | ⤴ |
 | Magia: Raio de Luz | Q / U | RB | ✨ |
 | Chuva de Estrelas | segurar Q / U e soltar | segurar RB | segurar ✨ |
 | Interagir / ler / abrir | E / Enter | Select | botão que aparece |
+| Mochila (itens e pistas) | I | — | 🎒 |
+| Mapa | M | — | 🎒 → Mapa |
+| Cura rápida | H | — | 🧪 |
 | Pausar | Esc / P | Start | ⏸ |
 | Pular cena | Tab | — | Pular cena |
 
@@ -849,9 +946,91 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 - **Cristal azul:** +2 ◆ de magia. Também cai dos inimigos.
 - **Fontes:** curam tudo, enchem a magia e viram ponto de retorno. Se a Line cair, ela volta para a última fonte bebida naquela área.
 - **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.
-- **Salvamento automático:** ao entrar em cada área, ao abrir baús, acender cristais e beber das fontes. O botão **Continuar** retoma dali.
+- **Portas trancadas:** três portas de ferro (gruta, ruínas e montanha). Chegue perto: com uma chave antiga aparece **Abrir com a chave**; sem chave, **Trancada**.
+- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e pistas, abrir portas, acender cristais e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as pistas e o mapa explorado.
 
-### 7.5 Dificuldade
+### 7.5 Mochila e itens
+
+A mochila abre com **I** (ou o botão 🎒 no celular, que mostra quantos itens novos chegaram) e pausa o jogo. Tem três abas: **Itens**, **Pistas** e **Mapa**. Também dá para abrir pela pausa.
+
+![A aba de itens da mochila](imagens/28-mochila-itens.jpg)
+*A aba de itens da mochila*
+
+| Item | Ícone | O que faz | Onde achar |
+|---|---|---|---|
+| Poção de Vida | 🧪 | cura 2 corações | baús da floresta, gruta, ruínas e montanha; chão da montanha |
+| Pão da Bell | 🍞 | cura 1 coração | baú da fazenda; chão da floresta e da gruta |
+| Maçã | 🍎 | cura meio coração | chão da fazenda, floresta, ruínas e montanha; baú da carta |
+| Elixir de Luz | 💧 | enche toda a magia | baú da gruta e da biblioteca |
+| Flor da Lua | 🌸 | cura tudo e enche a magia | caverna escondida da montanha |
+| Chave antiga | 🗝️ | abre uma porta trancada (some depois) | baús da gruta, das ruínas e da montanha |
+| Bússola do Mago | 🧭 | mostra no mapa os baús fechados, mesmo onde a Line não passou | salão norte da gruta |
+
+- **Usar:** na aba Itens, escolha o item e aperte **Usar**. As curas também podem ser usadas rápido com **H** (ou o botão 🧪, que mostra quantas curas restam): o jogo escolhe a cura que melhor cabe na vida que falta.
+- **Avisos:** cada item ou pista nova aparece num aviso no canto da tela.
+- **HUD:** embaixo dos corações fica o contador de curas.
+- Itens no chão brilham e são pegos só de passar por cima. Papéis no chão são pistas.
+
+### 7.6 Caderno de pistas (investigação)
+
+A aba **Pistas** mostra o objetivo atual, quantas pistas a Line já achou e o texto de cada uma, num papel. As pistas ainda não achadas aparecem como “???”. O painel **Objetivo**, no canto da tela, diz o próximo passo e o total de pistas.
+
+![O caderno de pistas](imagens/29-mochila-pistas.jpg)
+*O caderno de pistas*
+
+| # | Pista | Onde | O que revela |
+|---|---|---|---|
+| 1 | 🐾 Marcas de garra no píer | Fazendinha, no píer do lago | o dragão foi para o norte e a Bell está viva |
+| 2 | ✉️ Carta do Mago | Floresta Sussurrante, baú na clareira do Mago | quem é o dragão, o selo da montanha e a gruta |
+| 3 | 📜 A lenda da Montanha | Gruta dos Ecos, pergaminho perto da fonte | o dragão teme a luz; cansado, o peito abre |
+| 4 | 🗺️ Mapa rasgado | Gruta dos Ecos, sala trancada | completa o mapa do mundo e mostra a caverna escondida |
+| 5 | 📖 Diário do Guardião, página 1 | Ruínas Encantadas, no chão perto do altar | os cristais são as chaves das barreiras |
+| 6 | 📖 Diário do Guardião, página 2 | Ruínas Encantadas, biblioteca trancada | a Chuva de Estrelas apaga o fogo do dragão |
+| 7 | 🔥 Escama vermelha | Montanha de Brasa, caverna escondida | o peito rachado é o ponto fraco; ele cansa ao mergulhar |
+| 8 | 🎀 Fita de cabelo da Bell | Montanha de Brasa, perto do portão de fogo | a Bell deixou um sinal: está perto |
+
+**Textos completos das pistas:**
+
+> **🐾 Marcas de garra no píer** *(Fazendinha, no píer do lago)*  
+> Três riscos fundos na madeira do píer, e um rastro de brasa apagada apontando para o norte. Ele passou baixo, pesado... e foi na direção da floresta. A Bell está viva: ele a levou, não a machucou. Eu vou atrás.  
+
+> **✉️ Carta do Mago** *(Floresta Sussurrante, baú na clareira do Mago)*  
+> “Para quem encontrar esta carta: o dragão vermelho dorme há cem anos na Montanha de Brasa. Quando acorda, leva o que mais brilha aos olhos dele. Selou a montanha com magia antiga; só a luz das Ruínas Encantadas atravessa o selo. Há também uma gruta a leste da floresta, onde guardei coisas que podem ajudar. — O Mago”  
+
+> **📜 A lenda da Montanha** *(Gruta dos Ecos, pergaminho perto da fonte)*  
+> “A cada cem anos o dragão desperta com fome de luz. Leva para o covil a pessoa de coração mais brilhante e a guarda numa jaula de ferro. Dizem que o dragão não teme a espada: teme a luz, que o cansa, e quando cansa o peito dele se abre.”  
+
+> **🗺️ Mapa rasgado** *(Gruta dos Ecos, sala trancada)*  
+> Um pedaço de mapa antigo. Mostra a Montanha de Brasa, um portão de fogo com três tochas e, no topo, o covil do dragão. Também marca uma caverna escondida na encosta leste da montanha. Com ele, o mapa do mundo ficou completo.  
+
+> **📖 Diário do Guardião, página 1** *(Ruínas Encantadas, no chão perto do altar)*  
+> “Fui feito de pedra para guardar a luz. Os cristais do templo são minhas chaves: acesos, as barreiras caem. Se alguém chegar aqui com um coração corajoso, que a luz do altar o escolha.”  
+
+> **📖 Diário do Guardião, página 2** *(Ruínas Encantadas, biblioteca trancada)*  
+> “O dragão tem medo da Chuva de Estrelas. Quando as estrelas caem em volta dele, o fogo dele apaga por um instante. Guardo essa magia no meu peito; só a entrego para quem me vencer sem ódio.”  
+
+> **🔥 Escama vermelha** *(Montanha de Brasa, caverna escondida)*  
+> Uma escama do tamanho da minha mão, ainda morna. Está rachada no meio: o peito dele é o lugar mais fraco, exatamente como o Mago disse. E ele perde escamas quando voa alto... então ele se cansa quando mergulha.  
+
+> **🎀 Fita de cabelo da Bell** *(Montanha de Brasa, perto do portão de fogo)*  
+> A fita azul que a Bell usava hoje de manhã. Ela deixou cair de propósito, eu sei: é o jeito dela de dizer “tô aqui, vem me buscar”. Falta pouco, amor.  
+
+Ao juntar as 8: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”
+
+### 7.7 Mapa com névoa
+
+A aba **Mapa** (tecla **M**) tem duas visões:
+
+- **Área:** o lugar atual, desenhado em miniatura. Só aparece o que a Line já viu: a névoa vai abrindo num raio de 7 tiles enquanto ela anda, e o que foi explorado fica salvo. Ícones: baús (fechados e abertos), fontes, cristais e tochas (apagados ou acesos), altar, portas trancadas, pistas e itens no chão, placas, o Mago, o Guardião, a Bell e as saídas com o nome do lugar. A Line é a bolinha rosa; a fonte de retorno tem um anel azul. Com a **Bússola do Mago**, os baús fechados aparecem mesmo na névoa. Os lugares já visitados podem ser escolhidos em chips no topo.
+- **Mundo:** um pergaminho com os lugares ligados por trilhas. Os lugares aparecem conforme a Line os visita; os vizinhos ainda não visitados aparecem como “?”. O **Mapa rasgado** revela a montanha, o covil e a gruta de uma vez. Embaixo de cada lugar: porcentagem explorada, baús abertos e pistas achadas.
+
+![Mapa da área, com a névoa abrindo](imagens/30-mapa-area.jpg)
+*Mapa da área, com a névoa abrindo*
+
+![Mapa do mundo](imagens/31-mapa-mundo.jpg)
+*Mapa do mundo*
+
+### 7.8 Dificuldade
 
 | | Fácil 🌸 | Normal ⚔ | Difícil 🔥 |
 |---|---|---|---|
@@ -1319,9 +1498,12 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 | Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |
 | Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |
 | Floresta | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras |
+| Gruta dos Ecos | — | chão e paredes azuladas, água funda, estalagmites, cogumelos luminosos, fonte, placa, porta de ferro, baús |
 | Ruínas Encantadas | — | chão de lajes, paredes, pilares, cristais (apagado e aceso), altar com orbe, fonte, barreira de luz, lagos, baú |
 | Montanha de Brasa | — | chão vulcânico, paredes, fendas, lava, tochas (apagada e acesa), portão de fogo, pedras, estalagmites, fonte, baú |
 | Covil | — | chão, paredes, lava, estalagmites, jaula da Bell |
+
+**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada (versão de pedra e de montanha), cogumelos luminosos da gruta, papel/pergaminho de pista no chão, saquinho de item no chão, ícones dos 7 itens da mochila (hoje são emojis), o pergaminho do mapa do mundo e os ícones do mapa da área.
 
 Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.
 
@@ -1386,7 +1568,8 @@ Os códigos `FX_*` da seção 9.10 são para quando esses efeitos ganharem arte 
 | `game/js/fazenda.js` | capítulo da fazenda e tarefas |
 | `game/js/encontro.js` | prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas |
 | `game/js/cenas.js` | cenas e falas da aventura (roteiro) |
-| `game/js/mapas.js` | os mapas das 5 áreas da aventura |
+| `game/js/mochila.js` | mochila: itens, caderno de pistas, mapa com névoa, objetivo, avisos |
+| `game/js/mapas.js` | os mapas das 6 áreas da aventura (com a Gruta dos Ecos) |
 | `game/js/cenario.js` | árvores, casa, objetos e ambiente |
 | `game/js/animacoes.js` | catálogo de animações, substitutas e desenho dos sprites |
 | `game/js/entrada.js` | teclado, controle, toque e dificuldade |
