@@ -1,7 +1,11 @@
 import re,json,sys
-src=open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.dirname(__import__('os').path.abspath(__file__))), 'game', 'js', 'cenas.js'), encoding='utf-8').read()
-corpo=src[src.index('const HISTORIA'):]
-cenas=re.split(r"\n    \*(\w+)\(", corpo)
+import os
+JS=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'game', 'js')
+# O prólogo (encontro.js) vem antes das cenas da fazenda (cenas.js).
+cenas=['']
+for arq, inicio in (('encontro.js', '*encontroInicio'), ('cenas.js', 'const HISTORIA')):
+    src=open(os.path.join(JS, arq), encoding='utf-8').read()
+    cenas+=re.split(r"\n    \*(\w+)\(", '\n'+src[src.index(inicio)-4:] if arq=='encontro.js' else src[src.index(inicio):])[1:]
 STR=r"'((?:[^'\\]|\\.)*)'"
 out={}
 for i in range(1,len(cenas),2):
@@ -17,7 +21,11 @@ for i in range(1,len(cenas),2):
         else:
             txt=strs[0]; rosto=strs[1] if len(strs)>1 else None; tipo='fala'
         ev.append((m.start(),tipo,quem,txt.replace("\\'","'"),rosto))
-    for m in re.finditer(r"c\.titulo\(\s*"+STR+r",\s*"+STR, b): ev.append((m.start(),'titulo',m.group(1),m.group(2),None))
+    for m in re.finditer(r"c\.titulo\(\s*"+STR+r",\s*(?:"+STR+r"|`([^`]*)`)", b):
+        ev.append((m.start(),'titulo',m.group(1),(m.group(2) or m.group(3) or '').replace('${DATA}','09/05/2024'),None))
+    for m in re.finditer(r"j\.dica\((.*?)\);\n", b):
+        strs=re.findall(STR,m.group(1))
+        if len(strs)>1: ev.append((m.start(),'dica','',strs[-1],None))
     for m in re.finditer(r"j\.balao\([^,]+,\s*"+STR, b): ev.append((m.start(),'balao','',m.group(1),None))
     for m in re.finditer(r"(?:tocar|duo)\('([A-Z_]+)'", b): ev.append((m.start(),'anim','',m.group(1),None))
     ev.sort()

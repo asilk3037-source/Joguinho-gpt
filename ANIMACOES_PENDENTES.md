@@ -1,6 +1,6 @@
 # Line & Bell — o que falta criar
 
-> A lista completa (todas as 260 animações, uma por uma, com status) está em **[docs/LINE_E_BELL_DOCUMENTACAO.md](docs/LINE_E_BELL_DOCUMENTACAO.md)**. Todas as animações atuais são temporárias até finalizar a criação de todas.
+> A lista completa (todas as 267 animações, uma por uma, com status) está em **[docs/LINE_E_BELL_DOCUMENTACAO.md](docs/LINE_E_BELL_DOCUMENTACAO.md)**. Todas as animações atuais são temporárias até finalizar a criação de todas.
 
 O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
 
@@ -17,6 +17,20 @@ Qualquer um destes formatos funciona:
 O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_SCARED`). Animações de lado podem vir só viradas para a **direita**: o jogo espelha para a esquerda.
 
 ## Prioridade 1 — aparecem na história
+
+### Prólogo: O primeiro encontro (novo)
+O jogo agora começa com o primeiro encontro das duas (Minas Shopping → Playground → Túnel → fazenda). Hoje usa substitutas:
+- `LINE_ADMIRE`: a Line admirando a Bell de longe. Usa `LINE_HAPPY`.
+- `BELL_WAIT`: a Bell esperando no shopping. Usa a Bell parada.
+- `LINE_BELL_MEET`: as duas frente a frente conversando. Usa as duas de mãos dadas.
+- `LINE_BELL_GREET_HUG`: abraço de chegada (“Você tá atrasada”). Usa o abraço do resgate.
+- `LINE_BELL_BK`: comendo BK na mesa. Usa o almoço da fazenda.
+- `BELL_LAUGH_AT_LINE`: gargalhando do soco. Usa a gargalhada.
+- `LINE_BELL_TUNNEL_KISS`: o primeiro beijo no túnel. Usa a bitoquinha.
+- Cenário: o **Playground** ainda é desenhado no código; o shopping e o túnel usam as ilustrações do HTML. A máquina de soco parada foi recortada da `LINE_PUNCH_MACHINE`.
+
+O HTML do primeiro encontro já tem ilustrações do abraço, do BK, das mãos dadas e do beijo que servem de base (ver seção 5 da documentação).
+
 
 ### Bell
 - `BELL_SCARED`: assustada quando o dragão chega. Hoje usa a Bell parada tremendo.

@@ -312,7 +312,7 @@
       this.t = 0;
       const n = this.tema === 'fazenda' ? 12 : this.tema === 'floresta' ? 5 : this.tema === 'ruinas' ? 3 : 0;
       for (let i = 0; i < n; i++) this.borboletas.push(this.novaBorboleta());
-      if (this.tema !== 'covil' && this.tema !== 'montanha') for (let i = 0; i < 5; i++) this.nuvens.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, r: 90 + Math.random() * 90, v: 12 + Math.random() * 10 });
+      if (!['covil', 'montanha', 'encontro'].includes(this.tema)) for (let i = 0; i < 5; i++) this.nuvens.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, r: 90 + Math.random() * 90, v: 12 + Math.random() * 10 });
       const nl = this.tema === 'floresta' ? 26 : this.tema === 'ruinas' ? 22 : 0;
       for (let i = 0; i < nl; i++) this.luzes.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, f: Math.random() * TAU, z: 10 + Math.random() * 30 });
       this.proximoBando = 3;
@@ -346,7 +346,7 @@
       for (const n of this.nuvens) { n.x += n.v * dt; if (n.x - n.r > m.larg) { n.x = -n.r; n.y = Math.random() * m.alt; } }
       for (const f of this.luzes) { f.f += dt; f.x += Math.sin(f.f * 0.7) * 10 * dt; f.y += Math.cos(f.f * 0.5) * 8 * dt; }
       // Bando de pássaros atravessando o céu de vez em quando.
-      if (this.tema !== 'covil' && this.tema !== 'montanha') {
+      if (!['covil', 'montanha', 'encontro'].includes(this.tema)) {
         this.proximoBando -= dt;
         if (this.proximoBando <= 0) {
           this.proximoBando = 9 + Math.random() * 10;

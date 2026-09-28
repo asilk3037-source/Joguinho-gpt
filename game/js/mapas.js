@@ -431,6 +431,7 @@
       const cor = CORES[this.tema];
       const rnd = (s) => ruido(tx, ty, s);
 
+      if (this.tema === 'encontro') return;
       if (this.tema === 'ruinas' || this.tema === 'montanha') { this.desenharTilePedra(g, tx, ty, t, x, y, cor, rnd); return; }
       if (this.tema === 'covil') {
         if (t === '#') {

@@ -16,30 +16,32 @@
 - [2. Personagens](#2-personagens)
 - [3. A história](#3-a-historia)
 - [4. Roteiro completo, cena a cena](#4-roteiro-completo-cena-a-cena)
-- [5. As fases](#5-as-fases)
-- [6. Como se joga](#6-como-se-joga)
-- [7. Inimigos e chefes](#7-inimigos-e-chefes)
-- [8. Lista completa de animações](#8-lista-completa-de-animacoes)
-- [9. Retratos dos diálogos](#9-retratos-dos-dialogos)
-- [10. Cenário e objetos](#10-cenario-e-objetos)
-- [11. Efeitos visuais](#11-efeitos-visuais)
-- [12. Como mandar arte nova](#12-como-mandar-arte-nova)
-- [13. Estrutura técnica](#13-estrutura-tecnica)
+- [5. O primeiro encontro (prólogo)](#5-o-primeiro-encontro-prologo)
+- [6. As fases](#6-as-fases)
+- [7. Como se joga](#7-como-se-joga)
+- [8. Inimigos e chefes](#8-inimigos-e-chefes)
+- [9. Lista completa de animações](#9-lista-completa-de-animacoes)
+- [10. Retratos dos diálogos](#10-retratos-dos-dialogos)
+- [11. Cenário e objetos](#11-cenario-e-objetos)
+- [12. Efeitos visuais](#12-efeitos-visuais)
+- [13. Como mandar arte nova](#13-como-mandar-arte-nova)
+- [14. Estrutura técnica](#14-estrutura-tecnica)
 
 ## 1. Visão geral
 
-**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). A Line e a Bell são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa uma floresta, ruínas mágicas e uma montanha de lava para resgatá-la.
+**Line & Bell** é uma aventura de ação vista de cima, para navegador (PC e celular). Tudo começa com um prólogo jogável, **O primeiro encontro**, que conta como as duas se conheceram em 09/05/2024. Depois, a Line e a Bell já são namoradas e vivem numa fazendinha com o cachorro Theo. Um dragão leva a Bell, e a Line atravessa uma floresta, ruínas mágicas e uma montanha de lava para resgatá-la.
 
 | | |
 |---|---|
 | Gênero | Aventura / ação com exploração, visão de cima |
 | Plataformas | Navegador no PC (teclado ou controle) e no celular (toque) |
-| Duração | Cerca de 30 a 45 minutos |
-| Áreas | 5: Fazendinha, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |
+| Duração | Cerca de 35 a 50 minutos (o prólogo leva uns 3 minutos) |
+| Prólogo | *O primeiro encontro* (09/05/2024): Minas Shopping, Playground e Túnel |
+| Áreas | 3 do prólogo e 5 da aventura: Fazendinha, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |
 | Chefes | Guardião de Pedra e o Dragão Vermelho |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **260**: 160 com arte (temporária), 40 usando uma substituta, 60 desenhadas no código ou sem imagem |
+| Animações catalogadas | **267**: 160 com arte (temporária), 47 usando uma substituta, 60 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -91,6 +93,8 @@ O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no t
 
 ## 3. A história
 
+**Prólogo — O primeiro encontro (09/05/2024).** No Minas Shopping, a Line vê a Bell de longe e fica encantada. Elas conversam, a Bell diz que a Line está atrasada e as duas comem BK. A Line confessa que está tímida porque a Bell é muito linda. De mãos dadas, vão ao playground, onde a Line tenta a máquina de soco, faz só 038 pontos e a Bell morre de rir. No túnel, dão o primeiro beijo. O tempo passa, e o sonho das duas vira uma fazendinha.
+
 **Capítulo 1 — Nossa vidinha.** Amanhece na fazenda. A Bell acorda a Line, e as duas cuidam da fazenda: pegar os ovos, regar a horta, dar ração ao Theo e fazer carinho nos bichinhos. Depois vem o almoço juntas e o passeio de mãos dadas até o lago para ver o pôr do sol. Lá elas dançam e dão uma bitoquinha.
 
 **O rapto.** O céu escurece, os bichos se assustam e um dragão vermelho mergulha do céu e leva a Bell. A Line corre atrás, grita por ela, chora e decide ir buscá-la. Pede ao Theo que cuide da fazenda.
@@ -107,11 +111,101 @@ O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no t
 
 ## 4. Roteiro completo, cena a cena
 
-Todas as falas estão exatamente como aparecem no jogo. Entre parênteses está a expressão do retrato. As linhas com ▶ indicam a animação que toca naquele momento: o código é o mesmo da lista da seção 8.
+Todas as falas estão exatamente como aparecem no jogo. Entre parênteses está a expressão do retrato. As linhas com ▶ indicam a animação que toca naquele momento: o código é o mesmo da lista da seção 9.
 
-### 4.1 Manhã na fazenda
+### 4.1 Prólogo 1: o Minas Shopping
 
-Começa ao escolher **Novo jogo**. A Line sai de casa e a Bell a espera no quintal.
+Começa ao escolher **Novo jogo**, antes de tudo. A Line entra no shopping de costas para a câmera e vê a Bell esperando perto das mesas. Depois a Line anda livremente até a Bell.
+
+![Prólogo 1: o Minas Shopping](imagens/p01-titulo.jpg)
+*Prólogo 1: o Minas Shopping*
+
+> ▶ `LINE_IDLE`  
+> 🎬 **Título na tela:** O primeiro encontro — Minas Shopping · 09/05/2024  
+> ▶ `LINE_ADMIRE`  
+> **Line** *(apaixonada)*: puxa ela é tão linda  
+> ▶ `LINE_IDLE`  
+> 💡 *Dica na tela:* Aproxime-se da Bell e pressione E para falar com ela.  
+
+![Explorando o shopping: o botão Falar com a Bell aparece perto dela](imagens/p04-perto-bell.jpg)
+*Explorando o shopping: o botão Falar com a Bell aparece perto dela*
+
+### 4.2 Prólogo 2: a conversa e o BK
+
+Ao chegar perto da Bell e apertar **Falar com a Bell**. A câmera se aproxima (zoom) e cada fala usa uma animação das duas juntas. Depois elas andam até a mesa e comem BK.
+
+![Prólogo 2: a conversa e o BK](imagens/p06-atrasada.jpg)
+*Prólogo 2: a conversa e o BK*
+
+> ▶ `LINE_BELL_MEET`  
+> **Line** *(sorrindo)*: esse shopping é muito grande  
+> ▶ `LINE_BELL_GREET_HUG`  
+> **Bell** *(marota)*: Você tá atrasada  
+> ▶ `LINE_BELL_MEET`  
+> **Line** *(sorrindo)*: oq vamos comer?  
+> **Bell** *(sorrindo)*: BK.  
+> ▶ `LINE_BELL_BK`  
+> **Bell** *(neutro)*: você parece estar tímida  
+> **Line** *(apaixonada)*: é que você é muito linda  
+> **Bell** *(apaixonada)*: *(sem fala, só o retrato)*  
+> ▶ `LINE_BELL_MEET`  
+> **Narradora**: As duas sorriem. Bell segura a mão da Line e elas saem juntas do shopping.  
+> ▶ `LINE_BELL_WALK_HANDS`  
+
+![BK no shopping: “você parece estar tímida”](imagens/p08-timida.jpg)
+*BK no shopping: “você parece estar tímida”*
+
+![Saindo do shopping de mãos dadas](imagens/p11-saindo-maos-dadas.jpg)
+*Saindo do shopping de mãos dadas*
+
+### 4.3 Prólogo 3: o Playground
+
+As duas chegam de mãos dadas. A Line vai até a máquina de soco e a Bell fica olhando.
+
+![Prólogo 3: o Playground](imagens/p13-pronta-para-socar.jpg)
+*Prólogo 3: o Playground*
+
+> 💡 *Dica na tela:* Pressione E para a Line tentar.  
+
+### 4.4 Prólogo 4: a máquina de soco
+
+Ao apertar **Tentar!**. O placar vai de 000 para 038, a tela treme e a Bell gargalha.
+
+![Prólogo 4: a máquina de soco](imagens/p14-soco.jpg)
+*Prólogo 4: a máquina de soco*
+
+> ▶ `LINE_PUNCH_MACHINE`  
+> ▶ `BELL_LAUGH_AT_LINE`  
+> ▶ `LINE_IDLE`  
+> **Bell** *(marota)*: HAHAHAHA! Você viu isso?  
+> **Line** *(sorrindo)*: Eu não consegui bater direito… aquela coisa estava estragada.  
+> ▶ `BELL_IDLE`  
+> **Narradora**: Elas saem do playground com a barriga doendo de tanto rir.  
+
+![A Bell gargalhando do soco da Line](imagens/p15-hahaha.jpg)
+*A Bell gargalhando do soco da Line*
+
+### 4.5 Prólogo 5: o túnel e a transição para a fazenda
+
+As duas atravessam o túnel iluminado e se beijam. A tela escurece, a narração conta que o tempo passou e o jogo segue direto para a manhã na fazenda.
+
+![Prólogo 5: o túnel e a transição para a fazenda](imagens/p17-tunel.jpg)
+*Prólogo 5: o túnel e a transição para a fazenda*
+
+> ▶ `LINE_BELL_TUNNEL_KISS`  
+> **Bell & Line**: ♥  
+> **Narradora**: E foi assim, entre um BK, uma máquina de soco “estragada” e um beijo no túnel, que a história delas começou.  
+> **Narradora**: O tempo passou... e o sonho das duas virou uma fazendinha, um cachorrinho chamado Theo e muitas manhãs juntas.  
+
+![O primeiro beijo no túnel](imagens/p18-beijo.jpg)
+*O primeiro beijo no túnel*
+
+![Transição: “O tempo passou…”](imagens/p21-tempo-passou.jpg)
+*Transição: “O tempo passou…”*
+
+### 4.6 Manhã na fazenda
+
+Começa logo depois do prólogo. A Line sai de casa e a Bell a espera no quintal.
 
 ![Manhã na fazenda](imagens/02-manha.jpg)
 *Manhã na fazenda*
@@ -132,14 +226,14 @@ Começa ao escolher **Novo jogo**. A Line sai de casa e a Bell a espera no quint
 > **Bell** *(apaixonada)*: E faz carinho nos bichinhos, que eles ficam com ciúme de mim.  
 > ▶ `BELL_IDLE`  
 
-### 4.2 As tarefas do dia
+### 4.7 As tarefas do dia
 
 Parte jogável. O painel no canto mostra as tarefas: **pegar 4 ovos** no galinheiro, **pegar o regador** no poço e **regar os 4 canteiros**, **pegar a ração** no celeiro e **pôr na tigela do Theo**, e **fazer carinho em 3 bichinhos**. A Bell segue a Line e comenta cada tarefa com balões.
 
 ![As tarefas do dia](imagens/03-tarefas-galinhas.jpg)
 *As tarefas do dia*
 
-### 4.3 Almoço
+### 4.8 Almoço
 
 Quando todas as tarefas terminam, as duas dão um toca aqui e almoçam juntas na mesa do quintal.
 
@@ -156,14 +250,14 @@ Quando todas as tarefas terminam, as duas dão um toca aqui e almoçam juntas na
 > **Line** *(sorrindo)*: Depois do almoço... bora ver o pôr do sol lá no lago?  
 > **Bell** *(apaixonada)*: Só se for de mãos dadas.  
 
-### 4.4 A tarde de mãos dadas
+### 4.9 A tarde de mãos dadas
 
 Parte jogável: a Line anda de mãos dadas com a Bell até o lago.
 
 ![A tarde de mãos dadas](imagens/04-pasto.jpg)
 *A tarde de mãos dadas*
 
-### 4.5 Pôr do sol e o rapto
+### 4.10 Pôr do sol e o rapto
 
 No píer do lago. Esta é a cena mais longa do jogo.
 
@@ -204,7 +298,7 @@ No píer do lago. Esta é a cena mais longa do jogo.
 ![O dragão leva a Bell](imagens/08-rapto.jpg)
 *O dragão leva a Bell*
 
-### 4.6 Chegada na floresta
+### 4.11 Chegada na floresta
 
 Primeira vez na Floresta Sussurrante.
 
@@ -214,7 +308,7 @@ Primeira vez na Floresta Sussurrante.
 > **Line** *(neutro)*: A Floresta Sussurrante... O dragão foi pra montanha, do outro lado.  
 > **Line** *(surpresa)*: Tem uma luz azul ali na clareira, a oeste. Será que mora alguém aqui?  
 
-### 4.7 O Mago
+### 4.12 O Mago
 
 Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depois da espada) aponta para as ruínas e as seguintes sorteiam uma dica.
 
@@ -243,13 +337,13 @@ Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depoi
 - “O peito do dragão, lembre-se: quando ele cansar, o peito brilha.”
 - “Quando ele encher o peito de ar, saia da frente. Fogo de dragão não se segura com espada.”
 
-### 4.8 Espinhos sem espada
+### 4.13 Espinhos sem espada
 
 Ao chegar perto dos espinhos do norte sem a espada.
 
 > **Line** *(neutro)*: Espinhos demais pra passar... Preciso de algo afiado para abrir caminho.  
 
-### 4.9 A espada
+### 4.14 A espada
 
 Ao abrir o baú ao lado do Mago.
 
@@ -266,7 +360,7 @@ Ao abrir o baú ao lado do Mago.
 > ▶ `LINE_COMBAT_IDLE`  
 > **Line** *(surpresa)*: Sombras?! Só podem ser coisa do dragão... Vem!  
 
-### 4.10 Chegada nas Ruínas Encantadas
+### 4.15 Chegada nas Ruínas Encantadas
 
 ![Chegada nas Ruínas Encantadas](imagens/12-ruinas-entrada.jpg)
 *Chegada nas Ruínas Encantadas*
@@ -274,7 +368,7 @@ Ao abrir o baú ao lado do Mago.
 > **Line** *(surpresa)*: Ruínas... e essas pedras brilhando? Parece que o lugar tá respirando.  
 > **Line** *(neutro)*: Paredes de luz fechando o caminho... O mago falou de um altar na sala a oeste.  
 
-### 4.11 O altar da luz
+### 4.16 O altar da luz
 
 Ao tocar a luz do altar, na sala a oeste do salão de entrada.
 
@@ -293,7 +387,7 @@ Ao tocar a luz do altar, na sala a oeste do salão de entrada.
 > ▶ `LINE_COMBAT_IDLE`  
 > **Line** *(marota)*: Ih... as ruínas acordaram junto. Bora, espada brilhante!  
 
-### 4.12 O Guardião desperta
+### 4.17 O Guardião desperta
 
 Ao se aproximar do Guardião, no salão norte das ruínas.
 
@@ -306,8 +400,9 @@ Ao se aproximar do Guardião, no salão norte das ruínas.
 > **Guardião de Pedra**: Ninguém... passa. Só a luz... atravessa... a pedra.  
 > ▶ `LINE_DETERMINED`  
 > **Line** *(brava)*: Então vai ser na luz mesmo.  
+> 💡 *Dica na tela:* Acerte o cristal do peito com a magia (Q) para abrir a guarda. Pule a onda do pisão!  
 
-### 4.13 O Guardião vencido
+### 4.18 O Guardião vencido
 
 ![O Guardião vencido](imagens/19-chuva-de-estrelas.jpg)
 *O Guardião vencido*
@@ -319,7 +414,7 @@ Ao se aproximar do Guardião, no salão norte das ruínas.
 > ▶ `LINE_HAPPY`  
 > **Line** *(rindo)*: O caminho pro norte abriu! Espera só, Bell.  
 
-### 4.14 Chegada na Montanha de Brasa
+### 4.19 Chegada na Montanha de Brasa
 
 ![Chegada na Montanha de Brasa](imagens/20-montanha.jpg)
 *Chegada na Montanha de Brasa*
@@ -327,7 +422,7 @@ Ao se aproximar do Guardião, no salão norte das ruínas.
 > **Line** *(neutro)*: A Montanha de Brasa... O covil do dragão fica lá no topo.  
 > **Line** *(marota)*: Tem um portão de fogo lá em cima... e três tochas apagadas pelo caminho. Aposto que a luz acende.  
 
-### 4.15 O portão se abre
+### 4.20 O portão se abre
 
 Quando a terceira tocha acende.
 
@@ -337,7 +432,7 @@ Quando a terceira tocha acende.
 > ▶ `LINE_DETERMINED`  
 > **Line** *(brava)*: O portão abriu! Aguenta firme, Bell. Tô chegando.  
 
-### 4.16 Baú de coração extra
+### 4.21 Baú de coração extra
 
 Há dois: um na alcova leste das ruínas e outro na plataforma cercada de fendas na montanha.
 
@@ -346,7 +441,7 @@ Há dois: um na alcova leste das ruínas e outro na plataforma cercada de fendas
 > ▶ `LINE_HAPPY`  
 > 🎬 **Título na tela:** Coração extra! — A vida máxima da Line aumentou  
 
-### 4.17 O covil do dragão
+### 4.22 O covil do dragão
 
 Na primeira vez a cena é completa. Nas próximas tentativas, a luta começa direto.
 
@@ -371,7 +466,7 @@ Na primeira vez a cena é completa. Nas próximas tentativas, a luta começa dir
 > **Bell** *(surpresa)*: Cuidado! Quando ele cansa, o peito dele brilha. Esse é o ponto fraco!  
 > ▶ `BELL_TRAPPED`  
 
-### 4.18 Vitória e epílogo
+### 4.23 Vitória e epílogo
 
 Depois do golpe final.
 
@@ -399,7 +494,7 @@ Depois do golpe final.
 > 🎬 **Título na tela:** Fim — Obrigada por jogar!  
 > 🎬 **Título na tela:** Fim?  
 
-### 4.19 Placas
+### 4.24 Placas
 
 | Onde | Texto |
 |---|---|
@@ -409,7 +504,7 @@ Depois do golpe final.
 | Montanha, início | Fendas na rocha! Pule para atravessar (Espaço). Correndo, o pulo vai mais longe. |
 | Montanha, fonte | Fonte das brasas: beba para recuperar vida e magia. Se cair, você volta para cá. |
 
-### 4.20 Balões dos bichos e da Bell (na fazenda)
+### 4.25 Balões dos bichos e da Bell (na fazenda)
 
 - Cocoricóóó! (galo, de manhã)
 - Au! / Au! Au! / Au! Au! ♥ / Auuu~ (fome) / Auuu... / AU! AU! AU! (Theo)
@@ -420,10 +515,12 @@ Depois do golpe final.
 - O Theo já tá sentindo o cheiro! (Bell)
 - Os bichinhos te amam. Eu entendo eles. (Bell)
 
-### 4.21 Dicas que aparecem durante o jogo
+### 4.26 Dicas que aparecem durante o jogo
 
 | Quando | Texto |
 |---|---|
+| Prólogo, no shopping | Aproxime-se da Bell e pressione E para falar com ela. (No celular: toque no botão.) |
+| Prólogo, no playground | Pressione E para a Line tentar. (No celular: toque no botão.) |
 | Primeiros passos | WASD ou setas para andar, Shift para correr, E para interagir. As tarefas ficam no canto da tela. |
 | Tarde | Leve a Bell até o lago, de mãos dadas. |
 | Depois do rapto | Siga pelo caminho ao norte, até a floresta. (Shift para correr) |
@@ -446,21 +543,133 @@ Depois do golpe final.
 | Dragão: ponto fraco | O dragão está atordoado! Ataque o ponto fraco brilhando no peito dele. |
 | Dragão: fim | O dragão não aguenta mais! Chegue perto e aperte ATACAR para o golpe final. |
 
-## 5. As fases
+## 5. O primeiro encontro (prólogo)
 
-### 5.1 Fazendinha
+> ⚠️ **As animações e artes do prólogo também são temporárias.** Várias usam uma animação substituta, e o playground ainda é desenhado no código.
+
+O prólogo é a história de como a Line e a Bell se conheceram. Ele vem **antes de tudo**: ao escolher **Novo jogo**, o jogo começa no Minas Shopping, em 09/05/2024. Tudo segue o HTML *Bell-Line-Primeiro-Encontro-v26*: os três lugares, as posições, as falas (com a mesma grafia), as expressões dos retratos, a narradora, as dicas, o placar da máquina de soco e as etiquetas de lugar e data. O menu do HTML não foi usado: o jogo mantém o próprio menu. As ilustrações de close-up do HTML viraram animações das duas juntas com a câmera se aproximando (zoom).
+
+### 5.1 O fluxo completo
+
+| # | Lugar | O que acontece | Jogável? | Animações | Câmera |
+|---|---|---|---|---|---|
+| 1 | Minas Shopping | Título *O primeiro encontro* e *Minas Shopping · 09/05/2024*. A Line admira a Bell de longe: “puxa ela é tão linda”. | não | `LINE_IDLE` (de costas), `LINE_ADMIRE`, `BELL_WAIT` | normal |
+| 2 | Minas Shopping | A Line anda até a Bell. Perto dela aparece o botão **Falar com a Bell**. | sim, só andar | `LINE_WALK_*`, `BELL_WAIT` | segue a Line |
+| 3 | Minas Shopping | A Line se aproxima e as duas conversam: shopping grande, “Você tá atrasada”, “oq vamos comer?”, “BK.”. | não | `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG` | zoom 1,6× |
+| 4 | Minas Shopping (mesa) | As duas andam até a mesa e comem BK. “você parece estar tímida” / “é que você é muito linda”. | não | `LINE_WALK_*`, `BELL_WALK_*`, `LINE_BELL_BK` | zoom na mesa |
+| 5 | Minas Shopping | A Bell segura a mão da Line e as duas saem juntas do shopping. | não | `LINE_BELL_MEET`, `LINE_BELL_WALK_HANDS` | volta ao normal |
+| — | transição | Brilho rosa e a tela escurece. | — | — | — |
+| 6 | Playground | As duas chegam. A Line para na máquina de soco, a Bell fica ao lado. Aparece o botão **Tentar!**. | só o botão | `LINE_WALK_*`, `BELL_WALK_*`, `LINE_IDLE`, `BELL_IDLE` | normal |
+| 7 | Playground | A Line soca: o placar vai de 000 para **038**, a tela treme e a Bell gargalha. “HAHAHAHA! Você viu isso?” / “Eu não consegui bater direito… aquela coisa estava estragada.” | não | `LINE_PUNCH_MACHINE`, `BELL_LAUGH_AT_LINE` | tremor no impacto |
+| 8 | Playground | Narradora: elas saem com a barriga doendo de tanto rir. | não | `LINE_WALK_*`, `BELL_WALK_*` | normal |
+| — | transição | Brilho rosa e a tela escurece. | — | — | — |
+| 9 | Túnel | As duas atravessam o túnel e se beijam, com corações subindo. “Bell & Line ♥”. | não | `LINE_WALK_RIGHT`, `BELL_WALK_RIGHT`, `LINE_BELL_TUNNEL_KISS` | zoom 1,6× |
+| 10 | Túnel → fazenda | Narradora fecha a história. A tela escurece: “O tempo passou... e o sonho das duas virou uma fazendinha…”. Começa a manhã na fazenda. | não | — | escurece |
+
+### 5.2 Ambientação de cada lugar
+
+![Os três lugares: Minas Shopping, Playground e Túnel (temporários)](imagens/encontro-fundos.jpg)
+*Os três lugares: Minas Shopping, Playground e Túnel (temporários)*
+
+A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma área, centralizado, e em telas largas as laterais mostram o próprio cenário borrado e escurecido. A área onde dá para andar é a mesma do HTML.
+
+**Minas Shopping**
+- **Fundo:** ilustração vertical do shopping, com piso claro de losangos rosados, mesinhas redondas com flores, cadeiras rosas e verdes, plantas, vitrines de doces e cafés, escada rolante ao fundo e luz quente. É a imagem do próprio HTML (720×1280), com o mesmo sombreado suave por cima.
+- **Posições:** a Line entra por baixo, à esquerda, de costas. A Bell espera à direita, perto do sofá vermelho, olhando para a esquerda. A mesa do BK fica no centro.
+- **Precisa de arte final:** a ilustração do shopping e uma versão da mesa com o lanche do BK, se o casal comendo não vier com a mesa desenhada.
+
+**Playground**
+- **Fundo:** desenhado no código igual ao HTML. Tem o piso xadrez roxo, parede escura, dois fliperamas à esquerda (um rosa com tela azul-piscina e um azul com tela rosa), um painel rosa no alto e um balcão de prêmios embaixo.
+- **Máquina de soco:** a mesma que aparece na animação `LINE_PUNCH_MACHINE`, parada no lugar do soco. Em cima dela há um **placar** rosa com números amarelos que mostra **000** e vira **038** no impacto.
+- **Precisa de arte final:** a ilustração do playground (fliperamas, balcão, luzes, piso) e a máquina de soco separada, parada e com o placar.
+
+**Túnel**
+- **Fundo:** ilustração vertical do túnel em arco, com lampiões, trepadeiras com flores, corações de luz no chão e a cidade à noite ao fundo. É a imagem do HTML, com uma vinheta roxa leve.
+- **Posições:** as duas entram pela esquerda e se encontram no meio do túnel para o beijo.
+- **Precisa de arte final:** a ilustração do túnel.
+
+**Cores e clima:** as transições entre lugares têm um brilho rosa (247, 178, 200) antes de escurecer. O túnel começa com esse tom rosa, que some aos poucos. No prólogo não há nuvens, pássaros, bichos, corações de vida, magia nem painel de tarefas: a Line anda sem espada.
+
+### 5.3 Interface do prólogo
+
+- **Etiquetas no alto, à esquerda**, como no HTML: o nome do lugar (*Minas Shopping*, *Playground* ou *Túnel*) e *♥ 09/05/2024*. Elas somem na transição para a fazenda.
+- **Faixa de dica** no alto: “Aproxime-se da Bell e pressione E para falar com ela.” e “Pressione E para a Line tentar.” No celular, o texto fala em tocar no botão.
+- **Botão de ação:** *Falar com a Bell* e *Tentar!*. No celular, os botões de luta, pulo e magia ficam escondidos durante o prólogo.
+- **Caixa de diálogo** com retrato, igual ao resto do jogo. A *Narradora* aparece sem retrato.
+- **Pular cena (Tab):** pula cada cena. Pulando tudo, o jogo passa pelos três lugares e chega na fazenda.
+
+### 5.4 Transições
+
+- **Entre lugares** (shopping → playground → túnel): brilho rosa por 0,8 s enquanto a tela escurece em 0,9 s. O novo lugar surge clareando.
+- **Do túnel para a fazenda:** depois do beijo, a tela escurece em 1,6 s, a câmera volta ao normal e a narradora fala sobre o tempo que passou, com a tela preta. Então a fazenda aparece e começa a cena *Manhã na fazenda* (Capítulo 1).
+
+### 5.5 Todas as animações do prólogo
+
+Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (prólogo)** da seção 9. As que ainda não têm arte usam uma substituta parecida.
+
+| Código | Quando aparece e o que precisa mostrar | Quadros | Status hoje |
+|---|---|---:|---|
+| `LINE_ADMIRE` | Início: a Line vê a Bell de longe. Precisa da Line de costas ou de lado, com a mão no peito, corações e o corpo balançando. | 20 | 🔁 usa `LINE_HAPPY` |
+| `BELL_WAIT` | A Bell esperando no shopping: olha para os lados, mexe no cabelo, confere o celular. Virada para a esquerda. | 16 | 🔁 usa `BELL_IDLE_RIGHT` |
+| `LINE_BELL_MEET` | As duas frente a frente, conversando e sorrindo. Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem. | 16 | 🔁 usa `LINE_BELL_HOLD_HANDS` |
+| `LINE_BELL_GREET_HUG` | Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada. | 24 | 🔁 usa `LINE_BELL_RESCUE_HUG` |
+| `LINE_BELL_BK` | As duas sentadas à mesa comendo BK (hambúrguer, batata e refri), com a mesa desenhada. O HTML tem 3 quadros. | 24 | 🔁 usa `LINE_BELL_EAT` |
+| `LINE_PUNCH_MACHINE` | A Line soca a máquina, com a máquina e o placar na mesma animação. O impacto é por volta da metade. | 16 | ✅ temporária |
+| `BELL_LAUGH_AT_LINE` | A Bell gargalhando da Line: se dobra de rir, bate na perna, enxuga as lágrimas. | 16 | 🔁 usa `BELL_LAUGH` |
+| `LINE_BELL_TUNNEL_KISS` | O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo. O HTML tem 8 quadros. | 8 | 🔁 usa `LINE_BELL_KISS` |
+
+**Animações que o prólogo reaproveita** (já existem, também temporárias): `LINE_IDLE`, `LINE_IDLE_BACK`, `LINE_WALK_RIGHT`, `LINE_WALK_LEFT`, `LINE_WALK_FRONT`, `LINE_WALK_BACK`, `BELL_IDLE`, `BELL_WALK_RIGHT`, `BELL_WALK_LEFT`, `BELL_WALK_FRONT`, `BELL_WALK_BACK` e `LINE_BELL_WALK_HANDS` (saindo do shopping de mãos dadas).
+
+**Efeitos do prólogo** (feitos no código): corações subindo no beijo, anel de impacto e tremor de tela no soco, brilho rosa das transições, zoom da câmera e escurecer.
+
+### 5.6 Retratos usados no prólogo
+
+| Personagem | Expressões | Onde |
+|---|---|---|
+| Line | `apaixonada`, `sorriso` | “puxa ela é tão linda”, “é que você é muito linda” / conversa, soco |
+| Bell | `maroto`, `sorriso`, `neutro`, `apaixonada` | “Você tá atrasada”, “HAHAHAHA!” / “BK.” / “você parece estar tímida” / o olhar apaixonado sem fala |
+| Narradora | sem retrato | três falas: saída do shopping, saída do playground e o fim no túnel |
+| Bell & Line | sem retrato | o “♥” depois do beijo |
+
+### 5.7 Arte que já existe no HTML
+
+O HTML do primeiro encontro já traz ilustrações das duas juntas: o abraço, o BK na mesa, as duas de mãos dadas, o beijo (tira de 8 quadros), a caminhada e o BK animado. Hoje o jogo usa as animações que já tinha no lugar delas, mas essas ilustrações são a melhor referência (ou até a base) para a arte final de `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_MEET`, `LINE_BELL_TUNNEL_KISS` e `LINE_BELL_WALK_HANDS`.
+
+![Ilustrações do HTML do primeiro encontro (referência para a arte final)](imagens/encontro-referencia-html.jpg)
+*Ilustrações do HTML do primeiro encontro (referência para a arte final)*
+
+### 5.8 O que falta para a versão final do prólogo
+
+- [ ] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` com arte própria.
+- [ ] `LINE_PUNCH_MACHINE` final e a máquina de soco parada, com o mesmo desenho.
+- [ ] Ilustração do Playground (hoje desenhada no código).
+- [ ] Versões finais das ilustrações do Minas Shopping e do Túnel.
+- [ ] Line parada de costas (`LINE_IDLE_BACK`) caprichada para a entrada no shopping.
+- [ ] Opcional: música e sons (passos no shopping, fliperamas, o soco, o beijo).
+
+### 5.9 Progresso e salvamento
+
+- **Novo jogo** sempre começa pelo prólogo.
+- Se o jogador fechar o jogo **no meio do prólogo**, **Continuar** recomeça o prólogo do início (ele é curto).
+- Terminado o prólogo, o jogo marca `encontroFeito` e salva já na fazenda. Jogos salvos antes do prólogo existir continuam de onde pararam.
+
+## 6. As fases
+
+Os três lugares do prólogo (Minas Shopping, Playground e Túnel) estão na seção 5. Estas são as áreas da aventura:
+
+### 6.1 Fazendinha
 Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho, pasto, chiqueiro, lago com píer e barco, varal, casinha do Theo, mesa de piquenique, árvores frutíferas e flores. Tem borboletas, pássaros, nuvens, folhas caindo e fumaça nas chaminés. De manhã, a luz é clara. À tarde, o céu fica alaranjado, e depois do rapto vira noite com vaga-lumes.
 
 ![Pasto com vacas, cavalo e ovelhas](imagens/04-pasto.jpg)
 *Pasto com vacas, cavalo e ovelhas*
 
-### 5.2 Floresta Sussurrante
+### 6.2 Floresta Sussurrante
 Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega.
 
 ![Sombras na floresta](imagens/11-floresta-sombras.jpg)
 *Sombras na floresta*
 
-### 5.3 Ruínas Encantadas (nova)
+### 6.3 Ruínas Encantadas (nova)
 Um templo antigo de pedra e musgo, organizado em salas:
 
 - **Salão sul (entrada):**
@@ -476,7 +685,7 @@ Um templo antigo de pedra e musgo, organizado em salas:
 ![Cristais acesos e barreira desfeita](imagens/15-barreira-aberta.jpg)
 *Cristais acesos e barreira desfeita*
 
-### 5.4 Montanha de Brasa (nova)
+### 6.4 Montanha de Brasa (nova)
 Rocha vulcânica, rios de lava e brasas subindo:
 
 - **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a primeira tocha.
@@ -489,15 +698,15 @@ Rocha vulcânica, rios de lava e brasas subindo:
   - Uma **plataforma cercada de fendas com o segundo baú de coração**.
   - O **portão de fogo**, que abre com as três tochas acesas.
 
-### 5.5 Covil do Dragão
+### 6.5 Covil do Dragão
 Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao fundo. Quando a Line entra, a entrada desmorona e a luta começa.
 
 ![O dragão cospe fogo no covil](imagens/23-dragao-fogo.jpg)
 *O dragão cospe fogo no covil*
 
-## 6. Como se joga
+## 7. Como se joga
 
-### 6.1 Controles
+### 7.1 Controles
 
 | Ação | Teclado | Controle | Celular |
 |---|---|---|---|
@@ -514,7 +723,7 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 | Pausar | Esc / P | Start | ⏸ |
 | Pular cena | Tab | — | Pular cena |
 
-### 6.2 Combate com espada
+### 7.2 Combate com espada
 
 | Golpe | Animação | Dano | Observação |
 |---|---|---|---|
@@ -530,7 +739,7 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 - **Esquiva e dash:** a Line fica invencível por um instante (`LINE_DODGE` e `LINE_DASH`).
 - **Guardar a espada:** depois de 4 segundos sem inimigos por perto, ela guarda a espada sozinha (`LINE_SWORD_SHEATHE`).
 
-### 6.3 Magia
+### 7.3 Magia
 
 - **Raio de Luz** (aprendido no altar das ruínas):
   - Custa 1 ◆.
@@ -550,7 +759,7 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 ![Carregando a Chuva de Estrelas](imagens/18-carregando-estrelas.jpg)
 *Carregando a Chuva de Estrelas*
 
-### 6.4 Vida, itens e progresso
+### 7.4 Vida, itens e progresso
 
 - **Corações:**
   - Começam em 3 (6 metades), e cada baú de coração extra dá mais 1.
@@ -562,7 +771,7 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 - **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.
 - **Salvamento automático:** ao entrar em cada área, ao abrir baús, acender cristais e beber das fontes. O botão **Continuar** retoma dali.
 
-### 6.5 Dificuldade
+### 7.5 Dificuldade
 
 | | Fácil 🌸 | Normal ⚔ | Difícil 🔥 |
 |---|---|---|---|
@@ -576,7 +785,7 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 
 A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, também pela pausa.
 
-## 7. Inimigos e chefes
+## 8. Inimigos e chefes
 
 ### Sombra
 - **Vida:** 3.
@@ -613,7 +822,7 @@ A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, tam
 - **Ponto fraco:** depois de levar dano suficiente, ele fica atordoado e o peito brilha em azul. É o ponto fraco.
 - **Fim da luta:** aparece o botão **GOLPE FINAL**.
 
-## 8. Lista completa de animações
+## 9. Lista completa de animações
 
 > ⚠️ **Lembrete: toda a arte atual é temporária** e vai ser trocada pela versão final, mantendo o mesmo código.
 
@@ -624,12 +833,13 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 260 animações. ✅ 160 com arte temporária, 🔁 40 com substituta e ✏️ 60 desenhadas no código.
+**Resumo:** 267 animações. ✅ 160 com arte temporária, 🔁 47 com substituta e ✏️ 60 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
+| Primeiro encontro (prólogo) | 8 | 1 | 7 | 0 |
 | Line — movimento | 31 | 29 | 2 | 0 |
-| Line — combate | 28 | 20 | 8 | 0 |
+| Line — combate | 27 | 19 | 8 | 0 |
 | Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 16 | 18 | 0 |
 | Line e Bell juntas | 26 | 12 | 0 | 14 |
@@ -640,7 +850,20 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Bichos da fazenda | 67 | 55 | 0 | 12 |
 | Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
 
-### 8.1 Line — movimento
+### 9.1 Primeiro encontro (prólogo)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `LINE_ADMIRE` | Line vê a Bell de longe (“puxa ela é tão linda”) *(sugestão nova)* | 20 |  | 🔁 usa `LINE_HAPPY` |  |
+| `BELL_WAIT` | Bell esperando a Line no shopping *(sugestão nova)* | 16 | sim | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `LINE_BELL_MEET` | Frente a frente, sorrindo (conversa no shopping) *(sugestão nova)* | 16 | sim | 🔁 usa `LINE_BELL_HOLD_HANDS` |  |
+| `LINE_BELL_GREET_HUG` | Abraço de chegada (“Você tá atrasada”) *(sugestão nova)* | 24 | sim | 🔁 usa `LINE_BELL_RESCUE_HUG` |  |
+| `LINE_BELL_BK` | Comendo BK juntas no shopping *(sugestão nova)* | 24 | sim | 🔁 usa `LINE_BELL_EAT` |  |
+| `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) | 16 |  | ✅ temporária | Laboratório v7 |
+| `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 16 | sim | 🔁 usa `BELL_LAUGH` |  |
+| `LINE_BELL_TUNNEL_KISS` | O primeiro beijo, no túnel *(sugestão nova)* | 8 |  | 🔁 usa `LINE_BELL_KISS` |  |
+
+### 9.2 Line — movimento
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -676,7 +899,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_FALL` | Cair | 4 |  | ✅ temporária | LINE_BELL_ITEM_20 |
 | `LINE_GROUND_STAND` | Levantar do chão | 6 |  | ✅ temporária | LINE_BELL_ITEM_21 |
 
-### 8.2 Line — combate
+### 9.3 Line — combate
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -707,9 +930,8 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_INJURED_STAND` | Levantar machucada | 6 |  | ✅ temporária | LINE_BELL_ITEM_38 |
 | `LINE_EXHAUSTED_IDLE` | Exausta | 6 | sim | ✅ temporária | LINE_BELL_ITEM_39 |
 | `LINE_DRAGON_FINAL_ATTACK` | Ataque final contra o dragão | 7 |  | ✅ temporária | LINE_BELL_ITEM_40 |
-| `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) *(sugestão nova)* | 16 |  | ✅ temporária | Laboratório v7 |
 
-### 8.3 Line — emoções
+### 9.4 Line — emoções
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -724,7 +946,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_RELIEVED` | Aliviada | 5 |  | ✅ temporária | LINE_BELL_ITEM_49 |
 | `LINE_VICTORY` | Comemorando a vitória *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/LINE_VICTORY |
 
-### 8.4 Bell
+### 9.5 Bell
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -763,7 +985,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_HIGH_FIVE` | Toca aqui *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/BELL_HIGH_FIVE |
 | `BELL_DANCE` | Dançando (giro) *(sugestão nova)* | 4 | sim | ✅ temporária | arte/linebell/BELL_DANCE |
 
-### 8.5 Line e Bell juntas
+### 9.6 Line e Bell juntas
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -794,7 +1016,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_HEAD_ON_LINE` | Bell apoiando a cabeça na Line | 12 |  | ✏️ código / falta |  |
 | `LINE_BELL_SIT_IDLE` | Idle das duas sentadas | 12 | sim | ✏️ código / falta |  |
 
-### 8.6 Dragão
+### 9.7 Dragão
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -826,7 +1048,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `DRAGON_SLEEP` | Dormir *(sugestão nova)* | 1 | sim | ✅ temporária | arte/dragao/DRAGON_SLEEP |
 | `DRAGON_EYE_OPEN_END` | Ressurgir no final | 2 |  | ✅ temporária | arte/dragao/DRAGON_EYE_OPEN_END |
 
-### 8.7 Magia e criaturas (novo)
+### 9.8 Magia e criaturas (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -844,7 +1066,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `WISP_ATTACK` | Fogo-fátuo atirando *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 | `WISP_DEATH` | Fogo-fátuo apagando *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 
-### 8.8 Inimigos (novo)
+### 9.9 Inimigos (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -854,7 +1076,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SHADOW_HIT` | Sombra — receber dano *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 | `SHADOW_DEATH` | Sombra — desaparecer *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 
-### 8.9 Efeitos
+### 9.10 Efeitos
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -872,7 +1094,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `FX_HEARTS` | Corações | 12 |  | ✏️ código / falta |  |
 | `FX_AMBIENT_PARTICLES` | Partículas ambientais | 12 | sim | ✏️ código / falta |  |
 
-### 8.10 Bichos da fazenda
+### 9.11 Bichos da fazenda
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -944,7 +1166,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `CAT_SLEEP` | Gato — Dormindo *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 | `CAT_PURR` | Gato — Carinho (ronronando) *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 
-### 8.11 Personagens de apoio (novo)
+### 9.12 Personagens de apoio (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -957,9 +1179,10 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 *Na coluna Quadros, as animações ✅ mostram quantos quadros diferentes a arte atual tem. As que faltam mostram quantos quadros o jogo espera (é uma sugestão, pode vir com mais ou menos).*
 
-### 8.12 O que ainda falta ter arte própria, por prioridade
+### 9.13 O que ainda falta ter arte própria, por prioridade
 
 **Aparecem na história (prioridade 1):**
+- **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).
 - **Bell:**
   - `BELL_SCARED`, `BELL_CAPTURED` e `BELL_DRAGON_CARRIED`: assustada, capturada e carregada pelo dragão.
   - `BELL_TRAPPED`, `BELL_CALL_LINE` e `BELL_ESCAPE_ATTEMPT`: presa na jaula, chamando a Line e tentando escapar.
@@ -980,7 +1203,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 **Opcionais (prioridade 3):** efeitos `FX_*` (hoje são partículas feitas no código), `LINE_JUMP_LEFT` e `LINE_LAND_LEFT` (o jogo espelha as da direita).
 
-## 9. Retratos dos diálogos
+## 10. Retratos dos diálogos
 
 > ⚠️ Os retratos atuais também são temporários.
 
@@ -1005,12 +1228,15 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line & Bell”, que deu as expressões extras.
 
-## 10. Cenário e objetos
+## 11. Cenário e objetos
 
 > ⚠️ O cenário atual também é temporário: parte vem de pacotes de arte recebidos, parte é desenhada no código.
 
 | Área | Já usa arte (temporária) | Ainda desenhado no código (precisa de arte) |
 |---|---|---|
+| Minas Shopping (prólogo) | ilustração do shopping, vinda do HTML do primeiro encontro | — |
+| Playground (prólogo) | máquina de soco (recortada da animação `LINE_PUNCH_MACHINE`) | piso xadrez, paredes, fliperamas, painel, balcão de prêmios, placar da máquina |
+| Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |
 | Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |
 | Floresta | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras |
 | Ruínas Encantadas | — | chão de lajes, paredes, pilares, cristais (apagado e aceso), altar com orbe, fonte, barreira de luz, lagos, baú |
@@ -1019,7 +1245,7 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 
 Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.
 
-## 11. Efeitos visuais
+## 12. Efeitos visuais
 
 Todos os efeitos são feitos no código por enquanto (temporários):
 
@@ -1038,21 +1264,24 @@ Todos os efeitos são feitos no código por enquanto (temporários):
 - **Ambiente:**
   - Corações, folhas caindo, fumaça das chaminés, brasas da lava, gotas d’água.
   - Vaga-lumes, borboletas, pássaros e sombras das nuvens.
+- **Prólogo:**
+  - Corações subindo no beijo, impacto e tremor no soco.
+  - Brilho rosa nas transições e zoom da câmera nos closes.
 - **Tela:**
   - Tremor de tela, flash branco e pausas de impacto.
   - Tons de cor por horário e área.
   - O olho do dragão no final.
 
-Os códigos `FX_*` da seção 8.9 são para quando esses efeitos ganharem arte própria.
+Os códigos `FX_*` da seção 9.10 são para quando esses efeitos ganharem arte própria.
 
-## 12. Como mandar arte nova
+## 13. Como mandar arte nova
 
 1. **Formatos aceitos:**
    - HTML de item (`LINE_BELL_ITEM_XX.html`, um PNG por quadro).
    - HTML de laboratório.
    - Pasta `arte/<grupo>/<CÓDIGO>/00.png, 01.png…`.
    - Uma **prancha**: imagem com vários quadros, que eu recorto.
-2. **Nome:** o código precisa ser exatamente o da seção 8.
+2. **Nome:** o código precisa ser exatamente o da seção 9.
 3. **Fundo transparente de verdade.** Nada de quadriculado ou fundo cinza desenhado.
 4. **Mesmo tamanho** em todos os quadros de uma animação, com os pés sempre na mesma linha.
 5. **Virada para a direita** nas animações de lado.
@@ -1063,7 +1292,7 @@ Os códigos `FX_*` da seção 8.9 são para quando esses efeitos ganharem arte p
    - Bichos: 100 a 150 px.
 8. Quando a arte chega, o extrator (`tools/extrair_sprites.py`) monta as folhas e ela entra no jogo sozinha, no lugar da temporária.
 
-## 13. Estrutura técnica
+## 14. Estrutura técnica
 
 | Arquivo | O que faz |
 |---|---|
@@ -1074,12 +1303,13 @@ Os códigos `FX_*` da seção 8.9 são para quando esses efeitos ganharem arte p
 | `game/js/dragao.js` | o dragão e seus ataques |
 | `game/js/bichos.js` | bichos da fazenda e o Mago |
 | `game/js/fazenda.js` | capítulo da fazenda e tarefas |
-| `game/js/cenas.js` | todas as cenas e falas (roteiro) |
-| `game/js/mapas.js` | os mapas das 5 áreas |
+| `game/js/encontro.js` | prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas |
+| `game/js/cenas.js` | cenas e falas da aventura (roteiro) |
+| `game/js/mapas.js` | os mapas das 5 áreas da aventura |
 | `game/js/cenario.js` | árvores, casa, objetos e ambiente |
 | `game/js/animacoes.js` | catálogo de animações, substitutas e desenho dos sprites |
 | `game/js/entrada.js` | teclado, controle, toque e dificuldade |
-| `game/assets/` | folhas de sprites, retratos, cenário |
+| `game/assets/` | folhas de sprites, retratos, cenário (inclui `cenario/encontro_*.webp` do prólogo) |
 | `tools/extrair_sprites.py` | converte a arte recebida em folhas para o jogo |
 | `tools/gerar_documentacao.py` | gera este documento |
 

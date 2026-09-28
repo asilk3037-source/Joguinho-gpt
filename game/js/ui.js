@@ -82,6 +82,7 @@
       $('#b-interagir').classList.toggle('oculto', !(j.textoPrompt && !j.promptFinal));
       if (j.textoPrompt) $('#b-interagir').textContent = j.textoPrompt;
       $('#toque').classList.toggle('em-cena', !!j.cena);
+      $('#toque').classList.toggle('passeio', !!(l && l.modoPasseio));
     },
   };
 

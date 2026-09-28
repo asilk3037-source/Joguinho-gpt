@@ -329,8 +329,10 @@
       const eixo = controlavel ? E.eixo() : { x: 0, y: 0, correr: false };
       const movendo = eixo.x !== 0 || eixo.y !== 0;
 
-      if (this.modoDuo) {
+      if (this.modoDuo || this.modoPasseio) {
+        // De mãos dadas ou no primeiro encontro: só anda (sem correr) e interage.
         eixo.correr = false;
+        if (this.travada) { eixo.x = 0; eixo.y = 0; }
         if (controlavel && (E.apertou('interagir') || E.apertou('atacar'))) jogo.interagir(this);
       } else if (controlavel) {
         if (E.apertou('interagir') && jogo.interagir(this)) return;

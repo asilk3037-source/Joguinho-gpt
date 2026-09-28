@@ -1,6 +1,6 @@
 # Line & Bell — o jogo
 
-Aventura com visão de cima para navegador (PC e celular). Começa com a vidinha da Line e da Bell na fazenda: tarefas do dia, bichinhos, almoço e passeio de mãos dadas até o lago. No pôr do sol um dragão leva a Bell. A Line atravessa a floresta, conversa com o mago e encontra uma espada. Nas **Ruínas Encantadas** ela aprende magia (Raio de Luz), acende cristais para desfazer barreiras e enfrenta o **Guardião de Pedra**, que dá a Chuva de Estrelas. Na **Montanha de Brasa** ela pula fendas, acende três tochas e abre o portão do covil, onde enfrenta o dragão.
+Aventura com visão de cima para navegador (PC e celular). Começa com o prólogo **O primeiro encontro** (09/05/2024): no Minas Shopping, a Line vê a Bell, elas conversam e comem BK, a Line apanha da máquina de soco no playground e as duas dão o primeiro beijo no túnel. O tempo passa e a história segue com a vidinha da Line e da Bell na fazenda: tarefas do dia, bichinhos, almoço e passeio de mãos dadas até o lago. No pôr do sol um dragão leva a Bell. A Line atravessa a floresta, conversa com o mago e encontra uma espada. Nas **Ruínas Encantadas** ela aprende magia (Raio de Luz), acende cristais para desfazer barreiras e enfrenta o **Guardião de Pedra**, que dá a Chuva de Estrelas. Na **Montanha de Brasa** ela pula fendas, acende três tochas e abre o portão do covil, onde enfrenta o dragão.
 
 Pelo caminho: dois baús com coração extra (mais vida máxima) e fontes que recuperam vida e magia e viram ponto de retorno.
 
@@ -60,7 +60,8 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 | `js/desenhos.js` | Desenhos provisórios: Bell, dragão, sombras, árvores, casa, baú, jaula… |
 | `js/entidades.js` | Line (movimento e combate), inimigos Sombra, Bell e partículas |
 | `js/dragao.js` | O chefe: ataques, avisos no chão, atordoamento e ponto fraco |
-| `js/cenas.js` | Diálogos e a história (prólogo, floresta, covil, final) |
+| `js/encontro.js` | Prólogo *O primeiro encontro*: Minas Shopping, Playground, Túnel e a transição para a fazenda |
+| `js/cenas.js` | Diálogos e a história da aventura (fazenda, floresta, ruínas, montanha, covil, final) |
 | `js/jogo.js` | Laço principal, câmera, colisão, HUD, salvar |
 | `js/ui.js` | Menu, pausa, controles e galeria de animações |
 | `tools/extrair_sprites.py` | Extrai os quadros dos HTMLs para o jogo |

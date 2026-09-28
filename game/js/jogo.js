@@ -28,6 +28,7 @@
       this.itens = [];
       this.projeteis = [];
       this.avisoMana = 0;
+      this.zoom = 1; this.zoomAlvo = 1;
       this.redimensionar();
       window.addEventListener('resize', () => this.redimensionar());
     }
@@ -37,7 +38,13 @@
       const w = window.innerWidth, h = window.innerHeight;
       this.canvas.width = Math.round(w * dpr); this.canvas.height = Math.round(h * dpr);
       this.canvas.style.width = w + 'px'; this.canvas.style.height = h + 'px';
-      this.escala = Math.min(h / ALTURA_VISTA, w / 400) * dpr;
+      this.escalaBase = Math.min(h / ALTURA_VISTA, w / 400) * dpr;
+      this.aplicarZoom();
+    }
+
+    // Zoom de câmera (closes das cenas do primeiro encontro).
+    aplicarZoom() {
+      this.escala = this.escalaBase * (this.zoom || 1);
       this.vw = this.canvas.width / this.escala; this.vh = this.canvas.height / this.escala;
     }
 
@@ -52,8 +59,8 @@
       try { localStorage.removeItem(CHAVE_SAVE); } catch (e) { /* ok */ }
       this.flags = {};
       this.dicasVistas.clear();
-      this.iniciarArea('fazenda', null, true);
-      this.iniciarCapitulo();
+      // A história começa no primeiro encontro; depois vem a fazenda.
+      LB.encontro.iniciar(this);
     }
 
     continuar() {
@@ -61,7 +68,9 @@
       try { s = JSON.parse(localStorage.getItem(CHAVE_SAVE)); } catch (e) { /* ok */ }
       if (!s) return this.novoJogo();
       this.flags = s.flags || {};
-      let area = s.area === 'campina' || !s.area ? 'fazenda' : s.area;
+      // Parou no meio do primeiro encontro: recomeça o prólogo (é curtinho).
+      if (!this.flags.encontroFeito && !this.flags.manhaVista && !this.flags.prologo) return LB.encontro.iniciar(this);
+      let area = s.area === 'campina' || !s.area || LB.MAPAS[s.area] && LB.MAPAS[s.area].tema === 'encontro' ? 'fazenda' : s.area;
       if (!this.flags.prologo) area = 'fazenda';
       this.iniciarArea(area, null, !this.flags.prologo);
       if (!this.flags.prologo) this.iniciarCapitulo();
@@ -74,6 +83,7 @@
 
     voltarAoMenu() {
       this.estado = 'menu';
+      LB.encontro.mostrarEtiquetas(this);
       this.cena = null;
       LB.dialogo.esconder();
       this.esconderTitulo();
@@ -91,6 +101,7 @@
       this.bell = null; this.dragao = null; this.duo = null; this.olho = null;
       this.chefeAtivo = false; this.promptFinal = false; this.presa = null; this.jaulaAberta = false;
       this.fade = 0; this.flashTela = 0; this.congelado = 0;
+      this.zoom = this.zoomAlvo = 1; this.aplicarZoom();
       this.tint = { covil: { cor: '255,90,30', a: 0.08 }, montanha: { cor: '255,110,40', a: 0.07 }, ruinas: { cor: '110,190,255', a: 0.05 } }[id] || null;
       this.cena = null;
       if (LB.dialogo.el) LB.dialogo.esconder();
@@ -129,10 +140,11 @@
       this.criarInimigos();
       this.prepararArea(id, semCenaDeEntrada);
       LB.magia.prepararArea(this, id);
+      if (this.mapa.tema === 'encontro') LB.encontro.prepararArea(this, id); else LB.encontro.mostrarEtiquetas(this);
 
       this.flags.area = id;
       this.salvar();
-      this.mostrarBanner(this.mapa.def.nome);
+      if (!this.mapa.def.semBanner) this.mostrarBanner(this.mapa.def.nome);
 
       if (id === 'floresta' && !this.flags.florestaVista) this.iniciarCena(LB.HISTORIA.floresta);
       if (id === 'covil') {
@@ -279,6 +291,7 @@
     }
 
     bloqueia(x, y, ent) {
+      if (this.mapa.tema === 'encontro') return LB.encontro.bloqueia(this, x, y);
       for (const p of this.mapa.props) if (p.tipo === 'decoracao' && p.raio && Math.hypot(x - p.x, (y - p.y) * 1.6) < p.raio + 6) return true;
       for (const n of this.npcs || []) if (Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 8) return true;
       if (this.mapa.id === 'covil' && !this.jaulaAberta) {
@@ -368,6 +381,7 @@
         if (p.tipo === 'fonte' && perto(p.x, p.y + 14, 50)) acoes.push({ texto: 'Beber da fonte', x: p.x, y: p.y - 56, fazer: () => this.beberFonte(p) });
       }
       this.acoesExtras(acoes, perto);
+      LB.encontro.acoes(this, acoes, perto);
       // Tarefas e objetos têm prioridade sobre carinho; entre iguais, vence o mais perto.
       let melhor = null, md = Infinity;
       for (const a of acoes) {
@@ -460,6 +474,7 @@
       for (const e of this.inimigos) e.atualizar(dt, this);
       if (this.dragao) this.dragao.atualizar(dt, this);
       LB.magia.atualizarProjeteis(this, dt);
+      if (Math.abs(this.zoom - this.zoomAlvo) > 0.001) { this.zoom += (this.zoomAlvo - this.zoom) * Math.min(1, dt * 3); this.aplicarZoom(); }
       this.avisoMana = Math.max(0, this.avisoMana - dt);
       if (this.bell) this.bell.atualizar(dt, this);
       if (this.duo) this.duo.anim.atualizar(dt);
@@ -541,8 +556,9 @@
       g.setTransform(this.escala, 0, 0, this.escala, -cx * this.escala, -cy * this.escala);
       g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
 
-      // Chão (só o pedaço visível).
+      // Chão (só o pedaço visível). No primeiro encontro, o fundo é a ilustração do lugar.
       const m = this.mapa, R = m.resChao;
+      if (m.tema === 'encontro') LB.encontro.desenharFundo(g, this, cx, cy);
       const x0 = Math.max(0, cx), y0 = Math.max(0, cy);
       const x1 = Math.min(m.larg, cx + this.vw), y1 = Math.min(m.alt, cy + this.vh);
       if (x1 > x0 && y1 > y0) g.drawImage(m.chao, x0 * R, y0 * R, (x1 - x0) * R, (y1 - y0) * R, x0, y0, x1 - x0, y1 - y0);
@@ -566,6 +582,7 @@
       for (const a of atores) lista.push({ y: a.y, a });
       for (const it of this.itens) lista.push({ y: it.y, item: it });
       for (const pr of this.projeteis) lista.push({ y: pr.y, proj: pr });
+      if (m.tema === 'encontro') for (const ob of LB.encontro.objetos(this)) lista.push({ y: ob.y, custom: ob });
       if (m.def.jaula) lista.push({ y: T(m.def.jaula.y) + 2, jaula: true });
       const tigela = this.pontoMapa('tigela');
       if (tigela) lista.push({ y: tigela.y - 2, tigela });
@@ -575,6 +592,7 @@
       for (const o of lista) {
         if (o.p) this.desenharProp(g, o.p);
         else if (o.a) o.a.desenhar(g, this);
+        else if (o.custom) o.custom.desenhar(g);
         else if (o.proj) LB.magia.desenharProjetil(g, o.proj, this.tempo);
         else if (o.item && o.item.tipo === 'ovo') this.desenharOvo(g, o.item);
         else if (o.item && o.item.tipo === 'mana') LB.magia.desenharItemMana(g, o.item, this.tempo);

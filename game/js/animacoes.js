@@ -19,6 +19,17 @@ window.LB = window.LB || {};
   const LADOS = ['LEFT', 'RIGHT'];
   const QUATRO = ['FRONT', 'BACK', 'LEFT', 'RIGHT'];
 
+  grupo('Primeiro encontro (prólogo)', [
+    ['LINE_ADMIRE', 'Line vê a Bell de longe (“puxa ela é tão linda”)', { fps: 12, face: 'F', quadros: 20, alt: 'LINE_HAPPY', nova: true }],
+    ['BELL_WAIT', 'Bell esperando a Line no shopping', { loop: true, quadros: 16, alt: 'BELL_IDLE', nova: true }],
+    ['LINE_BELL_MEET', 'Frente a frente, sorrindo (conversa no shopping)', { loop: true, face: 'F', quadros: 16, alt: 'LINE_BELL_HOLD_HANDS', nova: true }],
+    ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
+    ['LINE_BELL_BK', 'Comendo BK juntas no shopping', { fps: 6, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_EAT', nova: true }],
+    ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16 }],
+    ['BELL_LAUGH_AT_LINE', 'Bell gargalhando do soco da Line', { fps: 10, loop: true, face: 'F', quadros: 16, alt: 'BELL_LAUGH', nova: true }],
+    ['LINE_BELL_TUNNEL_KISS', 'O primeiro beijo, no túnel', { fps: 5, face: 'F', quadros: 8, alt: 'LINE_BELL_KISS', nova: true }],
+  ]);
+
   grupo('Line — movimento', [
     ['LINE_IDLE', 'Parada', { dir: QUATRO, fps: 8, loop: true, quadros: 16 }],
     ['LINE_LOOK_SIDES_FRONT', 'Olhar para os lados', { fps: 8, face: 'F' }],
@@ -58,7 +69,6 @@ window.LB = window.LB || {};
     ['LINE_INJURED_STAND', 'Levantar machucada', { fps: 26, quadros: 28, chao: 'quadro' }],
     ['LINE_EXHAUSTED_IDLE', 'Exausta', { fps: 10, loop: true, quadros: 20 }],
     ['LINE_DRAGON_FINAL_ATTACK', 'Ataque final contra o dragão', { fps: 14, quadros: 32 }],
-    ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16, nova: true }],
   ]);
 
   grupo('Line — emoções', [
@@ -354,7 +364,7 @@ window.LB = window.LB || {};
 
   // Personagens de imagem única (animados por movimento no código).
   const PERSONAGENS = { dragao: 'assets/personagens/dragao.png', mago: 'assets/personagens/mago.png' };
-  for (const n of ['arbusto_a', 'arbusto_b', 'arbusto_c', 'arbusto_d', 'arbusto_e', 'arbusto_f', 'arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'barco', 'barril', 'cachoeira', 'caixa', 'carroca', 'casa', 'celeiro', 'cenoura_0', 'cenoura_1', 'cenoura_2', 'cenoura_3', 'cerca', 'cerejeira_a', 'cerejeira_b', 'feno', 'feno_pilha', 'florida', 'galinheiro', 'girassol_0', 'girassol_1', 'girassol_2', 'lago', 'lampiao', 'macieira_a', 'macieira_b', 'macieira_c', 'milho_0', 'milho_1', 'milho_2', 'moinho', 'moita', 'pedra1', 'pedra2', 'pier', 'pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'placa', 'placa2', 'poco', 'porteira', 'tomate_0', 'tomate_1', 'tomate_2', 'tomate_3', 'tomate_4', 'tomate_5', 'trigo_0', 'trigo_1', 'trigo_2']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
+  for (const n of ['encontro_shopping', 'encontro_tunel', 'encontro_maquina', 'arbusto_a', 'arbusto_b', 'arbusto_c', 'arbusto_d', 'arbusto_e', 'arbusto_f', 'arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'barco', 'barril', 'cachoeira', 'caixa', 'carroca', 'casa', 'celeiro', 'cenoura_0', 'cenoura_1', 'cenoura_2', 'cenoura_3', 'cerca', 'cerejeira_a', 'cerejeira_b', 'feno', 'feno_pilha', 'florida', 'galinheiro', 'girassol_0', 'girassol_1', 'girassol_2', 'lago', 'lampiao', 'macieira_a', 'macieira_b', 'macieira_c', 'milho_0', 'milho_1', 'milho_2', 'moinho', 'moita', 'pedra1', 'pedra2', 'pier', 'pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'placa', 'placa2', 'poco', 'porteira', 'tomate_0', 'tomate_1', 'tomate_2', 'tomate_3', 'tomate_4', 'tomate_5', 'trigo_0', 'trigo_1', 'trigo_2']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
   const personagens = {};
   function personagem(nome) {
     const img = personagens[nome];
