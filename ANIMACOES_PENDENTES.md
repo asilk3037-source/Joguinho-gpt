@@ -31,7 +31,8 @@ O jogo agora começa com o primeiro encontro das duas (Minas Shopping → Playgr
 - `LINE_BELL_BK`: comendo BK na mesa. Usa o almoço da fazenda.
 - `BELL_LAUGH_AT_LINE`: gargalhando do soco. Usa a gargalhada.
 - `LINE_BELL_TUNNEL_KISS`: o primeiro beijo no túnel. Usa a bitoquinha.
-- Cenário: o **Playground** ainda é desenhado no código; o shopping e o túnel usam as ilustrações do HTML. A máquina de soco parada foi recortada da `LINE_PUNCH_MACHINE`.
+- Cenário: o **Playground** ainda é desenhado no código; o shopping e o túnel usam as ilustrações do HTML.
+- ⭐ **Minas Shopping: modelo real.** A ilustração final do shopping deve seguir a foto da praça de alimentação (`arte/referencias/minas_shopping_modelo.jpg`): Burger King ao fundo, teto de madeira, pilar branco, piso polido, mesas redondas estampadas e cadeiras de madeira caramelo. Detalhes na seção 5.2 da documentação. A máquina de soco parada foi recortada da `LINE_PUNCH_MACHINE`.
 
 O HTML do primeiro encontro já tem ilustrações do abraço, do BK, das mãos dadas e do beijo que servem de base (ver seção 5 da documentação).
 

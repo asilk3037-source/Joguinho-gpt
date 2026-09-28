@@ -603,7 +603,33 @@ A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma área, 
 **Minas Shopping**
 - **Fundo:** ilustração vertical do shopping, com piso claro de losangos rosados, mesinhas redondas com flores, cadeiras rosas e verdes, plantas, vitrines de doces e cafés, escada rolante ao fundo e luz quente. É a imagem do próprio HTML (720×1280), com o mesmo sombreado suave por cima.
 - **Posições:** a Line entra por baixo, à esquerda, de costas. A Bell espera à direita, perto do sofá vermelho, olhando para a esquerda. A mesa do BK fica no centro.
-- **Precisa de arte final:** a ilustração do shopping e uma versão da mesa com o lanche do BK, se o casal comendo não vier com a mesa desenhada.
+- **Precisa de arte final:** a ilustração do shopping, feita a partir do **modelo real** abaixo, e uma versão da mesa com o lanche do BK, se o casal comendo não vier com a mesa desenhada.
+
+#### ⭐ Minas Shopping: modelo real para a arte final
+
+> 💛 **Este é o cenário de verdade do Minas Shopping**: a praça de alimentação onde as duas se encontraram. A ilustração final do shopping deve usar esta foto como **modelo**, no estilo do jogo. A ilustração que está no jogo hoje (vinda do HTML) é **temporária**.
+
+![Praça de alimentação do Minas Shopping: modelo para a arte final](imagens/encontro-modelo-minas-shopping.jpg)
+*Praça de alimentação do Minas Shopping: modelo para a arte final*
+
+**O que a arte precisa ter, seguindo a foto:**
+- **Praça de alimentação**, não um corredor de lojas.
+- **Burger King** ao fundo, com o letreiro vermelho e bege sobre o balcão marrom, as telas de cardápio e os pôsteres de lanche. É onde elas comem o BK.
+- Ao lado, outra lanchonete com letreiro amarelo e laranja (na foto é o Popeyes).
+- **Teto** de madeira ripada, com luzes embutidas e uma faixa clara iluminada.
+- **Pilar branco** grande do lado direito.
+- Um **balcão** comprido de pedra na frente das lojas e uma **floreira** com plantas à direita.
+- **Piso** claro de porcelanato, bem polido, refletindo as luzes.
+- **Mesas redondas** com o tampo claro estampado de desenhos e pé central metálico.
+- **Cadeiras** de madeira curvada, cor caramelo, com pernas finas de metal. Algumas mesas têm banco estofado encostado.
+- **Luz quente e aconchegante**, com tons de madeira, bege, caramelo e o vermelho do BK.
+
+**Como encaixar no jogo:**
+- A tela é vertical (360×640), vista um pouco de cima. As lojas ficam no alto e as mesas se espalham pela área onde dá para andar.
+- A Line entra por baixo, à esquerda. A Bell espera à direita, perto das mesas. A mesa do BK fica no centro e as duas se sentam nela.
+- As setas, o ícone de hambúrguer e coxinha e o triângulo que aparecem na foto são do app onde ela foi tirada e **não fazem parte do cenário**.
+
+A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.
 
 **Playground**
 - **Fundo:** desenhado no código igual ao HTML. Tem o piso xadrez roxo, parede escura, dois fliperamas à esquerda (um rosa com tela azul-piscina e um azul com tela rosa), um painel rosa no alto e um balcão de prêmios embaixo.
@@ -670,7 +696,8 @@ O HTML do primeiro encontro já traz ilustrações das duas juntas: o abraço, o
 - [ ] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` com arte própria.
 - [ ] `LINE_PUNCH_MACHINE` final e a máquina de soco parada, com o mesmo desenho.
 - [ ] Ilustração do Playground (hoje desenhada no código).
-- [ ] Versões finais das ilustrações do Minas Shopping e do Túnel.
+- [ ] Ilustração final do Minas Shopping seguindo a foto-modelo da praça de alimentação (seção 5.2), com o Burger King.
+- [ ] Versão final da ilustração do Túnel.
 - [ ] Line parada de costas (`LINE_IDLE_BACK`) caprichada para a entrada no shopping.
 - [ ] Opcional: música e sons (passos no shopping, fliperamas, o soco, o beijo).
 
@@ -1261,7 +1288,7 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 
 | Área | Já usa arte (temporária) | Ainda desenhado no código (precisa de arte) |
 |---|---|---|
-| Minas Shopping (prólogo) | ilustração do shopping, vinda do HTML do primeiro encontro | — |
+| Minas Shopping (prólogo) | ilustração do shopping, vinda do HTML do primeiro encontro (temporária; a final segue a foto-modelo da seção 5.2) | — |
 | Playground (prólogo) | máquina de soco (recortada da animação `LINE_PUNCH_MACHINE`) | piso xadrez, paredes, fliperamas, painel, balcão de prêmios, placar da máquina |
 | Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |
 | Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |
