@@ -20,13 +20,14 @@
   function alvoDoRaio(jogo, line) {
     const fx = line.dir === 'LEFT' || line.dir === 'RIGHT' ? line.lado : 0;
     const fy = line.dir === 'BACK' ? -1 : line.dir === 'FRONT' ? 1 : 0;
-    const cand = jogo.alvos().map((e) => ({ x: e.x, y: e.y - (e.chefe ? 20 : 0) }));
+    // O Guardião é alvo certo: com ele por perto, a luz vai nele mesmo com a Line virada para outro lado.
+    const cand = jogo.alvos().map((e) => ({ x: e.x, y: e.y - (e.chefe ? 20 : 0), sempre: !!e.golem }));
     for (const p of jogo.mapa.props) if ((p.tipo === 'cristal' || p.tipo === 'tocha') && !p.aceso) cand.push({ x: p.x, y: p.y - 2 });
     let melhor = null, md = 330;
     for (const c of cand) {
       const dx = c.x - line.x, dy = c.y - line.y, d = Math.hypot(dx, dy);
       if (d < 8 || d > md) continue;
-      if ((dx * fx + dy * fy) / d < 0.35) continue;
+      if (!c.sempre && (dx * fx + dy * fy) / d < 0.35) continue;
       md = d; melhor = c;
     }
     return melhor ? { x: melhor.x - line.x, y: melhor.y - line.y } : { x: fx, y: fy };
@@ -429,7 +430,7 @@
   class Golem {
     constructor(x, y) {
       this.x = x; this.y = y; this.x0 = x; this.y0 = y;
-      this.hpMax = 22; this.hp = 22; this.recarga = 0; this.raio = 30; this.vivo = true; this.inimigo = true;
+      this.hpMax = 14; this.hp = 14; this.recarga = 0; this.raio = 30; this.vivo = true; this.inimigo = true;
       this.estado = 'dormindo'; this.dormindo = true; this.t = 0; this.exposto = 0; this.flash = 0; this.lado = 1;
       this.ondas = []; this.nome = 'Guardião de Pedra'; this.golem = true; this.passo = 0;
       this.anim = new LB.Animador('GOLEM_SLEEP');
@@ -449,7 +450,7 @@
       this.anim.tocar(this.dormindo ? 'GOLEM_SLEEP' : ({ pisao: 'GOLEM_SLAM', pedra: 'GOLEM_THROW', atordoado: 'GOLEM_STUNNED', morrendo: 'GOLEM_DEATH' })[this.estado] || 'GOLEM_IDLE');
       const l = jogo.line;
       for (const o of this.ondas) {
-        o.r += 190 * dt;
+        o.r += 150 * dt;
         const d = Math.hypot(l.x - o.x, (l.y - o.y) * 1.6);
         if (!o.acertou && Math.abs(d - o.r) < 16) { if (l.receberDano(jogo, 1, false, o.x, o.y, { pulavel: true, bloqueavel: false })) o.acertou = true; }
       }
@@ -465,23 +466,23 @@
       const raiva = this.hp <= this.hpMax / 2;
       switch (this.estado) {
         case 'observar':
-          if (d > 80) { this.mover(dx / d * (raiva ? 52 : 38) * dt, dy / d * (raiva ? 52 : 38) * dt, jogo); this.passo += dt; }
-          if (this.t > (raiva ? 1.0 : 1.5)) { this.t = 0; this.estado = d < 130 || Math.random() < 0.45 ? 'pisao' : 'pedra'; this.tiros = raiva ? 2 : 1; }
+          if (d > 80) { this.mover(dx / d * (raiva ? 42 : 34) * dt, dy / d * (raiva ? 42 : 34) * dt, jogo); this.passo += dt; }
+          if (this.t > (raiva ? 1.8 : 2.3)) { this.t = 0; this.estado = d < 130 || Math.random() < 0.45 ? 'pisao' : 'pedra'; this.tiros = 1; }
           break;
         case 'pisao':
-          if (this.t > 0.85 && !this.bateu) {
+          if (this.t > 1.15 && !this.bateu) {
             this.bateu = true;
             this.ondas.push({ x: this.x, y: this.y, r: 24 });
             jogo.tremer(6, 0.3);
             jogo.particulas.emitir('poeira', this.x, this.y, 16, { vel: 120, vida: 0.6, r: 5 });
             jogo.particulas.emitir('pedra', this.x, this.y, 8, { vel: 90, vz: 140, vida: 0.8 });
           }
-          if (this.t > 1.5) { this.bateu = false; this.estado = 'observar'; this.t = 0; }
+          if (this.t > 1.8) { this.bateu = false; this.estado = 'observar'; this.t = 0; }
           break;
         case 'pedra':
           if (this.t > 0.7) {
             const ang = Math.atan2(dy, dx) + (this.tiros === 2 ? 0.18 : 0);
-            lancar(jogo, { dono: 'inimigo', tipo: 'pedra', x: this.x + this.lado * 20, y: this.y - 4, vx: Math.cos(ang) * 220, vy: Math.sin(ang) * 220, z: 60, r: 8, max: Math.min(1.5, d / 220 + 0.2) });
+            lancar(jogo, { dono: 'inimigo', tipo: 'pedra', x: this.x + this.lado * 20, y: this.y - 4, vx: Math.cos(ang) * 170, vy: Math.sin(ang) * 170, z: 60, r: 8, max: Math.min(1.8, d / 170 + 0.2) });
             this.tiros--;
             if (this.tiros > 0) this.t = 0.35;
             else { this.estado = 'observar'; this.t = -0.4; }
@@ -491,8 +492,10 @@
           this.exposto -= dt;
           if (Math.random() < dt * 6) jogo.particulas.emitir('brilho', this.x + (Math.random() - 0.5) * 30, this.y - 70, 1, { vel: 20, vida: 0.5, r: 3 });
           if (this.exposto <= 0) {
-            // Acorda bravo: o cristal volta a brilhar e ele revida com um pisão.
-            this.exposto = 0; this.recarga = 2.2; this.estado = 'pisao'; this.t = 0.25; this.bateu = false;
+            // Volta a si devagar e deixa um presentinho para a Line.
+            this.exposto = 0; this.recarga = 0.8; this.estado = 'observar'; this.t = -0.8; this.bateu = false;
+            jogo.itens.push({ tipo: 'mana', x: this.x - this.lado * 50, y: this.y + 20, t: 0 });
+            if (jogo.line.hp <= jogo.line.hpMax / 2) jogo.itens.push({ tipo: 'coracao', x: this.x + this.lado * 50, y: this.y + 20, t: 0 });
             jogo.particulas.emitir('brilho', this.x, this.y - 50, 8, { vel: 60, vida: 0.5 });
           }
           break;
@@ -526,7 +529,7 @@
         jogo.dica('golemRecarga', 'O cristal do guardião ainda está brilhando forte. Desvie e tente de novo daqui a pouco!');
         return true;
       }
-      this.estado = 'atordoado'; this.t = 0; this.exposto = 2.8; this.bateu = false;
+      this.estado = 'atordoado'; this.t = 0; this.exposto = 4.5; this.bateu = false;
       jogo.dica('golemAberto', 'O cristal rachou e o guardião ficou tonto! Agora a espada funciona: ataque!');
       return true;
     }
@@ -541,7 +544,7 @@
         g.strokeStyle = `rgba(230,200,150,${a})`; g.lineWidth = 10 * a + 3;
         g.beginPath(); g.ellipse(o.x, o.y, o.r, o.r / 1.6, 0, 0, TAU); g.stroke();
       }
-      if (this.estado === 'pisao' && this.t < 0.85) {
+      if (this.estado === 'pisao' && this.t < 1.15) {
         const p = 0.25 + 0.2 * Math.sin(jogo.tempo * 18);
         g.strokeStyle = `rgba(255,90,60,${p + 0.2})`; g.lineWidth = 4;
         g.beginPath(); g.ellipse(this.x, this.y, 70, 44, 0, 0, TAU); g.stroke();
@@ -553,7 +556,7 @@
       const st = this.anim.estado(null, this.lado);
       if (st.r.sprite && !st.r.via) { if (this.flash > 0) g.filter = 'brightness(2)'; LB.desenharSprite(g, st.r, st.quadro, x, y, 110); g.filter = 'none'; return; }
       const morte = this.estado === 'morrendo' ? Math.min(1, this.t / 1.6) : 0;
-      const ergue = this.estado === 'pisao' && this.t < 0.85 ? this.t / 0.85 : 0;
+      const ergue = this.estado === 'pisao' && this.t < 1.15 ? Math.max(0, this.t) / 1.15 : 0;
       const tonto = this.estado === 'atordoado';
       const anda = Math.sin(this.passo * 6) * 2;
       const resp = this.dormindo ? Math.sin(t * 1.2) * 1 : Math.sin(t * 2) * 1.5;
