@@ -359,6 +359,33 @@ w("- **Fundo:** desenhado no código igual ao HTML. Tem o piso xadrez roxo, pare
 w("- **Máquina de soco:** a mesma que aparece na animação `LINE_PUNCH_MACHINE`, parada no lugar do soco. Em cima dela há um **placar** rosa com números amarelos que mostra **000** e vira **038** no impacto.")
 w("- **Precisa de arte final:** a ilustração do playground (fliperamas, balcão, luzes, piso) e a máquina de soco separada, parada e com o placar.")
 w()
+w("#### Playground: o cenário como está no jogo")
+w()
+w("> Este é o playground que aparece hoje no jogo, desenhado no código a partir do HTML do primeiro encontro. Ele é **temporário** e serve de **mapa** para a ilustração final: onde fica cada coisa e onde as duas se posicionam.")
+w()
+img("encontro-playground", "Playground no jogo hoje, com cada parte numerada e o placar antes e depois do soco")
+w("| # | Parte | Como está hoje | O que a arte final deve mostrar |")
+w("|---|---|---|---|")
+for l in [
+    ("1", "Fliperama rosa", "alto, à esquerda: letreiro rosa, tela azul-piscina e dois botões amarelos", "máquina de fliperama com tela acesa, controles e luzes"),
+    ("2", "Fliperama azul", "logo abaixo do primeiro: letreiro azul e tela rosa", "outro fliperama, com cores diferentes do primeiro"),
+    ("3", "Painel rosa", "no alto, ao centro", "letreiro luminoso ou painel de prêmios do playground"),
+    ("4", "Máquina de soco e placar", "no meio da sala, com o saco vermelho. O placar mostra 000 e vira 038 no soco", "a mesma máquina da `LINE_PUNCH_MACHINE`, parada, com o placar digital em cima"),
+    ("5", "Balcão de prêmios", "embaixo, à direita, com sete prêmios rosa", "balcão com bichinhos de pelúcia e brindes"),
+    ("6", "Piso", "xadrez roxo em quadrados de 32 px", "piso de playground colorido, que combine com as luzes"),
+    ("7", "Paredes", "faixas rosadas nas laterais e embaixo", "paredes com luzes neon e decoração"),
+    ("8", "Fundo", "roxo bem escuro em cima e embaixo", "teto e entrada do playground, com luz baixa e clima de fliperama"),
+]:
+    w("| " + " | ".join(l) + " |")
+w()
+w("**Posições (na tela de 360×640 do HTML):**")
+w("- **A Line** para em frente à máquina de soco (x 204, y 315).")
+w("- **A Bell** fica olhando do lado esquerdo (x 150, y 340).")
+w("- As duas **entram por baixo, à esquerda**, e saem pela direita, embaixo.")
+w()
+w("**Clima:** playground de shopping, com luz baixa roxa e rosa, telas brilhando e um ar divertido. É onde a Bell morre de rir.")
+w()
+w()
 w("**Túnel**")
 w("- **Fundo:** ilustração vertical do túnel em arco, com lampiões, trepadeiras com flores, corações de luz no chão e a cidade à noite ao fundo. É a imagem do HTML, com uma vinheta roxa leve.")
 w("- **Posições:** as duas entram pela esquerda e se encontram no meio do túnel para o beijo.")

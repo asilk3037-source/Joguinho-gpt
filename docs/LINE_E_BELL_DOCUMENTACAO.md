@@ -636,6 +636,32 @@ A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.
 - **Máquina de soco:** a mesma que aparece na animação `LINE_PUNCH_MACHINE`, parada no lugar do soco. Em cima dela há um **placar** rosa com números amarelos que mostra **000** e vira **038** no impacto.
 - **Precisa de arte final:** a ilustração do playground (fliperamas, balcão, luzes, piso) e a máquina de soco separada, parada e com o placar.
 
+#### Playground: o cenário como está no jogo
+
+> Este é o playground que aparece hoje no jogo, desenhado no código a partir do HTML do primeiro encontro. Ele é **temporário** e serve de **mapa** para a ilustração final: onde fica cada coisa e onde as duas se posicionam.
+
+![Playground no jogo hoje, com cada parte numerada e o placar antes e depois do soco](imagens/encontro-playground.jpg)
+*Playground no jogo hoje, com cada parte numerada e o placar antes e depois do soco*
+
+| # | Parte | Como está hoje | O que a arte final deve mostrar |
+|---|---|---|---|
+| 1 | Fliperama rosa | alto, à esquerda: letreiro rosa, tela azul-piscina e dois botões amarelos | máquina de fliperama com tela acesa, controles e luzes |
+| 2 | Fliperama azul | logo abaixo do primeiro: letreiro azul e tela rosa | outro fliperama, com cores diferentes do primeiro |
+| 3 | Painel rosa | no alto, ao centro | letreiro luminoso ou painel de prêmios do playground |
+| 4 | Máquina de soco e placar | no meio da sala, com o saco vermelho. O placar mostra 000 e vira 038 no soco | a mesma máquina da `LINE_PUNCH_MACHINE`, parada, com o placar digital em cima |
+| 5 | Balcão de prêmios | embaixo, à direita, com sete prêmios rosa | balcão com bichinhos de pelúcia e brindes |
+| 6 | Piso | xadrez roxo em quadrados de 32 px | piso de playground colorido, que combine com as luzes |
+| 7 | Paredes | faixas rosadas nas laterais e embaixo | paredes com luzes neon e decoração |
+| 8 | Fundo | roxo bem escuro em cima e embaixo | teto e entrada do playground, com luz baixa e clima de fliperama |
+
+**Posições (na tela de 360×640 do HTML):**
+- **A Line** para em frente à máquina de soco (x 204, y 315).
+- **A Bell** fica olhando do lado esquerdo (x 150, y 340).
+- As duas **entram por baixo, à esquerda**, e saem pela direita, embaixo.
+
+**Clima:** playground de shopping, com luz baixa roxa e rosa, telas brilhando e um ar divertido. É onde a Bell morre de rir.
+
+
 **Túnel**
 - **Fundo:** ilustração vertical do túnel em arco, com lampiões, trepadeiras com flores, corações de luz no chão e a cidade à noite ao fundo. É a imagem do HTML, com uma vinheta roxa leve.
 - **Posições:** as duas entram pela esquerda e se encontram no meio do túnel para o beijo.
