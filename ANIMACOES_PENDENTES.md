@@ -16,6 +16,10 @@ Qualquer um destes formatos funciona:
 
 O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_SCARED`). Animações de lado podem vir só viradas para a **direita**: o jogo espelha para a esquerda.
 
+## ⭐ Theo: layout oficial
+
+A arte do Theo que está hoje no jogo (prancha `arte/referencias/theo_shihtzu.png`) é o **layout oficial** para criar a arte final. A versão final deve **só melhorar**, sem perder os traços: shih-tzu marrom-caramelo com peito, patas e rabo creme, topete, orelhas longas, olhos pretos grandes e língua rosa, em pixel art com contorno escuro. Pode melhorar o tamanho igual entre os quadros, o fundo transparente, o contorno e ter mais quadros. Detalhes na seção 2 da [documentação](docs/LINE_E_BELL_DOCUMENTACAO.md).
+
 ## Prioridade 1 — aparecem na história
 
 ### Prólogo: O primeiro encontro (novo)

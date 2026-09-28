@@ -66,6 +66,33 @@ As animações do casal aparecem nas cenas: mãos dadas, almoço, bitoquinha, da
 ### Theo
 O shih-tzu da família. Late, pede comida, segue a Line pela fazenda depois de comer e fica esperando em casa durante a aventura.
 
+#### ⭐ Theo: layout oficial para a arte final
+
+> 💛 **Este é o Theo aprovado.** A arte que está no jogo hoje é **o layout oficial** para criar a arte final do Theo. A versão final deve **só melhorar** esta arte, **sem perder os traços**. Não é para redesenhar o personagem.
+
+![O Theo como está no jogo hoje: o layout oficial](imagens/theo-no-jogo.jpg)
+*O Theo como está no jogo hoje: o layout oficial*
+
+**O que precisa continuar igual (os traços do Theo):**
+- **Raça e formato:** shih-tzu fofinho, corpo baixo e redondo, pernas curtas e cabeça grande em relação ao corpo, no estilo chibi do jogo.
+- **Pelagem:** marrom-caramelo, com mechas mais escuras nas orelhas e nas costas. O peito, as patas, a barba e o rabo são creme.
+- **Cabeça:** topete arrepiado, orelhas longas e peludas caindo dos lados, franja por cima dos olhos.
+- **Rosto:** olhos pretos, grandes e brilhantes, focinho curto com nariz preto e boquinha aberta com a língua rosa aparecendo.
+- **Rabo:** enrolado para cima, bem peludo e claro.
+- **Estilo:** pixel art detalhada, com contorno escuro e textura de pelo desenhada fio a fio.
+- **Acessórios e cenas:** a caminha bege, a tigela azul com patinha, a bolinha azul, o osso, a banheira com o patinho, os corações e os sinais de ! e ?.
+
+**O que pode melhorar:**
+- Deixar todos os quadros no **mesmo tamanho**, com as patas sempre na mesma linha do chão.
+- **Fundo transparente de verdade**, sem a sombra marrom da prancha e sem sombra no chão (o jogo desenha a sombra).
+- Deixar o contorno mais limpo e as animações mais suaves, com mais quadros em andar, correr e brincar.
+- Manter as 4 direções coerentes: frente, costas e lado direito. O lado esquerdo o jogo espelha.
+
+A prancha original fica em `arte/referencias/theo_shihtzu.png`, e os quadros recortados em `arte/theo/`.
+
+![Prancha original do Theo (layout oficial, referência para a arte final)](imagens/theo-layout-oficial.jpg)
+*Prancha original do Theo (layout oficial, referência para a arte final)*
+
 ### Bichos da fazenda
 Galinhas (brancas e marrons), pintinhos, vacas, cavalo e porcos já têm arte. Ovelhas, patos e o gato ainda são desenhados no código.
 
@@ -1286,11 +1313,12 @@ Os códigos `FX_*` da seção 9.10 são para quando esses efeitos ganharem arte 
 4. **Mesmo tamanho** em todos os quadros de uma animação, com os pés sempre na mesma linha.
 5. **Virada para a direita** nas animações de lado.
 6. **Sem sombra no chão e sem rótulos** dentro dos quadros. O jogo desenha a sombra.
-7. **Tamanho recomendado:**
+7. **Theo:** a arte final deve seguir o layout oficial da seção 2, só melhorando, sem perder os traços.
+8. **Tamanho recomendado:**
    - Personagens: o corpo com cerca de 200 a 250 px de altura.
    - Dragão: corpo com cerca de 400 px, em quadros de 512×512.
    - Bichos: 100 a 150 px.
-8. Quando a arte chega, o extrator (`tools/extrair_sprites.py`) monta as folhas e ela entra no jogo sozinha, no lugar da temporária.
+9. Quando a arte chega, o extrator (`tools/extrair_sprites.py`) monta as folhas e ela entra no jogo sozinha, no lugar da temporária.
 
 ## 14. Estrutura técnica
 
@@ -1314,7 +1342,7 @@ Os códigos `FX_*` da seção 9.10 são para quando esses efeitos ganharem arte 
 | `tools/gerar_documentacao.py` | gera este documento |
 
 ### Como atualizar este documento
-As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json`, `python3 tools/extrair_roteiro.py roteiro.json` e `python3 tools/gerar_documentacao.py inventario.json roteiro.json`.
+As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json`, `python3 tools/extrair_roteiro.py roteiro.json` , `python3 tools/gerar_documentacao.py inventario.json roteiro.json` e, para a versão HTML, `python3 tools/gerar_documentacao_html.py`.
 
 ![No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma](imagens/25-galeria.jpg)
 *No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma*
