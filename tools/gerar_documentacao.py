@@ -74,19 +74,31 @@ w("> Elas estão no jogo só para dar vida à aventura enquanto a criação da a
 w("> Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.")
 w("> Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.")
 w()
+w("> 🆕 **Novidades desta versão:**")
+w("> - **Gruta dos Ecos**, área nova a leste da floresta (seção 7.1).")
+w("> - **Mochila com 7 itens usáveis**: Poção de Vida, Pão da Bell, Maçã, Elixir de Luz, Flor da Lua, Chave antiga e Bússola do Mago (seção 7.3).")
+w("> - **Caderno de 8 pistas** para investigar o dragão e achar a Bell (seção 7.4).")
+w("> - **Mapa com névoa** que vai abrindo com a exploração, e mapa do mundo (seção 7.5).")
+w("> - **13 baús e 3 portas trancadas** (seção 7.2), áreas maiores nas ruínas e na montanha.")
+w("> - As **três tochas** da montanha agora são fáceis de achar (seção 7.6).")
+w()
 img("01-menu", "Tela inicial, com a escolha de dificuldade")
 w("**Jogar:** https://line-e-bell.vercel.app · **Código:** pasta `game/` deste repositório")
 w()
 w("## Sumário")
 w()
 secoes = ["1. Visão geral", "2. Personagens", "3. A história", "4. Roteiro completo, cena a cena", "5. O primeiro encontro (prólogo)",
-          "6. As fases", "7. Como se joga", "8. Inimigos e chefes", "9. Lista completa de animações", "10. Retratos dos diálogos",
-          "11. Cenário e objetos", "12. Efeitos visuais", "13. Como mandar arte nova", "14. Estrutura técnica"]
+          "6. As fases", "7. Exploração: Gruta dos Ecos, mochila, itens, pistas e mapa", "8. Como se joga", "9. Inimigos e chefes", "10. Lista completa de animações", "11. Retratos dos diálogos",
+          "12. Cenário e objetos", "13. Efeitos visuais", "14. Como mandar arte nova", "15. Estrutura técnica"]
 for s in secoes:
-    ancora = s.lower().replace(" ", "-").replace(".", "").replace(",", "").replace("(", "").replace(")", "")
+    ancora = s.lower().replace(" ", "-").replace(".", "").replace(",", "").replace("(", "").replace(")", "").replace(":", "")
     for a, b in (("ã", "a"), ("á", "a"), ("â", "a"), ("é", "e"), ("ê", "e"), ("í", "i"), ("ó", "o"), ("ô", "o"), ("õ", "o"), ("ú", "u"), ("ç", "c")):
         ancora = ancora.replace(a, b)
     w(f"- [{s}](#{ancora})")
+    if s.startswith("7. "):
+        for sub, anc in [("7.1 Gruta dos Ecos", "71-gruta-dos-ecos-area-nova"), ("7.2 Baús, portas, chaves e pistas", "72-todos-os-baus-portas-chaves-e-pistas"), ("7.3 Mochila e itens", "73-mochila-e-itens"),
+                         ("7.4 Caderno de pistas", "74-caderno-de-pistas-investigacao"), ("7.5 Mapa com névoa", "75-mapa-com-nevoa"), ("7.6 Tochas e cristais", "76-tochas-e-cristais-como-achar"), ("7.7 Arte necessária", "77-arte-necessaria-para-a-exploracao")]:
+            w(f"  - [{sub}](#{anc})")
 w()
 
 # =====================================================================
@@ -197,7 +209,7 @@ w()
 # =====================================================================
 w("## 4. Roteiro completo, cena a cena")
 w()
-w("Todas as falas estão exatamente como aparecem no jogo. Entre parênteses está a expressão do retrato. As linhas com ▶ indicam a animação que toca naquele momento: o código é o mesmo da lista da seção 9.")
+w("Todas as falas estão exatamente como aparecem no jogo. Entre parênteses está a expressão do retrato. As linhas com ▶ indicam a animação que toca naquele momento: o código é o mesmo da lista da seção 10.")
 w()
 CENAS = [
     ("encontroInicio", "Prólogo 1: o Minas Shopping", "Começa ao escolher **Novo jogo**, antes de tudo. A Line entra no shopping de costas para a câmera e vê a Bell esperando perto das mesas. Depois a Line anda livremente até a Bell.", "p01-titulo"),
@@ -430,7 +442,7 @@ w("- **Do túnel para a fazenda:** depois do beijo, a tela escurece em 1,6 s, a 
 w()
 w("### 5.5 Todas as animações do prólogo")
 w()
-w("Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (prólogo)** da seção 9. As que ainda não têm arte usam uma substituta parecida.")
+w("Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (prólogo)** da seção 10. As que ainda não têm arte usam uma substituta parecida.")
 w()
 USO = {
     "LINE_ADMIRE": "Início: a Line vê a Bell de longe. Precisa da Line de costas ou de lado, com a mão no peito, corações e o corpo balançando.",
@@ -498,19 +510,10 @@ w("### 6.2 Floresta Sussurrante")
 w("Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, a clareira do Mago com o baú da espada, espinhos que fecham o norte e sombras depois que a espada é pega. **Nova ala leste:** uma clareira escondida além do riacho, com um baú de poções, maçãs no chão e a entrada da Gruta dos Ecos. Na clareira do Mago há um segundo baú, com a Carta do Mago.")
 w()
 img("34-floresta-leste", "Ala leste da floresta, com o baú e o caminho para a gruta")
-w("### 6.3 Gruta dos Ecos (nova)")
-w("Caverna azulada e úmida a leste da floresta, com poças fundas, estalagmites, cogumelos que brilham e luzinhas azuis flutuando. Não tem nuvens nem pássaros: só o eco. Sombras vagam por ela depois da espada, e fogos-fátuos azuis depois da magia.")
-w()
-w("- **Entrada (oeste):** a placa, a fonte e o pergaminho com a **Lenda da Montanha**.")
-w("- **Salão norte:** o baú com a **Bússola do Mago**.")
-w("- **Canto oeste:** baú com Elixir de Luz e uma poção.")
-w("- **Nicho leste:** baú com uma **chave antiga**.")
-w("- **Sala trancada (sul):** atrás de uma porta de ferro. Dentro: baú de **coração extra** e o **Mapa rasgado**, que completa o mapa do mundo.")
-w()
-img("26-gruta", "A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda")
-img("27-gruta-porta", "A porta trancada da sala do sul")
-
 img("11-floresta-sombras", "Sombras na floresta")
+w("### 6.3 Gruta dos Ecos (nova)")
+w("Caverna a leste da floresta, com baús, uma sala trancada e duas pistas. Está descrita em detalhes na **seção 7.1**.")
+w()
 w("### 6.4 Ruínas Encantadas")
 w("Um templo antigo de pedra e musgo, organizado em salas:")
 w()
@@ -533,17 +536,20 @@ img("15-barreira-aberta", "Cristais acesos e barreira desfeita")
 w("### 6.5 Montanha de Brasa")
 w("Rocha vulcânica, rios de lava e brasas subindo:")
 w()
-w("- **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a primeira tocha.")
+w("- **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a **primeira tocha**, perto da placa.")
 w("- **Meio:**")
 w("  - Lava dos dois lados.")
 w("  - A **fonte das brasas**, que é o ponto de retorno.")
 w("  - A segunda tocha, numa **ilha no meio da lava**, que só pode ser acesa de longe.")
 w("- **Topo:**")
-w("  - A terceira tocha, na praça central.")
+w("  - A **terceira tocha**, na praça de cima, perto do portão.")
 w("  - Uma **plataforma cercada de fendas com o segundo baú de coração**.")
 w("  - O **portão de fogo**, que abre com as três tochas acesas. Perto dele, no chão, a **fita de cabelo da Bell**.")
 w("- **Encosta leste (nova):** uma fenda comprida para pular, um baú com **chave antiga** e poção, e uma porta de ferro que leva a uma **caverna escondida** com lava, o baú da **Flor da Lua** e a **escama vermelha**.")
 w()
+w("As três tochas são mostradas pela câmera na primeira chegada, e o jogo conta quantas já foram acesas (veja a seção 7.6).")
+w()
+img("21-tocha-na-lava", "A tocha da ilha de lava, que só acende de longe")
 img("35-montanha-encosta", "A encosta leste, com a fenda e a porta trancada")
 img("32-montanha-caverna", "A caverna escondida da montanha")
 
@@ -551,7 +557,49 @@ w("### 6.6 Covil do Dragão")
 w("Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao fundo. Quando a Line entra, a entrada desmorona e a luta começa.")
 w()
 img("23-dragao-fogo", "O dragão cospe fogo no covil")
-w("### 6.7 Todos os baús, portas e pistas")
+# =====================================================================
+w("## 7. Exploração: Gruta dos Ecos, mochila, itens, pistas e mapa")
+w()
+w("> ⚠️ Tudo desta seção também é **temporário**: os itens aparecem como emojis e os objetos novos são desenhados no código até a arte final chegar.")
+w()
+w("Depois do rapto, o jogo vira uma aventura de exploração: áreas maiores, uma área nova (a Gruta dos Ecos), 13 baús, 3 portas trancadas com 3 chaves, itens que a Line guarda na mochila e usa quando quiser, 8 pistas de investigação que contam a história do dragão e um mapa que vai se abrindo conforme ela explora.")
+w()
+w("### 7.1 Gruta dos Ecos (área nova)")
+w("Caverna azulada e úmida a leste da floresta, com poças fundas, estalagmites, cogumelos que brilham e luzinhas azuis flutuando. Não tem nuvens nem pássaros: só o eco. Sombras vagam por ela depois da espada, e fogos-fátuos azuis depois da magia.")
+w()
+w("- **Entrada (oeste):** a placa, a fonte e o pergaminho com a **Lenda da Montanha**.")
+w("- **Salão norte:** o baú com a **Bússola do Mago**.")
+w("- **Canto oeste:** baú com Elixir de Luz e uma poção.")
+w("- **Nicho leste:** baú com uma **chave antiga**.")
+w("- **Sala trancada (sul):** atrás de uma porta de ferro. Dentro: baú de **coração extra** e o **Mapa rasgado**, que completa o mapa do mundo.")
+w()
+img("26-gruta", "A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda")
+img("27-gruta-porta", "A porta trancada da sala do sul")
+w("**Como chegar:** pela saída leste da Floresta Sussurrante, na clareira nova depois do riacho. A Carta do Mago avisa que ela existe, e o Mago também fala dela depois de entregar a espada.")
+w()
+w("**Mapa completo da gruta** (como aparece no mapa do jogo depois de explorada):")
+w()
+img("gruta-mapa", "Mapa da Gruta dos Ecos: baús (amarelo), fonte (azul), pistas (papel), porta trancada e a saída para a floresta")
+w("| Parte | O que tem |")
+w("|---|---|")
+for l in [
+    ("Entrada (oeste)", "chegada pela floresta, placa, fonte (cura e vira ponto de retorno), pergaminho da **Lenda da Montanha**, cogumelos"),
+    ("Salão norte", "poça funda no meio, estalagmites, baú da **Bússola do Mago**, um pão no chão"),
+    ("Canto oeste", "baú com **Elixir de Luz** e **Poção de Vida**"),
+    ("Nicho leste", "corredor estreito com o baú da **chave antiga**"),
+    ("Salão sul", "segunda poça, cogumelos e sombras"),
+    ("Sala trancada", "porta de ferro (precisa de chave); dentro, baú de **coração extra** e o **Mapa rasgado**"),
+]:
+    w("| " + " | ".join(l) + " |")
+w()
+w("**Inimigos:** 3 sombras (depois da espada) e 2 fogos-fátuos azuis (depois da magia).")
+w()
+w("**Ambientação:** pedra cinza-azulada e úmida, paredes com musgo esverdeado, água funda azul-escura, cogumelos que pulsam em azul-claro e luzinhas azuis flutuando no ar. Vinheta escura nas bordas da tela e um leve tom azul. Não tem nuvens, pássaros nem folhas caindo.")
+w()
+w("**Arte que a gruta precisa (hoje tudo é desenhado no código):** chão e paredes de caverna azulada, poças de água, estalagmites, cogumelos luminosos (com brilho animado), a porta de ferro, a fonte e as luzinhas.")
+w()
+
+w("### 7.2 Todos os baús, portas, chaves e pistas")
 w()
 w("| Área | Baús | Portas trancadas | Pistas | Itens no chão |")
 w("|---|---|---|---|---|")
@@ -568,70 +616,12 @@ w()
 w("São **13 baús** (2 deles com coração extra), **3 portas** e **3 chaves**: qualquer chave abre qualquer porta, e a chave some depois de usada. As 8 pistas juntas dão mais um coração.")
 w()
 
-# =====================================================================
-w("## 7. Como se joga")
-w()
-w("### 7.1 Controles")
-w()
-w("| Ação | Teclado | Controle | Celular |")
-w("|---|---|---|---|")
-for l in [("Andar", "WASD / setas", "analógico", "arrastar no lado esquerdo"), ("Correr", "Shift (segurar)", "gatilho / analógico até o fim", "arrastar até o fim"),
-          ("Atacar (3x = combo)", "J / Z", "A", "⚔"), ("Ataque giratório", "K / X", "X", "🌀"), ("Esquivar (correndo = dash)", "L / C", "B", "💨"),
-          ("Defender (segurar)", "V / B", "LB", "🛡"), ("Pular (+ atacar no ar)", "Espaço", "Y", "⤴"), ("Magia: Raio de Luz", "Q / U", "RB", "✨"),
-          ("Chuva de Estrelas", "segurar Q / U e soltar", "segurar RB", "segurar ✨"), ("Interagir / ler / abrir", "E / Enter", "Select", "botão que aparece"), ("Mochila (itens e pistas)", "I", "—", "🎒"), ("Mapa", "M", "—", "🎒 → Mapa"), ("Cura rápida", "H", "—", "🧪"),
-          ("Pausar", "Esc / P", "Start", "⏸"), ("Pular cena", "Tab", "—", "Pular cena")]:
-    w("| " + " | ".join(l) + " |")
-w()
-w("### 7.2 Combate com espada")
-w()
-w("| Golpe | Animação | Dano | Observação |")
-w("|---|---|---|---|")
-w("| 1º golpe | `LINE_ATTACK_HORIZONTAL` | 1 | começa o combo |")
-w("| 2º golpe | `LINE_ATTACK_VERTICAL` | 1 | apertar de novo durante o 1º |")
-w("| 3º golpe | `LINE_ATTACK_COMBO` | 1 + 1 | acerta duas vezes |")
-w("| Ataque correndo | `LINE_ATTACK_DIAGONAL` | 2 | com investida para frente |")
-w("| Giro | `LINE_ATTACK_SPIN` | 2 | acerta em volta |")
-w("| Ataque aéreo | `LINE_ATTACK_AIR` | 2 | pular + atacar, com onda de choque ao cair |")
-w("| Golpe final | `LINE_DRAGON_FINAL_ATTACK` | — | só no fim da luta com o dragão |")
-w()
-w("- **Defesa:** segurar bloqueia golpes físicos (não bloqueia fogo). Leva a `LINE_BLOCK`.")
-w("- **Esquiva e dash:** a Line fica invencível por um instante (`LINE_DODGE` e `LINE_DASH`).")
-w("- **Guardar a espada:** depois de 4 segundos sem inimigos por perto, ela guarda a espada sozinha (`LINE_SWORD_SHEATHE`).")
-w()
-w("### 7.3 Magia")
-w()
-w("- **Raio de Luz** (aprendido no altar das ruínas):")
-w("  - Custa 1 ◆.")
-w("  - A mira vai sozinha no inimigo ou cristal mais perto à frente. O Guardião é mira certa.")
-w("  - As sombras levam dano extra.")
-w("  - Acende cristais e tochas e queima espinhos.")
-w("- **Chuva de Estrelas** (depois de vencer o Guardião):")
-w("  - Segurar o botão até a Line brilhar e soltar. Custa 3 ◆.")
-w("  - Explosão em volta que atinge todos os inimigos e acende cristais e tochas próximos.")
-w("- **Barra de magia:** 6 ◆ embaixo dos corações.")
-w("  - Recarrega sozinha, cerca de 1 ◆ a cada 2,6 s no Normal.")
-w("  - Os cristais azuis que os inimigos soltam dão +2 ◆.")
-w()
-img("14-raio-de-luz", "Raio de Luz acendendo um cristal")
-img("18-carregando-estrelas", "Carregando a Chuva de Estrelas")
-w("### 7.4 Vida, itens e progresso")
-w()
-w("- **Corações:**")
-w("  - Começam em 3 (6 metades), e cada baú de coração extra dá mais 1.")
-w("  - No Fácil, a Line ganha 1 coração a mais.")
-w("  - Com 1 coração ou menos, ela fica com a animação de exausta.")
-w("- **Coração no chão:** cura 1 coração. Às vezes cai dos inimigos.")
-w("- **Cristal azul:** +2 ◆ de magia. Também cai dos inimigos.")
-w("- **Fontes:** curam tudo, enchem a magia e viram ponto de retorno. Se a Line cair, ela volta para a última fonte bebida naquela área.")
-w("- **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.")
-w("- **Portas trancadas:** três portas de ferro (gruta, ruínas e montanha). Chegue perto: com uma chave antiga aparece **Abrir com a chave**; sem chave, **Trancada**.")
-w("- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e pistas, abrir portas, acender cristais e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as pistas e o mapa explorado.")
-w()
-w("### 7.5 Mochila e itens")
+w("### 7.3 Mochila e itens")
 w()
 w("A mochila abre com **I** (ou o botão 🎒 no celular, que mostra quantos itens novos chegaram) e pausa o jogo. Tem três abas: **Itens**, **Pistas** e **Mapa**. Também dá para abrir pela pausa.")
 w()
 img("28-mochila-itens", "A aba de itens da mochila")
+img("itens-no-jogo", "Os itens, a pista, as portas, o cogumelo, as tochas e o baú como estão desenhados no jogo hoje (temporários)")
 w("| Item | Ícone | O que faz | Onde achar |")
 w("|---|---|---|---|")
 for l in [
@@ -650,7 +640,7 @@ w("- **Avisos:** cada item ou pista nova aparece num aviso no canto da tela.")
 w("- **HUD:** embaixo dos corações fica o contador de curas.")
 w("- Itens no chão brilham e são pegos só de passar por cima. Papéis no chão são pistas.")
 w()
-w("### 7.6 Caderno de pistas (investigação)")
+w("### 7.4 Caderno de pistas (investigação)")
 w()
 w("A aba **Pistas** mostra o objetivo atual, quantas pistas a Line já achou e o texto de cada uma, num papel. As pistas ainda não achadas aparecem como “???”. O painel **Objetivo**, no canto da tela, diz o próximo passo e o total de pistas.")
 w()
@@ -669,7 +659,7 @@ for id_ in ORDEM_PISTAS_DOC:
     w()
 w("Ao juntar as 8: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”")
 w()
-w("### 7.7 Mapa com névoa")
+w("### 7.5 Mapa com névoa")
 w()
 w("A aba **Mapa** (tecla **M**) tem duas visões:")
 w()
@@ -678,7 +668,108 @@ w("- **Mundo:** um pergaminho com os lugares ligados por trilhas. Os lugares apa
 w()
 img("30-mapa-area", "Mapa da área, com a névoa abrindo")
 img("31-mapa-mundo", "Mapa do mundo")
-w("### 7.8 Dificuldade")
+w("### 7.6 Tochas e cristais: como achar")
+w()
+w("As barreiras das ruínas e o portão de fogo da montanha só abrem com todas as luzes do grupo acesas. Para não se perder:")
+w()
+w("- **Tochas apagadas** têm brasa fraca, soltam fumaça e têm um anel laranja pulsando no chão, para serem vistas de longe.")
+w("- Ao chegar na montanha pela primeira vez, a câmera mostra as **três tochas**: uma perto da entrada, uma numa ilha no meio da lava e a última lá em cima, perto do portão.")
+w("- Cada luz acesa mostra um aviso com a contagem: **🔥 Tocha acesa (1/3)**, **💎 Cristal aceso (1/2)**. A dica diz quantas faltam.")
+w("- O painel **Objetivo** mostra **(n/3 acesas)** e onde fica cada tocha.")
+w("- No **mapa (M)**, as tochas da montanha aparecem mesmo onde a Line ainda não passou, e as apagadas piscam.")
+w()
+w("| Grupo | Onde | Luzes | Abre |")
+w("|---|---|---|---|")
+for l in [
+    ("Barreira sul", "Ruínas, salão de entrada", "2 cristais", "o salão do meio"),
+    ("Barreira do meio", "Ruínas, salão do meio (2 nas ilhotas dos lagos)", "3 cristais", "o salão norte (Guardião)"),
+    ("Alcova", "Ruínas, salão do meio (leste)", "1 cristal", "o baú de coração extra"),
+    ("Portão de fogo", "Montanha: entrada (6,35), ilha de lava (30,22), topo (18,9)", "3 tochas", "o caminho para o covil"),
+]:
+    w("| " + " | ".join(l) + " |")
+w()
+w("### 7.7 Arte necessária para a exploração")
+w()
+w("| Objeto | Como está hoje | Arte final sugerida |")
+w("|---|---|---|")
+for l in [
+    ("Poção de Vida 🧪", "emoji + bolinha rosa no chão", "frasco rosa com coração, ícone 64×64 e versão no chão"),
+    ("Pão da Bell 🍞", "emoji + bolinha bege", "pãozinho caseiro embrulhado num paninho xadrez"),
+    ("Maçã 🍎", "emoji + bolinha vermelha", "maçã vermelha brilhante com folhinha"),
+    ("Elixir de Luz 💧", "emoji + bolinha azul", "frasco azul com brilho de estrelinhas dentro"),
+    ("Flor da Lua 🌸", "emoji + bolinha lilás", "flor lilás que brilha, com pétalas de luz"),
+    ("Chave antiga 🗝️", "emoji + bolinha dourada", "chave de ferro antiga com argola dourada"),
+    ("Bússola do Mago 🧭", "emoji + bolinha azul-clara", "bússola de latão com cristal azul no centro"),
+    ("Pista no chão", "papel com linhas", "pergaminho enrolado com fita e brilho"),
+    ("Porta trancada", "grade de ferro com cadeado (2 cores)", "porta de ferro com cadeado; versão de pedra (gruta/ruínas) e de rocha vulcânica (montanha); animação de abrir"),
+    ("Cogumelo luminoso", "3 cogumelos com brilho", "tufo de cogumelos azuis que pulsam"),
+    ("Tocha apagada / acesa", "braseiro com brasa e fumaça / fogo", "braseiro de pedra; apagado com brasa fraca e fumaça; aceso com fogo animado"),
+    ("Mapa do mundo", "pergaminho com círculos", "pergaminho ilustrado com os 6 lugares desenhados"),
+    ("Line examinando (`LINE_INSPECT`)", "usa o agachar", "agachada olhando o chão com a mão no queixo (sugestão nova)"),
+]:
+    w("| " + " | ".join(l) + " |")
+w()
+
+# =====================================================================
+w("## 8. Como se joga")
+w()
+w("### 8.1 Controles")
+w()
+w("| Ação | Teclado | Controle | Celular |")
+w("|---|---|---|---|")
+for l in [("Andar", "WASD / setas", "analógico", "arrastar no lado esquerdo"), ("Correr", "Shift (segurar)", "gatilho / analógico até o fim", "arrastar até o fim"),
+          ("Atacar (3x = combo)", "J / Z", "A", "⚔"), ("Ataque giratório", "K / X", "X", "🌀"), ("Esquivar (correndo = dash)", "L / C", "B", "💨"),
+          ("Defender (segurar)", "V / B", "LB", "🛡"), ("Pular (+ atacar no ar)", "Espaço", "Y", "⤴"), ("Magia: Raio de Luz", "Q / U", "RB", "✨"),
+          ("Chuva de Estrelas", "segurar Q / U e soltar", "segurar RB", "segurar ✨"), ("Interagir / ler / abrir", "E / Enter", "Select", "botão que aparece"), ("Mochila (itens e pistas)", "I", "—", "🎒"), ("Mapa", "M", "—", "🎒 → Mapa"), ("Cura rápida", "H", "—", "🧪"),
+          ("Pausar", "Esc / P", "Start", "⏸"), ("Pular cena", "Tab", "—", "Pular cena")]:
+    w("| " + " | ".join(l) + " |")
+w()
+w("### 8.2 Combate com espada")
+w()
+w("| Golpe | Animação | Dano | Observação |")
+w("|---|---|---|---|")
+w("| 1º golpe | `LINE_ATTACK_HORIZONTAL` | 1 | começa o combo |")
+w("| 2º golpe | `LINE_ATTACK_VERTICAL` | 1 | apertar de novo durante o 1º |")
+w("| 3º golpe | `LINE_ATTACK_COMBO` | 1 + 1 | acerta duas vezes |")
+w("| Ataque correndo | `LINE_ATTACK_DIAGONAL` | 2 | com investida para frente |")
+w("| Giro | `LINE_ATTACK_SPIN` | 2 | acerta em volta |")
+w("| Ataque aéreo | `LINE_ATTACK_AIR` | 2 | pular + atacar, com onda de choque ao cair |")
+w("| Golpe final | `LINE_DRAGON_FINAL_ATTACK` | — | só no fim da luta com o dragão |")
+w()
+w("- **Defesa:** segurar bloqueia golpes físicos (não bloqueia fogo). Leva a `LINE_BLOCK`.")
+w("- **Esquiva e dash:** a Line fica invencível por um instante (`LINE_DODGE` e `LINE_DASH`).")
+w("- **Guardar a espada:** depois de 4 segundos sem inimigos por perto, ela guarda a espada sozinha (`LINE_SWORD_SHEATHE`).")
+w()
+w("### 8.3 Magia")
+w()
+w("- **Raio de Luz** (aprendido no altar das ruínas):")
+w("  - Custa 1 ◆.")
+w("  - A mira vai sozinha no inimigo ou cristal mais perto à frente. O Guardião é mira certa.")
+w("  - As sombras levam dano extra.")
+w("  - Acende cristais e tochas e queima espinhos.")
+w("- **Chuva de Estrelas** (depois de vencer o Guardião):")
+w("  - Segurar o botão até a Line brilhar e soltar. Custa 3 ◆.")
+w("  - Explosão em volta que atinge todos os inimigos e acende cristais e tochas próximos.")
+w("- **Barra de magia:** 6 ◆ embaixo dos corações.")
+w("  - Recarrega sozinha, cerca de 1 ◆ a cada 2,6 s no Normal.")
+w("  - Os cristais azuis que os inimigos soltam dão +2 ◆.")
+w()
+img("14-raio-de-luz", "Raio de Luz acendendo um cristal")
+img("18-carregando-estrelas", "Carregando a Chuva de Estrelas")
+w("### 8.4 Vida, itens e progresso")
+w()
+w("- **Corações:**")
+w("  - Começam em 3 (6 metades), e cada baú de coração extra dá mais 1.")
+w("  - No Fácil, a Line ganha 1 coração a mais.")
+w("  - Com 1 coração ou menos, ela fica com a animação de exausta.")
+w("- **Coração no chão:** cura 1 coração. Às vezes cai dos inimigos.")
+w("- **Cristal azul:** +2 ◆ de magia. Também cai dos inimigos.")
+w("- **Fontes:** curam tudo, enchem a magia e viram ponto de retorno. Se a Line cair, ela volta para a última fonte bebida naquela área.")
+w("- **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.")
+w("- **Portas trancadas:** três portas de ferro (gruta, ruínas e montanha). Chegue perto: com uma chave antiga aparece **Abrir com a chave**; sem chave, **Trancada**.")
+w("- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e pistas, abrir portas, acender cristais e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as pistas e o mapa explorado.")
+w()
+w("### 8.5 Dificuldade")
 w()
 w("| | Fácil 🌸 | Normal ⚔ | Difícil 🔥 |")
 w("|---|---|---|---|")
@@ -694,7 +785,7 @@ w("A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, 
 w()
 
 # =====================================================================
-w("## 8. Inimigos e chefes")
+w("## 9. Inimigos e chefes")
 w()
 w("### Sombra")
 w("- **Vida:** 3.")
@@ -731,7 +822,7 @@ w("- **Fim da luta:** aparece o botão **GOLPE FINAL**.")
 w()
 
 # =====================================================================
-w("## 9. Lista completa de animações")
+w("## 10. Lista completa de animações")
 w()
 w("> ⚠️ **Lembrete: toda a arte atual é temporária** e vai ser trocada pela versão final, mantendo o mesmo código.")
 w()
@@ -751,7 +842,7 @@ for g in inv["grupos"]:
     w(f"| {g['nome']} | {n} | {e} | {s} | {n - e - s} |")
 w()
 for g in inv["grupos"]:
-    w(f"### 9.{inv['grupos'].index(g) + 1} {g['nome']}")
+    w(f"### 10.{inv['grupos'].index(g) + 1} {g['nome']}")
     w()
     w("| Código | O que é | Quadros | Loop | Status | Origem da arte atual |")
     w("|---|---|---:|:---:|---|---|")
@@ -770,7 +861,7 @@ for g in inv["grupos"]:
     w()
 w("*Na coluna Quadros, as animações ✅ mostram quantos quadros diferentes a arte atual tem. As que faltam mostram quantos quadros o jogo espera (é uma sugestão, pode vir com mais ou menos).*")
 w()
-w(f"### 9.{len(inv['grupos']) + 1} O que ainda falta ter arte própria, por prioridade")
+w(f"### 10.{len(inv['grupos']) + 1} O que ainda falta ter arte própria, por prioridade")
 w()
 w("**Aparecem na história (prioridade 1):**")
 w("- **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).")
@@ -796,7 +887,7 @@ w("**Opcionais (prioridade 3):** efeitos `FX_*` (hoje são partículas feitas no
 w()
 
 # =====================================================================
-w("## 10. Retratos dos diálogos")
+w("## 11. Retratos dos diálogos")
 w()
 w("> ⚠️ Os retratos atuais também são temporários.")
 w()
@@ -817,7 +908,7 @@ w("As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Li
 w()
 
 # =====================================================================
-w("## 11. Cenário e objetos")
+w("## 12. Cenário e objetos")
 w()
 w("> ⚠️ O cenário atual também é temporário: parte vem de pacotes de arte recebidos, parte é desenhada no código.")
 w()
@@ -833,13 +924,13 @@ w("| Ruínas Encantadas | — | chão de lajes, paredes, pilares, cristais (apag
 w("| Montanha de Brasa | — | chão vulcânico, paredes, fendas, lava, tochas (apagada e acesa), portão de fogo, pedras, estalagmites, fonte, baú |")
 w("| Covil | — | chão, paredes, lava, estalagmites, jaula da Bell |")
 w()
-w("**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada (versão de pedra e de montanha), cogumelos luminosos da gruta, papel/pergaminho de pista no chão, saquinho de item no chão, ícones dos 7 itens da mochila (hoje são emojis), o pergaminho do mapa do mundo e os ícones do mapa da área.")
+w("**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada, cogumelos luminosos, pista no chão, os 7 itens da mochila (hoje emojis), tochas e o mapa do mundo. A lista completa, com o que cada um deve mostrar, está na **seção 7.7**.")
 w()
 w("Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.")
 w()
 
 # =====================================================================
-w("## 12. Efeitos visuais")
+w("## 13. Efeitos visuais")
 w()
 w("Todos os efeitos são feitos no código por enquanto (temporários):")
 w()
@@ -866,18 +957,18 @@ w("  - Tremor de tela, flash branco e pausas de impacto.")
 w("  - Tons de cor por horário e área.")
 w("  - O olho do dragão no final.")
 w()
-w(f"Os códigos `FX_*` da seção 9.{NUM_FX} são para quando esses efeitos ganharem arte própria.")
+w(f"Os códigos `FX_*` da seção 10.{NUM_FX} são para quando esses efeitos ganharem arte própria.")
 w()
 
 # =====================================================================
-w("## 13. Como mandar arte nova")
+w("## 14. Como mandar arte nova")
 w()
 w("1. **Formatos aceitos:**")
 w("   - HTML de item (`LINE_BELL_ITEM_XX.html`, um PNG por quadro).")
 w("   - HTML de laboratório.")
 w("   - Pasta `arte/<grupo>/<CÓDIGO>/00.png, 01.png…`.")
 w("   - Uma **prancha**: imagem com vários quadros, que eu recorto.")
-w("2. **Nome:** o código precisa ser exatamente o da seção 9.")
+w("2. **Nome:** o código precisa ser exatamente o da seção 10.")
 w("3. **Fundo transparente de verdade.** Nada de quadriculado ou fundo cinza desenhado.")
 w("4. **Mesmo tamanho** em todos os quadros de uma animação, com os pés sempre na mesma linha.")
 w("5. **Virada para a direita** nas animações de lado.")
@@ -891,7 +982,7 @@ w("9. Quando a arte chega, o extrator (`tools/extrair_sprites.py`) monta as folh
 w()
 
 # =====================================================================
-w("## 14. Estrutura técnica")
+w("## 15. Estrutura técnica")
 w()
 w("| Arquivo | O que faz |")
 w("|---|---|")

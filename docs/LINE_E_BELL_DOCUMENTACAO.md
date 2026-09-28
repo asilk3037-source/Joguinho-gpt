@@ -5,6 +5,14 @@
 > Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.
 > Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.
 
+> 🆕 **Novidades desta versão:**
+> - **Gruta dos Ecos**, área nova a leste da floresta (seção 7.1).
+> - **Mochila com 7 itens usáveis**: Poção de Vida, Pão da Bell, Maçã, Elixir de Luz, Flor da Lua, Chave antiga e Bússola do Mago (seção 7.3).
+> - **Caderno de 8 pistas** para investigar o dragão e achar a Bell (seção 7.4).
+> - **Mapa com névoa** que vai abrindo com a exploração, e mapa do mundo (seção 7.5).
+> - **13 baús e 3 portas trancadas** (seção 7.2), áreas maiores nas ruínas e na montanha.
+> - As **três tochas** da montanha agora são fáceis de achar (seção 7.6).
+
 ![Tela inicial, com a escolha de dificuldade](imagens/01-menu.jpg)
 *Tela inicial, com a escolha de dificuldade*
 
@@ -18,14 +26,22 @@
 - [4. Roteiro completo, cena a cena](#4-roteiro-completo-cena-a-cena)
 - [5. O primeiro encontro (prólogo)](#5-o-primeiro-encontro-prologo)
 - [6. As fases](#6-as-fases)
-- [7. Como se joga](#7-como-se-joga)
-- [8. Inimigos e chefes](#8-inimigos-e-chefes)
-- [9. Lista completa de animações](#9-lista-completa-de-animacoes)
-- [10. Retratos dos diálogos](#10-retratos-dos-dialogos)
-- [11. Cenário e objetos](#11-cenario-e-objetos)
-- [12. Efeitos visuais](#12-efeitos-visuais)
-- [13. Como mandar arte nova](#13-como-mandar-arte-nova)
-- [14. Estrutura técnica](#14-estrutura-tecnica)
+- [7. Exploração: Gruta dos Ecos, mochila, itens, pistas e mapa](#7-exploracao-gruta-dos-ecos-mochila-itens-pistas-e-mapa)
+  - [7.1 Gruta dos Ecos](#71-gruta-dos-ecos-area-nova)
+  - [7.2 Baús, portas, chaves e pistas](#72-todos-os-baus-portas-chaves-e-pistas)
+  - [7.3 Mochila e itens](#73-mochila-e-itens)
+  - [7.4 Caderno de pistas](#74-caderno-de-pistas-investigacao)
+  - [7.5 Mapa com névoa](#75-mapa-com-nevoa)
+  - [7.6 Tochas e cristais](#76-tochas-e-cristais-como-achar)
+  - [7.7 Arte necessária](#77-arte-necessaria-para-a-exploracao)
+- [8. Como se joga](#8-como-se-joga)
+- [9. Inimigos e chefes](#9-inimigos-e-chefes)
+- [10. Lista completa de animações](#10-lista-completa-de-animacoes)
+- [11. Retratos dos diálogos](#11-retratos-dos-dialogos)
+- [12. Cenário e objetos](#12-cenario-e-objetos)
+- [13. Efeitos visuais](#13-efeitos-visuais)
+- [14. Como mandar arte nova](#14-como-mandar-arte-nova)
+- [15. Estrutura técnica](#15-estrutura-tecnica)
 
 ## 1. Visão geral
 
@@ -142,7 +158,7 @@ O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no t
 
 ## 4. Roteiro completo, cena a cena
 
-Todas as falas estão exatamente como aparecem no jogo. Entre parênteses está a expressão do retrato. As linhas com ▶ indicam a animação que toca naquele momento: o código é o mesmo da lista da seção 9.
+Todas as falas estão exatamente como aparecem no jogo. Entre parênteses está a expressão do retrato. As linhas com ▶ indicam a animação que toca naquele momento: o código é o mesmo da lista da seção 10.
 
 ### 4.1 Prólogo 1: o Minas Shopping
 
@@ -455,6 +471,8 @@ Ao se aproximar do Guardião, no salão norte das ruínas.
 
 > **Line** *(neutro)*: A Montanha de Brasa... O covil do dragão fica lá no topo.  
 > **Line** *(marota)*: Tem um portão de fogo lá em cima... e três tochas apagadas pelo caminho. Aposto que a luz acende.  
+> **Line**: neutro  
+> 💡 *Dica na tela:* Acenda as três tochas com a magia (Q). As apagadas soltam fumaça e aparecem no mapa (M).  
 
 ### 4.20 O portão se abre
 
@@ -734,7 +752,7 @@ A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.
 
 ### 5.5 Todas as animações do prólogo
 
-Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (prólogo)** da seção 9. As que ainda não têm arte usam uma substituta parecida.
+Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (prólogo)** da seção 10. As que ainda não têm arte usam uma substituta parecida.
 
 | Código | Quando aparece e o que precisa mostrar | Quadros | Status hoje |
 |---|---|---:|---|
@@ -799,23 +817,11 @@ Trilha com raízes (correr sobre elas faz a Line tropeçar), riacho para pular, 
 ![Ala leste da floresta, com o baú e o caminho para a gruta](imagens/34-floresta-leste.jpg)
 *Ala leste da floresta, com o baú e o caminho para a gruta*
 
-### 6.3 Gruta dos Ecos (nova)
-Caverna azulada e úmida a leste da floresta, com poças fundas, estalagmites, cogumelos que brilham e luzinhas azuis flutuando. Não tem nuvens nem pássaros: só o eco. Sombras vagam por ela depois da espada, e fogos-fátuos azuis depois da magia.
-
-- **Entrada (oeste):** a placa, a fonte e o pergaminho com a **Lenda da Montanha**.
-- **Salão norte:** o baú com a **Bússola do Mago**.
-- **Canto oeste:** baú com Elixir de Luz e uma poção.
-- **Nicho leste:** baú com uma **chave antiga**.
-- **Sala trancada (sul):** atrás de uma porta de ferro. Dentro: baú de **coração extra** e o **Mapa rasgado**, que completa o mapa do mundo.
-
-![A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda](imagens/26-gruta.jpg)
-*A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda*
-
-![A porta trancada da sala do sul](imagens/27-gruta-porta.jpg)
-*A porta trancada da sala do sul*
-
 ![Sombras na floresta](imagens/11-floresta-sombras.jpg)
 *Sombras na floresta*
+
+### 6.3 Gruta dos Ecos (nova)
+Caverna a leste da floresta, com baús, uma sala trancada e duas pistas. Está descrita em detalhes na **seção 7.1**.
 
 ### 6.4 Ruínas Encantadas
 Um templo antigo de pedra e musgo, organizado em salas:
@@ -842,16 +848,21 @@ Um templo antigo de pedra e musgo, organizado em salas:
 ### 6.5 Montanha de Brasa
 Rocha vulcânica, rios de lava e brasas subindo:
 
-- **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a primeira tocha.
+- **Início:** uma fenda atravessa o caminho e precisa ser pulada. Ali fica a **primeira tocha**, perto da placa.
 - **Meio:**
   - Lava dos dois lados.
   - A **fonte das brasas**, que é o ponto de retorno.
   - A segunda tocha, numa **ilha no meio da lava**, que só pode ser acesa de longe.
 - **Topo:**
-  - A terceira tocha, na praça central.
+  - A **terceira tocha**, na praça de cima, perto do portão.
   - Uma **plataforma cercada de fendas com o segundo baú de coração**.
   - O **portão de fogo**, que abre com as três tochas acesas. Perto dele, no chão, a **fita de cabelo da Bell**.
 - **Encosta leste (nova):** uma fenda comprida para pular, um baú com **chave antiga** e poção, e uma porta de ferro que leva a uma **caverna escondida** com lava, o baú da **Flor da Lua** e a **escama vermelha**.
+
+As três tochas são mostradas pela câmera na primeira chegada, e o jogo conta quantas já foram acesas (veja a seção 7.6).
+
+![A tocha da ilha de lava, que só acende de longe](imagens/21-tocha-na-lava.jpg)
+*A tocha da ilha de lava, que só acende de longe*
 
 ![A encosta leste, com a fenda e a porta trancada](imagens/35-montanha-encosta.jpg)
 *A encosta leste, com a fenda e a porta trancada*
@@ -865,7 +876,50 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 ![O dragão cospe fogo no covil](imagens/23-dragao-fogo.jpg)
 *O dragão cospe fogo no covil*
 
-### 6.7 Todos os baús, portas e pistas
+## 7. Exploração: Gruta dos Ecos, mochila, itens, pistas e mapa
+
+> ⚠️ Tudo desta seção também é **temporário**: os itens aparecem como emojis e os objetos novos são desenhados no código até a arte final chegar.
+
+Depois do rapto, o jogo vira uma aventura de exploração: áreas maiores, uma área nova (a Gruta dos Ecos), 13 baús, 3 portas trancadas com 3 chaves, itens que a Line guarda na mochila e usa quando quiser, 8 pistas de investigação que contam a história do dragão e um mapa que vai se abrindo conforme ela explora.
+
+### 7.1 Gruta dos Ecos (área nova)
+Caverna azulada e úmida a leste da floresta, com poças fundas, estalagmites, cogumelos que brilham e luzinhas azuis flutuando. Não tem nuvens nem pássaros: só o eco. Sombras vagam por ela depois da espada, e fogos-fátuos azuis depois da magia.
+
+- **Entrada (oeste):** a placa, a fonte e o pergaminho com a **Lenda da Montanha**.
+- **Salão norte:** o baú com a **Bússola do Mago**.
+- **Canto oeste:** baú com Elixir de Luz e uma poção.
+- **Nicho leste:** baú com uma **chave antiga**.
+- **Sala trancada (sul):** atrás de uma porta de ferro. Dentro: baú de **coração extra** e o **Mapa rasgado**, que completa o mapa do mundo.
+
+![A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda](imagens/26-gruta.jpg)
+*A Gruta dos Ecos: fonte, cogumelos luminosos e o pergaminho da lenda*
+
+![A porta trancada da sala do sul](imagens/27-gruta-porta.jpg)
+*A porta trancada da sala do sul*
+
+**Como chegar:** pela saída leste da Floresta Sussurrante, na clareira nova depois do riacho. A Carta do Mago avisa que ela existe, e o Mago também fala dela depois de entregar a espada.
+
+**Mapa completo da gruta** (como aparece no mapa do jogo depois de explorada):
+
+![Mapa da Gruta dos Ecos: baús (amarelo), fonte (azul), pistas (papel), porta trancada e a saída para a floresta](imagens/gruta-mapa.jpg)
+*Mapa da Gruta dos Ecos: baús (amarelo), fonte (azul), pistas (papel), porta trancada e a saída para a floresta*
+
+| Parte | O que tem |
+|---|---|
+| Entrada (oeste) | chegada pela floresta, placa, fonte (cura e vira ponto de retorno), pergaminho da **Lenda da Montanha**, cogumelos |
+| Salão norte | poça funda no meio, estalagmites, baú da **Bússola do Mago**, um pão no chão |
+| Canto oeste | baú com **Elixir de Luz** e **Poção de Vida** |
+| Nicho leste | corredor estreito com o baú da **chave antiga** |
+| Salão sul | segunda poça, cogumelos e sombras |
+| Sala trancada | porta de ferro (precisa de chave); dentro, baú de **coração extra** e o **Mapa rasgado** |
+
+**Inimigos:** 3 sombras (depois da espada) e 2 fogos-fátuos azuis (depois da magia).
+
+**Ambientação:** pedra cinza-azulada e úmida, paredes com musgo esverdeado, água funda azul-escura, cogumelos que pulsam em azul-claro e luzinhas azuis flutuando no ar. Vinheta escura nas bordas da tela e um leve tom azul. Não tem nuvens, pássaros nem folhas caindo.
+
+**Arte que a gruta precisa (hoje tudo é desenhado no código):** chão e paredes de caverna azulada, poças de água, estalagmites, cogumelos luminosos (com brilho animado), a porta de ferro, a fonte e as luzinhas.
+
+### 7.2 Todos os baús, portas, chaves e pistas
 
 | Área | Baús | Portas trancadas | Pistas | Itens no chão |
 |---|---|---|---|---|
@@ -878,83 +932,15 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 
 São **13 baús** (2 deles com coração extra), **3 portas** e **3 chaves**: qualquer chave abre qualquer porta, e a chave some depois de usada. As 8 pistas juntas dão mais um coração.
 
-## 7. Como se joga
-
-### 7.1 Controles
-
-| Ação | Teclado | Controle | Celular |
-|---|---|---|---|
-| Andar | WASD / setas | analógico | arrastar no lado esquerdo |
-| Correr | Shift (segurar) | gatilho / analógico até o fim | arrastar até o fim |
-| Atacar (3x = combo) | J / Z | A | ⚔ |
-| Ataque giratório | K / X | X | 🌀 |
-| Esquivar (correndo = dash) | L / C | B | 💨 |
-| Defender (segurar) | V / B | LB | 🛡 |
-| Pular (+ atacar no ar) | Espaço | Y | ⤴ |
-| Magia: Raio de Luz | Q / U | RB | ✨ |
-| Chuva de Estrelas | segurar Q / U e soltar | segurar RB | segurar ✨ |
-| Interagir / ler / abrir | E / Enter | Select | botão que aparece |
-| Mochila (itens e pistas) | I | — | 🎒 |
-| Mapa | M | — | 🎒 → Mapa |
-| Cura rápida | H | — | 🧪 |
-| Pausar | Esc / P | Start | ⏸ |
-| Pular cena | Tab | — | Pular cena |
-
-### 7.2 Combate com espada
-
-| Golpe | Animação | Dano | Observação |
-|---|---|---|---|
-| 1º golpe | `LINE_ATTACK_HORIZONTAL` | 1 | começa o combo |
-| 2º golpe | `LINE_ATTACK_VERTICAL` | 1 | apertar de novo durante o 1º |
-| 3º golpe | `LINE_ATTACK_COMBO` | 1 + 1 | acerta duas vezes |
-| Ataque correndo | `LINE_ATTACK_DIAGONAL` | 2 | com investida para frente |
-| Giro | `LINE_ATTACK_SPIN` | 2 | acerta em volta |
-| Ataque aéreo | `LINE_ATTACK_AIR` | 2 | pular + atacar, com onda de choque ao cair |
-| Golpe final | `LINE_DRAGON_FINAL_ATTACK` | — | só no fim da luta com o dragão |
-
-- **Defesa:** segurar bloqueia golpes físicos (não bloqueia fogo). Leva a `LINE_BLOCK`.
-- **Esquiva e dash:** a Line fica invencível por um instante (`LINE_DODGE` e `LINE_DASH`).
-- **Guardar a espada:** depois de 4 segundos sem inimigos por perto, ela guarda a espada sozinha (`LINE_SWORD_SHEATHE`).
-
-### 7.3 Magia
-
-- **Raio de Luz** (aprendido no altar das ruínas):
-  - Custa 1 ◆.
-  - A mira vai sozinha no inimigo ou cristal mais perto à frente. O Guardião é mira certa.
-  - As sombras levam dano extra.
-  - Acende cristais e tochas e queima espinhos.
-- **Chuva de Estrelas** (depois de vencer o Guardião):
-  - Segurar o botão até a Line brilhar e soltar. Custa 3 ◆.
-  - Explosão em volta que atinge todos os inimigos e acende cristais e tochas próximos.
-- **Barra de magia:** 6 ◆ embaixo dos corações.
-  - Recarrega sozinha, cerca de 1 ◆ a cada 2,6 s no Normal.
-  - Os cristais azuis que os inimigos soltam dão +2 ◆.
-
-![Raio de Luz acendendo um cristal](imagens/14-raio-de-luz.jpg)
-*Raio de Luz acendendo um cristal*
-
-![Carregando a Chuva de Estrelas](imagens/18-carregando-estrelas.jpg)
-*Carregando a Chuva de Estrelas*
-
-### 7.4 Vida, itens e progresso
-
-- **Corações:**
-  - Começam em 3 (6 metades), e cada baú de coração extra dá mais 1.
-  - No Fácil, a Line ganha 1 coração a mais.
-  - Com 1 coração ou menos, ela fica com a animação de exausta.
-- **Coração no chão:** cura 1 coração. Às vezes cai dos inimigos.
-- **Cristal azul:** +2 ◆ de magia. Também cai dos inimigos.
-- **Fontes:** curam tudo, enchem a magia e viram ponto de retorno. Se a Line cair, ela volta para a última fonte bebida naquela área.
-- **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.
-- **Portas trancadas:** três portas de ferro (gruta, ruínas e montanha). Chegue perto: com uma chave antiga aparece **Abrir com a chave**; sem chave, **Trancada**.
-- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e pistas, abrir portas, acender cristais e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as pistas e o mapa explorado.
-
-### 7.5 Mochila e itens
+### 7.3 Mochila e itens
 
 A mochila abre com **I** (ou o botão 🎒 no celular, que mostra quantos itens novos chegaram) e pausa o jogo. Tem três abas: **Itens**, **Pistas** e **Mapa**. Também dá para abrir pela pausa.
 
 ![A aba de itens da mochila](imagens/28-mochila-itens.jpg)
 *A aba de itens da mochila*
+
+![Os itens, a pista, as portas, o cogumelo, as tochas e o baú como estão desenhados no jogo hoje (temporários)](imagens/itens-no-jogo.jpg)
+*Os itens, a pista, as portas, o cogumelo, as tochas e o baú como estão desenhados no jogo hoje (temporários)*
 
 | Item | Ícone | O que faz | Onde achar |
 |---|---|---|---|
@@ -971,7 +957,7 @@ A mochila abre com **I** (ou o botão 🎒 no celular, que mostra quantos itens 
 - **HUD:** embaixo dos corações fica o contador de curas.
 - Itens no chão brilham e são pegos só de passar por cima. Papéis no chão são pistas.
 
-### 7.6 Caderno de pistas (investigação)
+### 7.4 Caderno de pistas (investigação)
 
 A aba **Pistas** mostra o objetivo atual, quantas pistas a Line já achou e o texto de cada uma, num papel. As pistas ainda não achadas aparecem como “???”. O painel **Objetivo**, no canto da tela, diz o próximo passo e o total de pistas.
 
@@ -1017,7 +1003,7 @@ A aba **Pistas** mostra o objetivo atual, quantas pistas a Line já achou e o te
 
 Ao juntar as 8: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”
 
-### 7.7 Mapa com névoa
+### 7.5 Mapa com névoa
 
 A aba **Mapa** (tecla **M**) tem duas visões:
 
@@ -1030,7 +1016,113 @@ A aba **Mapa** (tecla **M**) tem duas visões:
 ![Mapa do mundo](imagens/31-mapa-mundo.jpg)
 *Mapa do mundo*
 
-### 7.8 Dificuldade
+### 7.6 Tochas e cristais: como achar
+
+As barreiras das ruínas e o portão de fogo da montanha só abrem com todas as luzes do grupo acesas. Para não se perder:
+
+- **Tochas apagadas** têm brasa fraca, soltam fumaça e têm um anel laranja pulsando no chão, para serem vistas de longe.
+- Ao chegar na montanha pela primeira vez, a câmera mostra as **três tochas**: uma perto da entrada, uma numa ilha no meio da lava e a última lá em cima, perto do portão.
+- Cada luz acesa mostra um aviso com a contagem: **🔥 Tocha acesa (1/3)**, **💎 Cristal aceso (1/2)**. A dica diz quantas faltam.
+- O painel **Objetivo** mostra **(n/3 acesas)** e onde fica cada tocha.
+- No **mapa (M)**, as tochas da montanha aparecem mesmo onde a Line ainda não passou, e as apagadas piscam.
+
+| Grupo | Onde | Luzes | Abre |
+|---|---|---|---|
+| Barreira sul | Ruínas, salão de entrada | 2 cristais | o salão do meio |
+| Barreira do meio | Ruínas, salão do meio (2 nas ilhotas dos lagos) | 3 cristais | o salão norte (Guardião) |
+| Alcova | Ruínas, salão do meio (leste) | 1 cristal | o baú de coração extra |
+| Portão de fogo | Montanha: entrada (6,35), ilha de lava (30,22), topo (18,9) | 3 tochas | o caminho para o covil |
+
+### 7.7 Arte necessária para a exploração
+
+| Objeto | Como está hoje | Arte final sugerida |
+|---|---|---|
+| Poção de Vida 🧪 | emoji + bolinha rosa no chão | frasco rosa com coração, ícone 64×64 e versão no chão |
+| Pão da Bell 🍞 | emoji + bolinha bege | pãozinho caseiro embrulhado num paninho xadrez |
+| Maçã 🍎 | emoji + bolinha vermelha | maçã vermelha brilhante com folhinha |
+| Elixir de Luz 💧 | emoji + bolinha azul | frasco azul com brilho de estrelinhas dentro |
+| Flor da Lua 🌸 | emoji + bolinha lilás | flor lilás que brilha, com pétalas de luz |
+| Chave antiga 🗝️ | emoji + bolinha dourada | chave de ferro antiga com argola dourada |
+| Bússola do Mago 🧭 | emoji + bolinha azul-clara | bússola de latão com cristal azul no centro |
+| Pista no chão | papel com linhas | pergaminho enrolado com fita e brilho |
+| Porta trancada | grade de ferro com cadeado (2 cores) | porta de ferro com cadeado; versão de pedra (gruta/ruínas) e de rocha vulcânica (montanha); animação de abrir |
+| Cogumelo luminoso | 3 cogumelos com brilho | tufo de cogumelos azuis que pulsam |
+| Tocha apagada / acesa | braseiro com brasa e fumaça / fogo | braseiro de pedra; apagado com brasa fraca e fumaça; aceso com fogo animado |
+| Mapa do mundo | pergaminho com círculos | pergaminho ilustrado com os 6 lugares desenhados |
+| Line examinando (`LINE_INSPECT`) | usa o agachar | agachada olhando o chão com a mão no queixo (sugestão nova) |
+
+## 8. Como se joga
+
+### 8.1 Controles
+
+| Ação | Teclado | Controle | Celular |
+|---|---|---|---|
+| Andar | WASD / setas | analógico | arrastar no lado esquerdo |
+| Correr | Shift (segurar) | gatilho / analógico até o fim | arrastar até o fim |
+| Atacar (3x = combo) | J / Z | A | ⚔ |
+| Ataque giratório | K / X | X | 🌀 |
+| Esquivar (correndo = dash) | L / C | B | 💨 |
+| Defender (segurar) | V / B | LB | 🛡 |
+| Pular (+ atacar no ar) | Espaço | Y | ⤴ |
+| Magia: Raio de Luz | Q / U | RB | ✨ |
+| Chuva de Estrelas | segurar Q / U e soltar | segurar RB | segurar ✨ |
+| Interagir / ler / abrir | E / Enter | Select | botão que aparece |
+| Mochila (itens e pistas) | I | — | 🎒 |
+| Mapa | M | — | 🎒 → Mapa |
+| Cura rápida | H | — | 🧪 |
+| Pausar | Esc / P | Start | ⏸ |
+| Pular cena | Tab | — | Pular cena |
+
+### 8.2 Combate com espada
+
+| Golpe | Animação | Dano | Observação |
+|---|---|---|---|
+| 1º golpe | `LINE_ATTACK_HORIZONTAL` | 1 | começa o combo |
+| 2º golpe | `LINE_ATTACK_VERTICAL` | 1 | apertar de novo durante o 1º |
+| 3º golpe | `LINE_ATTACK_COMBO` | 1 + 1 | acerta duas vezes |
+| Ataque correndo | `LINE_ATTACK_DIAGONAL` | 2 | com investida para frente |
+| Giro | `LINE_ATTACK_SPIN` | 2 | acerta em volta |
+| Ataque aéreo | `LINE_ATTACK_AIR` | 2 | pular + atacar, com onda de choque ao cair |
+| Golpe final | `LINE_DRAGON_FINAL_ATTACK` | — | só no fim da luta com o dragão |
+
+- **Defesa:** segurar bloqueia golpes físicos (não bloqueia fogo). Leva a `LINE_BLOCK`.
+- **Esquiva e dash:** a Line fica invencível por um instante (`LINE_DODGE` e `LINE_DASH`).
+- **Guardar a espada:** depois de 4 segundos sem inimigos por perto, ela guarda a espada sozinha (`LINE_SWORD_SHEATHE`).
+
+### 8.3 Magia
+
+- **Raio de Luz** (aprendido no altar das ruínas):
+  - Custa 1 ◆.
+  - A mira vai sozinha no inimigo ou cristal mais perto à frente. O Guardião é mira certa.
+  - As sombras levam dano extra.
+  - Acende cristais e tochas e queima espinhos.
+- **Chuva de Estrelas** (depois de vencer o Guardião):
+  - Segurar o botão até a Line brilhar e soltar. Custa 3 ◆.
+  - Explosão em volta que atinge todos os inimigos e acende cristais e tochas próximos.
+- **Barra de magia:** 6 ◆ embaixo dos corações.
+  - Recarrega sozinha, cerca de 1 ◆ a cada 2,6 s no Normal.
+  - Os cristais azuis que os inimigos soltam dão +2 ◆.
+
+![Raio de Luz acendendo um cristal](imagens/14-raio-de-luz.jpg)
+*Raio de Luz acendendo um cristal*
+
+![Carregando a Chuva de Estrelas](imagens/18-carregando-estrelas.jpg)
+*Carregando a Chuva de Estrelas*
+
+### 8.4 Vida, itens e progresso
+
+- **Corações:**
+  - Começam em 3 (6 metades), e cada baú de coração extra dá mais 1.
+  - No Fácil, a Line ganha 1 coração a mais.
+  - Com 1 coração ou menos, ela fica com a animação de exausta.
+- **Coração no chão:** cura 1 coração. Às vezes cai dos inimigos.
+- **Cristal azul:** +2 ◆ de magia. Também cai dos inimigos.
+- **Fontes:** curam tudo, enchem a magia e viram ponto de retorno. Se a Line cair, ela volta para a última fonte bebida naquela área.
+- **Água e fendas:** cair tira meio coração e devolve a Line para o último lugar seguro.
+- **Portas trancadas:** três portas de ferro (gruta, ruínas e montanha). Chegue perto: com uma chave antiga aparece **Abrir com a chave**; sem chave, **Trancada**.
+- **Salvamento automático:** ao entrar em cada área, ao abrir baús, pegar itens e pistas, abrir portas, acender cristais e beber das fontes, e ao abrir a mochila. O botão **Continuar** retoma dali, com a mochila, as pistas e o mapa explorado.
+
+### 8.5 Dificuldade
 
 | | Fácil 🌸 | Normal ⚔ | Difícil 🔥 |
 |---|---|---|---|
@@ -1044,7 +1136,7 @@ A aba **Mapa** (tecla **M**) tem duas visões:
 
 A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, também pela pausa.
 
-## 8. Inimigos e chefes
+## 9. Inimigos e chefes
 
 ### Sombra
 - **Vida:** 3.
@@ -1081,7 +1173,7 @@ A dificuldade fica salva no navegador e pode ser trocada a qualquer momento, tam
 - **Ponto fraco:** depois de levar dano suficiente, ele fica atordoado e o peito brilha em azul. É o ponto fraco.
 - **Fim da luta:** aparece o botão **GOLPE FINAL**.
 
-## 9. Lista completa de animações
+## 10. Lista completa de animações
 
 > ⚠️ **Lembrete: toda a arte atual é temporária** e vai ser trocada pela versão final, mantendo o mesmo código.
 
@@ -1109,7 +1201,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Bichos da fazenda | 67 | 55 | 0 | 12 |
 | Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
 
-### 9.1 Primeiro encontro (prólogo)
+### 10.1 Primeiro encontro (prólogo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1122,7 +1214,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 16 | sim | 🔁 usa `BELL_LAUGH` |  |
 | `LINE_BELL_TUNNEL_KISS` | O primeiro beijo, no túnel *(sugestão nova)* | 8 |  | 🔁 usa `LINE_BELL_KISS` |  |
 
-### 9.2 Line — movimento
+### 10.2 Line — movimento
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1158,7 +1250,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_FALL` | Cair | 4 |  | ✅ temporária | LINE_BELL_ITEM_20 |
 | `LINE_GROUND_STAND` | Levantar do chão | 6 |  | ✅ temporária | LINE_BELL_ITEM_21 |
 
-### 9.3 Line — combate
+### 10.3 Line — combate
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1190,7 +1282,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_EXHAUSTED_IDLE` | Exausta | 6 | sim | ✅ temporária | LINE_BELL_ITEM_39 |
 | `LINE_DRAGON_FINAL_ATTACK` | Ataque final contra o dragão | 7 |  | ✅ temporária | LINE_BELL_ITEM_40 |
 
-### 9.4 Line — emoções
+### 10.4 Line — emoções
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1205,7 +1297,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_RELIEVED` | Aliviada | 5 |  | ✅ temporária | LINE_BELL_ITEM_49 |
 | `LINE_VICTORY` | Comemorando a vitória *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/LINE_VICTORY |
 
-### 9.5 Bell
+### 10.5 Bell
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1244,7 +1336,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_HIGH_FIVE` | Toca aqui *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/BELL_HIGH_FIVE |
 | `BELL_DANCE` | Dançando (giro) *(sugestão nova)* | 4 | sim | ✅ temporária | arte/linebell/BELL_DANCE |
 
-### 9.6 Line e Bell juntas
+### 10.6 Line e Bell juntas
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1275,7 +1367,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_HEAD_ON_LINE` | Bell apoiando a cabeça na Line | 12 |  | ✏️ código / falta |  |
 | `LINE_BELL_SIT_IDLE` | Idle das duas sentadas | 12 | sim | ✏️ código / falta |  |
 
-### 9.7 Dragão
+### 10.7 Dragão
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1307,7 +1399,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `DRAGON_SLEEP` | Dormir *(sugestão nova)* | 1 | sim | ✅ temporária | arte/dragao/DRAGON_SLEEP |
 | `DRAGON_EYE_OPEN_END` | Ressurgir no final | 2 |  | ✅ temporária | arte/dragao/DRAGON_EYE_OPEN_END |
 
-### 9.8 Magia e criaturas (novo)
+### 10.8 Magia e criaturas (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1325,7 +1417,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `WISP_ATTACK` | Fogo-fátuo atirando *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 | `WISP_DEATH` | Fogo-fátuo apagando *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 
-### 9.9 Inimigos (novo)
+### 10.9 Inimigos (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1335,7 +1427,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SHADOW_HIT` | Sombra — receber dano *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 | `SHADOW_DEATH` | Sombra — desaparecer *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
 
-### 9.10 Efeitos
+### 10.10 Efeitos
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1353,7 +1445,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `FX_HEARTS` | Corações | 12 |  | ✏️ código / falta |  |
 | `FX_AMBIENT_PARTICLES` | Partículas ambientais | 12 | sim | ✏️ código / falta |  |
 
-### 9.11 Bichos da fazenda
+### 10.11 Bichos da fazenda
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1425,7 +1517,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `CAT_SLEEP` | Gato — Dormindo *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 | `CAT_PURR` | Gato — Carinho (ronronando) *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 
-### 9.12 Personagens de apoio (novo)
+### 10.12 Personagens de apoio (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -1438,7 +1530,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 *Na coluna Quadros, as animações ✅ mostram quantos quadros diferentes a arte atual tem. As que faltam mostram quantos quadros o jogo espera (é uma sugestão, pode vir com mais ou menos).*
 
-### 9.13 O que ainda falta ter arte própria, por prioridade
+### 10.13 O que ainda falta ter arte própria, por prioridade
 
 **Aparecem na história (prioridade 1):**
 - **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).
@@ -1462,7 +1554,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 **Opcionais (prioridade 3):** efeitos `FX_*` (hoje são partículas feitas no código), `LINE_JUMP_LEFT` e `LINE_LAND_LEFT` (o jogo espelha as da direita).
 
-## 10. Retratos dos diálogos
+## 11. Retratos dos diálogos
 
 > ⚠️ Os retratos atuais também são temporários.
 
@@ -1487,7 +1579,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line & Bell”, que deu as expressões extras.
 
-## 11. Cenário e objetos
+## 12. Cenário e objetos
 
 > ⚠️ O cenário atual também é temporário: parte vem de pacotes de arte recebidos, parte é desenhada no código.
 
@@ -1503,11 +1595,11 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 | Montanha de Brasa | — | chão vulcânico, paredes, fendas, lava, tochas (apagada e acesa), portão de fogo, pedras, estalagmites, fonte, baú |
 | Covil | — | chão, paredes, lava, estalagmites, jaula da Bell |
 
-**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada (versão de pedra e de montanha), cogumelos luminosos da gruta, papel/pergaminho de pista no chão, saquinho de item no chão, ícones dos 7 itens da mochila (hoje são emojis), o pergaminho do mapa do mundo e os ícones do mapa da área.
+**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada, cogumelos luminosos, pista no chão, os 7 itens da mochila (hoje emojis), tochas e o mapa do mundo. A lista completa, com o que cada um deve mostrar, está na **seção 7.7**.
 
 Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.
 
-## 12. Efeitos visuais
+## 13. Efeitos visuais
 
 Todos os efeitos são feitos no código por enquanto (temporários):
 
@@ -1534,16 +1626,16 @@ Todos os efeitos são feitos no código por enquanto (temporários):
   - Tons de cor por horário e área.
   - O olho do dragão no final.
 
-Os códigos `FX_*` da seção 9.10 são para quando esses efeitos ganharem arte própria.
+Os códigos `FX_*` da seção 10.10 são para quando esses efeitos ganharem arte própria.
 
-## 13. Como mandar arte nova
+## 14. Como mandar arte nova
 
 1. **Formatos aceitos:**
    - HTML de item (`LINE_BELL_ITEM_XX.html`, um PNG por quadro).
    - HTML de laboratório.
    - Pasta `arte/<grupo>/<CÓDIGO>/00.png, 01.png…`.
    - Uma **prancha**: imagem com vários quadros, que eu recorto.
-2. **Nome:** o código precisa ser exatamente o da seção 9.
+2. **Nome:** o código precisa ser exatamente o da seção 10.
 3. **Fundo transparente de verdade.** Nada de quadriculado ou fundo cinza desenhado.
 4. **Mesmo tamanho** em todos os quadros de uma animação, com os pés sempre na mesma linha.
 5. **Virada para a direita** nas animações de lado.
@@ -1555,7 +1647,7 @@ Os códigos `FX_*` da seção 9.10 são para quando esses efeitos ganharem arte 
    - Bichos: 100 a 150 px.
 9. Quando a arte chega, o extrator (`tools/extrair_sprites.py`) monta as folhas e ela entra no jogo sozinha, no lugar da temporária.
 
-## 14. Estrutura técnica
+## 15. Estrutura técnica
 
 | Arquivo | O que faz |
 |---|---|

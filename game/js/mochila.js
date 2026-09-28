@@ -128,7 +128,10 @@
     if (!f.magia) return 'Encontrar o altar da luz, na sala a oeste das ruínas.';
     if (!f.golem) return 'Acender os cristais das ruínas e vencer o Guardião de Pedra.';
     if (!f.montanhaVista) return 'Subir até a Montanha de Brasa.';
-    if (!(f.abertas || []).includes('montanha:portao')) return 'Acender as três tochas da montanha para abrir o portão de fogo.';
+    if (!(f.abertas || []).includes('montanha:portao')) {
+      const n = (f.luz || []).filter((k) => ['montanha:6,35', 'montanha:30,22', 'montanha:18,9'].includes(k)).length;
+      return `Acender as três tochas da montanha para abrir o portão de fogo (${n}/3 acesas). Uma fica perto da entrada, outra numa ilha no meio da lava e a última lá em cima.`;
+    }
     return 'Entrar no covil, vencer o dragão e resgatar a Bell.';
   }
 
@@ -382,6 +385,7 @@
       const [x, y] = P(p.tx, p.ty);
       const vis = vistoAqui(p.tx, p.ty);
       if (p.tipo === 'bau') { const ab = p.aberto || abertos.includes(id + ':' + p.tx + ',' + p.ty) || (p.conteudo === 'espada' && j.flags.espada); if (vis || (bussola && !ab)) icone(x, y, 'bau', ab); }
+      else if (p.tipo === 'tocha' && (j.flags.montanhaVista || vis)) { const acesa = p.aceso || (j.flags.luz || []).includes(id + ':' + p.tx + ',' + p.ty); if (!acesa && Math.floor(performance.now() / 400) % 2) { g.strokeStyle = '#ffb347'; g.lineWidth = 2; g.beginPath(); g.arc(x, y, r * 1.8, 0, TAU); g.stroke(); } icone(x, y, 'tocha', acesa); }
       else if (!vis) continue;
       else if (p.tipo === 'fonte') icone(x, y, 'fonte');
       else if (p.tipo === 'placa') icone(x, y, 'placa');

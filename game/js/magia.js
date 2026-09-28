@@ -133,8 +133,19 @@
     const fogo = p.tipo === 'tocha';
     jogo.particulas.emitir(fogo ? 'brasa' : 'brilho', p.x, p.y - 36, 16, { vel: 90, vz: 60, vida: 0.8, r: fogo ? 2.5 : 5 });
     jogo.flashTela = Math.max(jogo.flashTela, 0.08);
+    const grupo = (jogo.mapa.def.barreiras || []).find((b) => b.fontes.includes(p.tx + ',' + p.ty));
+    if (grupo && LB.mochila) {
+      const n = contarAcesas(jogo, grupo);
+      LB.mochila.aviso(`${fogo ? '🔥 Tocha acesa' : '💎 Cristal aceso'} (${n}/${grupo.fontes.length})`);
+      if (fogo && n < grupo.fontes.length) jogo.dica('tochas' + n, `Tocha acesa! ${grupo.fontes.length - n === 1 ? 'Falta 1' : 'Faltam ' + (grupo.fontes.length - n)}. As tochas apagadas soltam fumaça: procure no mapa (M).`);
+    }
     verificarBarreiras(jogo);
     jogo.salvar();
+  }
+
+  // Quantas fontes de luz de uma barreira já estão acesas.
+  function contarAcesas(jogo, b) {
+    return b.fontes.filter((k) => { const [x, y] = k.split(',').map(Number); const p = jogo.mapa.props.find((o) => o.tx === x && o.ty === y); return p && p.aceso; }).length;
   }
 
   function verificarBarreiras(jogo, silencioso) {
@@ -241,7 +252,22 @@
     g.fillStyle = '#3d302b'; g.fillRect(x - 6, y - 34, 12, 34);
     g.fillStyle = '#5a4640'; g.fillRect(x - 13, y - 42, 26, 9);
     g.fillStyle = '#2a201d'; g.fillRect(x - 10, y - 46, 20, 5);
-    if (!p.aceso) { g.fillStyle = 'rgba(120,110,110,.35)'; g.beginPath(); g.arc(x + Math.sin(t * 2) * 3, y - 54 - (t * 10 % 12), 4, 0, TAU); g.fill(); return; }
+    if (!p.aceso) {
+      // Apagada: carvão em brasa fraca, fumaça subindo e um anel que pulsa, para achar de longe.
+      const k = 0.5 + 0.5 * Math.sin(t * 3 + p.tx);
+      brilho(g, x, y - 46, 26, '255,120,50', 0.18 + 0.14 * k);
+      g.fillStyle = '#4a2a1c'; g.beginPath(); g.ellipse(x, y - 46, 9, 3.5, 0, 0, TAU); g.fill();
+      g.fillStyle = `rgba(255,${110 + 60 * k},40,${0.55 + 0.35 * k})`;
+      for (let i = 0; i < 3; i++) { g.beginPath(); g.arc(x - 5 + i * 5, y - 47, 1.8, 0, TAU); g.fill(); }
+      for (let i = 0; i < 3; i++) {
+        const f = (t * 0.45 + i / 3) % 1;
+        g.fillStyle = `rgba(150,140,140,${0.45 * (1 - f)})`;
+        g.beginPath(); g.arc(x + Math.sin(t * 2 + i * 2) * 5 * f, y - 52 - f * 38, 3 + f * 6, 0, TAU); g.fill();
+      }
+      g.strokeStyle = `rgba(255,190,110,${0.25 + 0.3 * k})`; g.lineWidth = 2;
+      g.beginPath(); g.ellipse(x, y + 1, 18 + 4 * k, 7 + 1.5 * k, 0, 0, TAU); g.stroke();
+      return;
+    }
     brilho(g, x, y - 56, 54, '255,170,70', 0.45 + 0.08 * Math.sin(t * 9));
     for (let i = 0; i < 3; i++) {
       const h = 18 + 6 * Math.sin(t * 12 + i * 2), dx = (i - 1) * 5;
@@ -603,7 +629,7 @@
     }
   }
 
-  LB.magia = { CUSTO_RAIO, CUSTO_ESTRELA, raio, estrela, acender, abrirBarreira, aberta, prepararArea, atualizarProjeteis, desenharProjetil, desenharProp, desenharItemMana, desenharEfeito, desenharHudMana };
+  LB.magia = { contarAcesas, CUSTO_RAIO, CUSTO_ESTRELA, raio, estrela, acender, abrirBarreira, aberta, prepararArea, atualizarProjeteis, desenharProjetil, desenharProp, desenharItemMana, desenharEfeito, desenharHudMana };
   LB.FogoFatuo = FogoFatuo;
   LB.Golem = Golem;
 })(window.LB);

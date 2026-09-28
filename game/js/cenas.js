@@ -498,6 +498,14 @@
       yield c.espera(0.4);
       yield c.fala('Line', 'A Montanha de Brasa... O covil do dragão fica lá no topo.', 'neutro');
       yield c.fala('Line', 'Tem um portão de fogo lá em cima... e três tochas apagadas pelo caminho. Aposto que a luz acende.', 'maroto');
+      const nomes = { '6,35': 'Uma aqui perto da entrada...', '30,22': '...outra numa ilha no meio da lava...', '18,9': '...e a última lá em cima, perto do portão.' };
+      for (const p of j.mapa.props.filter((o) => o.tipo === 'tocha' && !o.aceso).sort((a, b) => b.ty - a.ty)) {
+        yield c.camera(p.x, p.y - 30, 1.3);
+        const txt = nomes[p.tx + ',' + p.ty];
+        if (txt) yield c.fala('Line', txt, 'neutro');
+      }
+      yield c.camera(j.line.x, j.line.y - 24, 0.8);
+      j.dica('tochas', LB.entrada.usandoToque() ? 'Acenda as três tochas com a magia ✨. As apagadas soltam fumaça e aparecem no mapa (🎒 → Mapa).' : 'Acenda as três tochas com a magia (Q). As apagadas soltam fumaça e aparecem no mapa (M).');
       j.flags.montanhaVista = true;
       j.salvar();
     },
