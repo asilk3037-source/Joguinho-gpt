@@ -1,105 +1,94 @@
 # Line & Bell — o que falta criar
 
-> A lista completa (todas as 267 animações, uma por uma, com status) está em **[docs/LINE_E_BELL_DOCUMENTACAO.md](docs/LINE_E_BELL_DOCUMENTACAO.md)**. Todas as animações atuais são temporárias até finalizar a criação de todas.
+> Lista gerada a partir do jogo (`tools/gerar_pendentes.py`). A lista completa, com todas as animações e o status de cada uma, está na seção 10 da **[documentação](docs/LINE_E_BELL_DOCUMENTACAO.md)** e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
-O jogo roda do começo ao fim. Tudo o que está abaixo ainda usa uma **substituta** (outra animação parecida, às vezes com um tremor ou pulinho por cima) ou um **desenho provisório** feito no código. Quando a arte chegar e o script de extração rodar, ela entra no jogo sozinha.
+**Status:** 208 de 270 animações com arte · 26 usando uma substituta · 36 desenhadas no código.
 
-Status atual: **160** animações prontas, mais 13 novas pedidas para as fases de magia (Line, Bell, dragão vermelho, Theo (shih-tzu), galinhas, vacas, porcos e cavalo). A prancha "Line & Bell" trouxe a corrida, o pulo, a reverência e o "toca aqui" da Bell, a pose de vitória da Line, a dança e o "toca aqui" das duas, além dos rostos novos: Line brava e chorando, Bell envergonhada. A lista sempre atualizada fica no próprio jogo, em **Menu → Animações**.
+## ⚠️ Reenviar ou mandar
+
+- **Item 96**: chegou com 2 imagem(ns) vazia(s) em `DRAGON_FALL`, `DRAGON_DEFEATED`. As animações funcionam sem esses quadros, mas ficam incompletas.
+- **Item 106**: chegou com 1 imagem(ns) vazia(s) em `BELL_LAUGH_AT_LINE`. As animações funcionam sem esses quadros, mas ficam incompletas.
+- **Item 108**: chegou com 3 imagem(ns) vazia(s) em `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`. As animações funcionam sem esses quadros, mas ficam incompletas.
+- **Itens que ainda não chegaram:** 77, 78, 79, 80.
+- **`DRAGON_IDLE`** está provisório: usa o 1º quadro do rugido (`DRAGON_ROAR`) até chegar a arte do dragão parado.
+
+## Ainda sem arte
+
+| Grupo | Código | O que é | Hoje usa |
+|---|---|---|---|
+| Line — movimento | `LINE_JUMP_LEFT` | Pular | `LINE_JUMP_RIGHT` |
+| Line — movimento | `LINE_LAND_LEFT` | Aterrissar | `LINE_LAND_RIGHT` |
+| Line — combate | `LINE_COMBAT_WALK_FRONT` | Andar com a espada em mãos | `LINE_WALK_FRONT` |
+| Line — combate | `LINE_COMBAT_WALK_BACK` | Andar com a espada em mãos | `LINE_WALK_BACK` |
+| Line — combate | `LINE_COMBAT_WALK_LEFT` | Andar com a espada em mãos | `LINE_WALK_LEFT` |
+| Line — combate | `LINE_COMBAT_WALK_RIGHT` | Andar com a espada em mãos | `LINE_WALK_RIGHT` |
+| Line — combate | `LINE_COMBAT_RUN_FRONT` | Correr com a espada em mãos | `LINE_RUN_FRONT` |
+| Line — combate | `LINE_COMBAT_RUN_BACK` | Correr com a espada em mãos | `LINE_RUN_BACK` |
+| Line — combate | `LINE_COMBAT_RUN_LEFT` | Correr com a espada em mãos | `LINE_RUN_LEFT` |
+| Line — combate | `LINE_COMBAT_RUN_RIGHT` | Correr com a espada em mãos | `LINE_RUN_RIGHT` |
+| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
+| Line e Bell juntas | `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
+| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_SIT_DOWN` | Sentando juntas | desenho no código |
+| Line e Bell juntas | `BELL_HEAD_ON_LINE` | Bell apoiando a cabeça na Line | desenho no código |
+| Line e Bell juntas | `LINE_BELL_SIT_IDLE` | Idle das duas sentadas | desenho no código |
+| Dragão | `DRAGON_BLINK` | Piscar | `DRAGON_IDLE` |
+| Dragão | `DRAGON_RUN` | Correr | `DRAGON_WALK` |
+| Dragão | `DRAGON_SLEEP` | Dormir | `DRAGON_DEFEATED` |
+| Magia e criaturas (novo) | `LINE_CAST_SPELL` | Line lança o Raio de Luz | `LINE_ATTACK_VERTICAL` |
+| Magia e criaturas (novo) | `LINE_CAST_CHARGE` | Line carregando a Chuva de Estrelas | `LINE_COMBAT_IDLE` |
+| Magia e criaturas (novo) | `LINE_CAST_STARS` | Line solta a Chuva de Estrelas | `LINE_ATTACK_SPIN` |
+| Magia e criaturas (novo) | `GOLEM_SLEEP` | Guardião de Pedra dormindo | desenho no código |
+| Magia e criaturas (novo) | `GOLEM_IDLE` | Guardião parado | desenho no código |
+| Magia e criaturas (novo) | `GOLEM_WALK` | Guardião andando | desenho no código |
+| Magia e criaturas (novo) | `GOLEM_SLAM` | Guardião: pisão (onda no chão) | desenho no código |
+| Magia e criaturas (novo) | `GOLEM_THROW` | Guardião: arremessar pedra | desenho no código |
+| Magia e criaturas (novo) | `GOLEM_STUNNED` | Guardião tonto (cristal rachado) | desenho no código |
+| Magia e criaturas (novo) | `GOLEM_DEATH` | Guardião desmoronando | desenho no código |
+| Magia e criaturas (novo) | `WISP_IDLE` | Fogo-fátuo flutuando | desenho no código |
+| Magia e criaturas (novo) | `WISP_ATTACK` | Fogo-fátuo atirando | desenho no código |
+| Magia e criaturas (novo) | `WISP_DEATH` | Fogo-fátuo apagando | desenho no código |
+| Inimigos (novo) | `SHADOW_IDLE` | Sombra — parada | desenho no código |
+| Inimigos (novo) | `SHADOW_MOVE` | Sombra — andar | desenho no código |
+| Inimigos (novo) | `SHADOW_ATTACK` | Sombra — investida | desenho no código |
+| Inimigos (novo) | `SHADOW_HIT` | Sombra — receber dano | desenho no código |
+| Inimigos (novo) | `SHADOW_DEATH` | Sombra — desaparecer | desenho no código |
+| Bichos da fazenda | `SHEEP_IDLE` | Ovelha — Parado | desenho no código |
+| Bichos da fazenda | `SHEEP_WALK` | Ovelha — Andar | desenho no código |
+| Bichos da fazenda | `SHEEP_RUN` | Ovelha — Correr | desenho no código |
+| Bichos da fazenda | `SHEEP_EAT` | Ovelha — Comer grama | desenho no código |
+| Bichos da fazenda | `DUCK_IDLE` | Pato — Parado | desenho no código |
+| Bichos da fazenda | `DUCK_WALK` | Pato — Andar | desenho no código |
+| Bichos da fazenda | `DUCK_SWIM` | Pato — Nadando | desenho no código |
+| Bichos da fazenda | `DUCK_RUN` | Pato — Correr | desenho no código |
+| Bichos da fazenda | `CAT_IDLE` | Gato — Parado | desenho no código |
+| Bichos da fazenda | `CAT_WALK` | Gato — Andar | desenho no código |
+| Bichos da fazenda | `CAT_SLEEP` | Gato — Dormindo | desenho no código |
+| Bichos da fazenda | `CAT_PURR` | Gato — Carinho (ronronando) | desenho no código |
+| Personagens de apoio (novo) | `MAGO_IDLE` | Mago parado, respirando | desenho no código |
+| Personagens de apoio (novo) | `MAGO_TALK` | Mago falando / gesticulando | desenho no código |
+| Personagens de apoio (novo) | `MAGO_CAST` | Mago fazendo um feitiço | desenho no código |
+| Personagens de apoio (novo) | `SPIRIT_APPEAR` | Espírito das Ruínas aparecendo no altar | desenho no código |
+| Personagens de apoio (novo) | `SPIRIT_IDLE` | Espírito das Ruínas flutuando | desenho no código |
+| Personagens de apoio (novo) | `SPIRIT_TALK` | Espírito das Ruínas falando | desenho no código |
 
 ## Como mandar arte nova
 
 Qualquer um destes formatos funciona:
 
-1. **HTML de item** (`*_ITEM_*.html`), igual aos da Line: PNG transparente 1254×1254 por quadro.
-2. **HTML de laboratório** (`*LABORATORIO*.html`), igual ao `Bell-Line-Laboratorio-Animacoes-v7`.
-3. **Pasta em `arte/`**: `arte/<grupo>/<CODIGO>/00.png, 01.png…` com um `config.json` (`{"unidades_por_px": 0.62}`). Foi assim que entraram as pranchas do dragão vermelho. Se mandar uma prancha (imagem com vários quadros numerados), eu recorto e monto a pasta.
+1. **HTML de item** (`LINE_BELL_ITEM_NN.html`), nos dois formatos já usados: `const animations` (PNG por quadro) ou `const payload` (lista de imagens e, para cada animação, a ordem dos quadros, o fps e uma descrição). Quadros 1254×1254 com fundo transparente.
+2. **HTML de laboratório** (`*LABORATORIO*.html`).
+3. **Pasta em `arte/`**: `arte/<grupo>/<CODIGO>/00.png, 01.png…` com um `config.json` (`{"unidades_por_px": 0.62}`).
 
-O código de cada animação precisa ser **exatamente** o da lista (ex.: `BELL_SCARED`). Animações de lado podem vir só viradas para a **direita**: o jogo espelha para a esquerda.
+Depois, `python3 tools/extrair_sprites.py` gera as folhas e registra tudo no jogo. O código de cada animação precisa ser **exatamente** o da lista. Animações de lado podem vir só viradas para a **direita**: o jogo espelha. O tamanho de cada personagem é igualado sozinho entre as animações.
 
 ## ⭐ Theo: layout oficial
 
-A arte do Theo que está hoje no jogo (prancha `arte/referencias/theo_shihtzu.png`) é o **layout oficial** para criar a arte final. A versão final deve **só melhorar**, sem perder os traços: shih-tzu marrom-caramelo com peito, patas e rabo creme, topete, orelhas longas, olhos pretos grandes e língua rosa, em pixel art com contorno escuro. Pode melhorar o tamanho igual entre os quadros, o fundo transparente, o contorno e ter mais quadros. Detalhes na seção 2 da [documentação](docs/LINE_E_BELL_DOCUMENTACAO.md).
-
-## Prioridade 1 — aparecem na história
-
-### Prólogo: O primeiro encontro (novo)
-O jogo agora começa com o primeiro encontro das duas (Minas Shopping → Playground → Túnel → fazenda). Hoje usa substitutas:
-- `LINE_ADMIRE`: a Line admirando a Bell de longe. Usa `LINE_HAPPY`.
-- `BELL_WAIT`: a Bell esperando no shopping. Usa a Bell parada.
-- `LINE_BELL_MEET`: as duas frente a frente conversando. Usa as duas de mãos dadas.
-- `LINE_BELL_GREET_HUG`: abraço de chegada (“Você tá atrasada”). Usa o abraço do resgate.
-- `LINE_BELL_BK`: comendo BK na mesa. Usa o almoço da fazenda.
-- `BELL_LAUGH_AT_LINE`: gargalhando do soco. Usa a gargalhada.
-- `LINE_BELL_TUNNEL_KISS`: o primeiro beijo no túnel. Usa a bitoquinha.
-- Cenário: o **Playground** ainda é desenhado no código; o shopping e o túnel usam as ilustrações do HTML.
-- ⭐ **Minas Shopping: modelo real.** A ilustração final do shopping deve seguir a foto da praça de alimentação (`arte/referencias/minas_shopping_modelo.jpg`): Burger King ao fundo, teto de madeira, pilar branco, piso polido, mesas redondas estampadas e cadeiras de madeira caramelo. Detalhes na seção 5.2 da documentação. A máquina de soco parada foi recortada da `LINE_PUNCH_MACHINE`.
-
-O HTML do primeiro encontro já tem ilustrações do abraço, do BK, das mãos dadas e do beijo que servem de base (ver seção 5 da documentação).
-
-
-### Bell
-- `BELL_SCARED`: assustada quando o dragão chega. Hoje usa a Bell parada tremendo.
-- `BELL_CAPTURED` e `BELL_DRAGON_CARRIED`: sendo agarrada e carregada. Hoje usa a Bell parada balançando.
-- `BELL_TRAPPED`, `BELL_CALL_LINE`, `BELL_ESCAPE_ATTEMPT`: presa na jaula chamando a Line. Hoje usa a Bell parada pulando.
-- `BELL_BREAK_FREE`, `BELL_HAPPY`, `BELL_RELIEVED`: saindo da jaula e feliz. Hoje usa a gargalhada.
-- `BELL_RUN_FRONT/BACK`: a corrida de lado já chegou. De frente e de costas, ainda usa a caminhada.
-
-### Dragão
-O dragão agora é o **vermelho** da última prancha. Ela trouxe: parado, andar, decolar, voar, fogo e rugido. O resto usa quadros dessas mesmas animações:
-- `DRAGON_CLAW_ATTACK` (garra): usa o rugido + agachar.
-- `DRAGON_TAIL_ATTACK` (golpe de cauda): usa a garra.
-- `DRAGON_HIT`, `DRAGON_STUNNED` (dano, atordoado): usam o agachar.
-- `DRAGON_FALL`, `DRAGON_DEFEATED` (cair, derrotado): usam o pouso e o agachar. Falta ele **caído no chão** de verdade.
-- `DRAGON_SLEEP`: usa ele sentado. Falta de olho fechado.
-- `DRAGON_AIR_ATTACK` (mergulho com as garras): usa a decolagem.
-
-A prancha tem o dragão com ~130 px de altura. O ideal é **~400 px de corpo, em quadros de 512×512**.
-
-### Line: emoções das cenas
-- Completas! Itens 43–49: determinada, brava, assustada, triste, chorando, gritando por Bell e aliviada.
-
-## Capítulo novo — magia e aventura
-
-Duas fases novas entre a floresta e o covil: **Ruínas Encantadas** e **Montanha de Brasa**. Tudo nelas está desenhado no código por enquanto. A arte abaixo entra sozinha quando chegar, com o código exato.
-
-- **Line lançando magia:**
-  - `LINE_CAST_SPELL`: lança o Raio de Luz. Hoje usa o ataque vertical.
-  - `LINE_CAST_CHARGE`: carregando a Chuva de Estrelas, em loop. Hoje usa a postura de combate.
-  - `LINE_CAST_STARS`: solta a Chuva de Estrelas. Hoje usa o giro.
-- **Guardião de Pedra** (chefe das ruínas), virado para a direita: `GOLEM_SLEEP`, `GOLEM_IDLE`, `GOLEM_WALK`, `GOLEM_SLAM` (pisão), `GOLEM_THROW` (arremessar pedra), `GOLEM_STUNNED` (tonto, com o cristal do peito rachado) e `GOLEM_DEATH` (desmoronando). Ele tem um cristal azul no peito, que brilha quando está protegido.
-- **Fogo-fátuo** (luzinha que atira orbes): `WISP_IDLE`, `WISP_ATTACK` e `WISP_DEATH`. Há duas cores, azul nas ruínas e de fogo na montanha, então pode vir só uma, em tons claros, para eu recolorir.
-- **Cenário:**
-  - Ruínas: chão de lajes, paredes, pilares, cristal num pedestal (apagado e aceso), altar com orbe de luz, fonte mágica e barreira de luz.
-  - Montanha: chão de rocha vulcânica, paredes, fendas, tocha num pedestal (apagada e acesa) e portão de fogo.
-  - Pode vir numa prancha, como o pacote da fazenda.
-
-## Prioridade 2 — deixam o jogo mais bonito
-
-- **Line e Bell juntas:** `LINE_BELL_HUG_RELEASE`, `LINE_BELL_SIT_DOWN`, `LINE_BELL_SIT_IDLE` (sentadas no pôr do sol do epílogo), `LINE_BELL_RUN_TOGETHER_*`, `LINE_BELL_LAUGH`, `BELL_HEAD_ON_LINE`. (`LINE_BELL_TALK`, `LINE_BELL_CELEBRATE`, `LINE_BELL_DANCE` e `LINE_BELL_HIGH_FIVE` já chegaram.)
-- **Abraço animado:** hoje o `LINE_BELL_RESCUE_HUG` tem só 1 quadro.
-- **Inimigo Sombra** (floresta): `SHADOW_IDLE`, `SHADOW_MOVE`, `SHADOW_ATTACK`, `SHADOW_HIT`, `SHADOW_DEATH`.
-- **Line com a espada na mão:** `LINE_COMBAT_WALK_*` e `LINE_COMBAT_RUN_*`.
-- **Mago:** hoje é uma imagem parada que respira e brilha. Animações de falar ou acenar ajudariam.
-- **Bichinhos:** galinhas, pintinhos, vacas, porcos, cavalo e o Theo já usam a arte que você mandou. Ainda são desenhados no código: **ovelha, pato e gato**.
-
-## Prioridade 3 — opcionais
-- Efeitos (`FX_*`): hoje são partículas feitas no código.
-- `LINE_JUMP_LEFT`, `LINE_LAND_LEFT`: o jogo espelha as versões da direita.
-
-## Exploração nova (mochila, pistas, gruta)
-Tudo desenhado no código por enquanto:
-- **Gruta dos Ecos:** chão e paredes azuladas, água, cogumelos luminosos.
-- **Porta de ferro trancada** (pedra e montanha) e a animação de abrir.
-- **Itens no chão:** saquinho de item e papel/pergaminho de pista brilhando.
-- **Ícones dos 7 itens** da mochila (hoje são emojis): Poção de Vida, Pão da Bell, Maçã, Elixir de Luz, Flor da Lua, Chave antiga, Bússola do Mago.
-- **Mapa:** o pergaminho do mapa do mundo e os ícones do mapa da área.
-- **Line examinando** (`LINE_INSPECT`, sugestão): agachada olhando o chão, para os pontos de exame. Hoje usa o agachar.
-
-## Cenário
-
-A fazenda já usa o pacote: casa, celeiro, galinheiro, moinho, poço, árvores (normais, macieiras, cerejeiras e pinheiros na floresta), horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho e trigo. Ainda desenhados no código: cercas, chão, água, flores pequenas e o covil.
-
-## Ajustes de arte percebidos
-1. **Estilo da Line:** os itens 35–42 foram refeitos no estilo chibi. Agora todas as animações da Line estão no mesmo estilo.
-2. **Tamanho da Bell.** Na prancha "Line & Bell", as duas têm quase a mesma altura. No jogo, a Bell é menor. Nas animações do casal, deixei como está na prancha.
-3. **Quedas:** nas quedas, cada quadro agora encosta no chão sozinho. Assim a Line deitada não fica mais flutuando.
+A arte do Theo que está hoje no jogo (`arte/referencias/theo_shihtzu.png`) é o **layout oficial** para a arte final: só melhorar, sem perder os traços. Detalhes na seção 2 da [documentação](docs/LINE_E_BELL_DOCUMENTACAO.md).

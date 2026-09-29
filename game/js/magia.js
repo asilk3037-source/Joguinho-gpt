@@ -271,6 +271,7 @@
       }
       g.strokeStyle = `rgba(255,190,110,${0.25 + 0.3 * k})`; g.lineWidth = 2;
       g.beginPath(); g.ellipse(x, y + 1, 18 + 4 * k, 7 + 1.5 * k, 0, 0, TAU); g.stroke();
+      LB.fx.desenharLoop(g, 'FX_SMOKE', x + 2, y - 66, t + p.tx * 0.37);
       return;
     }
     brilho(g, x, y - 56, 54, '255,170,70', 0.45 + 0.08 * Math.sin(t * 9));

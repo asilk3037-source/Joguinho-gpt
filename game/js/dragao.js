@@ -276,7 +276,7 @@
         if (this.flash > 0) g.filter = 'brightness(2)';
         LB.desenharSprite(g, st.r, st.quadro, this.x, y, ALTURA_DRAGAO);
         g.filter = 'none';
-        if (this.fraco) this.brilhoPeito(g, this.x + this.lado * 38, y - 66, jogo.tempo);
+        if (this.fraco) this.brilhoPeito(g, this.x + this.lado * 50, y - 58, jogo.tempo);
         return;
       }
       const img = LB.personagem('dragao');
@@ -290,6 +290,7 @@
       gr.addColorStop(0, `rgba(160,245,255,${0.95 * k})`); gr.addColorStop(0.4, `rgba(90,220,255,${0.55 * k})`); gr.addColorStop(1, 'rgba(90,220,255,0)');
       g.fillStyle = gr; g.beginPath(); g.arc(px, py, 26, 0, Math.PI * 2); g.fill();
       g.strokeStyle = `rgba(200,250,255,${k})`; g.lineWidth = 2; g.beginPath(); g.arc(px, py, 14 + Math.sin(t * 10) * 3, 0, Math.PI * 2); g.stroke();
+      LB.fx.desenharLoop(g, 'FX_DRAGON_WEAK_POINT', px, py, t);
     }
 
     // Anima a ilustração do dragão (uma imagem só) com movimentos por animação.

@@ -27,7 +27,7 @@
     j.particulas.emitir('fogo', b.x, b.y - 10, 26, { vel: 160, vida: 0.5, r: 7 });
     j.particulas.emitir('poeira', b.x, b.y, 18, { vel: 150, vida: 0.8, r: 6 });
     j.particulas.emitir('pedra', b.x, b.y, 10, { vel: 120, vz: 180, vida: 0.9 });
-    j.particulas.emitir('impacto', b.x, b.y - 16, 1, { r: 14, vida: 0.4, vel: 0 });
+    if (!LB.fx.emitir(j, 'FX_EXPLOSION', b.x, b.y - 18)) j.particulas.emitir('impacto', b.x, b.y - 16, 1, { r: 14, vida: 0.4, vel: 0 });
     // Inimigos em volta.
     for (const e of j.alvos()) {
       if (Math.hypot(e.x - b.x, (e.y - b.y) * 1.2) > RAIO_BOMBA + (e.raio || 12)) continue;

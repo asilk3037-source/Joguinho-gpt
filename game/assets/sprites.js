@@ -1,136 +1,268 @@
 // Gerado por tools/extrair_sprites.py. Não edite à mão.
 window.SPRITES = {
  "BELL_WALK_FRONT": {
+  "ritmo": 1,
   "src": "assets/sprites/BELL_WALK_FRONT.webp",
-  "cell": 320,
-  "count": 8,
+  "cell": 256,
+  "count": 4,
   "seq": [
    0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
    1,
    2,
+   2,
+   2,
+   2,
    3,
-   4,
-   5,
-   6,
-   7
+   3,
+   3,
+   3
   ],
-  "ground": 267,
-  "groundEnd": 267,
-  "escala": 1.6158,
-  "label": "BELL_WALK_FRONT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 239,
+  "groundEnd": 238,
+  "bases": [
+   239,
+   239,
+   239,
+   238
+  ],
+  "label": "Bell — Caminhar para frente",
+  "item": "LINE_BELL_ITEM_54.html",
+  "escala": 0.9729
  },
  "BELL_IDLE_FRONT": {
+  "ritmo": 1,
   "src": "assets/sprites/BELL_IDLE_FRONT.webp",
-  "cell": 320,
-  "count": 1,
+  "cell": 256,
+  "count": 3,
   "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   2,
+   2,
+   0,
+   0,
    0
   ],
-  "ground": 267,
-  "groundEnd": 267,
-  "escala": 1.6158,
-  "label": "BELL_IDLE_FRONT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 225,
+  "groundEnd": 225,
+  "bases": [
+   225,
+   227,
+   231
+  ],
+  "label": "Bell — Idle frontal",
+  "item": "LINE_BELL_ITEM_50.html",
+  "escala": 1.191
  },
  "BELL_WALK_LEFT": {
+  "ritmo": 1,
   "src": "assets/sprites/BELL_WALK_LEFT.webp",
-  "cell": 320,
-  "count": 8,
+  "cell": 256,
+  "count": 5,
   "seq": [
    0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
    1,
    2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
    3,
    4,
-   5,
-   6,
-   7
+   4,
+   4,
+   4
   ],
-  "ground": 267,
-  "groundEnd": 267,
-  "escala": 1.6158,
-  "label": "BELL_WALK_LEFT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 232,
+  "groundEnd": 224,
+  "bases": [
+   232,
+   233,
+   219,
+   229,
+   224
+  ],
+  "label": "Bell — Caminhar para a esquerda",
+  "item": "LINE_BELL_ITEM_53.html",
+  "escala": 1.2409
  },
  "BELL_IDLE_LEFT": {
+  "ritmo": 1,
   "src": "assets/sprites/BELL_IDLE_LEFT.webp",
-  "cell": 320,
+  "cell": 256,
   "count": 1,
   "seq": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
-  "ground": 267,
-  "groundEnd": 267,
-  "escala": 1.6158,
-  "label": "BELL_IDLE_LEFT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 232,
+  "groundEnd": 232,
+  "bases": [
+   232
+  ],
+  "label": "Bell — Idle esquerda",
+  "item": "LINE_BELL_ITEM_51.html",
+  "escala": 1.35
  },
  "BELL_WALK_BACK": {
+  "ritmo": 1,
   "src": "assets/sprites/BELL_WALK_BACK.webp",
-  "cell": 320,
-  "count": 8,
+  "cell": 256,
+  "count": 4,
   "seq": [
    0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
    1,
    2,
+   2,
+   2,
+   2,
    3,
-   4,
-   5,
-   6,
-   7
+   3,
+   3,
+   3
   ],
-  "ground": 264,
-  "groundEnd": 264,
-  "escala": 1.6158,
-  "label": "BELL_WALK_BACK",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 235,
+  "groundEnd": 238,
+  "bases": [
+   235,
+   238,
+   235,
+   238
+  ],
+  "label": "Bell — Caminhar de costas",
+  "item": "LINE_BELL_ITEM_54.html",
+  "escala": 1.0259
  },
  "BELL_IDLE_BACK": {
+  "ritmo": 1,
   "src": "assets/sprites/BELL_IDLE_BACK.webp",
-  "cell": 320,
+  "cell": 256,
   "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 264,
-  "groundEnd": 264,
-  "escala": 1.6158,
-  "label": "BELL_IDLE_BACK",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
- },
- "BELL_WALK_RIGHT": {
-  "src": "assets/sprites/BELL_WALK_RIGHT.webp",
-  "cell": 320,
-  "count": 8,
   "seq": [
    0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7
-  ],
-  "ground": 265,
-  "groundEnd": 267,
-  "escala": 1.6158,
-  "label": "BELL_WALK_RIGHT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
- },
- "BELL_IDLE_RIGHT": {
-  "src": "assets/sprites/BELL_IDLE_RIGHT.webp",
-  "cell": 320,
-  "count": 1,
-  "seq": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
    0
   ],
-  "ground": 265,
-  "groundEnd": 265,
-  "escala": 1.6158,
-  "label": "BELL_IDLE_RIGHT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 218,
+  "groundEnd": 218,
+  "bases": [
+   218
+  ],
+  "label": "Bell — Idle costas",
+  "item": "LINE_BELL_ITEM_51.html",
+  "escala": 1.3034
+ },
+ "BELL_WALK_RIGHT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_WALK_RIGHT.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 232,
+  "groundEnd": 224,
+  "bases": [
+   232,
+   233,
+   219,
+   229,
+   224
+  ],
+  "label": "Bell — Caminhar para a direita",
+  "item": "LINE_BELL_ITEM_52.html",
+  "escala": 1.2409
+ },
+ "BELL_IDLE_RIGHT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_IDLE_RIGHT.webp",
+  "cell": 256,
+  "count": 1,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "ground": 232,
+  "groundEnd": 232,
+  "bases": [
+   232
+  ],
+  "label": "Bell — Idle direita",
+  "item": "LINE_BELL_ITEM_51.html",
+  "escala": 1.2636
  },
  "LINE_BELL_WALK_HANDS_FRONT": {
   "src": "assets/sprites/LINE_BELL_WALK_HANDS_FRONT.webp",
@@ -152,28 +284,6 @@ window.SPRITES = {
   "groundEnd": 374,
   "escala": 3.0797,
   "label": "LINE_BELL_WALK_HANDS_FRONT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
- },
- "LINE_BELL_WALK_HANDS_LEFT": {
-  "src": "assets/sprites/LINE_BELL_WALK_HANDS_LEFT.webp",
-  "cell": 420,
-  "count": 6,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   4,
-   3,
-   2,
-   1
-  ],
-  "ground": 370,
-  "groundEnd": 374,
-  "escala": 3.0797,
-  "label": "LINE_BELL_WALK_HANDS_LEFT",
   "item": "BELL_LINE_LABORATORIO_V7.html"
  },
  "LINE_BELL_WALK_HANDS_BACK": {
@@ -198,55 +308,36 @@ window.SPRITES = {
   "label": "LINE_BELL_WALK_HANDS_BACK",
   "item": "BELL_LINE_LABORATORIO_V7.html"
  },
- "LINE_BELL_WALK_HANDS_RIGHT": {
-  "src": "assets/sprites/LINE_BELL_WALK_HANDS_RIGHT.webp",
-  "cell": 420,
-  "count": 6,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   4,
-   3,
-   2,
-   1
-  ],
-  "ground": 373,
-  "groundEnd": 374,
-  "escala": 3.0797,
-  "label": "LINE_BELL_WALK_HANDS_RIGHT",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
- },
  "BELL_LAUGH": {
+  "ritmo": 1,
+  "fpsArte": 8,
   "src": "assets/sprites/BELL_LAUGH.webp",
-  "cell": 276,
-  "count": 16,
+  "cell": 256,
+  "count": 2,
   "seq": [
    0,
+   0,
    1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11,
-   12,
-   13,
-   14,
-   15
+   1,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0
   ],
-  "ground": 253,
-  "groundEnd": 252,
-  "escala": 1.0669,
-  "label": "BELL_LAUGH",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 247,
+  "groundEnd": 247,
+  "bases": [
+   247,
+   248
+  ],
+  "label": "Bell abre o sorriso, fecha os olhos e se inclina durante a gargalhada.",
+  "item": "LINE_BELL_ITEM_108.html",
+  "escala": 0.9822
  },
  "LINE_BELL_KISS": {
   "src": "assets/sprites/LINE_BELL_KISS.webp",
@@ -305,58 +396,108 @@ window.SPRITES = {
   "item": "BELL_LINE_LABORATORIO_V7.html"
  },
  "LINE_PUNCH_MACHINE": {
+  "ritmo": 1,
+  "fpsArte": 9,
   "src": "assets/sprites/LINE_PUNCH_MACHINE.webp",
-  "cell": 404,
-  "count": 16,
+  "cell": 256,
+  "count": 3,
   "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   2,
+   1,
+   1,
+   0,
    0,
    1,
    2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11,
-   12,
-   13,
-   14,
-   15
+   1,
+   0
   ],
-  "ground": 370,
-  "groundEnd": 369,
-  "escala": 1.5605,
-  "label": "LINE_PUNCH_MACHINE",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 235,
+  "groundEnd": 235,
+  "bases": [
+   235,
+   222,
+   222
+  ],
+  "label": "Line prepara o golpe, avança, acerta a máquina e recupera a postura; a espada permanece totalmente embainhada.",
+  "item": "LINE_BELL_ITEM_106.html",
+  "escala": 1.0687
  },
  "LINE_BELL_RESCUE_HUG": {
+  "ritmo": 1,
   "src": "assets/sprites/LINE_BELL_RESCUE_HUG.webp",
-  "cell": 259,
-  "count": 1,
+  "cell": 256,
+  "count": 4,
   "seq": [
-   0
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
   ],
-  "ground": 238,
-  "groundEnd": 238,
-  "escala": 1.0011,
-  "label": "LINE_BELL_RESCUE_HUG",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 215,
+  "groundEnd": 239,
+  "bases": [
+   215,
+   238,
+   241,
+   239
+  ],
+  "label": "Line e Bell — Abraço do resgate",
+  "item": "LINE_BELL_ITEM_74.html",
+  "escala": 0.9552
  },
  "LINE_BELL_HOLD_HANDS": {
+  "ritmo": 1,
   "src": "assets/sprites/LINE_BELL_HOLD_HANDS.webp",
-  "cell": 259,
-  "count": 1,
+  "cell": 256,
+  "count": 3,
   "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   0,
+   0,
+   0,
    0
   ],
-  "ground": 238,
-  "groundEnd": 238,
-  "escala": 1.0011,
-  "label": "LINE_BELL_HOLD_HANDS",
-  "item": "BELL_LINE_LABORATORIO_V7.html"
+  "ground": 223,
+  "groundEnd": 223,
+  "bases": [
+   223,
+   230,
+   232
+  ],
+  "label": "Line e Bell — Segurando as mãos",
+  "item": "LINE_BELL_ITEM_73.html",
+  "escala": 1.3163
  },
  "COW_EAT": {
   "src": "assets/sprites/COW_EAT.webp",
@@ -546,276 +687,6 @@ window.SPRITES = {
   "mundo": 36.12,
   "label": "PIG_WALK",
   "item": "arte/bichos/PIG_WALK"
- },
- "DRAGON_AIR_ATTACK": {
-  "src": "assets/sprites/DRAGON_AIR_ATTACK.webp",
-  "cell": 208,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 207,
-  "groundEnd": 207,
-  "mundo": 239.2,
-  "label": "DRAGON_AIR_ATTACK",
-  "item": "arte/dragao/DRAGON_AIR_ATTACK"
- },
- "DRAGON_CLAW_ATTACK": {
-  "src": "assets/sprites/DRAGON_CLAW_ATTACK.webp",
-  "cell": 204,
-  "count": 3,
-  "seq": [
-   0,
-   1,
-   2
-  ],
-  "ground": 204,
-  "groundEnd": 204,
-  "mundo": 234.6,
-  "label": "DRAGON_CLAW_ATTACK",
-  "item": "arte/dragao/DRAGON_CLAW_ATTACK"
- },
- "DRAGON_DEFEATED": {
-  "src": "assets/sprites/DRAGON_DEFEATED.webp",
-  "cell": 196,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 196,
-  "groundEnd": 196,
-  "mundo": 225.4,
-  "label": "DRAGON_DEFEATED",
-  "item": "arte/dragao/DRAGON_DEFEATED"
- },
- "DRAGON_EYE_OPEN_END": {
-  "src": "assets/sprites/DRAGON_EYE_OPEN_END.webp",
-  "cell": 204,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 204,
-  "groundEnd": 204,
-  "mundo": 234.6,
-  "label": "DRAGON_EYE_OPEN_END",
-  "item": "arte/dragao/DRAGON_EYE_OPEN_END"
- },
- "DRAGON_FALL": {
-  "src": "assets/sprites/DRAGON_FALL.webp",
-  "cell": 208,
-  "count": 3,
-  "seq": [
-   0,
-   1,
-   2
-  ],
-  "ground": 208,
-  "groundEnd": 208,
-  "mundo": 239.2,
-  "label": "DRAGON_FALL",
-  "item": "arte/dragao/DRAGON_FALL"
- },
- "DRAGON_FIRE_BREATH": {
-  "src": "assets/sprites/DRAGON_FIRE_BREATH.webp",
-  "cell": 180,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 180,
-  "groundEnd": 179,
-  "mundo": 207.0,
-  "label": "DRAGON_FIRE_BREATH",
-  "item": "arte/dragao/DRAGON_FIRE_BREATH"
- },
- "DRAGON_FIRE_CHARGE": {
-  "src": "assets/sprites/DRAGON_FIRE_CHARGE.webp",
-  "cell": 180,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 180,
-  "groundEnd": 180,
-  "mundo": 207.0,
-  "label": "DRAGON_FIRE_CHARGE",
-  "item": "arte/dragao/DRAGON_FIRE_CHARGE"
- },
- "DRAGON_FIRE_STREAM": {
-  "src": "assets/sprites/DRAGON_FIRE_STREAM.webp",
-  "cell": 180,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 179,
-  "groundEnd": 179,
-  "mundo": 207.0,
-  "label": "DRAGON_FIRE_STREAM",
-  "item": "arte/dragao/DRAGON_FIRE_STREAM"
- },
- "DRAGON_FLY": {
-  "src": "assets/sprites/DRAGON_FLY.webp",
-  "cell": 208,
-  "count": 5,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4
-  ],
-  "ground": 208,
-  "groundEnd": 208,
-  "mundo": 239.2,
-  "label": "DRAGON_FLY",
-  "item": "arte/dragao/DRAGON_FLY"
- },
- "DRAGON_HIT": {
-  "src": "assets/sprites/DRAGON_HIT.webp",
-  "cell": 196,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 196,
-  "groundEnd": 196,
-  "mundo": 225.4,
-  "label": "DRAGON_HIT",
-  "item": "arte/dragao/DRAGON_HIT"
- },
- "DRAGON_IDLE": {
-  "src": "assets/sprites/DRAGON_IDLE.webp",
-  "cell": 202,
-  "count": 4,
-  "seq": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "ground": 202,
-  "groundEnd": 201,
-  "mundo": 232.3,
-  "label": "DRAGON_IDLE",
-  "item": "arte/dragao/DRAGON_IDLE"
- },
- "DRAGON_LAND": {
-  "src": "assets/sprites/DRAGON_LAND.webp",
-  "cell": 208,
-  "count": 5,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4
-  ],
-  "ground": 207,
-  "groundEnd": 208,
-  "mundo": 239.2,
-  "label": "DRAGON_LAND",
-  "item": "arte/dragao/DRAGON_LAND"
- },
- "DRAGON_ROAR": {
-  "src": "assets/sprites/DRAGON_ROAR.webp",
-  "cell": 204,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 204,
-  "groundEnd": 204,
-  "mundo": 234.6,
-  "label": "DRAGON_ROAR",
-  "item": "arte/dragao/DRAGON_ROAR"
- },
- "DRAGON_RUN": {
-  "src": "assets/sprites/DRAGON_RUN.webp",
-  "cell": 218,
-  "count": 6,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5
-  ],
-  "ground": 218,
-  "groundEnd": 218,
-  "mundo": 250.7,
-  "label": "DRAGON_RUN",
-  "item": "arte/dragao/DRAGON_RUN"
- },
- "DRAGON_SLEEP": {
-  "src": "assets/sprites/DRAGON_SLEEP.webp",
-  "cell": 178,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 178,
-  "groundEnd": 178,
-  "mundo": 204.7,
-  "label": "DRAGON_SLEEP",
-  "item": "arte/dragao/DRAGON_SLEEP"
- },
- "DRAGON_STUNNED": {
-  "src": "assets/sprites/DRAGON_STUNNED.webp",
-  "cell": 196,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 196,
-  "groundEnd": 196,
-  "mundo": 225.4,
-  "label": "DRAGON_STUNNED",
-  "item": "arte/dragao/DRAGON_STUNNED"
- },
- "DRAGON_TAKEOFF": {
-  "src": "assets/sprites/DRAGON_TAKEOFF.webp",
-  "cell": 208,
-  "count": 5,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4
-  ],
-  "ground": 208,
-  "groundEnd": 207,
-  "mundo": 239.2,
-  "label": "DRAGON_TAKEOFF",
-  "item": "arte/dragao/DRAGON_TAKEOFF"
- },
- "DRAGON_WALK": {
-  "src": "assets/sprites/DRAGON_WALK.webp",
-  "cell": 218,
-  "count": 6,
-  "seq": [
-   0,
-   1,
-   2,
-   3,
-   4,
-   5
-  ],
-  "ground": 218,
-  "groundEnd": 218,
-  "mundo": 250.7,
-  "label": "DRAGON_WALK",
-  "item": "arte/dragao/DRAGON_WALK"
  },
  "CHICKEN_EAT": {
   "src": "assets/sprites/CHICKEN_EAT.webp",
@@ -1195,120 +1066,261 @@ window.SPRITES = {
   "item": "arte/galinhas/HEN_BROWN_WALK"
  },
  "BELL_CURTSY": {
+  "ritmo": 1,
+  "fpsArte": 7,
   "src": "assets/sprites/BELL_CURTSY.webp",
-  "cell": 103,
-  "count": 1,
+  "cell": 256,
+  "count": 4,
   "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   2,
+   1,
+   0,
    0
   ],
-  "ground": 103,
-  "groundEnd": 103,
-  "mundo": 46.8,
-  "label": "Bell fazendo reverência",
-  "item": "arte/linebell/BELL_CURTSY"
+  "ground": 232,
+  "groundEnd": 232,
+  "bases": [
+   232,
+   238,
+   234,
+   234
+  ],
+  "label": "Bell reúne os pés, inclina o corpo com delicadeza e volta à posição neutra.",
+  "item": "LINE_BELL_ITEM_108.html",
+  "escala": 1.191
  },
  "BELL_DANCE": {
+  "ritmo": 1,
+  "fpsArte": 9,
   "src": "assets/sprites/BELL_DANCE.webp",
-  "cell": 110,
-  "count": 4,
-  "seq": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "ground": 109,
-  "groundEnd": 110,
-  "mundo": 49.95,
-  "label": "Bell dançando",
-  "item": "arte/linebell/BELL_DANCE"
- },
- "BELL_HIGH_FIVE": {
-  "src": "assets/sprites/BELL_HIGH_FIVE.webp",
-  "cell": 103,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 103,
-  "groundEnd": 103,
-  "mundo": 46.8,
-  "label": "Bell toca aqui",
-  "item": "arte/linebell/BELL_HIGH_FIVE"
- },
- "BELL_JUMP": {
-  "src": "assets/sprites/BELL_JUMP.webp",
-  "cell": 114,
-  "count": 2,
-  "seq": [
-   0,
-   1
-  ],
-  "ground": 113,
-  "groundEnd": 113,
-  "mundo": 51.75,
-  "label": "Bell pulando",
-  "item": "arte/linebell/BELL_JUMP"
- },
- "BELL_LAND": {
-  "src": "assets/sprites/BELL_LAND.webp",
-  "cell": 105,
-  "count": 1,
-  "seq": [
-   0
-  ],
-  "ground": 105,
-  "groundEnd": 105,
-  "mundo": 47.7,
-  "label": "Bell aterrissando",
-  "item": "arte/linebell/BELL_LAND"
- },
- "BELL_RUN_LEFT": {
-  "src": "assets/sprites/BELL_RUN_LEFT.webp",
-  "cell": 106,
-  "count": 4,
-  "seq": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "ground": 106,
-  "groundEnd": 106,
-  "mundo": 48.15,
-  "label": "Bell correndo",
-  "item": "arte/linebell/BELL_RUN_LEFT"
- },
- "BELL_RUN_RIGHT": {
-  "src": "assets/sprites/BELL_RUN_RIGHT.webp",
-  "cell": 106,
-  "count": 4,
-  "seq": [
-   0,
-   1,
-   2,
-   3
-  ],
-  "ground": 106,
-  "groundEnd": 106,
-  "mundo": 48.15,
-  "label": "Bell correndo",
-  "item": "arte/linebell/BELL_RUN_RIGHT"
- },
- "LINE_BELL_CELEBRATE": {
-  "src": "assets/sprites/LINE_BELL_CELEBRATE.webp",
-  "cell": 138,
+  "cell": 256,
   "count": 3,
   "seq": [
    0,
+   0,
    1,
+   1,
+   2,
+   2,
+   1,
+   0,
+   1,
+   2,
+   1
+  ],
+  "ground": 232,
+  "groundEnd": 242,
+  "bases": [
+   232,
+   242,
+   244
+  ],
+  "label": "Bell alterna passos, braços e saltos em um ciclo de dança alegre.",
+  "item": "LINE_BELL_ITEM_108.html",
+  "escala": 1.1708
+ },
+ "BELL_HIGH_FIVE": {
+  "ritmo": 1,
+  "fpsArte": 9,
+  "src": "assets/sprites/BELL_HIGH_FIVE.webp",
+  "cell": 256,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0
+  ],
+  "ground": 232,
+  "groundEnd": 232,
+  "bases": [
+   232,
+   244
+  ],
+  "label": "Bell ergue a mão, salta para o toca-aqui e aterrissa sorrindo.",
+  "item": "LINE_BELL_ITEM_108.html",
+  "escala": 1.2792
+ },
+ "BELL_JUMP": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_JUMP.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
    2
   ],
-  "ground": 137,
-  "groundEnd": 137,
-  "mundo": 82.8,
-  "label": "Toca aqui!",
-  "item": "arte/linebell/LINE_BELL_CELEBRATE"
+  "ground": 229,
+  "groundEnd": 223,
+  "bases": [
+   229,
+   229,
+   223
+  ],
+  "label": "Bell — Pular",
+  "item": "LINE_BELL_ITEM_58.html",
+  "escala": 1.2119
+ },
+ "BELL_LAND": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_LAND.webp",
+  "cell": 256,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1
+  ],
+  "ground": 221,
+  "groundEnd": 230,
+  "bases": [
+   221,
+   230
+  ],
+  "label": "Bell — Aterrissar",
+  "item": "LINE_BELL_ITEM_58.html",
+  "escala": 1.219
+ },
+ "BELL_RUN_LEFT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_RUN_LEFT.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 227,
+  "groundEnd": 224,
+  "bases": [
+   227,
+   227,
+   232,
+   237,
+   224
+  ],
+  "label": "Bell — Correr para a esquerda",
+  "item": "LINE_BELL_ITEM_56.html",
+  "escala": 1.1979
+ },
+ "BELL_RUN_RIGHT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_RUN_RIGHT.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 227,
+  "groundEnd": 224,
+  "bases": [
+   227,
+   227,
+   232,
+   237,
+   224
+  ],
+  "label": "Bell — Correr para a direita",
+  "item": "LINE_BELL_ITEM_55.html",
+  "escala": 1.1979
+ },
+ "LINE_BELL_CELEBRATE": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_CELEBRATE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 220,
+  "groundEnd": 232,
+  "bases": [
+   220,
+   229,
+   220,
+   232
+  ],
+  "label": "Line e Bell — Comemorando a vitória",
+  "item": "LINE_BELL_ITEM_76.html",
+  "escala": 1.2624
  },
  "LINE_BELL_DANCE": {
   "src": "assets/sprites/LINE_BELL_DANCE.webp",
@@ -1340,18 +1352,34 @@ window.SPRITES = {
   "item": "arte/linebell/LINE_BELL_HIGH_FIVE"
  },
  "LINE_BELL_TALK": {
+  "ritmo": 1,
   "src": "assets/sprites/LINE_BELL_TALK.webp",
-  "cell": 134,
-  "count": 2,
+  "cell": 256,
+  "count": 3,
   "seq": [
    0,
-   1
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
   ],
-  "ground": 134,
-  "groundEnd": 134,
-  "mundo": 80.4,
-  "label": "Conversando de mãos dadas",
-  "item": "arte/linebell/LINE_BELL_TALK"
+  "ground": 233,
+  "groundEnd": 238,
+  "bases": [
+   233,
+   226,
+   238
+  ],
+  "label": "Line e Bell — Conversando",
+  "item": "LINE_BELL_ITEM_71.html",
+  "escala": 1.1243
  },
  "LINE_VICTORY": {
   "src": "assets/sprites/LINE_VICTORY.webp",
@@ -1701,7 +1729,8 @@ window.SPRITES = {
    238
   ],
   "label": "Line — Idle frontal",
-  "item": "LINE_BELL_ITEM_01.html"
+  "item": "LINE_BELL_ITEM_01.html",
+  "escala": 0.9902
  },
  "LINE_LOOK_SIDES_FRONT": {
   "src": "assets/sprites/LINE_LOOK_SIDES_FRONT.webp",
@@ -1749,7 +1778,8 @@ window.SPRITES = {
    238
   ],
   "label": "Line — Olhando para os lados",
-  "item": "LINE_BELL_ITEM_02.html"
+  "item": "LINE_BELL_ITEM_02.html",
+  "escala": 0.9902
  },
  "LINE_BLINK_FRONT": {
   "src": "assets/sprites/LINE_BLINK_FRONT.webp",
@@ -1779,7 +1809,8 @@ window.SPRITES = {
    238
   ],
   "label": "Line — Piscar frontal",
-  "item": "LINE_BELL_ITEM_03.html"
+  "item": "LINE_BELL_ITEM_03.html",
+  "escala": 0.9902
  },
  "LINE_IDLE_LEFT": {
   "src": "assets/sprites/LINE_IDLE_LEFT.webp",
@@ -1811,7 +1842,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Idle esquerda",
-  "item": "LINE_BELL_ITEM_03.html"
+  "item": "LINE_BELL_ITEM_03.html",
+  "escala": 1.074
  },
  "LINE_IDLE_RIGHT": {
   "src": "assets/sprites/LINE_IDLE_RIGHT.webp",
@@ -1848,7 +1880,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Idle direita",
-  "item": "LINE_BELL_ITEM_04.html"
+  "item": "LINE_BELL_ITEM_04.html",
+  "escala": 1.074
  },
  "LINE_IDLE_BACK": {
   "src": "assets/sprites/LINE_IDLE_BACK.webp",
@@ -1879,7 +1912,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Idle costas",
-  "item": "LINE_BELL_ITEM_04.html"
+  "item": "LINE_BELL_ITEM_04.html",
+  "escala": 1.0183
  },
  "LINE_WALK_RIGHT": {
   "src": "assets/sprites/LINE_WALK_RIGHT.webp",
@@ -1916,7 +1950,8 @@ window.SPRITES = {
    232
   ],
   "label": "Line — Caminhada direita",
-  "item": "LINE_BELL_ITEM_05.html"
+  "item": "LINE_BELL_ITEM_05.html",
+  "escala": 1.2335
  },
  "LINE_WALK_LEFT": {
   "src": "assets/sprites/LINE_WALK_LEFT.webp",
@@ -1959,7 +1994,8 @@ window.SPRITES = {
    232
   ],
   "label": "Line — Caminhada esquerda",
-  "item": "LINE_BELL_ITEM_06.html"
+  "item": "LINE_BELL_ITEM_06.html",
+  "escala": 1.2335
  },
  "LINE_WALK_FRONT": {
   "src": "assets/sprites/LINE_WALK_FRONT.webp",
@@ -1992,7 +2028,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Caminhada frontal",
-  "item": "LINE_BELL_ITEM_07.html"
+  "item": "LINE_BELL_ITEM_07.html",
+  "escala": 0.9594
  },
  "LINE_WALK_BACK": {
   "src": "assets/sprites/LINE_WALK_BACK.webp",
@@ -2025,7 +2062,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Caminhada de costas",
-  "item": "LINE_BELL_ITEM_07.html"
+  "item": "LINE_BELL_ITEM_07.html",
+  "escala": 0.9994
  },
  "LINE_RUN_START_RIGHT": {
   "src": "assets/sprites/LINE_RUN_START_RIGHT.webp",
@@ -2051,7 +2089,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Início da corrida direita",
-  "item": "LINE_BELL_ITEM_08.html"
+  "item": "LINE_BELL_ITEM_08.html",
+  "escala": 1.074
  },
  "LINE_RUN_RIGHT": {
   "src": "assets/sprites/LINE_RUN_RIGHT.webp",
@@ -2088,7 +2127,8 @@ window.SPRITES = {
    233
   ],
   "label": "Line — Corrida direita",
-  "item": "LINE_BELL_ITEM_09.html"
+  "item": "LINE_BELL_ITEM_09.html",
+  "escala": 1.1606
  },
  "LINE_RUN_LEFT": {
   "src": "assets/sprites/LINE_RUN_LEFT.webp",
@@ -2131,7 +2171,8 @@ window.SPRITES = {
    233
   ],
   "label": "Line — Corrida esquerda",
-  "item": "LINE_BELL_ITEM_10.html"
+  "item": "LINE_BELL_ITEM_10.html",
+  "escala": 1.1606
  },
  "LINE_RUN_FRONT": {
   "src": "assets/sprites/LINE_RUN_FRONT.webp",
@@ -2168,7 +2209,8 @@ window.SPRITES = {
    236
   ],
   "label": "Line — Corrida frontal",
-  "item": "LINE_BELL_ITEM_11.html"
+  "item": "LINE_BELL_ITEM_11.html",
+  "escala": 0.9265
  },
  "LINE_RUN_BACK": {
   "src": "assets/sprites/LINE_RUN_BACK.webp",
@@ -2201,7 +2243,8 @@ window.SPRITES = {
    222
   ],
   "label": "Line — Corrida de costas",
-  "item": "LINE_BELL_ITEM_11.html"
+  "item": "LINE_BELL_ITEM_11.html",
+  "escala": 0.9386
  },
  "LINE_RUN_STOP_RIGHT": {
   "src": "assets/sprites/LINE_RUN_STOP_RIGHT.webp",
@@ -2226,7 +2269,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Parada da corrida direita",
-  "item": "LINE_BELL_ITEM_12.html"
+  "item": "LINE_BELL_ITEM_12.html",
+  "escala": 1.1482
  },
  "LINE_RUN_STOP_LEFT": {
   "src": "assets/sprites/LINE_RUN_STOP_LEFT.webp",
@@ -2253,7 +2297,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Parada da corrida esquerda",
-  "item": "LINE_BELL_ITEM_12.html"
+  "item": "LINE_BELL_ITEM_12.html",
+  "escala": 1.1482
  },
  "LINE_RUN_START_LEFT": {
   "src": "assets/sprites/LINE_RUN_START_LEFT.webp",
@@ -2281,7 +2326,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Início da corrida esquerda",
-  "item": "LINE_BELL_ITEM_13.html"
+  "item": "LINE_BELL_ITEM_13.html",
+  "escala": 1.074
  },
  "LINE_RUN_START_FRONT": {
   "src": "assets/sprites/LINE_RUN_START_FRONT.webp",
@@ -2309,7 +2355,8 @@ window.SPRITES = {
    243
   ],
   "label": "Line — Início da corrida frontal",
-  "item": "LINE_BELL_ITEM_13.html"
+  "item": "LINE_BELL_ITEM_13.html",
+  "escala": 0.9902
  },
  "LINE_RUN_START_BACK": {
   "src": "assets/sprites/LINE_RUN_START_BACK.webp",
@@ -2337,7 +2384,8 @@ window.SPRITES = {
    246
   ],
   "label": "Line — Início da corrida de costas",
-  "item": "LINE_BELL_ITEM_13.html"
+  "item": "LINE_BELL_ITEM_13.html",
+  "escala": 1.0183
  },
  "LINE_RUN_STOP_FRONT": {
   "src": "assets/sprites/LINE_RUN_STOP_FRONT.webp",
@@ -2365,7 +2413,8 @@ window.SPRITES = {
    238
   ],
   "label": "Line — Parada da corrida frontal",
-  "item": "LINE_BELL_ITEM_13.html"
+  "item": "LINE_BELL_ITEM_13.html",
+  "escala": 0.9265
  },
  "LINE_RUN_STOP_BACK": {
   "src": "assets/sprites/LINE_RUN_STOP_BACK.webp",
@@ -2393,7 +2442,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Parada da corrida de costas",
-  "item": "LINE_BELL_ITEM_14.html"
+  "item": "LINE_BELL_ITEM_14.html",
+  "escala": 0.9386
  },
  "LINE_JUMP_RIGHT": {
   "src": "assets/sprites/LINE_JUMP_RIGHT.webp",
@@ -2429,7 +2479,8 @@ window.SPRITES = {
    229
   ],
   "label": "Line — Pulo para a direita",
-  "item": "LINE_BELL_ITEM_15.html"
+  "item": "LINE_BELL_ITEM_15.html",
+  "escala": 1.074
  },
  "LINE_LAND_RIGHT": {
   "src": "assets/sprites/LINE_LAND_RIGHT.webp",
@@ -2457,7 +2508,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Aterrissagem para a direita",
-  "item": "LINE_BELL_ITEM_16.html"
+  "item": "LINE_BELL_ITEM_16.html",
+  "escala": 1.2773
  },
  "LINE_CROUCH": {
   "src": "assets/sprites/LINE_CROUCH.webp",
@@ -2483,7 +2535,8 @@ window.SPRITES = {
    233
   ],
   "label": "Line — Agachar",
-  "item": "LINE_BELL_ITEM_17.html"
+  "item": "LINE_BELL_ITEM_17.html",
+  "escala": 1.074
  },
  "LINE_CROUCH_STAND": {
   "src": "assets/sprites/LINE_CROUCH_STAND.webp",
@@ -2509,7 +2562,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Levantar do agachamento",
-  "item": "LINE_BELL_ITEM_18.html"
+  "item": "LINE_BELL_ITEM_18.html",
+  "escala": 1.3004
  },
  "LINE_STUMBLE": {
   "src": "assets/sprites/LINE_STUMBLE.webp",
@@ -2538,7 +2592,8 @@ window.SPRITES = {
    221
   ],
   "label": "Line — Tropeçar",
-  "item": "LINE_BELL_ITEM_19.html"
+  "item": "LINE_BELL_ITEM_19.html",
+  "escala": 1.1422
  },
  "LINE_FALL": {
   "src": "assets/sprites/LINE_FALL.webp",
@@ -2567,7 +2622,8 @@ window.SPRITES = {
    205
   ],
   "label": "Line — Cair",
-  "item": "LINE_BELL_ITEM_20.html"
+  "item": "LINE_BELL_ITEM_20.html",
+  "escala": 1.35
  },
  "LINE_GROUND_STAND": {
   "src": "assets/sprites/LINE_GROUND_STAND.webp",
@@ -2600,7 +2656,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Levantar do chão",
-  "item": "LINE_BELL_ITEM_21.html"
+  "item": "LINE_BELL_ITEM_21.html",
+  "escala": 1.074
  },
  "LINE_SWORD_DRAW": {
   "src": "assets/sprites/LINE_SWORD_DRAW.webp",
@@ -2629,7 +2686,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Sacar espada",
-  "item": "LINE_BELL_ITEM_22.html"
+  "item": "LINE_BELL_ITEM_22.html",
+  "escala": 1.074
  },
  "LINE_SWORD_SHEATHE": {
   "src": "assets/sprites/LINE_SWORD_SHEATHE.webp",
@@ -2662,7 +2720,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Guardar espada",
-  "item": "LINE_BELL_ITEM_23.html"
+  "item": "LINE_BELL_ITEM_23.html",
+  "escala": 1.0687
  },
  "LINE_COMBAT_IDLE": {
   "src": "assets/sprites/LINE_COMBAT_IDLE.webp",
@@ -2694,7 +2753,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Postura de combate",
-  "item": "LINE_BELL_ITEM_24.html"
+  "item": "LINE_BELL_ITEM_24.html",
+  "escala": 1.0687
  },
  "LINE_ATTACK_HORIZONTAL": {
   "src": "assets/sprites/LINE_ATTACK_HORIZONTAL.webp",
@@ -2727,7 +2787,8 @@ window.SPRITES = {
    220
   ],
   "label": "Line — Ataque horizontal",
-  "item": "LINE_BELL_ITEM_25.html"
+  "item": "LINE_BELL_ITEM_25.html",
+  "escala": 1.0687
  },
  "LINE_ATTACK_VERTICAL": {
   "src": "assets/sprites/LINE_ATTACK_VERTICAL.webp",
@@ -2766,7 +2827,8 @@ window.SPRITES = {
    230
   ],
   "label": "Line — Ataque vertical",
-  "item": "LINE_BELL_ITEM_26.html"
+  "item": "LINE_BELL_ITEM_26.html",
+  "escala": 1.0687
  },
  "LINE_ATTACK_DIAGONAL": {
   "src": "assets/sprites/LINE_ATTACK_DIAGONAL.webp",
@@ -2810,7 +2872,8 @@ window.SPRITES = {
    232
   ],
   "label": "Line — Ataque diagonal",
-  "item": "LINE_BELL_ITEM_27.html"
+  "item": "LINE_BELL_ITEM_27.html",
+  "escala": 1.0687
  },
  "LINE_ATTACK_COMBO": {
   "src": "assets/sprites/LINE_ATTACK_COMBO.webp",
@@ -2860,7 +2923,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Combo",
-  "item": "LINE_BELL_ITEM_28.html"
+  "item": "LINE_BELL_ITEM_28.html",
+  "escala": 1.0687
  },
  "LINE_ATTACK_SPIN": {
   "src": "assets/sprites/LINE_ATTACK_SPIN.webp",
@@ -2899,7 +2963,8 @@ window.SPRITES = {
    232
   ],
   "label": "Line — Ataque giratório",
-  "item": "LINE_BELL_ITEM_29.html"
+  "item": "LINE_BELL_ITEM_29.html",
+  "escala": 1.0687
  },
  "LINE_ATTACK_AIR": {
   "src": "assets/sprites/LINE_ATTACK_AIR.webp",
@@ -2942,7 +3007,8 @@ window.SPRITES = {
    232
   ],
   "label": "Line — Ataque aéreo",
-  "item": "LINE_BELL_ITEM_30.html"
+  "item": "LINE_BELL_ITEM_30.html",
+  "escala": 1.0687
  },
  "LINE_BLOCK": {
   "src": "assets/sprites/LINE_BLOCK.webp",
@@ -2977,7 +3043,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Bloquear",
-  "item": "LINE_BELL_ITEM_31.html"
+  "item": "LINE_BELL_ITEM_31.html",
+  "escala": 1.0687
  },
  "LINE_DODGE": {
   "src": "assets/sprites/LINE_DODGE.webp",
@@ -3012,7 +3079,8 @@ window.SPRITES = {
    232
   ],
   "label": "Line — Esquivar",
-  "item": "LINE_BELL_ITEM_32.html"
+  "item": "LINE_BELL_ITEM_32.html",
+  "escala": 1.0687
  },
  "LINE_DASH": {
   "src": "assets/sprites/LINE_DASH.webp",
@@ -3046,7 +3114,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Dash",
-  "item": "LINE_BELL_ITEM_33.html"
+  "item": "LINE_BELL_ITEM_33.html",
+  "escala": 1.0378
  },
  "LINE_HIT_LIGHT": {
   "src": "assets/sprites/LINE_HIT_LIGHT.webp",
@@ -3080,7 +3149,8 @@ window.SPRITES = {
    235
   ],
   "label": "Line — Receber dano leve",
-  "item": "LINE_BELL_ITEM_34.html"
+  "item": "LINE_BELL_ITEM_34.html",
+  "escala": 1.0378
  },
  "LINE_HIT_HEAVY": {
   "src": "assets/sprites/LINE_HIT_HEAVY.webp",
@@ -3111,7 +3181,8 @@ window.SPRITES = {
    206
   ],
   "label": "Line — Receber golpe forte",
-  "item": "LINE_BELL_ITEM_35.html"
+  "item": "LINE_BELL_ITEM_35.html",
+  "escala": 1.35
  },
  "LINE_THROWN": {
   "src": "assets/sprites/LINE_THROWN.webp",
@@ -3142,7 +3213,8 @@ window.SPRITES = {
    220
   ],
   "label": "Line — Ser arremessada",
-  "item": "LINE_BELL_ITEM_36.html"
+  "item": "LINE_BELL_ITEM_36.html",
+  "escala": 1.35
  },
  "LINE_KNOCKDOWN": {
   "src": "assets/sprites/LINE_KNOCKDOWN.webp",
@@ -3185,7 +3257,8 @@ window.SPRITES = {
    197
   ],
   "label": "Line — Cair após golpe",
-  "item": "LINE_BELL_ITEM_37.html"
+  "item": "LINE_BELL_ITEM_37.html",
+  "escala": 1.1014
  },
  "LINE_INJURED_STAND": {
   "src": "assets/sprites/LINE_INJURED_STAND.webp",
@@ -3232,7 +3305,8 @@ window.SPRITES = {
    225
   ],
   "label": "Line — Levantar machucada",
-  "item": "LINE_BELL_ITEM_38.html"
+  "item": "LINE_BELL_ITEM_38.html",
+  "escala": 1.35
  },
  "LINE_EXHAUSTED_IDLE": {
   "src": "assets/sprites/LINE_EXHAUSTED_IDLE.webp",
@@ -3271,7 +3345,8 @@ window.SPRITES = {
    240
   ],
   "label": "Line — Exausta",
-  "item": "LINE_BELL_ITEM_39.html"
+  "item": "LINE_BELL_ITEM_39.html",
+  "escala": 1.1302
  },
  "LINE_DRAGON_FINAL_ATTACK": {
   "src": "assets/sprites/LINE_DRAGON_FINAL_ATTACK.webp",
@@ -3323,7 +3398,8 @@ window.SPRITES = {
    225
   ],
   "label": "Line — Ataque final contra o dragão",
-  "item": "LINE_BELL_ITEM_40.html"
+  "item": "LINE_BELL_ITEM_40.html",
+  "escala": 1.1732
  },
  "LINE_HAPPY": {
   "src": "assets/sprites/LINE_HAPPY.webp",
@@ -3362,7 +3438,8 @@ window.SPRITES = {
    222
   ],
   "label": "Line — Feliz",
-  "item": "LINE_BELL_ITEM_41.html"
+  "item": "LINE_BELL_ITEM_41.html",
+  "escala": 1.2551
  },
  "LINE_LAUGH": {
   "src": "assets/sprites/LINE_LAUGH.webp",
@@ -3405,7 +3482,8 @@ window.SPRITES = {
    227
   ],
   "label": "Line — Rindo",
-  "item": "LINE_BELL_ITEM_42.html"
+  "item": "LINE_BELL_ITEM_42.html",
+  "escala": 1.35
  },
  "LINE_DETERMINED": {
   "src": "assets/sprites/LINE_DETERMINED.webp",
@@ -3444,7 +3522,8 @@ window.SPRITES = {
    221
   ],
   "label": "Line — Determinada",
-  "item": "LINE_BELL_ITEM_43.html"
+  "item": "LINE_BELL_ITEM_43.html",
+  "escala": 1.206
  },
  "LINE_ANGRY": {
   "src": "assets/sprites/LINE_ANGRY.webp",
@@ -3483,7 +3562,8 @@ window.SPRITES = {
    221
   ],
   "label": "Line — Brava",
-  "item": "LINE_BELL_ITEM_44.html"
+  "item": "LINE_BELL_ITEM_44.html",
+  "escala": 1.35
  },
  "LINE_SCARED": {
   "src": "assets/sprites/LINE_SCARED.webp",
@@ -3520,7 +3600,8 @@ window.SPRITES = {
    234
   ],
   "label": "Line — Assustada",
-  "item": "LINE_BELL_ITEM_45.html"
+  "item": "LINE_BELL_ITEM_45.html",
+  "escala": 1.0582
  },
  "LINE_SAD": {
   "src": "assets/sprites/LINE_SAD.webp",
@@ -3557,7 +3638,8 @@ window.SPRITES = {
    236
   ],
   "label": "Line — Triste",
-  "item": "LINE_BELL_ITEM_46.html"
+  "item": "LINE_BELL_ITEM_46.html",
+  "escala": 1.0183
  },
  "LINE_CRY": {
   "src": "assets/sprites/LINE_CRY.webp",
@@ -3600,7 +3682,8 @@ window.SPRITES = {
    233
   ],
   "label": "Line — Chorando",
-  "item": "LINE_BELL_ITEM_47.html"
+  "item": "LINE_BELL_ITEM_47.html",
+  "escala": 0.9768
  },
  "LINE_CALL_BELL": {
   "src": "assets/sprites/LINE_CALL_BELL.webp",
@@ -3643,7 +3726,8 @@ window.SPRITES = {
    229
   ],
   "label": "Line — Gritando por Bell",
-  "item": "LINE_BELL_ITEM_48.html"
+  "item": "LINE_BELL_ITEM_48.html",
+  "escala": 1.35
  },
  "LINE_RELIEVED": {
   "src": "assets/sprites/LINE_RELIEVED.webp",
@@ -3681,7 +3765,2330 @@ window.SPRITES = {
    237
   ],
   "label": "Line — Aliviada",
-  "item": "LINE_BELL_ITEM_49.html"
+  "item": "LINE_BELL_ITEM_49.html",
+  "escala": 1.0634
+ },
+ "BELL_BLINK_FRONT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_BLINK_FRONT.webp",
+  "cell": 256,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0
+  ],
+  "ground": 225,
+  "groundEnd": 225,
+  "bases": [
+   225,
+   226
+  ],
+  "label": "Bell — Piscar frontal",
+  "item": "LINE_BELL_ITEM_50.html",
+  "escala": 1.191
+ },
+ "BELL_LOOK_SIDES_FRONT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_LOOK_SIDES_FRONT.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   2,
+   2,
+   2,
+   2,
+   0,
+   0,
+   0
+  ],
+  "ground": 225,
+  "groundEnd": 225,
+  "bases": [
+   225,
+   227,
+   231
+  ],
+  "label": "Bell — Olhar para os lados",
+  "item": "LINE_BELL_ITEM_50.html",
+  "escala": 1.191
+ },
+ "BELL_RUN_FRONT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_RUN_FRONT.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 241,
+  "groundEnd": 241,
+  "bases": [
+   241,
+   223,
+   233,
+   241
+  ],
+  "label": "Bell — Correr para frente",
+  "item": "LINE_BELL_ITEM_57.html",
+  "escala": 0.9775
+ },
+ "BELL_RUN_BACK": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_RUN_BACK.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 238,
+  "groundEnd": 230,
+  "bases": [
+   238,
+   232,
+   236,
+   230
+  ],
+  "label": "Bell — Correr de costas",
+  "item": "LINE_BELL_ITEM_57.html",
+  "escala": 1.0159
+ },
+ "BELL_GROUND_STAND": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_GROUND_STAND.webp",
+  "cell": 256,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1
+  ],
+  "ground": 230,
+  "groundEnd": 235,
+  "bases": [
+   230,
+   235
+  ],
+  "label": "Bell — Levantar",
+  "item": "LINE_BELL_ITEM_58.html",
+  "escala": 1.1263
+ },
+ "BELL_SCARED": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_SCARED.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 232,
+  "groundEnd": 239,
+  "bases": [
+   232,
+   236,
+   239
+  ],
+  "label": "Bell — Assustada",
+  "item": "LINE_BELL_ITEM_59.html",
+  "escala": 1.031
+ },
+ "BELL_FLEE": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_FLEE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 235,
+  "groundEnd": 226,
+  "bases": [
+   235,
+   233,
+   238,
+   226
+  ],
+  "label": "Bell — Fugir",
+  "item": "LINE_BELL_ITEM_59.html",
+  "escala": 1.0965
+ },
+ "BELL_FALL": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_FALL.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 228,
+  "groundEnd": 197,
+  "bases": [
+   228,
+   210,
+   217,
+   197
+  ],
+  "label": "Bell — Cair",
+  "item": "LINE_BELL_ITEM_60.html",
+  "escala": 1.256
+ },
+ "BELL_CAPTURED": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_CAPTURED.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 239,
+  "groundEnd": 233,
+  "bases": [
+   239,
+   239,
+   229,
+   233
+  ],
+  "label": "Bell — Ser capturada",
+  "item": "LINE_BELL_ITEM_61.html",
+  "escala": 1.0011
+ },
+ "BELL_DRAGON_CARRIED": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_DRAGON_CARRIED.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 220,
+  "groundEnd": 237,
+  "bases": [
+   220,
+   238,
+   217,
+   237
+  ],
+  "label": "Bell — Carregada pelo dragão",
+  "item": "LINE_BELL_ITEM_62.html",
+  "escala": 1.1082
+ },
+ "BELL_TRAPPED": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_TRAPPED.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 231,
+  "groundEnd": 233,
+  "bases": [
+   231,
+   244,
+   233
+  ],
+  "label": "Bell — Presa",
+  "item": "LINE_BELL_ITEM_63.html",
+  "escala": 1.0159
+ },
+ "BELL_ESCAPE_ATTEMPT": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_ESCAPE_ATTEMPT.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 237,
+  "groundEnd": 230,
+  "bases": [
+   237,
+   233,
+   230
+  ],
+  "label": "Bell — Tentativa de escapar",
+  "item": "LINE_BELL_ITEM_63.html",
+  "escala": 1.0573
+ },
+ "BELL_BREAK_FREE": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_BREAK_FREE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 235,
+  "groundEnd": 232,
+  "bases": [
+   235,
+   238,
+   230,
+   232
+  ],
+  "label": "Bell — Conseguir se libertar",
+  "item": "LINE_BELL_ITEM_64.html",
+  "escala": 1.0209
+ },
+ "BELL_CALL_LINE": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_CALL_LINE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 229,
+  "groundEnd": 237,
+  "bases": [
+   229,
+   229,
+   237,
+   237
+  ],
+  "label": "Bell — Chamar Line",
+  "item": "LINE_BELL_ITEM_65.html",
+  "escala": 1.1142
+ },
+ "BELL_HELP_LINE": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_HELP_LINE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 217,
+  "groundEnd": 231,
+  "bases": [
+   217,
+   223,
+   232,
+   231
+  ],
+  "label": "Bell — Ajudar Line",
+  "item": "LINE_BELL_ITEM_66.html",
+  "escala": 1.1842
+ },
+ "BELL_HAPPY": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_HAPPY.webp",
+  "cell": 256,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1
+  ],
+  "ground": 238,
+  "groundEnd": 235,
+  "bases": [
+   238,
+   235
+  ],
+  "label": "Bell — Feliz",
+  "item": "LINE_BELL_ITEM_67.html",
+  "escala": 1.0011
+ },
+ "BELL_RELIEVED": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_RELIEVED.webp",
+  "cell": 256,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1
+  ],
+  "ground": 227,
+  "groundEnd": 230,
+  "bases": [
+   227,
+   230
+  ],
+  "label": "Bell — Aliviada",
+  "item": "LINE_BELL_ITEM_67.html",
+  "escala": 1.1324
+ },
+ "BELL_CRY": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_CRY.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 230,
+  "groundEnd": 231,
+  "bases": [
+   230,
+   239,
+   231
+  ],
+  "label": "Bell — Chorando",
+  "item": "LINE_BELL_ITEM_67.html",
+  "escala": 1.0738
+ },
+ "LINE_BELL_WALK_TOGETHER": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_WALK_TOGETHER.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 234,
+  "groundEnd": 236,
+  "bases": [
+   234,
+   227,
+   234,
+   236
+  ],
+  "label": "Line e Bell — Andando lado a lado",
+  "item": "LINE_BELL_ITEM_68.html",
+  "escala": 1.1422
+ },
+ "LINE_BELL_WALK_HANDS": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_WALK_HANDS.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 230,
+  "groundEnd": 229,
+  "bases": [
+   230,
+   231,
+   234,
+   229
+  ],
+  "label": "Line e Bell — Andando de mãos dadas",
+  "item": "LINE_BELL_ITEM_69.html",
+  "escala": 1.1127
+ },
+ "LINE_BELL_RUN_TOGETHER": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_RUN_TOGETHER.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 216,
+  "groundEnd": 224,
+  "bases": [
+   216,
+   222,
+   212,
+   208,
+   224
+  ],
+  "label": "Line e Bell — Correndo juntas",
+  "item": "LINE_BELL_ITEM_70.html",
+  "escala": 1.35
+ },
+ "LINE_BELL_LAUGH": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_LAUGH.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 236,
+  "groundEnd": 228,
+  "bases": [
+   236,
+   232,
+   228
+  ],
+  "label": "Line e Bell — Rindo juntas",
+  "item": "LINE_BELL_ITEM_71.html",
+  "escala": 1.1669
+ },
+ "BELL_LEAN_ON_LINE": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_LEAN_ON_LINE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 229,
+  "groundEnd": 239,
+  "bases": [
+   229,
+   242,
+   239,
+   239
+  ],
+  "label": "Bell — Encostando na Line",
+  "item": "LINE_BELL_ITEM_72.html",
+  "escala": 1.085
+ },
+ "LINE_BELL_HUG_RELEASE": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_HUG_RELEASE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 227,
+  "groundEnd": 236,
+  "bases": [
+   227,
+   224,
+   221,
+   236
+  ],
+  "label": "Line e Bell — Separação do abraço",
+  "item": "LINE_BELL_ITEM_75.html",
+  "escala": 1.1544
+ },
+ "DRAGON_WALK": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_WALK.webp",
+  "cell": 448,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 361,
+  "groundEnd": 350,
+  "bases": [
+   361,
+   348,
+   352,
+   350
+  ],
+  "label": "Dragão — Andar",
+  "item": "LINE_BELL_ITEM_81.html"
+ },
+ "DRAGON_TURN": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_TURN.webp",
+  "cell": 448,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1
+  ],
+  "ground": 359,
+  "groundEnd": 367,
+  "bases": [
+   359,
+   367,
+   387
+  ],
+  "label": "Dragão — Virar",
+  "item": "LINE_BELL_ITEM_81.html"
+ },
+ "DRAGON_WINGS_OPEN": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_WINGS_OPEN.webp",
+  "cell": 448,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 359,
+  "groundEnd": 379,
+  "bases": [
+   359,
+   383,
+   379
+  ],
+  "label": "Dragão — Abrir asas",
+  "item": "LINE_BELL_ITEM_82.html"
+ },
+ "DRAGON_TAKEOFF": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_TAKEOFF.webp",
+  "cell": 448,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 388,
+  "groundEnd": 363,
+  "bases": [
+   388,
+   373,
+   363
+  ],
+  "label": "Dragão — Decolar",
+  "item": "LINE_BELL_ITEM_82.html"
+ },
+ "DRAGON_FLY": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_FLY.webp",
+  "cell": 448,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 347,
+  "groundEnd": 363,
+  "bases": [
+   347,
+   347,
+   347,
+   363
+  ],
+  "label": "Dragão — Voar",
+  "item": "LINE_BELL_ITEM_83.html"
+ },
+ "DRAGON_GLIDE": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_GLIDE.webp",
+  "cell": 448,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1
+  ],
+  "ground": 321,
+  "groundEnd": 367,
+  "bases": [
+   321,
+   367
+  ],
+  "label": "Dragão — Planar",
+  "item": "LINE_BELL_ITEM_83.html"
+ },
+ "DRAGON_LAND": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_LAND.webp",
+  "cell": 448,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 389,
+  "groundEnd": 365,
+  "bases": [
+   389,
+   376,
+   368,
+   355,
+   365
+  ],
+  "label": "Dragão — Pousar",
+  "item": "LINE_BELL_ITEM_84.html"
+ },
+ "DRAGON_ROAR": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_ROAR.webp",
+  "cell": 448,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 397,
+  "groundEnd": 385,
+  "bases": [
+   397,
+   388,
+   392,
+   385
+  ],
+  "label": "Dragão — Rugir",
+  "item": "LINE_BELL_ITEM_85.html"
+ },
+ "DRAGON_BITE": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_BITE.webp",
+  "cell": 448,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 366,
+  "groundEnd": 357,
+  "bases": [
+   366,
+   353,
+   356,
+   364,
+   357
+  ],
+  "label": "Dragão — Mordida",
+  "item": "LINE_BELL_ITEM_86.html"
+ },
+ "DRAGON_CLAW_ATTACK": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_CLAW_ATTACK.webp",
+  "cell": 448,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 382,
+  "groundEnd": 365,
+  "bases": [
+   382,
+   380,
+   371,
+   391,
+   365
+  ],
+  "label": "Dragão — Ataque de garra",
+  "item": "LINE_BELL_ITEM_87.html"
+ },
+ "DRAGON_TAIL_ATTACK": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_TAIL_ATTACK.webp",
+  "cell": 448,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "ground": 377,
+  "groundEnd": 403,
+  "bases": [
+   377,
+   376,
+   392,
+   357,
+   403
+  ],
+  "label": "Dragão — Golpe de cauda",
+  "item": "LINE_BELL_ITEM_88.html"
+ },
+ "DRAGON_FIRE_CHARGE": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/DRAGON_FIRE_CHARGE.webp",
+  "cell": 448,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   4,
+   4,
+   4,
+   3,
+   2,
+   1,
+   0,
+   0
+  ],
+  "ground": 379,
+  "groundEnd": 379,
+  "bases": [
+   379,
+   380,
+   379,
+   384,
+   377
+  ],
+  "label": "Inspiração, acúmulo de calor, brilho interno e liberação inicial.",
+  "item": "LINE_BELL_ITEM_89.html"
+ },
+ "DRAGON_FIRE_BREATH": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/DRAGON_FIRE_BREATH.webp",
+  "cell": 448,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2
+  ],
+  "ground": 377,
+  "groundEnd": 377,
+  "bases": [
+   377,
+   377,
+   377
+  ],
+  "label": "Sopro conectado à boca em três comprimentos progressivos de chama.",
+  "item": "LINE_BELL_ITEM_89.html"
+ },
+ "DRAGON_FIRE_STREAM": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/DRAGON_FIRE_STREAM.webp",
+  "cell": 448,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1
+  ],
+  "ground": 377,
+  "groundEnd": 377,
+  "bases": [
+   377,
+   377,
+   377,
+   377,
+   377,
+   377
+  ],
+  "label": "Fluxo contínuo de fogo com corpo estável, chama oscilante, núcleo quente e brasas móveis.",
+  "item": "LINE_BELL_ITEM_90.html"
+ },
+ "DRAGON_AIR_ATTACK": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/DRAGON_AIR_ATTACK.webp",
+  "cell": 448,
+  "count": 6,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5,
+   4,
+   3,
+   2,
+   1,
+   0,
+   0,
+   0
+  ],
+  "ground": 347,
+  "groundEnd": 347,
+  "bases": [
+   347,
+   345,
+   335,
+   366,
+   312,
+   364
+  ],
+  "label": "Aproximação, inclinação, mergulho e recuperação aérea.",
+  "item": "LINE_BELL_ITEM_91.html"
+ },
+ "DRAGON_HIT": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 9,
+  "src": "assets/sprites/DRAGON_HIT.webp",
+  "cell": 448,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   1,
+   2,
+   2,
+   2,
+   3,
+   3,
+   1,
+   1,
+   0,
+   0
+  ],
+  "ground": 397,
+  "groundEnd": 397,
+  "bases": [
+   397,
+   386,
+   394,
+   382
+  ],
+  "label": "Impacto, recuo, dor e recuperação da postura.",
+  "item": "LINE_BELL_ITEM_92.html"
+ },
+ "DRAGON_WEAK_POINT_HIT": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 9,
+  "src": "assets/sprites/DRAGON_WEAK_POINT_HIT.webp",
+  "cell": 448,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   2,
+   3,
+   3,
+   1,
+   0,
+   0
+  ],
+  "ground": 397,
+  "groundEnd": 397,
+  "bases": [
+   397,
+   386,
+   394,
+   382
+  ],
+  "label": "Ponto fraco azul cresce, explode em brilho e contrai.",
+  "item": "LINE_BELL_ITEM_92.html"
+ },
+ "DRAGON_STUNNED": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/DRAGON_STUNNED.webp",
+  "cell": 448,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   3,
+   2,
+   2,
+   1,
+   1,
+   0,
+   0,
+   1,
+   0
+  ],
+  "ground": 382,
+  "groundEnd": 382,
+  "bases": [
+   382,
+   397,
+   387,
+   397,
+   385
+  ],
+  "label": "Balanço atordoado com estrelas orbitando a cabeça em loop.",
+  "item": "LINE_BELL_ITEM_93.html"
+ },
+ "DRAGON_DESPERATE_ATTACK": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/DRAGON_DESPERATE_ATTACK.webp",
+  "cell": 448,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1
+  ],
+  "ground": 395,
+  "groundEnd": 401,
+  "bases": [
+   395,
+   401,
+   399,
+   406,
+   399,
+   406
+  ],
+  "label": "Fogo desesperado circula o corpo em seis posições, com rugido e mudança de apoio.",
+  "item": "LINE_BELL_ITEM_94.html"
+ },
+ "DRAGON_FINAL_HIT": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 9,
+  "src": "assets/sprites/DRAGON_FINAL_HIT.webp",
+  "cell": 448,
+  "count": 6,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5,
+   4,
+   3,
+   2,
+   1,
+   0,
+   0,
+   0
+  ],
+  "ground": 397,
+  "groundEnd": 397,
+  "bases": [
+   397,
+   386,
+   394,
+   401,
+   392,
+   396
+  ],
+  "label": "O golpe final concentra o brilho no ponto fraco, explode em clarão e derruba a postura.",
+  "item": "LINE_BELL_ITEM_95.html"
+ },
+ "DRAGON_FALL": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/DRAGON_FALL.webp",
+  "cell": 448,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   4,
+   3,
+   4,
+   4
+  ],
+  "ground": 370,
+  "groundEnd": 448,
+  "bases": [
+   370,
+   369,
+   428,
+   434,
+   448
+  ],
+  "label": "Perda de altitude, rotação progressiva e impacto no chão.",
+  "item": "LINE_BELL_ITEM_96.html"
+ },
+ "DRAGON_DEFEATED": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 5,
+  "src": "assets/sprites/DRAGON_DEFEATED.webp",
+  "cell": 448,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0
+  ],
+  "ground": 428,
+  "groundEnd": 428,
+  "bases": [
+   428,
+   428
+  ],
+  "label": "Dragão derrotado junto ao chão, com a poeira assentando.",
+  "item": "LINE_BELL_ITEM_96.html"
+ },
+ "DRAGON_EYE_OPEN_END": {
+  "mundo": 215,
+  "ritmo": 1,
+  "fpsArte": 7,
+  "src": "assets/sprites/DRAGON_EYE_OPEN_END.webp",
+  "cell": 448,
+  "count": 6,
+  "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5,
+   4,
+   5,
+   4,
+   5,
+   5,
+   4,
+   5
+  ],
+  "ground": 359,
+  "groundEnd": 359,
+  "bases": [
+   359,
+   359,
+   359,
+   359,
+   359,
+   359
+  ],
+  "label": "Close escuro do dragão com o olho abrindo, acendendo e estabilizando.",
+  "item": "LINE_BELL_ITEM_97.html"
+ },
+ "FX_FIRE": {
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/FX_FIRE.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1,
+   2,
+   1
+  ],
+  "ground": 149,
+  "groundEnd": 150,
+  "bases": [
+   149,
+   150,
+   150,
+   152,
+   153
+  ],
+  "label": "Chama independente oscilando em loop.",
+  "item": "LINE_BELL_ITEM_98.html"
+ },
+ "FX_EMBERS": {
+  "ritmo": 1,
+  "fpsArte": 9,
+  "src": "assets/sprites/FX_EMBERS.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1,
+   2,
+   1
+  ],
+  "ground": 158,
+  "groundEnd": 145,
+  "bases": [
+   158,
+   145,
+   132,
+   118,
+   105
+  ],
+  "label": "Brasas subindo e derivando para o lado.",
+  "item": "LINE_BELL_ITEM_98.html"
+ },
+ "FX_FIRE_LIGHT": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/FX_FIRE_LIGHT.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1,
+   2,
+   1
+  ],
+  "ground": 256,
+  "groundEnd": 169,
+  "bases": [
+   256,
+   169,
+   170,
+   169,
+   256
+  ],
+  "label": "Pulso de iluminação quente para composição sobre o cenário.",
+  "item": "LINE_BELL_ITEM_98.html"
+ },
+ "FX_SMOKE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/FX_SMOKE.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   2
+  ],
+  "ground": 181,
+  "groundEnd": 164,
+  "bases": [
+   181,
+   173,
+   164,
+   156,
+   147
+  ],
+  "label": "Fumaça pixelada sobe, se expande e dissipa.",
+  "item": "LINE_BELL_ITEM_99.html"
+ },
+ "FX_DUST": {
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/FX_DUST.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   2
+  ],
+  "ground": 185,
+  "groundEnd": 185,
+  "bases": [
+   185,
+   185,
+   185,
+   185,
+   185
+  ],
+  "label": "Poeira se abre lateralmente após o impacto e assenta.",
+  "item": "LINE_BELL_ITEM_99.html"
+ },
+ "FX_IMPACT": {
+  "ritmo": 1,
+  "fpsArte": 10,
+  "src": "assets/sprites/FX_IMPACT.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   4
+  ],
+  "ground": 150,
+  "groundEnd": 186,
+  "bases": [
+   150,
+   159,
+   168,
+   177,
+   186
+  ],
+  "label": "Anel de impacto cresce e desaparece.",
+  "item": "LINE_BELL_ITEM_100.html"
+ },
+ "FX_SPARKS": {
+  "ritmo": 1,
+  "fpsArte": 12,
+  "src": "assets/sprites/FX_SPARKS.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   4
+  ],
+  "ground": 144,
+  "groundEnd": 172,
+  "bases": [
+   144,
+   151,
+   158,
+   165,
+   172
+  ],
+  "label": "Faíscas se afastam do ponto de bloqueio.",
+  "item": "LINE_BELL_ITEM_100.html"
+ },
+ "FX_EXPLOSION": {
+  "ritmo": 1,
+  "fpsArte": 12,
+  "src": "assets/sprites/FX_EXPLOSION.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5
+  ],
+  "ground": 151,
+  "groundEnd": 178,
+  "bases": [
+   151,
+   156,
+   162,
+   167,
+   173,
+   178
+  ],
+  "label": "Explosão pixelada cresce do núcleo claro para as bordas vermelhas.",
+  "item": "LINE_BELL_ITEM_100.html"
+ },
+ "FX_SWORD_TRAIL": {
+  "ritmo": 1,
+  "fpsArte": 12,
+  "src": "assets/sprites/FX_SWORD_TRAIL.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5
+  ],
+  "ground": 164,
+  "groundEnd": 164,
+  "bases": [
+   164,
+   164,
+   164,
+   164,
+   164,
+   164
+  ],
+  "label": "Arco azul da espada avança e sustenta o corte.",
+  "item": "LINE_BELL_ITEM_101.html"
+ },
+ "FX_DRAGON_WEAK_POINT": {
+  "ritmo": 1,
+  "fpsArte": 9,
+  "src": "assets/sprites/FX_DRAGON_WEAK_POINT.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   2
+  ],
+  "ground": 135,
+  "groundEnd": 141,
+  "bases": [
+   135,
+   138,
+   141,
+   143,
+   146
+  ],
+  "label": "Diamante azul pulsa e abre um brilho em cruz.",
+  "item": "LINE_BELL_ITEM_101.html"
+ },
+ "FX_TEARS": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/FX_TEARS.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   4
+  ],
+  "ground": 121,
+  "groundEnd": 155,
+  "bases": [
+   121,
+   130,
+   138,
+   147,
+   155
+  ],
+  "label": "Lágrimas pixeladas descem em duas velocidades.",
+  "item": "LINE_BELL_ITEM_102.html"
+ },
+ "FX_HEARTS": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/FX_HEARTS.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   4
+  ],
+  "ground": 162,
+  "groundEnd": 131,
+  "bases": [
+   162,
+   154,
+   146,
+   138,
+   131
+  ],
+  "label": "Corações sobem em duas escalas.",
+  "item": "LINE_BELL_ITEM_102.html"
+ },
+ "FX_AMBIENT_PARTICLES": {
+  "ritmo": 1,
+  "fpsArte": 7,
+  "src": "assets/sprites/FX_AMBIENT_PARTICLES.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1
+  ],
+  "ground": 157,
+  "groundEnd": 158,
+  "bases": [
+   157,
+   158,
+   158,
+   157,
+   157,
+   157
+  ],
+  "label": "Folhas, pontos luminosos e partículas derivam pelo ambiente.",
+  "item": "LINE_BELL_ITEM_102.html"
+ },
+ "LINE_ADMIRE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_ADMIRE.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1,
+   2,
+   3,
+   4,
+   3,
+   2
+  ],
+  "ground": 236,
+  "groundEnd": 234,
+  "bases": [
+   236,
+   236,
+   234,
+   235,
+   237
+  ],
+  "label": "Line percebe Bell, leva a mão ao peito, sorri e deixa os corações subirem.",
+  "item": "LINE_BELL_ITEM_103.html",
+  "escala": 1.0634
+ },
+ "BELL_WAIT": {
+  "ritmo": 1,
+  "fpsArte": 7,
+  "src": "assets/sprites/BELL_WAIT.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   2,
+   1,
+   0,
+   0,
+   1,
+   2,
+   3,
+   0
+  ],
+  "ground": 225,
+  "groundEnd": 225,
+  "bases": [
+   225,
+   227,
+   231,
+   226
+  ],
+  "label": "Bell espera, olha para os lados, confere o celular e pisca.",
+  "item": "LINE_BELL_ITEM_103.html",
+  "escala": 1.191
+ },
+ "LINE_BELL_MEET": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_BELL_MEET.webp",
+  "cell": 256,
+  "count": 3,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   1,
+   1,
+   0,
+   0,
+   1,
+   2,
+   1,
+   0,
+   0,
+   0
+  ],
+  "ground": 233,
+  "groundEnd": 233,
+  "bases": [
+   233,
+   226,
+   238
+  ],
+  "label": "As duas conversam frente a frente, alternando fala, escuta e sorriso.",
+  "item": "LINE_BELL_ITEM_104.html",
+  "escala": 1.1243
+ },
+ "LINE_BELL_GREET_HUG": {
+  "ritmo": 1,
+  "fpsArte": 9,
+  "src": "assets/sprites/LINE_BELL_GREET_HUG.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3,
+   2,
+   2,
+   3,
+   3,
+   2,
+   2,
+   1,
+   1,
+   0,
+   0
+  ],
+  "ground": 215,
+  "groundEnd": 215,
+  "bases": [
+   215,
+   238,
+   241,
+   239
+  ],
+  "label": "Bell corre para Line, entra no abraço, aperta e estabiliza.",
+  "item": "LINE_BELL_ITEM_104.html",
+  "escala": 0.9552
+ },
+ "LINE_BELL_BK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_BELL_BK.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5,
+   4,
+   3,
+   2,
+   1,
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   4,
+   3
+  ],
+  "ground": 233,
+  "groundEnd": 236,
+  "bases": [
+   233,
+   226,
+   238,
+   236,
+   232,
+   228
+  ],
+  "label": "Conversa, comida e risada na mesa com hambúrguer, batata e refrigerante.",
+  "item": "LINE_BELL_ITEM_105.html",
+  "escala": 1.1243
+ },
+ "BELL_LAUGH_AT_LINE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_LAUGH_AT_LINE.webp",
+  "cell": 256,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0
+  ],
+  "ground": 247,
+  "groundEnd": 247,
+  "bases": [
+   247,
+   248
+  ],
+  "label": "Bell reage ao resultado, segura o riso e cai na gargalhada.",
+  "item": "LINE_BELL_ITEM_106.html",
+  "escala": 0.9822
+ },
+ "LINE_BELL_TUNNEL_KISS": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_BELL_TUNNEL_KISS.webp",
+  "cell": 256,
+  "count": 7,
+  "seq": [
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5,
+   6,
+   6,
+   5,
+   5,
+   4,
+   4,
+   3,
+   2
+  ],
+  "ground": 223,
+  "groundEnd": 232,
+  "bases": [
+   223,
+   230,
+   232,
+   215,
+   238,
+   241,
+   239
+  ],
+  "label": "Line e Bell se aproximam, dão as mãos, entram no abraço, trocam o primeiro beijo e permanecem juntas.",
+  "item": "LINE_BELL_ITEM_107.html",
+  "escala": 0.9552
+ },
+ "DRAGON_IDLE": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_IDLE.webp",
+  "cell": 448,
+  "count": 1,
+  "seq": [
+   0
+  ],
+  "ground": 397,
+  "groundEnd": 397,
+  "bases": [
+   397
+  ],
+  "label": "Dragão parado (provisório: 1º quadro do rugido)",
+  "item": "LINE_BELL_ITEM_85.html",
+  "provisorio": "DRAGON_ROAR"
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

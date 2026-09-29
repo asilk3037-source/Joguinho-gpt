@@ -26,16 +26,45 @@ SAIDA = os.path.join(RAIZ, "game", "assets", "sprites")
 MANIFESTO = os.path.join(RAIZ, "game", "assets", "sprites.js")
 CELULA = 256
 PADRAO_ANIMACOES = re.compile(r"const animations=(\{.*?\});\s*\n", re.S)
+# Dragão dos itens (81 em diante): célula maior (é grande na tela) e tamanho fixo no mundo.
+CELULA_DRAGAO = 448
+MUNDO_DRAGAO = 215
+# Itens a partir deste número trazem mais quadros que a arte antiga: o jogo mantém a duração
+# de cada animação (que está sincronizada com os golpes) em vez da velocidade do catálogo.
+ITEM_RITMO = 50
 
 
 def ler_animacoes(caminho):
+    """Dois formatos de item:
+    - const animations={CODIGO: {frames: [dataURL...], label}}
+    - const payload={images: [dataURL...], animations: {CODIGO: {frames: [índices], fps, description}}}
+    """
     with open(caminho, encoding="utf-8") as f:
         html = f.read()
     achado = PADRAO_ANIMACOES.search(html)
-    if not achado:
-        print(f"  aviso: nenhuma animação encontrada em {os.path.basename(caminho)}")
-        return {}
-    return json.loads(achado.group(1))
+    if achado:
+        return json.loads(achado.group(1))
+    if "const payload=" in html:
+        inicio = html.index("const payload=") + len("const payload=")
+        payload, _ = json.JSONDecoder().raw_decode(html[inicio:])
+        imagens = payload["images"]
+        vazias = {i for i, u in enumerate(imagens) if len(u.split(",", 1)[-1]) < 100}
+        saida = {}
+        for codigo, a in payload["animations"].items():
+            quadros = [imagens[i] for i in a["frames"] if i not in vazias]
+            perdidos = sorted({i for i in a["frames"] if i in vazias})
+            if perdidos:
+                print(f"  aviso: {os.path.basename(caminho)} {codigo}: imagem vazia no quadro {perdidos} (pulado)")
+            if quadros:
+                saida[codigo] = {"frames": quadros, "label": a.get("description", codigo), "fps": a.get("fps")}
+        return saida
+    print(f"  aviso: nenhuma animação encontrada em {os.path.basename(caminho)}")
+    return {}
+
+
+def numero_item(nome):
+    achado = re.search(r"ITEM_(\d+)", nome)
+    return int(achado.group(1)) if achado else 0
 
 
 def decodificar(data_url):
@@ -62,21 +91,31 @@ def processar(codigo, dados, origem):
             unicos.append(fr)
         sequencia.append(indice[fr])
 
-    celulas = [decodificar(u).resize((CELULA, CELULA), Image.LANCZOS) for u in unicos]
+    dragao = codigo.startswith("DRAGON_")
+    lado = CELULA_DRAGAO if dragao else CELULA
+    celulas = [decodificar(u).resize((lado, lado), Image.LANCZOS) for u in unicos]
 
     # Chão = altura dos pés no primeiro e no último quadro. O jogo usa o primeiro por padrão,
     # pois é nele que a animação emenda na anterior.
     chao = base_dos_pes(celulas[sequencia[0]])
     chao_final = base_dos_pes(celulas[sequencia[-1]])
 
-    folha = Image.new("RGBA", (CELULA * len(celulas), CELULA), (0, 0, 0, 0))
+    folha = Image.new("RGBA", (lado * len(celulas), lado), (0, 0, 0, 0))
     for i, c in enumerate(celulas):
-        folha.paste(c, (i * CELULA, 0))
+        folha.paste(c, (i * lado, 0))
     folha.save(os.path.join(SAIDA, f"{codigo}.webp"), "WEBP", quality=88, method=6)
 
+    extra = {}
+    if dragao:
+        extra["mundo"] = MUNDO_DRAGAO
+    if numero_item(origem) >= ITEM_RITMO:
+        extra["ritmo"] = 1
+        if dados.get("fps"):
+            extra["fpsArte"] = dados["fps"]
     return {
+        **extra,
         "src": f"assets/sprites/{codigo}.webp",
-        "cell": CELULA,
+        "cell": lado,
         "count": len(celulas),
         "seq": sequencia,
         "ground": chao,
@@ -181,7 +220,7 @@ def extrair_laboratorio(caminho, manifesto):
             print(f"  {cfg['codigo']}: {len(lista)} quadros")
 
 
-def extrair_pastas(manifesto):
+def extrair_pastas(manifesto, pular=()):
     """arte/<qualquer>/<CODIGO>/NN.png + config.json {"unidades_por_px": ...}.
 
     Todos os quadros de um código têm o mesmo tamanho e o mesmo ponto de apoio.
@@ -194,6 +233,8 @@ def extrair_pastas(manifesto):
         with open(cfg_arq, encoding="utf-8") as f:
             cfg = json.load(f)
         codigo = os.path.basename(pasta)
+        if any(os.path.relpath(pasta, RAIZ).startswith(p) for p in pular):
+            continue
         fontes = [quadrado(Image.open(q).convert("RGBA")) for q in quadros]
         lado = fontes[0].size[0]
         mundo = lado * cfg["unidades_por_px"]
@@ -255,12 +296,19 @@ def extrair_retratos_extras(retratos):
 
 def main():
     os.makedirs(SAIDA, exist_ok=True)
-    arquivos = sorted(glob.glob(os.path.join(RAIZ, "*_ITEM_*.html")))
+    arquivos = sorted(glob.glob(os.path.join(RAIZ, "*_ITEM_*.html")), key=lambda a: (numero_item(os.path.basename(a)), a))
     if not arquivos:
         sys.exit("Nenhum HTML *_ITEM_*.html encontrado na raiz do repositório.")
 
     manifesto = {}
     retratos = {}
+    if "--so-escala" in sys.argv:
+        # Só recalcula as escalas a partir das folhas já geradas (rápido).
+        with open(MANIFESTO, encoding="utf-8") as f:
+            texto = f.read()
+        manifesto = json.loads(texto.split("window.SPRITES = ", 1)[1].split(";\nwindow.RETRATOS", 1)[0])
+        retratos = json.loads(texto.split("window.RETRATOS = ", 1)[1].rstrip().rstrip(";"))
+        return gravar(manifesto, retratos)
     if "--so-arte" in sys.argv:
         # Refaz só as pastas de arte/, mantendo o resto do manifesto atual.
         with open(MANIFESTO, encoding="utf-8") as f:
@@ -274,8 +322,11 @@ def main():
     for caminho in sorted(glob.glob(os.path.join(RAIZ, "*LABORATORIO*.html"))):
         print(os.path.basename(caminho))
         extrair_laboratorio(caminho, manifesto)
-    print("arte/")
-    extrair_pastas(manifesto)
+    # Se os itens já trazem o dragão novo, o dragão antigo (arte/dragao) não entra: os dois
+    # desenhos são diferentes e não podem se misturar na mesma luta.
+    dragao_novo = any(c.startswith("DRAGON_") for a in arquivos for c in ler_animacoes(a))
+    print("arte/" + (" (sem arte/dragao: chegou o dragão dos itens)" if dragao_novo else ""))
+    extrair_pastas(manifesto, ("arte/dragao",) if dragao_novo else ())
     for caminho in sorted(glob.glob(os.path.join(RAIZ, "*PRIMEIRO_ENCONTRO*.html"))):
         print(os.path.basename(caminho))
         retratos.update(extrair_retratos(caminho))
@@ -287,11 +338,71 @@ def main():
             m = manifesto[codigo]
             print(f"  {codigo}: {len(m['seq'])} frames ({m['count']} únicos)")
 
+    # Provisório até chegar a arte: o dragão parado usa o 1º quadro do rugido.
+    if dragao_novo and "DRAGON_IDLE" not in manifesto and "DRAGON_ROAR" in manifesto:
+        for caminho in arquivos:
+            animacoes = ler_animacoes(caminho)
+            if "DRAGON_ROAR" in animacoes:
+                dados = {"frames": animacoes["DRAGON_ROAR"]["frames"][:1], "label": "Dragão parado (provisório: 1º quadro do rugido)"}
+                manifesto["DRAGON_IDLE"] = processar("DRAGON_IDLE", dados, os.path.basename(caminho))
+                manifesto["DRAGON_IDLE"]["provisorio"] = "DRAGON_ROAR"
+                print("  DRAGON_IDLE: provisório (1º quadro do rugido)")
+                break
+
     extrair_retratos_extras(retratos)
     gravar(manifesto, retratos)
 
 
+# Altura de cada personagem de pé no mundo. Nos itens, cada animação foi desenhada com um
+# tamanho um pouco diferente (a Line parada ocupa 85% do quadro, a Line feliz 67%): a escala
+# de cada uma é ajustada pela altura do primeiro quadro (a pose neutra), para ninguém encolher
+# ou crescer ao trocar de animação. Se o primeiro quadro começa deitado ou agachado, vale a
+# maior altura.
+ALTURA_ALVO = {"LINE_BELL_": ALTURA_LINE_MUNDO, "LINE_": ALTURA_LINE_MUNDO, "BELL_": ALTURA_LINE_MUNDO * 0.96}
+
+
+def normalizar_escala(manifesto):
+    for codigo, m in manifesto.items():
+        alvo = next((v for k, v in ALTURA_ALVO.items() if codigo.startswith(k)), None)
+        if alvo is None or "ITEM" not in m.get("item", "") or m.get("mundo"):
+            continue
+        folha = Image.open(os.path.join(RAIZ, "game", m["src"])).convert("RGBA")
+        cel = m["cell"]
+        alturas = []
+        for i in range(m["count"]):
+            alfa = folha.crop((i * cel, 0, (i + 1) * cel, cel)).getchannel("A").point(lambda v: 255 if v > 60 else 0)
+            dados = alfa.tobytes()
+            # Linhas com pelo menos 6 pixels: ignora pontinhos soltos.
+            linhas = [y for y in range(cel) if dados[y * cel:(y + 1) * cel].count(255) >= 6]
+            alturas.append(linhas[-1] - linhas[0] + 1 if linhas else 0)
+        if not max(alturas):
+            continue
+        primeiro = alturas[m["seq"][0]]
+        altura = primeiro if primeiro >= 0.75 * max(alturas) else max(alturas)
+        altura_mundo = altura / cel * CELULA_LINE_MUNDO
+        m["escala"] = round(max(0.8, min(1.35, alvo / altura_mundo)), 4)
+
+
+def preferir_itens(manifesto):
+    """Quando um item traz uma animação sem direção (ex.: LINE_BELL_WALK_HANDS, de lado), ela
+    vale para a esquerda e a direita no lugar das versões antigas do laboratório; frente e costas
+    continuam do laboratório até chegar arte nova para elas."""
+    for codigo, m in list(manifesto.items()):
+        if "ITEM" not in m.get("item", "") or re.search(r"_(FRONT|BACK|LEFT|RIGHT)$", codigo):
+            continue
+        for lado in ("_LEFT", "_RIGHT"):
+            antigo = manifesto.get(codigo + lado)
+            if antigo and "ITEM" not in antigo.get("item", ""):
+                del manifesto[codigo + lado]
+                arq = os.path.join(RAIZ, "game", antigo["src"])
+                if os.path.exists(arq):
+                    os.remove(arq)
+                print(f"  {codigo + lado}: substituído por {codigo} (item)")
+
+
 def gravar(manifesto, retratos):
+    preferir_itens(manifesto)
+    normalizar_escala(manifesto)
     with open(MANIFESTO, "w", encoding="utf-8") as f:
         f.write("// Gerado por tools/extrair_sprites.py. Não edite à mão.\n")
         f.write("window.SPRITES = ")

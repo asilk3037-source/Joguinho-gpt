@@ -322,7 +322,7 @@
           this.pausaImpacto(alvo.chefe ? 0.07 : 0.05);
           this.tremer(2, 0.1);
           const px = alvo.chefe ? line.x + line.lado * 36 : alvo.x;
-          this.particulas.emitir('impacto', px, (alvo.chefe ? line.y : alvo.y) - 22, 1, { r: 4, vida: 0.25, vel: 0 });
+          if (!LB.fx.emitir(this, 'FX_IMPACT', px, (alvo.chefe ? line.y : alvo.y) - 22)) this.particulas.emitir('impacto', px, (alvo.chefe ? line.y : alvo.y) - 22, 1, { r: 4, vida: 0.25, vel: 0 });
         }
       }
       // Espinheiros: a espada abre caminho.
@@ -772,7 +772,7 @@
     }
 
     desenharEfeito(g, f) {
-      if (f.tipo !== 'rastro') { if (!LB.mundo.desenharEfeito(g, f, this)) LB.magia.desenharEfeito(g, f, this); return; }
+      if (f.tipo !== 'rastro') { if (!LB.fx.desenharEfeito(g, f) && !LB.mundo.desenharEfeito(g, f, this)) LB.magia.desenharEfeito(g, f, this); return; }
       const k = f.t / f.dur;
       const vertical = /VERTICAL|DIAGONAL/.test(f.anim);
       const a = 1 - k;

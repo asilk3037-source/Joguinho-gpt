@@ -137,7 +137,7 @@ window.LB = window.LB || {};
     ['DRAGON_IDLE', 'Parado respirando', { loop: true, fps: 2.5, quadros: 4 }],
     ['DRAGON_BLINK', 'Piscar', { alt: 'DRAGON_IDLE' }],
     ['DRAGON_WALK', 'Andar', { loop: true, fps: 8, quadros: 6 }],
-    ['DRAGON_RUN', 'Correr', { loop: true, fps: 13, quadros: 6 }],
+    ['DRAGON_RUN', 'Correr', { loop: true, fps: 13, quadros: 6, alt: 'DRAGON_WALK' }],
     ['DRAGON_TURN', 'Virar', { alt: 'DRAGON_IDLE' }],
     ['DRAGON_WINGS_OPEN', 'Abrir asas', { alt: 'DRAGON_TAKEOFF' }],
     ['DRAGON_TAKEOFF', 'Decolar', { fps: 7, quadros: 5 }],
@@ -159,7 +159,7 @@ window.LB = window.LB || {};
     ['DRAGON_FINAL_HIT', 'Receber golpe final', { alt: 'DRAGON_HIT' }],
     ['DRAGON_FALL', 'Cair', { fps: 5, quadros: 3 }],
     ['DRAGON_DEFEATED', 'Derrotado', { loop: true, quadros: 1 }],
-    ['DRAGON_SLEEP', 'Dormir', { loop: true, fps: 1, quadros: 1, nova: true }],
+    ['DRAGON_SLEEP', 'Dormir', { loop: true, fps: 1, quadros: 1, nova: true, alt: 'DRAGON_DEFEATED' }],
     ['DRAGON_EYE_OPEN_END', 'Ressurgir no final', { fps: 2, quadros: 2 }],
   ]);
 
@@ -325,6 +325,14 @@ window.LB = window.LB || {};
     return r;
   }
 
+  // Velocidade da animação. A arte nova (itens 50 em diante) tem mais quadros que a antiga:
+  // mantém a duração do catálogo (sincronizada com os golpes); em loop, vale o fps do artista.
+  function fpsDe(inf, s, n) {
+    if (!s || !s.ritmo || n === inf.quadros) return inf.fps;
+    if (inf.loop && s.fpsArte) return s.fpsArte;
+    return Math.max(4, Math.min(24, n * inf.fps / inf.quadros));
+  }
+
   class Animador {
     constructor(base) { this.base = base || null; this.t = 0; }
 
@@ -338,7 +346,7 @@ window.LB = window.LB || {};
       const r = resolver(this.base, dir, lado);
       const inf = info(this.base);
       const n = r.sprite ? r.sprite.seq.length : inf.quadros;
-      const pos = this.t * inf.fps;
+      const pos = this.t * fpsDe(inf, r.sprite, n);
       let i = Math.floor(pos);
       const acabou = !inf.loop && i >= n;
       i = inf.loop ? i % n : Math.min(i, n - 1);
@@ -347,14 +355,15 @@ window.LB = window.LB || {};
         quadro: r.sprite ? r.sprite.seq[i] : i,
         progresso: inf.loop ? (pos % n) / n : Math.min(1, pos / n),
         acabou,
-        duracao: n / inf.fps,
+        duracao: n / fpsDe(inf, r.sprite, n),
       };
     }
 
     duracao(dir, lado) {
       const r = resolver(this.base, dir, lado);
       const inf = info(this.base);
-      return (r.sprite ? r.sprite.seq.length : inf.quadros) / inf.fps;
+      const n = r.sprite ? r.sprite.seq.length : inf.quadros;
+      return n / fpsDe(inf, r.sprite, n);
     }
 
     irPara(progresso, dir, lado) { this.t = progresso * this.duracao(dir, lado); }

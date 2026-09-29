@@ -556,6 +556,28 @@ teste('covil: luta com o dragão começa', async (h) => {
   await h.foto('covil');
 });
 
+// ================= Arte nova =================
+teste('arte: efeitos em pixel art carregam e aparecem no golpe', async (h) => {
+  await h.area('floresta', { espada: true });
+  const prontos = await h.ev(() => ['FX_IMPACT', 'FX_SPARKS', 'FX_EXPLOSION', 'FX_HEARTS', 'FX_DRAGON_WEAK_POINT'].filter((k) => LB.fx.pronto(k)));
+  igual(prontos.length, 5, `efeitos prontos (${prontos})`);
+  const fx = await h.ev(() => {
+    const j = LB.jogo, l = j.line, e = new LB.Sombra(l.x + 24, l.y);
+    j.inimigos = [e]; l.lado = 1; l.dir = 'RIGHT';
+    j.acertar(l, { alcance: 50, largura: 20, dano: 1, empurra: 60 }, new Set());
+    return j.efeitos.filter((f) => f.tipo === 'fx').map((f) => f.codigo);
+  });
+  afirmar(fx.includes('FX_IMPACT'), `impacto em pixel art no golpe (veio ${fx})`);
+});
+
+teste('arte: golpes do dragão mantêm a duração com mais quadros', async (h) => {
+  const r = await h.ev(() => ['DRAGON_CLAW_ATTACK', 'DRAGON_FIRE_CHARGE', 'DRAGON_TAIL_ATTACK'].map((c) => {
+    const inf = LB.info(c), a = new LB.Animador(c);
+    return [c, +(inf.quadros / inf.fps).toFixed(2), +a.duracao(null, 1).toFixed(2), (LB.sprite(c) || {}).count || 0];
+  }));
+  for (const [c, antes, agora] of r) afirmar(Math.abs(antes - agora) < 0.3, `${c}: durava ${antes}s, agora ${agora}s`);
+});
+
 // ================= História =================
 teste('história: interlúdio mostra a Bell e o dragão no covil', async (h) => {
   await h.area('floresta', { espada: true });

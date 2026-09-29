@@ -5,6 +5,14 @@
 > Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.
 > Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.
 
+> 🎨 **Arte nova (itens 50 a 108):**
+> - **Bell** com arte nova: parada, andando e correndo nas 4 direções, pulo, susto, fuga, queda, captura, jaula, fuga da jaula, chamando e ajudando a Line, feliz, aliviada, chorando, risada, reverência, toca aqui e dança.
+> - **Line e Bell juntas:** andando lado a lado, de mãos dadas, correndo, conversando, rindo, encostadas, segurando as mãos, abraço do resgate, fim do abraço, comemoração e as cenas do prólogo (encontro, abraço de chegada, BK, soco na máquina e o beijo no túnel).
+> - **Dragão novo** em todos os golpes, no voo, na tontura, na queda e derrotado. O dragão antigo saiu do jogo. As animações novas duram o mesmo tempo que as antigas, porque é essa duração que está sincronizada com os golpes.
+> - **Efeitos em pixel art:** impacto, faíscas, explosão, ponto fraco, corações, lágrimas, poeira e fumaça (seção 13).
+> - O tamanho de cada personagem agora é **igualado entre as animações** (antes a Line encolhia ao rir, e a Bell nova vinha menor que a Line).
+> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias e os itens **77 a 80** ainda não chegaram; o dragão parado usa um quadro do rugido até lá (veja `ANIMACOES_PENDENTES.md`).
+
 > 📖 **Novidades da história (esta versão):**
 > - Um **tema** que costura a aventura inteira: *luz não se rouba, se divide* (seção 3).
 > - O **dragão ganhou motivo e voz**: o fogo dele esfria enquanto dorme, e ele acorda com frio procurando um coração brilhante. A Bell sonha com isso na manhã do rapto.
@@ -80,7 +88,7 @@
 | Mochila | 10 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **267**: 160 com arte (temporária), 47 usando uma substituta, 60 desenhadas no código ou sem imagem |
+| Animações catalogadas | **270**: 208 com arte (temporária), 26 usando uma substituta, 36 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -966,14 +974,14 @@ Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (p
 
 | Código | Quando aparece e o que precisa mostrar | Quadros | Status hoje |
 |---|---|---:|---|
-| `LINE_ADMIRE` | Início: a Line vê a Bell de longe. Precisa da Line de costas ou de lado, com a mão no peito, corações e o corpo balançando. | 20 | 🔁 usa `LINE_HAPPY` |
-| `BELL_WAIT` | A Bell esperando no shopping: olha para os lados, mexe no cabelo, confere o celular. Virada para a esquerda. | 16 | 🔁 usa `BELL_IDLE_RIGHT` |
-| `LINE_BELL_MEET` | As duas frente a frente, conversando e sorrindo. Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem. | 16 | 🔁 usa `LINE_BELL_HOLD_HANDS` |
-| `LINE_BELL_GREET_HUG` | Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada. | 24 | 🔁 usa `LINE_BELL_RESCUE_HUG` |
-| `LINE_BELL_BK` | As duas sentadas à mesa comendo BK (hambúrguer, batata e refri), com a mesa desenhada. O HTML tem 3 quadros. | 24 | 🔁 usa `LINE_BELL_EAT` |
-| `LINE_PUNCH_MACHINE` | A Line soca a máquina, com a máquina e o placar na mesma animação. O impacto é por volta da metade. | 16 | ✅ temporária |
-| `BELL_LAUGH_AT_LINE` | A Bell gargalhando da Line: se dobra de rir, bate na perna, enxuga as lágrimas. | 16 | 🔁 usa `BELL_LAUGH` |
-| `LINE_BELL_TUNNEL_KISS` | O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo. O HTML tem 8 quadros. | 8 | 🔁 usa `LINE_BELL_KISS` |
+| `LINE_ADMIRE` | Início: a Line vê a Bell de longe. Precisa da Line de costas ou de lado, com a mão no peito, corações e o corpo balançando. | 5 | ✅ temporária |
+| `BELL_WAIT` | A Bell esperando no shopping: olha para os lados, mexe no cabelo, confere o celular. Virada para a esquerda. | 4 | ✅ temporária |
+| `LINE_BELL_MEET` | As duas frente a frente, conversando e sorrindo. Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem. | 3 | ✅ temporária |
+| `LINE_BELL_GREET_HUG` | Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada. | 4 | ✅ temporária |
+| `LINE_BELL_BK` | As duas sentadas à mesa comendo BK (hambúrguer, batata e refri), com a mesa desenhada. O HTML tem 3 quadros. | 6 | ✅ temporária |
+| `LINE_PUNCH_MACHINE` | A Line soca a máquina, com a máquina e o placar na mesma animação. O impacto é por volta da metade. | 3 | ✅ temporária |
+| `BELL_LAUGH_AT_LINE` | A Bell gargalhando da Line: se dobra de rir, bate na perna, enxuga as lágrimas. | 2 | ✅ temporária |
+| `LINE_BELL_TUNNEL_KISS` | O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo. O HTML tem 8 quadros. | 7 | ✅ temporária |
 
 **Animações que o prólogo reaproveita** (já existem, também temporárias): `LINE_IDLE`, `LINE_IDLE_BACK`, `LINE_WALK_RIGHT`, `LINE_WALK_LEFT`, `LINE_WALK_FRONT`, `LINE_WALK_BACK`, `BELL_IDLE`, `BELL_WALK_RIGHT`, `BELL_WALK_LEFT`, `BELL_WALK_FRONT`, `BELL_WALK_BACK` e `LINE_BELL_WALK_HANDS` (saindo do shopping de mãos dadas).
 
@@ -1674,35 +1682,36 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 267 animações. ✅ 160 com arte temporária, 🔁 47 com substituta e ✏️ 60 desenhadas no código.
+**Resumo:** 270 animações. ✅ 208 com arte temporária, 🔁 26 com substituta e ✏️ 36 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
-| Primeiro encontro (prólogo) | 8 | 1 | 7 | 0 |
+| Primeiro encontro (prólogo) | 8 | 8 | 0 | 0 |
 | Line — movimento | 31 | 29 | 2 | 0 |
 | Line — combate | 27 | 19 | 8 | 0 |
 | Line — emoções | 10 | 10 | 0 | 0 |
-| Bell | 34 | 16 | 18 | 0 |
-| Line e Bell juntas | 26 | 12 | 0 | 14 |
-| Dragão | 27 | 18 | 9 | 0 |
+| Bell | 34 | 34 | 0 | 0 |
+| Line e Bell juntas | 26 | 13 | 10 | 3 |
+| Dragão | 27 | 24 | 3 | 0 |
 | Magia e criaturas (novo) | 13 | 0 | 3 | 10 |
 | Inimigos (novo) | 5 | 0 | 0 | 5 |
-| Efeitos | 13 | 0 | 0 | 13 |
+| Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 55 | 0 | 12 |
 | Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
+| Outras animações recebidas | 3 | 3 | 0 | 0 |
 
 ### 10.1 Primeiro encontro (prólogo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `LINE_ADMIRE` | Line vê a Bell de longe (“puxa ela é tão linda”) *(sugestão nova)* | 20 |  | 🔁 usa `LINE_HAPPY` |  |
-| `BELL_WAIT` | Bell esperando a Line no shopping *(sugestão nova)* | 16 | sim | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `LINE_BELL_MEET` | Frente a frente, sorrindo (conversa no shopping) *(sugestão nova)* | 16 | sim | 🔁 usa `LINE_BELL_HOLD_HANDS` |  |
-| `LINE_BELL_GREET_HUG` | Abraço de chegada (“Você tá atrasada”) *(sugestão nova)* | 24 | sim | 🔁 usa `LINE_BELL_RESCUE_HUG` |  |
-| `LINE_BELL_BK` | Comendo BK juntas no shopping *(sugestão nova)* | 24 | sim | 🔁 usa `LINE_BELL_EAT` |  |
-| `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) | 16 |  | ✅ temporária | Laboratório v7 |
-| `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 16 | sim | 🔁 usa `BELL_LAUGH` |  |
-| `LINE_BELL_TUNNEL_KISS` | O primeiro beijo, no túnel *(sugestão nova)* | 8 |  | 🔁 usa `LINE_BELL_KISS` |  |
+| `LINE_ADMIRE` | Line vê a Bell de longe (“puxa ela é tão linda”) *(sugestão nova)* | 5 |  | ✅ temporária | LINE_BELL_ITEM_103 |
+| `BELL_WAIT` | Bell esperando a Line no shopping *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_103 |
+| `LINE_BELL_MEET` | Frente a frente, sorrindo (conversa no shopping) *(sugestão nova)* | 3 | sim | ✅ temporária | LINE_BELL_ITEM_104 |
+| `LINE_BELL_GREET_HUG` | Abraço de chegada (“Você tá atrasada”) *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_104 |
+| `LINE_BELL_BK` | Comendo BK juntas no shopping *(sugestão nova)* | 6 | sim | ✅ temporária | LINE_BELL_ITEM_105 |
+| `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) | 3 |  | ✅ temporária | LINE_BELL_ITEM_106 |
+| `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_106 |
+| `LINE_BELL_TUNNEL_KISS` | O primeiro beijo, no túnel *(sugestão nova)* | 7 |  | ✅ temporária | LINE_BELL_ITEM_107 |
 
 ### 10.2 Line — movimento
 
@@ -1791,66 +1800,66 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `BELL_IDLE_FRONT` | Parada | 1 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_IDLE_BACK` | Parada | 1 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_IDLE_LEFT` | Parada | 1 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_IDLE_RIGHT` | Parada | 1 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_BLINK_FRONT` | Piscar | 12 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_LOOK_SIDES_FRONT` | Olhar para os lados | 24 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_WALK_FRONT` | Andar | 8 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_WALK_BACK` | Andar | 8 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_WALK_LEFT` | Andar | 8 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_WALK_RIGHT` | Andar | 8 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_RUN_FRONT` | Correr | 4 | sim | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_RUN_BACK` | Correr | 4 | sim | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_RUN_LEFT` | Correr | 4 | sim | ✅ temporária | arte/linebell/BELL_RUN_LEFT |
-| `BELL_RUN_RIGHT` | Correr | 4 | sim | ✅ temporária | arte/linebell/BELL_RUN_RIGHT |
-| `BELL_LAUGH` | Gargalhada *(sugestão nova)* | 16 | sim | ✅ temporária | Laboratório v7 |
-| `BELL_JUMP` | Pular | 2 |  | ✅ temporária | arte/linebell/BELL_JUMP |
-| `BELL_LAND` | Aterrissar | 1 |  | ✅ temporária | arte/linebell/BELL_LAND |
-| `BELL_GROUND_STAND` | Levantar do chão | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_SCARED` | Assustada | 12 | sim | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_FLEE` | Fugir | 12 | sim | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_FALL` | Cair | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_CAPTURED` | Ser capturada | 12 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_DRAGON_CARRIED` | Ser carregada pelo dragão | 12 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_TRAPPED` | Presa | 12 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_ESCAPE_ATTEMPT` | Tentar escapar | 12 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_BREAK_FREE` | Conseguir se libertar | 12 |  | 🔁 usa `BELL_LAUGH` |  |
-| `BELL_CALL_LINE` | Chamar Line | 12 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_HELP_LINE` | Ajudar Line | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_HAPPY` | Feliz | 12 | sim | 🔁 usa `BELL_LAUGH` |  |
-| `BELL_RELIEVED` | Aliviada | 12 |  | 🔁 usa `BELL_LAUGH` |  |
-| `BELL_CRY` | Chorando | 12 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_CURTSY` | Reverência *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/BELL_CURTSY |
-| `BELL_HIGH_FIVE` | Toca aqui *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/BELL_HIGH_FIVE |
-| `BELL_DANCE` | Dançando (giro) *(sugestão nova)* | 4 | sim | ✅ temporária | arte/linebell/BELL_DANCE |
+| `BELL_IDLE_FRONT` | Parada | 3 | sim | ✅ temporária | LINE_BELL_ITEM_50 |
+| `BELL_IDLE_BACK` | Parada | 1 | sim | ✅ temporária | LINE_BELL_ITEM_51 |
+| `BELL_IDLE_LEFT` | Parada | 1 | sim | ✅ temporária | LINE_BELL_ITEM_51 |
+| `BELL_IDLE_RIGHT` | Parada | 1 | sim | ✅ temporária | LINE_BELL_ITEM_51 |
+| `BELL_BLINK_FRONT` | Piscar | 2 |  | ✅ temporária | LINE_BELL_ITEM_50 |
+| `BELL_LOOK_SIDES_FRONT` | Olhar para os lados | 3 |  | ✅ temporária | LINE_BELL_ITEM_50 |
+| `BELL_WALK_FRONT` | Andar | 4 | sim | ✅ temporária | LINE_BELL_ITEM_54 |
+| `BELL_WALK_BACK` | Andar | 4 | sim | ✅ temporária | LINE_BELL_ITEM_54 |
+| `BELL_WALK_LEFT` | Andar | 5 | sim | ✅ temporária | LINE_BELL_ITEM_53 |
+| `BELL_WALK_RIGHT` | Andar | 5 | sim | ✅ temporária | LINE_BELL_ITEM_52 |
+| `BELL_RUN_FRONT` | Correr | 4 | sim | ✅ temporária | LINE_BELL_ITEM_57 |
+| `BELL_RUN_BACK` | Correr | 4 | sim | ✅ temporária | LINE_BELL_ITEM_57 |
+| `BELL_RUN_LEFT` | Correr | 5 | sim | ✅ temporária | LINE_BELL_ITEM_56 |
+| `BELL_RUN_RIGHT` | Correr | 5 | sim | ✅ temporária | LINE_BELL_ITEM_55 |
+| `BELL_LAUGH` | Gargalhada *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_108 |
+| `BELL_JUMP` | Pular | 3 |  | ✅ temporária | LINE_BELL_ITEM_58 |
+| `BELL_LAND` | Aterrissar | 2 |  | ✅ temporária | LINE_BELL_ITEM_58 |
+| `BELL_GROUND_STAND` | Levantar do chão | 2 |  | ✅ temporária | LINE_BELL_ITEM_58 |
+| `BELL_SCARED` | Assustada | 3 | sim | ✅ temporária | LINE_BELL_ITEM_59 |
+| `BELL_FLEE` | Fugir | 4 | sim | ✅ temporária | LINE_BELL_ITEM_59 |
+| `BELL_FALL` | Cair | 4 |  | ✅ temporária | LINE_BELL_ITEM_60 |
+| `BELL_CAPTURED` | Ser capturada | 4 |  | ✅ temporária | LINE_BELL_ITEM_61 |
+| `BELL_DRAGON_CARRIED` | Ser carregada pelo dragão | 4 | sim | ✅ temporária | LINE_BELL_ITEM_62 |
+| `BELL_TRAPPED` | Presa | 3 | sim | ✅ temporária | LINE_BELL_ITEM_63 |
+| `BELL_ESCAPE_ATTEMPT` | Tentar escapar | 3 | sim | ✅ temporária | LINE_BELL_ITEM_63 |
+| `BELL_BREAK_FREE` | Conseguir se libertar | 4 |  | ✅ temporária | LINE_BELL_ITEM_64 |
+| `BELL_CALL_LINE` | Chamar Line | 4 | sim | ✅ temporária | LINE_BELL_ITEM_65 |
+| `BELL_HELP_LINE` | Ajudar Line | 4 |  | ✅ temporária | LINE_BELL_ITEM_66 |
+| `BELL_HAPPY` | Feliz | 2 | sim | ✅ temporária | LINE_BELL_ITEM_67 |
+| `BELL_RELIEVED` | Aliviada | 2 |  | ✅ temporária | LINE_BELL_ITEM_67 |
+| `BELL_CRY` | Chorando | 3 | sim | ✅ temporária | LINE_BELL_ITEM_67 |
+| `BELL_CURTSY` | Reverência *(sugestão nova)* | 4 |  | ✅ temporária | LINE_BELL_ITEM_108 |
+| `BELL_HIGH_FIVE` | Toca aqui *(sugestão nova)* | 2 |  | ✅ temporária | LINE_BELL_ITEM_108 |
+| `BELL_DANCE` | Dançando (giro) *(sugestão nova)* | 3 | sim | ✅ temporária | LINE_BELL_ITEM_108 |
 
 ### 10.6 Line e Bell juntas
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | 12 | sim | ✏️ código / falta |  |
-| `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | 12 | sim | ✏️ código / falta |  |
-| `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 12 | sim | ✏️ código / falta |  |
-| `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 12 | sim | ✏️ código / falta |  |
+| `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
 | `LINE_BELL_WALK_HANDS_FRONT` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
 | `LINE_BELL_WALK_HANDS_BACK` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
-| `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
-| `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
-| `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | 12 | sim | ✏️ código / falta |  |
-| `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | 12 | sim | ✏️ código / falta |  |
-| `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | 12 | sim | ✏️ código / falta |  |
-| `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | 12 | sim | ✏️ código / falta |  |
-| `LINE_BELL_TALK` | Conversando | 2 | sim | ✅ temporária | arte/linebell/LINE_BELL_TALK |
-| `LINE_BELL_LAUGH` | Rindo juntas | 12 | sim | ✏️ código / falta |  |
+| `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 10 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
+| `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 10 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
+| `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
+| `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
+| `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
+| `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
+| `LINE_BELL_TALK` | Conversando | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
+| `LINE_BELL_LAUGH` | Rindo juntas | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
 | `LINE_BELL_EAT` | Almoçando juntas *(sugestão nova)* | 12 | sim | ✅ temporária | Laboratório v7 |
 | `LINE_BELL_KISS` | Bitoquinha *(sugestão nova)* | 8 |  | ✅ temporária | Laboratório v7 |
-| `BELL_LEAN_ON_LINE` | Bell encostando na Line | 12 |  | ✏️ código / falta |  |
-| `LINE_BELL_HOLD_HANDS` | Segurando as mãos | 1 | sim | ✅ temporária | Laboratório v7 |
-| `LINE_BELL_RESCUE_HUG` | Abraço do resgate | 1 | sim | ✅ temporária | Laboratório v7 |
-| `LINE_BELL_HUG_RELEASE` | Separação do abraço | 12 |  | ✏️ código / falta |  |
-| `LINE_BELL_CELEBRATE` | Comemorando (toca aqui) | 3 |  | ✅ temporária | arte/linebell/LINE_BELL_CELEBRATE |
+| `BELL_LEAN_ON_LINE` | Bell encostando na Line | 4 |  | ✅ temporária | LINE_BELL_ITEM_72 |
+| `LINE_BELL_HOLD_HANDS` | Segurando as mãos | 3 | sim | ✅ temporária | LINE_BELL_ITEM_73 |
+| `LINE_BELL_RESCUE_HUG` | Abraço do resgate | 4 | sim | ✅ temporária | LINE_BELL_ITEM_74 |
+| `LINE_BELL_HUG_RELEASE` | Separação do abraço | 4 |  | ✅ temporária | LINE_BELL_ITEM_75 |
+| `LINE_BELL_CELEBRATE` | Comemorando (toca aqui) | 4 |  | ✅ temporária | LINE_BELL_ITEM_76 |
 | `LINE_BELL_HIGH_FIVE` | Toca aqui com brilho *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/LINE_BELL_HIGH_FIVE |
 | `LINE_BELL_DANCE` | Dançando juntas *(sugestão nova)* | 4 | sim | ✅ temporária | arte/linebell/LINE_BELL_DANCE |
 | `LINE_BELL_SIT_DOWN` | Sentando juntas | 12 |  | ✏️ código / falta |  |
@@ -1861,33 +1870,33 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `DRAGON_IDLE` | Parado respirando | 4 | sim | ✅ temporária | arte/dragao/DRAGON_IDLE |
+| `DRAGON_IDLE` | Parado respirando | 1 | sim | ✅ temporária | LINE_BELL_ITEM_85 |
 | `DRAGON_BLINK` | Piscar | 12 |  | 🔁 usa `DRAGON_IDLE` |  |
-| `DRAGON_WALK` | Andar | 6 | sim | ✅ temporária | arte/dragao/DRAGON_WALK |
-| `DRAGON_RUN` | Correr | 6 | sim | ✅ temporária | arte/dragao/DRAGON_RUN |
-| `DRAGON_TURN` | Virar | 12 |  | 🔁 usa `DRAGON_IDLE` |  |
-| `DRAGON_WINGS_OPEN` | Abrir asas | 12 |  | 🔁 usa `DRAGON_TAKEOFF` |  |
-| `DRAGON_TAKEOFF` | Decolar | 5 |  | ✅ temporária | arte/dragao/DRAGON_TAKEOFF |
-| `DRAGON_FLY` | Voar | 5 | sim | ✅ temporária | arte/dragao/DRAGON_FLY |
-| `DRAGON_GLIDE` | Planar | 12 | sim | 🔁 usa `DRAGON_FLY` |  |
-| `DRAGON_LAND` | Pousar | 5 |  | ✅ temporária | arte/dragao/DRAGON_LAND |
-| `DRAGON_ROAR` | Rugir | 2 |  | ✅ temporária | arte/dragao/DRAGON_ROAR |
-| `DRAGON_BITE` | Morder | 12 |  | 🔁 usa `DRAGON_CLAW_ATTACK` |  |
-| `DRAGON_CLAW_ATTACK` | Ataque de garra | 3 |  | ✅ temporária | arte/dragao/DRAGON_CLAW_ATTACK |
-| `DRAGON_TAIL_ATTACK` | Golpe de cauda | 7 |  | 🔁 usa `DRAGON_CLAW_ATTACK` |  |
-| `DRAGON_FIRE_CHARGE` | Preparar fogo | 2 |  | ✅ temporária | arte/dragao/DRAGON_FIRE_CHARGE |
-| `DRAGON_FIRE_BREATH` | Cuspir fogo | 2 |  | ✅ temporária | arte/dragao/DRAGON_FIRE_BREATH |
-| `DRAGON_FIRE_STREAM` | Fogo contínuo | 1 | sim | ✅ temporária | arte/dragao/DRAGON_FIRE_STREAM |
-| `DRAGON_AIR_ATTACK` | Ataque aéreo | 2 |  | ✅ temporária | arte/dragao/DRAGON_AIR_ATTACK |
-| `DRAGON_HIT` | Receber dano | 2 |  | ✅ temporária | arte/dragao/DRAGON_HIT |
-| `DRAGON_WEAK_POINT_HIT` | Ponto fraco atingido | 12 |  | 🔁 usa `DRAGON_HIT` |  |
-| `DRAGON_STUNNED` | Atordoado | 2 | sim | ✅ temporária | arte/dragao/DRAGON_STUNNED |
-| `DRAGON_DESPERATE_ATTACK` | Ataque desesperado | 12 |  | 🔁 usa `DRAGON_FIRE_STREAM` |  |
-| `DRAGON_FINAL_HIT` | Receber golpe final | 12 |  | 🔁 usa `DRAGON_HIT` |  |
-| `DRAGON_FALL` | Cair | 3 |  | ✅ temporária | arte/dragao/DRAGON_FALL |
-| `DRAGON_DEFEATED` | Derrotado | 1 | sim | ✅ temporária | arte/dragao/DRAGON_DEFEATED |
-| `DRAGON_SLEEP` | Dormir *(sugestão nova)* | 1 | sim | ✅ temporária | arte/dragao/DRAGON_SLEEP |
-| `DRAGON_EYE_OPEN_END` | Ressurgir no final | 2 |  | ✅ temporária | arte/dragao/DRAGON_EYE_OPEN_END |
+| `DRAGON_WALK` | Andar | 4 | sim | ✅ temporária | LINE_BELL_ITEM_81 |
+| `DRAGON_RUN` | Correr | 6 | sim | 🔁 usa `DRAGON_WALK` |  |
+| `DRAGON_TURN` | Virar | 3 |  | ✅ temporária | LINE_BELL_ITEM_81 |
+| `DRAGON_WINGS_OPEN` | Abrir asas | 3 |  | ✅ temporária | LINE_BELL_ITEM_82 |
+| `DRAGON_TAKEOFF` | Decolar | 3 |  | ✅ temporária | LINE_BELL_ITEM_82 |
+| `DRAGON_FLY` | Voar | 4 | sim | ✅ temporária | LINE_BELL_ITEM_83 |
+| `DRAGON_GLIDE` | Planar | 2 | sim | ✅ temporária | LINE_BELL_ITEM_83 |
+| `DRAGON_LAND` | Pousar | 5 |  | ✅ temporária | LINE_BELL_ITEM_84 |
+| `DRAGON_ROAR` | Rugir | 4 |  | ✅ temporária | LINE_BELL_ITEM_85 |
+| `DRAGON_BITE` | Morder | 5 |  | ✅ temporária | LINE_BELL_ITEM_86 |
+| `DRAGON_CLAW_ATTACK` | Ataque de garra | 5 |  | ✅ temporária | LINE_BELL_ITEM_87 |
+| `DRAGON_TAIL_ATTACK` | Golpe de cauda | 5 |  | ✅ temporária | LINE_BELL_ITEM_88 |
+| `DRAGON_FIRE_CHARGE` | Preparar fogo | 5 |  | ✅ temporária | LINE_BELL_ITEM_89 |
+| `DRAGON_FIRE_BREATH` | Cuspir fogo | 3 |  | ✅ temporária | LINE_BELL_ITEM_89 |
+| `DRAGON_FIRE_STREAM` | Fogo contínuo | 6 | sim | ✅ temporária | LINE_BELL_ITEM_90 |
+| `DRAGON_AIR_ATTACK` | Ataque aéreo | 6 |  | ✅ temporária | LINE_BELL_ITEM_91 |
+| `DRAGON_HIT` | Receber dano | 4 |  | ✅ temporária | LINE_BELL_ITEM_92 |
+| `DRAGON_WEAK_POINT_HIT` | Ponto fraco atingido | 4 |  | ✅ temporária | LINE_BELL_ITEM_92 |
+| `DRAGON_STUNNED` | Atordoado | 5 | sim | ✅ temporária | LINE_BELL_ITEM_93 |
+| `DRAGON_DESPERATE_ATTACK` | Ataque desesperado | 6 |  | ✅ temporária | LINE_BELL_ITEM_94 |
+| `DRAGON_FINAL_HIT` | Receber golpe final | 6 |  | ✅ temporária | LINE_BELL_ITEM_95 |
+| `DRAGON_FALL` | Cair | 5 |  | ✅ temporária | LINE_BELL_ITEM_96 |
+| `DRAGON_DEFEATED` | Derrotado | 2 | sim | ✅ temporária | LINE_BELL_ITEM_96 |
+| `DRAGON_SLEEP` | Dormir *(sugestão nova)* | 1 | sim | 🔁 usa `DRAGON_DEFEATED` |  |
+| `DRAGON_EYE_OPEN_END` | Ressurgir no final | 6 |  | ✅ temporária | LINE_BELL_ITEM_97 |
 
 ### 10.8 Magia e criaturas (novo)
 
@@ -1921,19 +1930,19 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `FX_FIRE` | Fogo | 12 | sim | ✏️ código / falta |  |
-| `FX_EMBERS` | Brasas | 12 | sim | ✏️ código / falta |  |
-| `FX_FIRE_LIGHT` | Iluminação do fogo | 12 | sim | ✏️ código / falta |  |
-| `FX_SMOKE` | Fumaça | 12 |  | ✏️ código / falta |  |
-| `FX_DUST` | Poeira | 12 |  | ✏️ código / falta |  |
-| `FX_IMPACT` | Impacto | 12 |  | ✏️ código / falta |  |
-| `FX_SPARKS` | Faíscas | 12 |  | ✏️ código / falta |  |
-| `FX_EXPLOSION` | Explosão | 12 |  | ✏️ código / falta |  |
-| `FX_SWORD_TRAIL` | Rastro da espada | 12 |  | ✏️ código / falta |  |
-| `FX_DRAGON_WEAK_POINT` | Ponto fraco do dragão | 12 | sim | ✏️ código / falta |  |
-| `FX_TEARS` | Lágrimas | 12 | sim | ✏️ código / falta |  |
-| `FX_HEARTS` | Corações | 12 |  | ✏️ código / falta |  |
-| `FX_AMBIENT_PARTICLES` | Partículas ambientais | 12 | sim | ✏️ código / falta |  |
+| `FX_FIRE` | Fogo | 5 | sim | ✅ temporária | LINE_BELL_ITEM_98 |
+| `FX_EMBERS` | Brasas | 5 | sim | ✅ temporária | LINE_BELL_ITEM_98 |
+| `FX_FIRE_LIGHT` | Iluminação do fogo | 5 | sim | ✅ temporária | LINE_BELL_ITEM_98 |
+| `FX_SMOKE` | Fumaça | 5 |  | ✅ temporária | LINE_BELL_ITEM_99 |
+| `FX_DUST` | Poeira | 5 |  | ✅ temporária | LINE_BELL_ITEM_99 |
+| `FX_IMPACT` | Impacto | 5 |  | ✅ temporária | LINE_BELL_ITEM_100 |
+| `FX_SPARKS` | Faíscas | 5 |  | ✅ temporária | LINE_BELL_ITEM_100 |
+| `FX_EXPLOSION` | Explosão | 6 |  | ✅ temporária | LINE_BELL_ITEM_100 |
+| `FX_SWORD_TRAIL` | Rastro da espada | 6 |  | ✅ temporária | LINE_BELL_ITEM_101 |
+| `FX_DRAGON_WEAK_POINT` | Ponto fraco do dragão | 5 | sim | ✅ temporária | LINE_BELL_ITEM_101 |
+| `FX_TEARS` | Lágrimas | 5 | sim | ✅ temporária | LINE_BELL_ITEM_102 |
+| `FX_HEARTS` | Corações | 5 |  | ✅ temporária | LINE_BELL_ITEM_102 |
+| `FX_AMBIENT_PARTICLES` | Partículas ambientais | 6 | sim | ✅ temporária | LINE_BELL_ITEM_102 |
 
 ### 10.11 Bichos da fazenda
 
@@ -2018,9 +2027,17 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SPIRIT_IDLE` | Espírito das Ruínas flutuando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 | `SPIRIT_TALK` | Espírito das Ruínas falando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 
+### 10.13 Outras animações recebidas
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `LINE_BELL_WALK_TOGETHER` | Line e Bell — Andando lado a lado | 4 | sim | ✅ temporária | LINE_BELL_ITEM_68 |
+| `LINE_BELL_WALK_HANDS` | Line e Bell — Andando de mãos dadas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_69 |
+| `LINE_BELL_RUN_TOGETHER` | Line e Bell — Correndo juntas | 5 | sim | ✅ temporária | LINE_BELL_ITEM_70 |
+
 *Na coluna Quadros, as animações ✅ mostram quantos quadros diferentes a arte atual tem. As que faltam mostram quantos quadros o jogo espera (é uma sugestão, pode vir com mais ou menos).*
 
-### 10.13 O que ainda falta ter arte própria, por prioridade
+### 10.14 O que ainda falta ter arte própria, por prioridade
 
 **Aparecem na história (prioridade 1):**
 - **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).
@@ -2091,7 +2108,25 @@ Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, cas
 
 ## 13. Efeitos visuais
 
-Todos os efeitos são feitos no código por enquanto (temporários):
+### 13.1 Efeitos com arte (itens 98 a 102)
+
+Os efeitos em pixel art já entram no jogo. Se a arte de um efeito faltar, o jogo volta sozinho para o efeito desenhado em código.
+
+| Efeito | Item | Onde aparece no jogo |
+|---|---|---|
+| `FX_IMPACT` | 100 | a cada golpe que acerta um inimigo ou chefe |
+| `FX_SPARKS` | 100 | quando a Line bloqueia um golpe com a defesa |
+| `FX_EXPLOSION` | 100 | na explosão das bombas |
+| `FX_DRAGON_WEAK_POINT` | 101 | no peito do dragão, enquanto o ponto fraco está aberto |
+| `FX_HEARTS` | 102 | na bitoquinha do pôr do sol, no abraço do resgate e no epílogo |
+| `FX_TEARS` | 102 | quando a Line chora depois do rapto |
+| `FX_DUST` | 99 | na onda do ataque aéreo e no pouso do dragão no covil |
+| `FX_SMOKE` | 99 | saindo das tochas apagadas da montanha |
+| `FX_SWORD_TRAIL`, `FX_AMBIENT_PARTICLES`, `FX_FIRE`, `FX_EMBERS`, `FX_FIRE_LIGHT` | 98, 101, 102 | recebidos e carregados, mas ainda não usados: o rastro da espada do jogo muda de forma a cada golpe (horizontal, vertical, giro), e o fogo e a luz do fogo são desenhados junto com as tochas e o dragão; `FX_FIRE_LIGHT` é um octógono opaco, que precisaria de transparência para iluminar o cenário |
+
+### 13.2 Efeitos desenhados no código
+
+Estes continuam temporários, feitos no código:
 
 - **Luta:**
   - Rastro azul da espada.

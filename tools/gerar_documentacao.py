@@ -62,6 +62,14 @@ w("> Elas estão no jogo só para dar vida à aventura enquanto a criação da a
 w("> Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.")
 w("> Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.")
 w()
+w("> 🎨 **Arte nova (itens 50 a 108):**")
+w("> - **Bell** com arte nova: parada, andando e correndo nas 4 direções, pulo, susto, fuga, queda, captura, jaula, fuga da jaula, chamando e ajudando a Line, feliz, aliviada, chorando, risada, reverência, toca aqui e dança.")
+w("> - **Line e Bell juntas:** andando lado a lado, de mãos dadas, correndo, conversando, rindo, encostadas, segurando as mãos, abraço do resgate, fim do abraço, comemoração e as cenas do prólogo (encontro, abraço de chegada, BK, soco na máquina e o beijo no túnel).")
+w("> - **Dragão novo** em todos os golpes, no voo, na tontura, na queda e derrotado. O dragão antigo saiu do jogo. As animações novas duram o mesmo tempo que as antigas, porque é essa duração que está sincronizada com os golpes.")
+w("> - **Efeitos em pixel art:** impacto, faíscas, explosão, ponto fraco, corações, lágrimas, poeira e fumaça (seção 13).")
+w("> - O tamanho de cada personagem agora é **igualado entre as animações** (antes a Line encolhia ao rir, e a Bell nova vinha menor que a Line).")
+w("> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias e os itens **77 a 80** ainda não chegaram; o dragão parado usa um quadro do rugido até lá (veja `ANIMACOES_PENDENTES.md`).")
+w()
 w("> 📖 **Novidades da história (esta versão):**")
 w("> - Um **tema** que costura a aventura inteira: *luz não se rouba, se divide* (seção 3).")
 w("> - O **dragão ganhou motivo e voz**: o fogo dele esfria enquanto dorme, e ele acorda com frio procurando um coração brilhante. A Bell sonha com isso na manhã do rapto.")
@@ -1143,7 +1151,28 @@ w()
 # =====================================================================
 w("## 13. Efeitos visuais")
 w()
-w("Todos os efeitos são feitos no código por enquanto (temporários):")
+w("### 13.1 Efeitos com arte (itens 98 a 102)")
+w()
+w("Os efeitos em pixel art já entram no jogo. Se a arte de um efeito faltar, o jogo volta sozinho para o efeito desenhado em código.")
+w()
+w("| Efeito | Item | Onde aparece no jogo |")
+w("|---|---|---|")
+for l in [
+    ("`FX_IMPACT`", "100", "a cada golpe que acerta um inimigo ou chefe"),
+    ("`FX_SPARKS`", "100", "quando a Line bloqueia um golpe com a defesa"),
+    ("`FX_EXPLOSION`", "100", "na explosão das bombas"),
+    ("`FX_DRAGON_WEAK_POINT`", "101", "no peito do dragão, enquanto o ponto fraco está aberto"),
+    ("`FX_HEARTS`", "102", "na bitoquinha do pôr do sol, no abraço do resgate e no epílogo"),
+    ("`FX_TEARS`", "102", "quando a Line chora depois do rapto"),
+    ("`FX_DUST`", "99", "na onda do ataque aéreo e no pouso do dragão no covil"),
+    ("`FX_SMOKE`", "99", "saindo das tochas apagadas da montanha"),
+    ("`FX_SWORD_TRAIL`, `FX_AMBIENT_PARTICLES`, `FX_FIRE`, `FX_EMBERS`, `FX_FIRE_LIGHT`", "98, 101, 102", "recebidos e carregados, mas ainda não usados: o rastro da espada do jogo muda de forma a cada golpe (horizontal, vertical, giro), e o fogo e a luz do fogo são desenhados junto com as tochas e o dragão; `FX_FIRE_LIGHT` é um octógono opaco, que precisaria de transparência para iluminar o cenário"),
+]:
+    w("| " + " | ".join(l) + " |")
+w()
+w("### 13.2 Efeitos desenhados no código")
+w()
+w("Estes continuam temporários, feitos no código:")
 w()
 w("- **Luta:**")
 w("  - Rastro azul da espada.")

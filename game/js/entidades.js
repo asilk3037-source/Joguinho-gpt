@@ -203,6 +203,7 @@
             this.ondaFeita = true;
             jogo.particulas.emitir('onda', this.x, this.y, 1, { r: 8, vida: 0.4, vel: 0 });
             jogo.particulas.emitir('poeira', this.x, this.y, 10, { vel: 90, vida: 0.5, r: 4 });
+            LB.fx.emitir(jogo, 'FX_DUST', this.x, this.y - 6);
             jogo.tremer(3, 0.15);
           }
           if (st.acabou) { this.ondaFeita = false; this.aterrissar(jogo); }
@@ -538,6 +539,7 @@
         this.impacto = true; this.anim.irPara(0.42, this.dir, this.lado);
         this.vx = Math.cos(ang) * (forte ? 220 : 120);
         jogo.particulas.emitir('faisca', this.x + this.lado * 16, this.y - 30, 10, { vel: 120, vz: 80, vida: 0.4 });
+        LB.fx.emitir(jogo, 'FX_SPARKS', this.x + this.lado * 18, this.y - 32, { lado: this.lado });
         jogo.pausaImpacto(0.05); jogo.tremer(forte ? 4 : 2, 0.12);
         return 'bloqueado';
       }

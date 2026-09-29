@@ -302,6 +302,7 @@
       }
       if (c.duo('LINE_BELL_KISS', cx, lago.y)) yield c.espera(1.7);
       j.particulas.emitir('coracao', cx, lago.y - 70, 7, { vel: 30, vida: 1.8 });
+      LB.fx.emitir(j, 'FX_HEARTS', cx, lago.y - 78, { sobe: 14 });
       c.fimDuo(); c.duo('LINE_BELL_HOLD_HANDS', cx, lago.y);
       yield c.fala('Bell', 'Boba...', 'riso');
       yield c.espera(0.7);
@@ -346,6 +347,7 @@
       yield c.tingir('90,60,130', 0.26, 1.5);
       j.ambiente.anoitecer();
       line.dir = 'FRONT'; line.anim.tocar('LINE_CRY', true);
+      LB.fx.emitir(j, 'FX_TEARS', line.x, line.y - 44, { loop: true, dur: 3.2 });
       yield c.espera(1);
       if (cao) { cao.seguir = true; cao.comeu = true; cao.x = line.x + 40; cao.y = line.y + 20; j.balao(cao, 'Auuu...', 2); }
       yield c.espera(1);
@@ -736,6 +738,7 @@
       yield c.voar(dr, T(13), T(9.2), 0, 1.4);
       dr.anim.tocar('DRAGON_LAND', true);
       j.tremer(8, 0.5);
+      LB.fx.emitir(j, 'FX_DUST', dr.x, dr.y - 10, { tam: 360 });
       j.particulas.emitir('poeira', dr.x, dr.y, 26, { vel: 170, vida: 0.8, r: 6 });
       j.selarEntrada();
       yield c.espera(0.8);
@@ -820,6 +823,7 @@
       const abraco = c.duo('LINE_BELL_RESCUE_HUG', (line.x + bell.x) / 2, line.y);
       if (!abraco) { line.anim.tocar('LINE_HAPPY', true); bell.anim.tocar('BELL_HAPPY', true); bell.x = line.x + 16; }
       j.particulas.emitir('coracao', (line.x + bell.x) / 2, line.y - 60, 8, { vel: 40, vida: 1.6 });
+      LB.fx.emitir(j, 'FX_HEARTS', (line.x + bell.x) / 2, line.y - 72, { sobe: 14 });
       yield c.espera(1.2);
       yield c.fala('Bell', 'Eu sabia que você vinha. Eu sabia!', 'riso');
       line.anim.tocar('LINE_RELIEVED', true);
@@ -849,6 +853,7 @@
       const par = j.duo;
       if (c.duo('LINE_BELL_DANCE', par.x, par.y)) { yield c.espera(3.2); j.duo = par; }
       j.particulas.emitir('coracao', (j.line.x + j.bell.x) / 2, j.line.y - 60, 5, { vel: 25, vida: 2 });
+      LB.fx.emitir(j, 'FX_HEARTS', (j.line.x + j.bell.x) / 2, j.line.y - 74, { sobe: 12, dur: 2 });
       yield c.espera(2.2);
       yield c.titulo('Fim', 'Obrigada por jogar!', 3.2);
       yield c.escurecer(1, 1.4);
