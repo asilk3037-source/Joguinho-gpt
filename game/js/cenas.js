@@ -191,6 +191,9 @@
 
   // O que a Line diz ao achar cada documento (depois de ler).
   const REACOES = {
+    diarioCora: () => ['Ele cansa depois de bater três vezes... e a flor do peito abre. Coitado, deve doer mesmo.', 'neutro'],
+    cancaoLago: () => ['Bell, olha: uma canção de ninar pra Serpente. Você canta isso?', 'sorriso'],
+    penaGrifo: () => ['A letra é da Bell! “Aí é com ela”... Pode deixar, amor.', 'apaixonada'],
     pegadas: () => ['Aguenta firme, Bell.', 'bravo'],
     cartaz: () => ['Então não fui só eu que vi... O vilarejo inteiro tá assustado.', 'neutro'],
     carta: () => ['O Mago sabia de tudo isso... e mesmo assim me deu uma espada. Ele acredita em mim.', 'surpresa'],

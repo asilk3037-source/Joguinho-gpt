@@ -12,6 +12,9 @@ import json
 import os
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import doc_parte2  # noqa: E402
+
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SAIDA = os.path.join(RAIZ, "docs", "LINE_E_BELL_DOCUMENTACAO.md")
 
@@ -62,6 +65,17 @@ w("> Elas estão no jogo só para dar vida à aventura enquanto a criação da a
 w("> Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.")
 w("> Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.")
 w()
+w("> 🐉 **PARTE 2 — O Coração dos Elementos (novo nesta versão):**")
+w("> - Depois do “Fim?”, **Continuar** abre a Parte 2: o dragão acorda para pedir ajuda contra a **Quimera**, que rouba a luz dos guardiões (seção 16).")
+w("> - **A Bell é jogável:** troca com **T** / 🔄; ela atira estrelas, solta um leque de luz e canta para acalmar as feras. Cada uma tem a própria vida; quando uma cai, a outra assume (seção 19).")
+w("> - **Sete fases novas** com ambientação completa: Vale das Raízes, Fenda de Magma, Lago Espelhado, Pântano Sombrio, Picos do Vento, Olho da Tempestade e Coração dos Elementos — lama, correntes de vento, abismo de céu, chuva e relâmpagos (seção 17).")
+w("> - **Sete chefes novos:** os guardiões da **Terra**, da **Água** e do **Ar**, as junções **Pedra + Fogo** (Titã de Magma), **Terra + Água** (Hidra de Lama) e **Água + Ar** (Tempestade Viva), e a **Quimera Primordial**, junção de todos os elementos, em três fases (seção 20).")
+w("> - **Relógio do jogo** com dia e noite: 1 minuto real = 1 hora no jogo; os moradores dormem à noite e dá para descansar nas fontes (seção 18).")
+w("> - **Dicas no modo Fácil:** seta até o objetivo, dicas de cada chefe, aviso de vida baixa e dica na derrota (seção 21).")
+w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Aurora) e a arte de armadura das duas (seção 19.3).")
+w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
+w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22 e o arquivo `ARTES_NECESSARIAS.md`).")
+w()
 w("> 🎨 **Arte nova (itens 50 a 108):**")
 w("> - **Bell** com arte nova: parada, andando e correndo nas 4 direções, pulo, susto, fuga, queda, captura, jaula, fuga da jaula, chamando e ajudando a Line, feliz, aliviada, chorando, risada, reverência, toca aqui e dança.")
 w("> - **Line e Bell juntas:** andando lado a lado, de mãos dadas, correndo, conversando, rindo, encostadas, segurando as mãos, abraço do resgate, fim do abraço, comemoração e as cenas do prólogo (encontro, abraço de chegada, BK, soco na máquina e o beijo no túnel).")
@@ -99,9 +113,9 @@ w("## Sumário")
 w()
 secoes = ["1. Visão geral", "2. Personagens", "3. A história", "4. Roteiro completo, cena a cena", "5. O primeiro encontro (prólogo)",
           "6. As fases", "7. Exploração: mundo interligado, vilarejo, loja, carrinho, itens, documentos e mapa", "8. Como se joga", "9. Inimigos e chefes", "10. Lista completa de animações", "11. Retratos dos diálogos",
-          "12. Cenário e objetos", "13. Efeitos visuais", "14. Como mandar arte nova", "15. Estrutura técnica"]
+          "12. Cenário e objetos", "13. Efeitos visuais", "14. Como mandar arte nova", "15. Estrutura técnica"] + doc_parte2.SECOES
 for s in secoes:
-    ancora = s.lower().replace(" ", "-").replace(".", "").replace(",", "").replace("(", "").replace(")", "").replace(":", "")
+    ancora = s.lower().replace(" ", "-").replace(".", "").replace(",", "").replace("(", "").replace(")", "").replace(":", "").replace("—", "")
     for a, b in (("ã", "a"), ("á", "a"), ("â", "a"), ("é", "e"), ("ê", "e"), ("í", "i"), ("ó", "o"), ("ô", "o"), ("õ", "o"), ("ú", "u"), ("ç", "c")):
         ancora = ancora.replace(a, b)
     w(f"- [{s}](#{ancora})")
@@ -122,14 +136,16 @@ w("| | |")
 w("|---|---|")
 w("| Gênero | Aventura / ação com exploração, visão de cima |")
 w("| Plataformas | Navegador no PC (teclado ou controle) e no celular (toque) |")
-w("| Duração | Cerca de 1h30 a 2h explorando tudo (o prólogo leva uns 3 minutos) |")
+w("| Duração | Parte 1: cerca de 1h30 a 2h explorando tudo (o prólogo leva uns 3 minutos). Parte 2: mais 2h a 2h30 |")
 w("| Prólogo | *O primeiro encontro* (09/05/2024): Minas Shopping, Playground e Túnel |")
-w("| Áreas | 3 do prólogo e 7 da aventura, todas interligadas: Fazendinha, Vilarejo do Riacho, Floresta Sussurrante, Gruta dos Ecos e Minas de Cristal, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |")
-w("| Chefes | Guardião de Pedra e o Dragão Vermelho |")
+w("| Áreas | 3 do prólogo, 7 da Parte 1 (Fazendinha, Vilarejo do Riacho, Floresta Sussurrante, Gruta dos Ecos e Minas de Cristal, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão) e 7 da Parte 2 (Vale das Raízes, Fenda de Magma, Lago Espelhado, Pântano Sombrio, Picos do Vento, Olho da Tempestade e Coração dos Elementos), todas interligadas |")
+w("| Chefes | Parte 1: Guardião de Pedra e o Dragão Vermelho. Parte 2: Colosso de Raízes, Serpente das Marés, Grifo da Tempestade, Titã de Magma, Hidra de Lama, Tempestade Viva e Quimera Primordial |")
+w("| Heroínas | Line (Parte 1) e Line + Bell, trocando a qualquer momento (Parte 2) |")
+w("| Relógio | Dia e noite: 1 minuto real = 1 hora no jogo |")
 w(f"| Exploração | {sum(len(m['baus']) for m in inv['mundo']['mapas'].values())} baús, 3 portas trancadas, paredes rachadas, postes do gancho, chão em brasa, galerias escuras, carrinho de mina entre 3 estações |")
-w("| Investigação | 12 documentos (com tipo, autor e data) e 8 conclusões |")
-w("| Vilarejo | 5 moradores, loja de itens e ferraria com 3 armaduras; moedas caem dos inimigos e saem dos baús |")
-w("| Mochila | 10 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |")
+w(f"| Investigação | {len(inv['mundo']['ordemPistas'])} documentos (com tipo, autor e data) e {len(inv['mundo']['conclusoes'])} conclusões |")
+w("| Vilarejo | 5 moradores, loja de itens e ferraria com 3 armaduras da Line e 3 da Bell; moedas caem dos inimigos e saem dos baús |")
+w(f"| Mochila | {len(inv['mundo']['ordemItens'])} itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |")
 w("| Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |")
 w("| Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |")
 w(f"| Animações catalogadas | **{tot}**: {prontas} com arte (temporária), {subst} usando uma substituta, {faltam - subst} desenhadas no código ou sem imagem |")
@@ -1230,7 +1246,7 @@ for a, b in [("game/index.html", "página do jogo, menus, controles de toque"), 
              ("game/js/entidades.js", "Line, Bell, Sombra, partículas"), ("game/js/magia.js", "magia, cristais, tochas, barreiras, fontes, Fogo-fátuo e Guardião"),
              ("game/js/dragao.js", "o dragão e seus ataques"), ("game/js/bichos.js", "bichos da fazenda e o Mago"), ("game/js/fazenda.js", "capítulo da fazenda e tarefas"),
              ("game/js/encontro.js", "prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas"), ("game/js/cenas.js", "cenas e falas da aventura (roteiro)"), ("game/js/mochila.js", "mochila: itens, moedas, documentos e conclusões, mapa com névoa, objetivo, avisos"), ("game/js/mapas.js", "os mapas das 7 áreas da aventura"), ("game/js/mundo.js", "bombas e paredes rachadas, gancho, chão em brasa, escuro das minas, moedas soltas, casas e objetos novos"), ("game/js/loja.js", "vilarejo: moradores e falas, loja, ferraria, armaduras e escudos"), ("game/js/carrinho.js", "carrinho de mina: estações, escolha do destino e a viagem"), ("game/js/ia.js", "inteligência dos inimigos: linha de visão, caminho pela grade, alerta, separação, e o Morcego"), ("tests/rodar.js", "testes automatizados de todas as telas (Playwright)"), ("tools/fotos_documentacao.js", "tira as capturas das partes novas para este documento"), ("game/js/cenario.js", "árvores, casa, objetos e ambiente"),
-             ("game/js/animacoes.js", "catálogo de animações, substitutas e desenho dos sprites"), ("game/js/entrada.js", "teclado, controle, toque e dificuldade"),
+             ("game/js/animacoes.js", "catálogo de animações, substitutas e desenho dos sprites (com a troca para a arte da Bell jogável e das armaduras)"), ("game/js/relogio.js", "relógio do jogo, dia e noite, descanso na fonte"), ("game/js/chefes.js", "os sete chefes elementais, ataques, perigos e arenas"), ("game/js/herois.js", "Bell jogável, troca de heroína, companheira que segue atrás"), ("game/js/parte2.js", "história da Parte 2, moradores e documentos novos, objetivos"), ("game/js/dicas.js", "dicas do modo Fácil: seta guia, dicas de chefe e de derrota"), ("tools/doc_parte2.py", "seções 16 a 22 deste documento e o `ARTES_NECESSARIAS.md`"), ("game/js/entrada.js", "teclado, controle, toque e dificuldade"),
              ("game/assets/", "folhas de sprites, retratos, cenário (inclui `cenario/encontro_*.webp` do prólogo)"), ("tools/extrair_sprites.py", "converte a arte recebida em folhas para o jogo"),
              ("tools/gerar_documentacao.py", "gera este documento")]:
     w(f"| `{a}` | {b} |")
@@ -1257,6 +1273,13 @@ for l in [
     ("Documentos e dragão", "a cena de documento forma conclusão; a luta no covil começa"),
     ("Save", "Continuar volta com área, moedas e itens; save antigo é convertido"),
     ("Celular", "controles de toque, botão da poção e do item, mochila cabendo na tela"),
+    ("Parte 2 — fases", "as 7 fases novas carregam e rodam, a heroína não nasce na parede, o chefe e a companheira estão lá; vento empurra e lama deixa lenta"),
+    ("Parte 2 — história", "Continuar depois do “Fim?” abre a Parte 2; a estrada do vale só abre depois; o mapa do mundo ganha 7 regiões"),
+    ("Bell jogável", "troca com T, estrela, leque de 3 luzes gastando magia, canção encantando inimigos, a Line assume quando a Bell cai e a caída não volta"),
+    ("Armaduras da Bell", "só aparecem na Parte 2, ficam guardadas para a Bell e dão escudo quando ela está ativa"),
+    ("Chefes", "cada um dos 7 chefes acorda com a cena, luta alguns segundos, é vencido e salva a vitória (+1 coração nos guardiões, portal depois da última junção, final depois da Quimera)"),
+    ("Relógio", "1 s = 1 min, noite com moradores dormindo, descanso na fonte até as 7h do dia seguinte"),
+    ("Dicas do Fácil", "seta para a saída certa, para o cristal apagado e para o chefe; dica de chefe e de derrota"),
 ]:
     w("| " + " | ".join(l) + " |")
 w()
@@ -1264,6 +1287,7 @@ w("### Como atualizar este documento")
 w("As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json` (também exporta mapas, baús, itens, documentos e loja), `python3 tools/extrair_roteiro.py roteiro.json`, `node tools/fotos_documentacao.js pasta` (capturas das partes novas, depois convertidas para JPG em `docs/imagens`), `python3 tools/gerar_documentacao.py inventario.json roteiro.json` e, para a versão HTML, `python3 tools/gerar_documentacao_html.py`.")
 w()
 img("25-galeria", "No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma")
+doc_parte2.escrever(w, img, inv, rot, roteiro)
 w("---")
 w()
 w("*Line & Bell: um jogo feito com carinho. Todas as animações e artes atuais são temporárias até a criação completa da arte final.*")

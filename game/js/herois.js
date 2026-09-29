@@ -169,7 +169,7 @@
 
   // ---------------- A outra heroína, andando junto ----------------
   class Companheira {
-    constructor(quem, x, y) { this.quem = quem; this.x = x; this.y = y; this.dir = 'FRONT'; this.lado = 1; this.anim = new LB.Animador(quem === 'bell' ? 'BELL_IDLE' : 'LINE_IDLE'); this.visivel = true; }
+    constructor(quem, x, y, roupa) { this.quem = quem; this.x = x; this.y = y; this.dir = 'FRONT'; this.lado = 1; this.anim = new LB.Animador(quem === 'bell' ? 'BELL_IDLE' : 'LINE_IDLE'); this.anim.roupa = roupa || null; this.visivel = true; }
     atualizar(dt, j) {
       const l = j.line, pref = this.quem === 'bell' ? 'BELL' : 'LINE';
       this.anim.atualizar(dt);
@@ -199,7 +199,7 @@
     if (!liberada(j) || !j.line) { j.companheira = null; return; }
     const quem = outra(j), l = j.line;
     if (j.companheira && j.companheira.quem === quem) return;
-    j.companheira = new Companheira(quem, l.x - 30, l.y + 6);
+    j.companheira = new Companheira(quem, l.x - 30, l.y + 6, LB.loja.ROUPA[j.flags[quem === 'bell' ? 'armaduraBell' : 'armadura']]);
   }
 
   // Vida da outra heroína, pequena, embaixo das moedas.

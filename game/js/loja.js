@@ -19,6 +19,8 @@
     aurora: { nome: 'Armadura da Aurora', icone: '🌈', escudos: 3, preco: 220, bell: true, brasa: true, desc: 'Da Bell. 3 escudos, e atravessa brasa e lama sem perder o passo. Feita com as escamas que os guardiões dão.' },
   };
   const RECARGA_ESCUDO = 6, ESPERA_ESCUDO = 5;
+  // Prefixo da arte de cada armadura (LINE_MALHA_WALK, BELL_AURORA_IDLE...).
+  const ROUPA = { tunica: 'TUNICA', malha: 'MALHA', brasa: 'BRASA', vestido: 'VESTIDO', estelar: 'ESTELAR', aurora: 'AURORA' };
 
   function daBell(j) { return !!(LB.herois && LB.herois.ativa(j) === 'bell'); }
   function armadura(j) { return ARMADURAS[daBell(j) ? j.flags.armaduraBell : j.flags.armadura] || null; }
@@ -33,6 +35,7 @@
     l.escudosMax = max;
     const a = armadura(j);
     l.semLama = !!(a && a.bell && a.brasa);
+    l.anim.roupa = a ? ROUPA[j.flags[a.bell ? 'armaduraBell' : 'armadura']] : null;
     l.escudos = cheio ? max : Math.min(max, l.escudos == null ? max : l.escudos);
   }
 
@@ -300,5 +303,5 @@
     }
   }
 
-  LB.loja = { ARMADURAS, LOJAS, MORADORES, armadura, escudosMax, imuneBrasa, vestir, atualizarEscudos, desenharEscudos, criarMoradores, falasDe, comprar, situacao, tela, ligar, acoes, Morador };
+  LB.loja = { ROUPA, ARMADURAS, LOJAS, MORADORES, armadura, escudosMax, imuneBrasa, vestir, atualizarEscudos, desenharEscudos, criarMoradores, falasDe, comprar, situacao, tela, ligar, acoes, Morador };
 })(window.LB);

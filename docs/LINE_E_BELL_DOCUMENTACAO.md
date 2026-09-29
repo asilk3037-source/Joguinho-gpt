@@ -5,6 +5,17 @@
 > Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.
 > Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.
 
+> 🐉 **PARTE 2 — O Coração dos Elementos (novo nesta versão):**
+> - Depois do “Fim?”, **Continuar** abre a Parte 2: o dragão acorda para pedir ajuda contra a **Quimera**, que rouba a luz dos guardiões (seção 16).
+> - **A Bell é jogável:** troca com **T** / 🔄; ela atira estrelas, solta um leque de luz e canta para acalmar as feras. Cada uma tem a própria vida; quando uma cai, a outra assume (seção 19).
+> - **Sete fases novas** com ambientação completa: Vale das Raízes, Fenda de Magma, Lago Espelhado, Pântano Sombrio, Picos do Vento, Olho da Tempestade e Coração dos Elementos — lama, correntes de vento, abismo de céu, chuva e relâmpagos (seção 17).
+> - **Sete chefes novos:** os guardiões da **Terra**, da **Água** e do **Ar**, as junções **Pedra + Fogo** (Titã de Magma), **Terra + Água** (Hidra de Lama) e **Água + Ar** (Tempestade Viva), e a **Quimera Primordial**, junção de todos os elementos, em três fases (seção 20).
+> - **Relógio do jogo** com dia e noite: 1 minuto real = 1 hora no jogo; os moradores dormem à noite e dá para descansar nas fontes (seção 18).
+> - **Dicas no modo Fácil:** seta até o objetivo, dicas de cada chefe, aviso de vida baixa e dica na derrota (seção 21).
+> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Aurora) e a arte de armadura das duas (seção 19.3).
+> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
+> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22 e o arquivo `ARTES_NECESSARIAS.md`).
+
 > 🎨 **Arte nova (itens 50 a 108):**
 > - **Bell** com arte nova: parada, andando e correndo nas 4 direções, pulo, susto, fuga, queda, captura, jaula, fuga da jaula, chamando e ajudando a Line, feliz, aliviada, chorando, risada, reverência, toca aqui e dança.
 > - **Line e Bell juntas:** andando lado a lado, de mãos dadas, correndo, conversando, rindo, encostadas, segurando as mãos, abraço do resgate, fim do abraço, comemoração e as cenas do prólogo (encontro, abraço de chegada, BK, soco na máquina e o beijo no túnel).
@@ -69,6 +80,13 @@
 - [13. Efeitos visuais](#13-efeitos-visuais)
 - [14. Como mandar arte nova](#14-como-mandar-arte-nova)
 - [15. Estrutura técnica](#15-estrutura-tecnica)
+- [16. Parte 2 — O Coração dos Elementos](#16-parte-2--o-coracao-dos-elementos)
+- [17. As fases da Parte 2](#17-as-fases-da-parte-2)
+- [18. Relógio: dia e noite](#18-relogio-dia-e-noite)
+- [19. Bell jogável e as armaduras das duas](#19-bell-jogavel-e-as-armaduras-das-duas)
+- [20. Chefes elementais](#20-chefes-elementais)
+- [21. Dicas do modo Fácil](#21-dicas-do-modo-facil)
+- [22. Arte necessária — lista completa](#22-arte-necessaria--lista-completa)
 
 ## 1. Visão geral
 
@@ -78,17 +96,19 @@
 |---|---|
 | Gênero | Aventura / ação com exploração, visão de cima |
 | Plataformas | Navegador no PC (teclado ou controle) e no celular (toque) |
-| Duração | Cerca de 1h30 a 2h explorando tudo (o prólogo leva uns 3 minutos) |
+| Duração | Parte 1: cerca de 1h30 a 2h explorando tudo (o prólogo leva uns 3 minutos). Parte 2: mais 2h a 2h30 |
 | Prólogo | *O primeiro encontro* (09/05/2024): Minas Shopping, Playground e Túnel |
-| Áreas | 3 do prólogo e 7 da aventura, todas interligadas: Fazendinha, Vilarejo do Riacho, Floresta Sussurrante, Gruta dos Ecos e Minas de Cristal, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão |
-| Chefes | Guardião de Pedra e o Dragão Vermelho |
-| Exploração | 24 baús, 3 portas trancadas, paredes rachadas, postes do gancho, chão em brasa, galerias escuras, carrinho de mina entre 3 estações |
-| Investigação | 12 documentos (com tipo, autor e data) e 8 conclusões |
-| Vilarejo | 5 moradores, loja de itens e ferraria com 3 armaduras; moedas caem dos inimigos e saem dos baús |
-| Mochila | 10 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
+| Áreas | 3 do prólogo, 7 da Parte 1 (Fazendinha, Vilarejo do Riacho, Floresta Sussurrante, Gruta dos Ecos e Minas de Cristal, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão) e 7 da Parte 2 (Vale das Raízes, Fenda de Magma, Lago Espelhado, Pântano Sombrio, Picos do Vento, Olho da Tempestade e Coração dos Elementos), todas interligadas |
+| Chefes | Parte 1: Guardião de Pedra e o Dragão Vermelho. Parte 2: Colosso de Raízes, Serpente das Marés, Grifo da Tempestade, Titã de Magma, Hidra de Lama, Tempestade Viva e Quimera Primordial |
+| Heroínas | Line (Parte 1) e Line + Bell, trocando a qualquer momento (Parte 2) |
+| Relógio | Dia e noite: 1 minuto real = 1 hora no jogo |
+| Exploração | 35 baús, 3 portas trancadas, paredes rachadas, postes do gancho, chão em brasa, galerias escuras, carrinho de mina entre 3 estações |
+| Investigação | 15 documentos (com tipo, autor e data) e 9 conclusões |
+| Vilarejo | 5 moradores, loja de itens e ferraria com 3 armaduras da Line e 3 da Bell; moedas caem dos inimigos e saem dos baús |
+| Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **270**: 208 com arte (temporária), 26 usando uma substituta, 36 desenhadas no código ou sem imagem |
+| Animações catalogadas | **553**: 208 com arte (temporária), 179 usando uma substituta, 166 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1211,6 +1231,9 @@ Falando com a Dona Rosa ou com o Seu Bento, a conversa termina com a janela da l
 | Ferraria do Seu Bento | 🥋 Túnica Acolchoada | 40 | 1 escudo |
 | Ferraria do Seu Bento | ⛓️ Cota de Malha | 90 | 2 escudos |
 | Ferraria do Seu Bento | 🔥 Armadura de Brasa | 160 | 3 escudos · não queima na brasa · só com a receita do Mestre Aurélio |
+| Ferraria do Seu Bento | 👗 Vestido Reforçado | 60 | 1 escudo |
+| Ferraria do Seu Bento | 🌟 Manto Estelar | 130 | 2 escudos |
+| Ferraria do Seu Bento | 🌈 Armadura da Aurora | 220 | 3 escudos · não queima na brasa · só com a receita do Mestre Aurélio |
 
 **Armaduras e escudos 🛡:** cada escudo segura um golpe inteiro antes de chegar nos corações. Os escudos aparecem em azul ao lado dos corações e voltam sozinhos, um por vez (6 segundos cada), depois de 5 segundos sem apanhar. Beber de uma fonte enche todos. Só dá para comprar uma armadura melhor que a atual.
 
@@ -1254,6 +1277,9 @@ No topo da aba Itens fica o **equipamento**: moedas, armadura e o item que está
 | 🧭 Bússola do Mago | ferramenta (fica para sempre) | Marca no mapa os baús que ainda não foram abertos, mesmo onde a Line ainda não passou. | salão norte da gruta |
 | 👢 Botas de Andarilha | ferramenta (fica para sempre) | A Line corre mais rápido e não tropeça mais nas raízes. | loja da Dona Rosa (60) |
 | ⚙️ Alavanca de Ferro | item da história | A alavanca do freio do carrinho de mina. Com ela encaixada, o carrinho volta a andar entre as estações. | Forja Antiga, na montanha |
+| 🟢 Escama da Terra | item da história | Presente do Colosso libertado. Cheira a chuva no mato. O Seu Bento sabe usar escamas de guardião. |  |
+| 🔵 Escama da Água | item da história | Presente da Serpente libertada. Sempre molhadinha e fresca. O Seu Bento sabe usar escamas de guardião. |  |
+| ⚪ Pena-escama do Ar | item da história | Presente do Grifo libertado. Leve como nuvem. O Seu Bento sabe usar escamas de guardião. |  |
 
 **Menos vida espalhada:** não existem mais pães, maçãs nem flores de cura pelo mapa. A vida volta nas **fontes**, nas **poções** (compradas ou achadas) e em corações que caem dos inimigos só de vez em quando (e nunca com a vida cheia). A chance de cair coração baixou para 25% no Fácil, 10% no Normal e 4% no Difícil.
 
@@ -1280,6 +1306,9 @@ Quando dois documentos combinam, a Line tira uma **conclusão** (aparece um tít
 | 10 | 📋 Receita da Armadura de Brasa | Receita | Mestre Aurélio, ferreiro da forja | Montanha de Brasa, Forja Antiga | 📍 Ferraria do Seu Bento |
 | 11 | 🔥 Escama vermelha | Objeto encontrado | Anotação da Line | Montanha de Brasa, caverna escondida | — |
 | 12 | 🎀 Fita de cabelo da Bell | Objeto encontrado | Anotação da Line | Montanha de Brasa, perto do portão de fogo | — |
+| 13 | 🌱 Diário da Dona Cora | Diário | Dona Cora, jardineira do vale | Vale das Raízes, perto da horta | 📍 Ninho do Colosso |
+| 14 | 🎵 Canção das águas | Pergaminho | Vó do Seu Tião | Lago Espelhado, margem leste | 📍 Ilha da Serpente |
+| 15 | 🪶 Pena de tempestade | Objeto encontrado | Anotação da Bell | Picos do Vento, platô leste | 📍 Ninho do Grifo |
 
 **Conclusões:**
 
@@ -1293,6 +1322,7 @@ Quando dois documentos combinam, a Line tira uma **conclusão** (aparece um tít
 | 💡 Quando o dragão cansa, o peito racha e fica exposto. E o fogo lá dentro está fraco: ele está com frio. | A lenda da Montanha + Escama vermelha | Golpes no peito do dragão tiram 1 de vida a mais. |
 | 💡 A Chuva de Estrelas apaga o fogo do dragão por um instante. | Diário do Guardião, página 2 + Escama vermelha | A Chuva de Estrelas interrompe o fogo do dragão. |
 | 💡 A Bell deixou a fita de propósito: ela está logo depois do portão de fogo. | Fita de cabelo da Bell + Mapa rasgado | — |
+| 💡 Todos os guardiões adoeceram do mesmo jeito: a sombra de muitas cores. A Quimera morde, rouba a luz e deixa o resto bravo. | Diário da Dona Cora + Canção das águas + Pena de tempestade | Os chefes ficam cansados um ataque mais cedo. |
 
 ![As conclusões da Line, embaixo da lista de documentos](imagens/51-conclusoes.jpg)
 *As conclusões da Line, embaixo da lista de documentos*
@@ -1313,6 +1343,9 @@ Quando dois documentos combinam, a Line tira uma **conclusão** (aparece um tít
 | 📋 Receita da Armadura de Brasa | “Mestre Aurélio... o Seu Bento aprendeu com ele! Preciso mostrar isso pra ele no vilarejo.” |
 | 🔥 Escama vermelha | “Fria. Um dragão de fogo com escama fria... Igual ao sonho da Bell.” |
 | 🎀 Fita de cabelo da Bell | “Bell... Ela deixou cair de propósito. Eu sei que deixou. Tô chegando, amor.” |
+| 🌱 Diário da Dona Cora | “Ele cansa depois de bater três vezes... e a flor do peito abre. Coitado, deve doer mesmo.” |
+| 🎵 Canção das águas | “Bell, olha: uma canção de ninar pra Serpente. Você canta isso?” |
+| 🪶 Pena de tempestade | “A letra é da Bell! “Aí é com ela”... Pode deixar, amor.” |
 
 Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”
 
@@ -1429,6 +1462,34 @@ Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a f
 > Falta pouco, amor.  
 >
 > *Encontrado em: Montanha de Brasa, perto do portão de fogo*
+
+> **🌱 Diário da Dona Cora** · *Diário · Dona Cora, jardineira do vale · Semana passada*  
+> Segunda: uma sombra de muitas cores passou baixinho sobre o vale. Tinha cheiro de pedra queimada.  
+>
+> Terça: o Colosso não veio regar as raízes. Elas acordaram sozinhas e derrubaram o Zeca da carroça.  
+>
+> Quarta: vi o Colosso de longe. Folhas pretas nas costas. Bate no chão três vezes e depois para, ofegando, com a flor do peito aberta. Coitado. Parece que dói.  
+>
+> *Encontrado em: Vale das Raízes, perto da horta*
+
+> **🎵 Canção das águas** · *Pergaminho · Vó do Seu Tião · Há muito tempo*  
+> “Dorme, serpente, que a lua já vem,
+espelha as estrelas, não morde ninguém...”  
+>
+> Quando a Serpente mergulha, ninguém a alcança: olha as bolhas, que ela sai debaixo delas.  
+>
+> Mas quando alguém canta pra ela, ela para pra ouvir. Toda fera para.  
+>
+> *Encontrado em: Lago Espelhado, margem leste*
+
+> **🪶 Pena de tempestade** · *Objeto encontrado · Anotação da Bell · Hoje*  
+> Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta.  
+>
+> O Grifo voa alto demais pra espada da Line. Mas as minhas estrelas sobem!  
+>
+> E quando cansa, ele pousa. Aí é com ela.  
+>
+> *Encontrado em: Picos do Vento, platô leste*
 
 ### 7.7 Carrinho de mina
 
@@ -1682,7 +1743,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 270 animações. ✅ 208 com arte temporária, 🔁 26 com substituta e ✏️ 36 desenhadas no código.
+**Resumo:** 553 animações. ✅ 208 com arte temporária, 🔁 179 com substituta e ✏️ 166 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1698,6 +1759,23 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 55 | 0 | 12 |
 | Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
+| Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
+| Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Titã de Magma (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Hidra de Lama (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 0 | 9 |
+| Moradores (todos, incluindo os da Parte 2) | 30 | 0 | 0 | 30 |
+| Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
+| Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
+| Line com armadura: Cota de Malha | 23 | 0 | 23 | 0 |
+| Line com armadura: Armadura de Brasa | 23 | 0 | 23 | 0 |
+| Bell com armadura: Vestido Reforçado | 21 | 0 | 21 | 0 |
+| Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
+| Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
 
 ### 10.1 Primeiro encontro (prólogo)
@@ -2027,7 +2105,375 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SPIRIT_IDLE` | Espírito das Ruínas flutuando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 | `SPIRIT_TALK` | Espírito das Ruínas falando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 
-### 10.13 Outras animações recebidas
+### 10.13 Bell jogável (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
+| `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_BACK` |  |
+| `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_LEFT` |  |
+| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | 8 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
+| `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | 10 |  | 🔁 usa `BELL_DANCE` |  |
+| `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) | 6 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_SING` | Bell canta a Canção (notas coloridas saindo) | 12 | sim | 🔁 usa `BELL_HAPPY` |  |
+| `BELL_BLOCK` | Bell se protege com um escudo de luz rosa | 6 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_DODGE` | Bell esquiva (pulinho de lado) | 6 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_DASH` | Bell arrancada | 6 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
+| `BELL_HIT` | Bell recebe dano | 4 |  | 🔁 usa `BELL_SCARED` |  |
+| `BELL_KNOCKDOWN` | Bell cai no chão (golpe forte) | 6 |  | 🔁 usa `BELL_FALL` |  |
+| `BELL_EXHAUSTED_IDLE` | Bell cansada, ofegante (pouca vida) | 8 | sim | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_CROUCH` | Bell agachada (beber na fonte / pegar item) | 6 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
+| `BELL_DETERMINED` | Bell decidida (punhos fechados) | 6 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
+| `BELL_CELEBRATE` | Bell comemora vitória | 12 |  | 🔁 usa `BELL_HAPPY` |  |
+| `BELL_TALK` | Bell falando (cenas) | 8 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
+
+### 10.14 Chefe: Colosso de Raízes (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `COLOSSO_SLEEP` | Colosso de Raízes — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | 8 | sim | ✏️ código / falta |  |
+| `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
+| `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
+| `COLOSSO_ROOTS` | Colosso de Raízes — raízes saindo do chão em linha | 10 |  | ✏️ código / falta |  |
+| `COLOSSO_THORNS` | Colosso de Raízes — anel de espinhos | 10 |  | ✏️ código / falta |  |
+| `COLOSSO_MUD` | Colosso de Raízes — cuspe de lama | 10 |  | ✏️ código / falta |  |
+| `COLOSSO_SUMMON` | Colosso de Raízes — chama sombras | 10 |  | ✏️ código / falta |  |
+| `COLOSSO_STUNNED` | Colosso de Raízes — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
+| `COLOSSO_HIT` | Colosso de Raízes — recebe dano | 4 |  | ✏️ código / falta |  |
+| `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+| `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | 12 | sim | ✏️ código / falta |  |
+
+### 10.15 Chefe: Serpente das Marés (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `SERPENTE_IDLE` | Serpente das Marés — parado, respirando | 8 | sim | ✏️ código / falta |  |
+| `SERPENTE_WAKE` | Serpente das Marés — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
+| `SERPENTE_ATTACK` | Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
+| `SERPENTE_DIVE` | Serpente das Marés — mergulho (some e reaparece) | 10 |  | ✏️ código / falta |  |
+| `SERPENTE_WATER_JET` | Serpente das Marés — jatos de água | 10 |  | ✏️ código / falta |  |
+| `SERPENTE_WAVE` | Serpente das Marés — onda | 10 |  | ✏️ código / falta |  |
+| `SERPENTE_STUNNED` | Serpente das Marés — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
+| `SERPENTE_HIT` | Serpente das Marés — recebe dano | 4 |  | ✏️ código / falta |  |
+| `SERPENTE_DEATH` | Serpente das Marés — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+| `SERPENTE_FREED` | Serpente das Marés — libertado, volta às cores verdadeiras e agradece | 12 | sim | ✏️ código / falta |  |
+
+### 10.16 Chefe: Grifo da Tempestade (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `GRIFO_SLEEP` | Grifo da Tempestade — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `GRIFO_IDLE` | Grifo da Tempestade — parado, respirando | 8 | sim | ✏️ código / falta |  |
+| `GRIFO_WAKE` | Grifo da Tempestade — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
+| `GRIFO_ATTACK` | Grifo da Tempestade — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
+| `GRIFO_GUST` | Grifo da Tempestade — rajada de vento | 10 |  | ✏️ código / falta |  |
+| `GRIFO_FEATHERS` | Grifo da Tempestade — leque de penas | 10 |  | ✏️ código / falta |  |
+| `GRIFO_LIGHTNING` | Grifo da Tempestade — chama raios | 10 |  | ✏️ código / falta |  |
+| `GRIFO_STUNNED` | Grifo da Tempestade — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
+| `GRIFO_HIT` | Grifo da Tempestade — recebe dano | 4 |  | ✏️ código / falta |  |
+| `GRIFO_DEATH` | Grifo da Tempestade — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+| `GRIFO_FREED` | Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece | 12 | sim | ✏️ código / falta |  |
+
+### 10.17 Chefe: Titã de Magma (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `MAGMA_SLEEP` | Titã de Magma — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `MAGMA_IDLE` | Titã de Magma — parado, respirando | 8 | sim | ✏️ código / falta |  |
+| `MAGMA_WAKE` | Titã de Magma — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
+| `MAGMA_ATTACK` | Titã de Magma — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
+| `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | 10 |  | ✏️ código / falta |  |
+| `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | 10 |  | ✏️ código / falta |  |
+| `MAGMA_THROW` | Titã de Magma — arremesso de rocha | 10 |  | ✏️ código / falta |  |
+| `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | 10 |  | ✏️ código / falta |  |
+| `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
+| `MAGMA_HIT` | Titã de Magma — recebe dano | 4 |  | ✏️ código / falta |  |
+| `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+
+### 10.18 Chefe: Hidra de Lama (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `HIDRA_SLEEP` | Hidra de Lama — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `HIDRA_IDLE` | Hidra de Lama — parado, respirando | 8 | sim | ✏️ código / falta |  |
+| `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
+| `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
+| `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha | 10 |  | ✏️ código / falta |  |
+| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 |  | ✏️ código / falta |  |
+| `HIDRA_WAVE` | Hidra de Lama — onda | 10 |  | ✏️ código / falta |  |
+| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 |  | ✏️ código / falta |  |
+| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 |  | ✏️ código / falta |  |
+| `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
+| `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 |  | ✏️ código / falta |  |
+| `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+
+### 10.19 Chefe: Tempestade Viva (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `TEMPESTADE_SLEEP` | Tempestade Viva — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `TEMPESTADE_IDLE` | Tempestade Viva — parado, respirando | 8 | sim | ✏️ código / falta |  |
+| `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
+| `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
+| `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | 10 |  | ✏️ código / falta |  |
+| `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | 10 |  | ✏️ código / falta |  |
+| `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | 10 |  | ✏️ código / falta |  |
+| `TEMPESTADE_WAVE` | Tempestade Viva — onda | 10 |  | ✏️ código / falta |  |
+| `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | 10 |  | ✏️ código / falta |  |
+| `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
+| `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | 4 |  | ✏️ código / falta |  |
+| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+
+### 10.20 Chefe: Quimera Primordial (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `QUIMERA_SLEEP` | Quimera Primordial — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `QUIMERA_IDLE` | Quimera Primordial — parado, respirando | 8 | sim | ✏️ código / falta |  |
+| `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
+| `QUIMERA_ATTACK` | Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_SLAM` | Quimera Primordial — pisão (onda no chão) | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_WAVE` | Quimera Primordial — onda | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_GUST` | Quimera Primordial — rajada de vento | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | 10 |  | ✏️ código / falta |  |
+| `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
+| `QUIMERA_HIT` | Quimera Primordial — recebe dano | 4 |  | ✏️ código / falta |  |
+| `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 |  | ✏️ código / falta |  |
+| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | sim | ✏️ código / falta |  |
+
+### 10.21 Fogos-fátuos dos elementos (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | 8 | sim | ✏️ código / falta |  |
+| `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | 8 |  | ✏️ código / falta |  |
+| `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | 8 |  | ✏️ código / falta |  |
+| `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | 8 | sim | ✏️ código / falta |  |
+| `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | 8 |  | ✏️ código / falta |  |
+| `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | 8 |  | ✏️ código / falta |  |
+| `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | 8 | sim | ✏️ código / falta |  |
+| `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 |  | ✏️ código / falta |  |
+| `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 |  | ✏️ código / falta |  |
+
+### 10.22 Moradores (todos, incluindo os da Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `CORA_IDLE` | Dona Cora (jardineira do vale) — parado | 8 | sim | ✏️ código / falta |  |
+| `CORA_TALK` | Dona Cora (jardineira do vale) — falando | 8 | sim | ✏️ código / falta |  |
+| `CORA_SLEEP` | Dona Cora (jardineira do vale) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `TIAO_IDLE` | Seu Tião (pescador do lago) — parado | 8 | sim | ✏️ código / falta |  |
+| `TIAO_TALK` | Seu Tião (pescador do lago) — falando | 8 | sim | ✏️ código / falta |  |
+| `TIAO_SLEEP` | Seu Tião (pescador do lago) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `BRISA_IDLE` | Vó Brisa (pastora dos picos) — parado | 8 | sim | ✏️ código / falta |  |
+| `BRISA_TALK` | Vó Brisa (pastora dos picos) — falando | 8 | sim | ✏️ código / falta |  |
+| `BRISA_SLEEP` | Vó Brisa (pastora dos picos) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `ROSA_IDLE` | Dona Rosa (loja) — parado | 8 | sim | ✏️ código / falta |  |
+| `ROSA_TALK` | Dona Rosa (loja) — falando | 8 | sim | ✏️ código / falta |  |
+| `ROSA_SLEEP` | Dona Rosa (loja) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `BENTO_IDLE` | Seu Bento (ferraria) — parado | 8 | sim | ✏️ código / falta |  |
+| `BENTO_TALK` | Seu Bento (ferraria) — falando | 8 | sim | ✏️ código / falta |  |
+| `BENTO_SLEEP` | Seu Bento (ferraria) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `ZE_IDLE` | Seu Zé — parado | 8 | sim | ✏️ código / falta |  |
+| `ZE_TALK` | Seu Zé — falando | 8 | sim | ✏️ código / falta |  |
+| `ZE_SLEEP` | Seu Zé — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `LURDES_IDLE` | Dona Lurdes — parado | 8 | sim | ✏️ código / falta |  |
+| `LURDES_TALK` | Dona Lurdes — falando | 8 | sim | ✏️ código / falta |  |
+| `LURDES_SLEEP` | Dona Lurdes — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `PEDRO_IDLE` | Pedrinho — parado | 8 | sim | ✏️ código / falta |  |
+| `PEDRO_TALK` | Pedrinho — falando | 8 | sim | ✏️ código / falta |  |
+| `PEDRO_SLEEP` | Pedrinho — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `TOBIAS_IDLE` | Tobias (caçador) — parado | 8 | sim | ✏️ código / falta |  |
+| `TOBIAS_TALK` | Tobias (caçador) — falando | 8 | sim | ✏️ código / falta |  |
+| `TOBIAS_SLEEP` | Tobias (caçador) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `TIAO_FISH` | Seu Tião — pescando no píer | 12 | sim | ✏️ código / falta |  |
+| `BENTO_FORGE` | Seu Bento — martelando na bigorna | 8 | sim | ✏️ código / falta |  |
+| `PEDRO_RUN` | Pedrinho — correndo pra lá e pra cá | 8 | sim | ✏️ código / falta |  |
+
+### 10.23 Dragão amigo (Parte 2)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | 6 | sim | 🔁 usa `DRAGON_IDLE` |  |
+| `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | 8 |  | 🔁 usa `DRAGON_IDLE` |  |
+| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | 4 | sim | 🔁 usa `DRAGON_DEFEATED` |  |
+
+### 10.24 Line com armadura: Túnica Acolchoada
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `LINE_TUNICA_IDLE_FRONT` | Line com Túnica Acolchoada — parada | 12 |  | 🔁 usa `LINE_IDLE_FRONT` |  |
+| `LINE_TUNICA_IDLE_BACK` | Line com Túnica Acolchoada — parada | 12 |  | 🔁 usa `LINE_IDLE_BACK` |  |
+| `LINE_TUNICA_IDLE_LEFT` | Line com Túnica Acolchoada — parada | 12 |  | 🔁 usa `LINE_IDLE_LEFT` |  |
+| `LINE_TUNICA_IDLE_RIGHT` | Line com Túnica Acolchoada — parada | 12 |  | 🔁 usa `LINE_IDLE_RIGHT` |  |
+| `LINE_TUNICA_WALK_FRONT` | Line com Túnica Acolchoada — andando | 12 |  | 🔁 usa `LINE_WALK_FRONT` |  |
+| `LINE_TUNICA_WALK_BACK` | Line com Túnica Acolchoada — andando | 12 |  | 🔁 usa `LINE_WALK_BACK` |  |
+| `LINE_TUNICA_WALK_LEFT` | Line com Túnica Acolchoada — andando | 12 |  | 🔁 usa `LINE_WALK_LEFT` |  |
+| `LINE_TUNICA_WALK_RIGHT` | Line com Túnica Acolchoada — andando | 12 |  | 🔁 usa `LINE_WALK_RIGHT` |  |
+| `LINE_TUNICA_RUN_FRONT` | Line com Túnica Acolchoada — correndo | 12 |  | 🔁 usa `LINE_RUN_FRONT` |  |
+| `LINE_TUNICA_RUN_BACK` | Line com Túnica Acolchoada — correndo | 12 |  | 🔁 usa `LINE_RUN_BACK` |  |
+| `LINE_TUNICA_RUN_LEFT` | Line com Túnica Acolchoada — correndo | 12 |  | 🔁 usa `LINE_RUN_LEFT` |  |
+| `LINE_TUNICA_RUN_RIGHT` | Line com Túnica Acolchoada — correndo | 12 |  | 🔁 usa `LINE_RUN_RIGHT` |  |
+| `LINE_TUNICA_COMBAT_IDLE` | Line com Túnica Acolchoada — em guarda | 12 |  | 🔁 usa `LINE_COMBAT_IDLE` |  |
+| `LINE_TUNICA_ATTACK_HORIZONTAL` | Line com Túnica Acolchoada — golpe horizontal | 12 |  | 🔁 usa `LINE_ATTACK_HORIZONTAL` |  |
+| `LINE_TUNICA_ATTACK_VERTICAL` | Line com Túnica Acolchoada — golpe vertical | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_TUNICA_ATTACK_COMBO` | Line com Túnica Acolchoada — golpe final do combo | 12 |  | 🔁 usa `LINE_ATTACK_COMBO` |  |
+| `LINE_TUNICA_ATTACK_SPIN` | Line com Túnica Acolchoada — giro | 12 |  | 🔁 usa `LINE_ATTACK_SPIN` |  |
+| `LINE_TUNICA_CAST_SPELL` | Line com Túnica Acolchoada — Raio de Luz | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_TUNICA_BLOCK` | Line com Túnica Acolchoada — defesa | 12 |  | 🔁 usa `LINE_BLOCK` |  |
+| `LINE_TUNICA_DODGE` | Line com Túnica Acolchoada — esquiva | 12 |  | 🔁 usa `LINE_DODGE` |  |
+| `LINE_TUNICA_JUMP` | Line com Túnica Acolchoada — pulo | 12 |  | 🔁 usa `LINE_JUMP_RIGHT` |  |
+| `LINE_TUNICA_HIT_LIGHT` | Line com Túnica Acolchoada — recebe dano | 12 |  | 🔁 usa `LINE_HIT_LIGHT` |  |
+| `LINE_TUNICA_KNOCKDOWN` | Line com Túnica Acolchoada — cai no chão | 12 |  | 🔁 usa `LINE_KNOCKDOWN` |  |
+
+### 10.25 Line com armadura: Cota de Malha
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `LINE_MALHA_IDLE_FRONT` | Line com Cota de Malha — parada | 12 |  | 🔁 usa `LINE_IDLE_FRONT` |  |
+| `LINE_MALHA_IDLE_BACK` | Line com Cota de Malha — parada | 12 |  | 🔁 usa `LINE_IDLE_BACK` |  |
+| `LINE_MALHA_IDLE_LEFT` | Line com Cota de Malha — parada | 12 |  | 🔁 usa `LINE_IDLE_LEFT` |  |
+| `LINE_MALHA_IDLE_RIGHT` | Line com Cota de Malha — parada | 12 |  | 🔁 usa `LINE_IDLE_RIGHT` |  |
+| `LINE_MALHA_WALK_FRONT` | Line com Cota de Malha — andando | 12 |  | 🔁 usa `LINE_WALK_FRONT` |  |
+| `LINE_MALHA_WALK_BACK` | Line com Cota de Malha — andando | 12 |  | 🔁 usa `LINE_WALK_BACK` |  |
+| `LINE_MALHA_WALK_LEFT` | Line com Cota de Malha — andando | 12 |  | 🔁 usa `LINE_WALK_LEFT` |  |
+| `LINE_MALHA_WALK_RIGHT` | Line com Cota de Malha — andando | 12 |  | 🔁 usa `LINE_WALK_RIGHT` |  |
+| `LINE_MALHA_RUN_FRONT` | Line com Cota de Malha — correndo | 12 |  | 🔁 usa `LINE_RUN_FRONT` |  |
+| `LINE_MALHA_RUN_BACK` | Line com Cota de Malha — correndo | 12 |  | 🔁 usa `LINE_RUN_BACK` |  |
+| `LINE_MALHA_RUN_LEFT` | Line com Cota de Malha — correndo | 12 |  | 🔁 usa `LINE_RUN_LEFT` |  |
+| `LINE_MALHA_RUN_RIGHT` | Line com Cota de Malha — correndo | 12 |  | 🔁 usa `LINE_RUN_RIGHT` |  |
+| `LINE_MALHA_COMBAT_IDLE` | Line com Cota de Malha — em guarda | 12 |  | 🔁 usa `LINE_COMBAT_IDLE` |  |
+| `LINE_MALHA_ATTACK_HORIZONTAL` | Line com Cota de Malha — golpe horizontal | 12 |  | 🔁 usa `LINE_ATTACK_HORIZONTAL` |  |
+| `LINE_MALHA_ATTACK_VERTICAL` | Line com Cota de Malha — golpe vertical | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_MALHA_ATTACK_COMBO` | Line com Cota de Malha — golpe final do combo | 12 |  | 🔁 usa `LINE_ATTACK_COMBO` |  |
+| `LINE_MALHA_ATTACK_SPIN` | Line com Cota de Malha — giro | 12 |  | 🔁 usa `LINE_ATTACK_SPIN` |  |
+| `LINE_MALHA_CAST_SPELL` | Line com Cota de Malha — Raio de Luz | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_MALHA_BLOCK` | Line com Cota de Malha — defesa | 12 |  | 🔁 usa `LINE_BLOCK` |  |
+| `LINE_MALHA_DODGE` | Line com Cota de Malha — esquiva | 12 |  | 🔁 usa `LINE_DODGE` |  |
+| `LINE_MALHA_JUMP` | Line com Cota de Malha — pulo | 12 |  | 🔁 usa `LINE_JUMP_RIGHT` |  |
+| `LINE_MALHA_HIT_LIGHT` | Line com Cota de Malha — recebe dano | 12 |  | 🔁 usa `LINE_HIT_LIGHT` |  |
+| `LINE_MALHA_KNOCKDOWN` | Line com Cota de Malha — cai no chão | 12 |  | 🔁 usa `LINE_KNOCKDOWN` |  |
+
+### 10.26 Line com armadura: Armadura de Brasa
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `LINE_BRASA_IDLE_FRONT` | Line com Armadura de Brasa — parada | 12 |  | 🔁 usa `LINE_IDLE_FRONT` |  |
+| `LINE_BRASA_IDLE_BACK` | Line com Armadura de Brasa — parada | 12 |  | 🔁 usa `LINE_IDLE_BACK` |  |
+| `LINE_BRASA_IDLE_LEFT` | Line com Armadura de Brasa — parada | 12 |  | 🔁 usa `LINE_IDLE_LEFT` |  |
+| `LINE_BRASA_IDLE_RIGHT` | Line com Armadura de Brasa — parada | 12 |  | 🔁 usa `LINE_IDLE_RIGHT` |  |
+| `LINE_BRASA_WALK_FRONT` | Line com Armadura de Brasa — andando | 12 |  | 🔁 usa `LINE_WALK_FRONT` |  |
+| `LINE_BRASA_WALK_BACK` | Line com Armadura de Brasa — andando | 12 |  | 🔁 usa `LINE_WALK_BACK` |  |
+| `LINE_BRASA_WALK_LEFT` | Line com Armadura de Brasa — andando | 12 |  | 🔁 usa `LINE_WALK_LEFT` |  |
+| `LINE_BRASA_WALK_RIGHT` | Line com Armadura de Brasa — andando | 12 |  | 🔁 usa `LINE_WALK_RIGHT` |  |
+| `LINE_BRASA_RUN_FRONT` | Line com Armadura de Brasa — correndo | 12 |  | 🔁 usa `LINE_RUN_FRONT` |  |
+| `LINE_BRASA_RUN_BACK` | Line com Armadura de Brasa — correndo | 12 |  | 🔁 usa `LINE_RUN_BACK` |  |
+| `LINE_BRASA_RUN_LEFT` | Line com Armadura de Brasa — correndo | 12 |  | 🔁 usa `LINE_RUN_LEFT` |  |
+| `LINE_BRASA_RUN_RIGHT` | Line com Armadura de Brasa — correndo | 12 |  | 🔁 usa `LINE_RUN_RIGHT` |  |
+| `LINE_BRASA_COMBAT_IDLE` | Line com Armadura de Brasa — em guarda | 12 |  | 🔁 usa `LINE_COMBAT_IDLE` |  |
+| `LINE_BRASA_ATTACK_HORIZONTAL` | Line com Armadura de Brasa — golpe horizontal | 12 |  | 🔁 usa `LINE_ATTACK_HORIZONTAL` |  |
+| `LINE_BRASA_ATTACK_VERTICAL` | Line com Armadura de Brasa — golpe vertical | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_BRASA_ATTACK_COMBO` | Line com Armadura de Brasa — golpe final do combo | 12 |  | 🔁 usa `LINE_ATTACK_COMBO` |  |
+| `LINE_BRASA_ATTACK_SPIN` | Line com Armadura de Brasa — giro | 12 |  | 🔁 usa `LINE_ATTACK_SPIN` |  |
+| `LINE_BRASA_CAST_SPELL` | Line com Armadura de Brasa — Raio de Luz | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_BRASA_BLOCK` | Line com Armadura de Brasa — defesa | 12 |  | 🔁 usa `LINE_BLOCK` |  |
+| `LINE_BRASA_DODGE` | Line com Armadura de Brasa — esquiva | 12 |  | 🔁 usa `LINE_DODGE` |  |
+| `LINE_BRASA_JUMP` | Line com Armadura de Brasa — pulo | 12 |  | 🔁 usa `LINE_JUMP_RIGHT` |  |
+| `LINE_BRASA_HIT_LIGHT` | Line com Armadura de Brasa — recebe dano | 12 |  | 🔁 usa `LINE_HIT_LIGHT` |  |
+| `LINE_BRASA_KNOCKDOWN` | Line com Armadura de Brasa — cai no chão | 12 |  | 🔁 usa `LINE_KNOCKDOWN` |  |
+
+### 10.27 Bell com armadura: Vestido Reforçado
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `BELL_VESTIDO_IDLE_FRONT` | Bell com Vestido Reforçado — parada | 12 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
+| `BELL_VESTIDO_IDLE_BACK` | Bell com Vestido Reforçado — parada | 12 |  | 🔁 usa `BELL_IDLE_BACK` |  |
+| `BELL_VESTIDO_IDLE_LEFT` | Bell com Vestido Reforçado — parada | 12 |  | 🔁 usa `BELL_IDLE_LEFT` |  |
+| `BELL_VESTIDO_IDLE_RIGHT` | Bell com Vestido Reforçado — parada | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_VESTIDO_WALK_FRONT` | Bell com Vestido Reforçado — andando | 12 |  | 🔁 usa `BELL_WALK_FRONT` |  |
+| `BELL_VESTIDO_WALK_BACK` | Bell com Vestido Reforçado — andando | 12 |  | 🔁 usa `BELL_WALK_BACK` |  |
+| `BELL_VESTIDO_WALK_LEFT` | Bell com Vestido Reforçado — andando | 12 |  | 🔁 usa `BELL_WALK_LEFT` |  |
+| `BELL_VESTIDO_WALK_RIGHT` | Bell com Vestido Reforçado — andando | 12 |  | 🔁 usa `BELL_WALK_RIGHT` |  |
+| `BELL_VESTIDO_RUN_FRONT` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_FRONT` |  |
+| `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
+| `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
+| `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
+| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
+| `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
+| `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
+| `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_VESTIDO_JUMP` | Bell com Vestido Reforçado — pulo | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | 12 |  | 🔁 usa `BELL_SCARED` |  |
+| `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | 12 |  | 🔁 usa `BELL_FALL` |  |
+
+### 10.28 Bell com armadura: Manto Estelar
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `BELL_ESTELAR_IDLE_FRONT` | Bell com Manto Estelar — parada | 12 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
+| `BELL_ESTELAR_IDLE_BACK` | Bell com Manto Estelar — parada | 12 |  | 🔁 usa `BELL_IDLE_BACK` |  |
+| `BELL_ESTELAR_IDLE_LEFT` | Bell com Manto Estelar — parada | 12 |  | 🔁 usa `BELL_IDLE_LEFT` |  |
+| `BELL_ESTELAR_IDLE_RIGHT` | Bell com Manto Estelar — parada | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_ESTELAR_WALK_FRONT` | Bell com Manto Estelar — andando | 12 |  | 🔁 usa `BELL_WALK_FRONT` |  |
+| `BELL_ESTELAR_WALK_BACK` | Bell com Manto Estelar — andando | 12 |  | 🔁 usa `BELL_WALK_BACK` |  |
+| `BELL_ESTELAR_WALK_LEFT` | Bell com Manto Estelar — andando | 12 |  | 🔁 usa `BELL_WALK_LEFT` |  |
+| `BELL_ESTELAR_WALK_RIGHT` | Bell com Manto Estelar — andando | 12 |  | 🔁 usa `BELL_WALK_RIGHT` |  |
+| `BELL_ESTELAR_RUN_FRONT` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_FRONT` |  |
+| `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
+| `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
+| `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
+| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
+| `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
+| `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
+| `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_ESTELAR_JUMP` | Bell com Manto Estelar — pulo | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | 12 |  | 🔁 usa `BELL_SCARED` |  |
+| `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | 12 |  | 🔁 usa `BELL_FALL` |  |
+
+### 10.29 Bell com armadura: Armadura da Aurora
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `BELL_AURORA_IDLE_FRONT` | Bell com Armadura da Aurora — parada | 12 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
+| `BELL_AURORA_IDLE_BACK` | Bell com Armadura da Aurora — parada | 12 |  | 🔁 usa `BELL_IDLE_BACK` |  |
+| `BELL_AURORA_IDLE_LEFT` | Bell com Armadura da Aurora — parada | 12 |  | 🔁 usa `BELL_IDLE_LEFT` |  |
+| `BELL_AURORA_IDLE_RIGHT` | Bell com Armadura da Aurora — parada | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_AURORA_WALK_FRONT` | Bell com Armadura da Aurora — andando | 12 |  | 🔁 usa `BELL_WALK_FRONT` |  |
+| `BELL_AURORA_WALK_BACK` | Bell com Armadura da Aurora — andando | 12 |  | 🔁 usa `BELL_WALK_BACK` |  |
+| `BELL_AURORA_WALK_LEFT` | Bell com Armadura da Aurora — andando | 12 |  | 🔁 usa `BELL_WALK_LEFT` |  |
+| `BELL_AURORA_WALK_RIGHT` | Bell com Armadura da Aurora — andando | 12 |  | 🔁 usa `BELL_WALK_RIGHT` |  |
+| `BELL_AURORA_RUN_FRONT` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_FRONT` |  |
+| `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
+| `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
+| `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
+| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
+| `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
+| `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
+| `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_AURORA_JUMP` | Bell com Armadura da Aurora — pulo | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | 12 |  | 🔁 usa `BELL_SCARED` |  |
+| `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | 12 |  | 🔁 usa `BELL_FALL` |  |
+
+### 10.30 Outras animações recebidas
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2037,7 +2483,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 *Na coluna Quadros, as animações ✅ mostram quantos quadros diferentes a arte atual tem. As que faltam mostram quantos quadros o jogo espera (é uma sugestão, pode vir com mais ou menos).*
 
-### 10.14 O que ainda falta ter arte própria, por prioridade
+### 10.31 O que ainda falta ter arte própria, por prioridade
 
 **Aparecem na história (prioridade 1):**
 - **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).
@@ -2194,7 +2640,13 @@ Os códigos `FX_*` da seção 10.10 são para quando esses efeitos ganharem arte
 | `tests/rodar.js` | testes automatizados de todas as telas (Playwright) |
 | `tools/fotos_documentacao.js` | tira as capturas das partes novas para este documento |
 | `game/js/cenario.js` | árvores, casa, objetos e ambiente |
-| `game/js/animacoes.js` | catálogo de animações, substitutas e desenho dos sprites |
+| `game/js/animacoes.js` | catálogo de animações, substitutas e desenho dos sprites (com a troca para a arte da Bell jogável e das armaduras) |
+| `game/js/relogio.js` | relógio do jogo, dia e noite, descanso na fonte |
+| `game/js/chefes.js` | os sete chefes elementais, ataques, perigos e arenas |
+| `game/js/herois.js` | Bell jogável, troca de heroína, companheira que segue atrás |
+| `game/js/parte2.js` | história da Parte 2, moradores e documentos novos, objetivos |
+| `game/js/dicas.js` | dicas do modo Fácil: seta guia, dicas de chefe e de derrota |
+| `tools/doc_parte2.py` | seções 16 a 22 deste documento e o `ARTES_NECESSARIAS.md` |
 | `game/js/entrada.js` | teclado, controle, toque e dificuldade |
 | `game/assets/` | folhas de sprites, retratos, cenário (inclui `cenario/encontro_*.webp` do prólogo) |
 | `tools/extrair_sprites.py` | converte a arte recebida em folhas para o jogo |
@@ -2221,12 +2673,638 @@ A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verd
 | Documentos e dragão | a cena de documento forma conclusão; a luta no covil começa |
 | Save | Continuar volta com área, moedas e itens; save antigo é convertido |
 | Celular | controles de toque, botão da poção e do item, mochila cabendo na tela |
+| Parte 2 — fases | as 7 fases novas carregam e rodam, a heroína não nasce na parede, o chefe e a companheira estão lá; vento empurra e lama deixa lenta |
+| Parte 2 — história | Continuar depois do “Fim?” abre a Parte 2; a estrada do vale só abre depois; o mapa do mundo ganha 7 regiões |
+| Bell jogável | troca com T, estrela, leque de 3 luzes gastando magia, canção encantando inimigos, a Line assume quando a Bell cai e a caída não volta |
+| Armaduras da Bell | só aparecem na Parte 2, ficam guardadas para a Bell e dão escudo quando ela está ativa |
+| Chefes | cada um dos 7 chefes acorda com a cena, luta alguns segundos, é vencido e salva a vitória (+1 coração nos guardiões, portal depois da última junção, final depois da Quimera) |
+| Relógio | 1 s = 1 min, noite com moradores dormindo, descanso na fonte até as 7h do dia seguinte |
+| Dicas do Fácil | seta para a saída certa, para o cristal apagado e para o chefe; dica de chefe e de derrota |
 
 ### Como atualizar este documento
 As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json` (também exporta mapas, baús, itens, documentos e loja), `python3 tools/extrair_roteiro.py roteiro.json`, `node tools/fotos_documentacao.js pasta` (capturas das partes novas, depois convertidas para JPG em `docs/imagens`), `python3 tools/gerar_documentacao.py inventario.json roteiro.json` e, para a versão HTML, `python3 tools/gerar_documentacao_html.py`.
 
 ![No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma](imagens/25-galeria.jpg)
 *No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma*
+
+## 16. Parte 2 — O Coração dos Elementos
+
+> A Parte 2 começa quando a jogadora aperta **Continuar** depois do “Fim?” da Parte 1 (o olho do dragão se abrindo). O save continua o mesmo: moedas, itens, documentos e armaduras vão junto.
+
+### 16.1 A história
+
+Na manhã seguinte ao pôr do sol do epílogo, o chão tremeu a noite inteira e o céu amanheceu verde e roxo. O dragão pousa na fazenda — mas desta vez para **pedir ajuda**. Há mil anos, cinco guardiões cuidavam dos elementos: **Pedra** (o Guardião das ruínas), **Fogo** (o próprio dragão), **Terra**, **Água** e **Ar**. Quando a Line venceu os dois primeiros *sem ódio*, as luzes deles ficaram soltas, e uma coisa velha e sem forma bebeu o que sobrou: a **Quimera**.
+
+A Quimera morde os guardiões, envenena, rouba a luz deles e, com o que rouba de dois elementos, faz nascer uma fera nova. Agora ela vai atrás dos três que faltam: o **Colosso** (Terra), a **Serpente** (Água) e o **Grifo** (Ar). Se juntar todos, o mundo esfria de vez.
+
+Quando a Line dividiu a luz com o dragão no covil, uma parte ficou na Bell. Agora ela **atira estrelas** e a **canção dela acalma qualquer fera** — e dessa vez ela não fica esperando em gaiola nenhuma: **a Bell vira jogável**, e as duas partem juntas.
+
+O tema da Parte 1 volta no fim: a Quimera não é má, é **sozinha**. Ela rouba porque acha que só assim deixa de sentir frio. As duas respondem com a frase do jogo: *luz não se rouba, se divide*.
+
+### 16.2 Ordem da aventura
+
+| # | Fase | Chefe | Tipo | Abre |
+|---|---|---|---|---|
+| 1 | Vale das Raízes | Colosso de Raízes | guardião | estrada da Fenda de Magma |
+| 2 | Fenda de Magma | Titã de Magma | junção Pedra + Fogo | estrada do Lago Espelhado |
+| 3 | Lago Espelhado | Serpente das Marés | guardião | estrada do Pântano Sombrio |
+| 4 | Pântano Sombrio | Hidra de Lama | junção Terra + Água | estrada dos Picos do Vento |
+| 5 | Picos do Vento | Grifo da Tempestade | guardião | passagem do Olho da Tempestade |
+| 6 | Olho da Tempestade | Tempestade Viva | junção Água + Ar | portal do Coração dos Elementos |
+| 7 | Coração dos Elementos | Quimera Primordial | chefe final (todos os elementos) | final da Parte 2 |
+
+Cada fase segue o mesmo ritmo, para ser **longa sem cansar**: chegada com uma conversinha das duas → um morador que conta o que aconteceu → explorar e acender três fontes de luz (cristais, pérolas ou faróis) espalhadas pelo mapa → o chefe da fase → a sombra que sai dele foge para uma arena pequena ao lado → o chefe de **junção** → caminho aberto para a próxima fase. Cada fase grande leva uns **15 a 20 minutos**, e as arenas de junção uns 5.
+
+### 16.3 Roteiro da Parte 2
+
+#### Abertura: o dragão pede ajuda (fazenda)
+> ▶ `BELL_IDLE`  
+> 🎬 **Título na tela:** Parte 2 — O Coração dos Elementos  
+> **Bell** *(surpresa)*: Line... você sentiu isso? O chão tremeu a noite inteira.  
+> ▶ `LINE_LOOK_SIDES_FRONT`  
+> **Line** *(surpresa)*: E o céu tá de uma cor esquisita. Meio verde, meio roxo...  
+> ▶ `DRAGON_FLY`  
+> ▶ `DRAGON_LAND`  
+> ▶ `DRAGON_TALK`  
+> ▶ `LINE_SWORD_DRAW`  
+> **Line** *(brava)*: Bell, pra trás de mim!  
+> ▶ `BELL_CALL_LINE`  
+> **Bell** *(neutro)*: Espera! Olha os olhos dele. Não é o mesmo olhar.  
+> **Dragão**: Pequena luz... e a moça que canta. Perdão pelo susto.  
+> **Dragão**: Acordei com frio de novo. Mas não é o meu frio. Alguém está roubando o calor do mundo.  
+> **Dragão**: Há mil anos, cinco guardiões cuidavam dos elementos. Pedra, Fogo, Terra, Água e Ar. O Guardião de Pedra das ruínas... e eu, o Fogo.  
+> **Dragão**: Quando vocês nos venceram sem ódio, as nossas luzes ficaram soltas. E uma coisa velha, sem forma, bebeu o que sobrou: a Quimera.  
+> **Line** *(surpresa)*: Uma Quimera... tipo um monstro feito de pedaços?  
+> **Dragão**: De pedaços dos outros. Agora ela vai atrás dos três guardiões que faltam: o Colosso, no Vale das Raízes. A Serpente, no Lago Espelhado. O Grifo, nos Picos do Vento.  
+> **Dragão**: Ela morde, envenena, e o que rouba de dois elementos vira uma fera nova. Se juntar todos... o mundo esfria de vez.  
+> ▶ `LINE_DETERMINED`  
+> **Line** *(brava)*: Então eu liberto os guardiões e paro a Quimera.  
+> ▶ `BELL_DETERMINED`  
+> **Bell** *(marota)*: “Eu”? Dessa vez eu vou junto.  
+> **Line** *(surpresa)*: Bell, é perigoso...  
+> **Bell** *(brava)*: Line. Eu passei três dias numa gaiola cantando pra um dragão. Eu vou junto.  
+> **Dragão**: E ela pode. Quando a pequena luz dividiu a luz comigo, uma parte ficou na moça que canta. Olhe as mãos dela.  
+> ▶ `BELL_HAPPY`  
+> **Bell** *(rindo)*: Estrelas... Line, eu tô segurando estrelas!  
+> **Dragão**: Ela atira estrelas, e a canção dela acalma qualquer fera. Juntas, vocês brilham mais do que qualquer guardião.  
+> **Line** *(marota)*: Tá bom. Juntas. Mas quando eu disser “corre”, você corre.  
+> **Bell** *(apaixonada)*: Quando você disser “corre”, a gente corre. As duas.  
+> **Dragão**: Eu ainda estou fraco para lutar. Fico aqui, cuidando da fazenda. Sigam para o leste do vilarejo: a estrada do vale se abriu.  
+> ▶ `DRAGON_SLEEP`  
+> ▶ `LINE_IDLE`  
+> ▶ `DRAGON_CURL_SLEEP`  
+
+#### Chegadas (primeira vez em cada lugar)
+
+**Vale das Raízes**
+
+> **Bell**: Que lugar lindo... e que raiz enorme saindo do chão!  
+> **Line**: Cuidado pra não correr em cima delas. Se tropeçar, cai de cara.  
+> **Bell**: Olha, uma casinha com horta. Vamos perguntar pra quem mora ali.  
+
+**Fenda de Magma**
+
+> **Line**: Tá quente aqui... quente igual à montanha.  
+> **Bell**: Pedra e fogo, misturados. Line, isso é pedaço do Guardião e do dragão.  
+> **Line**: Então é aqui que a Quimera guardou o que roubou deles.  
+
+**Lago Espelhado**
+
+> **Bell**: Um lago de verdade! Com ilha no meio e tudo!  
+> **Line**: E com uma coisa enorme nadando embaixo da água...  
+> **Bell**: Ah. Isso. Vamos perguntar pro moço do píer primeiro.  
+
+**Pântano Sombrio**
+
+> **Line**: Que cheiro... Terra molhada de água ruim.  
+> **Bell**: A lama tá puxando o meu sapato. Line, não para no meio da lama, tá?  
+
+**Picos do Vento**
+
+> **Bell**: A gente tá acima das nuvens, Line! ACIMA DAS NUVENS!  
+> **Line**: E o chão acaba do nada. Segura a minha mão.  
+> **Bell**: Sempre.  
+
+**Olho da Tempestade**
+
+> **Line**: Chuva subindo, vento chovendo...  
+> **Bell**: O lago e o vento viraram uma coisa só. Tá com raiva de tudo.  
+
+**Coração dos Elementos**
+
+> **Bell**: Line... tá frio aqui. Frio de verdade.  
+> **Line**: É o coração dela. Todos os elementos roubados batem aqui dentro.  
+> **Bell**: Então vamos devolver. Um por um.  
+
+#### Apresentação de cada chefe
+
+Ao entrar na arena, a câmera vai até o chefe, aparece o nome e o título dele e eles falam:
+
+**Colosso de Raízes** — *Guardião da Terra*
+
+> **Colosso**: Grrr... raízes... secas... VÃO... EMBORA...  
+> **Bell**: Ele tá doente, Line. Olha as folhas pretas nas costas.  
+> **Line**: Então a gente cura ele do único jeito que dá: cansando ele primeiro.  
+
+**Serpente das Marés** — *Guardiã da Água*
+
+> **Serpente**: A água... está... suja... Ninguém... entra... no MEU lago!  
+> **Bell**: Quando ela mergulhar, olha as bolhas!  
+
+**Grifo da Tempestade** — *Guardião do Ar*
+
+> **Grifo**: O céu é MEU! Caiam, pequenas, caiam!  
+> **Line**: Bell, ele voa alto demais pra espada. Suas estrelas!  
+> **Bell**: Deixa comigo.  
+
+**Titã de Magma** — *Junção de Pedra e Fogo*
+
+> **Titã de Magma**: PEDRA... E... FOGO... Eu sou o que sobrou dos seus amigos, pequena luz.  
+> **Line**: Você é o que ela ROUBOU deles. Não é a mesma coisa.  
+
+**Hidra de Lama** — *Junção de Terra e Água*
+
+> **Hidra de Lama**: Muitas bocas... muita fome... Terra e água vão afogar vocês duas!  
+> **Bell**: Quantas cabeças! Line, eu canto e você bate?  
+> **Line**: Combinado.  
+
+**Tempestade Viva** — *Junção de Água e Ar*
+
+> **Tempestade Viva**: Chuva... vento... EU SOU O CÉU INTEIRO!  
+> **Bell**: E eu sou a que canta mais alto que trovão!  
+
+**Quimera Primordial** — *O Coração dos Elementos*
+
+> **Quimera**: Então são vocês. A luz que se divide.  
+> **Quimera**: Eu não divido. Eu JUNTO. Pedra, fogo, terra, água, ar... tudo em mim.  
+> **Bell**: Você não junta nada. Você rouba.  
+> **Line**: E luz não se rouba. Se divide.  
+> **Quimera**: Então venham dividir... os pedaços de vocês!  
+
+#### Guardiões libertados
+
+Vencido, cada guardião volta às cores verdadeiras (animação `*_FREED`), agradece e dá **+1 coração** (vale para as duas) e uma **escama** — com duas escamas, o Seu Bento forja a Armadura da Aurora da Bell.
+
+**Colosso de Raízes**
+
+> **Colosso**: A névoa... saiu da minha cabeça. Obrigado, meninas.  
+> **Colosso**: A Quimera me mordeu e eu esqueci quem eu era. A sombra que saiu de mim fugiu para o leste, para a Fenda de Magma.  
+> **Colosso**: Lá ela vai juntar a minha pedra velha com o fogo que roubou do dragão. Tomem cuidado.  
+> 💡 *Dica na tela:* A sombra fugiu para a Fenda de Magma, a leste do vale.  
+
+**Serpente das Marés**
+
+> **Serpente**: Aaah... a água ficou limpa. Eu consigo me ver de novo.  
+> **Serpente**: Aquela canção... fazia tanto tempo que ninguém cantava pra mim.  
+> **Serpente**: A parte suja de mim escorreu para o pântano, no leste. Lá ela vai virar lama com o que roubou da terra.  
+> 💡 *Dica na tela:* A sujeira da Serpente escorreu para o Pântano Sombrio, a leste do lago.  
+
+**Grifo da Tempestade**
+
+> **Grifo**: O vento... voltou a soprar do jeito certo. Eu me lembro do céu.  
+> **Grifo**: Pequenas corajosas. A tempestade que eu virei está presa no leste, no Olho da Tempestade.  
+> **Grifo**: Vençam a tempestade, e o caminho para o Coração dos Elementos se abre, ao norte.  
+> 💡 *Dica na tela:* A tempestade que o Grifo virou está no Olho da Tempestade, a leste dos picos.  
+
+#### Junções desfeitas
+> **Line** *(sorrindo)*: Obrigada! A gente vai atrás dela.  
+> **Bell** *(rindo)*: Os pedaços estão voltando pra casa... olha as luzes indo embora!  
+> **Line** *(brava)*: Foi a última junção. Agora só sobrou ela.  
+> **Bell** *(brava)*: O Coração dos Elementos, ao norte dos Picos do Vento. Vamos juntas.  
+> **Line** *(brava)*: Uma junção a menos. Vamos em frente.  
+
+#### Final da Parte 2
+> **Quimera**: Não... não levem... eu só... queria... não ficar sozinha...  
+> ▶ `BELL_IDLE`  
+> **Bell** *(neutro)*: Ninguém precisa roubar pra não ficar sozinho.  
+> **Line** *(apaixonada)*: É só pedir. A gente divide.  
+> **Quimera**: ...quente. É... quente.  
+> ▶ `DRAGON_SLEEP`  
+> **Bell** *(rindo)*: O dragão veio dormir com a gente. Olha o rabo dele enrolado no Theo.  
+> **Line** *(apaixonada)*: E lá no céu... cinco luzes. Uma de cada cor.  
+> **Bell** *(apaixonada)*: Os guardiões voltaram pra casa. E a gente também.  
+> **Line** *(apaixonada)*: Bell... obrigada por vir junto.  
+> **Bell** *(marota)*: Da próxima vez, sou eu que salvo você.  
+> **Line** *(rindo)*: Combinado. Mas só se for de mãos dadas.  
+> ▶ `LINE_BELL_DANCE`  
+> 🎬 **Título na tela:** Fim da Parte 2 — O Coração dos Elementos · Obrigada por jogar!  
+
+#### Moradores novos (primeira conversa)
+
+> **Dona Cora**: Duas meninas no meu vale? Faz tempo que ninguém passa por aqui sem correr.  
+> **Dona Cora**: Desde que aquela sombra colorida desceu do céu, o Colosso ficou bravo. Ele cuidava das raízes, sabe? Agora elas saem do chão e derrubam quem corre.  
+> **Bell**: A gente vai ajudar ele, Dona Cora. Prometo.  
+> **Dona Cora**: Os cristais de terra seguram a barreira dele: um na minha horta, um no campo de raízes, um no bosque do leste. Luz neles!  
+
+> **Seu Tião**: Ô de casa! Cuidado com a água, meninas: a Serpente anda brava e o lago virou sopa.  
+> **Seu Tião**: Minha vó cantava uma música pra ela dormir. Acho que ainda tenho a letra... deixei num papel lá pro lado do leste.  
+> **Line**: A Bell canta. Quem sabe a Serpente escuta.  
+> **Seu Tião**: Se ela escutar, ela para. Toda fera para pra ouvir uma canção boa.  
+
+> **Vó Brisa**: Subiram até aqui sem voar? Então são das teimosas. Gosto disso.  
+> **Vó Brisa**: O Grifo era o dono do vento bom. Agora ele sopra de lado e quer derrubar todo mundo no abismo.  
+> **Vó Brisa**: Os três faróis abrem o ninho dele. E quando o vento empurrar, andem contra ele, devagar.  
+> **Bell**: Devagar e de mãos dadas. Sempre funciona.  
+
+Os moradores do vilarejo também ganham uma fala nova na Parte 2 (a Dona Rosa vê as duas juntas, o Seu Bento oferece armaduras para a Bell, o Seu Zé conta que a estrada do leste abriu sozinha e que a irmã dele, a Cora, mora no vale).
+
+### 16.4 Documentos novos
+
+| Documento | Tipo | Onde | Marca no mapa |
+|---|---|---|---|
+| 🌱 Diário da Dona Cora | Diário | Vale das Raízes, perto da horta | Ninho do Colosso |
+| 🎵 Canção das águas | Pergaminho | Lago Espelhado, margem leste | Ilha da Serpente |
+| 🪶 Pena de tempestade | Objeto encontrado | Picos do Vento, platô leste | Ninho do Grifo |
+
+**Conclusão nova:** juntando os três, a Line entende: *Todos os guardiões adoeceram do mesmo jeito: a sombra de muitas cores. A Quimera morde, rouba a luz e deixa o resto bravo.* **Efeito:** Os chefes ficam cansados um ataque mais cedo.
+
+## 17. As fases da Parte 2
+
+| Fase | Tamanho | Baús | Inimigos | Chefe | Saídas |
+|---|---|---|---|---|---|
+| Vale das Raízes | 64 × 42 | 4 | 7 sombras, 4 fogos-fátuos de terra | Colosso de Raízes | Vilarejo do Riacho, Lago Espelhado (depois de `fusaoMagma`), Fenda de Magma (depois de `chefeTerra`) |
+| Fenda de Magma | 36 × 28 | 0 | só o chefe | Titã de Magma | Vale das Raízes |
+| Lago Espelhado | 64 × 42 | 3 | 5 fogos-fátuos de água, 5 sombras | Serpente das Marés | Vale das Raízes, Pântano Sombrio (depois de `chefeAgua`), Picos do Vento (depois de `fusaoLama`) |
+| Pântano Sombrio | 38 × 28 | 1 | só o chefe | Hidra de Lama | Lago Espelhado |
+| Picos do Vento | 64 × 42 | 3 | 5 fogos-fátuos de ar, 4 sombras | Grifo da Tempestade | Lago Espelhado, Olho da Tempestade (depois de `chefeAr`), Coração dos Elementos (depois de `portalCoracao`) |
+| Olho da Tempestade | 36 × 28 | 0 | só o chefe | Tempestade Viva | Picos do Vento |
+| Coração dos Elementos | 40 × 32 | 0 | só o chefe | Quimera Primordial | Picos do Vento |
+
+A estrada nova sai do **leste do Vilarejo do Riacho** e só abre na Parte 2. O mapa do mundo ganhou sete regiões, que só aparecem depois que o dragão acorda.
+
+### Vale das Raízes (Terra)
+Grama dourada-esverdeada de fim de verão, caminhos de terra batida, bosque de árvores largas.
+
+- **Casa da Dona Cora (noroeste):** a jardineira, a horta e o primeiro cristal de terra.
+- **Campo de raízes (sudoeste):** raízes que derrubam quem corre, o segundo cristal e um baú.
+- **Lamaçal (centro-sul):** lama que deixa lenta e um baú no meio.
+- **Bosque do leste:** o terceiro cristal e o **recanto de pedra rachada** (bomba) com um baú escondido.
+- **Ninho do Colosso (nordeste):** anel de pedras fechado pela barreira de raízes; abre com os três cristais acesos.
+- **Saídas:** oeste → vilarejo; leste → Fenda de Magma (depois do Colosso); norte → Lago Espelhado (depois do Titã de Magma).
+
+![Vale das Raízes](imagens/p2-vale.jpg)
+*Vale das Raízes*
+
+### Fenda de Magma (Pedra + Fogo)
+Caverna vulcânica: rocha escura avermelhada, rios de lava nas bordas.
+
+
+![Fenda de Magma](imagens/p2-fenda.jpg)
+*Fenda de Magma*
+
+### Lago Espelhado (Água)
+Margens verdes, água azul muito limpa (depois da vitória) ou turva (antes), uma ilha no meio.
+
+- **O grande lago** com a **ilha da Serpente** no meio, ligada por uma ponte fechada por uma parede de água.
+- **Três pérolas-cristal:** no píer do Seu Tião (sudoeste), na margem oeste (norte) e no bosque do leste.
+- **Riachos para pular** e a estrada que contorna o lago pela margem oeste até o norte.
+- **Saídas:** sul → vale; leste → Pântano Sombrio (depois da Serpente); norte → Picos do Vento (depois da Hidra).
+
+![Lago Espelhado](imagens/p2-lago.jpg)
+*Lago Espelhado*
+
+### Pântano Sombrio (Terra + Água)
+Charco verde-escuro, árvores mortas, névoa baixa.
+
+
+![Pântano Sombrio](imagens/p2-pantano.jpg)
+*Pântano Sombrio*
+
+### Picos do Vento (Ar)
+Platôs de pedra clara acima das nuvens, abismo de céu entre eles.
+
+- **Platôs separados por abismos de céu** (pulando até 3 tiles) e **pontes de vento**: o vento empurra para o lado enquanto se atravessa, com abismo dos dois lados.
+- **Platô oeste:** a Vó Brisa, um farol e a ponte de vento que sobe até o ninho do Grifo.
+- **Platô leste:** outro farol, a pena de tempestade e a ponte de vento para o pico nordeste (terceiro farol e saída da Tempestade).
+- **Centro:** uma ponte de vento vinda da chegada, baú e a passagem norte para o Coração dos Elementos (abre depois das três junções).
+
+![Picos do Vento](imagens/p2-picos.jpg)
+*Picos do Vento*
+
+### Olho da Tempestade (Água + Ar)
+Ilha de pedra escura cercada de céu de tempestade.
+
+
+![Olho da Tempestade](imagens/p2-tempestade.jpg)
+*Olho da Tempestade*
+
+### Coração dos Elementos (todos)
+Salão de cristal roxo no alto dos picos, com cinco pilares, um por elemento.
+
+
+![Coração dos Elementos](imagens/p2-coracao.jpg)
+*Coração dos Elementos*
+
+**Chão novo:** lama (`u`) deixa as duas mais lentas (a Armadura da Aurora da Bell ignora); as correntes de vento (`>` e `<`) empurram mesmo parada; o abismo de céu (`j` nos picos) derruba e devolve para a beirada com um tombo.
+
+**Ambientação:** chuva no Olho da Tempestade (forte, com relâmpagos que clareiam a tela) e garoa no pântano; brasas na fenda; vaga-lumes verdes no pântano e roxos no Coração; nuvens, pássaros e folhas nas áreas abertas; cada fase tem uma vinheta de cor própria.
+
+## 18. Relógio: dia e noite
+
+- **1 segundo de jogo = 1 minuto no relógio**, ou seja, **1 minuto real = 1 hora**, e um dia inteiro passa em **24 minutos**.
+- O relógio aparece no topo da tela (☀️ de dia, 🌅 ao amanhecer e ao entardecer, 🌙 à noite) com a hora e o **dia** da aventura.
+- Só anda durante o jogo: para na pausa, na mochila, na loja e nas cenas.
+- A aventura começa às **19h30** do dia 1, logo depois do rapto. Saves antigos começam às 8h.
+- **Amanhecer** das 5h às 7h (tom rosado), **dia** das 7h às 17h, **entardecer** das 17h às 20h (tom laranja) e **noite** das 20h às 5h (azul-escuro, com um círculo de luz em volta da heroína; a lanterna aumenta o círculo).
+- Cada lugar escurece de um jeito: áreas abertas escurecem tudo, a montanha e as ruínas só um pouco, e as cavernas (gruta, covil, fenda, Coração) não mudam.
+- À noite aparecem **vaga-lumes** nas áreas abertas e os **moradores do vilarejo vão dormir** (a loja e a ferraria fecham: “Loja fechada, volte de manhã”).
+- Em qualquer **fonte**, à noite, dá para **descansar até de manhã**: pula para as 7h do dia seguinte com a vida e a magia cheias (das duas, na Parte 2).
+
+![O vilarejo às 22h: céu escuro, vaga-lumes e os moradores dormindo](imagens/p2-noite.jpg)
+*O vilarejo às 22h: céu escuro, vaga-lumes e os moradores dormindo*
+
+## 19. Bell jogável e as armaduras das duas
+
+### 19.1 Trocando de heroína
+- **T** no teclado, **L3** no controle ou o botão **🔄** no celular troca entre a Line e a Bell a qualquer momento fora das cenas.
+- A outra heroína anda junto, logo atrás.
+- **Cada uma tem a própria vida e magia.** Um mini-painel embaixo das moedas mostra a vida de quem está descansando.
+- Quando a heroína ativa **cai**, a outra **assume na hora**. Só é derrota quando as duas caem. Quem caiu só volta depois de beber numa fonte (ou descansar).
+- A heroína que está descansando recupera magia devagar.
+
+### 19.2 Como a Bell luta
+
+| Botão | Bell | Line |
+|---|---|---|
+| ⚔ Atacar (J) | **Estrela**: atira uma estrela rosa à distância (1 de dano). Apertando de novo, atira em sequência | combo de espada |
+| 🌀 Especial (K) | **Leque de estrelas**: três estrelas de luz em leque (1 de magia). Acendem cristais, faróis e pérolas e **abrem a guarda dos chefes** | giro |
+| ✨ Magia (Q) | **Canção** (2 de magia): acalma todos os inimigos em volta por uns 2 s (eles param e ficam ouvindo, com notinhas), cura 1 de vida das duas; nos chefes, segura o ataque por 1,4 s, ou deixa o núcleo exposto por mais tempo se ele estiver cansado | Raio de Luz / Chuva de Estrelas |
+| 🛡 Defender (V) | escudo de luz rosa | defesa com a espada |
+| 💨 Esquivar, ⤴ Pular | iguais às da Line | |
+
+A Bell é um pouco mais rápida e luta **de longe**; a Line bate mais forte **de perto**. Contra os chefes, o jeito mais fácil é a Bell abrir a guarda com o leque e a Line entrar com a espada.
+
+![Jogando com a Bell: a Line vem atrás](imagens/p2-bell.jpg)
+*Jogando com a Bell: a Line vem atrás*
+
+### 19.3 Armaduras
+
+A ferraria do Seu Bento passa a vender três armaduras **da Bell** na Parte 2. Cada heroína veste a sua: comprar uma armadura da Bell jogando com a Line guarda para ela.
+
+| Heroína | Armadura | Escudos e efeito | Como é (para a arte) |
+|---|---|---|---|
+| Line | **Túnica Acolchoada** | 1 escudo · 40 moedas | Túnica de linho bege acolchoada (costuras em losango marrom-claro) por cima da roupa de sempre, cinto de couro com fivela de latão, ombreiras macias de tecido. Mantém o cabelo, o rosto e as botas da Line. Deve parecer caseira, feita no vilarejo. |
+| Line | **Cota de Malha** | 2 escudos · 90 moedas | Camisa de anéis de ferro até o meio da coxa, gola alta, cinto largo de couro escuro, braçadeiras de couro. Brilho metálico prateado frio (2 tons de cinza-azulado + 1 reflexo branco). Os anéis podem ser sugeridos por um padrão de pontinhos, não precisa desenhar anel por anel. |
+| Line | **Armadura de Brasa** | 3 escudos · 160 moedas · atravessa chão em brasa | Placas de cobre avermelhado sobre malha temperada, com frestas nas juntas mostrando brasa laranja por dentro (pode pulsar devagar, 2 quadros de brilho). Uma ombreira feita com uma escama vermelha do dragão. Bota com biqueira de cobre. É a armadura mais pesada: postura um pouco mais firme, mas a mesma silhueta da Line. |
+| Bell | **Vestido Reforçado** | 1 escudo · 60 moedas | O vestido de sempre da Bell em duas camadas, com bordado de fio de prata na barra e no decote, corpete acolchoado e mangas bufantes curtas. Saia até o joelho, para correr. Mantém os óculos e o cabelo. Costurado pela Dona Rosa. |
+| Bell | **Manto Estelar** | 2 escudos · 130 moedas | Capa azul-noite até os tornozelos, presa por um broche de estrela dourada, com estrelinhas bordadas que brilham (1 quadro extra de brilho quando ela canta ou atira). Capuz abaixado nas costas. Por baixo, o vestido reforçado. |
+| Bell | **Armadura da Aurora** | 3 escudos · 220 moedas · atravessa brasa e lama | Armadura leve de placas iridescentes feitas com as escamas dos guardiões: verde-musgo (terra) no peito, azul-água nos braços, branco-perolado (ar) nos ombros, com reflexo de arco-íris que muda devagar. Saia de placas curtas por cima de uma calça justa, botas altas que não afundam na lama, tiara com uma pedrinha de cada cor. Brilho suave, não metálico. |
+
+A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as escamas deles viram as placas).
+
+**Como a arte da armadura entra no jogo:** o jogo procura primeiro a animação com o nome da armadura no meio do código e, se ela não existir, usa a normal. Exemplo: com a Cota de Malha, `LINE_WALK_RIGHT` vira `LINE_MALHA_WALK_RIGHT`; com o Manto Estelar, `BELL_ATTACK_STAR` vira `BELL_ESTELAR_ATTACK_STAR`. Assim dá para mandar a arte aos poucos, animação por animação. A lista de códigos está na seção 22.2.
+
+## 20. Chefes elementais
+
+**Regra comum:** todo ataque tem aviso antes (círculo no chão, anel para pular, bolhas, sombra). Depois de alguns ataques o chefe **se cansa**: o núcleo fica exposto (barra ciano) e aí a espada e as estrelas machucam de verdade. Fora disso, a espada só faz “clang”. A **luz** (Raio de Luz da Line ou leque da Bell) abre a guarda na hora, e a **canção** da Bell segura os ataques. No Fácil, o chefe cansa um ataque mais cedo, e a espada ainda arranha um pouco.
+
+### Colosso de Raízes — Guardião da Terra
+- **Elementos:** 🌱 Terra · **Vida:** 16 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Vale das Raízes
+- **Ataques:** raízes saindo do chão em linha; anel de espinhos (pular); cuspe de lama que deixa lenta; chama duas sombras.
+- **Dicas do Fácil:** As raízes saem do chão em linha, na sua direção: ande para o lado, não para trás. / Depois de três ataques ele se cansa e a flor do peito abre. É a hora de atacar! / A magia de luz abre a guarda dele na hora.
+- **Aparência:** Gigante de terra e madeira do tamanho de uma casa: tronco de árvore como corpo, braços de raízes grossas, musgo nos ombros e uma **flor no peito** (o núcleo) que se abre quando ele cansa. **Corrompido:** folhas pretas nas costas, olhos roxos e fumaça colorida saindo das rachaduras. **Libertado (`COLOSSO_FREED`):** folhas verdes, flores brancas brotando, olhos âmbar, sorriso tranquilo.
+
+### Serpente das Marés — Guardiã da Água
+- **Elementos:** 💧 Água · **Vida:** 16 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Lago Espelhado
+- **Ataques:** mergulha (fica intocável) e sai embaixo das bolhas; jatos de água em leque; onda que precisa ser pulada.
+- **Dicas do Fácil:** Quando ela mergulha, fique de olho nas bolhas: ela sai embaixo delas. / Pule a onda na hora que ela chegar em você. / Depois de três ataques ela boia cansada: ataque a cabeça!
+- **Aparência:** Serpente-marinha longa, azul com barriga turquesa, barbatanas translúcidas nas costas e uma crista de coral. Mergulha e só a cabeça e parte do corpo aparecem. **Corrompida:** água turva marrom escorrendo, manchas escuras nas escamas, olhos brancos sem pupila. **Libertada:** escamas brilhando como espelho, olhos azul-claro.
+
+### Grifo da Tempestade — Guardião do Ar
+- **Elementos:** 🌪️ Ar · **Vida:** 16 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Picos do Vento
+- **Ataques:** rajada de vento que empurra para longe; leque de penas afiadas; raios caindo em círculos brancos.
+- **Dicas do Fácil:** A rajada empurra para longe dele: ande contra o vento (ou defenda) para não cair. / Os raios caem onde aparece o círculo branco: saia de dentro. / Cansado, ele pousa no chão. Aproveite!
+- **Aparência:** Águia-leão cinza e branca com asas enormes (abertas ocupam 2× o corpo), penas das asas com faíscas elétricas nas pontas, garras douradas. Voa a maior parte da luta e pousa quando cansa. **Corrompido:** penas eriçadas cinza-chumbo, olhos vermelhos, raios roxos. **Libertado:** penas brancas, olhos dourados, brisa suave em volta.
+
+### Titã de Magma — Junção de Pedra e Fogo
+- **Elementos:** 🪨 Pedra + 🔥 Fogo · **Vida:** 24 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Fenda de Magma
+- **Ataques:** pisão com onda no chão (pular); chuva de fogo que deixa poças de lava; arremessa rochas; leque de bolas de fogo.
+- **Poças:** deixa poças de lava pelo chão por alguns segundos.
+- **Dicas do Fácil:** A chuva de fogo deixa poças de lava por alguns segundos: não pise nelas. / Pule a onda do pisão. / A luz racha a casca de pedra e deixa o coração de fogo exposto.
+- **Aparência:** Titã de pedra do Guardião (mesmo estilo das ruínas) todo rachado, com **lava escorrendo pelas rachaduras** e um **coração de fogo** no peito (o núcleo). Braços de rocha que batem no chão, pedaços de pedra flutuando nos ombros. Cheio de brasas subindo. Quando cansa, a casca se abre e o coração fica exposto, pulsando.
+
+### Hidra de Lama — Junção de Terra e Água
+- **Elementos:** 🌱 Terra + 💧 Água · **Vida:** 24 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Pântano Sombrio
+- **Ataques:** raízes saindo do chão em linha; jatos de água em leque; onda que precisa ser pulada; mergulha (fica intocável) e sai embaixo das bolhas; cuspe de lama que deixa lenta.
+- **Poças:** deixa poças de lama pelo chão por alguns segundos.
+- **Dicas do Fácil:** As poças de lama deixam você lenta: fuja delas. / Ela mergulha na lama e sai embaixo das bolhas. / Cansada, ela afunda a cabeça no chão: ataque!
+- **Aparência:** Três cabeças de serpente feitas de lama e raízes saindo de um charco. O corpo fica afundado; as cabeças se mexem separadas (uma cospe lama, outra água, a do meio morde). Olhos amarelos, bocas escorrendo lama. Quando cansa, as três cabeças afundam e só o núcleo (uma bolha de lama brilhante) aparece.
+
+### Tempestade Viva — Junção de Água e Ar
+- **Elementos:** 💧 Água + 🌪️ Ar · **Vida:** 24 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Olho da Tempestade
+- **Ataques:** raios caindo em círculos brancos; rajada de vento que empurra para longe; jatos de água em leque; onda que precisa ser pulada; leque de penas afiadas.
+- **Dicas do Fácil:** Os raios agora caem em sequência: continue andando. / Quando ela chove forte, a rajada vem logo depois: prepare-se para andar contra o vento. / Cansada, ela desce e o olho da tempestade fica exposto.
+- **Aparência:** Uma nuvem escura com rosto (olhos brancos brilhantes e boca de trovão), braços de vento em espiral, chuva caindo por baixo e raios entre as nuvens. Paira no ar. No centro fica o **olho da tempestade**, um redemoinho claro que é o núcleo. Quando cansa, desce ao chão e o olho abre.
+
+### Quimera Primordial — O Coração dos Elementos
+- **Elementos:** 🪨 Pedra + 🔥 Fogo + 🌱 Terra + 💧 Água + 🌪️ Ar · **Vida:** 48 no Normal · **Cansa depois de:** 4 ataques · **Onde:** Coração dos Elementos
+- **Três fases:** Pedra + Fogo → Terra + Água → Ar + Fogo + Água + Terra + Pedra. Na última, bate 2 de uma vez (menos no Fácil).
+- **Ataques:** todos os dos elementos da fase.
+- **Dicas do Fácil:** A Quimera muda de elemento a cada fase: veja a cor do núcleo para saber o que vem. / Na última fase ela usa todos os ataques e bate mais forte. Troque de heroína quando a vida baixar. / A luz sempre abre a guarda. Guarde magia para isso.
+- **Aparência:** A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo.
+
+![Os sete chefes na versão provisória (desenhados no código até a arte chegar)](imagens/p2-chefes.jpg)
+*Os sete chefes na versão provisória (desenhados no código até a arte chegar)*
+
+## 21. Dicas do modo Fácil
+
+No **Fácil**, além de chefes mais fracos, o jogo ajuda a jogadora a não se perder:
+
+- **Seta guia:** uma setinha dourada gira em volta da heroína apontando para o próximo objetivo, com o nome embaixo quando está longe. Se o objetivo é em outra área, aponta a saída certa (pelo caminho mais curto entre as saídas já abertas). Dentro da área, aponta o cristal/tocha/farol apagado mais perto, depois o chefe. Some durante as lutas e as cenas. Vale para a Parte 1 e a Parte 2.
+- **Dicas de chefe:** ao acordar, quando cansa pela primeira vez e quando muda de fase, aparece um balão com a dica daquele chefe (seção 20).
+- **Vida baixa:** com 1 coração ou menos, lembra de usar poção, trocar de heroína ou voltar a uma fonte (uma vez por área).
+- **Tela de derrota:** mostra uma dica do que fazer diferente, conforme onde a heroína caiu (o chefe da luta, o dragão, o Guardião ou uma dica geral).
+
+![A seta do Fácil apontando o caminho](imagens/p2-dica.jpg)
+*A seta do Fácil apontando o caminho*
+
+## 22. Arte necessária — lista completa
+
+> Esta é a lista de **tudo o que precisa de arte** no jogo, das duas partes: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, objetos, itens, interface, efeitos e dia/noite. Tudo que está hoje no jogo é **temporário** (emojis, desenhos no código ou arte provisória) e é trocado sozinho quando a arte com o código certo chega.
+
+### 22.1 Resumo das animações
+
+| Grupo | Animações | Com arte | Usando substituta | Faltando |
+|---|---|---|---|---|
+| Primeiro encontro (prólogo) | 8 | 8 | 0 | 0 |
+| Line — movimento | 31 | 29 | 2 | 0 |
+| Line — combate | 27 | 19 | 8 | 0 |
+| Line — emoções | 10 | 10 | 0 | 0 |
+| Bell | 34 | 34 | 0 | 0 |
+| Line e Bell juntas | 26 | 13 | 10 | 3 |
+| Dragão | 27 | 24 | 3 | 0 |
+| Magia e criaturas (novo) | 13 | 0 | 3 | 10 |
+| Inimigos (novo) | 5 | 0 | 0 | 5 |
+| Efeitos | 13 | 13 | 0 | 0 |
+| Bichos da fazenda | 67 | 55 | 0 | 12 |
+| Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
+| Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
+| Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Titã de Magma (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Hidra de Lama (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 0 | 9 |
+| Moradores (todos, incluindo os da Parte 2) | 30 | 0 | 0 | 30 |
+| Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
+| Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
+| Line com armadura: Cota de Malha | 23 | 0 | 23 | 0 |
+| Line com armadura: Armadura de Brasa | 23 | 0 | 23 | 0 |
+| Bell com armadura: Vestido Reforçado | 21 | 0 | 21 | 0 |
+| Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
+| Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
+| Outras animações recebidas | 3 | 3 | 0 | 0 |
+| **Total** | **553** | **208** | **179** | **166** |
+
+A lista com cada código está na seção 10 e, só com o que falta, em `ANIMACOES_PENDENTES.md`.
+
+### 22.2 Line e Bell (personagens principais)
+
+- **Line:** todas as animações `LINE_*` da seção 10 (andar, correr, combate, magia, emoções, cenas).
+- **Bell:** as animações `BELL_*` de antes (cenas, jaula, emoções) **e as novas da Bell jogável**: guarda, estrela, leque, estrela no ar, canção, escudo de luz, esquiva, arrancada, dano, queda, cansada, agachar, decidida, comemoração e falando (grupo *Bell jogável (Parte 2)*). Enquanto não chegam, o jogo usa outras poses dela (ex.: o “toca aqui” para atirar a estrela, a dança para o leque).
+- **Retratos dos diálogos:** as 9 expressões de cada uma (seção 11) — faltam Bell brava, Bell chorando e Line envergonhada. **Opcional:** um retrato de cada com armadura.
+
+**Com armadura** — cada armadura precisa do mesmo conjunto de animações principais, com o nome da armadura no código (ex.: `LINE_MALHA_WALK_RIGHT`). Primeiro as de andar/correr/parada nas 4 direções, depois as de combate:
+
+| Heroína | Armadura | Prefixo | Animações pedidas |
+|---|---|---|---|
+| Line | Túnica Acolchoada | `LINE_TUNICA_…` | 23: `ATTACK_COMBO`, `ATTACK_HORIZONTAL`, `ATTACK_SPIN`, `ATTACK_VERTICAL`, `BLOCK`, `CAST_SPELL`, `COMBAT_IDLE`, `DODGE`, `HIT_LIGHT`, `IDLE`, `JUMP`, `KNOCKDOWN`, `RUN`, `WALK` |
+| Line | Cota de Malha | `LINE_MALHA_…` | 23: `ATTACK_COMBO`, `ATTACK_HORIZONTAL`, `ATTACK_SPIN`, `ATTACK_VERTICAL`, `BLOCK`, `CAST_SPELL`, `COMBAT_IDLE`, `DODGE`, `HIT_LIGHT`, `IDLE`, `JUMP`, `KNOCKDOWN`, `RUN`, `WALK` |
+| Line | Armadura de Brasa | `LINE_BRASA_…` | 23: `ATTACK_COMBO`, `ATTACK_HORIZONTAL`, `ATTACK_SPIN`, `ATTACK_VERTICAL`, `BLOCK`, `CAST_SPELL`, `COMBAT_IDLE`, `DODGE`, `HIT_LIGHT`, `IDLE`, `JUMP`, `KNOCKDOWN`, `RUN`, `WALK` |
+| Bell | Vestido Reforçado | `BELL_VESTIDO_…` | 21: `ATTACK_SPREAD`, `ATTACK_STAR`, `BLOCK`, `COMBAT_IDLE`, `DODGE`, `HIT`, `IDLE`, `JUMP`, `KNOCKDOWN`, `RUN`, `SING`, `WALK` |
+| Bell | Manto Estelar | `BELL_ESTELAR_…` | 21: `ATTACK_SPREAD`, `ATTACK_STAR`, `BLOCK`, `COMBAT_IDLE`, `DODGE`, `HIT`, `IDLE`, `JUMP`, `KNOCKDOWN`, `RUN`, `SING`, `WALK` |
+| Bell | Armadura da Aurora | `BELL_AURORA_…` | 21: `ATTACK_SPREAD`, `ATTACK_STAR`, `BLOCK`, `COMBAT_IDLE`, `DODGE`, `HIT`, `IDLE`, `JUMP`, `KNOCKDOWN`, `RUN`, `SING`, `WALK` |
+
+Descrição visual de cada armadura: seção 19.3. **Ícones** de cada armadura para a loja e o HUD (6 ícones).
+
+### 22.3 Moradores e personagens de apoio
+
+| Personagem | Onde | Como é | Animações |
+|---|---|---|---|
+| **Dona Cora** | Parte 2 · Vale das Raízes | Jardineira idosa, irmã do Seu Zé. Coque branco, chapéu de palha, vestido marrom com avental cor de trigo sujo de terra, pele morena, sorriso largo. Segura uma pá pequena. | `CORA_IDLE`, `CORA_TALK`, `CORA_SLEEP` (+ extras na seção 10) · retrato |
+| **Seu Tião** | Parte 2 · Lago Espelhado | Pescador de barba grisalha, chapéu de palha claro, camisa azul arregaçada, vara de pescar no ombro, balde ao lado. Fala alto e ri fácil. | `TIAO_IDLE`, `TIAO_TALK`, `TIAO_SLEEP` (+ extras na seção 10) · retrato |
+| **Vó Brisa** | Parte 2 · Picos do Vento | Pastora bem velhinha e firme, cabelo branco solto voando com o vento, xale lilás-claro, avental branco, cajado de pastor. Ovelhas por perto (pode reaproveitar `SHEEP_*`). | `BRISA_IDLE`, `BRISA_TALK`, `BRISA_SLEEP` (+ extras na seção 10) · retrato |
+| **Dona Rosa** | Vilarejo · loja | Mercadora de coque grisalho, vestido rosa com avental creme. Barraca com potes de poção. | `ROSA_IDLE`, `ROSA_TALK`, `ROSA_SLEEP` (+ extras na seção 10) · retrato |
+| **Seu Bento** | Vilarejo · ferraria | Ferreiro de barba escura, avental de couro, martelo na mão, braços fortes. | `BENTO_IDLE`, `BENTO_TALK`, `BENTO_SLEEP` (+ extras na seção 10) · retrato |
+| **Seu Zé** | Vilarejo | Idoso de cabelo branco, chapéu de palha, bengala, camisa verde. | `ZE_IDLE`, `ZE_TALK`, `ZE_SLEEP` (+ extras na seção 10) · retrato |
+| **Dona Lurdes** | Vilarejo | Mulher do caçador, vestido lilás com avental, cabelo castanho preso. | `LURDES_IDLE`, `LURDES_TALK`, `LURDES_SLEEP` (+ extras na seção 10) · retrato |
+| **Pedrinho** | Vilarejo | Menino de camiseta amarela, cabelo escuro bagunçado, corre o tempo todo. | `PEDRO_IDLE`, `PEDRO_TALK`, `PEDRO_SLEEP` (+ extras na seção 10) · retrato |
+| **Tobias** | Montanha de Brasa | Caçador de barba, chapéu marrom, colete de couro, pé enfaixado. | `TOBIAS_IDLE`, `TOBIAS_TALK`, `TOBIAS_SLEEP` (+ extras na seção 10) · retrato |
+| **Mago** | Floresta | (Parte 1) | `MAGO_*` · retrato |
+| **Espírito das Ruínas** | Ruínas | (Parte 1) | `SPIRIT_*` · retrato |
+| **Dragão amigo** | Fazenda (Parte 2) | O mesmo dragão, com olhar calmo | `DRAGON_TALK`, `DRAGON_BOW`, `DRAGON_CURL_SLEEP` · retrato |
+| **Guardiões libertados** | Vale, lago, picos | Colosso, Serpente e Grifo nas cores verdadeiras | `COLOSSO_FREED`, `SERPENTE_FREED`, `GRIFO_FREED` · retratos |
+
+**Retratos que faltam (personagens):** Mago, Espírito, Guardião de Pedra, Dragão, Dona Rosa, Seu Bento, Seu Zé, Dona Lurdes, Pedrinho, Tobias, Dona Cora, Seu Tião, Vó Brisa, Colosso, Serpente, Grifo, Titã de Magma, Hidra, Tempestade Viva e Quimera.
+
+### 22.4 Inimigos
+
+| Inimigo | Onde | Arte |
+|---|---|---|
+| Sombra | floresta, ruínas, montanha, vale, lago, picos (e as que o Colosso chama) | `SHADOW_*` |
+| Fogo-fátuo azul e de fogo | ruínas, gruta, montanha | `WISP_*` |
+| **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` |
+| **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` |
+| **Fogo-fátuo de ar** (branco, atira pena) | Picos do Vento | `WISP_AIR_IDLE/ATTACK/DEATH` |
+| Morcego | Minas | desenhado no código (sem código de arte ainda) |
+
+### 22.5 Chefes
+
+Cada chefe tem: dormindo, parado, acordando, um ataque genérico, **uma animação por golpe**, cansado (núcleo exposto), dano, derrota e — nos guardiões — libertado. Tamanho sugerido: quadros de 512×512 com o corpo ocupando uns 400 px (como o dragão); a Quimera pode ser maior. Não precisa desenhar sombra no chão: o jogo desenha (inclusive a dos chefes voadores).
+
+| Chefe | Códigos | Aparência |
+|---|---|---|
+| **Colosso de Raízes** | `COLOSSO_SLEEP`, `COLOSSO_IDLE`, `COLOSSO_WAKE`, `COLOSSO_ATTACK`, `COLOSSO_ROOTS`, `COLOSSO_THORNS`, `COLOSSO_MUD`, `COLOSSO_SUMMON`, `COLOSSO_STUNNED`, `COLOSSO_HIT`, `COLOSSO_DEATH`, `COLOSSO_FREED` | Gigante de terra e madeira do tamanho de uma casa: tronco de árvore como corpo, braços de raízes grossas, musgo nos ombros e uma **flor no peito** (o núcleo) que se abre quando ele cansa. **Corrompido:** folhas pretas nas costas, olhos roxos e fumaça colorida saindo das rachaduras. **Libertado (`COLOSSO_FREED`):** folhas verdes, flores brancas brotando, olhos âmbar, sorriso tranquilo. |
+| **Serpente das Marés** | `SERPENTE_SLEEP`, `SERPENTE_IDLE`, `SERPENTE_WAKE`, `SERPENTE_ATTACK`, `SERPENTE_DIVE`, `SERPENTE_WATER_JET`, `SERPENTE_WAVE`, `SERPENTE_STUNNED`, `SERPENTE_HIT`, `SERPENTE_DEATH`, `SERPENTE_FREED` | Serpente-marinha longa, azul com barriga turquesa, barbatanas translúcidas nas costas e uma crista de coral. Mergulha e só a cabeça e parte do corpo aparecem. **Corrompida:** água turva marrom escorrendo, manchas escuras nas escamas, olhos brancos sem pupila. **Libertada:** escamas brilhando como espelho, olhos azul-claro. |
+| **Grifo da Tempestade** | `GRIFO_SLEEP`, `GRIFO_IDLE`, `GRIFO_WAKE`, `GRIFO_ATTACK`, `GRIFO_GUST`, `GRIFO_FEATHERS`, `GRIFO_LIGHTNING`, `GRIFO_STUNNED`, `GRIFO_HIT`, `GRIFO_DEATH`, `GRIFO_FREED` | Águia-leão cinza e branca com asas enormes (abertas ocupam 2× o corpo), penas das asas com faíscas elétricas nas pontas, garras douradas. Voa a maior parte da luta e pousa quando cansa. **Corrompido:** penas eriçadas cinza-chumbo, olhos vermelhos, raios roxos. **Libertado:** penas brancas, olhos dourados, brisa suave em volta. |
+| **Titã de Magma** | `MAGMA_SLEEP`, `MAGMA_IDLE`, `MAGMA_WAKE`, `MAGMA_ATTACK`, `MAGMA_SLAM`, `MAGMA_FIRE_RAIN`, `MAGMA_THROW`, `MAGMA_FIRE_FAN`, `MAGMA_STUNNED`, `MAGMA_HIT`, `MAGMA_DEATH` | Titã de pedra do Guardião (mesmo estilo das ruínas) todo rachado, com **lava escorrendo pelas rachaduras** e um **coração de fogo** no peito (o núcleo). Braços de rocha que batem no chão, pedaços de pedra flutuando nos ombros. Cheio de brasas subindo. Quando cansa, a casca se abre e o coração fica exposto, pulsando. |
+| **Hidra de Lama** | `HIDRA_SLEEP`, `HIDRA_IDLE`, `HIDRA_WAKE`, `HIDRA_ATTACK`, `HIDRA_ROOTS`, `HIDRA_WATER_JET`, `HIDRA_WAVE`, `HIDRA_DIVE`, `HIDRA_MUD`, `HIDRA_STUNNED`, `HIDRA_HIT`, `HIDRA_DEATH` | Três cabeças de serpente feitas de lama e raízes saindo de um charco. O corpo fica afundado; as cabeças se mexem separadas (uma cospe lama, outra água, a do meio morde). Olhos amarelos, bocas escorrendo lama. Quando cansa, as três cabeças afundam e só o núcleo (uma bolha de lama brilhante) aparece. |
+| **Tempestade Viva** | `TEMPESTADE_SLEEP`, `TEMPESTADE_IDLE`, `TEMPESTADE_WAKE`, `TEMPESTADE_ATTACK`, `TEMPESTADE_LIGHTNING`, `TEMPESTADE_GUST`, `TEMPESTADE_WATER_JET`, `TEMPESTADE_WAVE`, `TEMPESTADE_FEATHERS`, `TEMPESTADE_STUNNED`, `TEMPESTADE_HIT`, `TEMPESTADE_DEATH` | Uma nuvem escura com rosto (olhos brancos brilhantes e boca de trovão), braços de vento em espiral, chuva caindo por baixo e raios entre as nuvens. Paira no ar. No centro fica o **olho da tempestade**, um redemoinho claro que é o núcleo. Quando cansa, desce ao chão e o olho abre. |
+| **Quimera Primordial** | `QUIMERA_SLEEP`, `QUIMERA_IDLE`, `QUIMERA_WAKE`, `QUIMERA_ATTACK`, `QUIMERA_SLAM`, `QUIMERA_THROW`, `QUIMERA_FIRE_RAIN`, `QUIMERA_FIRE_FAN`, `QUIMERA_ROOTS`, `QUIMERA_THORNS`, `QUIMERA_MUD`, `QUIMERA_DIVE`, `QUIMERA_WATER_JET`, `QUIMERA_WAVE`, `QUIMERA_GUST`, `QUIMERA_FEATHERS`, `QUIMERA_LIGHTNING`, `QUIMERA_STUNNED`, `QUIMERA_HIT`, `QUIMERA_DEATH`, `QUIMERA_PHASE`, `QUIMERA_CALM` | A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo. |
+| Guardião de Pedra (Parte 1) | `GOLEM_*` | já catalogado |
+| Dragão Vermelho (Parte 1) | `DRAGON_*` | arte nova recebida |
+
+### 22.6 Cenário de cada fase
+
+Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). Objetos com altura (casas, árvores, pilares, faróis) vêm como imagem inteira, com a base na linha de baixo.
+
+**Parte 1:**
+
+| Área | Já tem arte (temporária) | Precisa de arte |
+|---|---|---|
+| Fazendinha | casa, celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta, feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela; **dragão dormindo enrolado perto da casa** (Parte 2) |
+| Vilarejo do Riacho | — | chão, casas coloridas, barraca da feira, bigorna, fonte da praça, quadro de avisos, riacho, estação do carrinho, trilhos, **estrada nova para o leste (Parte 2)**, janelas acesas e lampiões à noite |
+| Floresta Sussurrante | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras, cabana do caçador, lago com ilha, postes do gancho, pedra rachada |
+| Gruta dos Ecos e Minas | — | chão e paredes azuladas, água funda, estalagmites, cogumelos luminosos, fonte, porta de ferro, baús, trilhos, estação, abismo |
+| Ruínas Encantadas | — | chão de lajes, paredes, pilares, cristais (apagado e aceso), altar com orbe, fonte, barreira de luz, lagos, baú |
+| Montanha de Brasa | — | chão vulcânico, paredes, fendas, lava, tochas (apagada e acesa), portão de fogo, bigorna da forja, brasa rasa, estação |
+| Covil do Dragão | — | chão, paredes, lava, estalagmites, jaula da Bell |
+
+**Parte 2 (tudo novo, tudo desenhado no código hoje):**
+
+| Fase | Visual geral | Tiles e objetos | Ambientação |
+|---|---|---|---|
+| **Vale das Raízes (Terra)** | Grama dourada-esverdeada de fim de verão, caminhos de terra batida, bosque de árvores largas. | chão de grama do vale (3 variações) e caminho de terra; raízes grossas atravessando o chão (tile `r`, correr derruba); lama (tile `u`, deixa lenta): charco marrom com reflexo; casa da Dona Cora (telhado de sapê, chaminé) e a horta de raízes; 3 **cristais de terra** (apagado: pedra verde opaca; aceso: verde-limão brilhando); anel de pedras do ninho do Colosso e a **barreira de raízes** (raízes entrelaçadas que recolhem ao abrir); fonte do vale; placas; baús; pedra rachada do recanto sudeste (bomba); flores do campo, mato alto, árvores do vale | borboletas, pássaros, folhas caindo; à noite, vaga-lumes e a janela da casa da Cora acesa |
+| **Fenda de Magma (Pedra + Fogo)** | Caverna vulcânica: rocha escura avermelhada, rios de lava nas bordas. | chão de rocha vulcânica e paredes; lava (tile `L`) e **brasa rasa** (tile `l`); estalagmites; fonte das brasas; placa | brasas subindo, calor tremendo o ar, vinheta vermelha |
+| **Lago Espelhado (Água)** | Margens verdes, água azul muito limpa (depois da vitória) ou turva (antes), uma ilha no meio. | grama da margem e areia da beira d’água; água rasa (riacho `w`, pula) e funda (`~`); ponte de madeira até a ilha; **parede de água** da ponte (barreira que cai como cachoeira ao abrir); 3 **pérolas-cristal** (conchas com pérola; apagada: cinza; acesa: azul brilhando); casa e píer do Seu Tião, barco, redes; fonte do lago; placas, baús, flores | reflexos animados na água, patos (`DUCK_*`), bolhas onde a Serpente nada; à noite, estrelas refletidas no lago |
+| **Pântano Sombrio (Terra + Água)** | Charco verde-escuro, árvores mortas, névoa baixa. | grama escura encharcada; lama (tile `u`); água parada verde-escura; árvores retorcidas sem folhas; fonte, placa, baú | garoa constante, vaga-lumes verdes, névoa, sapos (arte opcional) |
+| **Picos do Vento (Ar)** | Platôs de pedra clara acima das nuvens, abismo de céu entre eles. | chão de pedra clara e bordas de penhasco; **abismo de céu** (tile `j`): nuvens lá embaixo, céu azul; **corrente de vento** (tiles `>` e `<`): riscos brancos animados no chão; 3 **faróis do vento** (tocha alta; apagado: pedra; aceso: chama branco-azulada); muro do ninho do Grifo e a barreira; pedras, estalagmites, fonte, placas, baús; ninho do Grifo (galhos e penas) | nuvens passando por baixo, pássaros, penas voando; ovelhas da Vó Brisa |
+| **Olho da Tempestade (Água + Ar)** | Ilha de pedra escura cercada de céu de tempestade. | chão de lajes azul-escuras molhadas; abismo de céu escuro com nuvens de chuva; fonte, placa | chuva forte inclinada, relâmpagos que clareiam a tela, poças |
+| **Coração dos Elementos (todos)** | Salão de cristal roxo no alto dos picos, com cinco pilares, um por elemento. | chão de lajes roxas; paredes de cristal escuro; 5 **pilares dos elementos** (pedra, fogo, terra, água, ar — cada um com o símbolo e a cor); fonte, placa; portal de entrada (abre depois das três junções) | partículas das cinco cores flutuando, vinheta roxa; no final, as cinco luzes subindo ao céu |
+
+**Objetos que aparecem em várias fases:** baú (fechado/aberto), placa, fonte (e o brilho de descanso à noite), barreira de luz (e as variações de raízes, parede de água e muro de vento), porta de ferro, parede/pedra rachada, poste do gancho, trilhos e estação, bigorna, documentos no chão, moedas no chão, coração e cristal de magia caídos.
+
+### 22.7 Itens, moedas e documentos
+
+| Item | Hoje | Precisa |
+|---|---|---|
+| Poção de Vida | 🧪 (emoji) | ícone 32×32 e 64×64 para a mochila; desenho no chão/na mão |
+| Elixir de Luz | 💧 (emoji) | ícone 32×32 e 64×64 para a mochila; desenho no chão/na mão |
+| Bomba | 💣 (emoji) | ícone 32×32 e 64×64 para a mochila; desenho no chão/na mão |
+| Pena de Fênix | 🪶 (emoji) | ícone 32×32 e 64×64 para a mochila; desenho no chão/na mão |
+| Chave antiga | 🗝️ (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Lanterna | 🏮 (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Gancho | 🪝 (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Bússola do Mago | 🧭 (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Botas de Andarilha | 👢 (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Alavanca de Ferro | ⚙️ (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Escama da Terra | 🟢 (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Escama da Água | 🔵 (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Pena-escama do Ar | ⚪ (emoji) | ícone 32×32 e 64×64 para a mochila; ícone na lista |
+| Moedas | desenho no código | moeda girando (4 quadros) e o saquinho do HUD |
+
+**Documentos (15):** um ícone para cada (hoje emoji) e, se possível, uma **ilustração do papel** para a tela de leitura (carta dobrada, pergaminho, cartaz, diário, relatório, receita, mapa rasgado, fita, escama, pena…): Marcas de garra no píer, Cartaz do vilarejo, Carta do Mago, Bilhete do caçador, A lenda da Montanha, Mapa rasgado, Relatório do capataz, Diário do Guardião, página 1, Diário do Guardião, página 2, Receita da Armadura de Brasa, Escama vermelha, Fita de cabelo da Bell, Diário da Dona Cora, Canção das águas, Pena de tempestade.
+
+### 22.8 Interface (HUD, menus e telas)
+
+- **Corações** (cheio, meio, vazio), **escudos** (cheio e vazio) e **gotas de magia**.
+- **Relógio:** moldura do topo, ícones de sol, sol nascendo/se pondo e lua, e o número do dia.
+- **Vida da outra heroína:** mini-retrato da Line e da Bell para o painel pequeno.
+- **Botões de toque:** atacar, giro/leque, esquivar, pular, defender, magia/canção, poção, item, mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).
+- **Seta guia do Fácil** (dourada) e o balão de dica 💡.
+- **Barra de chefe** com moldura e o ícone do elemento (pedra, fogo, terra, água, ar e o da Quimera), e a versão “núcleo exposto”.
+- **Mapa do mundo:** ilustração em pergaminho com as 14 regiões (7 da Parte 1 e 7 da Parte 2), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌋 🌊 🐸 🏔️ ⛈️ 💠.
+- **Mapa da área:** cores/ícones de baú, fonte, placa, altar, cristal, tocha, farol, pérola, porta, estação, morador e alfinete.
+- **Telas:** título do jogo, título “Parte 2 — O Coração dos Elementos”, títulos de capítulo, tela de derrota (“As duas caíram…”), loja e ferraria (fundo de balcão), leitor de documentos, “Fim da Parte 2”.
+
+### 22.9 Efeitos
+
+- **Bell:** estrela rosa (projétil + brilho ao sair), leque de três estrelas de luz, **notas musicais coloridas** da canção, anel rosa da canção, escudo de luz, brilho da troca de heroína.
+- **Chefes:** projéteis de lama, água, pena, rocha e bola de fogo; **avisos no chão** de cada estilo (raiz rachando a terra, bolha de água, círculo de raio, anel de espinhos, poça de lava, poça de lama); rajada de vento; relâmpago; poça borbulhando; núcleo exposto brilhando; guardião libertado (luz da cor do elemento); mudança de fase da Quimera; as cinco luzes subindo no final.
+- **Fases:** riscos de vento no chão (animado), chuva e respingos, relâmpago na tela, névoa do pântano, brasas da fenda, nuvens passando embaixo dos picos, partículas das cinco cores no Coração.
+- **Dia e noite:** vaga-lumes (amarelos, verdes e roxos), estrelas no céu, janelas e lampiões acesos à noite, brilho da fonte ao descansar, tons de amanhecer e entardecer.
+- Os efeitos da Parte 1 continuam na seção 13 (`FX_*`).
+
+### 22.10 Ordem sugerida para produzir
+
+1. **Bell jogável** (guarda, estrela, leque, canção, dano, queda) — é o que a jogadora mais vê na Parte 2.
+2. **Os sete chefes** (parado, ataque genérico, cansado, derrota) — depois os golpes um a um.
+3. **Tiles das fases novas** (chão, paredes, lama, vento, abismo de céu) e os objetos de puzzle (cristais de terra, pérolas, faróis).
+4. **Moradores** (Cora, Tião, Brisa e os do vilarejo) e o **dragão amigo**.
+5. **Armaduras** das duas (parada/andar/correr primeiro).
+6. **Retratos** que faltam, ícones de itens e documentos, interface e efeitos.
 
 ---
 

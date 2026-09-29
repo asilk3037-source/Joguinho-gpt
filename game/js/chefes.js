@@ -62,6 +62,8 @@
     agua: ['mergulho', 'jatos', 'onda'], ar: ['rajada', 'penas', 'raios'],
   };
   const DURACAO = { pisao: 1.9, rocha: 1.4, chuvaFogo: 2.2, lequeFogo: 1.3, raizes: 2.0, espinhosAnel: 1.8, lama: 1.3, invocar: 1.2, mergulho: 2.6, jatos: 1.3, onda: 1.8, rajada: 2.6, penas: 1.4, raios: 2.0 };
+  // Sufixo da animação de cada golpe (ex.: COLOSSO_ROOTS). Sem arte, usa o <CODIGO>_ATTACK.
+  const ANIM_ATAQUE = { pisao: 'SLAM', rocha: 'THROW', chuvaFogo: 'FIRE_RAIN', lequeFogo: 'FIRE_FAN', raizes: 'ROOTS', espinhosAnel: 'THORNS', lama: 'MUD', invocar: 'SUMMON', mergulho: 'DIVE', jatos: 'WATER_JET', onda: 'WAVE', rajada: 'GUST', penas: 'FEATHERS', raios: 'LIGHTNING' };
   const ELEM_ATAQUE = { pisao: 'pedra', rocha: 'pedra', chuvaFogo: 'fogo', lequeFogo: 'fogo', raizes: 'terra', espinhosAnel: 'terra', lama: 'terra', invocar: 'terra', mergulho: 'agua', jatos: 'agua', onda: 'agua', rajada: 'ar', penas: 'ar', raios: 'ar' };
 
   class Chefe {
@@ -104,7 +106,8 @@
       this.t += dt; this.flash = Math.max(0, this.flash - dt); this.recarga = Math.max(0, this.recarga - dt);
       this.encantado = Math.max(0, (this.encantado || 0) - dt);
       this.anim.atualizar(dt);
-      this.anim.tocar(this.def.codigo + '_' + ({ atacar: 'ATTACK', exausto: 'STUNNED', morrendo: 'DEATH', submerso: 'DIVE' }[this.estado] || 'IDLE'));
+      const golpe = this.estado === 'atacar' && ANIM_ATAQUE[this.ataque];
+      this.anim.tocar(this.def.codigo + '_' + (golpe || { dormindo: 'SLEEP', exausto: 'STUNNED', morrendo: 'DEATH', submerso: 'DIVE' }[this.estado] || 'IDLE'));
       atualizarPerigos(this, j, dt);
       if (this.dormindo || (j.cena && this.estado !== 'morrendo')) return;
       const l = j.line;
@@ -524,5 +527,5 @@
     g.strokeRect(T(x0), T(y0), T(x1 - x0 + 1), T(y1 - y0 + 1)); g.setLineDash([]);
   }
 
-  LB.chefes = { ELEM, CHEFES, POR_ELEMENTO, Chefe, prepararArea, atualizarArena, desenharArena };
+  LB.chefes = { ELEM, CHEFES, POR_ELEMENTO, ANIM_ATAQUE, Chefe, prepararArea, atualizarArena, desenharArena };
 })(window.LB);

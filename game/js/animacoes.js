@@ -300,6 +300,265 @@ window.LB = window.LB || {};
     ['BELL_TALK', 'Bell falando (cenas)', { face: 'F', loop: true, quadros: 8, alt: 'BELL_IDLE_FRONT', parte2: true }],
   ]);
 
+  grupo('Chefe: Colosso de Raízes (Parte 2)', [
+    ['COLOSSO_SLEEP', 'Colosso de Raízes — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'COLOSSO_IDLE', parte2: true }],
+    ['COLOSSO_IDLE', 'Colosso de Raízes — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['COLOSSO_WAKE', 'Colosso de Raízes — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'COLOSSO_IDLE', parte2: true }],
+    ['COLOSSO_ATTACK', 'Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'COLOSSO_IDLE', parte2: true }],
+    ['COLOSSO_ROOTS', 'Colosso de Raízes — raízes saindo do chão em linha', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
+    ['COLOSSO_THORNS', 'Colosso de Raízes — anel de espinhos', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
+    ['COLOSSO_MUD', 'Colosso de Raízes — cuspe de lama', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
+    ['COLOSSO_SUMMON', 'Colosso de Raízes — chama sombras', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
+    ['COLOSSO_STUNNED', 'Colosso de Raízes — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'COLOSSO_IDLE', parte2: true }],
+    ['COLOSSO_HIT', 'Colosso de Raízes — recebe dano', { fps: 12, quadros: 4, alt: 'COLOSSO_STUNNED', parte2: true }],
+    ['COLOSSO_DEATH', 'Colosso de Raízes — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'COLOSSO_STUNNED', parte2: true }],
+    ['COLOSSO_FREED', 'Colosso de Raízes — libertado, volta às cores verdadeiras e agradece', { loop: true, fps: 6, quadros: 12, alt: 'COLOSSO_IDLE', parte2: true }],
+  ]);
+
+  grupo('Chefe: Serpente das Marés (Parte 2)', [
+    ['SERPENTE_SLEEP', 'Serpente das Marés — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'SERPENTE_IDLE', parte2: true }],
+    ['SERPENTE_IDLE', 'Serpente das Marés — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['SERPENTE_WAKE', 'Serpente das Marés — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'SERPENTE_IDLE', parte2: true }],
+    ['SERPENTE_ATTACK', 'Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'SERPENTE_IDLE', parte2: true }],
+    ['SERPENTE_DIVE', 'Serpente das Marés — mergulho (some e reaparece)', { fps: 10, quadros: 10, alt: 'SERPENTE_ATTACK', parte2: true }],
+    ['SERPENTE_WATER_JET', 'Serpente das Marés — jatos de água', { fps: 10, quadros: 10, alt: 'SERPENTE_ATTACK', parte2: true }],
+    ['SERPENTE_WAVE', 'Serpente das Marés — onda', { fps: 10, quadros: 10, alt: 'SERPENTE_ATTACK', parte2: true }],
+    ['SERPENTE_STUNNED', 'Serpente das Marés — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'SERPENTE_IDLE', parte2: true }],
+    ['SERPENTE_HIT', 'Serpente das Marés — recebe dano', { fps: 12, quadros: 4, alt: 'SERPENTE_STUNNED', parte2: true }],
+    ['SERPENTE_DEATH', 'Serpente das Marés — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'SERPENTE_STUNNED', parte2: true }],
+    ['SERPENTE_FREED', 'Serpente das Marés — libertado, volta às cores verdadeiras e agradece', { loop: true, fps: 6, quadros: 12, alt: 'SERPENTE_IDLE', parte2: true }],
+  ]);
+
+  grupo('Chefe: Grifo da Tempestade (Parte 2)', [
+    ['GRIFO_SLEEP', 'Grifo da Tempestade — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'GRIFO_IDLE', parte2: true }],
+    ['GRIFO_IDLE', 'Grifo da Tempestade — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['GRIFO_WAKE', 'Grifo da Tempestade — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'GRIFO_IDLE', parte2: true }],
+    ['GRIFO_ATTACK', 'Grifo da Tempestade — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'GRIFO_IDLE', parte2: true }],
+    ['GRIFO_GUST', 'Grifo da Tempestade — rajada de vento', { fps: 10, quadros: 10, alt: 'GRIFO_ATTACK', parte2: true }],
+    ['GRIFO_FEATHERS', 'Grifo da Tempestade — leque de penas', { fps: 10, quadros: 10, alt: 'GRIFO_ATTACK', parte2: true }],
+    ['GRIFO_LIGHTNING', 'Grifo da Tempestade — chama raios', { fps: 10, quadros: 10, alt: 'GRIFO_ATTACK', parte2: true }],
+    ['GRIFO_STUNNED', 'Grifo da Tempestade — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'GRIFO_IDLE', parte2: true }],
+    ['GRIFO_HIT', 'Grifo da Tempestade — recebe dano', { fps: 12, quadros: 4, alt: 'GRIFO_STUNNED', parte2: true }],
+    ['GRIFO_DEATH', 'Grifo da Tempestade — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'GRIFO_STUNNED', parte2: true }],
+    ['GRIFO_FREED', 'Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece', { loop: true, fps: 6, quadros: 12, alt: 'GRIFO_IDLE', parte2: true }],
+  ]);
+
+  grupo('Chefe: Titã de Magma (Parte 2)', [
+    ['MAGMA_SLEEP', 'Titã de Magma — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'MAGMA_IDLE', parte2: true }],
+    ['MAGMA_IDLE', 'Titã de Magma — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['MAGMA_WAKE', 'Titã de Magma — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'MAGMA_IDLE', parte2: true }],
+    ['MAGMA_ATTACK', 'Titã de Magma — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'MAGMA_IDLE', parte2: true }],
+    ['MAGMA_SLAM', 'Titã de Magma — pisão (onda no chão)', { fps: 10, quadros: 10, alt: 'MAGMA_ATTACK', parte2: true }],
+    ['MAGMA_FIRE_RAIN', 'Titã de Magma — chuva de fogo', { fps: 10, quadros: 10, alt: 'MAGMA_ATTACK', parte2: true }],
+    ['MAGMA_THROW', 'Titã de Magma — arremesso de rocha', { fps: 10, quadros: 10, alt: 'MAGMA_ATTACK', parte2: true }],
+    ['MAGMA_FIRE_FAN', 'Titã de Magma — leque de fogo', { fps: 10, quadros: 10, alt: 'MAGMA_ATTACK', parte2: true }],
+    ['MAGMA_STUNNED', 'Titã de Magma — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'MAGMA_IDLE', parte2: true }],
+    ['MAGMA_HIT', 'Titã de Magma — recebe dano', { fps: 12, quadros: 4, alt: 'MAGMA_STUNNED', parte2: true }],
+    ['MAGMA_DEATH', 'Titã de Magma — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'MAGMA_STUNNED', parte2: true }],
+  ]);
+
+  grupo('Chefe: Hidra de Lama (Parte 2)', [
+    ['HIDRA_SLEEP', 'Hidra de Lama — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'HIDRA_IDLE', parte2: true }],
+    ['HIDRA_IDLE', 'Hidra de Lama — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['HIDRA_WAKE', 'Hidra de Lama — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'HIDRA_IDLE', parte2: true }],
+    ['HIDRA_ATTACK', 'Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'HIDRA_IDLE', parte2: true }],
+    ['HIDRA_ROOTS', 'Hidra de Lama — raízes saindo do chão em linha', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
+    ['HIDRA_WATER_JET', 'Hidra de Lama — jatos de água', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
+    ['HIDRA_WAVE', 'Hidra de Lama — onda', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
+    ['HIDRA_DIVE', 'Hidra de Lama — mergulho (some e reaparece)', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
+    ['HIDRA_MUD', 'Hidra de Lama — cuspe de lama', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
+    ['HIDRA_STUNNED', 'Hidra de Lama — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'HIDRA_IDLE', parte2: true }],
+    ['HIDRA_HIT', 'Hidra de Lama — recebe dano', { fps: 12, quadros: 4, alt: 'HIDRA_STUNNED', parte2: true }],
+    ['HIDRA_DEATH', 'Hidra de Lama — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'HIDRA_STUNNED', parte2: true }],
+  ]);
+
+  grupo('Chefe: Tempestade Viva (Parte 2)', [
+    ['TEMPESTADE_SLEEP', 'Tempestade Viva — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_IDLE', 'Tempestade Viva — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['TEMPESTADE_WAKE', 'Tempestade Viva — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_ATTACK', 'Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_LIGHTNING', 'Tempestade Viva — chama raios', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_GUST', 'Tempestade Viva — rajada de vento', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_WATER_JET', 'Tempestade Viva — jatos de água', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_WAVE', 'Tempestade Viva — onda', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_FEATHERS', 'Tempestade Viva — leque de penas', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_STUNNED', 'Tempestade Viva — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_HIT', 'Tempestade Viva — recebe dano', { fps: 12, quadros: 4, alt: 'TEMPESTADE_STUNNED', parte2: true }],
+    ['TEMPESTADE_DEATH', 'Tempestade Viva — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'TEMPESTADE_STUNNED', parte2: true }],
+  ]);
+
+  grupo('Chefe: Quimera Primordial (Parte 2)', [
+    ['QUIMERA_SLEEP', 'Quimera Primordial — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'QUIMERA_IDLE', parte2: true }],
+    ['QUIMERA_IDLE', 'Quimera Primordial — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['QUIMERA_WAKE', 'Quimera Primordial — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'QUIMERA_IDLE', parte2: true }],
+    ['QUIMERA_ATTACK', 'Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'QUIMERA_IDLE', parte2: true }],
+    ['QUIMERA_SLAM', 'Quimera Primordial — pisão (onda no chão)', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_THROW', 'Quimera Primordial — arremesso de rocha', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_FIRE_RAIN', 'Quimera Primordial — chuva de fogo', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_FIRE_FAN', 'Quimera Primordial — leque de fogo', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_ROOTS', 'Quimera Primordial — raízes saindo do chão em linha', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_THORNS', 'Quimera Primordial — anel de espinhos', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_MUD', 'Quimera Primordial — cuspe de lama', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_DIVE', 'Quimera Primordial — mergulho (some e reaparece)', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_WATER_JET', 'Quimera Primordial — jatos de água', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_WAVE', 'Quimera Primordial — onda', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_GUST', 'Quimera Primordial — rajada de vento', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_FEATHERS', 'Quimera Primordial — leque de penas', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_LIGHTNING', 'Quimera Primordial — chama raios', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_STUNNED', 'Quimera Primordial — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'QUIMERA_IDLE', parte2: true }],
+    ['QUIMERA_HIT', 'Quimera Primordial — recebe dano', { fps: 12, quadros: 4, alt: 'QUIMERA_STUNNED', parte2: true }],
+    ['QUIMERA_DEATH', 'Quimera Primordial — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'QUIMERA_STUNNED', parte2: true }],
+    ['QUIMERA_PHASE', 'Quimera — muda de fase (troca a cor do núcleo e o elemento)', { fps: 10, quadros: 12, alt: 'QUIMERA_WAKE', parte2: true }],
+    ['QUIMERA_CALM', 'Quimera — acalmada no final (“é... quente”)', { loop: true, fps: 4, quadros: 8, alt: 'QUIMERA_STUNNED', parte2: true }],
+  ]);
+
+  grupo('Fogos-fátuos dos elementos (Parte 2)', [
+    ['WISP_EARTH_IDLE', 'Fogo-fátuo de terra (verde-musgo) — flutuando', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
+    ['WISP_EARTH_ATTACK', 'Fogo-fátuo de terra (verde-musgo) — atirando', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
+    ['WISP_EARTH_DEATH', 'Fogo-fátuo de terra (verde-musgo) — apagando', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
+    ['WISP_WATER_IDLE', 'Fogo-fátuo de água (azul) — flutuando', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
+    ['WISP_WATER_ATTACK', 'Fogo-fátuo de água (azul) — atirando', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
+    ['WISP_WATER_DEATH', 'Fogo-fátuo de água (azul) — apagando', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
+    ['WISP_AIR_IDLE', 'Fogo-fátuo de ar (branco) — flutuando', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
+    ['WISP_AIR_ATTACK', 'Fogo-fátuo de ar (branco) — atirando', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
+    ['WISP_AIR_DEATH', 'Fogo-fátuo de ar (branco) — apagando', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
+  ]);
+
+  grupo('Moradores (todos, incluindo os da Parte 2)', [
+    ['CORA_IDLE', 'Dona Cora (jardineira do vale) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['CORA_TALK', 'Dona Cora (jardineira do vale) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'CORA_IDLE', parte2: true }],
+    ['CORA_SLEEP', 'Dona Cora (jardineira do vale) — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'CORA_IDLE', parte2: true }],
+    ['TIAO_IDLE', 'Seu Tião (pescador do lago) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['TIAO_TALK', 'Seu Tião (pescador do lago) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'TIAO_IDLE', parte2: true }],
+    ['TIAO_SLEEP', 'Seu Tião (pescador do lago) — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'TIAO_IDLE', parte2: true }],
+    ['BRISA_IDLE', 'Vó Brisa (pastora dos picos) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['BRISA_TALK', 'Vó Brisa (pastora dos picos) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'BRISA_IDLE', parte2: true }],
+    ['BRISA_SLEEP', 'Vó Brisa (pastora dos picos) — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'BRISA_IDLE', parte2: true }],
+    ['ROSA_IDLE', 'Dona Rosa (loja) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['ROSA_TALK', 'Dona Rosa (loja) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'ROSA_IDLE', parte2: true }],
+    ['ROSA_SLEEP', 'Dona Rosa (loja) — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'ROSA_IDLE', parte2: true }],
+    ['BENTO_IDLE', 'Seu Bento (ferraria) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['BENTO_TALK', 'Seu Bento (ferraria) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'BENTO_IDLE', parte2: true }],
+    ['BENTO_SLEEP', 'Seu Bento (ferraria) — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'BENTO_IDLE', parte2: true }],
+    ['ZE_IDLE', 'Seu Zé — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['ZE_TALK', 'Seu Zé — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'ZE_IDLE', parte2: true }],
+    ['ZE_SLEEP', 'Seu Zé — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'ZE_IDLE', parte2: true }],
+    ['LURDES_IDLE', 'Dona Lurdes — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['LURDES_TALK', 'Dona Lurdes — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'LURDES_IDLE', parte2: true }],
+    ['LURDES_SLEEP', 'Dona Lurdes — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'LURDES_IDLE', parte2: true }],
+    ['PEDRO_IDLE', 'Pedrinho — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['PEDRO_TALK', 'Pedrinho — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'PEDRO_IDLE', parte2: true }],
+    ['PEDRO_SLEEP', 'Pedrinho — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'PEDRO_IDLE', parte2: true }],
+    ['TOBIAS_IDLE', 'Tobias (caçador) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['TOBIAS_TALK', 'Tobias (caçador) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'TOBIAS_IDLE', parte2: true }],
+    ['TOBIAS_SLEEP', 'Tobias (caçador) — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'TOBIAS_IDLE', parte2: true }],
+    ['TIAO_FISH', 'Seu Tião — pescando no píer', { loop: true, fps: 6, quadros: 12, alt: 'TIAO_IDLE', parte2: true }],
+    ['BENTO_FORGE', 'Seu Bento — martelando na bigorna', { loop: true, fps: 8, quadros: 8, alt: 'BENTO_IDLE', parte2: true }],
+    ['PEDRO_RUN', 'Pedrinho — correndo pra lá e pra cá', { loop: true, fps: 10, quadros: 8, alt: 'PEDRO_IDLE', parte2: true }],
+  ]);
+
+  grupo('Dragão amigo (Parte 2)', [
+    ['DRAGON_TALK', 'Dragão falando calmo (abertura da Parte 2)', { loop: true, fps: 4, quadros: 6, alt: 'DRAGON_IDLE', parte2: true }],
+    ['DRAGON_BOW', 'Dragão abaixa a cabeça (pede ajuda / agradece)', { fps: 6, quadros: 8, alt: 'DRAGON_IDLE', parte2: true }],
+    ['DRAGON_CURL_SLEEP', 'Dragão dormindo enrolado perto da casa (fazenda)', { loop: true, fps: 2, quadros: 4, alt: 'DRAGON_SLEEP', parte2: true }],
+  ]);
+
+  grupo('Line com armadura: Túnica Acolchoada', [
+    ['LINE_TUNICA_IDLE', 'Line com Túnica Acolchoada — parada', { dir: QUATRO, alt: 'LINE_IDLE', parte2: true }],
+    ['LINE_TUNICA_WALK', 'Line com Túnica Acolchoada — andando', { dir: QUATRO, alt: 'LINE_WALK', parte2: true }],
+    ['LINE_TUNICA_RUN', 'Line com Túnica Acolchoada — correndo', { dir: QUATRO, alt: 'LINE_RUN', parte2: true }],
+    ['LINE_TUNICA_COMBAT_IDLE', 'Line com Túnica Acolchoada — em guarda', { alt: 'LINE_COMBAT_IDLE', parte2: true }],
+    ['LINE_TUNICA_ATTACK_HORIZONTAL', 'Line com Túnica Acolchoada — golpe horizontal', { alt: 'LINE_ATTACK_HORIZONTAL', parte2: true }],
+    ['LINE_TUNICA_ATTACK_VERTICAL', 'Line com Túnica Acolchoada — golpe vertical', { alt: 'LINE_ATTACK_VERTICAL', parte2: true }],
+    ['LINE_TUNICA_ATTACK_COMBO', 'Line com Túnica Acolchoada — golpe final do combo', { alt: 'LINE_ATTACK_COMBO', parte2: true }],
+    ['LINE_TUNICA_ATTACK_SPIN', 'Line com Túnica Acolchoada — giro', { alt: 'LINE_ATTACK_SPIN', parte2: true }],
+    ['LINE_TUNICA_CAST_SPELL', 'Line com Túnica Acolchoada — Raio de Luz', { alt: 'LINE_CAST_SPELL', parte2: true }],
+    ['LINE_TUNICA_BLOCK', 'Line com Túnica Acolchoada — defesa', { alt: 'LINE_BLOCK', parte2: true }],
+    ['LINE_TUNICA_DODGE', 'Line com Túnica Acolchoada — esquiva', { alt: 'LINE_DODGE', parte2: true }],
+    ['LINE_TUNICA_JUMP', 'Line com Túnica Acolchoada — pulo', { alt: 'LINE_JUMP', parte2: true }],
+    ['LINE_TUNICA_HIT_LIGHT', 'Line com Túnica Acolchoada — recebe dano', { alt: 'LINE_HIT_LIGHT', parte2: true }],
+    ['LINE_TUNICA_KNOCKDOWN', 'Line com Túnica Acolchoada — cai no chão', { alt: 'LINE_KNOCKDOWN', parte2: true }],
+  ]);
+
+  grupo('Line com armadura: Cota de Malha', [
+    ['LINE_MALHA_IDLE', 'Line com Cota de Malha — parada', { dir: QUATRO, alt: 'LINE_IDLE', parte2: true }],
+    ['LINE_MALHA_WALK', 'Line com Cota de Malha — andando', { dir: QUATRO, alt: 'LINE_WALK', parte2: true }],
+    ['LINE_MALHA_RUN', 'Line com Cota de Malha — correndo', { dir: QUATRO, alt: 'LINE_RUN', parte2: true }],
+    ['LINE_MALHA_COMBAT_IDLE', 'Line com Cota de Malha — em guarda', { alt: 'LINE_COMBAT_IDLE', parte2: true }],
+    ['LINE_MALHA_ATTACK_HORIZONTAL', 'Line com Cota de Malha — golpe horizontal', { alt: 'LINE_ATTACK_HORIZONTAL', parte2: true }],
+    ['LINE_MALHA_ATTACK_VERTICAL', 'Line com Cota de Malha — golpe vertical', { alt: 'LINE_ATTACK_VERTICAL', parte2: true }],
+    ['LINE_MALHA_ATTACK_COMBO', 'Line com Cota de Malha — golpe final do combo', { alt: 'LINE_ATTACK_COMBO', parte2: true }],
+    ['LINE_MALHA_ATTACK_SPIN', 'Line com Cota de Malha — giro', { alt: 'LINE_ATTACK_SPIN', parte2: true }],
+    ['LINE_MALHA_CAST_SPELL', 'Line com Cota de Malha — Raio de Luz', { alt: 'LINE_CAST_SPELL', parte2: true }],
+    ['LINE_MALHA_BLOCK', 'Line com Cota de Malha — defesa', { alt: 'LINE_BLOCK', parte2: true }],
+    ['LINE_MALHA_DODGE', 'Line com Cota de Malha — esquiva', { alt: 'LINE_DODGE', parte2: true }],
+    ['LINE_MALHA_JUMP', 'Line com Cota de Malha — pulo', { alt: 'LINE_JUMP', parte2: true }],
+    ['LINE_MALHA_HIT_LIGHT', 'Line com Cota de Malha — recebe dano', { alt: 'LINE_HIT_LIGHT', parte2: true }],
+    ['LINE_MALHA_KNOCKDOWN', 'Line com Cota de Malha — cai no chão', { alt: 'LINE_KNOCKDOWN', parte2: true }],
+  ]);
+
+  grupo('Line com armadura: Armadura de Brasa', [
+    ['LINE_BRASA_IDLE', 'Line com Armadura de Brasa — parada', { dir: QUATRO, alt: 'LINE_IDLE', parte2: true }],
+    ['LINE_BRASA_WALK', 'Line com Armadura de Brasa — andando', { dir: QUATRO, alt: 'LINE_WALK', parte2: true }],
+    ['LINE_BRASA_RUN', 'Line com Armadura de Brasa — correndo', { dir: QUATRO, alt: 'LINE_RUN', parte2: true }],
+    ['LINE_BRASA_COMBAT_IDLE', 'Line com Armadura de Brasa — em guarda', { alt: 'LINE_COMBAT_IDLE', parte2: true }],
+    ['LINE_BRASA_ATTACK_HORIZONTAL', 'Line com Armadura de Brasa — golpe horizontal', { alt: 'LINE_ATTACK_HORIZONTAL', parte2: true }],
+    ['LINE_BRASA_ATTACK_VERTICAL', 'Line com Armadura de Brasa — golpe vertical', { alt: 'LINE_ATTACK_VERTICAL', parte2: true }],
+    ['LINE_BRASA_ATTACK_COMBO', 'Line com Armadura de Brasa — golpe final do combo', { alt: 'LINE_ATTACK_COMBO', parte2: true }],
+    ['LINE_BRASA_ATTACK_SPIN', 'Line com Armadura de Brasa — giro', { alt: 'LINE_ATTACK_SPIN', parte2: true }],
+    ['LINE_BRASA_CAST_SPELL', 'Line com Armadura de Brasa — Raio de Luz', { alt: 'LINE_CAST_SPELL', parte2: true }],
+    ['LINE_BRASA_BLOCK', 'Line com Armadura de Brasa — defesa', { alt: 'LINE_BLOCK', parte2: true }],
+    ['LINE_BRASA_DODGE', 'Line com Armadura de Brasa — esquiva', { alt: 'LINE_DODGE', parte2: true }],
+    ['LINE_BRASA_JUMP', 'Line com Armadura de Brasa — pulo', { alt: 'LINE_JUMP', parte2: true }],
+    ['LINE_BRASA_HIT_LIGHT', 'Line com Armadura de Brasa — recebe dano', { alt: 'LINE_HIT_LIGHT', parte2: true }],
+    ['LINE_BRASA_KNOCKDOWN', 'Line com Armadura de Brasa — cai no chão', { alt: 'LINE_KNOCKDOWN', parte2: true }],
+  ]);
+
+  grupo('Bell com armadura: Vestido Reforçado', [
+    ['BELL_VESTIDO_IDLE', 'Bell com Vestido Reforçado — parada', { dir: QUATRO, alt: 'BELL_IDLE', parte2: true }],
+    ['BELL_VESTIDO_WALK', 'Bell com Vestido Reforçado — andando', { dir: QUATRO, alt: 'BELL_WALK', parte2: true }],
+    ['BELL_VESTIDO_RUN', 'Bell com Vestido Reforçado — correndo', { dir: QUATRO, alt: 'BELL_RUN', parte2: true }],
+    ['BELL_VESTIDO_COMBAT_IDLE', 'Bell com Vestido Reforçado — em guarda', { alt: 'BELL_COMBAT_IDLE', parte2: true }],
+    ['BELL_VESTIDO_ATTACK_STAR', 'Bell com Vestido Reforçado — atira estrela', { alt: 'BELL_ATTACK_STAR', parte2: true }],
+    ['BELL_VESTIDO_ATTACK_SPREAD', 'Bell com Vestido Reforçado — leque de estrelas', { alt: 'BELL_ATTACK_SPREAD', parte2: true }],
+    ['BELL_VESTIDO_SING', 'Bell com Vestido Reforçado — canção', { alt: 'BELL_SING', parte2: true }],
+    ['BELL_VESTIDO_BLOCK', 'Bell com Vestido Reforçado — escudo de luz', { alt: 'BELL_BLOCK', parte2: true }],
+    ['BELL_VESTIDO_DODGE', 'Bell com Vestido Reforçado — esquiva', { alt: 'BELL_DODGE', parte2: true }],
+    ['BELL_VESTIDO_JUMP', 'Bell com Vestido Reforçado — pulo', { alt: 'BELL_JUMP', parte2: true }],
+    ['BELL_VESTIDO_HIT', 'Bell com Vestido Reforçado — recebe dano', { alt: 'BELL_HIT', parte2: true }],
+    ['BELL_VESTIDO_KNOCKDOWN', 'Bell com Vestido Reforçado — cai no chão', { alt: 'BELL_KNOCKDOWN', parte2: true }],
+  ]);
+
+  grupo('Bell com armadura: Manto Estelar', [
+    ['BELL_ESTELAR_IDLE', 'Bell com Manto Estelar — parada', { dir: QUATRO, alt: 'BELL_IDLE', parte2: true }],
+    ['BELL_ESTELAR_WALK', 'Bell com Manto Estelar — andando', { dir: QUATRO, alt: 'BELL_WALK', parte2: true }],
+    ['BELL_ESTELAR_RUN', 'Bell com Manto Estelar — correndo', { dir: QUATRO, alt: 'BELL_RUN', parte2: true }],
+    ['BELL_ESTELAR_COMBAT_IDLE', 'Bell com Manto Estelar — em guarda', { alt: 'BELL_COMBAT_IDLE', parte2: true }],
+    ['BELL_ESTELAR_ATTACK_STAR', 'Bell com Manto Estelar — atira estrela', { alt: 'BELL_ATTACK_STAR', parte2: true }],
+    ['BELL_ESTELAR_ATTACK_SPREAD', 'Bell com Manto Estelar — leque de estrelas', { alt: 'BELL_ATTACK_SPREAD', parte2: true }],
+    ['BELL_ESTELAR_SING', 'Bell com Manto Estelar — canção', { alt: 'BELL_SING', parte2: true }],
+    ['BELL_ESTELAR_BLOCK', 'Bell com Manto Estelar — escudo de luz', { alt: 'BELL_BLOCK', parte2: true }],
+    ['BELL_ESTELAR_DODGE', 'Bell com Manto Estelar — esquiva', { alt: 'BELL_DODGE', parte2: true }],
+    ['BELL_ESTELAR_JUMP', 'Bell com Manto Estelar — pulo', { alt: 'BELL_JUMP', parte2: true }],
+    ['BELL_ESTELAR_HIT', 'Bell com Manto Estelar — recebe dano', { alt: 'BELL_HIT', parte2: true }],
+    ['BELL_ESTELAR_KNOCKDOWN', 'Bell com Manto Estelar — cai no chão', { alt: 'BELL_KNOCKDOWN', parte2: true }],
+  ]);
+
+  grupo('Bell com armadura: Armadura da Aurora', [
+    ['BELL_AURORA_IDLE', 'Bell com Armadura da Aurora — parada', { dir: QUATRO, alt: 'BELL_IDLE', parte2: true }],
+    ['BELL_AURORA_WALK', 'Bell com Armadura da Aurora — andando', { dir: QUATRO, alt: 'BELL_WALK', parte2: true }],
+    ['BELL_AURORA_RUN', 'Bell com Armadura da Aurora — correndo', { dir: QUATRO, alt: 'BELL_RUN', parte2: true }],
+    ['BELL_AURORA_COMBAT_IDLE', 'Bell com Armadura da Aurora — em guarda', { alt: 'BELL_COMBAT_IDLE', parte2: true }],
+    ['BELL_AURORA_ATTACK_STAR', 'Bell com Armadura da Aurora — atira estrela', { alt: 'BELL_ATTACK_STAR', parte2: true }],
+    ['BELL_AURORA_ATTACK_SPREAD', 'Bell com Armadura da Aurora — leque de estrelas', { alt: 'BELL_ATTACK_SPREAD', parte2: true }],
+    ['BELL_AURORA_SING', 'Bell com Armadura da Aurora — canção', { alt: 'BELL_SING', parte2: true }],
+    ['BELL_AURORA_BLOCK', 'Bell com Armadura da Aurora — escudo de luz', { alt: 'BELL_BLOCK', parte2: true }],
+    ['BELL_AURORA_DODGE', 'Bell com Armadura da Aurora — esquiva', { alt: 'BELL_DODGE', parte2: true }],
+    ['BELL_AURORA_JUMP', 'Bell com Armadura da Aurora — pulo', { alt: 'BELL_JUMP', parte2: true }],
+    ['BELL_AURORA_HIT', 'Bell com Armadura da Aurora — recebe dano', { alt: 'BELL_HIT', parte2: true }],
+    ['BELL_AURORA_KNOCKDOWN', 'Bell com Armadura da Aurora — cai no chão', { alt: 'BELL_KNOCKDOWN', parte2: true }],
+  ]);
+
   const PADRAO = { fps: 12, loop: false, face: 'R', quadros: 12 };
 
   function info(base) {
@@ -361,7 +620,15 @@ window.LB = window.LB || {};
     atualizar(dt) { this.t += dt; }
 
     // `traduzir` troca o desenho sem mudar o tempo: a Bell jogável usa o ritmo dos golpes da Line.
-    resolver(dir, lado) { return resolver(this.traduzir ? this.traduzir(this.base) : this.base, dir, lado); }
+    // `roupa` (armadura vestida, ex.: 'MALHA') tenta antes a arte com a armadura: LINE_WALK → LINE_MALHA_WALK.
+    resolver(dir, lado) {
+      const base = this.traduzir ? this.traduzir(this.base) : this.base;
+      if (this.roupa && base) {
+        const r = resolver(base.replace(/^(LINE|BELL)_/, '$1_' + this.roupa + '_'), dir, lado);
+        if (r.sprite && !r.via) return r;
+      }
+      return resolver(base, dir, lado);
+    }
 
     estado(dir, lado) {
       const r = this.resolver(dir, lado);
@@ -437,7 +704,7 @@ window.LB = window.LB || {};
       for (const base of g.codigos) {
         const inf = CATALOGO[base];
         const codigos = inf.dir ? inf.dir.map((d) => base + '_' + d) : [base];
-        for (const c of codigos) itens.push({ codigo: c, desc: inf.desc, nova: !!inf.nova, existe: !!sprite(c) });
+        for (const c of codigos) itens.push({ codigo: c, desc: inf.desc, nova: !!inf.nova, parte2: !!inf.parte2, existe: !!sprite(c) });
       }
       saida.push({ nome: g.nome, itens });
     }

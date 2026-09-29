@@ -11,7 +11,7 @@ const { chromium } = require(process.env.PLAYWRIGHT || 'playwright');
       const s = LB.sprite(it.codigo);
       let via = null;
       if (!s) { const r = LB.resolver(LB.CATALOGO[it.codigo] ? it.codigo : base, (it.codigo.match(/_(FRONT|BACK|LEFT|RIGHT)$/) || [])[1], 1); if (r.sprite) via = r.codigo; }
-      return { codigo: it.codigo, desc: it.desc, nova: it.nova, existe: it.existe, quadros: s ? s.count : null, seq: s ? s.seq.length : null, fonte: s ? s.item : null, via, quadrosPedidos: inf.quadros, fps: inf.fps, loop: inf.loop };
+      return { codigo: it.codigo, desc: it.desc, nova: it.nova, parte2: it.parte2, existe: it.existe, quadros: s ? s.count : null, seq: s ? s.seq.length : null, fonte: s ? s.item : null, via, quadrosPedidos: inf.quadros, fps: inf.fps, loop: inf.loop };
     }) }));
     const catalogados = new Set(); for (const g of grupos) for (const i of g.itens) catalogados.add(i.codigo);
     const extras = Object.keys(window.SPRITES).filter((c) => !catalogados.has(c)).map((c) => ({ codigo: c, quadros: SPRITES[c].count, fonte: SPRITES[c].item, label: SPRITES[c].label }));
@@ -29,7 +29,11 @@ const { chromium } = require(process.env.PLAYWRIGHT || 'playwright');
     }
     const fn = (o) => JSON.parse(JSON.stringify(o, (k, v) => (typeof v === 'function' ? undefined : v)));
     const mundo = { mapas, itens: fn(M.ITENS), ordemItens: M.ORDEM_ITENS, pistas: M.PISTAS, ordemPistas: M.ORDEM_PISTAS, conclusoes: M.CONCLUSOES, tiposDoc: M.TIPOS_DOC,
-      armaduras: LB.loja.ARMADURAS, lojas: fn(LB.loja.LOJAS), moradores: LB.loja.MORADORES, estacoes: LB.carrinho.ESTACOES, interludios: LB.interludio.INTERLUDIOS, reacoes: Object.fromEntries(Object.entries(LB.REACOES).map(([k, f]) => [k, f({ flags: { conversas: ['bento'] } })[0]])), dificuldades: fn(LB.dificuldade.NIVEIS) };
+      armaduras: LB.loja.ARMADURAS, lojas: fn(LB.loja.LOJAS), moradores: LB.loja.MORADORES, estacoes: LB.carrinho.ESTACOES, interludios: LB.interludio.INTERLUDIOS, reacoes: Object.fromEntries(Object.entries(LB.REACOES).map(([k, f]) => [k, f({ flags: { conversas: ['bento'] } })[0]])), dificuldades: fn(LB.dificuldade.NIVEIS),
+      chefes: fn(LB.chefes.CHEFES), elementos: LB.chefes.ELEM, animAtaque: LB.chefes.ANIM_ATAQUE, roupa: LB.loja.ROUPA,
+      parte2: { chegadas: LB.parte2.CHEGADAS, intro: LB.parte2.INTRO, libertos: LB.parte2.LIBERTOS,
+        falas: Object.fromEntries(['cora', 'tiao', 'brisa'].map((id) => [id, LB.parte2.falas({ flags: { conversas: [] } }, { id })])) },
+      herois: { traducao: LB.herois.TRADUCAO, custoLeque: LB.herois.CUSTO_LEQUE, custoCancao: LB.herois.CUSTO_CANCAO } };
     return { grupos, extras, retratos: window.RETRATOS, total: Object.keys(window.SPRITES).length, mundo };
   });
   require('fs').writeFileSync(process.argv[2] || 'inventario.json', JSON.stringify(d, null, 1));

@@ -77,7 +77,7 @@
     j.tremer(6, 0.4);
     j.particulas.emitir('poeira', dr.x, dr.y, 24, { vel: 140, vida: 0.8, r: 6 });
     LB.fx.emitir(j, 'FX_DUST', dr.x, dr.y - 10);
-    dr.anim.tocar('DRAGON_IDLE', true);
+    dr.anim.tocar('DRAGON_TALK', true);
     line.anim.tocar('LINE_SWORD_DRAW', true);
     yield c.fala('Line', 'Bell, pra trás de mim!', 'bravo');
     bell.anim.tocar('BELL_CALL_LINE', true);
@@ -125,7 +125,7 @@
     if (!j.flags.parte2 || j.flags.quimeraVencida) return;
     if (id === 'fazenda' && !j.cena) {
       const dr = j.criarDragaoCena(T(29), T(8), 0);
-      dr.anim.tocar('DRAGON_SLEEP', true); dr.lado = -1; dr.inimigo = false; dr.dormindoNaFazenda = true;
+      dr.anim.tocar('DRAGON_CURL_SLEEP', true); dr.lado = -1; dr.inimigo = false; dr.dormindoNaFazenda = true;
     }
   }
 

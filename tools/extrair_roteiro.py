@@ -3,8 +3,11 @@ import os
 JS=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'game', 'js')
 # O prólogo (encontro.js) vem antes das cenas da fazenda (cenas.js).
 cenas=['']
-for arq, inicio in (('encontro.js', '*encontroInicio'), ('cenas.js', 'const HISTORIA'), ('interludio.js', 'const CHEGADAS')):
+for arq, inicio in (('encontro.js', '*encontroInicio'), ('cenas.js', 'const HISTORIA'), ('interludio.js', 'const CHEGADAS'), ('parte2.js', 'HISTORIA.parte2Abertura')):
     src=open(os.path.join(JS, arq), encoding='utf-8').read()
+    if arq=='parte2.js':
+        cenas+=re.split(r"\n  HISTORIA\.(\w+) = function\* \(", src[src.index(inicio)-3:])[1:]
+        continue
     cenas+=re.split(r"\n    \*(\w+)\(", '\n'+src[src.index(inicio)-4:] if arq=='encontro.js' else src[src.index(inicio):])[1:]
 STR=r"'((?:[^'\\]|\\.)*)'"
 out={}
