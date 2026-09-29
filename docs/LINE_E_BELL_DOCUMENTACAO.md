@@ -5,7 +5,16 @@
 > Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.
 > Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.
 
-> 🆕 **Novidades desta versão:**
+> 📖 **Novidades da história (esta versão):**
+> - Um **tema** que costura a aventura inteira: *luz não se rouba, se divide* (seção 3).
+> - O **dragão ganhou motivo e voz**: o fogo dele esfria enquanto dorme, e ele acorda com frio procurando um coração brilhante. A Bell sonha com isso na manhã do rapto.
+> - **Quatro interlúdios “Enquanto isso…”** mostram a Bell presa no covil, conversando e cantando para o dragão (seção 4).
+> - **Final novo:** depois do golpe final, a Line divide a luz com o dragão em vez de apagá-lo, e o epílogo fecha a promessa do pôr do sol.
+> - **Títulos de capítulo**, cenas de chegada no vilarejo, na gruta, nas minas e na forja, e uma fala da Line para cada documento achado.
+> - **O caçador Tobias**, personagem novo na montanha, ouviu a Bell cantando; achando ele, a Dona Lurdes agradece.
+> - **Linha do tempo corrigida:** as minas e a forja fecharam há cinquenta anos, quando a montanha começou a esquentar (por isso o Seu Zé e o Seu Bento se lembram).
+
+> 🆕 **Novidades da versão anterior (mundo):**
 > - **Fases bem maiores e interligadas**: a floresta, a gruta, as ruínas e a montanha dobraram de tamanho e ganharam atalhos entre si (seções 6 e 7.1).
 > - **Vilarejo do Riacho**, área nova com cinco moradores, a **loja da Dona Rosa** e a **ferraria do Seu Bento** (seções 6.2, 7.3 e 7.4).
 > - **Moedas** e **armaduras** que dão escudos (seções 7.2 e 7.3).
@@ -82,7 +91,7 @@ Protagonista. É fazendeira, corajosa e brincalhona, de boné preto, cabelo long
 *Line: algumas das animações atuais (temporárias)*
 
 ### Bell
-Namorada da Line: doce, risonha e mandona na medida certa. Usa óculos, blusa creme e short jeans. É levada pelo dragão no pôr do sol e fica presa numa jaula no covil.
+Namorada da Line: doce, risonha e mandona na medida certa. Usa óculos, blusa creme e short jeans. É levada pelo dragão no pôr do sol e fica presa numa jaula no covil, mas não fica parada: deixa a fita cair de propósito para a Line achar, conversa com o dragão, descobre que ele está com frio e canta para acalmá-lo. É ela quem entende o dragão primeiro.
 
 ![Bell: animações atuais (temporárias)](imagens/arte-bell.jpg)
 *Bell: animações atuais (temporárias)*
@@ -139,10 +148,17 @@ Voz antiga que mora no altar das Ruínas Encantadas e ensina a magia à Line. Ai
 Chefe das ruínas: um golem de pedra com um cristal azul no peito. Desenhado no código por enquanto.
 
 ### Dragão Vermelho
-O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no topo da Montanha de Brasa.
+Dorme cem anos no topo da Montanha de Brasa, e enquanto dorme o fogo dele esfria. É o frio que o acorda. Ele acredita que o calor de um coração brilhante pode ser tomado, e por isso leva alguém a cada século. Fala pouco, em frases partidas (“Cem anos… dormindo. O fogo… esfria.”). Não é mau: está com frio. No fim, a Line divide a luz com ele e ele volta a dormir em paz, sem levar ninguém.
 
 ![Dragão vermelho (temporário)](imagens/arte-dragao.jpg)
 *Dragão vermelho (temporário)*
+
+### Moradores do vilarejo e o caçador Tobias
+Dona Rosa (mercadora), Seu Bento (ferreiro, aprendiz do Mestre Aurélio), Seu Zé (o mais velho, empurrava o carrinho de mina cinquenta anos atrás), Dona Lurdes (mulher do caçador) e o Pedrinho. O **Tobias**, caçador, foi atrás do dragão, torceu o pé e está na montanha, perto da fonte das brasas: foi ele quem ouviu a Bell cantando lá em cima. Hoje todos são desenhados no código (seção 7.12).
+
+### Personagens citados nos documentos
+- **Mestre Ivo:** o capataz que fechou as Minas de Cristal há cinquenta anos e levou a alavanca do carrinho para a forja.
+- **Mestre Aurélio:** o ferreiro da Forja Antiga, mestre do Seu Bento, autor da receita da Armadura de Brasa.
 
 ### Criaturas
 - **Sombras:** criaturas escuras que surgem depois que a Line pega a espada. Investem contra ela e são fracas contra a luz.
@@ -150,25 +166,27 @@ O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no t
 
 ## 3. A história
 
+> **O fio da história:** *luz não se rouba, se divide.* O dragão acha que pode tomar a luz de um coração para se aquecer. Todo mundo que a Line encontra diz a mesma coisa de um jeito diferente: o Mago (“Luz não se rouba, menina. Se divide.”), o Espírito das Ruínas (“A luz que se divide nunca acaba. A que se prende, apaga.”), o Guardião (“O dragão também já foi luz, um dia.”) e a Bell, que canta para o dragão na jaula. No fim, a Line entende e faz isso.
+
 **Prólogo — O primeiro encontro (09/05/2024).** No Minas Shopping, a Line vê a Bell de longe e fica encantada. Elas conversam, a Bell diz que a Line está atrasada e as duas comem BK. A Line confessa que está tímida porque a Bell é muito linda. De mãos dadas, vão ao playground, onde a Line tenta a máquina de soco, faz só 038 pontos e a Bell morre de rir. No túnel, dão o primeiro beijo. O tempo passa, e o sonho das duas vira uma fazendinha.
 
-**Capítulo 1 — Nossa vidinha.** Amanhece na fazenda. A Bell acorda a Line, e as duas cuidam da fazenda: pegar os ovos, regar a horta, dar ração ao Theo e fazer carinho nos bichinhos. Depois vem o almoço juntas e o passeio de mãos dadas até o lago para ver o pôr do sol. Lá elas dançam e dão uma bitoquinha.
+**Capítulo 1 — Nossa vidinha.** Amanhece na fazenda. A Bell acorda a Line e conta um sonho estranho: um dragão enorme, vermelho, **tremendo de frio**. A Line brinca que é fome de café. As duas cuidam da fazenda (ovos, horta, ração do Theo, carinho nos bichinhos), almoçam juntas e vão de mãos dadas ver o pôr do sol no lago. A Bell pede: “Promete que amanhã a gente volta?”. A Line promete: “Amanhã, depois de amanhã… todo dia que você quiser.” Elas dançam e dão uma bitoquinha.
 
-**O rapto.** O céu escurece, os bichos se assustam e um dragão vermelho mergulha do céu e leva a Bell. A Line corre atrás, grita por ela, chora e decide ir buscá-la. Pede ao Theo que cuide da fazenda.
+**O rapto.** O céu escurece e um dragão vermelho mergulha do céu. A Bell reconhece: “É ele… o dragão do meu sonho.” Ele a leva. A Line corre, grita, chora, e decide ir buscá-la. Pede ao Theo que cuide da fazenda.
 
-**A investigação.** Desde o rapto, a Line junta documentos: as marcas de garra no píer, o cartaz do vilarejo, a carta do Mago, o bilhete do caçador Tobias, a lenda da montanha, o mapa rasgado, o relatório do capataz das minas, as páginas do diário do Guardião, a receita do Mestre Aurélio, uma escama vermelha e a fita de cabelo da Bell. Quando dois documentos combinam, ela tira uma conclusão: que a Bell está viva, que o dragão teme a luz, onde está a alavanca do carrinho, quem forja a Armadura de Brasa, onde fica o ponto fraco do dragão. Com os doze, a Line entende tudo e ganha um coração extra.
+**Capítulo 2 — Atrás da Bell.** Na Floresta Sussurrante, o Mago conta a lenda: o dragão dorme cem anos, o fogo dele esfria, e ele acorda procurando o calor de um coração brilhante. A Line lembra do sonho da Bell. O Mago entrega a espada e aponta os caminhos: as ruínas ao norte, a gruta a leste, o Vilarejo do Riacho ao sul. *Enquanto isso*, no covil, a Bell acorda numa jaula; o dragão murmura de frio no sono, e ela se agarra a uma certeza: deixou a fita cair de propósito, e a Line sempre acha o que ela perde.
 
-**O vilarejo.** A leste da fazenda fica o Vilarejo do Riacho. A Dona Rosa vende poções e bombas, o Seu Bento forja armaduras, o Seu Zé conta que o carrinho de mina parou quando o capataz levou a alavanca do freio para a Forja Antiga, a Dona Lurdes aponta a cabana do marido caçador e o Pedrinho conta de uma pedra rachada na floresta. Achando a alavanca na montanha, a Line conserta o carrinho e passa a viajar entre o vilarejo, as minas e a forja.
+**O vilarejo e as minas.** No Vilarejo do Riacho, os moradores ajudam como podem: a Dona Rosa com poções e bombas, o Seu Bento com armaduras. O Seu Zé conta que, cinquenta anos atrás, a montanha começou a esquentar e a respirar de noite, e o capataz fechou as minas e levou a alavanca do carrinho para a Forja Antiga. A Dona Lurdes está aflita: o marido, o caçador Tobias, viu o dragão passar e não voltou. Na porta da cabana dele, a Line acha o bilhete: ele subiu a montanha atrás do dragão. Na Gruta dos Ecos, a Line chama pela Bell e só o eco responde. Mais a fundo ficam as Minas de Cristal, escuras e cheias de morcegos.
 
-**Capítulo 2 — A floresta.** Na Floresta Sussurrante, um mago conta que o dragão acordou depois de cem anos e entrega uma espada guardada num baú. Sombras aparecem. Espinhos fecham o caminho do norte, e a espada abre passagem. A leste da floresta fica a **Gruta dos Ecos**, onde o Mago guardou uma bússola, um elixir e uma sala trancada com um coração extra e o mapa rasgado.
+**Capítulo 3 — A luz das ruínas.** Nas Ruínas Encantadas, o Espírito das Ruínas passa a luz para a espada da Line e ensina: “A luz que se divide nunca acaba. A que se prende, apaga.” *Enquanto isso*, a Bell vê um clarão azul lá longe, nas ruínas, e sabe que é a Line. Ela pergunta ao dragão por que ele a levou, e ele responde em pedaços: cem anos dormindo, o fogo esfria, coração brilhante aquece. A Bell entende: ele não quer machucá-la, ele está com frio. A Line acende cristais, desfaz barreiras e vence o Guardião de Pedra, que entrega a Chuva de Estrelas e deixa uma última frase: “O dragão também já foi luz, um dia.” *Enquanto isso*, o dragão ruge de frio e a Bell canta para ele a cantiga da avó: “Dorme, fogo pequenino, que a noite vai passar… quem tem alguém do lado não precisa se apagar.” O dragão se aquece um pouco.
 
-**Capítulo 3 — Magia.** O dragão selou a montanha com magia antiga. Nas Ruínas Encantadas, o Espírito das Ruínas ensina a Line a lançar luz pela espada. Ela acende cristais para desfazer barreiras, encontra um coração extra e enfrenta o Guardião de Pedra. Vencido, ele entrega a Chuva de Estrelas.
+**Capítulo 4 — A Montanha de Brasa.** Perto da fonte das brasas, a Line encontra o Tobias com o pé torcido. Ele viu o dragão pousar e ouviu uma voz de moça cantando a noite inteira; quando ela canta, o dragão para de rugir. “É a Bell. Ela canta quando tá com medo, pra ficar corajosa.” Na Forja Antiga, a Line acha a receita do Mestre Aurélio e a alavanca do carrinho; na caverna escondida, uma escama **fria**. Ela acende as três tochas e o portão de fogo se abre. *Enquanto isso*, o dragão sente alguém subindo com uma espada de luz. “Ela vai levar a minha luz.” A Bell responde: “Ela vai me levar pra casa. E se você deixar, ela divide um pouquinho com você.”
 
-**Capítulo 4 — A montanha.** Na Montanha de Brasa, a Line pula fendas, desvia de lava e acende três tochas antigas para abrir o portão de fogo do covil.
+**Capítulo final — O coração do dragão.** No covil, a Bell grita que a Line veio. O dragão pousa: “Veio… pela minha luz.” A Line responde que a Bell não é luz de ninguém: é a namorada dela. A Bell avisa que ele não é mau, só está com frio, e mostra o ponto fraco. A Line vence e dá o golpe final. As duas se abraçam. Então a Bell pede: “Olha pra ele.” O dragão treme de frio no chão. A Line entende o que todos disseram: **luz não se rouba, se divide.** Ela chama as estrelas sobre ele, e o fogo do peito volta a acender. “Quente… Faz cem anos que não fica quente. Obrigado, pequena luz. Agora eu durmo em paz. Sem levar ninguém.” A Bell dá boa noite a ele.
 
-**Capítulo 5 — O covil.** A Bell está presa numa jaula e o dragão pousa para lutar. Quando ele cansa, o peito brilha: é o ponto fraco. A Line vence, dá o golpe final e liberta a Bell. As duas se abraçam.
+**Epílogo.** De volta à fazenda, no pôr do sol do lago, com o Theo latindo de alegria. A Bell repete a pergunta do começo: “Promete que amanhã a gente volta aqui?” A Line promete de novo, e dessa vez é a Bell quem completa: “…todo dia que a gente quiser.” Elas dançam. Aparece “Fim”… e, no escuro, um olho de dragão se abre: “Fim?”.
 
-**Epílogo.** De volta à fazenda, no pôr do sol do lago, as duas dançam. Aparece “Fim”… e, no escuro, um olho de dragão se abre: “Fim?”.
+**A investigação.** Ao longo da aventura, a Line junta 12 documentos (marcas de garra, cartaz do vilarejo, carta do Mago, bilhete do Tobias, a lenda, o mapa rasgado, o relatório do capataz, as páginas do diário do Guardião, a receita do Mestre Aurélio, a escama fria e a fita da Bell) e tira 8 conclusões. Várias delas apontam para o mesmo segredo: o dragão está com frio.
 
 ## 4. Roteiro completo, cena a cena
 
@@ -278,8 +296,11 @@ Começa logo depois do prólogo. A Line sai de casa e a Bell a espera no quintal
 > ▶ `BELL_IDLE`  
 > **Bell** *(rindo)*: Bom dia, dorminhoca! O galo já cantou três vezes.  
 > **Line** *(marota)*: Bom dia, amor... só mais cinco minutinhos?  
+> ▶ `BELL_IDLE`  
+> **Bell** *(surpresa)*: Sonhei uma coisa tão estranha essa noite... um dragão enorme, vermelho, tremendo de frio.  
+> **Line** *(rindo)*: Dragão com frio? Isso é fome de café, amor.  
 > ▶ `BELL_LAUGH`  
-> **Bell** *(sorrindo)*: Nada disso! Tem ovo pra pegar, horta pra regar e o Theo tá morrendo de fome.  
+> **Bell** *(sorrindo)*: Boba! Agora levanta: tem ovo pra pegar, horta pra regar e o Theo tá morrendo de fome.  
 > 💬 *Balão:* “Au! Au!”  
 > ▶ `LINE_LAUGH`  
 > **Line** *(rindo)*: Tá bom, tá bom. Bora, fazendeira.  
@@ -337,6 +358,7 @@ No píer do lago. Esta é a cena mais longa do jogo.
 > 💬 *Balão:* “AU! AU! AU!”  
 > **Bell** *(surpresa)*: Line... que barulho foi esse?  
 > ▶ `DRAGON_FLY`  
+> **Bell** *(surpresa)*: É ele... o dragão do meu sonho...  
 > ▶ `LINE_SCARED`  
 > **Line** *(surpresa)*: BELL! CORRE!  
 > ▶ `DRAGON_AIR_ATTACK`  
@@ -361,11 +383,12 @@ No píer do lago. Esta é a cena mais longa do jogo.
 
 ### 4.11 Chegada na floresta
 
-Primeira vez na Floresta Sussurrante.
+Primeira vez na Floresta Sussurrante. Começa o Capítulo 2.
 
 ![Chegada na floresta](imagens/09-floresta-mago.jpg)
 *Chegada na floresta*
 
+> 🎬 **Título na tela:** Capítulo 2 — Atrás da Bell  
 > **Line** *(neutro)*: A Floresta Sussurrante... O dragão foi pra montanha, do outro lado.  
 > **Line** *(surpresa)*: Tem uma luz azul ali na clareira, a oeste. Será que mora alguém aqui?  
 
@@ -376,6 +399,9 @@ Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depoi
 > **Mago**: Ora, ora... uma fazendeira na Floresta Sussurrante?  
 > **Line** *(surpresa)*: Um dragão levou a Bell! Eu preciso chegar na montanha.  
 > **Mago**: O dragão vermelho acordou, então... Fazia cem anos que ele dormia.  
+> **Mago**: Dizem que o fogo dele esfria enquanto dorme. Ele acorda com frio, procurando o calor de um coração brilhante.  
+> **Line** *(surpresa)*: A Bell sonhou com isso ontem à noite... um dragão tremendo de frio.  
+> **Mago**: Os sonhos das pessoas boas às vezes escutam o que ninguém mais escuta.  
 > **Mago**: Naquele baú aqui do lado guardei uma espada que espera por um coração corajoso. Ela é sua.  
 > **Mago**: E lembre-se: quando o dragão se cansa, o peito dele brilha. É ali que você deve acertar.  
 > **Line** *(sorrindo)*: Obrigada! Eu vou trazer ela de volta.  
@@ -385,6 +411,7 @@ Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depoi
 > **Line** *(surpresa)*: Magia? Eu? Eu só sei plantar cenoura...  
 > **Mago**: Quem atravessa uma floresta por amor já tem o que a magia pede. Vá!  
 > **Mago**: Ah, e na gruta a leste desta floresta deixei umas coisinhas úteis. Uma bússola, quem sabe... Aperte I para ver a mochila e M para o mapa.  
+> **Mago**: Precisando de poções, o Vilarejo do Riacho fica ao sul daqui. A Dona Rosa tem mão aberta e o Seu Bento, mão pesada. Bom ferreiro.  
 
 **Falas sorteadas do Mago** (mudam conforme o progresso):
 
@@ -392,6 +419,7 @@ Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depoi
 - “As barreiras das ruínas só se desfazem com luz. Procure o altar na sala a oeste.”
 - “Pule o riacho, corte os espinhos, ache o altar. Simples, não?”
 - “Baús trancados? Não. Portas trancadas! Três, pelo mundo. E três chaves antigas escondidas em baús.”
+- “O Tobias, caçador, mora na cabana a leste. Se alguém viu o dragão passar, foi ele.”
 - “Cada documento que você guarda conta um pedaço da história. Junte dois que combinam e você entende mais do que imagina.”
 - “Cristais apagados, barreiras de pé. Acenda todos e o caminho se abre.”
 - “O Guardião de Pedra não sente a espada... mas a luz, ah, a luz ele sente.”
@@ -399,6 +427,7 @@ Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depoi
 - “Três tochas guardam o portão da montanha. Acenda as três.”
 - “Segure a magia até brilhar e solte: chuva de estrelas! Eu mesmo não faria melhor.”
 - “O peito do dragão, lembre-se: quando ele cansar, o peito brilha.”
+- “Luz não se rouba, menina. Se divide. Guarde isso: um dia vai fazer sentido.”
 - “Quando ele encher o peito de ar, saia da frente. Fogo de dragão não se segura com espada.”
 
 ### 4.13 Espinhos sem espada
@@ -409,7 +438,7 @@ Ao chegar perto dos espinhos do norte sem a espada.
 
 ### 4.14 A espada
 
-Ao abrir o baú ao lado do Mago.
+Ao abrir o baú ao lado do Mago. Logo depois vem o primeiro interlúdio, e então aparecem as sombras.
 
 ![A espada](imagens/10-espada.jpg)
 *A espada*
@@ -424,17 +453,62 @@ Ao abrir o baú ao lado do Mago.
 > ▶ `LINE_COMBAT_IDLE`  
 > **Line** *(surpresa)*: Sombras?! Só podem ser coisa do dragão... Vem!  
 
-### 4.15 Chegada nas Ruínas Encantadas
+### 4.15 Enquanto isso… (1): a Bell acorda na jaula
+
+Depois da espada. A tela escurece e mostra o covil: o dragão dormindo, a Bell na jaula.
+
+![Enquanto isso… (1): a Bell acorda na jaula](imagens/53-interludio.jpg)
+*Enquanto isso… (1): a Bell acorda na jaula*
+
+> 🎬 **Título na tela:** Enquanto isso... — No topo da Montanha de Brasa  
+> **Bell** *(surpresa)*: “Ai... minha cabeça. Onde eu tô?”  
+> **Bell** *(brava)*: “Uma jaula. Sério, dragão? Uma JAULA?”  
+> **Dragão**: “...zzz... frio... tanto frio...”  
+> **Bell** *(rindo)*: “Frio? Você é um dragão de FOGO.”  
+> **Bell** *(surpresa)*: “...Igualzinho ao do meu sonho. Tremendo.”  
+> **Bell** *(neutro)*: “Tudo bem, Bell. Respira. Minha fita caiu lá embaixo, perto do portão. Eu deixei cair de propósito.”  
+> **Bell** *(apaixonada)*: “A Line sempre acha as coisas que eu perco. Ela vem.”  
+
+### 4.16 Chegada no Vilarejo do Riacho
+
+Primeira vez no vilarejo. As conversas com os moradores estão na seção 7.4.
+
+![Chegada no Vilarejo do Riacho](imagens/37-vilarejo.jpg)
+*Chegada no Vilarejo do Riacho*
+
+> **Line** *(sorrindo)*: O Vilarejo do Riacho... A Bell ama a feira daqui. Toda semana ela volta com uma planta nova.  
+> **Line** *(neutro)*: Alguém aqui deve ter visto pra onde o dragão foi.  
+
+### 4.17 Chegada na Gruta dos Ecos
+
+Primeira vez na gruta. A primeira fala muda se a Line já leu a carta do Mago.
+
+> **Line** *(neutro)*: A Gruta dos Ecos... a gruta da carta do Mago.  
+> **Line** *(neutro)*: Uma gruta... e que friozinho aqui dentro.  
+> **Line** *(surpresa)*: Beeell?  
+> **Narração** *(sistema)*: ...Bell... ell... ll...  
+> **Line** *(marota)*: Só o eco. Óbvio, né, Line.  
+
+### 4.18 Chegada nas Minas de Cristal
+
+Ao passar para a metade leste da gruta. A segunda fala muda se a Line já tem a lanterna.
+
+> **Line** *(surpresa)*: Trilhos... carrinhos velhos... Isso aqui era uma mina.  
+> **Line** *(sorrindo)*: Ainda bem que eu trouxe a lanterna.  
+> **Line** *(neutro)*: Lá pra dentro tá escuro demais. Uma lanterna ia bem agora.  
+
+### 4.19 Chegada nas Ruínas Encantadas
 
 ![Chegada nas Ruínas Encantadas](imagens/12-ruinas-entrada.jpg)
 *Chegada nas Ruínas Encantadas*
 
+> 🎬 **Título na tela:** Capítulo 3 — A luz das ruínas  
 > **Line** *(surpresa)*: Ruínas... e essas pedras brilhando? Parece que o lugar tá respirando.  
 > **Line** *(neutro)*: Paredes de luz fechando o caminho... O mago falou de um altar na sala a oeste.  
 
-### 4.16 O altar da luz
+### 4.20 O altar da luz
 
-Ao tocar a luz do altar, na sala a oeste do salão de entrada.
+Ao tocar a luz do altar, na sala a oeste do salão de entrada. Termina com o segundo interlúdio.
 
 ![O altar da luz](imagens/13-altar-magia.jpg)
 *O altar da luz*
@@ -447,11 +521,27 @@ Ao tocar a luz do altar, na sala a oeste do salão de entrada.
 > ▶ `LINE_HAPPY`  
 > 🎬 **Título na tela:** Magia aprendida! — Raio de Luz  
 > **Espírito das Ruínas**: A luz agora corre na tua lâmina. Acende os cristais apagados e as barreiras cairão.  
+> **Espírito das Ruínas**: E lembra: a luz que se divide nunca acaba. A que se prende, apaga.  
 > 🎮 *Tutorial na tela:* Q ou U: Raio de Luz (mira no inimigo ou cristal mais perto). Gasta 1 ◆ de magia, que volta sozinha. Sombras odeiam a luz!  
 > ▶ `LINE_COMBAT_IDLE`  
 > **Line** *(marota)*: Ih... as ruínas acordaram junto. Bora, espada brilhante!  
 
-### 4.17 O Guardião desperta
+### 4.21 Enquanto isso… (2): o frio do dragão
+
+Depois de aprender a magia.
+
+> 🎬 **Título na tela:** Enquanto isso... — No covil do dragão  
+> **Bell** *(surpresa)*: “Olha lá, longe, pra baixo das nuvens... uma luz azul. Nas ruínas.”  
+> **Bell** *(apaixonada)*: “Line... é você, né?”  
+> **Dragão**: “Pequena... luz. Não... fale.”  
+> **Bell** *(brava)*: “Eu falo, sim. Por que você me pegou?”  
+> **Dragão**: “Cem anos... dormindo. O fogo... esfria. Por dentro... frio.”  
+> **Dragão**: “Coração brilhante... aquece. Sempre... aqueceu.”  
+> **Bell** *(surpresa)*: “Então é isso... Você não quer me machucar. Você tá com frio.”  
+> **Bell** *(neutro)*: “Mas não é assim que se esquenta alguém, sabia? Prendendo não funciona.”  
+> **Dragão**: “...”  
+
+### 4.22 O Guardião desperta
 
 Ao se aproximar do Guardião, no salão norte das ruínas.
 
@@ -466,31 +556,58 @@ Ao se aproximar do Guardião, no salão norte das ruínas.
 > **Line** *(brava)*: Então vai ser na luz mesmo.  
 > 💡 *Dica na tela:* Acerte o cristal do peito com a magia (Q) para abrir a guarda. Pule a onda do pisão!  
 
-### 4.18 O Guardião vencido
+### 4.23 O Guardião vencido
+
+Termina com o terceiro interlúdio.
 
 ![O Guardião vencido](imagens/19-chuva-de-estrelas.jpg)
 *O Guardião vencido*
 
 > **Guardião de Pedra**: A luz... é tua... Que ela... te guie... até o céu...  
+> **Guardião de Pedra**: O dragão... também já foi luz... um dia. Lembra... disso...  
 > ▶ `LINE_RELIEVED`  
 > 🎬 **Título na tela:** Nova magia! — Chuva de Estrelas  
 > 🎮 *Tutorial na tela:* Segure Q (ou U) até a Line brilhar e solte: estrelas explodem em volta, atingindo tudo por perto. Gasta 3 ◆.  
 > ▶ `LINE_HAPPY`  
 > **Line** *(rindo)*: O caminho pro norte abriu! Espera só, Bell.  
 
-### 4.19 Chegada na Montanha de Brasa
+### 4.24 Enquanto isso… (3): a cantiga
+
+Depois de vencer o Guardião.
+
+> 🎬 **Título na tela:** Enquanto isso... — No covil do dragão  
+> **Dragão**: “GRRR... frio... FRIO...”  
+> **Bell** *(sorrindo)*: “Shh... calma. Quer que eu cante? Minha vó cantava isso quando eu tinha medo do escuro.”  
+> **Bell** *(apaixonada)*: “♪ Dorme, fogo pequenino, que a noite vai passar... ♪”  
+> **Bell** *(apaixonada)*: “♪ Quem tem alguém do lado não precisa se apagar. ♪”  
+> **Dragão**: “...Quente. Um pouco... quente.”  
+> **Bell** *(sorrindo)*: “Viu? Luz não se rouba, dragão. Se divide.”  
+> **Bell** *(apaixonada)*: “Quando a Line chegar, você vai entender. Ela brilha muito mais que eu.”  
+
+### 4.25 Chegada na Montanha de Brasa
+
+Começa o Capítulo 4. A câmera mostra as três tochas.
 
 ![Chegada na Montanha de Brasa](imagens/20-montanha.jpg)
 *Chegada na Montanha de Brasa*
 
+> 🎬 **Título na tela:** Capítulo 4 — A Montanha de Brasa  
 > **Line** *(neutro)*: A Montanha de Brasa... O covil do dragão fica lá no topo.  
+> **Line** *(apaixonada)*: Tô quase aí, Bell. Aguenta só mais um pouquinho.  
 > **Line** *(marota)*: Tem um portão de fogo lá em cima... e três tochas apagadas pelo caminho. Aposto que a luz acende.  
 > **Line**: neutro  
 > 💡 *Dica na tela:* Acenda as três tochas com a magia (Q). As apagadas soltam fumaça e aparecem no mapa (M).  
 
-### 4.20 O portão se abre
+### 4.26 A Forja Antiga
 
-Quando a terceira tocha acende.
+Ao chegar perto da bigorna da Forja Antiga, na montanha.
+
+> **Line** *(surpresa)*: Uma forja... A bigorna ainda tá morna. Faz tempo que ninguém bate ferro aqui, mas a montanha não deixa esfriar.  
+> **Line** *(neutro)*: Será que foi aqui que o Seu Bento aprendeu o ofício?  
+
+### 4.27 O portão se abre
+
+Quando a terceira tocha acende. Termina com o último interlúdio.
 
 ![O portão se abre](imagens/21-tocha-na-lava.jpg)
 *O portão se abre*
@@ -498,7 +615,19 @@ Quando a terceira tocha acende.
 > ▶ `LINE_DETERMINED`  
 > **Line** *(brava)*: O portão abriu! Aguenta firme, Bell. Tô chegando.  
 
-### 4.21 Baú de coração extra
+### 4.28 Enquanto isso… (4): alguém está subindo
+
+Depois que o portão de fogo abre.
+
+> 🎬 **Título na tela:** Enquanto isso... — No covil do dragão  
+> **Dragão**: “O portão... abriu. Alguém... subindo. Espada... de luz.”  
+> **Bell** *(rindo)*: “É ela! Eu falei que ela vinha!”  
+> **Dragão**: “Ela vai... levar... a minha luz.”  
+> **Bell** *(neutro)*: “Ela vai me levar pra casa. E se você deixar... ela divide um pouquinho com você.”  
+> **Dragão**: “Ninguém... divide. Todos... correm.”  
+> **Bell** *(apaixonada)*: “A Line não corre. Você vai ver.”  
+
+### 4.29 Baú de coração extra
 
 Há três: na sala trancada da gruta, na alcova leste das ruínas e na plataforma cercada de fendas na montanha.
 
@@ -507,9 +636,9 @@ Há três: na sala trancada da gruta, na alcova leste das ruínas e na plataform
 > ▶ `LINE_HAPPY`  
 > 🎬 **Título na tela:** Coração extra! — A vida máxima da Line aumentou  
 
-### 4.22 O covil do dragão
+### 4.30 O covil do dragão
 
-Na primeira vez a cena é completa. Nas próximas tentativas, a luta começa direto.
+Começa o Capítulo final. Na primeira vez a cena é completa; nas próximas tentativas, a luta começa direto.
 
 ![O covil do dragão](imagens/22-covil-dragao.jpg)
 *O covil do dragão*
@@ -517,6 +646,7 @@ Na primeira vez a cena é completa. Nas próximas tentativas, a luta começa dir
 > ▶ `DRAGON_ROAR`  
 > ▶ `LINE_DETERMINED`  
 > **Line** *(neutro)*: De novo. Dessa vez eu não caio.  
+> 🎬 **Título na tela:** Capítulo final — O coração do dragão  
 > ▶ `BELL_CALL_LINE`  
 > **Bell** *(surpresa)*: Line?! LINE! Você veio!  
 > **Line** *(marota)*: Eu prometi, não prometi?  
@@ -526,15 +656,44 @@ Na primeira vez a cena é completa. Nas próximas tentativas, a luta começa dir
 > ▶ `DRAGON_ROAR`  
 > ▶ `DRAGON_IDLE`  
 > ▶ `LINE_SWORD_DRAW`  
+> **Dragão**: Espada... de luz. Veio... pela minha luz.  
 > ▶ `LINE_ANGRY`  
-> **Line** *(brava)*: Solta ela. AGORA.  
+> **Line** *(brava)*: Ela não é SUA luz. É a minha namorada. Solta ela. AGORA.  
 > ▶ `BELL_SCARED`  
-> **Bell** *(surpresa)*: Cuidado! Quando ele cansa, o peito dele brilha. Esse é o ponto fraco!  
+> **Bell** *(surpresa)*: Line! Ele tá com frio, ele não é mau... mas não vai me soltar fácil!  
+> **Bell** *(surpresa)*: Quando ele cansa, o peito dele brilha. É ali!  
 > ▶ `BELL_TRAPPED`  
 
-### 4.23 Vitória e epílogo
+### 4.31 A luz dividida
 
-Depois do golpe final.
+Logo depois do abraço do resgate, dentro da cena da vitória. A fala sobre a escama só aparece se a Line achou a escama fria.
+
+![A luz dividida](imagens/54-luz-dividida.jpg)
+*A luz dividida*
+
+> ▶ `BELL_IDLE`  
+> **Bell** *(neutro)*: Line... espera. Olha pra ele.  
+> **Dragão**: Frio... tanto... frio...  
+> **Line** *(surpresa)*: Ele tá... tremendo?  
+> **Bell** *(neutro)*: O fogo dele tá apagando. Por isso ele leva alguém a cada cem anos: acha que dá pra roubar a luz de um coração.  
+> **Line** *(surpresa)*: A escama fria... O Guardião disse que ele também já foi luz.  
+> **Line** *(surpresa)*: O Guardião disse que ele também já foi luz, um dia...  
+> ▶ `LINE_DETERMINED`  
+> **Line** *(apaixonada)*: Luz não se rouba. Se divide.  
+> ▶ `LINE_CAST_CHARGE`  
+> ▶ `LINE_CAST_STARS`  
+> ▶ `DRAGON_BLINK`  
+> **Dragão**: Quente... Faz cem anos... que não fica quente.  
+> **Dragão**: Obrigado... pequena luz. Agora eu... durmo em paz. Sem levar... ninguém.  
+> ▶ `DRAGON_SLEEP`  
+> ▶ `BELL_HAPPY`  
+> **Bell** *(sorrindo)*: Boa noite, dragão.  
+> ▶ `LINE_IDLE`  
+> **Bell** *(apaixonada)*: Eu sabia que você ia entender. Você brilha mais do que eu falei pra ele.  
+
+### 4.32 Vitória e epílogo
+
+Depois do golpe final. A parte da luz dividida (acima) acontece no meio desta cena, depois do abraço.
 
 ![Vitória e epílogo](imagens/24-epilogo.jpg)
 *Vitória e epílogo*
@@ -556,11 +715,16 @@ Depois do golpe final.
 > **Line** *(marota)*: Então... será que ainda dá tempo de ver o pôr do sol?  
 > ▶ `BELL_HAPPY`  
 > **Bell** *(apaixonada)*: Só se for de mãos dadas. Sempre.  
+> 💬 *Balão:* “Au! Au!”  
+> **Bell** *(rindo)*: O Theo cuidou direitinho da fazenda, viu?  
+> **Bell** *(apaixonada)*: Promete que amanhã a gente volta aqui?  
+> **Line** *(apaixonada)*: Prometo. Amanhã, depois de amanhã...  
+> **Bell** *(rindo)*: ...todo dia que a gente quiser.  
 > ▶ `LINE_BELL_DANCE`  
 > 🎬 **Título na tela:** Fim — Obrigada por jogar!  
 > 🎬 **Título na tela:** Fim?  
 
-### 4.24 Baú com itens ou pistas
+### 4.33 Baú com itens ou pistas
 
 Todos os baús que não são a espada nem o coração extra. A Line agacha, o baú abre e aparece o que ela encontrou.
 
@@ -576,7 +740,7 @@ Todos os baús que não são a espada nem o coração extra. A Line agacha, o ba
 > **Line** *(apaixonada)*: Uma Pena de Fênix... Se eu cair, ela me levanta. Ufa.  
 > **Line** *(marota)*: Bombas! Com elas eu quebro aquelas paredes rachadas. Ficam no atalho: é só apertar F (ou o botão do item).  
 
-### 4.25 Documento encontrado
+### 4.34 Documento encontrado
 
 Ao pegar um papel brilhando no chão, examinar um lugar ou abrir um baú com documento. O texto aparece parágrafo por parágrafo; se ele completar uma conclusão, aparece o título “💡 Conclusão!”. Com os 12, coração extra.
 
@@ -584,22 +748,21 @@ Ao pegar um papel brilhando no chão, examinar um lugar ou abrir um baú com doc
 > ▶ `LINE_CROUCH_STAND`  
 > ▶ `LINE_IDLE`  
 > 🎬 **Título na tela:** Pista encontrada! — … …  
+> **Line**: 💡 Conclusão!  
 > **Line**: surpresa  
 > ▶ `LINE_HAPPY`  
 > 🎬 **Título na tela:** Caderno completo! — A Line entendeu tudo: coração extra  
 > **Line** *(brava)*: Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.  
-> **Line** *(surpresa)*: Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!  
-> **Line** *(chorando)*: Bell...  
 > **Line** *(neutro)*: Vou guardar isso no caderno. … de … documentos.  
 
-### 4.26 Examinar um lugar
+### 4.35 Examinar um lugar
 
 Pontos de exame: as marcas de garra no píer, o cartaz do vilarejo e o bilhete na porta da cabana do caçador.
 
 > ▶ `LINE_CROUCH`  
 > ▶ `LINE_CROUCH_STAND`  
 
-### 4.27 Porta trancada
+### 4.36 Porta trancada
 
 Nas três portas trancadas: sem chave a Line comenta; com chave, a porta abre e a chave some.
 
@@ -607,18 +770,18 @@ Nas três portas trancadas: sem chave a Line comenta; com chave, a porta abre e 
 > ▶ `LINE_HAPPY`  
 > **Line** *(marota)*: Abriu! Vamos ver o que tem aí dentro.  
 
-### 4.28 Poste de gancho sem o gancho
+### 4.37 Poste de gancho sem o gancho
 
 Ao chegar num poste do gancho antes de achar o gancho (sala leste das ruínas).
 
 > **Line** *(neutro)*: Um poste com uma argola de ferro... e outro igual do outro lado. Com um gancho e corda eu passaria.  
 
-### 4.29 Conversa com os moradores
+### 4.38 Conversa com os moradores
 
 Ao falar com qualquer morador do vilarejo. As falas mudam com o progresso e estão na seção 7.4. Com a Dona Rosa e o Seu Bento, a conversa termina abrindo a loja.
 
 
-### 4.30 O carrinho de mina
+### 4.39 O carrinho de mina
 
 Numa estação, antes de consertar o carrinho. Sem a alavanca, a Line comenta o que falta; com ela, encaixa a alavanca e o carrinho volta a andar.
 
@@ -634,7 +797,7 @@ Numa estação, antes de consertar o carrinho. Sem a alavanca, a Line comenta o 
 > 🎬 **Título na tela:** Carrinho consertado! — Agora dá para viajar entre as estações descobertas  
 > **Line** *(sorrindo)*: Clique! Encaixou. Agora o carrinho me leva de estação em estação.  
 
-### 4.31 Placas
+### 4.40 Placas
 
 | Onde | Texto |
 |---|---|
@@ -644,7 +807,7 @@ Numa estação, antes de consertar o carrinho. Sem a alavanca, a Line comenta o 
 | Montanha, início | Fendas na rocha! Pule para atravessar (Espaço). Correndo, o pulo vai mais longe. |
 | Montanha, fonte | Fonte das brasas: beba para recuperar vida e magia. Se cair, você volta para cá. |
 
-### 4.32 Balões dos bichos e da Bell (na fazenda)
+### 4.41 Balões dos bichos e da Bell (na fazenda)
 
 - Cocoricóóó! (galo, de manhã)
 - Au! / Au! Au! / Au! Au! ♥ / Auuu~ (fome) / Auuu... / AU! AU! AU! (Theo)
@@ -655,7 +818,7 @@ Numa estação, antes de consertar o carrinho. Sem a alavanca, a Line comenta o 
 - O Theo já tá sentindo o cheiro! (Bell)
 - Os bichinhos te amam. Eu entendo eles. (Bell)
 
-### 4.33 Dicas que aparecem durante o jogo
+### 4.42 Dicas que aparecem durante o jogo
 
 | Quando | Texto |
 |---|---|
@@ -1054,9 +1217,10 @@ Falando com a Dona Rosa ou com o Seu Bento, a conversa termina com a janela da l
 | Morador | Quem é | O que conta |
 |---|---|---|
 | Dona Rosa 🧪 | mercadora | fica sabendo da Bell e oferece poções e bombas; depois lembra para que servem as bombas |
-| Seu Bento ⚒️ | ferreiro | explica os escudos; ao ver a receita do Mestre Aurélio, reconhece a letra do mestre e passa a forjar a Armadura de Brasa |
-| Seu Zé | o morador mais velho | a história do carrinho de mina e da alavanca levada para a Forja; depois comemora o carrinho andando |
-| Dona Lurdes | mulher do caçador Tobias | aponta a cabana do caçador, na floresta, onde está o bilhete |
+| Seu Bento ⚒️ | ferreiro, aprendiz do Mestre Aurélio | conta que aprendeu o ofício na Forja Antiga e explica os escudos; ao ver a receita, reconhece a letra do mestre depois de cinquenta anos e passa a forjar a Armadura de Brasa |
+| Seu Zé | o morador mais velho | empurrava o carrinho quando era moço; conta que há cinquenta anos a montanha esquentou e o Mestre Ivo fechou as minas e levou a alavanca; depois comemora o carrinho andando |
+| Dona Lurdes | mulher do caçador Tobias | está aflita porque o marido não voltou; depois do bilhete, pede para a Line procurá-lo na montanha; quando a Line acha o Tobias, agradece com **2 Poções de Vida** (uma vez) |
+| Tobias (na montanha) | caçador, com o pé torcido perto da fonte das brasas | viu o dragão pousar e ouviu a Bell cantando; “quando ela canta, o dragão para de rugir”; a Line conta que a Bell canta quando está com medo, para ficar corajosa |
 | Pedrinho | menino curioso | conta da pedra rachada da floresta; depois que ela explode, fica encantado |
 
 As falas mudam conforme o progresso (itens, documentos e o carrinho), e o jogo guarda com quem a Line já conversou.
@@ -1118,12 +1282,29 @@ Quando dois documentos combinam, a Line tira uma **conclusão** (aparece um tít
 | 💡 Os cristais são as chaves das barreiras, e o Guardião guarda a Chuva de Estrelas no peito. | Diário do Guardião, página 1 + Diário do Guardião, página 2 | — |
 | 💡 A Alavanca de Ferro está na Forja Antiga. Encaixada numa estação, o carrinho volta a andar. | Relatório do capataz + Mapa rasgado | — |
 | 💡 O Seu Bento, do vilarejo, sabe forjar a Armadura de Brasa: com ela, o chão em brasa não queima. | Receita da Armadura de Brasa + Cartaz do vilarejo | A Armadura de Brasa aparece na ferraria. |
-| 💡 Quando o dragão cansa, o peito racha e fica exposto. | A lenda da Montanha + Escama vermelha | Golpes no peito do dragão tiram 1 de vida a mais. |
+| 💡 Quando o dragão cansa, o peito racha e fica exposto. E o fogo lá dentro está fraco: ele está com frio. | A lenda da Montanha + Escama vermelha | Golpes no peito do dragão tiram 1 de vida a mais. |
 | 💡 A Chuva de Estrelas apaga o fogo do dragão por um instante. | Diário do Guardião, página 2 + Escama vermelha | A Chuva de Estrelas interrompe o fogo do dragão. |
 | 💡 A Bell deixou a fita de propósito: ela está logo depois do portão de fogo. | Fita de cabelo da Bell + Mapa rasgado | — |
 
 ![As conclusões da Line, embaixo da lista de documentos](imagens/51-conclusoes.jpg)
 *As conclusões da Line, embaixo da lista de documentos*
+
+**O que a Line diz ao achar cada documento** (depois de ler o texto):
+
+| Documento | Fala da Line |
+|---|---|
+| 🐾 Marcas de garra no píer | “Aguenta firme, Bell.” |
+| 📌 Cartaz do vilarejo | “Então não fui só eu que vi... O vilarejo inteiro tá assustado.” |
+| ✉️ Carta do Mago | “O Mago sabia de tudo isso... e mesmo assim me deu uma espada. Ele acredita em mim.” |
+| 🪓 Bilhete do caçador | “Uma moça de óculos gritando um nome... Era o meu. Ela tava me chamando.” |
+| 📜 A lenda da Montanha | “Fome de luz... o coração mais brilhante. Claro que ele levou a Bell.” |
+| 🗺️ Mapa rasgado | “Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!” |
+| 🛤️ Relatório do capataz | “A alavanca do carrinho tá na Forja Antiga... Se eu achar, dá pra cortar caminho pelos trilhos.” |
+| 📖 Diário do Guardião, página 1 | “Os cristais são as chaves... Por isso as barreiras brilham igualzinho a eles.” |
+| 📖 Diário do Guardião, página 2 | “A Chuva de Estrelas tá no peito do Guardião. Vou ter que vencer ele.” |
+| 📋 Receita da Armadura de Brasa | “Mestre Aurélio... o Seu Bento aprendeu com ele! Preciso mostrar isso pra ele no vilarejo.” |
+| 🔥 Escama vermelha | “Fria. Um dragão de fogo com escama fria... Igual ao sonho da Bell.” |
+| 🎀 Fita de cabelo da Bell | “Bell... Ela deixou cair de propósito. Eu sei que deixou. Tô chegando, amor.” |
 
 Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”
 
@@ -1159,18 +1340,22 @@ Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a f
 > *Encontrado em: Floresta Sussurrante, baú na clareira do Mago*
 
 > **🪓 Bilhete do caçador** · *Anotação · Tobias, caçador da floresta · Ontem à noite*  
-> Vi de novo o clarão vermelho. Ao pôr do sol ele passou por cima da cabana carregando alguém: uma moça de óculos, gritando um nome. Foi direto para o topo da Montanha de Brasa.  
+> Lurdes, se você achar este bilhete antes de mim: não se preocupe.  
 >
-> Fui avisar no vilarejo.  
+> Ao pôr do sol, o clarão vermelho passou por cima da cabana carregando alguém: uma moça de óculos, gritando um nome. Foi direto para o topo da Montanha de Brasa.  
 >
-> Se alguém ler isto: o caminho mais curto até a montanha passa pelas Ruínas. As Minas, a leste, também chegam lá, para quem tiver luz e coragem.  
+> Vou subir atrás dele para ver onde ele pousa. Volto logo.  
+>
+> Se outra pessoa ler isto: o caminho mais curto até a montanha passa pelas Ruínas. As Minas, a leste, também chegam lá, para quem tiver luz e coragem.  
 >
 > *Encontrado em: Floresta Sussurrante, na porta da cabana a leste*
 
 > **📜 A lenda da Montanha** · *Pergaminho · Autor desconhecido · Há cem anos*  
 > A cada cem anos o dragão desperta com fome de luz. Leva para o covil a pessoa de coração mais brilhante e a guarda numa jaula de ferro.  
 >
-> Dizem que o dragão não teme a espada: teme a luz, que o cansa. E quando cansa, o peito dele se abre.  
+> Os antigos diziam que o fogo dele esfria enquanto ele dorme, e que é o frio que o acorda. Ninguém nunca perguntou por quê.  
+>
+> Dizem também que o dragão não teme a espada: teme a luz, que o cansa. E quando cansa, o peito dele se abre.  
 >
 > *Encontrado em: Gruta dos Ecos, pergaminho perto da fonte*
 
@@ -1181,12 +1366,14 @@ Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a f
 >
 > *Encontrado em: Gruta dos Ecos, sala trancada*
 
-> **🛤️ Relatório do capataz** · *Relatório · Mestre Ivo, capataz das Minas de Cristal · Há cem anos*  
+> **🛤️ Relatório do capataz** · *Relatório · Mestre Ivo, capataz das Minas de Cristal · Há cinquenta anos*  
 > RELATÓRIO FINAL.  
 >
 > A linha do carrinho liga três estações: Vilarejo, Minas e Forja.  
 >
-> Depois que o dragão acordou, fechamos a mina. Levei a Alavanca de Ferro do freio para a Forja Antiga, na montanha, para ninguém se arriscar nos trilhos.  
+> A montanha anda quente demais. Nas galerias fundas aparecem sombras, e à noite se ouve alguma coisa enorme respirando lá em cima. Os velhos dizem que é o dragão se revirando no sono, tremendo.  
+>
+> Fechei a mina. Levei a Alavanca de Ferro do freio para a Forja Antiga, com o Mestre Aurélio, para ninguém se arriscar nos trilhos.  
 >
 > Quem a trouxer de volta pode viajar de novo: basta encaixar a alavanca numa estação.  
 >
@@ -1208,17 +1395,17 @@ Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a f
 >
 > *Encontrado em: Ruínas Encantadas, biblioteca trancada*
 
-> **📋 Receita da Armadura de Brasa** · *Receita · Mestre Aurélio, ferreiro da forja · Há cem anos*  
+> **📋 Receita da Armadura de Brasa** · *Receita · Mestre Aurélio, ferreiro da forja · Há cinquenta anos*  
 > Receita da Armadura de Brasa: cota de malha temperada no calor da montanha, com placas de cobre por cima.  
 >
 > Resiste à brasa rasa: quem a veste atravessa o chão em brasa sem se queimar.  
 >
-> Meu aprendiz, o jovem Bento, sabe fazer. Se ainda estiver vivo, mostrem esta receita a ele no vilarejo.  
+> Vou deixar a forja. A montanha esquentou demais, e o Ivo fechou as minas. Meu aprendiz, o jovem Bento, sabe fazer esta armadura: quem achar esta receita, leve até ele no vilarejo.  
 >
 > *Encontrado em: Montanha de Brasa, Forja Antiga*
 
 > **🔥 Escama vermelha** · *Objeto encontrado · Anotação da Line · Hoje*  
-> Uma escama do tamanho da minha mão, ainda morna.  
+> Uma escama do tamanho da minha mão. Fria. Um dragão de fogo, e a escama dele está fria.  
 >
 > Está rachada no meio. O peito dele é o lugar mais fraco, exatamente como a lenda diz.  
 >

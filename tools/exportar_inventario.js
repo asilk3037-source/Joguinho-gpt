@@ -29,7 +29,7 @@ const { chromium } = require(process.env.PLAYWRIGHT || 'playwright');
     }
     const fn = (o) => JSON.parse(JSON.stringify(o, (k, v) => (typeof v === 'function' ? undefined : v)));
     const mundo = { mapas, itens: fn(M.ITENS), ordemItens: M.ORDEM_ITENS, pistas: M.PISTAS, ordemPistas: M.ORDEM_PISTAS, conclusoes: M.CONCLUSOES, tiposDoc: M.TIPOS_DOC,
-      armaduras: LB.loja.ARMADURAS, lojas: fn(LB.loja.LOJAS), moradores: LB.loja.MORADORES, estacoes: LB.carrinho.ESTACOES, dificuldades: fn(LB.dificuldade.NIVEIS) };
+      armaduras: LB.loja.ARMADURAS, lojas: fn(LB.loja.LOJAS), moradores: LB.loja.MORADORES, estacoes: LB.carrinho.ESTACOES, interludios: LB.interludio.INTERLUDIOS, reacoes: Object.fromEntries(Object.entries(LB.REACOES).map(([k, f]) => [k, f({ flags: { conversas: ['bento'] } })[0]])), dificuldades: fn(LB.dificuldade.NIVEIS) };
     return { grupos, extras, retratos: window.RETRATOS, total: Object.keys(window.SPRITES).length, mundo };
   });
   require('fs').writeFileSync(process.argv[2] || 'inventario.json', JSON.stringify(d, null, 1));

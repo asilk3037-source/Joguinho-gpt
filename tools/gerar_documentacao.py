@@ -62,7 +62,16 @@ w("> Elas estão no jogo só para dar vida à aventura enquanto a criação da a
 w("> Quando cada animação definitiva ficar pronta, ela substitui a temporária com o mesmo código.")
 w("> Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no código.")
 w()
-w("> 🆕 **Novidades desta versão:**")
+w("> 📖 **Novidades da história (esta versão):**")
+w("> - Um **tema** que costura a aventura inteira: *luz não se rouba, se divide* (seção 3).")
+w("> - O **dragão ganhou motivo e voz**: o fogo dele esfria enquanto dorme, e ele acorda com frio procurando um coração brilhante. A Bell sonha com isso na manhã do rapto.")
+w("> - **Quatro interlúdios “Enquanto isso…”** mostram a Bell presa no covil, conversando e cantando para o dragão (seção 4).")
+w("> - **Final novo:** depois do golpe final, a Line divide a luz com o dragão em vez de apagá-lo, e o epílogo fecha a promessa do pôr do sol.")
+w("> - **Títulos de capítulo**, cenas de chegada no vilarejo, na gruta, nas minas e na forja, e uma fala da Line para cada documento achado.")
+w("> - **O caçador Tobias**, personagem novo na montanha, ouviu a Bell cantando; achando ele, a Dona Lurdes agradece.")
+w("> - **Linha do tempo corrigida:** as minas e a forja fecharam há cinquenta anos, quando a montanha começou a esquentar (por isso o Seu Zé e o Seu Bento se lembram).")
+w()
+w("> 🆕 **Novidades da versão anterior (mundo):**")
 w("> - **Fases bem maiores e interligadas**: a floresta, a gruta, as ruínas e a montanha dobraram de tamanho e ganharam atalhos entre si (seções 6 e 7.1).")
 w("> - **Vilarejo do Riacho**, área nova com cinco moradores, a **loja da Dona Rosa** e a **ferraria do Seu Bento** (seções 6.2, 7.3 e 7.4).")
 w("> - **Moedas** e **armaduras** que dão escudos (seções 7.2 e 7.3).")
@@ -126,7 +135,7 @@ w("Protagonista. É fazendeira, corajosa e brincalhona, de boné preto, cabelo l
 w()
 img("arte-line", "Line: algumas das animações atuais (temporárias)")
 w("### Bell")
-w("Namorada da Line: doce, risonha e mandona na medida certa. Usa óculos, blusa creme e short jeans. É levada pelo dragão no pôr do sol e fica presa numa jaula no covil.")
+w("Namorada da Line: doce, risonha e mandona na medida certa. Usa óculos, blusa creme e short jeans. É levada pelo dragão no pôr do sol e fica presa numa jaula no covil, mas não fica parada: deixa a fita cair de propósito para a Line achar, conversa com o dragão, descobre que ele está com frio e canta para acalmá-lo. É ela quem entende o dragão primeiro.")
 w()
 img("arte-bell", "Bell: animações atuais (temporárias)")
 w("### Line e Bell juntas")
@@ -173,9 +182,16 @@ w("### Guardião de Pedra")
 w("Chefe das ruínas: um golem de pedra com um cristal azul no peito. Desenhado no código por enquanto.")
 w()
 w("### Dragão Vermelho")
-w("O vilão. Dormia havia cem anos, acorda, rapta a Bell e a leva para o covil no topo da Montanha de Brasa.")
+w("Dorme cem anos no topo da Montanha de Brasa, e enquanto dorme o fogo dele esfria. É o frio que o acorda. Ele acredita que o calor de um coração brilhante pode ser tomado, e por isso leva alguém a cada século. Fala pouco, em frases partidas (“Cem anos… dormindo. O fogo… esfria.”). Não é mau: está com frio. No fim, a Line divide a luz com ele e ele volta a dormir em paz, sem levar ninguém.")
 w()
 img("arte-dragao", "Dragão vermelho (temporário)")
+w("### Moradores do vilarejo e o caçador Tobias")
+w("Dona Rosa (mercadora), Seu Bento (ferreiro, aprendiz do Mestre Aurélio), Seu Zé (o mais velho, empurrava o carrinho de mina cinquenta anos atrás), Dona Lurdes (mulher do caçador) e o Pedrinho. O **Tobias**, caçador, foi atrás do dragão, torceu o pé e está na montanha, perto da fonte das brasas: foi ele quem ouviu a Bell cantando lá em cima. Hoje todos são desenhados no código (seção 7.12).")
+w()
+w("### Personagens citados nos documentos")
+w("- **Mestre Ivo:** o capataz que fechou as Minas de Cristal há cinquenta anos e levou a alavanca do carrinho para a forja.")
+w("- **Mestre Aurélio:** o ferreiro da Forja Antiga, mestre do Seu Bento, autor da receita da Armadura de Brasa.")
+w()
 w("### Criaturas")
 w("- **Sombras:** criaturas escuras que surgem depois que a Line pega a espada. Investem contra ela e são fracas contra a luz.")
 w("- **Fogos-fátuos:** luzinhas que flutuam, mantêm distância e atiram orbes. São azuis nas ruínas e de fogo na montanha.")
@@ -184,25 +200,27 @@ w()
 # =====================================================================
 w("## 3. A história")
 w()
+w("> **O fio da história:** *luz não se rouba, se divide.* O dragão acha que pode tomar a luz de um coração para se aquecer. Todo mundo que a Line encontra diz a mesma coisa de um jeito diferente: o Mago (“Luz não se rouba, menina. Se divide.”), o Espírito das Ruínas (“A luz que se divide nunca acaba. A que se prende, apaga.”), o Guardião (“O dragão também já foi luz, um dia.”) e a Bell, que canta para o dragão na jaula. No fim, a Line entende e faz isso.")
+w()
 w("**Prólogo — O primeiro encontro (09/05/2024).** No Minas Shopping, a Line vê a Bell de longe e fica encantada. Elas conversam, a Bell diz que a Line está atrasada e as duas comem BK. A Line confessa que está tímida porque a Bell é muito linda. De mãos dadas, vão ao playground, onde a Line tenta a máquina de soco, faz só 038 pontos e a Bell morre de rir. No túnel, dão o primeiro beijo. O tempo passa, e o sonho das duas vira uma fazendinha.")
 w()
-w("**Capítulo 1 — Nossa vidinha.** Amanhece na fazenda. A Bell acorda a Line, e as duas cuidam da fazenda: pegar os ovos, regar a horta, dar ração ao Theo e fazer carinho nos bichinhos. Depois vem o almoço juntas e o passeio de mãos dadas até o lago para ver o pôr do sol. Lá elas dançam e dão uma bitoquinha.")
+w("**Capítulo 1 — Nossa vidinha.** Amanhece na fazenda. A Bell acorda a Line e conta um sonho estranho: um dragão enorme, vermelho, **tremendo de frio**. A Line brinca que é fome de café. As duas cuidam da fazenda (ovos, horta, ração do Theo, carinho nos bichinhos), almoçam juntas e vão de mãos dadas ver o pôr do sol no lago. A Bell pede: “Promete que amanhã a gente volta?”. A Line promete: “Amanhã, depois de amanhã… todo dia que você quiser.” Elas dançam e dão uma bitoquinha.")
 w()
-w("**O rapto.** O céu escurece, os bichos se assustam e um dragão vermelho mergulha do céu e leva a Bell. A Line corre atrás, grita por ela, chora e decide ir buscá-la. Pede ao Theo que cuide da fazenda.")
+w("**O rapto.** O céu escurece e um dragão vermelho mergulha do céu. A Bell reconhece: “É ele… o dragão do meu sonho.” Ele a leva. A Line corre, grita, chora, e decide ir buscá-la. Pede ao Theo que cuide da fazenda.")
 w()
-w("**A investigação.** Desde o rapto, a Line junta documentos: as marcas de garra no píer, o cartaz do vilarejo, a carta do Mago, o bilhete do caçador Tobias, a lenda da montanha, o mapa rasgado, o relatório do capataz das minas, as páginas do diário do Guardião, a receita do Mestre Aurélio, uma escama vermelha e a fita de cabelo da Bell. Quando dois documentos combinam, ela tira uma conclusão: que a Bell está viva, que o dragão teme a luz, onde está a alavanca do carrinho, quem forja a Armadura de Brasa, onde fica o ponto fraco do dragão. Com os doze, a Line entende tudo e ganha um coração extra.")
+w("**Capítulo 2 — Atrás da Bell.** Na Floresta Sussurrante, o Mago conta a lenda: o dragão dorme cem anos, o fogo dele esfria, e ele acorda procurando o calor de um coração brilhante. A Line lembra do sonho da Bell. O Mago entrega a espada e aponta os caminhos: as ruínas ao norte, a gruta a leste, o Vilarejo do Riacho ao sul. *Enquanto isso*, no covil, a Bell acorda numa jaula; o dragão murmura de frio no sono, e ela se agarra a uma certeza: deixou a fita cair de propósito, e a Line sempre acha o que ela perde.")
 w()
-w("**O vilarejo.** A leste da fazenda fica o Vilarejo do Riacho. A Dona Rosa vende poções e bombas, o Seu Bento forja armaduras, o Seu Zé conta que o carrinho de mina parou quando o capataz levou a alavanca do freio para a Forja Antiga, a Dona Lurdes aponta a cabana do marido caçador e o Pedrinho conta de uma pedra rachada na floresta. Achando a alavanca na montanha, a Line conserta o carrinho e passa a viajar entre o vilarejo, as minas e a forja.")
+w("**O vilarejo e as minas.** No Vilarejo do Riacho, os moradores ajudam como podem: a Dona Rosa com poções e bombas, o Seu Bento com armaduras. O Seu Zé conta que, cinquenta anos atrás, a montanha começou a esquentar e a respirar de noite, e o capataz fechou as minas e levou a alavanca do carrinho para a Forja Antiga. A Dona Lurdes está aflita: o marido, o caçador Tobias, viu o dragão passar e não voltou. Na porta da cabana dele, a Line acha o bilhete: ele subiu a montanha atrás do dragão. Na Gruta dos Ecos, a Line chama pela Bell e só o eco responde. Mais a fundo ficam as Minas de Cristal, escuras e cheias de morcegos.")
 w()
-w("**Capítulo 2 — A floresta.** Na Floresta Sussurrante, um mago conta que o dragão acordou depois de cem anos e entrega uma espada guardada num baú. Sombras aparecem. Espinhos fecham o caminho do norte, e a espada abre passagem. A leste da floresta fica a **Gruta dos Ecos**, onde o Mago guardou uma bússola, um elixir e uma sala trancada com um coração extra e o mapa rasgado.")
+w("**Capítulo 3 — A luz das ruínas.** Nas Ruínas Encantadas, o Espírito das Ruínas passa a luz para a espada da Line e ensina: “A luz que se divide nunca acaba. A que se prende, apaga.” *Enquanto isso*, a Bell vê um clarão azul lá longe, nas ruínas, e sabe que é a Line. Ela pergunta ao dragão por que ele a levou, e ele responde em pedaços: cem anos dormindo, o fogo esfria, coração brilhante aquece. A Bell entende: ele não quer machucá-la, ele está com frio. A Line acende cristais, desfaz barreiras e vence o Guardião de Pedra, que entrega a Chuva de Estrelas e deixa uma última frase: “O dragão também já foi luz, um dia.” *Enquanto isso*, o dragão ruge de frio e a Bell canta para ele a cantiga da avó: “Dorme, fogo pequenino, que a noite vai passar… quem tem alguém do lado não precisa se apagar.” O dragão se aquece um pouco.")
 w()
-w("**Capítulo 3 — Magia.** O dragão selou a montanha com magia antiga. Nas Ruínas Encantadas, o Espírito das Ruínas ensina a Line a lançar luz pela espada. Ela acende cristais para desfazer barreiras, encontra um coração extra e enfrenta o Guardião de Pedra. Vencido, ele entrega a Chuva de Estrelas.")
+w("**Capítulo 4 — A Montanha de Brasa.** Perto da fonte das brasas, a Line encontra o Tobias com o pé torcido. Ele viu o dragão pousar e ouviu uma voz de moça cantando a noite inteira; quando ela canta, o dragão para de rugir. “É a Bell. Ela canta quando tá com medo, pra ficar corajosa.” Na Forja Antiga, a Line acha a receita do Mestre Aurélio e a alavanca do carrinho; na caverna escondida, uma escama **fria**. Ela acende as três tochas e o portão de fogo se abre. *Enquanto isso*, o dragão sente alguém subindo com uma espada de luz. “Ela vai levar a minha luz.” A Bell responde: “Ela vai me levar pra casa. E se você deixar, ela divide um pouquinho com você.”")
 w()
-w("**Capítulo 4 — A montanha.** Na Montanha de Brasa, a Line pula fendas, desvia de lava e acende três tochas antigas para abrir o portão de fogo do covil.")
+w("**Capítulo final — O coração do dragão.** No covil, a Bell grita que a Line veio. O dragão pousa: “Veio… pela minha luz.” A Line responde que a Bell não é luz de ninguém: é a namorada dela. A Bell avisa que ele não é mau, só está com frio, e mostra o ponto fraco. A Line vence e dá o golpe final. As duas se abraçam. Então a Bell pede: “Olha pra ele.” O dragão treme de frio no chão. A Line entende o que todos disseram: **luz não se rouba, se divide.** Ela chama as estrelas sobre ele, e o fogo do peito volta a acender. “Quente… Faz cem anos que não fica quente. Obrigado, pequena luz. Agora eu durmo em paz. Sem levar ninguém.” A Bell dá boa noite a ele.")
 w()
-w("**Capítulo 5 — O covil.** A Bell está presa numa jaula e o dragão pousa para lutar. Quando ele cansa, o peito brilha: é o ponto fraco. A Line vence, dá o golpe final e liberta a Bell. As duas se abraçam.")
+w("**Epílogo.** De volta à fazenda, no pôr do sol do lago, com o Theo latindo de alegria. A Bell repete a pergunta do começo: “Promete que amanhã a gente volta aqui?” A Line promete de novo, e dessa vez é a Bell quem completa: “…todo dia que a gente quiser.” Elas dançam. Aparece “Fim”… e, no escuro, um olho de dragão se abre: “Fim?”.")
 w()
-w("**Epílogo.** De volta à fazenda, no pôr do sol do lago, as duas dançam. Aparece “Fim”… e, no escuro, um olho de dragão se abre: “Fim?”.")
+w("**A investigação.** Ao longo da aventura, a Line junta 12 documentos (marcas de garra, cartaz do vilarejo, carta do Mago, bilhete do Tobias, a lenda, o mapa rasgado, o relatório do capataz, as páginas do diário do Guardião, a receita do Mestre Aurélio, a escama fria e a fita da Bell) e tira 8 conclusões. Várias delas apontam para o mesmo segredo: o dragão está com frio.")
 w()
 
 # =====================================================================
@@ -221,19 +239,28 @@ CENAS = [
     ("almoco", "Almoço", "Quando todas as tarefas terminam, as duas dão um toca aqui e almoçam juntas na mesa do quintal.", "05-almoco"),
     (None, "A tarde de mãos dadas", "Parte jogável: a Line anda de mãos dadas com a Bell até o lago.", "04-pasto"),
     ("porDoSol", "Pôr do sol e o rapto", "No píer do lago. Esta é a cena mais longa do jogo.", "06-por-do-sol-danca"),
-    ("floresta", "Chegada na floresta", "Primeira vez na Floresta Sussurrante.", "09-floresta-mago"),
+    ("floresta", "Chegada na floresta", "Primeira vez na Floresta Sussurrante. Começa o Capítulo 2.", "09-floresta-mago"),
     ("mago", "O Mago", "Ao conversar com o Mago. A primeira conversa conta a história, a segunda (depois da espada) aponta para as ruínas e as seguintes sorteiam uma dica.", None),
     ("espinhos", "Espinhos sem espada", "Ao chegar perto dos espinhos do norte sem a espada.", None),
-    ("espada", "A espada", "Ao abrir o baú ao lado do Mago.", "10-espada"),
+    ("espada", "A espada", "Ao abrir o baú ao lado do Mago. Logo depois vem o primeiro interlúdio, e então aparecem as sombras.", "10-espada"),
+    ("interludio:1", "Enquanto isso… (1): a Bell acorda na jaula", "Depois da espada. A tela escurece e mostra o covil: o dragão dormindo, a Bell na jaula.", "53-interludio"),
+    ("chegadaVilarejo", "Chegada no Vilarejo do Riacho", "Primeira vez no vilarejo. As conversas com os moradores estão na seção 7.4.", "37-vilarejo"),
+    ("chegadaGruta", "Chegada na Gruta dos Ecos", "Primeira vez na gruta. A primeira fala muda se a Line já leu a carta do Mago.", None),
+    ("chegadaMinas", "Chegada nas Minas de Cristal", "Ao passar para a metade leste da gruta. A segunda fala muda se a Line já tem a lanterna.", None),
     ("ruinas", "Chegada nas Ruínas Encantadas", "", "12-ruinas-entrada"),
-    ("altar", "O altar da luz", "Ao tocar a luz do altar, na sala a oeste do salão de entrada.", "13-altar-magia"),
+    ("altar", "O altar da luz", "Ao tocar a luz do altar, na sala a oeste do salão de entrada. Termina com o segundo interlúdio.", "13-altar-magia"),
+    ("interludio:2", "Enquanto isso… (2): o frio do dragão", "Depois de aprender a magia.", None),
     ("golem", "O Guardião desperta", "Ao se aproximar do Guardião, no salão norte das ruínas.", "16-guardiao-acorda"),
-    ("golemVencido", "O Guardião vencido", "", "19-chuva-de-estrelas"),
-    ("montanha", "Chegada na Montanha de Brasa", "", "20-montanha"),
-    ("portaoAberto", "O portão se abre", "Quando a terceira tocha acende.", "21-tocha-na-lava"),
+    ("golemVencido", "O Guardião vencido", "Termina com o terceiro interlúdio.", "19-chuva-de-estrelas"),
+    ("interludio:3", "Enquanto isso… (3): a cantiga", "Depois de vencer o Guardião.", None),
+    ("montanha", "Chegada na Montanha de Brasa", "Começa o Capítulo 4. A câmera mostra as três tochas.", "20-montanha"),
+    ("chegadaForja", "A Forja Antiga", "Ao chegar perto da bigorna da Forja Antiga, na montanha.", None),
+    ("portaoAberto", "O portão se abre", "Quando a terceira tocha acende. Termina com o último interlúdio.", "21-tocha-na-lava"),
+    ("interludio:4", "Enquanto isso… (4): alguém está subindo", "Depois que o portão de fogo abre.", None),
     ("bauCoracao", "Baú de coração extra", "Há três: na sala trancada da gruta, na alcova leste das ruínas e na plataforma cercada de fendas na montanha.", None),
-    ("covil", "O covil do dragão", "Na primeira vez a cena é completa. Nas próximas tentativas, a luta começa direto.", "22-covil-dragao"),
-    ("vitoria", "Vitória e epílogo", "Depois do golpe final.", "24-epilogo"),
+    ("covil", "O covil do dragão", "Começa o Capítulo final. Na primeira vez a cena é completa; nas próximas tentativas, a luta começa direto.", "22-covil-dragao"),
+    ("dividirLuz", "A luz dividida", "Logo depois do abraço do resgate, dentro da cena da vitória. A fala sobre a escama só aparece se a Line achou a escama fria.", "54-luz-dividida"),
+    ("vitoria", "Vitória e epílogo", "Depois do golpe final. A parte da luz dividida (acima) acontece no meio desta cena, depois do abraço.", "24-epilogo"),
     ("bauItem", "Baú com itens ou pistas", "Todos os baús que não são a espada nem o coração extra. A Line agacha, o baú abre e aparece o que ela encontrou.", None),
     ("pista", "Documento encontrado", "Ao pegar um papel brilhando no chão, examinar um lugar ou abrir um baú com documento. O texto aparece parágrafo por parágrafo; se ele completar uma conclusão, aparece o título “💡 Conclusão!”. Com os 12, coração extra.", None),
     ("exame", "Examinar um lugar", "Pontos de exame: as marcas de garra no píer, o cartaz do vilarejo e o bilhete na porta da cabana do caçador.", None),
@@ -251,7 +278,15 @@ for num, (chave, titulo, intro, foto) in enumerate(CENAS, 1):
         w()
     if foto:
         img(foto, titulo.split(" ", 1)[1])
-    if chave:
+    if chave and chave.startswith("interludio:"):
+        d = inv["mundo"]["interludios"][chave.split(":")[1]]
+        w(f"> 🎬 **Título na tela:** Enquanto isso... — {d['sub']}  ")
+        for f in d["falas"]:
+            quem, texto = f[0], f[1]
+            rosto = f[2] if len(f) > 2 and f[2] else None
+            w(f"> **{quem}**" + (f" *({ROSTO.get(rosto, rosto)})*" if rosto else "") + f": “{texto}”  ")
+        w()
+    elif chave:
         roteiro(chave)
     if chave == "mago":
         w("**Falas sorteadas do Mago** (mudam conforme o progresso):")
@@ -707,9 +742,10 @@ w("| Morador | Quem é | O que conta |")
 w("|---|---|---|")
 for l in [
     ("Dona Rosa 🧪", "mercadora", "fica sabendo da Bell e oferece poções e bombas; depois lembra para que servem as bombas"),
-    ("Seu Bento ⚒️", "ferreiro", "explica os escudos; ao ver a receita do Mestre Aurélio, reconhece a letra do mestre e passa a forjar a Armadura de Brasa"),
-    ("Seu Zé", "o morador mais velho", "a história do carrinho de mina e da alavanca levada para a Forja; depois comemora o carrinho andando"),
-    ("Dona Lurdes", "mulher do caçador Tobias", "aponta a cabana do caçador, na floresta, onde está o bilhete"),
+    ("Seu Bento ⚒️", "ferreiro, aprendiz do Mestre Aurélio", "conta que aprendeu o ofício na Forja Antiga e explica os escudos; ao ver a receita, reconhece a letra do mestre depois de cinquenta anos e passa a forjar a Armadura de Brasa"),
+    ("Seu Zé", "o morador mais velho", "empurrava o carrinho quando era moço; conta que há cinquenta anos a montanha esquentou e o Mestre Ivo fechou as minas e levou a alavanca; depois comemora o carrinho andando"),
+    ("Dona Lurdes", "mulher do caçador Tobias", "está aflita porque o marido não voltou; depois do bilhete, pede para a Line procurá-lo na montanha; quando a Line acha o Tobias, agradece com **2 Poções de Vida** (uma vez)"),
+    ("Tobias (na montanha)", "caçador, com o pé torcido perto da fonte das brasas", "viu o dragão pousar e ouviu a Bell cantando; “quando ela canta, o dragão para de rugir”; a Line conta que a Bell canta quando está com medo, para ficar corajosa"),
     ("Pedrinho", "menino curioso", "conta da pedra rachada da floresta; depois que ela explode, fica encantado"),
 ]:
     w("| " + " | ".join(l) + " |")
@@ -768,6 +804,14 @@ for c in MUNDO["conclusoes"]:
     w(f"| 💡 {c['texto']} | {junta} | {c.get('efeito') or '—'} |")
 w()
 img("51-conclusoes", "As conclusões da Line, embaixo da lista de documentos")
+w("**O que a Line diz ao achar cada documento** (depois de ler o texto):")
+w()
+w("| Documento | Fala da Line |")
+w("|---|---|")
+for id_ in MUNDO["ordemPistas"]:
+    p = MUNDO["pistas"][id_]
+    w(f"| {p['icone']} {p['titulo']} | “{MUNDO['reacoes'][id_]}” |")
+w()
 w("Ao juntar os 12 documentos: título **Caderno completo!**, coração extra e a fala “Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.”")
 w()
 w("**Textos completos dos documentos:**")

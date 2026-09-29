@@ -189,6 +189,22 @@
     return c;
   }
 
+  // O que a Line diz ao achar cada documento (depois de ler).
+  const REACOES = {
+    pegadas: () => ['Aguenta firme, Bell.', 'bravo'],
+    cartaz: () => ['Então não fui só eu que vi... O vilarejo inteiro tá assustado.', 'neutro'],
+    carta: () => ['O Mago sabia de tudo isso... e mesmo assim me deu uma espada. Ele acredita em mim.', 'surpresa'],
+    cacador: () => ['Uma moça de óculos gritando um nome... Era o meu. Ela tava me chamando.', 'chorando'],
+    lenda: () => ['Fome de luz... o coração mais brilhante. Claro que ele levou a Bell.', 'apaixonada'],
+    mapa: () => ['Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!', 'surpresa'],
+    minerador: () => ['A alavanca do carrinho tá na Forja Antiga... Se eu achar, dá pra cortar caminho pelos trilhos.', 'maroto'],
+    diario1: () => ['Os cristais são as chaves... Por isso as barreiras brilham igualzinho a eles.', 'neutro'],
+    diario2: () => ['A Chuva de Estrelas tá no peito do Guardião. Vou ter que vencer ele.', 'bravo'],
+    receita: (j) => [(j.flags.conversas || []).includes('bento') ? 'Mestre Aurélio... o Seu Bento aprendeu com ele! Preciso mostrar isso pra ele no vilarejo.' : 'Um aprendiz chamado Bento, no vilarejo... tomara que ele ainda more lá.', 'surpresa'],
+    escama: () => ['Fria. Um dragão de fogo com escama fria... Igual ao sonho da Bell.', 'surpresa'],
+    fita: () => ['Bell... Ela deixou cair de propósito. Eu sei que deixou. Tô chegando, amor.', 'chorando'],
+  };
+
   // ---------- História ----------
   const HISTORIA = {
     // Manhã na fazenda: acorda, conversa com a Bell e recebe as tarefas do dia.
@@ -210,8 +226,11 @@
       bell.dir = 'LEFT'; bell.lado = -1; bell.anim.tocar('BELL_IDLE', true);
       yield c.fala('Bell', 'Bom dia, dorminhoca! O galo já cantou três vezes.', 'riso');
       yield c.fala('Line', 'Bom dia, amor... só mais cinco minutinhos?', 'maroto');
+      bell.anim.tocar('BELL_IDLE', true);
+      yield c.fala('Bell', 'Sonhei uma coisa tão estranha essa noite... um dragão enorme, vermelho, tremendo de frio.', 'surpresa');
+      yield c.fala('Line', 'Dragão com frio? Isso é fome de café, amor.', 'riso');
       bell.anim.tocar('BELL_LAUGH', true);
-      yield c.fala('Bell', 'Nada disso! Tem ovo pra pegar, horta pra regar e o Theo tá morrendo de fome.', 'sorriso');
+      yield c.fala('Bell', 'Boba! Agora levanta: tem ovo pra pegar, horta pra regar e o Theo tá morrendo de fome.', 'sorriso');
       const cao = j.bichos.find((b) => b.tipo === 'cachorro');
       if (cao) j.balao(cao, 'Au! Au!', 1.6);
       yield c.espera(0.8);
@@ -300,6 +319,7 @@
       const dr = j.criarDragaoCena(bell.x + 10, bell.y - 300, 280);
       dr.anim.tocar('DRAGON_FLY', true); dr.lado = -1;
       yield c.voar(dr, bell.x, bell.y - 60, 110, 1.5);
+      yield c.fala('Bell', 'É ele... o dragão do meu sonho...', 'surpresa');
       line.anim.tocar('LINE_SCARED', true);
       yield c.fala('Line', 'BELL! CORRE!', 'surpresa');
       dr.anim.tocar('DRAGON_AIR_ATTACK', true);
@@ -343,6 +363,7 @@
 
     *floresta(c, j) {
       yield c.espera(0.4);
+      yield c.titulo('Capítulo 2', 'Atrás da Bell', 2.4);
       yield c.fala('Line', 'A Floresta Sussurrante... O dragão foi pra montanha, do outro lado.', 'neutro');
       yield c.fala('Line', 'Tem uma luz azul ali na clareira, a oeste. Será que mora alguém aqui?', 'surpresa');
       j.flags.florestaVista = true;
@@ -353,6 +374,9 @@
         yield c.fala('Mago', 'Ora, ora... uma fazendeira na Floresta Sussurrante?');
         yield c.fala('Line', 'Um dragão levou a Bell! Eu preciso chegar na montanha.', 'surpresa');
         yield c.fala('Mago', 'O dragão vermelho acordou, então... Fazia cem anos que ele dormia.');
+        yield c.fala('Mago', 'Dizem que o fogo dele esfria enquanto dorme. Ele acorda com frio, procurando o calor de um coração brilhante.');
+        yield c.fala('Line', 'A Bell sonhou com isso ontem à noite... um dragão tremendo de frio.', 'surpresa');
+        yield c.fala('Mago', 'Os sonhos das pessoas boas às vezes escutam o que ninguém mais escuta.');
         yield c.fala('Mago', 'Naquele baú aqui do lado guardei uma espada que espera por um coração corajoso. Ela é sua.');
         yield c.fala('Mago', 'E lembre-se: quando o dragão se cansa, o peito dele brilha. É ali que você deve acertar.');
         yield c.fala('Line', 'Obrigada! Eu vou trazer ela de volta.', 'sorriso');
@@ -367,6 +391,7 @@
           yield c.fala('Line', 'Magia? Eu? Eu só sei plantar cenoura...', 'surpresa');
           yield c.fala('Mago', 'Quem atravessa uma floresta por amor já tem o que a magia pede. Vá!');
           yield c.fala('Mago', 'Ah, e na gruta a leste desta floresta deixei umas coisinhas úteis. Uma bússola, quem sabe... Aperte I para ver a mochila e M para o mapa.');
+          yield c.fala('Mago', 'Precisando de poções, o Vilarejo do Riacho fica ao sul daqui. A Dona Rosa tem mão aberta e o Seu Bento, mão pesada. Bom ferreiro.');
           j.flags.magoRuinas = true;
           j.salvar();
           return;
@@ -376,6 +401,7 @@
           'As barreiras das ruínas só se desfazem com luz. Procure o altar na sala a oeste.',
           'Pule o riacho, corte os espinhos, ache o altar. Simples, não?',
           'Baús trancados? Não. Portas trancadas! Três, pelo mundo. E três chaves antigas escondidas em baús.',
+          'O Tobias, caçador, mora na cabana a leste. Se alguém viu o dragão passar, foi ele.',
           'Cada documento que você guarda conta um pedaço da história. Junte dois que combinam e você entende mais do que imagina.',
         ] : !j.flags.golem ? [
           'Cristais apagados, barreiras de pé. Acenda todos e o caminho se abre.',
@@ -385,6 +411,7 @@
           'Três tochas guardam o portão da montanha. Acenda as três.',
           'Segure a magia até brilhar e solte: chuva de estrelas! Eu mesmo não faria melhor.',
           'O peito do dragão, lembre-se: quando ele cansar, o peito brilha.',
+          'Luz não se rouba, menina. Se divide. Guarde isso: um dia vai fazer sentido.',
           'Quando ele encher o peito de ar, saia da frente. Fogo de dragão não se segura com espada.',
         ];
         yield c.fala('Mago', falas[Math.floor(Math.random() * falas.length)]);
@@ -416,6 +443,7 @@
         : 'J ou Z: atacar (3x = combo) · K ou X: giro · L ou C: esquivar (correndo = dash) · V ou B: defender (segure) · Espaço e depois J: ataque aéreo');
       j.flags.espada = true;
       j.salvar();
+      yield* HISTORIA.interludio(c, j, 1);
       j.criarInimigos();
       line.dir = 'FRONT'; line.anim.tocar('LINE_COMBAT_IDLE', true);
       yield c.espera(0.6);
@@ -424,6 +452,7 @@
 
     *ruinas(c, j) {
       yield c.espera(0.4);
+      yield c.titulo('Capítulo 3', 'A luz das ruínas', 2.4);
       yield c.fala('Line', 'Ruínas... e essas pedras brilhando? Parece que o lugar tá respirando.', 'surpresa');
       yield c.fala('Line', 'Paredes de luz fechando o caminho... O mago falou de um altar na sala a oeste.', 'neutro');
       j.flags.ruinasVistas = true;
@@ -447,10 +476,12 @@
       line.anim.tocar('LINE_HAPPY', true);
       yield c.titulo('Magia aprendida!', 'Raio de Luz', 2.2);
       yield c.fala('Espírito das Ruínas', 'A luz agora corre na tua lâmina. Acende os cristais apagados e as barreiras cairão.');
+      yield c.fala('Espírito das Ruínas', 'E lembra: a luz que se divide nunca acaba. A que se prende, apaga.');
       yield c.fala('', LB.entrada.usandoToque()
         ? '✨ MAGIA: lança um Raio de Luz na direção que a Line olha (ou no inimigo/cristal mais perto). Gasta 1 ◆ de magia, que volta sozinha. Sombras odeiam a luz!'
         : 'Q ou U: Raio de Luz (mira no inimigo ou cristal mais perto). Gasta 1 ◆ de magia, que volta sozinha. Sombras odeiam a luz!');
       j.salvar();
+      yield* HISTORIA.interludio(c, j, 2);
       j.criarInimigos();
       if (!j.flags.golem) { const gm = j.mapa.def.golem; if (!j.inimigos.some((e) => e.golem)) j.inimigos.push(new LB.Golem(T(gm.x), T(gm.y))); }
       line.dir = 'FRONT'; line.anim.tocar('LINE_COMBAT_IDLE', true);
@@ -480,6 +511,7 @@
       yield c.espera(0.6);
       j.particulas.emitir('brilho', gm.x, gm.y - 40, 24, { vel: 120, vida: 1, r: 7 });
       yield c.fala('Guardião de Pedra', 'A luz... é tua... Que ela... te guie... até o céu...');
+      yield c.fala('Guardião de Pedra', 'O dragão... também já foi luz... um dia. Lembra... disso...');
       line.anim.tocar('LINE_RELIEVED', true);
       yield c.espera(0.8);
       j.flashTela = 0.6;
@@ -492,11 +524,14 @@
       line.anim.tocar('LINE_HAPPY', true);
       yield c.fala('Line', 'O caminho pro norte abriu! Espera só, Bell.', 'riso');
       j.salvar();
+      yield* HISTORIA.interludio(c, j, 3);
     },
 
     *montanha(c, j) {
       yield c.espera(0.4);
+      yield c.titulo('Capítulo 4', 'A Montanha de Brasa', 2.4);
       yield c.fala('Line', 'A Montanha de Brasa... O covil do dragão fica lá no topo.', 'neutro');
+      yield c.fala('Line', 'Tô quase aí, Bell. Aguenta só mais um pouquinho.', 'apaixonada');
       yield c.fala('Line', 'Tem um portão de fogo lá em cima... e três tochas apagadas pelo caminho. Aposto que a luz acende.', 'maroto');
       const nomes = { '6,35': 'Uma aqui perto da entrada...', '30,22': '...outra numa ilha no meio da lava...', '18,9': '...e a última lá em cima, perto do portão.' };
       for (const p of j.mapa.props.filter((o) => o.tipo === 'tocha' && !o.aceso).sort((a, b) => b.ty - a.ty)) {
@@ -516,6 +551,7 @@
       yield c.camera(j.line.x, j.line.y - 24, 0.8);
       j.line.anim.tocar('LINE_DETERMINED', true);
       yield c.fala('Line', 'O portão abriu! Aguenta firme, Bell. Tô chegando.', 'bravo');
+      yield* HISTORIA.interludio(c, j, 4);
     },
 
     *bauCoracao(c, j, bau) {
@@ -577,6 +613,7 @@
       line.anim.tocar('LINE_IDLE', true);
       yield c.titulo('Pista encontrada!', `${p.icone} ${p.titulo}`, 2);
       for (const par of p.texto.split('\n\n')) yield c.fala(p.titulo, par, 'sistema');
+      if (nova && REACOES[id]) { const [txt, rosto] = REACOES[id](j); yield c.fala('Line', txt, rosto); }
       const n = M.inv(j).pistas.length;
       const novas = nova ? M.verificarConclusoes(j) : [];
       for (const cc of novas) {
@@ -591,9 +628,7 @@
         line.anim.tocar('LINE_HAPPY', true);
         yield c.titulo('Caderno completo!', 'A Line entendeu tudo: coração extra', 2.6);
         yield c.fala('Line', 'Agora eu sei tudo sobre esse dragão. Segura, Bell, que eu tô indo.', 'bravo');
-      } else if (nova && id === 'mapa') yield c.fala('Line', 'Com esse pedaço de mapa, agora eu sei onde fica o covil. E tem uma caverna escondida na montanha!', 'surpresa');
-      else if (nova && id === 'fita') yield c.fala('Line', 'Bell...', 'chorando');
-      else if (nova && !novas.length) yield c.fala('Line', `Vou guardar isso no caderno. ${n} de ${M.totalPistas()} documentos.`, 'neutro');
+      } else if (nova && !novas.length) yield c.fala('Line', `Vou guardar isso no caderno. ${n} de ${M.totalPistas()} documentos.`, 'neutro');
       j.salvar();
     },
 
@@ -688,6 +723,7 @@
       }
       line.x = T(13); line.y = T(18.4); line.dir = 'BACK';
       j.cameraEm(T(13), T(15));
+      yield c.titulo('Capítulo final', 'O coração do dragão', 2.4);
       yield c.andar(line, 13, 14.6, { vel: 80, anim: 'LINE_WALK', parar: 'LINE_IDLE' });
       yield c.camera(T(13), T(4.5), 1.4);
       bell.anim.tocar('BELL_CALL_LINE', true);
@@ -708,13 +744,56 @@
       yield c.espera(1.4);
       dr.anim.tocar('DRAGON_IDLE', true);
       if (!line.armada) { line.anim.tocar('LINE_SWORD_DRAW', true); yield c.animacao(line); line.armada = true; }
+      yield c.fala('Dragão', 'Espada... de luz. Veio... pela minha luz.');
       line.anim.tocar('LINE_ANGRY', true);
-      yield c.fala('Line', 'Solta ela. AGORA.', 'bravo');
+      yield c.fala('Line', 'Ela não é SUA luz. É a minha namorada. Solta ela. AGORA.', 'bravo');
       bell.anim.tocar('BELL_SCARED', true);
-      yield c.fala('Bell', 'Cuidado! Quando ele cansa, o peito dele brilha. Esse é o ponto fraco!', 'surpresa');
+      yield c.fala('Bell', 'Line! Ele tá com frio, ele não é mau... mas não vai me soltar fácil!', 'surpresa');
+      yield c.fala('Bell', 'Quando ele cansa, o peito dele brilha. É ali!', 'surpresa');
       bell.anim.tocar('BELL_TRAPPED', true);
       j.flags.covilVisto = true;
       j.iniciarChefe();
+    },
+
+    // Depois da luta: a Bell pede, e a Line divide a luz com o dragão em vez de apagá-lo.
+    *dividirLuz(c, j) {
+      const line = j.line, bell = j.bell, dr = j.dragao;
+      if (!dr) return;
+      line.dir = 'BACK'; bell.dir = 'BACK';
+      bell.anim.tocar('BELL_IDLE', true);
+      yield c.fala('Bell', 'Line... espera. Olha pra ele.', 'neutro');
+      yield c.camera(dr.x, dr.y - 60, 1);
+      yield c.fala('Dragão', 'Frio... tanto... frio...');
+      yield c.fala('Line', 'Ele tá... tremendo?', 'surpresa');
+      yield c.fala('Bell', 'O fogo dele tá apagando. Por isso ele leva alguém a cada cem anos: acha que dá pra roubar a luz de um coração.', 'neutro');
+      if (LB.mochila.temPista(j, 'escama')) yield c.fala('Line', 'A escama fria... O Guardião disse que ele também já foi luz.', 'surpresa');
+      else yield c.fala('Line', 'O Guardião disse que ele também já foi luz, um dia...', 'surpresa');
+      line.anim.tocar('LINE_DETERMINED', true);
+      yield c.fala('Line', 'Luz não se rouba. Se divide.', 'apaixonada');
+      yield c.andar(line, (dr.x - 70) / LB.TILE, (dr.y + 40) / LB.TILE, { vel: 70, anim: 'LINE_WALK', parar: 'LINE_IDLE' });
+      line.dir = 'RIGHT'; line.lado = 1;
+      line.anim.tocar('LINE_CAST_CHARGE', true);
+      for (let i = 0; i < 6; i++) { j.particulas.emitir('brilho', line.x, line.y - 50, 4, { vel: 60, vida: 0.6, r: 4 }); yield c.espera(0.2); }
+      line.anim.tocar('LINE_CAST_STARS', true);
+      j.flashTela = 0.5;
+      for (let i = 0; i < 8; i++) {
+        j.particulas.emitir('brilho', dr.x + (Math.random() - 0.5) * 140, dr.y - 120 - Math.random() * 60, 3, { vel: 40, vz: -30, vida: 1, r: 5 });
+        yield c.espera(0.15);
+      }
+      j.particulas.emitir('fogo', dr.x + 30, dr.y - 70, 22, { vel: 50, vida: 1, r: 6 });
+      dr.anim.tocar('DRAGON_BLINK', true);
+      yield c.espera(0.8);
+      yield c.fala('Dragão', 'Quente... Faz cem anos... que não fica quente.');
+      yield c.fala('Dragão', 'Obrigado... pequena luz. Agora eu... durmo em paz. Sem levar... ninguém.');
+      dr.anim.tocar('DRAGON_SLEEP', true);
+      bell.anim.tocar('BELL_HAPPY', true);
+      yield c.fala('Bell', 'Boa noite, dragão.', 'sorriso');
+      line.anim.tocar('LINE_IDLE', true);
+      yield c.andar(bell, (line.x + 22) / LB.TILE, line.y / LB.TILE, { vel: 110, anim: 'BELL_WALK', parar: 'BELL_IDLE' });
+      bell.dir = 'LEFT'; bell.lado = -1; line.dir = 'RIGHT'; line.lado = 1;
+      yield c.camera(line.x + 11, line.y - 30, 0.8);
+      yield c.fala('Bell', 'Eu sabia que você ia entender. Você brilha mais do que eu falei pra ele.', 'apaixonada');
+      j.flags.dragaoEmPaz = true;
     },
 
     *vitoria(c, j) {
@@ -748,6 +827,7 @@
       bell.anim.tocar('BELL_RELIEVED', true);
       yield c.fala('Bell', 'Agora que você tá aqui, eu tô ótima.', 'apaixonada');
       if (abraco) { c.fimDuo(); c.duo('LINE_BELL_HUG_RELEASE', (line.x + bell.x) / 2, line.y); yield c.espera(1); c.fimDuo(); }
+      yield* HISTORIA.dividirLuz(c, j);
       line.anim.tocar('LINE_LAUGH', true);
       yield c.fala('Line', 'Então... será que ainda dá tempo de ver o pôr do sol?', 'maroto');
       bell.anim.tocar('BELL_HAPPY', true);
@@ -760,6 +840,12 @@
       j.epilogo();
       yield c.escurecer(0, 1.8);
       yield c.espera(1.2);
+      const cao = j.bichos.find((b) => b.tipo === 'cachorro');
+      if (cao) j.balao(cao, 'Au! Au!', 1.6);
+      yield c.fala('Bell', 'O Theo cuidou direitinho da fazenda, viu?', 'riso');
+      yield c.fala('Bell', 'Promete que amanhã a gente volta aqui?', 'apaixonada');
+      yield c.fala('Line', 'Prometo. Amanhã, depois de amanhã...', 'apaixonada');
+      yield c.fala('Bell', '...todo dia que a gente quiser.', 'riso');
       const par = j.duo;
       if (c.duo('LINE_BELL_DANCE', par.x, par.y)) { yield c.espera(3.2); j.duo = par; }
       j.particulas.emitir('coracao', (j.line.x + j.bell.x) / 2, j.line.y - 60, 5, { vel: 25, vida: 2 });
@@ -780,4 +866,5 @@
   LB.dialogo = dialogo;
   LB.Roteiro = Roteiro;
   LB.HISTORIA = HISTORIA;
+  LB.REACOES = REACOES;
 })(window.LB);

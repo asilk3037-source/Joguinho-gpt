@@ -556,6 +556,79 @@ teste('covil: luta com o dragão começa', async (h) => {
   await h.foto('covil');
 });
 
+// ================= História =================
+teste('história: interlúdio mostra a Bell e o dragão no covil', async (h) => {
+  await h.area('floresta', { espada: true });
+  await h.ev(() => LB.jogo.iniciarCena(LB.HISTORIA.interludio, { semPular: false }, 2));
+  await h.p.waitForFunction(() => !!LB.jogo.interludio, null, { timeout: 5000 });
+  await h.p.waitForFunction(() => document.querySelector('#dialogo').classList.contains('visivel') && document.querySelector('#dialogo .nome').textContent, null, { timeout: 8000 });
+  await h.espera(900);
+  await h.foto('interludio');
+  const nome = await h.ev(() => document.querySelector('#dialogo .nome').textContent);
+  afirmar(['Bell', 'Dragão'].includes(nome), `diálogo do interlúdio (veio ${nome})`);
+  await h.avancar();
+  await h.espera(200);
+  const r = await h.ev(() => ({ it: LB.jogo.interludio, vistos: LB.jogo.flags.interludios }));
+  afirmar(!r.it, 'o interlúdio termina e volta ao jogo');
+  igual(r.vistos, [2], 'interlúdio marcado como visto');
+  await h.ev(() => LB.jogo.iniciarCena(LB.HISTORIA.interludio, {}, 2));
+  await h.espera(200);
+  afirmar(!(await h.ev(() => LB.jogo.interludio)), 'não repete');
+});
+
+teste('história: pegar a espada leva ao primeiro interlúdio', async (h) => {
+  await h.area('floresta', { magoVisto: true });
+  await h.ir(3.5, 13.2);
+  await h.interagir();
+  const r = await h.ev(() => ({ espada: LB.jogo.flags.espada, vistos: LB.jogo.flags.interludios || [] }));
+  afirmar(r.espada, 'pegou a espada');
+  afirmar(r.vistos.includes(1), 'interlúdio 1 visto');
+});
+
+teste('história: chegadas no vilarejo, na gruta e nas minas', async (h) => {
+  await h.area('vilarejo', {});
+  await h.espera(300); await h.avancar();
+  afirmar(await h.ev(() => LB.jogo.flags.vilarejoVisto), 'cena de chegada no vilarejo');
+  await h.area('gruta', { espada: true });
+  await h.espera(300); await h.avancar();
+  afirmar(await h.ev(() => LB.jogo.flags.grutaVista), 'cena de chegada na gruta');
+  await h.ir(40.5, 6.9);
+  await h.espera(300); await h.avancar();
+  afirmar(await h.ev(() => LB.jogo.flags.minasVistas), 'cena das minas');
+});
+
+teste('história: Tobias na montanha e a recompensa da Dona Lurdes', async (h) => {
+  await h.area('montanha', TODAS);
+  await h.espera(300); await h.avancar();
+  const pos = await h.ev(() => { const m = LB.jogo.moradores.find((x) => x.id === 'tobias'); return m && [m.x / 32, m.y / 32]; });
+  afirmar(pos, 'Tobias está na montanha');
+  await h.ir(pos[0], pos[1] + 0.9);
+  igual(await h.prompt(), 'Conversar', 'prompt do Tobias');
+  await h.interagir();
+  afirmar(await h.ev(() => LB.jogo.flags.tobias), 'Tobias encontrado');
+  const flags = await h.ev(() => LB.jogo.flags);
+  await h.area('vilarejo', Object.assign({}, flags, { vilarejoVisto: true }));
+  const p0 = await h.ev(() => LB.mochila.qtd(LB.jogo, 'pocao'));
+  const lp = await h.ev(() => { const m = LB.jogo.moradores.find((x) => x.id === 'lurdes'); return [m.x / 32, m.y / 32]; });
+  await h.ir(lp[0], lp[1] + 0.9);
+  await h.interagir();
+  igual(await h.ev(() => LB.mochila.qtd(LB.jogo, 'pocao')), p0 + 2, 'Dona Lurdes dá duas poções');
+  await h.interagir();
+  igual(await h.ev(() => LB.mochila.qtd(LB.jogo, 'pocao')), p0 + 2, 'a recompensa é uma vez só');
+});
+
+teste('história: no final a Line divide a luz com o dragão', async (h) => {
+  await h.area('covil', TODAS);
+  await h.avancar(300);
+  await h.ev(() => { const j = LB.jogo; j.chefeAtivo = false; j.promptFinal = false; j.dragao.mudar('derrotado', 'DRAGON_DEFEATED'); j.iniciarCena(LB.HISTORIA.vitoria, { semPular: false }); });
+  await h.p.waitForFunction(() => LB.jogo.flags.dragaoEmPaz || LB.jogo.estado === 'menu', null, { timeout: 20000 }).catch(() => {});
+  await h.foto('final-dividir-luz');
+  await h.avancar(400);
+  const r = await h.ev(() => ({ paz: LB.jogo.flags.dragaoEmPaz, zerado: LB.jogo.flags.zerado }));
+  afirmar(r.paz, 'o dragão ficou em paz');
+  afirmar(r.zerado, 'o jogo chegou ao fim');
+});
+
 // ================= Save =================
 teste('save: continuar volta para a mesma área com os itens', async (h) => {
   await h.area('vilarejo', { espada: true, moedas: 33 });

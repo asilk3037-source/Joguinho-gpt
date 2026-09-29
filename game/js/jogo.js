@@ -137,7 +137,7 @@
       this.esconderTitulo();
       this.ambiente = new LB.cenario.Ambiente(this.mapa);
       this.bichos = []; this.npcs = []; this.moradores = []; this.baloes = []; this.rastroLine = []; this.acaoAtual = null;
-      this.bombas = []; this.viagem = null;
+      this.bombas = []; this.viagem = null; this.interludio = null;
       $('#derrota').classList.add('oculto');
       $('#loja').classList.add('oculto');
       $('#viagem').classList.add('oculto');
@@ -559,6 +559,8 @@
       LB.mundo.atualizar(this, dt);
       LB.loja.atualizarEscudos(this, dt);
       LB.carrinho.atualizar(this);
+      LB.interludio.atualizar(this, dt);
+      LB.interludio.gatilhos(this);
       LB.magia.atualizarProjeteis(this, dt);
       if (Math.abs(this.zoom - this.zoomAlvo) > 0.001) { this.zoom += (this.zoomAlvo - this.zoom) * Math.min(1, dt * 3); this.aplicarZoom(); }
       this.avisoMana = Math.max(0, this.avisoMana - dt);
@@ -730,6 +732,7 @@
       if (m.tema === 'covil') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.85); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,.6)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (this.flashTela > 0) { g.fillStyle = `rgba(255,255,255,${this.flashTela * 1.6})`; g.fillRect(0, 0, W, H); }
 
+      if (this.interludio) LB.interludio.desenhar(g, this);
       this.desenharHud(g);
       this.desenharPrompt(g);
 

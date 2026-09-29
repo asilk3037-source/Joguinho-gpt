@@ -61,6 +61,7 @@
     ze: { nome: 'Seu Zé', papel: 'Morador', roupa: '#6d8f4c', avental: null, cabelo: '#e8e8e8', pele: '#e8b890', bengala: true, chapeu: '#a8743a' },
     lurdes: { nome: 'Dona Lurdes', papel: 'Moradora', roupa: '#8a5a9a', avental: '#f0e2c8', cabelo: '#5a3a2a', pele: '#e0a878' },
     pedro: { nome: 'Pedrinho', papel: 'Menino', roupa: '#e0a83a', avental: null, cabelo: '#2a1a10', pele: '#d99a6a', crianca: true },
+    tobias: { nome: 'Tobias', papel: 'Caçador', roupa: '#5a6b3a', avental: '#7a5a3a', cabelo: '#6a4a2a', pele: '#d9a070', barba: true, chapeu: '#4a3a2a' },
   };
 
   class Morador {
@@ -123,16 +124,34 @@
         if (!conversou) return [['Dona Rosa', 'Ai, menina! Você é a Line, da fazendinha? Fiquei sabendo da Bell... que horror.'], ['Line', 'Eu vou buscar ela, Dona Rosa. Custe o que custar.', 'bravo'], ['Dona Rosa', 'Então leva umas poções, que a estrada é perigosa. E bombas: servem pra abrir parede rachada.']];
         return [['Dona Rosa', tem('bomba') ? 'Bomba é bom pra pedra rachada, mas cuidado com os dedos, viu?' : 'Precisando de alguma coisa? Tenho de tudo um pouco.']];
       case 'bento':
-        if (M().temPista(j, 'receita') && !f.receitaMostrada) { f.receitaMostrada = true; return [['Seu Bento', 'Essa letra... é do Mestre Aurélio! Ele me ensinou tudo que eu sei.'], ['Seu Bento', 'Com essa receita eu forjo a Armadura de Brasa pra você. Chão em brasa nunca mais vai te queimar.'], ['Line', 'Obrigada, Seu Bento!', 'sorriso']]; }
-        if (!conversou) return [['Seu Bento', 'Hm. Ferreiro Bento, às ordens.'], ['Seu Bento', 'Armadura não é enfeite, moça: cada escudo segura um golpe antes de chegar no coração, e volta sozinho quando você respira um pouco.']];
+        if (M().temPista(j, 'receita') && !f.receitaMostrada) { f.receitaMostrada = true; return [['Seu Bento', 'Essa letra... é do Mestre Aurélio! Faz cinquenta anos que eu não via.'], ['Seu Bento', 'Ele me ensinou tudo que eu sei. Quando a montanha esquentou, ele desceu pra outra cidade e nunca mais voltou.'], ['Seu Bento', 'Com essa receita eu forjo a Armadura de Brasa pra você. Chão em brasa nunca mais vai te queimar. É o mínimo que eu devo a ele.'], ['Line', 'Obrigada, Seu Bento!', 'sorriso']]; }
+        if (!conversou) return [['Seu Bento', 'Hm. Ferreiro Bento, às ordens.'], ['Seu Bento', 'Aprendi o ofício lá em cima, na Forja Antiga da montanha, com o Mestre Aurélio. Faz tempo.'], ['Seu Bento', 'Armadura não é enfeite, moça: cada escudo segura um golpe antes de chegar no coração, e volta sozinho quando você respira um pouco.']];
         return [['Seu Bento', armadura(j) ? `Essa ${armadura(j).nome.toLowerCase()} tá aguentando bem?` : 'Sem armadura por aí? Assim o dragão te assa.']];
       case 'ze':
         if (f.alavanca) return [['Seu Zé', 'O carrinho voltou a andar! Igualzinho à minha época. Vai de estação em estação num piscar de olhos.']];
         if (tem('alavanca')) return [['Seu Zé', 'É a alavanca do freio! Encaixa numa estação e o carrinho anda de novo, menina!']];
-        return [['Seu Zé', 'Na minha época o carrinho levava a gente do vilarejo até as minas e a forja da montanha.'], ['Seu Zé', 'Quando o dragão acordou, o capataz levou a alavanca do freio lá pra forja. Nunca mais ninguém viajou.'], ['Seu Zé', 'E bebe da fonte da praça: cura e a gente volta pra cá se cair.']];
+        if (conversou) return [['Seu Zé', 'Eu empurrava aquele carrinho quando era moço, sabia? Cinquenta anos atrás. Parece que foi ontem.']];
+        return [['Seu Zé', 'Na minha época o carrinho levava a gente do vilarejo até as minas e a forja da montanha.'], ['Seu Zé', 'Faz uns cinquenta anos a montanha começou a esquentar e a respirar de noite. O Mestre Ivo, o capataz, fechou a mina e levou a alavanca do freio lá pra forja.'], ['Seu Zé', 'Nunca mais ninguém viajou. E agora o dragão acordou de vez...'], ['Seu Zé', 'Bebe da fonte da praça, menina: cura, e a gente volta pra cá se cair.']];
       case 'lurdes':
-        if (M().temPista(j, 'cacador')) return [['Dona Lurdes', 'Você leu o bilhete do Tobias? Ele disse que a moça ia chamando um nome... Deve ser o seu, né?'], ['Line', 'Era. Eu sei que era.', 'apaixonada']];
-        return [['Dona Lurdes', 'Meu marido, o Tobias, é caçador. Mora na cabana a leste da floresta.'], ['Dona Lurdes', 'Ele viu o dragão passar! Deixou um bilhete pregado na porta da cabana pra quem fosse atrás.']];
+        if (f.tobias && !f.tobiasRecompensa) {
+          f.tobiasRecompensa = true;
+          M().dar(j, 'pocao', 2);
+          return [['Dona Lurdes', 'Você achou o Tobias?! Ele tá bem? Torceu o pé, aquele teimoso?'], ['Line', 'Tá bem, sim. Mandou dizer que já tá descendo.', 'sorriso'], ['Dona Lurdes', 'Ai, graças! Toma, querida: duas poções. Não é nada perto do que você fez.'], ['Dona Lurdes', 'E vai buscar a sua moça. Ninguém devia ficar longe de quem ama.']];
+        }
+        if (f.tobias) return [['Dona Lurdes', 'O Tobias disse que ouviu a sua moça cantando lá em cima. Ela deve ser muito corajosa.'], ['Line', 'A mais corajosa que eu conheço.', 'apaixonada']];
+        if (M().temPista(j, 'cacador')) return [['Dona Lurdes', 'Você leu o bilhete? Ele foi atrás do dragão, montanha acima! Aquele homem não tem juízo.'], ['Dona Lurdes', 'Se você subir a Montanha de Brasa e achar o Tobias, manda ele voltar pra casa?'], ['Line', 'Pode deixar, Dona Lurdes. E a moça que ele viu... ela tava gritando o meu nome.', 'apaixonada']];
+        return [['Dona Lurdes', 'Meu marido, o Tobias, é caçador. Mora na cabana a leste da floresta.'], ['Dona Lurdes', 'Ele viu o dragão passar e ainda não voltou pra casa. Deve ter deixado recado na porta da cabana. Ele sempre deixa.']];
+      case 'tobias':
+        if (!conversou) {
+          f.tobias = true;
+          return [['Tobias', 'Opa! Calma, moça, sou amigo. Tobias, caçador. Torci o pé subindo atrás do bicho.'],
+            ['Line', (f.conversas || []).includes('lurdes') ? 'O senhor é o marido da Dona Lurdes! Ela tá morrendo de preocupação.' : 'O senhor é o caçador do bilhete da cabana?', 'surpresa'],
+            ['Tobias', 'Vi o dragão pousar lá no topo, com a moça de óculos. Ela tá viva, moça. Eu escutei.'],
+            ['Tobias', 'Escutei uma voz lá de cima a noite inteira. Às vezes falando com o bicho, às vezes cantando. E quando ela canta... o dragão para de rugir.'],
+            ['Line', 'É a Bell. Ela canta quando tá com medo, pra ficar corajosa.', 'apaixonada'],
+            ['Tobias', 'Então ela é das corajosas. Vai lá. Eu desço devagar e aviso a Lurdes que tô inteiro.']];
+        }
+        return [['Tobias', 'Três tochas, um portão, e ela tá do outro lado. Vai, moça. E cuidado com o chão em brasa.']];
       case 'pedro':
         if (!(f.rachaduras || []).some((k) => k.startsWith('floresta'))) return [['Pedrinho', 'Moça! Sabia que bomba quebra pedra rachada? Tem uma pedrona rachada lá na floresta, no fundo da clareira do lago!'], ['Pedrinho', 'Meu pai diz que tem tesouro atrás. Eu que não vou lá, tem sombra!']];
         return [['Pedrinho', 'VOCÊ EXPLODIU A PEDRA?! Que demais!'], ['Pedrinho', 'O carrinho da estação tá quebrado desde que eu nasci. Queria tanto andar nele...']];

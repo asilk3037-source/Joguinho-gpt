@@ -3,7 +3,7 @@ import os
 JS=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'game', 'js')
 # O prólogo (encontro.js) vem antes das cenas da fazenda (cenas.js).
 cenas=['']
-for arq, inicio in (('encontro.js', '*encontroInicio'), ('cenas.js', 'const HISTORIA')):
+for arq, inicio in (('encontro.js', '*encontroInicio'), ('cenas.js', 'const HISTORIA'), ('interludio.js', 'const CHEGADAS')):
     src=open(os.path.join(JS, arq), encoding='utf-8').read()
     cenas+=re.split(r"\n    \*(\w+)\(", '\n'+src[src.index(inicio)-4:] if arq=='encontro.js' else src[src.index(inicio):])[1:]
 STR=r"'((?:[^'\\]|\\.)*)'"
@@ -31,6 +31,7 @@ for i in range(1,len(cenas),2):
     for m in re.finditer(r"j\.balao\([^,]+,\s*"+STR, b): ev.append((m.start(),'balao','',m.group(1),None))
     for m in re.finditer(r"(?:tocar|duo)\('([A-Z_]+)'", b): ev.append((m.start(),'anim','',m.group(1),None))
     ev.sort()
+    if nome in ('vilarejo', 'gruta', 'minas', 'forja'): nome = 'chegada' + nome.capitalize()
     out[nome]=[e[1:] for e in ev]
     if nome=='mago': out['mago_aleatorias']=re.findall(r"^\s+'([^']{25,})',$", b, re.M)
 json.dump(out,open(sys.argv[1],'w'),ensure_ascii=False,indent=1)
