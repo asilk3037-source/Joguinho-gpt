@@ -209,9 +209,9 @@ teste('mochila: itens, equipar, usar, documentos, conclusões e mapa', async (h)
   await h.ev(() => { const j = LB.jogo, M = LB.mochila; M.darPista(j, 'pegadas'); M.darPista(j, 'cacador'); M.verificarConclusoes(j); });
   await h.p.click('#mochila nav button[data-aba="pistas"]');
   const docs = await h.ev(() => ({ n: document.querySelectorAll('#pistas-lista .pista').length, falta: document.querySelectorAll('#pistas-lista .pista.falta').length, conc: document.querySelectorAll('#conclusoes-lista .conclusao').length, ok: document.querySelectorAll('#conclusoes-lista .conclusao.ok').length, tipo: document.querySelector('#pista-tipo').textContent }));
-  igual(docs.n, 12, 'doze documentos no caderno');
-  igual(docs.falta, 10, 'dez ainda faltam');
-  igual(docs.conc, 8, 'oito conclusões');
+  igual(docs.n, 15, 'quinze documentos no caderno (12 da Parte 1 + 3 da Parte 2)');
+  igual(docs.falta, 13, 'treze ainda faltam');
+  igual(docs.conc, 9, 'nove conclusões');
   igual(docs.ok, 1, 'uma conclusão formada (pegadas + bilhete do caçador)');
   afirmar(docs.tipo.length > 0, 'leitor mostra o tipo do documento');
   await h.foto('mochila-documentos');
@@ -684,6 +684,224 @@ teste('save antigo: pão, maçã e flor viram moedas e poções', async () => {
     afirmar(!h.erros.length, h.erros.join('\n'));
   } finally { await h.fechar(); }
 }, { semPagina: true });
+
+// ================= Parte 2: O Coração dos Elementos =================
+const P2 = Object.assign({}, TODAS, { zerado: true, parte2: true, bellJogavel: true, heroina: 'line' });
+for (const area of ['vale', 'fenda', 'lago', 'pantano', 'picos', 'tempestade', 'coracao']) {
+  teste(`parte 2: área ${area} carrega, desenha e roda sem erros`, async (h) => {
+    await h.area(area, Object.assign({ ['visto_' + area]: true }, P2));
+    await h.espera(700);
+    await h.avancar();
+    const r = await h.ev(() => {
+      const j = LB.jogo, l = j.line;
+      return { id: j.mapa.id, preso: j.mapa.colide(l.x, l.y - 4, 6, 4), chefe: !!j.chefeArena, comp: !!j.companheira };
+    });
+    igual(r.id, area, 'área');
+    afirmar(!r.preso, 'a heroína não pode nascer dentro de parede');
+    afirmar(r.chefe, 'toda fase da Parte 2 tem um chefe esperando');
+    afirmar(r.comp, 'a outra heroína anda junto');
+    await h.foto('p2-area-' + area);
+  });
+}
+
+teste('relógio: 1 s real = 1 min no jogo, anoitece e descansa na fonte', async (h) => {
+  await h.area('vilarejo', Object.assign({ minutos: 8 * 60 }, TODAS));
+  const a = await h.ev(() => LB.relogio.texto(LB.jogo));
+  await h.espera(2100);
+  const b = await h.ev(() => LB.relogio.minutos(LB.jogo));
+  afirmar(b >= 8 * 60 + 1.8 && b <= 8 * 60 + 3, 'andou uns 2 minutos de jogo: ' + b);
+  igual(a, '08:00', 'hora inicial');
+  // Noite: moradores vão dormir e a fonte oferece descanso.
+  await h.ev(() => { LB.jogo.flags.minutos = 22 * 60; });
+  await h.espera(300);
+  const n = await h.ev(() => ({ noite: LB.relogio.noite(LB.jogo), dormindo: LB.jogo.moradores.filter((m) => m.dormindo).length, total: LB.jogo.moradores.length }));
+  afirmar(n.noite, 'é noite às 22h');
+  igual(n.dormindo, n.total, 'todos os moradores do vilarejo dormem');
+  await h.foto('relogio-noite');
+  const f = await h.ev(() => { const p = LB.jogo.mapa.props.find((o) => o.tipo === 'fonte'); return { x: p.x / 32, y: (p.y + 26) / 32 }; });
+  await h.ir(f.x, f.y);
+  const acoes = await h.ev(() => { const l = []; LB.relogio.acoes(LB.jogo, l, () => true); return l.map((a) => a.texto); });
+  afirmar(acoes.includes('Descansar até de manhã'), 'fonte deixa descansar à noite');
+  await h.ev(() => { const l = []; LB.relogio.acoes(LB.jogo, l, () => true); l[0].fazer(); });
+  await h.avancar();
+  const d = await h.ev(() => ({ t: LB.relogio.texto(LB.jogo), dia: LB.relogio.dia(LB.jogo) }));
+  igual(d.t.slice(0, 2), '07', 'acorda às 7h');
+  igual(d.dia, 2, 'no dia seguinte');
+});
+
+teste('parte 2: depois do “Fim?”, Continuar mostra o dragão pedindo ajuda', async () => {
+  const save = { area: 'fazenda', flags: Object.assign({ encontroFeito: true, manhaVista: true, prologo: true, florestaVista: true, versaoMundo: 2, dragaoEmPaz: true }, TODAS, { zerado: true }) };
+  const h = await abrir({ save });
+  try {
+    await h.p.click('#btn-continuar');
+    await h.espera(600);
+    afirmar(await h.ev(() => !!LB.jogo.cena), 'a abertura da Parte 2 começa');
+    await h.foto('p2-abertura');
+    await h.avancar(400);
+    const r = await h.ev(() => { const j = LB.jogo; return { p2: !!j.flags.parte2, bell: !!j.flags.bellJogavel, comp: j.companheira && j.companheira.quem, obj: LB.mochila.objetivo(j), vale: j.mapa.def.saidas.find((s) => s.para === 'vale') }; });
+    afirmar(r.p2 && r.bell, 'Parte 2 e Bell jogável liberadas');
+    igual(r.comp, 'bell', 'a Bell anda junto da Line');
+    afirmar(/Vale das Raízes/.test(r.obj), 'objetivo aponta o vale: ' + r.obj);
+    await h.area('vilarejo', await h.ev(() => LB.jogo.flags));
+    const aberta = await h.ev(() => !LB.jogo.bloqueia(59 * 32 + 16, 14 * 32));
+    afirmar(aberta, 'a estrada do vale abriu no vilarejo');
+    afirmar(!h.erros.length, h.erros.join('\n'));
+  } finally { await h.fechar(); }
+}, { semPagina: true });
+
+teste('parte 2: estrada do vale fechada antes do dragão acordar', async (h) => {
+  await h.area('vilarejo', TODAS);
+  afirmar(await h.ev(() => LB.jogo.bloqueia(59 * 32 + 16, 14 * 32)), 'saída para o vale bloqueada na Parte 1');
+  const mundo = await h.ev(() => LB.mochila.MUNDO.filter((n) => n.parte2).length);
+  igual(mundo, 7, 'sete regiões novas no mapa do mundo');
+});
+
+teste('Bell jogável: troca com T, estrela, leque de luz, canção e assume quando a Line cai', async (h) => {
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  await h.ir(20, 21);
+  await h.p.keyboard.press('KeyT');
+  await h.espera(200);
+  let r = await h.ev(() => { const j = LB.jogo; return { heroina: LB.herois.ativa(j), trad: !!j.line.anim.traduzir, comp: j.companheira.quem, cod: j.line.anim.resolver(j.line.dir, j.line.lado).codigo }; });
+  igual(r.heroina, 'bell', 'trocou para a Bell');
+  afirmar(r.trad, 'animações traduzidas para as da Bell');
+  igual(r.comp, 'line', 'agora é a Line que acompanha');
+  afirmar(r.cod.startsWith('BELL_'), 'desenha a Bell: ' + r.cod);
+  await h.foto('bell-jogavel');
+  // Estrela (J).
+  await h.ev(() => { window.__tiros = []; const l0 = LB.magia.lancar; LB.magia.lancar = (j, o) => { window.__tiros.push(o.tipo); return l0(j, o); }; });
+  await h.p.keyboard.press('KeyJ');
+  await h.espera(350);
+  r = await h.ev(() => ({ tiros: window.__tiros, estado: LB.jogo.line.estado, anim: LB.jogo.line.anim.base }));
+  r = r.tiros.length ? r.tiros : [JSON.stringify(r)];
+  afirmar(r.includes('estrelaBell'), 'J atira estrela: ' + r);
+  // Leque (K): três estrelas de luz, gasta magia.
+  await h.espera(500);
+  const mana0 = await h.ev(() => LB.jogo.line.mana);
+  await h.ev(() => { window.__tiros = []; });
+  await h.p.keyboard.press('KeyK');
+  await h.espera(500);
+  r = await h.ev(() => ({ luz: window.__tiros.filter((t) => t === 'luz').length, mana: LB.jogo.line.mana }));
+  igual(r.luz, 3, 'leque solta três estrelas de luz');
+  afirmar(r.mana < mana0, 'leque gasta magia');
+  // Canção (Q): acalma o inimigo perto.
+  await h.espera(600);
+  await h.ev(() => { const j = LB.jogo, e = j.inimigos.find((x) => !x.chefeElemental); e.x = j.line.x + 60; e.y = j.line.y; j.line.mana = j.line.manaMax; });
+  await h.p.keyboard.press('KeyQ');
+  await h.espera(900);
+  r = await h.ev(() => { const j = LB.jogo; return j.inimigos.filter((x) => x.encantado > 0).length; });
+  afirmar(r >= 1, 'canção encanta o inimigo');
+  await h.foto('bell-cancao');
+  // A Bell cai e a Line assume.
+  await h.espera(1500);
+  await h.ev(() => { const j = LB.jogo; j.line.invul = 0; j.line.escudos = 0; j.line.hp = 1; j.line.receberDano(j, 3, true, j.line.x + 10, j.line.y); });
+  await h.p.waitForFunction(() => LB.herois.ativa(LB.jogo) === 'line' || LB.jogo.line.estado === 'morta', null, { timeout: 8000 });
+  r = await h.ev(() => ({ heroina: LB.herois.ativa(LB.jogo), estado: LB.jogo.line.estado, hp: LB.jogo.line.hp, derrota: !document.querySelector('#derrota').classList.contains('oculto') }));
+  igual(r.heroina, 'line', 'a Line assumiu');
+  afirmar(r.hp > 0 && r.estado !== 'morta', 'a Line está de pé');
+  // Não dá para trocar de volta para quem caiu.
+  await h.espera(1200);
+  await h.p.keyboard.press('KeyT');
+  await h.espera(200);
+  igual(await h.ev(() => LB.herois.ativa(LB.jogo)), 'line', 'a Bell caída não volta sem descansar');
+});
+
+teste('ferraria: armaduras da Bell só na Parte 2', async (h) => {
+  await h.area('vilarejo', TODAS);
+  await h.ev(() => LB.loja.tela.abrir(LB.jogo, 'bento'));
+  const antes = await h.ev(() => document.querySelectorAll('#loja-lista .produto').length);
+  await h.ev(() => LB.loja.tela.fechar());
+  await h.ev(() => { const j = LB.jogo; Object.assign(j.flags, { parte2: true, bellJogavel: true }); LB.mochila.darMoedas(j, 500, true); LB.loja.tela.abrir(j, 'bento'); });
+  const depois = await h.ev(() => document.querySelectorAll('#loja-lista .produto').length);
+  igual(depois - antes, 3, 'três armaduras da Bell aparecem');
+  const r = await h.ev(() => { const j = LB.jogo, i = LB.loja.LOJAS.bento.produtos.findIndex((p) => p.armadura === 'vestido'); const c = LB.loja.comprar(j, 'bento', i); return { ok: c.ok, bell: j.flags.armaduraBell, line: j.flags.armadura || null, escLine: j.line.escudosMax }; });
+  afirmar(r.ok, 'comprou o vestido');
+  igual(r.bell, 'vestido', 'guardado para a Bell');
+  igual(r.line, null, 'a armadura da Line não muda');
+  igual(r.escLine, 0, 'a Line (ativa) continua sem escudo');
+  await h.ev(() => LB.loja.tela.fechar());
+  await h.ev(() => LB.herois.trocar(LB.jogo, true));
+  igual(await h.ev(() => LB.jogo.line.escudosMax), 1, 'a Bell veste o vestido (1 escudo)');
+});
+
+// Cada chefe: entra na arena, a cena apresenta, luta alguns segundos e é vencido.
+const CHEFES_P2 = [['colosso', 'vale', {}], ['magma', 'fenda', { chefeTerra: true }], ['serpente', 'lago', { chefeTerra: true, fusaoMagma: true }], ['hidra', 'pantano', { chefeTerra: true, fusaoMagma: true, chefeAgua: true }],
+  ['grifo', 'picos', { chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true }], ['tempestade', 'tempestade', { chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true }],
+  ['quimera', 'coracao', { chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true, fusaoTempestade: true, portalCoracao: true }]];
+for (const [id, area, antes] of CHEFES_P2) {
+  teste(`chefe: ${id} acorda, luta e é vencido (${area})`, async (h) => {
+    await h.area(area, Object.assign({ ['visto_' + area]: true }, P2, antes));
+    const c = await h.ev(() => { const d = LB.jogo.mapa.def.chefe; return { x: (d.arena[0] + d.arena[2]) / 2, y: d.arena[3] - 1.2, id: d.id }; });
+    igual(c.id, id, 'chefe da área');
+    await h.ir(c.x, c.y);
+    await h.espera(300);
+    afirmar(await h.ev(() => !!LB.jogo.cena), 'a apresentação do chefe começa');
+    await h.avancar(300);
+    let r = await h.ev(() => { const ch = LB.jogo.chefeArena; return { acordado: ch && !ch.dormindo, estado: ch && ch.estado }; });
+    afirmar(r.acordado, 'chefe acordou');
+    // Deixa ele atacar um pouco (a heroína não morre no teste).
+    for (let i = 0; i < 8; i++) { await h.ev(() => { const l = LB.jogo.line; l.hp = l.hpMax; }); await h.espera(600); }
+    await h.foto('chefe-' + id);
+    r = await h.ev(() => { const ch = LB.jogo.chefeArena; return { hp: ch.hp, hpMax: ch.hpMax, perigos: ch.perigos.length, visto: ch.vistosAtaques || null, estado: ch.estado }; });
+    // Vence: cansa e bate até acabar.
+    await h.ev(() => {
+      const j = LB.jogo, ch = j.chefeArena;
+      for (let k = 0; k < 300 && ch.vivo && ch.estado !== 'morrendo'; k++) {
+        if (ch.estado !== 'exausto') { ch.estado = 'exausto'; ch.t = 0; ch.dormindo = false; }
+        ch.hp = Math.min(ch.hp, 3);
+        ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50);
+        if (ch.def.fases && ch.checarFase) ch.checarFase(j);
+      }
+    });
+    await h.p.waitForFunction((flag) => LB.jogo.flags[flag], (await h.ev((i) => LB.chefes.CHEFES[i].flag, id)), { timeout: 15000 });
+    await h.avancar(400);
+    const f = await h.ev((i) => { const j = LB.jogo; return { flag: j.flags[LB.chefes.CHEFES[i].flag], coracoes: j.flags.coracoes || 0, portal: !!j.flags.portalCoracao, estado: j.estado, fim: !!j.flags.quimeraVencida }; }, id);
+    afirmar(f.flag, 'flag de vitória salva');
+    if (['colosso', 'serpente', 'grifo'].includes(id)) igual(f.coracoes, 1, 'guardião libertado dá +1 coração');
+    if (id === 'tempestade') afirmar(f.portal, 'a última junção abre o Coração dos Elementos');
+    if (id === 'quimera') afirmar(f.fim, 'final da Parte 2');
+  });
+}
+
+teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {
+  await h.ev(() => LB.dificuldade.definir('facil'));
+  try {
+    await h.area('vilarejo', P2);
+    let p = await h.ev(() => LB.dicas.pontoAlvo(LB.jogo));
+    afirmar(p && /Vale/.test(p.rotulo), 'no vilarejo, a seta aponta a estrada do vale: ' + JSON.stringify(p));
+    await h.area('vale', Object.assign({ visto_vale: true }, P2));
+    p = await h.ev(() => LB.dicas.pontoAlvo(LB.jogo));
+    afirmar(p && /Cristal/.test(p.rotulo), 'no vale, aponta um cristal apagado: ' + JSON.stringify(p));
+    await h.ev(() => { const j = LB.jogo; for (const p of j.mapa.props) if (p.tipo === 'cristal') LB.magia.acender ? LB.magia.acender(j, p) : (p.aceso = true); });
+    await h.avancar();
+    await h.area('vale', await h.ev(() => LB.jogo.flags));
+    p = await h.ev(() => LB.dicas.pontoAlvo(LB.jogo));
+    afirmar(p && /Colosso/.test(p.rotulo), 'com os cristais acesos, aponta o Colosso: ' + JSON.stringify(p));
+    await h.espera(300);
+    await h.foto('dicas-seta');
+    // Dica de chefe e de derrota.
+    await h.ev(() => { const j = LB.jogo; LB.dicas.chefe(j, j.chefeArena, 0); });
+    afirmar(/Colosso/.test(await h.ev(() => document.querySelector('#dica').textContent)), 'dica do chefe aparece');
+    await h.ev(() => LB.dicas.aoCair(LB.jogo));
+    afirmar(/💡/.test(await h.ev(() => document.querySelector('#derrota .sub').textContent)), 'tela de derrota com dica');
+  } finally { await h.ev(() => LB.dificuldade.definir('normal')); }
+});
+
+teste('parte 2: vento empurra, lama deixa lenta', async (h) => {
+  await h.area('picos', Object.assign({ visto_picos: true }, P2));
+  await h.ir(31.5, 29.5);
+  const x0 = await h.ev(() => LB.jogo.line.x);
+  await h.espera(500);
+  const x1 = await h.ev(() => LB.jogo.line.x);
+  afirmar(x1 > x0 + 10, `o vento empurrou para a direita (${x0} → ${x1})`);
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  await h.ir(28.5, 31.5);
+  await h.p.keyboard.down('KeyD'); await h.espera(400); await h.p.keyboard.up('KeyD');
+  const lama = await h.ev(() => LB.jogo.line.x);
+  await h.ir(20.5, 21.2);
+  await h.p.keyboard.down('KeyD'); await h.espera(400); await h.p.keyboard.up('KeyD');
+  const chao = await h.ev(() => LB.jogo.line.x);
+  afirmar(lama - 28.5 * 32 < (chao - 20.5 * 32) * 0.8, `na lama anda menos (${lama - 28.5 * 32} x ${chao - 20.5 * 32})`);
+});
 
 // ================= Celular =================
 teste('celular: controles de toque, mochila e botão do item', async () => {

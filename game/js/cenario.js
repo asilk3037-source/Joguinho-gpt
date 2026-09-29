@@ -301,6 +301,8 @@
   }
 
   // ---------- Vida ambiente ----------
+  // Temas sem céu aberto (sem nuvens nem pássaros).
+  const SEM_CEU = ['covil', 'montanha', 'encontro', 'gruta', 'fenda', 'coracao'];
   class Ambiente {
     constructor(mapa) {
       this.mapa = mapa;
@@ -312,8 +314,11 @@
       this.t = 0;
       const n = this.tema === 'fazenda' ? 12 : this.tema === 'floresta' ? 5 : this.tema === 'ruinas' ? 3 : 0;
       for (let i = 0; i < n; i++) this.borboletas.push(this.novaBorboleta());
-      if (!['covil', 'montanha', 'encontro', 'gruta'].includes(this.tema)) for (let i = 0; i < 5; i++) this.nuvens.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, r: 90 + Math.random() * 90, v: 12 + Math.random() * 10 });
-      const nl = this.tema === 'floresta' ? 26 : this.tema === 'ruinas' ? 22 : this.tema === 'gruta' ? 34 : 0;
+      if (!SEM_CEU.includes(this.tema)) for (let i = 0; i < 5; i++) this.nuvens.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, r: 90 + Math.random() * 90, v: 12 + Math.random() * 10 });
+      const nl = { floresta: 26, ruinas: 22, gruta: 34, pantano: 30, coracao: 24 }[this.tema] || 0;
+      // Chuva: forte no Olho da Tempestade, garoa no pântano.
+      this.chuva = this.tema === 'tempestade' ? 1 : this.tema === 'pantano' ? 0.35 : 0;
+      this.proximoRaio = 4 + Math.random() * 5;
       for (let i = 0; i < nl; i++) this.luzes.push({ x: Math.random() * mapa.larg, y: Math.random() * mapa.alt, f: Math.random() * TAU, z: 10 + Math.random() * 30 });
       this.proximoBando = 3;
     }
@@ -346,7 +351,7 @@
       for (const n of this.nuvens) { n.x += n.v * dt; if (n.x - n.r > m.larg) { n.x = -n.r; n.y = Math.random() * m.alt; } }
       for (const f of this.luzes) { f.f += dt; f.x += Math.sin(f.f * 0.7) * 10 * dt; f.y += Math.cos(f.f * 0.5) * 8 * dt; }
       // Bando de pássaros atravessando o céu de vez em quando.
-      if (!['covil', 'montanha', 'encontro', 'gruta'].includes(this.tema)) {
+      if (!SEM_CEU.includes(this.tema) && this.tema !== 'tempestade') {
         this.proximoBando -= dt;
         if (this.proximoBando <= 0) {
           this.proximoBando = 9 + Math.random() * 10;
@@ -368,7 +373,12 @@
         }
       }
       // Brasas subindo da lava.
-      if ((this.tema === 'covil' || this.tema === 'montanha') && Math.random() < dt * 8) {
+      // Raios no Olho da Tempestade.
+      if (this.tema === 'tempestade' && !jogo.cena) {
+        this.proximoRaio -= dt;
+        if (this.proximoRaio <= 0) { this.proximoRaio = 5 + Math.random() * 6; jogo.flashTela = Math.max(jogo.flashTela, 0.35); jogo.tremer(2, 0.3); }
+      }
+      if ((this.tema === 'covil' || this.tema === 'montanha' || this.tema === 'fenda') && Math.random() < dt * 8) {
         const lavas = [];
         for (let ty = 0; ty < m.h; ty++) for (let tx = 0; tx < m.w; tx++) if (m.l[ty][tx] === 'L') lavas.push([tx, ty]);
         if (lavas.length) { const [tx, ty] = lavas[Math.floor(Math.random() * lavas.length)]; jogo.particulas.emitir('brasa', (tx + Math.random()) * LB.TILE, (ty + Math.random()) * LB.TILE, 1, { vz: 30, vel: 8, vida: 2.4, r: 1.6 }); }
@@ -390,8 +400,22 @@
       for (const p of this.passaros) E(g, p.x, p.y + 60, 4, 1.5, 'rgba(0,0,0,.12)');
     }
 
+    // Chuva inclinada só na parte visível da tela (coordenadas do mundo).
+    desenharChuva(g, jogo) {
+      const n = Math.round(90 * this.chuva), x0 = jogo.cam.x, y0 = jogo.cam.y, w = jogo.vw, h = jogo.vh;
+      g.strokeStyle = this.tema === 'pantano' ? 'rgba(200,230,210,.35)' : 'rgba(190,210,255,.45)'; g.lineWidth = 1;
+      g.beginPath();
+      for (let i = 0; i < n; i++) {
+        const k = (i * 0.618 + this.t * (1.4 + (i % 5) * 0.12)) % 1;
+        const x = x0 + ((i * 97.3) % w) - k * 40, y = y0 + k * (h + 40) - 20;
+        g.moveTo(x, y); g.lineTo(x - 5, y + 14);
+      }
+      g.stroke();
+    }
+
     // Borboletas, pássaros e vaga-lumes (por cima de tudo).
-    desenharCeu(g) {
+    desenharCeu(g, jogo) {
+      if (this.chuva && jogo) this.desenharChuva(g, jogo);
       for (const b of this.borboletas) {
         const a = Math.abs(Math.sin(b.f)) * 4 + 1, x = b.x, y = b.y - b.z;
         E(g, x, b.y, 2.5, 1, 'rgba(0,0,0,.12)');
@@ -408,7 +432,7 @@
         const a = 0.3 + 0.7 * Math.max(0, Math.sin(f.f * 2.3));
         const x = f.x, y = f.y - f.z;
         const gr = g.createRadialGradient(x, y, 0, x, y, 8);
-        const cor = this.tema === 'gruta' ? '140,220,255' : '230,255,140';
+        const cor = { gruta: '140,220,255', pantano: '170,255,120', coracao: '220,160,255' }[this.tema] || '230,255,140';
         gr.addColorStop(0, `rgba(${cor},${a})`); gr.addColorStop(1, `rgba(${cor},0)`);
         g.fillStyle = gr; g.beginPath(); g.arc(x, y, 8, 0, TAU); g.fill();
       }

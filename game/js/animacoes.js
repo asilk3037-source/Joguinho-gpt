@@ -282,6 +282,24 @@ window.LB = window.LB || {};
     ['SPIRIT_TALK', 'Espírito das Ruínas falando', { loop: true, nova: true }],
   ]);
 
+  grupo('Bell jogável (Parte 2)', [
+    ['BELL_COMBAT_IDLE', 'Bell em guarda, estrelas girando na mão', { dir: QUATRO, loop: true, fps: 8, quadros: 8, alt: 'BELL_IDLE', parte2: true }],
+    ['BELL_ATTACK_STAR', 'Bell atira uma estrela (braço à frente)', { fps: 14, quadros: 8, alt: 'BELL_HIGH_FIVE', parte2: true }],
+    ['BELL_ATTACK_SPREAD', 'Bell gira e solta o leque de 3 estrelas de luz', { fps: 14, quadros: 10, alt: 'BELL_DANCE', parte2: true }],
+    ['BELL_ATTACK_AIR', 'Bell atira estrela no ar (pulando)', { fps: 12, quadros: 6, alt: 'BELL_JUMP', parte2: true }],
+    ['BELL_SING', 'Bell canta a Canção (notas coloridas saindo)', { fps: 10, loop: true, face: 'F', quadros: 12, alt: 'BELL_HAPPY', parte2: true }],
+    ['BELL_BLOCK', 'Bell se protege com um escudo de luz rosa', { fps: 12, quadros: 6, alt: 'BELL_IDLE', parte2: true }],
+    ['BELL_DODGE', 'Bell esquiva (pulinho de lado)', { fps: 14, quadros: 6, alt: 'BELL_JUMP', parte2: true }],
+    ['BELL_DASH', 'Bell arrancada', { fps: 14, quadros: 6, alt: 'BELL_RUN', parte2: true }],
+    ['BELL_HIT', 'Bell recebe dano', { fps: 12, quadros: 4, alt: 'BELL_SCARED', parte2: true }],
+    ['BELL_KNOCKDOWN', 'Bell cai no chão (golpe forte)', { fps: 10, quadros: 6, alt: 'BELL_FALL', parte2: true }],
+    ['BELL_EXHAUSTED_IDLE', 'Bell cansada, ofegante (pouca vida)', { loop: true, fps: 6, quadros: 8, alt: 'BELL_IDLE', parte2: true }],
+    ['BELL_CROUCH', 'Bell agachada (beber na fonte / pegar item)', { face: 'F', quadros: 6, alt: 'BELL_IDLE_FRONT', parte2: true }],
+    ['BELL_DETERMINED', 'Bell decidida (punhos fechados)', { face: 'F', loop: true, quadros: 6, alt: 'BELL_IDLE_FRONT', parte2: true }],
+    ['BELL_CELEBRATE', 'Bell comemora vitória', { face: 'F', quadros: 12, alt: 'BELL_HAPPY', parte2: true }],
+    ['BELL_TALK', 'Bell falando (cenas)', { face: 'F', loop: true, quadros: 8, alt: 'BELL_IDLE_FRONT', parte2: true }],
+  ]);
+
   const PADRAO = { fps: 12, loop: false, face: 'R', quadros: 12 };
 
   function info(base) {
@@ -342,8 +360,11 @@ window.LB = window.LB || {};
 
     atualizar(dt) { this.t += dt; }
 
+    // `traduzir` troca o desenho sem mudar o tempo: a Bell jogável usa o ritmo dos golpes da Line.
+    resolver(dir, lado) { return resolver(this.traduzir ? this.traduzir(this.base) : this.base, dir, lado); }
+
     estado(dir, lado) {
-      const r = resolver(this.base, dir, lado);
+      const r = this.resolver(dir, lado);
       const inf = info(this.base);
       const n = r.sprite ? r.sprite.seq.length : inf.quadros;
       const pos = this.t * fpsDe(inf, r.sprite, n);
@@ -360,7 +381,7 @@ window.LB = window.LB || {};
     }
 
     duracao(dir, lado) {
-      const r = resolver(this.base, dir, lado);
+      const r = this.resolver(dir, lado);
       const inf = info(this.base);
       const n = r.sprite ? r.sprite.seq.length : inf.quadros;
       return n / fpsDe(inf, r.sprite, n);

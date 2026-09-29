@@ -13,10 +13,15 @@
     tunica: { nome: 'Túnica Acolchoada', icone: '🥋', escudos: 1, preco: 40, desc: '1 escudo. Leve e barata: segura um golpe antes de doer.' },
     malha: { nome: 'Cota de Malha', icone: '⛓️', escudos: 2, preco: 90, desc: '2 escudos. Anéis de ferro trançados pelo Seu Bento.' },
     brasa: { nome: 'Armadura de Brasa', icone: '🔥', escudos: 3, preco: 160, brasa: true, desc: '3 escudos, e a Line atravessa o chão em brasa sem se queimar. Feita com a receita do Mestre Aurélio.' },
+    // Parte 2: armaduras da Bell (mais leves; a última protege dos quatro elementos).
+    vestido: { nome: 'Vestido Reforçado', icone: '👗', escudos: 1, preco: 60, bell: true, desc: 'Da Bell. 1 escudo. Tecido duplo com fios de prata, costurado pela Dona Rosa.' },
+    estelar: { nome: 'Manto Estelar', icone: '🌟', escudos: 2, preco: 130, bell: true, desc: 'Da Bell. 2 escudos. Pontilhado de estrelas que brilham quando ela canta.' },
+    aurora: { nome: 'Armadura da Aurora', icone: '🌈', escudos: 3, preco: 220, bell: true, brasa: true, desc: 'Da Bell. 3 escudos, e atravessa brasa e lama sem perder o passo. Feita com as escamas que os guardiões dão.' },
   };
   const RECARGA_ESCUDO = 6, ESPERA_ESCUDO = 5;
 
-  function armadura(j) { return ARMADURAS[j.flags.armadura] || null; }
+  function daBell(j) { return !!(LB.herois && LB.herois.ativa(j) === 'bell'); }
+  function armadura(j) { return ARMADURAS[daBell(j) ? j.flags.armaduraBell : j.flags.armadura] || null; }
   function escudosMax(j) { const a = armadura(j); return a ? a.escudos : 0; }
   function imuneBrasa(j) { const a = armadura(j); return !!(a && a.brasa); }
 
@@ -26,6 +31,8 @@
     if (!l) return;
     const max = escudosMax(j);
     l.escudosMax = max;
+    const a = armadura(j);
+    l.semLama = !!(a && a.bell && a.brasa);
     l.escudos = cheio ? max : Math.min(max, l.escudos == null ? max : l.escudos);
   }
 
@@ -73,6 +80,8 @@
     }
     atualizar(dt, j) {
       this.t += dt;
+      // À noite os moradores do vilarejo vão para casa dormir (o Tobias, ferido na montanha, fica).
+      this.dormindo = j.mapa.id === 'vilarejo' && LB.relogio.ativo(j) && LB.relogio.noite(j);
       const l = j.line;
       if (Math.hypot(l.x - this.x, l.y - this.y) < 140 && Math.abs(l.x - this.x) > 6) this.lado = l.x < this.x ? -1 : 1;
       // O Pedrinho não para quieto.
@@ -119,6 +128,8 @@
   function falasDe(j, m) {
     const f = j.flags, conversou = (f.conversas || []).includes(m.id);
     const tem = (id) => M().tem(j, id);
+    const p2 = LB.parte2 && LB.parte2.falas(j, m);
+    if (p2) return p2;
     switch (m.id) {
       case 'rosa':
         if (!conversou) return [['Dona Rosa', 'Ai, menina! Você é a Line, da fazendinha? Fiquei sabendo da Bell... que horror.'], ['Line', 'Eu vou buscar ela, Dona Rosa. Custe o que custar.', 'bravo'], ['Dona Rosa', 'Então leva umas poções, que a estrada é perigosa. E bombas: servem pra abrir parede rachada.']];
@@ -177,17 +188,21 @@
         { armadura: 'tunica' },
         { armadura: 'malha' },
         { armadura: 'brasa', requer: (j) => M().temPista(j, 'receita'), falta: 'Precisa da receita do Mestre Aurélio (dizem que está na Forja Antiga, na montanha).' },
+        { armadura: 'vestido', parte2: true },
+        { armadura: 'estelar', parte2: true },
+        { armadura: 'aurora', parte2: true, requer: (j) => ['chefeTerra', 'chefeAgua', 'chefeAr'].filter((f) => j.flags[f]).length >= 2, falta: 'Precisa de escamas de dois guardiões libertados (Terra, Água ou Ar).' },
       ],
     },
   };
 
-  const ORDEM_ARM = ['tunica', 'malha', 'brasa'];
+  const ORDEM_ARM = ['tunica', 'malha', 'brasa'], ORDEM_BELL = ['vestido', 'estelar', 'aurora'];
+  const chaveArm = (id) => (ARMADURAS[id].bell ? 'armaduraBell' : 'armadura');
 
   function situacao(j, p) {
     if (p.armadura) {
-      const a = ARMADURAS[p.armadura], atual = j.flags.armadura;
+      const a = ARMADURAS[p.armadura], atual = j.flags[chaveArm(p.armadura)], ORDEM = a.bell ? ORDEM_BELL : ORDEM_ARM;
       if (atual === p.armadura) return { pode: false, motivo: 'Vestindo' };
-      if (atual && ORDEM_ARM.indexOf(atual) > ORDEM_ARM.indexOf(p.armadura)) return { pode: false, motivo: 'Você já tem uma melhor' };
+      if (atual && ORDEM.indexOf(atual) > ORDEM.indexOf(p.armadura)) return { pode: false, motivo: a.bell ? 'A Bell já tem uma melhor' : 'Você já tem uma melhor' };
       if (p.requer && !p.requer(j)) return { pode: false, motivo: 'Indisponível', dica: p.falta };
       if (M().moedas(j) < a.preco) return { pode: false, motivo: 'Moedas insuficientes' };
       return { pode: true };
@@ -203,9 +218,9 @@
     if (p.armadura) {
       const a = ARMADURAS[p.armadura];
       M().darMoedas(j, -a.preco, true);
-      j.flags.armadura = p.armadura;
+      j.flags[chaveArm(p.armadura)] = p.armadura;
       vestir(j, true);
-      M().aviso(`${a.icone} ${a.nome} vestida!`);
+      M().aviso(`${a.icone} ${a.nome} ${a.bell && !daBell(j) ? 'guardada para a Bell' : 'vestida'}!`);
     } else {
       const it = M().ITENS[p.id];
       M().darMoedas(j, -p.preco, true);
@@ -240,6 +255,7 @@
       $('#loja-moedas').textContent = `🪙 ${M().moedas(j)}`;
       const lista = $('#loja-lista'); lista.innerHTML = '';
       L.produtos.forEach((p, i) => {
+        if (p.parte2 && !(j.flags.bellJogavel)) return;
         const s = situacao(j, p);
         const a = p.armadura && ARMADURAS[p.armadura], it = !a && M().ITENS[p.id];
         const nome = a ? a.nome : p.nome || it.nome, icone = a ? a.icone : it.icone, preco = a ? a.preco : p.preco;
@@ -268,8 +284,15 @@
 
   // Ações perto dos moradores.
   function acoes(j, lista, perto) {
+    // Loja fechada à noite: bater na porta explica e sugere descansar.
+    if (j.mapa.id === 'vilarejo' && LB.relogio.ativo(j) && LB.relogio.noite(j)) {
+      for (const p of j.mapa.props) {
+        if (p.tipo !== 'casa' || !p.letreiro || !perto(p.porta, p.y, 50)) continue;
+        lista.push({ texto: 'Loja fechada', x: p.porta, y: p.y - 70, prio: 1, fazer: () => j.iniciarCena(function* (c) { yield c.fala('', `${p.letreiro}: fechada. Abre às 6h.`, 'sistema'); yield c.fala('Line', 'Todo mundo dormindo... Posso descansar na fonte da praça até amanhecer.', 'neutro'); }, { semPular: true }) });
+      }
+    }
     for (const m of j.moradores || []) {
-      if (!perto(m.x, m.y + 10, 58)) continue;
+      if (m.dormindo || !perto(m.x, m.y + 10, 58)) continue;
       lista.push({ texto: m.loja ? (m.loja === 'rosa' ? 'Comprar / conversar' : 'Armaduras / conversar') : 'Conversar', x: m.x, y: m.y - 92, prio: 1, fazer: () => {
         m.fala = 2;
         j.iniciarCena(LB.HISTORIA.morador, { semPular: true }, m);

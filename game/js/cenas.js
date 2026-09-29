@@ -357,6 +357,7 @@
       j.bell = null;
       j.flags.prologo = true;
       j.flags.etapa = null;
+      LB.relogio.comecarAventura(j);
       j.salvar();
       j.dica('mover', LB.entrada.usandoToque()
         ? 'Siga pelo caminho ao norte, até a floresta.'

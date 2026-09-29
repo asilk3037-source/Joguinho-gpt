@@ -67,7 +67,7 @@
   // Um inimigo que vê a Line avisa os vizinhos.
   function alertar(jogo, quem, raio) {
     for (const e of jogo.inimigos) {
-      if (e === quem || !e.vivo || e.golem || e.estado === 'morrendo') continue;
+      if (e === quem || !e.vivo || e.golem || e.grande || e.estado === 'morrendo') continue;
       if (Math.hypot(e.x - quem.x, e.y - quem.y) > (raio || 220)) continue;
       if (e.aoAlerta) e.aoAlerta(jogo);
     }
@@ -75,7 +75,7 @@
 
   // Empurra inimigos que estão encostados uns nos outros.
   function separar(jogo, dt) {
-    const lista = jogo.inimigos.filter((e) => e.vivo && !e.golem && e.estado !== 'morrendo');
+    const lista = jogo.inimigos.filter((e) => e.vivo && !e.golem && !e.grande && e.estado !== 'morrendo');
     for (let i = 0; i < lista.length; i++) for (let k = i + 1; k < lista.length; k++) {
       const a = lista[i], b = lista[k];
       const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy);

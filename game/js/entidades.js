@@ -64,6 +64,8 @@
           case 'coracao': g.globalAlpha = a; D().coracaoForma(g, X, Y, 6, '#ff5d8f'); g.globalAlpha = 1; break;
           case 'brilho': g.fillStyle = `rgba(255,255,200,${a})`; D().estrela(g, X, Y, p.r * (1 - k * 0.5)); break;
           case 'agua': g.fillStyle = `rgba(160,210,255,${a})`; g.beginPath(); g.arc(X, Y, p.r, 0, TAU); g.fill(); break;
+          case 'vento': g.strokeStyle = `rgba(235,245,255,${a * 0.7})`; g.lineWidth = 1.5; g.beginPath(); g.moveTo(X - 14, Y); g.quadraticCurveTo(X, Y - 4, X + 14, Y); g.stroke(); break;
+          case 'nota': g.globalAlpha = a; g.fillStyle = p.cor || '#ff9ecf'; g.font = '12px system-ui'; g.textAlign = 'center'; g.fillText('♪', X, Y); g.globalAlpha = 1; break;
           case 'sombra': g.fillStyle = `rgba(60,30,90,${a * 0.7})`; g.beginPath(); g.arc(X, Y, p.r * (1 + k * 2), 0, TAU); g.fill(); break;
           case 'folhaCai':
             g.globalAlpha = Math.min(1, a * 3); g.fillStyle = p.cor || '#51a043';
@@ -143,6 +145,7 @@
       const E = LB.entrada;
       this.t += dt;
       this.invul = Math.max(0, this.invul - dt);
+      this.lentidao = Math.max(0, (this.lentidao || 0) - dt);
       this.cooldownGiro = Math.max(0, this.cooldownGiro - dt);
       if (this.temMagia && this.mana < this.manaMax && this.estado !== 'carregar') this.mana = Math.min(this.manaMax, this.mana + dt / 2.6 * LB.dif().regen);
       this.anim.atualizar(dt);
@@ -303,6 +306,10 @@
 
         case 'final': jogo.passoFinal(this, st, dt); break;
 
+        case 'tiro': case 'leque': case 'cancao':
+          if (this.perfil) this.perfil.passo(this, dt, jogo, st); else this.voltarLivre();
+          break;
+
         case 'cena': this.cena(dt, jogo, st); break;
 
         case 'morta': break;
@@ -338,6 +345,8 @@
       } else if (controlavel) {
         if (E.apertou('interagir') && jogo.interagir(this)) return;
         if (E.apertou('pular')) { this.pular(jogo, eixo); return; }
+        // Parte 2: a Bell tem os próprios golpes (estrela, leque e canção).
+        if (this.perfil && this.perfil.livre(this, jogo, E)) return;
         if (E.apertou('atacar')) {
           if (jogo.interagir(this, true)) return;
           if (this.temEspada) {
@@ -381,6 +390,9 @@
       this.correndo = correr;
 
       let vel = correr ? (this.botas ? VEL_CORRER * 1.2 : VEL_CORRER) : VEL_ANDAR;
+      // Lama (tile 'u' fora da fazenda) e poças deixam a heroína lenta.
+      if (!this.semLama && (this.lentidao > 0 || (jogo.mapa.id !== 'fazenda' && jogo.mapa.tileEm(this.x, this.y - 3) === 'u'))) vel *= 0.55;
+      if (this.velPerfil) vel *= this.velPerfil;
       if (this.sub && this.sub.anim === 'LINE_RUN_START') vel *= 0.55 + 0.45 * Math.min(1, this.anim.t / 0.3);
       if (movendo) {
         this.ultVx = eixo.x * vel; this.ultVy = eixo.y * vel;
@@ -391,6 +403,9 @@
       }
 
       if (correr && !this.botas && jogo.mapa.tileEm(this.x, this.y - 3) === 'r') { this.tropecar(jogo); return; }
+      // Correntes de vento dos Picos: empurram para o lado (mesmo parada).
+      const vento = jogo.mapa.tileEm(this.x, this.y - 3);
+      if (vento === '>' || vento === '<') { this.mover((vento === '>' ? 1 : -1) * 55 * dt, 0, jogo); if (Math.random() < dt * 6) jogo.particulas.emitir('vento', this.x, this.y - 20, 1, { vel: 20, vida: 0.5 }); }
 
       // Escolha da animação.
       if (this.sub) {
@@ -406,7 +421,7 @@
       }
 
       // Guarda a espada sozinha depois de um tempo sem inimigos por perto.
-      if (this.armada) {
+      if (this.armada && !this.perfil) {
         this.semCombate = jogo.inimigoPerto(this.x, this.y, 240) ? 0 : this.semCombate + dt;
         if (this.semCombate > 4 && !movendo) { this.semCombate = 0; this.mudar('guardar', 'LINE_SWORD_SHEATHE'); }
       }
@@ -595,6 +610,7 @@
           LB.mochila.aviso('🪶 A Pena de Fênix queimou: a Line levantou de novo!');
           jogo.salvar();
         }
+        if (this.hp <= 0 && LB.herois && LB.herois.aoCair(jogo)) return;
         if (this.hp <= 0) { this.estado = 'morta'; jogo.derrota(); }
         else this.anim.tocar('LINE_INJURED_STAND', true);
       } else { this.invul = 1.0; this.voltarLivre(); }

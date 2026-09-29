@@ -99,7 +99,7 @@
   }
 
   function estourar(jogo, p) {
-    const tipo = p.tipo === 'luz' ? 'brilho' : p.tipo === 'fogo' ? 'brasa' : p.tipo === 'pedra' ? 'pedra' : 'agua';
+    const tipo = p.tipo === 'luz' || p.tipo === 'estrelaBell' || p.tipo === 'pena' ? 'brilho' : p.tipo === 'fogo' ? 'brasa' : p.tipo === 'pedra' ? 'pedra' : p.tipo === 'lama' || p.tipo === 'terra' ? 'poeira' : 'agua';
     jogo.particulas.emitir(tipo, p.x, p.y - p.z, 8, { vel: 80, vida: 0.4, r: tipo === 'brilho' ? 5 : 3, vz: tipo === 'pedra' ? 90 : 0 });
     if (p.tipo === 'pedra') jogo.particulas.emitir('poeira', p.x, p.y, 5, { vel: 50 });
   }
@@ -112,7 +112,7 @@
       g.fillStyle = '#8a877b'; g.beginPath(); g.ellipse(X - 2, Y - 2, 4, 3, 0, 0, TAU); g.fill();
       return;
     }
-    const cores = { luz: ['255,255,255', '140,220,255'], orbe: ['230,245,255', '90,160,255'], fogo: ['255,240,170', '255,110,40'] }[p.tipo] || ['255,255,255', '200,200,255'];
+    const cores = { luz: ['255,255,255', '140,220,255'], orbe: ['230,245,255', '90,160,255'], fogo: ['255,240,170', '255,110,40'], agua: ['220,240,255', '60,140,230'], lama: ['190,160,110', '100,70,40'], pena: ['255,255,255', '200,215,235'], estrelaBell: ['255,245,250', '255,150,200'], terra: ['210,240,150', '110,150,60'] }[p.tipo] || ['255,255,255', '200,200,255'];
     D().sombraChao(g, p.x, p.y, 5, 0.18);
     const R = p.r * (1 + 0.15 * Math.sin(t * 30 + p.x));
     const gr = g.createRadialGradient(X, Y, 0, X, Y, R * 2.6);
@@ -369,7 +369,8 @@
   class FogoFatuo {
     constructor(x, y, tipo) {
       this.x = x; this.y = y; this.x0 = x; this.y0 = y;
-      this.tipo = tipo === 'fogo' ? 'fogo' : 'luz';
+      // Parte 2: fogos-fátuos dos elementos (terra, água e ar) atiram o próprio elemento.
+      this.tipo = ['fogo', 'terra', 'agua', 'ar'].includes(tipo) ? tipo : 'luz';
       this.hp = 2; this.raio = 12; this.vivo = true; this.inimigo = true;
       this.estado = 'vagar'; this.t = Math.random() * 2; this.f = Math.random() * TAU;
       this.cd = 1.2 + Math.random() * 1.2; this.flash = 0; this.vx = 0; this.vy = 0; this.lado = 1; this.alvo = null;
@@ -413,7 +414,7 @@
         }
         case 'mirar':
           if (this.t > 0.6) {
-            lancar(jogo, { dono: 'inimigo', tipo: this.tipo === 'fogo' ? 'fogo' : 'orbe', x: this.x, y: this.y, z: 26, vx: dx / d * 140, vy: dy / d * 140, r: 5, max: 2.6 });
+            lancar(jogo, { dono: 'inimigo', tipo: { fogo: 'fogo', terra: 'terra', agua: 'agua', ar: 'pena' }[this.tipo] || 'orbe', x: this.x, y: this.y, z: 26, vx: dx / d * 140, vy: dy / d * 140, r: 5, max: 2.6 });
             this.cd = (2 + Math.random() * 1) * LB.dif().ritmo; this.estado = 'cacar'; this.t = 0;
           }
           break;
@@ -443,10 +444,10 @@
       const y = this.y - 30 + Math.sin(this.f * 3) * 5;
       // Arte própria (quando chegar) tem prioridade sobre o desenho no código.
       const st = this.anim.estado(null, this.lado);
-      if (st.r.sprite && !st.r.via) { LB.desenharSprite(g, st.r, st.quadro, this.x, y + 30, 64); return; }
+      if (st.r.sprite && !st.r.via && (this.tipo === 'luz' || this.tipo === 'fogo')) { LB.desenharSprite(g, st.r, st.quadro, this.x, y + 30, 64); return; }
       const mor = this.estado === 'morrendo' ? 1 - this.t / 0.4 : 1;
       const carga = this.estado === 'mirar' ? this.t / 0.6 : 0;
-      const cor = fogo ? ['255,240,180', '255,120,40'] : ['230,250,255', '110,180,255'];
+      const cor = { fogo: ['255,240,180', '255,120,40'], terra: ['230,245,170', '120,160,60'], agua: ['215,245,255', '40,150,230'], ar: ['255,255,255', '170,215,235'] }[this.tipo] || ['230,250,255', '110,180,255'];
       const R = (10 + carga * 5) * mor;
       brilho(g, this.x, y, R * 3.2, cor[1], 0.35 * mor);
       for (let i = 1; i <= 4; i++) {
@@ -457,7 +458,7 @@
       const gr = g.createRadialGradient(this.x, y, 0, this.x, y, R);
       gr.addColorStop(0, this.flash > 0 ? '#fff' : `rgba(${cor[0]},1)`); gr.addColorStop(1, `rgba(${cor[1]},.9)`);
       g.fillStyle = gr; g.beginPath(); g.arc(this.x, y, R, 0, TAU); g.fill();
-      g.fillStyle = fogo ? '#5a1a08' : '#1c2c55';
+      g.fillStyle = fogo ? '#5a1a08' : this.tipo === 'terra' ? '#2a3a10' : '#1c2c55';
       g.fillRect(this.x + this.lado * 2 - 4, y - 2, 2.5, 3.5); g.fillRect(this.x + this.lado * 2 + 2, y - 2, 2.5, 3.5);
     }
   }
@@ -640,7 +641,7 @@
     }
   }
 
-  LB.magia = { contarAcesas, CUSTO_RAIO, CUSTO_ESTRELA, raio, estrela, acender, abrirBarreira, aberta, prepararArea, atualizarProjeteis, desenharProjetil, desenharProp, desenharItemMana, desenharEfeito, desenharHudMana };
+  LB.magia = { lancar, alvoDoRaio, acertarComLuz, contarAcesas, CUSTO_RAIO, CUSTO_ESTRELA, raio, estrela, acender, abrirBarreira, aberta, prepararArea, atualizarProjeteis, desenharProjetil, desenharProp, desenharItemMana, desenharEfeito, desenharHudMana };
   LB.FogoFatuo = FogoFatuo;
   LB.Golem = Golem;
 })(window.LB);

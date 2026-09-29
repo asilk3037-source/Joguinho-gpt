@@ -27,8 +27,12 @@
     bussola: { nome: 'Bússola do Mago', icone: '🧭', cor: '#9ec5ff', tipo: 'ferramenta', desc: 'Marca no mapa os baús que ainda não foram abertos, mesmo onde a Line ainda não passou.' },
     botas: { nome: 'Botas de Andarilha', icone: '👢', cor: '#a8764a', tipo: 'ferramenta', desc: 'A Line corre mais rápido e não tropeça mais nas raízes.' },
     alavanca: { nome: 'Alavanca de Ferro', icone: '⚙️', cor: '#9aa3ad', tipo: 'historia', desc: 'A alavanca do freio do carrinho de mina. Com ela encaixada, o carrinho volta a andar entre as estações.' },
+    // Parte 2: presentes dos guardiões libertados (com duas, o Seu Bento forja a Armadura da Aurora da Bell).
+    escamaTerra: { nome: 'Escama da Terra', icone: '🟢', cor: '#6d8f3a', tipo: 'historia', desc: 'Presente do Colosso libertado. Cheira a chuva no mato. O Seu Bento sabe usar escamas de guardião.' },
+    escamaAgua: { nome: 'Escama da Água', icone: '🔵', cor: '#3f8fd6', tipo: 'historia', desc: 'Presente da Serpente libertada. Sempre molhadinha e fresca. O Seu Bento sabe usar escamas de guardião.' },
+    escamaAr: { nome: 'Pena-escama do Ar', icone: '⚪', cor: '#dfe8f0', tipo: 'historia', desc: 'Presente do Grifo libertado. Leve como nuvem. O Seu Bento sabe usar escamas de guardião.' },
   };
-  const ORDEM_ITENS = ['pocao', 'elixir', 'bomba', 'pena', 'chave', 'lanterna', 'gancho', 'bussola', 'botas', 'alavanca'];
+  const ORDEM_ITENS = ['pocao', 'elixir', 'bomba', 'pena', 'chave', 'lanterna', 'gancho', 'bussola', 'botas', 'alavanca', 'escamaTerra', 'escamaAgua', 'escamaAr'];
 
   function curar(j, qtd) {
     const l = j.line;
@@ -171,6 +175,7 @@
   function objetivo(j) {
     const f = j.flags;
     if (!f.prologo) return null;
+    if (f.parte2 && LB.parte2) return LB.parte2.objetivo(j);
     if (f.zerado) return 'A Bell está em casa. Explore o mundo, complete o caderno e ache todos os baús.';
     if (!f.magoVisto) return 'Atravessar a Floresta Sussurrante. Uma luz azul brilha na clareira a oeste. (O Vilarejo do Riacho fica a leste da fazenda.)';
     if (!f.espada) return 'Pegar a espada no baú ao lado do Mago.';
@@ -301,6 +306,8 @@
       bi.classList.toggle('oculto', !eq || !j.flags.prologo || eq === 'pocao');
       if (eq) bi.textContent = `${ITENS[eq].icone}${qtd(j, eq)}`;
     }
+    const bt = $('#b-trocar');
+    if (bt) { const ok = LB.herois && LB.herois.liberada(j) && j.flags.prologo; bt.classList.toggle('oculto', !ok); if (ok) bt.textContent = LB.herois.ativa(j) === 'bell' ? '🔄⚔' : '🔄💖'; }
   }
 
   // HUD no canvas: moedas e item equipado, embaixo dos corações/escudos/magia.
@@ -382,19 +389,29 @@
 
   // ---------------- Mapa (área e mundo) ----------------
   const MUNDO = [
-    { id: 'fazenda', nome: 'Fazendinha', x: 0.42, y: 0.88, emb: '🏡', cor: '#8bc36a' },
-    { id: 'vilarejo', nome: 'Vilarejo do Riacho', x: 0.74, y: 0.84, emb: '🏘️', cor: '#c9a36a' },
-    { id: 'floresta', nome: 'Floresta Sussurrante', x: 0.5, y: 0.64, emb: '🌲', cor: '#4f8a3f' },
-    { id: 'gruta', nome: 'Gruta dos Ecos e Minas', x: 0.82, y: 0.52, emb: '🕳️', cor: '#5f7f9a' },
-    { id: 'ruinas', nome: 'Ruínas Encantadas', x: 0.38, y: 0.42, emb: '🏛️', cor: '#9aa691' },
-    { id: 'montanha', nome: 'Montanha de Brasa', x: 0.58, y: 0.24, emb: '🌋', cor: '#a06a52' },
-    { id: 'covil', nome: 'Covil do Dragão', x: 0.44, y: 0.08, emb: '🐉', cor: '#5a3d44' },
+    { id: 'fazenda', nome: 'Fazendinha', x: 0.32, y: 0.88, emb: '🏡', cor: '#8bc36a' },
+    { id: 'vilarejo', nome: 'Vilarejo do Riacho', x: 0.55, y: 0.84, emb: '🏘️', cor: '#c9a36a' },
+    { id: 'floresta', nome: 'Floresta Sussurrante', x: 0.38, y: 0.64, emb: '🌲', cor: '#4f8a3f' },
+    { id: 'gruta', nome: 'Gruta dos Ecos e Minas', x: 0.6, y: 0.52, emb: '🕳️', cor: '#5f7f9a' },
+    { id: 'ruinas', nome: 'Ruínas Encantadas', x: 0.2, y: 0.42, emb: '🏛️', cor: '#9aa691' },
+    { id: 'montanha', nome: 'Montanha de Brasa', x: 0.42, y: 0.26, emb: '🌋', cor: '#a06a52' },
+    { id: 'covil', nome: 'Covil do Dragão', x: 0.24, y: 0.1, emb: '🐉', cor: '#5a3d44' },
+    // Parte 2 (só aparecem depois que o dragão acorda).
+    { id: 'vale', nome: 'Vale das Raízes', x: 0.8, y: 0.8, emb: '🌾', cor: '#9aa24a', parte2: true },
+    { id: 'fenda', nome: 'Fenda de Magma', x: 0.93, y: 0.92, emb: '🌋', cor: '#b0502a', parte2: true },
+    { id: 'lago', nome: 'Lago Espelhado', x: 0.82, y: 0.56, emb: '🌊', cor: '#4a9ad0', parte2: true },
+    { id: 'pantano', nome: 'Pântano Sombrio', x: 0.94, y: 0.66, emb: '🐸', cor: '#4a6a3a', parte2: true },
+    { id: 'picos', nome: 'Picos do Vento', x: 0.78, y: 0.3, emb: '🏔️', cor: '#b8c8d8', parte2: true },
+    { id: 'tempestade', nome: 'Olho da Tempestade', x: 0.93, y: 0.18, emb: '⛈️', cor: '#4a5a80', parte2: true },
+    { id: 'coracao', nome: 'Coração dos Elementos', x: 0.6, y: 0.08, emb: '💠', cor: '#8a5ac0', parte2: true },
   ];
-  const LIGACOES = [['fazenda', 'floresta'], ['fazenda', 'vilarejo'], ['vilarejo', 'floresta'], ['floresta', 'gruta'], ['floresta', 'ruinas'], ['gruta', 'ruinas'], ['gruta', 'montanha'], ['ruinas', 'montanha'], ['montanha', 'covil']];
+  const LIGACOES = [['fazenda', 'floresta'], ['fazenda', 'vilarejo'], ['vilarejo', 'floresta'], ['floresta', 'gruta'], ['floresta', 'ruinas'], ['gruta', 'ruinas'], ['gruta', 'montanha'], ['ruinas', 'montanha'], ['montanha', 'covil'],
+    ['vilarejo', 'vale'], ['vale', 'fenda'], ['vale', 'lago'], ['lago', 'pantano'], ['lago', 'picos'], ['picos', 'tempestade'], ['picos', 'coracao']];
 
   const CORES_TILE = {
     parede: '#2a2334', chao: '#8a8f7a', caminho: '#c9b48a', agua: '#4e93c9', lava: '#ff7a2a', fenda: '#120c10', predio: '#8a5f3c', barreira: '#a58cff', porta: '#d4a93a',
     grama: '#6aa84f', fazenda: '#6aa84f', vilarejo: '#6fab50', floresta: '#4f8a3f', ruinas: '#7f8878', montanha: '#6a5750', covil: '#4b403c', gruta: '#4f6470',
+    vale: '#8aa24a', lago: '#5fae6a', pantano: '#4a6a3a', picos: '#b8bec8', tempestade: '#4a5468', coracao: '#4a3a5a',
   };
 
   function corTile(c, tema) {
@@ -403,7 +420,9 @@
     if (c === 'w' || c === '~') return CORES_TILE.agua;
     if (c === 'L') return CORES_TILE.lava;
     if (c === 'l') return '#9a3a1a';
-    if (c === 'j') return CORES_TILE.fenda;
+    if (c === 'j') return ['picos', 'tempestade', 'coracao'].includes(tema) ? '#9ccff0' : CORES_TILE.fenda;
+    if (c === '>' || c === '<') return '#e8f4ff';
+    if (c === 'u') return '#6a4a2e';
     if ('HDBK'.includes(c)) return CORES_TILE.predio;
     if (c === 'Z') return CORES_TILE.barreira;
     if (c === 'g') return CORES_TILE.porta;
@@ -411,7 +430,7 @@
     if (c === '%') return '#6f5a4a';
     if (c === 'X') return '#5a3a5a';
     if (c === 'R' || c === 'o' || c === 'I') return '#5f5a58';
-    return CORES_TILE[tema] || CORES_TILE.chao;
+    return (tema === 'fenda' ? '#4a3a36' : CORES_TILE[tema]) || CORES_TILE.chao;
   }
 
   function prepararCanvas(cv) {
@@ -588,12 +607,14 @@
     g.fillStyle = grad; g.fillRect(0, 0, W, H);
     const vistos = j.flags.vistos || {};
     // O mapa só acende onde a Line já esteve (a fazenda é a casa dela).
-    const conhecido = (id) => !!vistos[id] || id === 'fazenda';
+    // As regiões da Parte 2 só existem no mapa depois que o dragão acorda.
+    const existe = (id) => { const n = MUNDO.find((m) => m.id === id); return n && (!n.parte2 || j.flags.parte2); };
+    const conhecido = (id) => existe(id) && (!!vistos[id] || id === 'fazenda');
     const pos = (n) => [n.x * W, n.y * H];
     const atual = j.mapa ? j.mapa.id : null;
     g.setLineDash([6, 5]); g.lineWidth = 3; g.strokeStyle = 'rgba(90,60,30,.6)';
     for (const [a, b] of LIGACOES) {
-      if (!conhecido(a) && !conhecido(b)) continue;
+      if ((!conhecido(a) && !conhecido(b)) || !existe(a) || !existe(b)) continue;
       const na = MUNDO.find((n) => n.id === a), nb = MUNDO.find((n) => n.id === b);
       const [x1, y1] = pos(na), [x2, y2] = pos(nb);
       g.beginPath(); g.moveTo(x1, y1); g.quadraticCurveTo((x1 + x2) / 2 + 20, (y1 + y2) / 2, x2, y2); g.stroke();
@@ -610,6 +631,7 @@
     const pequeno = W < 520;
     const pins = alfinetes(j);
     for (const n of MUNDO) {
+      if (!existe(n.id)) continue;
       const [x, y] = pos(n);
       const sabe = conhecido(n.id);
       const vizinho = LIGACOES.some(([a, b]) => (a === n.id && conhecido(b)) || (b === n.id && conhecido(a)));

@@ -73,6 +73,12 @@
       if (!this.flags.encontroFeito && !this.flags.manhaVista && !this.flags.prologo) return LB.encontro.iniciar(this);
       let area = s.area === 'campina' || !s.area || LB.MAPAS[s.area] && LB.MAPAS[s.area].tema === 'encontro' ? 'fazenda' : s.area;
       if (!this.flags.prologo) area = 'fazenda';
+      // Depois do “Fim?”: o dragão acorda e começa a Parte 2.
+      if (this.flags.zerado && !this.flags.parte2) {
+        this.iniciarArea('fazenda', null, true);
+        this.iniciarCena(LB.HISTORIA.parte2Abertura);
+        return;
+      }
       this.iniciarArea(area, null, !this.flags.prologo);
       if (!this.flags.prologo) this.iniciarCapitulo();
     }
@@ -131,7 +137,7 @@
       this.chefeAtivo = false; this.promptFinal = false; this.presa = null; this.jaulaAberta = false;
       this.fade = 0; this.flashTela = 0; this.congelado = 0;
       this.zoom = this.zoomAlvo = 1; this.aplicarZoom();
-      this.tint = { covil: { cor: '255,90,30', a: 0.08 }, montanha: { cor: '255,110,40', a: 0.07 }, ruinas: { cor: '110,190,255', a: 0.05 }, gruta: { cor: '80,150,255', a: 0.07 } }[id] || null;
+      this.tint = { covil: { cor: '255,90,30', a: 0.08 }, montanha: { cor: '255,110,40', a: 0.07 }, ruinas: { cor: '110,190,255', a: 0.05 }, gruta: { cor: '80,150,255', a: 0.07 }, fenda: { cor: '255,80,30', a: 0.1 }, pantano: { cor: '60,110,50', a: 0.1 }, tempestade: { cor: '60,80,150', a: 0.12 }, coracao: { cor: '150,80,210', a: 0.08 }, lago: { cor: '90,170,255', a: 0.04 } }[id] || null;
       this.cena = null;
       if (LB.dialogo.el) LB.dialogo.esconder();
       this.esconderTitulo();
@@ -184,12 +190,18 @@
       this.line.botas = LB.mochila.tem(this, 'botas');
       this.line.escudos = escudos;
       LB.loja.vestir(this, !!cp || escudos == null);
+      this.companheira = null;
+      LB.herois.aplicar(this, true);
+      if (cp && LB.herois.liberada(this)) LB.herois.descansar(this);
       if (this.line.dir === 'LEFT') this.line.lado = -1;
       this.line.voltarLivre();
       this.cameraEm(this.line.x, this.line.y - 24);
       this.criarInimigos();
       this.prepararArea(id, semCenaDeEntrada);
       LB.mundo.prepararArea(this, id);
+      this.chefeArena = null;
+      LB.chefes.prepararArea(this);
+      LB.parte2.prepararArea(this, id);
       this.moradores = LB.loja.criarMoradores(this);
       LB.magia.prepararArea(this, id);
       if (this.mapa.tema === 'encontro') LB.encontro.prepararArea(this, id); else LB.encontro.mostrarEtiquetas(this);
@@ -200,6 +212,7 @@
       this.flags.area = id;
       this.salvar();
       if (!this.mapa.def.semBanner) this.mostrarBanner(this.mapa.def.nome);
+      if (!semCenaDeEntrada) LB.parte2.chegar(this, id);
 
       if (id === 'floresta' && !this.flags.florestaVista) this.iniciarCena(LB.HISTORIA.floresta);
       if (id === 'covil') {
@@ -218,7 +231,7 @@
         if (d.depoisDe && !this.flags[d.depoisDe]) continue;
         const x = T(d.x + 0.5), y = T(d.y + 0.9);
         if (d.tipo === 'morcego') this.inimigos.push(new LB.Morcego(x, y));
-        else this.inimigos.push(d.tipo === 'fogo' || d.tipo === 'luz' ? new LB.FogoFatuo(x, y, d.tipo) : new LB.Sombra(x, y));
+        else this.inimigos.push(['fogo', 'luz', 'terra', 'agua', 'ar'].includes(d.tipo) ? new LB.FogoFatuo(x, y, d.tipo) : new LB.Sombra(x, y));
       }
     }
 
@@ -284,7 +297,7 @@
 
     // ---------------- Combate ----------------
     alvos() {
-      const lista = this.inimigos.filter((e) => e.vivo && e.estado !== 'morrendo' && !e.dormindo);
+      const lista = this.inimigos.filter((e) => e.vivo && e.estado !== 'morrendo' && !e.dormindo && !e.intocavel);
       if (this.dragao && this.chefeAtivo) lista.push(this.dragao);
       return lista;
     }
@@ -307,7 +320,7 @@
           // O dragão é grande: vale acertar qualquer parte do corpo à frente da Line.
           const dx = (alvo.x - line.x) * (golpe.raio ? 1 : line.lado);
           dentro = Math.hypot(alvo.x - line.x, (cy - line.y) * 0.9) < (golpe.raio || golpe.alcance) + 72 && (golpe.raio || dx > -50);
-        } else if (alvo.golem) {
+        } else if (alvo.golem || alvo.grande) {
           // O guardião é grande: vale acertar de frente ou por baixo, dentro do alcance.
           const dx = (alvo.x - line.x) * line.lado;
           dentro = Math.hypot(alvo.x - line.x, (alvo.y - line.y) * 0.8) < (golpe.raio || golpe.alcance) + tr && (golpe.raio || dx > -26 || Math.abs(alvo.x - line.x) < 30);
@@ -350,7 +363,7 @@
       if (this.mapa.tema === 'encontro') return LB.encontro.bloqueia(this, x, y);
       for (const p of this.mapa.props) if (p.tipo === 'decoracao' && p.raio && Math.hypot(x - p.x, (y - p.y) * 1.6) < p.raio + 6) return true;
       for (const n of this.npcs || []) if (Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 8) return true;
-      if (ent === this.line || !ent) for (const n of this.moradores || []) if (Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 6) return true;
+      if (ent === this.line || !ent) for (const n of this.moradores || []) if (!n.dormindo && Math.hypot(x - n.x, (y - n.y) * 1.5) < n.raio + 6) return true;
       // Saída que ainda não abriu (ex.: a estrada do vilarejo antes do rapto).
       for (const sd of this.mapa.def.saidas) {
         if (!sd.requer || this.flags[sd.requer]) continue;
@@ -370,6 +383,14 @@
 
     aoDerrotarInimigo(e) {
       this.inimigos = this.inimigos.filter((i) => i !== e);
+      if (e.chefeElemental) {
+        this.flags[e.def.flag] = true;
+        LB.mochila.darMoedas(this, e.def.final ? 150 : e.def.elementos.length > 1 ? 60 : 40);
+        this.chefeArena = null;
+        this.salvar();
+        this.iniciarCena(LB.HISTORIA.chefeVencido, { semPular: false }, e);
+        return;
+      }
       if (e.golem) {
         this.flags.golem = true;
         LB.mochila.darMoedas(this, 30);
@@ -429,6 +450,7 @@
 
     derrota() {
       this.cena = null;
+      LB.dicas.aoCair(this);
       const line = this.line;
       setTimeout(() => { if (this.estado === 'jogo' && this.line === line && line.estado === 'morta') $('#derrota').classList.remove('oculto'); }, 900);
     }
@@ -462,6 +484,7 @@
       LB.mundo.acoes(this, acoes, perto);
       LB.loja.acoes(this, acoes, perto);
       LB.carrinho.acoes(this, acoes, perto);
+      LB.relogio.acoes(this, acoes, perto);
       // Tarefas e objetos têm prioridade sobre carinho; entre iguais, vence o mais perto.
       let melhor = null, md = Infinity;
       for (const a of acoes) {
@@ -492,6 +515,7 @@
       const l = this.line;
       l.hp = l.hpMax; l.mana = l.manaMax;
       LB.loja.vestir(this, true);
+      if (LB.herois.liberada(this)) LB.herois.descansar(this);
       this.flags.checkpoint = { area: this.mapa.id, x: p.x / TILE, y: (p.y + 26) / TILE, dir: 'FRONT' };
       this.salvar();
       this.particulas.emitir('agua', p.x, p.y - 20, 14, { vel: 60, vz: 90, vida: 0.8 });
@@ -552,7 +576,16 @@
 
       this.line.atualizar(dt, this);
       this.atualizarVida(dt);
-      for (const e of this.inimigos) e.atualizar(dt, this);
+      for (const e of this.inimigos) {
+        // A canção da Bell deixa os inimigos comuns parados, ouvindo.
+        if (e.encantado > 0 && !e.chefeElemental) {
+          e.encantado -= dt; e.flash = Math.max(0, (e.flash || 0) - dt);
+          if (e.anim) e.anim.atualizar(dt);
+          if (Math.random() < dt * 3) this.particulas.emitir('nota', e.x, e.y - 34, 1, { vz: 30, vel: 10, vida: 0.8, cor: '#ff9ecf' });
+          continue;
+        }
+        e.atualizar(dt, this);
+      }
       if (!this.cena) LB.ia.separar(this, dt);
       for (const m of this.moradores) m.atualizar(dt, this);
       if (this.dragao) this.dragao.atualizar(dt, this);
@@ -560,6 +593,10 @@
       LB.loja.atualizarEscudos(this, dt);
       LB.carrinho.atualizar(this);
       LB.interludio.atualizar(this, dt);
+      LB.relogio.atualizar(this, dt);
+      LB.herois.atualizar(this, dt);
+      LB.dicas.atualizar(this);
+      LB.chefes.atualizarArena(this);
       LB.interludio.gatilhos(this);
       LB.magia.atualizarProjeteis(this, dt);
       if (Math.abs(this.zoom - this.zoomAlvo) > 0.001) { this.zoom += (this.zoomAlvo - this.zoom) * Math.min(1, dt * 3); this.aplicarZoom(); }
@@ -678,9 +715,11 @@
       // Avisos e sombras.
       if (this.dragao && this.chefeAtivo) this.dragao.desenharAvisos(g, this);
       for (const e of this.inimigos) if (e.desenharAvisos) e.desenharAvisos(g, this);
+      LB.chefes.desenharArena(g, this);
       for (const it of this.itens) if (it.tipo === 'coracao' || it.tipo === 'mana') LB.desenho.sombraChao(g, it.x, it.y, 6, 0.2);
-      const atores = [this.line, ...this.inimigos, ...this.bichos, ...this.npcs, ...this.moradores];
+      const atores = [this.line, ...this.inimigos, ...this.bichos, ...this.npcs, ...this.moradores.filter((m) => !m.dormindo)];
       if (this.bell) atores.push(this.bell);
+      if (this.companheira) atores.push(this.companheira);
       if (this.dragao) atores.push(this.dragao);
       for (const a of atores) if (a.visivel !== false && a.desenharSombra) a.desenharSombra(g);
       if (this.dragao && this.dragao.noAlto && this.dragao.visivel && !this.chefeAtivo) LB.desenho.sombraChao(g, this.dragao.x, this.dragao.y, 70 - Math.min(40, this.dragao.alturaVoo / 8), 0.25);
@@ -718,17 +757,21 @@
 
       for (const f of this.efeitos) this.desenharEfeito(g, f);
       this.particulas.desenhar(g);
-      this.ambiente.desenharCeu(g);
+      this.ambiente.desenharCeu(g, this);
       this.desenharBaloes(g);
+      LB.dicas.desenharSeta(g, this);
 
       // Camadas de tela.
       g.setTransform(1, 0, 0, 1, 0, 0);
       const W = this.canvas.width, H = this.canvas.height;
+      LB.relogio.desenharCeu(g, this);
       LB.mundo.desenharEscuro(g, this);
       if (this.tint && this.tint.a > 0) { g.fillStyle = `rgba(${this.tint.cor},${this.tint.a})`; g.fillRect(0, 0, W, H); }
       if (m.tema === 'floresta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,20,0,.35)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (m.tema === 'ruinas' || m.tema === 'montanha') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, m.tema === 'ruinas' ? 'rgba(0,15,30,.4)' : 'rgba(30,5,0,.45)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (m.tema === 'gruta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,10,30,.55)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
+      const VINHETA = { fenda: 'rgba(40,5,0,.5)', pantano: 'rgba(0,20,5,.45)', tempestade: 'rgba(0,5,25,.5)', coracao: 'rgba(20,0,35,.55)', picos: 'rgba(255,255,255,.15)' };
+      if (VINHETA[m.tema]) { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, VINHETA[m.tema]); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (m.tema === 'covil') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.85); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,.6)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
       if (this.flashTela > 0) { g.fillStyle = `rgba(255,255,255,${this.flashTela * 1.6})`; g.fillRect(0, 0, W, H); }
 
@@ -807,13 +850,15 @@
       LB.loja.desenharEscudos(g, this, s);
       LB.magia.desenharHudMana(g, this, s);
       LB.mochila.desenharHud(g, this, s);
-      const golem = this.inimigos.find((e) => e.golem && !e.dormindo);
+      LB.relogio.desenharHud(g, this, s);
+      LB.herois.desenharHud(g, this, s);
+      const golem = this.inimigos.find((e) => (e.golem || e.chefeElemental) && !e.dormindo && e.vivo);
       if (golem) {
         const W = this.canvas.width;
         const bw = Math.min(W * 0.5, 340 * s), bh = 9 * s, bx = (W - bw) / 2, by = this.canvas.height - 26 * s;
         g.fillStyle = 'rgba(0,0,0,.6)'; g.fillRect(bx - 3 * s, by - 3 * s, bw + 6 * s, bh + 6 * s);
         g.fillStyle = '#3b3a33'; g.fillRect(bx, by, bw, bh);
-        g.fillStyle = golem.estado === 'atordoado' ? '#7fd6ff' : '#b8b09a'; g.fillRect(bx, by, bw * golem.hp / golem.hpMax, bh);
+        g.fillStyle = golem.estado === 'atordoado' || golem.estado === 'exausto' ? '#7fd6ff' : golem.chefeElemental ? golem.cor.cor : '#b8b09a'; g.fillRect(bx, by, bw * Math.max(0, golem.hp) / golem.hpMax, bh);
         g.fillStyle = '#fff'; g.font = `600 ${11 * s}px system-ui, sans-serif`; g.textAlign = 'center';
         g.fillText(golem.nome, W / 2, by - 6 * s);
       }

@@ -52,9 +52,9 @@
             }
           }
         } else {
-          // Depois que o dragão passou: fim de tarde, vaga-lumes e o Theo esperando.
-          this.tint = { cor: '90,60,130', a: 0.26 };
-          this.ambiente.anoitecer();
+          // Depois que o dragão passou: a luz segue o relógio do jogo (dia e noite).
+          this.tint = null;
+          if (LB.relogio.noite(this)) this.ambiente.anoitecer();
           if (cao) { cao.comeu = true; cao.seguir = true; }
         }
       } else if (id === 'floresta') {

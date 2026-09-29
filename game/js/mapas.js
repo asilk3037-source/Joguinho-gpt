@@ -9,6 +9,7 @@
   // g porta trancada (chave antiga) · q cogumelo luminoso (gruta) · Q cristal · Y tocha · U fonte · Z barreira · A altar · I pilar
   // % parede/pedra rachada (bomba) · p poste do gancho · E estação do carrinho · = trilho · l brasa rasa (queima sem armadura de brasa)
   // b barraca da feira · W bigorna da ferraria
+  // Parte 2: > < corrente de vento (empurra para o lado) · u lama (deixa lenta) · j nos picos é abismo de céu
   const MAPAS = {
     fazenda: {
       nome: 'Fazendinha',
@@ -172,8 +173,8 @@
         'TT.............:.............::...P.........:...W.........TT',
         'TT..........b..:..b..........::.............:.............TT',
         'TT....T........:...F.........::.........F...:..F..........TT',
-        'TT.........F...:::::::::S::::::::::::::::::::......T......TT',
-        'TT....................:::::::::::::::::...............T...TT',
+        'TT.........F...:::::::::S:::::::::::::::::::::::::::::::::::',
+        'TT....................:::::::::::::::::...............T.::::',
         'TT.......T............:::::::::::::::::...................TT',
         'TT...................F:::::::::::::::::F.....,............TT',
         'TT..S.................:::::::::::::::::...................TT',
@@ -203,6 +204,7 @@
       saidas: [
         { x: 0, y: 19, w: 1, h: 2, para: 'fazenda', chegada: { x: 43.4, y: 14.2, dir: 'LEFT' } },
         { x: 29, y: 0, w: 2, h: 1, para: 'floresta', chegada: { x: 62.9, y: 41.6, dir: 'BACK' } },
+        { x: 59, y: 13, w: 1, h: 2, para: 'vale', requer: 'parte2', chegada: { x: 2.5, y: 21.2, dir: 'RIGHT' } },
       ],
       inicio: { x: 2.2, y: 20.2, dir: 'RIGHT' },
       placas: {
@@ -480,10 +482,409 @@
         { x: 56, y: 14, tipo: 'fogo' }, { x: 66, y: 17 }, { x: 55, y: 4 }, { x: 64, y: 27, tipo: 'fogo' }, { x: 60, y: 35 }, { x: 67, y: 33, tipo: 'fogo' },
       ],
     },
+
+    // ---------------- Parte 2: O Coração dos Elementos ----------------
+    vale: {
+      nome: 'Vale das Raízes',
+      tema: 'vale',
+      linhas: [
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TT.T......F...............F...::.T...,..RRRRRRRRRRRRRRRRRRRRRRTT',
+        'TT...........,................::....,...R....................RTT',
+        'TT...HHHHHH...................::..:.....R....................RTT',
+        'TTT,.HHHHHH.............,.....::::::C...R....................RTT',
+        'TT.T.HHHHHH....Q..........T.T.::..:.....R....................RTT',
+        'TT...HHDHHH............T......::..:.....R........uuuu........RTT',
+        'TT.....:...................T..::..:...T.R.......uuuuuu.......RTT',
+        'TT.....:....cccccc............::..:.....R.......uuuuuu.......RTT',
+        'TT.....:....cccccc.........F,.::..:..F..R........uuuu........RTT',
+        'TT.....:....cccccc.F.T........::..:.....R....................RTT',
+        'TT.....:....cccccc............::..:..,..R....................RTT',
+        'TT.....:.................,....::T.:.F...R....................RTT',
+        'TT..T..:.........,..F.........::..:...TTR....................RTT',
+        'TT.....:.......T.........,..T.::..:.F...RRRRRRRRRRZZZRRRRRRRRRTT',
+        'TT.,...:......,.......T.F.....::..:........F..,....::....F....TT',
+        'TT.....:..T..,.............U..::.....FF............::.....T...TT',
+        'TT.S...:.,F...,.........F.....::...............TS..::.........TT',
+        'TT....,:..........F.....S.....::...................::.....,...TT',
+        ':::::::::::::::::::::::::::::::::::::::::::::::::::::...T.....TT',
+        ':::::::::::::::::::::::::::::::::::::::::::::::::::::.........TT',
+        'TT.,.......:..................::..........F........::.........TT',
+        'TT.........:,....,.,.T........::.............,.....::.........TT',
+        'TT.........:..................::............,......::.........TT',
+        'TT,........:............,.....::............F.F....::.........TT',
+        'TT.........:................T.:.T..................::....,....TT',
+        'TT..rrrr.rr:r.rrrr.r........u.:.........T....,.T...::.........TT',
+        'TTT........:............uuuuuu:uu..................:::::::::::::',
+        'TT..rr.rrrr:rrrr.rrr..uuuuuuuu:uuuu...F......,..FF.:::::::::::::',
+        'TT.........:..........uuuuuuuu:uuuu.......,...F.......F.......TT',
+        'TT...rrrr.r:rr.rrrr..uuuuuuuuu:uuuuu...............T....T.....TT',
+        'TT.........:..........uuuuuuuu:uuuu..................RRRR%RRRRTT',
+        'TT..rrr.rrr:.rrrr.rr..uuuuuuuu:uuuu...F..............R........TT',
+        'TT.........:...Q........uuuuuu:uu.......::::::::::::.R........TT',
+        'TT..r.rrrr.:rrr.rrrr........u.:..............Q.......R........TT',
+        'TT.........:.............,....:......................R....C...TT',
+        'TT..rCrr.rr:r.rrrr.r..,.....T.:,.C................,..R........TT',
+        'TT.........:..................:...,..................R........TT',
+        'TT.........:..................:......................R........TT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+      ],
+      saidas: [
+        { x: 0, y: 20, w: 1, h: 2, para: 'vilarejo', chegada: { x: 57.4, y: 14.2, dir: 'LEFT' } },
+        { x: 30, y: 0, w: 2, h: 1, para: 'lago', requer: 'fusaoMagma', chegada: { x: 30.5, y: 39.4, dir: 'BACK' } },
+        { x: 63, y: 28, w: 1, h: 2, para: 'fenda', requer: 'chefeTerra', chegada: { x: 2.5, y: 14.2, dir: 'RIGHT' } },
+      ],
+      inicio: { x: 2.5, y: 21.2, dir: 'RIGHT' },
+      placas: { '3,18': 'Vale das Raízes. A terra aqui respira devagar. Desde que o Colosso adoeceu, as raízes andam soltas: correndo por cima delas, a gente tropeça.', '24,19': 'Fonte do Vale: beba para recuperar vida e magia (das duas). À noite dá para descansar até de manhã.', '48,18': 'A barreira de raízes só se abre com os três cristais de terra acesos: um na horta da Dona Cora, um no campo de raízes e um no bosque do leste.' },
+      baus: { '5,37': { itens: [['pocao', 1]], moedas: 30 }, '33,37': { itens: [['bomba', 2]], moedas: 20 }, '58,36': { itens: [['elixir', 1]], moedas: 60 }, '36,5': { moedas: 45 } },
+      chao: [{ x: 22, y: 10, doc: 'diarioCora' }, { x: 44, y: 24, moedas: 10 }],
+      barreiras: [{ id: 'raizes', fontes: ['15,6', '15,34', '45,35'], tiles: [[50, 15, 52, 15]] }],
+      npcs: [{ id: 'cora', x: 9.5, y: 9.7 }],
+      chefe: { id: 'colosso', x: 50.5, y: 9, arena: [41, 3, 60, 14] },
+      inimigos: [
+        { x: 16, y: 21 },
+        { x: 38, y: 22 },
+        { x: 44, y: 18, tipo: 'terra' },
+        { x: 9, y: 30 },
+        { x: 17, y: 37, tipo: 'terra' },
+        { x: 26, y: 36 },
+        { x: 43, y: 33, tipo: 'terra' },
+        { x: 47, y: 37 },
+        { x: 57, y: 24 },
+        { x: 38, y: 9, tipo: 'terra' },
+        { x: 20, y: 8 },
+      ],
+    },
+
+    fenda: {
+      nome: 'Fenda de Magma',
+      tema: 'fenda',
+      linhas: [
+        '####################################',
+        '####################################',
+        '####################################',
+        '####################.###############',
+        '##########LLLLLl..........###L######',
+        '#########LLLLLLLl.........lLLLLL####',
+        '##########LLLLLl.........lLLLLLLL###',
+        '##########lllll...........lLLLLL####',
+        '#########.................lllLll####',
+        '##.....................o....lll.####',
+        '##...U...........................###',
+        '##...............................###',
+        '##..........................o....###',
+        '::.......:.......................###',
+        '::.......:.......................###',
+        '##...............................###',
+        '##.S.........o................o..###',
+        '##...............................###',
+        '#########....................lll####',
+        '#########....o.........o...lllLl####',
+        '##########lllll............lLLLLL###',
+        '##########LLLLLl..........lLLLLLLL##',
+        '#########LLLLLLLl..........lLLLLL###',
+        '##########LLLLLl..........####L#####',
+        '####################.###############',
+        '####################################',
+        '####################################',
+        '####################################',
+      ],
+      saidas: [
+        { x: 0, y: 13, w: 1, h: 2, para: 'vale', chegada: { x: 61.5, y: 29.2, dir: 'LEFT' } },
+      ],
+      inicio: { x: 2.5, y: 14.2, dir: 'RIGHT' },
+      placas: { '3,16': 'Aqui a pedra do Guardião e o fogo do dragão se juntaram. O chão em brasa (vermelho escuro) queima sem Armadura de Brasa (Line) ou da Aurora (Bell).' },
+      chefe: { id: 'magma', x: 21, y: 13.5, arena: [10, 5, 31, 22] },
+      inimigos: [
+      ],
+    },
+
+    lago: {
+      nome: 'Lago Espelhado',
+      tema: 'lago',
+      linhas: [
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TT....................F..,....::...,..........................TT',
+        'TT.......:::::::::::::::::::::::.,............................TT',
+        'TT.......:::::::::::::::::::::::T...............,..,......F.,.TT',
+        'TTF..T...::...........C...,..,...F..........T..........,.,....TT',
+        'TT.......::.Q..F....F........,...F............................TT',
+        'TT.T.....::............,......,.~.....,.......,...............TT',
+        'TT.......::....T.........~~~~~~~~~~~~~~~......T...............TT',
+        'TT.....T.::...........~~~~~~~~~~~~~~~~~~~~~..F................TT',
+        'TT.......::.........~~~~~~~~~~~~~~~~~~~~~~~~~..T.......Q......TT',
+        'TT....F..::....T..~~~~~~~~~~~~~~~~~~~~~~~~~~~~~...............TT',
+        'TTwwwwwww::wwwwwww~~~~~~~~~~~.......~~~~~~~~~~~~........:.....TT',
+        'TTwwwwwww::wwwwwww~~~~~~~~.............~~~~~~~~~~.......:..T..TT',
+        'TT.......::....~~~~~~~~~~...............~~~~~~~~~~......:....,TT',
+        'TT....,..::....~~~~~~~~~.................~~~~~~~~~......:.....TT',
+        'TT.......::....~~~~~~~~...................~~~~~~~~......:.....TT',
+        'TT.......::...~~~~~~~~~...................~~~~~~~~~F....:.....TT',
+        'TT.......::....~~~~~~~~...................~~~~~~~~......:.....TT',
+        'TT.......::....~~~~~~~~~.................~~~~~~~~~....F.:.....TT',
+        'TT..C....::....~~~~~~~~~~...............~~~~~~~~~~.....T:.....TT',
+        'TT.......::,....~~~~~~~~~~.............~~~~~~~~~~...T.,.:.....TT',
+        'TT......,::......~~~~~~~~~~~~..::...~~~~~~~~~~~~F....F..:....FTT',
+        'TT.......::...TT..~~~~~~~~~~~~~ZZ~~~~~~~~~~~~~~.........:.....TT',
+        'TT.......::.........~~~~~~~~~~~::~~~~~~~~~~~~.......F...:.....TT',
+        'TT.......::...........~~~~~~~~~::~~~~~~~~~~,....TFF.....:...T.TT',
+        'TT.......::.....,........~~~~~~::~~~~~~~.....F.........T:.....TT',
+        'TT.T.....::......,.............::....FT.....T...........:.....TT',
+        'TT.......::..........F.........::..T....................:.....TT',
+        'TT.......::....T...............::...........ww...F......:.....TT',
+        'TT.......::::::::::::::::::::::::...T.....F.ww..........:T....TT',
+        'TT.......:::::::::::::::::::::::::::::::::::::::::::::::::::::::',
+        'TTT......................U.S..::...,........ww......,...::::::::',
+        'TT,.............ww.......,....::............ww..,...........F.TT',
+        'TT,.HHHHHH......ww............::............ww................TT',
+        'TT..HHHHHH......ww...FF.F.....::............ww...T.........CF.TT',
+        'TTF.HHDHHH......ww............::F....T.F....ww................TT',
+        'TT....:.....Q...ww.......F....::............ww................TT',
+        'TT....:.........ww............::...,..,.....ww................TT',
+        'TT.............Tww........,.T.::.S..........ww................TT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+      ],
+      saidas: [
+        { x: 30, y: 41, w: 2, h: 1, para: 'vale', chegada: { x: 30.5, y: 1.6, dir: 'FRONT' } },
+        { x: 63, y: 31, w: 1, h: 2, para: 'pantano', requer: 'chefeAgua', chegada: { x: 2.5, y: 14.2, dir: 'RIGHT' } },
+        { x: 30, y: 0, w: 2, h: 1, para: 'picos', requer: 'fusaoLama', chegada: { x: 30.5, y: 39.4, dir: 'BACK' } },
+      ],
+      inicio: { x: 30.5, y: 39.4, dir: 'BACK' },
+      placas: { '27,32': 'Fonte do Lago. O lago era tão limpo que refletia as estrelas de dia. Agora a água anda turva e brava.', '33,39': 'Lago Espelhado. A ponte da ilha está fechada por uma parede de água: acenda as três pérolas-cristal da margem.' },
+      baus: { '4,20': { itens: [['pocao', 1]], moedas: 35 }, '59,35': { itens: [['bomba', 3]], moedas: 25 }, '22,5': { itens: [['elixir', 1]], moedas: 40 } },
+      chao: [{ x: 40, y: 36, doc: 'cancaoLago' }, { x: 50, y: 20, moedas: 15 }],
+      barreiras: [{ id: 'onda', fontes: ['12,37', '12,6', '55,10'], tiles: [[31, 23, 32, 23]] }],
+      npcs: [{ id: 'tiao', x: 10.5, y: 36.9 }],
+      chefe: { id: 'serpente', x: 32, y: 17, arena: [24, 13, 40, 21] },
+      inimigos: [
+        { x: 20, y: 31, tipo: 'agua' },
+        { x: 38, y: 33 },
+        { x: 9, y: 22 },
+        { x: 12, y: 16, tipo: 'agua' },
+        { x: 16, y: 5 },
+        { x: 26, y: 4, tipo: 'agua' },
+        { x: 52, y: 12, tipo: 'agua' },
+        { x: 56, y: 24 },
+        { x: 50, y: 36 },
+        { x: 58, y: 31, tipo: 'agua' },
+      ],
+    },
+
+    pantano: {
+      nome: 'Pântano Sombrio',
+      tema: 'pantano',
+      linhas: [
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TT..................................TT',
+        'TT........u.........u...............TT',
+        'TT......u..~~~.T.u.u...u......u.....TT',
+        'TT.TuT....~~~~~u....u..........~~~..TT',
+        'TT......T..~~~..........u.....~~~~~.TT',
+        'TT........u......u.u...........~~~..TT',
+        'TT................u.......u.........TT',
+        'TTT.........u..........u............TT',
+        'TT......u.......u...u........u......TT',
+        'TT...U..................u...........TT',
+        'TT...............u..................TT',
+        '::::::::::..........................TT',
+        '::::::::::................u.u.......TT',
+        'TT..T...uuu............u........u.u.TT',
+        'TT.S.........u......................TT',
+        'TT..................u...............TT',
+        'TT.................................uTT',
+        'TT..................................TT',
+        'TT..u...u....u....u............~~~..TT',
+        'TT......u..~~~..u..u......u...~~~~~.TT',
+        'TT.....u..~~~~~..........u.....~~~.uTT',
+        'TT.........~~~.u....uu..............TT',
+        'TT...u...u...u..uu..u............C..TT',
+        'TT..................T....T..........TT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+      ],
+      saidas: [
+        { x: 0, y: 13, w: 1, h: 2, para: 'lago', chegada: { x: 61.5, y: 32.2, dir: 'LEFT' } },
+      ],
+      inicio: { x: 2.5, y: 14.2, dir: 'RIGHT' },
+      placas: { '3,16': 'Onde a terra encharcou de água ruim, nasceu uma coisa com muitas cabeças. A lama (marrom) deixa as pernas pesadas.' },
+      baus: { '33,24': { itens: [['pocao', 2]], moedas: 50 } },
+      chefe: { id: 'hidra', x: 22, y: 12.5, arena: [11, 5, 32, 22] },
+      inimigos: [
+      ],
+    },
+
+    picos: {
+      nome: 'Picos do Vento',
+      tema: 'picos',
+      linhas: [
+        '###########################...::...#############################',
+        '###########################........#############################',
+        '###########################........#############################',
+        '####...................####..R.....#########..................##',
+        '####...................####........#########........R.........##',
+        '####................R..####...o....#########..................##',
+        '####.................o.####........#########..............Y...##',
+        '####...................####........#########..................##',
+        '####...................####........#########................::::',
+        '####...................####........#########................::::',
+        '####...................####........#########..............R...##',
+        '####...................####........#########..................##',
+        '####...................#...................j..................##',
+        '####........o..........#........R..........j..................##',
+        '####...................#..........R.S...C..j.............o....##',
+        '####...................#...................j..........R.......##',
+        '############ZZZ#########...................j..................##',
+        '############ZZZ#########...................j..................##',
+        '###########j...j########...................j..................##',
+        '###########j<<<j########...................########j>>>j########',
+        '###########j<<<j########....R..............########j>>>j########',
+        '###########j<<<j########...................########j>>>j########',
+        '###########j<<<j########..R................########j>>>j########',
+        '###########j<<<j########...................########j>>>j########',
+        '####................####.............R.....#.................###',
+        '####................####...................#.................###',
+        '####................####...................#.................###',
+        '####................##jjjjjjjj>>>jjjjjjjj###.................###',
+        '####....Y...........##jjjjjjjj>>>jjjjjjjj###...Y.............###',
+        '####................##########>>>###########...........o.....###',
+        '####................jj...................jjj.................###',
+        '####................jj.....R.............jjj.................###',
+        '####................jj.................R.jjj.................###',
+        '####................jj...................jjj.................###',
+        '####................jj.......S.U.........jjj.................###',
+        '####................jj...................jjj................o###',
+        '####..C.............jj...................jjj..............C..###',
+        '####................jj...................jjj.................###',
+        '####................jj...................jjj......R......R...###',
+        '######################...................#######################',
+        '######################........::.........#######################',
+        '######################........::.........#######################',
+      ],
+      saidas: [
+        { x: 30, y: 41, w: 2, h: 1, para: 'lago', chegada: { x: 30.5, y: 1.6, dir: 'FRONT' } },
+        { x: 63, y: 8, w: 1, h: 2, para: 'tempestade', requer: 'chefeAr', chegada: { x: 2.5, y: 14.2, dir: 'RIGHT' } },
+        { x: 30, y: 0, w: 2, h: 1, para: 'coracao', requer: 'portalCoracao', chegada: { x: 19.5, y: 29.4, dir: 'BACK' } },
+      ],
+      inicio: { x: 30.5, y: 39.4, dir: 'BACK' },
+      placas: { '29,34': 'Picos do Vento. Onde o chão tem riscos brancos, o vento empurra. Abismo não tem fundo: cair custa um tombo e a volta para a beirada.', '36,14': 'Os três faróis do vento estão apagados. Acesos, eles abrem o ninho do Grifo, a noroeste (a ponte de vento sai do platô oeste). Um farol fica no platô oeste, um no leste e um no pico nordeste.' },
+      baus: { '6,36': { itens: [['pocao', 1]], moedas: 40 }, '58,36': { itens: [['elixir', 1]], moedas: 30 }, '40,14': { itens: [['bomba', 2]], moedas: 50 } },
+      chao: [{ x: 50, y: 30, doc: 'penaGrifo' }, { x: 26, y: 20, moedas: 20 }],
+      barreiras: [{ id: 'farois', fontes: ['47,28', '8,28', '58,6'], tiles: [[12, 16, 14, 17]] }],
+      npcs: [{ id: 'brisa', x: 12.5, y: 31.9 }],
+      chefe: { id: 'grifo', x: 13, y: 9, arena: [5, 4, 21, 14] },
+      inimigos: [
+        { x: 35, y: 36, tipo: 'ar' },
+        { x: 14, y: 26 },
+        { x: 16, y: 35, tipo: 'ar' },
+        { x: 50, y: 26 },
+        { x: 56, y: 33, tipo: 'ar' },
+        { x: 30, y: 18 },
+        { x: 38, y: 22, tipo: 'ar' },
+        { x: 48, y: 10 },
+        { x: 55, y: 14, tipo: 'ar' },
+      ],
+    },
+
+    tempestade: {
+      nome: 'Olho da Tempestade',
+      tema: 'tempestade',
+      linhas: [
+        '####################################',
+        '#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj#',
+        '#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj#',
+        '#jjjjjjjjjjjjjjjjjj.jjjjjjjjjjjjjjj#',
+        '#jjjjjjjjjjjjj...........jjjjjjjjjj#',
+        '#jjjjjjjjjjj...............jjjjjjjj#',
+        '#jjjjjjjjj...................jjjjjj#',
+        '#jjjjjjjj.....................jjjjj#',
+        '#jjjjjjj.......................jjjj#',
+        '#jjjjjjj.......................jjjj#',
+        '#j..............................jjj#',
+        '#j..U...........................jjj#',
+        '#j..............................jjj#',
+        '::......:.......................jjj#',
+        '::......:.......................jjj#',
+        '#j..............................jjj#',
+        '#j.S............................jjj#',
+        '#j..............................jjj#',
+        '#jjjjjjj.......................jjjj#',
+        '#jjjjjjj.......................jjjj#',
+        '#jjjjjjjj.....................jjjjj#',
+        '#jjjjjjjjj...................jjjjjj#',
+        '#jjjjjjjjjjj...............jjjjjjjj#',
+        '#jjjjjjjjjjjjj...........jjjjjjjjjj#',
+        '#jjjjjjjjjjjjjjjjjj.jjjjjjjjjjjjjjj#',
+        '#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj#',
+        '#jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj#',
+        '####################################',
+      ],
+      saidas: [
+        { x: 0, y: 13, w: 1, h: 2, para: 'picos', chegada: { x: 61.5, y: 9.2, dir: 'LEFT' } },
+      ],
+      inicio: { x: 2.5, y: 14.2, dir: 'RIGHT' },
+      placas: { '3,16': 'Chuva que sobe, vento que chove. Aqui a água do lago e o vento dos picos viraram uma coisa só.' },
+      chefe: { id: 'tempestade', x: 20, y: 12, arena: [9, 5, 30, 22] },
+      inimigos: [
+      ],
+    },
+
+    coracao: {
+      nome: 'Coração dos Elementos',
+      tema: 'coracao',
+      linhas: [
+        '########################################',
+        '########################################',
+        '########################################',
+        '####################I###################',
+        '##############.............#############',
+        '###########...................##########',
+        '########I#.....................#I#######',
+        '########.........................#######',
+        '#######...........................######',
+        '######.............................#####',
+        '######.............................#####',
+        '#####...............................####',
+        '#####...............................####',
+        '#####...............................####',
+        '####.................................###',
+        '#####...............................####',
+        '#####...............................####',
+        '#####...............................####',
+        '######.............................#####',
+        '######.............................#####',
+        '#######...........................######',
+        '########I.......................I#######',
+        '##########.....................#########',
+        '###########...................##########',
+        '##############.............#############',
+        '#################......#################',
+        '#################......#################',
+        '#################......#################',
+        '#################U....S#################',
+        '#################......#################',
+        '#################..::..#################',
+        '#################..::..#################',
+      ],
+      saidas: [
+        { x: 19, y: 31, w: 2, h: 1, para: 'picos', chegada: { x: 30.5, y: 1.6, dir: 'FRONT' } },
+      ],
+      inicio: { x: 19.5, y: 29.4, dir: 'BACK' },
+      placas: { '22,28': 'Aqui dorme o que sobrou de tudo: pedra, fogo, terra, água e ar. Juntas, as duas brilham mais do que qualquer um deles.' },
+      chefe: { id: 'quimera', x: 20, y: 13, arena: [6, 5, 34, 23] },
+      inimigos: [
+      ],
+    },
   };
 
   const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v', 'I', 'Q', 'A', 'Y', 'U', 'Z', 'j', 'g', 'q', '%', 'p', 'E', 'b', 'W']);
-  const CAVERNA = new Set(['covil', 'ruinas', 'montanha', 'gruta']);
+  const CAVERNA = new Set(['covil', 'ruinas', 'montanha', 'gruta', 'fenda', 'picos', 'tempestade', 'coracao']);
+  // Temas desenhados com o chão de pedra (paredes '#', lajes, lava e abismos).
+  const PEDRA = new Set(['ruinas', 'montanha', 'fenda', 'picos', 'tempestade', 'coracao']);
 
   // Gerador pseudoaleatório estável por posição (o cenário não "pisca" entre quadros).
   function ruido(x, y, s) {
@@ -501,6 +902,14 @@
     ruinas: { chao: '#6f7a68', chao2: '#626d5b', junta: '#566150', musgo: '#6e8f4c', parede: '#343b33', parede2: '#434b40', topo: '#5a6553', caminho: '#8d8a78', margem: '#a3a690' },
     gruta: { chao: '#46545c', chao2: '#3c4950', parede: '#1b2228', parede2: '#2b363d', topo: '#5a6b74', musgo: '#3f7d78' },
     montanha: { chao: '#5c4b44', chao2: '#4f403a', junta: '#3d302b', musgo: '#7a5a3a', parede: '#231b19', parede2: '#33282a', topo: '#6b554b', caminho: '#7a6558', margem: '#8a6f5f' },
+    // Parte 2.
+    vale: { grama: '#8aa24a', grama2: '#7a9140', grama3: '#a0b85a', caminho: '#c9a06a', caminho2: '#a8804e' },
+    lago: { grama: '#5fae6a', grama2: '#4f9c5c', grama3: '#78c07c', caminho: '#d8c79a', caminho2: '#b9a576', agua: '#62b8e8', aguaFunda: '#2a78c0', margem: '#e0d2a0' },
+    pantano: { grama: '#4a6a3a', grama2: '#3e5c31', grama3: '#587a44', caminho: '#7a6a4a', caminho2: '#62553a', agua: '#4a7a5a', aguaFunda: '#2f5a40', margem: '#5a5038' },
+    fenda: { chao: '#4a3a36', chao2: '#3f312e', junta: '#2a1f1c', musgo: '#8a3a1a', parede: '#1e1412', parede2: '#2e201c', topo: '#5a3a30', caminho: '#6a4a3e', margem: '#7a5040' },
+    picos: { chao: '#b8bec8', chao2: '#a8afba', junta: '#8a92a0', musgo: '#e8eef5', parede: '#5a6272', parede2: '#6a7384', topo: '#d8dee8', caminho: '#c8ccd4', margem: '#e0e6ee', ceu: ['#bfe3ff', '#7fbfef'] },
+    tempestade: { chao: '#4a5468', chao2: '#434c5f', junta: '#323a4a', musgo: '#6a8ab0', parede: '#1e2432', parede2: '#2a3244', topo: '#5a6680', caminho: '#5a6478', margem: '#6a7690', ceu: ['#2a3450', '#141a2a'], lajes: true },
+    coracao: { chao: '#4a3a5a', chao2: '#433452', junta: '#2e2240', musgo: '#9a6ad0', parede: '#1a1226', parede2: '#281c38', topo: '#5a4a72', caminho: '#6a5a82', margem: '#7a6a92', ceu: ['#3a2050', '#10081a'], lajes: true },
   };
 
   class Mapa {
@@ -645,7 +1054,7 @@
       const rnd = (s) => ruido(tx, ty, s);
 
       if (this.tema === 'encontro') return;
-      if (this.tema === 'ruinas' || this.tema === 'montanha') { this.desenharTilePedra(g, tx, ty, t, x, y, cor, rnd); this.desenharTileExtra(g, tx, ty, t, x, y, rnd); return; }
+      if (PEDRA.has(this.tema)) { this.desenharTilePedra(g, tx, ty, t, x, y, cor, rnd); this.desenharTileExtra(g, tx, ty, t, x, y, rnd); return; }
       if (this.tema === 'gruta') { this.desenharTileGruta(g, tx, ty, t, x, y, cor, rnd); this.desenharTileExtra(g, tx, ty, t, x, y, rnd); return; }
       if (this.tema === 'covil') {
         if (t === '#') {
@@ -720,11 +1129,11 @@
         this.desenharTileExtra(g, tx, ty, t, x, y, rnd);
       } else if (t === 'w' || t === '~') {
         const funda = t === '~';
-        g.fillStyle = funda ? '#2f6fb2' : '#5aa9e6'; g.fillRect(x, y, TILE, TILE);
-        g.fillStyle = funda ? '#3a80c6' : '#7cc0f0';
+        g.fillStyle = funda ? cor.aguaFunda || '#2f6fb2' : cor.agua || '#5aa9e6'; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = funda ? 'rgba(255,255,255,.1)' : 'rgba(255,255,255,.2)';
         for (let i = 0; i < 3; i++) g.fillRect(x + rnd(i + 100) * 22, y + rnd(i + 110) * 28, 8, 2);
         // Margem com a grama.
-        g.fillStyle = '#c9b27d';
+        g.fillStyle = cor.margem || '#c9b27d';
         if (!'w~'.includes(this.tile(tx, ty - 1))) g.fillRect(x, y, TILE, 3);
         if (!'w~'.includes(this.tile(tx, ty + 1))) g.fillRect(x, y + TILE - 3, TILE, 3);
         if (!'w~'.includes(this.tile(tx - 1, ty))) g.fillRect(x, y, 3, TILE);
@@ -792,7 +1201,7 @@
 
     // Chão de pedra das ruínas e da montanha (paredes, lajes, água, lava e fendas).
     desenharTilePedra(g, tx, ty, t, x, y, cor, rnd) {
-      const ruinas = this.tema === 'ruinas';
+      const ruinas = this.tema === 'ruinas' || !!cor.lajes;
       if (t === '#') {
         g.fillStyle = cor.parede; g.fillRect(x, y, TILE, TILE);
         g.fillStyle = cor.parede2;
@@ -839,6 +1248,26 @@
         if (this.tile(tx, ty - 1) !== 'L') g.fillRect(x, y, TILE, 3);
         if (this.tile(tx - 1, ty) !== 'L') g.fillRect(x, y, 3, TILE);
         if (this.tile(tx + 1, ty) !== 'L') g.fillRect(x + TILE - 3, y, 3, TILE);
+      } else if (t === 'j' && cor.ceu) {
+        // Abismo de céu: nuvens lá embaixo.
+        const ceu = g.createLinearGradient(x, y, x, y + TILE); ceu.addColorStop(0, cor.ceu[0]); ceu.addColorStop(1, cor.ceu[1]);
+        g.fillStyle = ceu; g.fillRect(x, y, TILE, TILE);
+        g.fillStyle = 'rgba(255,255,255,.35)';
+        for (let i = 0; i < 2; i++) { g.beginPath(); g.ellipse(x + rnd(i + 60) * TILE, y + 10 + rnd(i + 61) * 18, 8 + rnd(i + 62) * 6, 3, 0, 0, 7); g.fill(); }
+        g.fillStyle = cor.topo;
+        if (this.tile(tx, ty - 1) !== 'j') { g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(x, y, TILE, 8); g.fillStyle = cor.topo; g.fillRect(x, y, TILE, 3); }
+        if (this.tile(tx, ty + 1) !== 'j') g.fillRect(x, y + TILE - 2, TILE, 2);
+        if (this.tile(tx - 1, ty) !== 'j') g.fillRect(x, y, 2, TILE);
+        if (this.tile(tx + 1, ty) !== 'j') g.fillRect(x + TILE - 2, y, 2, TILE);
+      } else if (t === '>' || t === '<') {
+        // Corrente de vento: riscos brancos na direção do empurrão.
+        g.strokeStyle = 'rgba(255,255,255,.55)'; g.lineWidth = 1.5; g.lineCap = 'round';
+        const dir = t === '>' ? 1 : -1;
+        for (let i = 0; i < 3; i++) {
+          const yy = y + 6 + i * 10, xx = x + 4 + rnd(i + 70) * 10;
+          g.beginPath(); g.moveTo(xx, yy); g.lineTo(xx + 14, yy); g.stroke();
+          g.beginPath(); g.moveTo(x + 16 + dir * 6, yy + 3); g.lineTo(x + 16 + dir * 10, yy + 6); g.lineTo(x + 16 + dir * 6, yy + 9); g.stroke();
+        }
       } else if (t === 'j') {
         g.fillStyle = '#0e0a0c'; g.fillRect(x, y, TILE, TILE);
         // Brasa lá no fundo: deixa claro que é um buraco.
@@ -868,6 +1297,10 @@
           const a = 0.25 + 0.2 * Math.sin(t * 3 + tx + ty * 2);
           g.fillStyle = `rgba(255,220,120,${a})`;
           g.fillRect(tx * TILE, ty * TILE, TILE, TILE);
+        } else if (c === '>' || c === '<') {
+          const f = ((c === '>' ? t : -t) * 1.6 + ty * 0.37) % 1, k = (f + 1) % 1;
+          g.fillStyle = 'rgba(255,255,255,.5)';
+          g.fillRect(tx * TILE + k * 26, ty * TILE + 6 + (tx % 3) * 8, 8, 1.5);
         } else if (c === 'l') {
           const a = 0.1 + 0.12 * Math.sin(t * 4 + tx * 1.7 + ty);
           g.fillStyle = `rgba(255,140,40,${a})`;
