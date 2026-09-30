@@ -2,14 +2,13 @@
 
 > Lista gerada a partir do jogo (`tools/gerar_pendentes.py`). A lista completa, com todas as animações e o status de cada uma, está na seção 10 da **[documentação](docs/LINE_E_BELL_DOCUMENTACAO.md)** e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
-**Status:** 247 de 553 animações com arte · 171 usando uma substituta · 135 desenhadas no código.
+**Status:** 253 de 553 animações com arte · 171 usando uma substituta · 129 desenhadas no código.
 
 ## ⚠️ Reenviar ou mandar
 
 - **Item 96**: chegou com 2 imagem(ns) vazia(s) em `DRAGON_FALL`, `DRAGON_DEFEATED`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 106**: chegou com 1 imagem(ns) vazia(s) em `BELL_LAUGH_AT_LINE`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 108**: chegou com 3 imagem(ns) vazia(s) em `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`. As animações funcionam sem esses quadros, mas ficam incompletas.
-- **Itens que ainda não chegaram:** 124, 125, 126, 127.
 - **`DRAGON_IDLE`** está provisório: usa o 1º quadro do rugido (`DRAGON_ROAR`) até chegar a arte do dragão parado.
 
 ## Ainda sem arte
@@ -33,12 +32,6 @@
 | Bichos da fazenda | `CAT_WALK` | Gato — Andar | desenho no código |
 | Bichos da fazenda | `CAT_SLEEP` | Gato — Dormindo | desenho no código |
 | Bichos da fazenda | `CAT_PURR` | Gato — Carinho (ronronando) | desenho no código |
-| Personagens de apoio (novo) | `MAGO_IDLE` | Mago parado, respirando | desenho no código |
-| Personagens de apoio (novo) | `MAGO_TALK` | Mago falando / gesticulando | desenho no código |
-| Personagens de apoio (novo) | `MAGO_CAST` | Mago fazendo um feitiço | desenho no código |
-| Personagens de apoio (novo) | `SPIRIT_APPEAR` | Espírito das Ruínas aparecendo no altar | desenho no código |
-| Personagens de apoio (novo) | `SPIRIT_IDLE` | Espírito das Ruínas flutuando | desenho no código |
-| Personagens de apoio (novo) | `SPIRIT_TALK` | Espírito das Ruínas falando | desenho no código |
 | Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_FRONT` |
 | Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_BACK` |
 | Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_LEFT` |

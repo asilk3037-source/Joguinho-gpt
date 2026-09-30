@@ -383,6 +383,8 @@
         yield c.fala('Mago', 'Dizem que o fogo dele esfria enquanto dorme. Ele acorda com frio, procurando o calor de um coração brilhante.');
         yield c.fala('Line', 'A Bell sonhou com isso ontem à noite... um dragão tremendo de frio.', 'surpresa');
         yield c.fala('Mago', 'Os sonhos das pessoas boas às vezes escutam o que ninguém mais escuta.');
+        const mg = j.npcs.find((n) => n instanceof LB.Mago);
+        if (mg) mg.magia = 1.8;
         yield c.fala('Mago', 'Naquele baú aqui do lado guardei uma espada que espera por um coração corajoso. Ela é sua.');
         yield c.fala('Mago', 'E lembre-se: quando o dragão se cansa, o peito dele brilha. É ali que você deve acertar.');
         yield c.fala('Line', 'Obrigada! Eu vou trazer ela de volta.', 'sorriso');
@@ -471,6 +473,10 @@
       line.anim.tocar('LINE_IDLE', true);
       yield c.fala('???', 'Coração corajoso... vieste de longe.');
       yield c.fala('Line', 'Quem tá falando?!', 'surpresa');
+      // O Espírito surge em cima do altar e fala com a Line.
+      const esp = new LB.Espirito(p.x, p.y + 4, 30);
+      if (LB.sprite('SPIRIT_IDLE')) { j.npcs.push(esp); yield c.espera(1.2); }
+      esp.fala = 99;
       yield c.fala('Espírito das Ruínas', 'Sou a luz que dorme nesta pedra. Estende a tua espada.');
       line.anim.tocar('LINE_SWORD_DRAW', true);
       yield c.animacao(line);
@@ -483,6 +489,9 @@
       yield c.titulo('Magia aprendida!', 'Raio de Luz', 2.2);
       yield c.fala('Espírito das Ruínas', 'A luz agora corre na tua lâmina. Acende os cristais apagados e as barreiras cairão.');
       yield c.fala('Espírito das Ruínas', 'E lembra: a luz que se divide nunca acaba. A que se prende, apaga.');
+      esp.fala = 0;
+      j.particulas.emitir('brilho', esp.x, esp.y - 50, 16, { vel: 70, vida: 0.8, r: 5 });
+      j.npcs = j.npcs.filter((n) => n !== esp);
       yield c.fala('', LB.entrada.usandoToque()
         ? '✨ MAGIA: lança um Raio de Luz na direção que a Line olha (ou no inimigo/cristal mais perto). Gasta 1 ◆ de magia, que volta sozinha. Sombras odeiam a luz!'
         : 'Q ou U: Raio de Luz (mira no inimigo ou cristal mais perto). Gasta 1 ◆ de magia, que volta sozinha. Sombras odeiam a luz!');

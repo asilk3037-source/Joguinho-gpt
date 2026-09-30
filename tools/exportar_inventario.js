@@ -24,7 +24,7 @@ const { chromium } = require(process.env.PLAYWRIGHT || 'playwright');
       for (const e of d.inimigos || []) { const t = e.tipo || 'sombra'; inimigos[t] = (inimigos[t] || 0) + 1; }
       const conta = (c) => d.linhas.reduce((n, l) => n + [...l].filter((x) => x === c).length, 0);
       mapas[id] = { nome: d.nome, tema: d.tema, w: Math.max(...d.linhas.map((l) => l.length)), h: d.linhas.length,
-        saidas: (d.saidas || []).map((x) => ({ para: x.para, requer: x.requer || null })), baus: d.baus || {}, chao: d.chao || [], exames: d.exames || [],
+        saidas: (d.saidas || []).map((x) => ({ para: x.para, requer: x.requer || null, x: x.x, y: x.y, w: x.w, h: x.h })), linhas: d.linhas, inicio: d.inicio, baus: d.baus || {}, chao: d.chao || [], exames: d.exames || [],
         npcs: d.npcs || [], estacao: d.estacao || null, inimigos, portas: conta('g'), rachaduras: conta('%'), postes: conta('p'), brasa: conta('l'), fontes: conta('U'), escuro: !!d.escuro };
     }
     const fn = (o) => JSON.parse(JSON.stringify(o, (k, v) => (typeof v === 'function' ? undefined : v)));

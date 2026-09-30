@@ -378,12 +378,17 @@
   // O velho mago da floresta (ilustração única animada no código).
   class Mago {
     constructor(x, y) {
-      this.x = x; this.y = y; this.lado = 1; this.t = 0; this.fala = 0; this.raio = 14; this.visivel = true;
+      this.x = x; this.y = y; this.lado = 1; this.t = 0; this.fala = 0; this.magia = 0; this.raio = 14; this.visivel = true;
+      this.anim = new LB.Animador('MAGO_IDLE');
     }
 
     atualizar(dt, jogo) {
-      this.t += dt; this.fala = Math.max(0, this.fala - dt);
+      this.t += dt; this.fala = Math.max(0, this.fala - dt); this.magia = Math.max(0, this.magia - dt);
+      this.anim.atualizar(dt);
       const l = jogo.line;
+      // Em conversa com a Line, ele fala e gesticula (e a magia tem a vez dela).
+      if (jogo.cena && Math.hypot(l.x - this.x, l.y - this.y) < 140) this.fala = Math.max(this.fala, 0.3);
+      this.anim.tocar(this.magia > 0 ? 'MAGO_CAST' : this.fala > 0 ? 'MAGO_TALK' : 'MAGO_IDLE');
       if (Math.abs(l.x - this.x) > 8) this.lado = l.x < this.x ? -1 : 1;
       if (Math.random() < dt * 3) jogo.particulas.emitir('brilho', this.x + this.lado * -17 + (Math.random() - 0.5) * 8, this.y - 64, 1, { vel: 12, vz: 10, vida: 0.9, r: 2.5 });
     }
@@ -391,6 +396,8 @@
     desenharSombra(g) { LB.desenho.sombraChao(g, this.x, this.y, 16, 0.28); }
 
     desenhar(g, jogo) {
+      // Arte animada (item 124), no mesmo tamanho da Line.
+      if (LB.sprite('MAGO_IDLE')) { const st = this.anim.estado(null, this.lado); LB.desenharSprite(g, st.r, st.quadro, this.x, this.y, LB.ALTURA_LINE); return; }
       const img = LB.personagem('mago');
       const t = this.t;
       if (!img) { LB.desenho.lineProvisoria(g, this.x, this.y, { base: 'MAGO' }); return; }
@@ -414,6 +421,33 @@
     }
   }
 
+  // O Espírito das Ruínas: surge no altar, flutua e fala (item 125).
+  class Espirito {
+    // `alto`: quanto flutua acima do chão (em cima do altar).
+    constructor(x, y, alto) {
+      this.x = x; this.y = y; this.alto = alto || 0; this.lado = 1; this.t = 0; this.fala = 0; this.raio = 10; this.visivel = true; this.espirito = true;
+      this.anim = new LB.Animador('SPIRIT_APPEAR');
+    }
+
+    atualizar(dt) {
+      this.t += dt; this.fala = Math.max(0, this.fala - dt);
+      this.anim.atualizar(dt);
+      if (this.anim.base === 'SPIRIT_APPEAR' && !this.anim.estado(null, 1).acabou) return;
+      this.anim.tocar(this.fala > 0 ? 'SPIRIT_TALK' : 'SPIRIT_IDLE');
+    }
+
+    desenharSombra(g) { LB.desenho.sombraChao(g, this.x, this.y, 12, 0.12); }
+
+    desenhar(g) {
+      if (!LB.sprite('SPIRIT_IDLE')) return;
+      const st = this.anim.estado(null, this.lado);
+      g.save(); g.globalAlpha = 0.92;
+      LB.desenharSprite(g, st.r, st.quadro, this.x, this.y - this.alto - Math.sin(this.t * 2) * 3, LB.ALTURA_LINE);
+      g.restore();
+    }
+  }
+
+  LB.Espirito = Espirito;
   LB.Mago = Mago;
   LB.Bicho = Bicho;
   LB.bichos = { povoar, ESPECIES, DESENHOS };

@@ -532,6 +532,7 @@ def escrever_arte(w, img, inv):
     img("gabarito-minas-shopping", "Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala")
     w("**Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 20 de altura, gato uns 18). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.")
     w()
+    escrever_dimensoes_cenarios(w, img, M)
     w("### 22.10 Ordem sugerida para produzir")
     w()
     w("1. **Bell jogável** (guarda, estrela, leque, canção, dano, queda) — é o que a jogadora mais vê na Parte 2.")
@@ -620,6 +621,51 @@ def escrever_tamanhos(w):
     w()
     w("> ⚙️ **Observação técnica:** hoje o jogo guarda cada quadro dos personagens em 256×256 e cada quadro do dragão em 448×448. Isso fica nítido até 1440p. Para aproveitar a arte em 4K e retina, dá para subir esses tamanhos (pede só gerar as folhas de novo), com o custo de o jogo carregar um pouco mais devagar.")
     w()
+
+
+# ---------------------------------------------------------------------------------------------
+PARTE_DE = {"fazenda": "Parte 1", "vilarejo": "Parte 1", "floresta": "Parte 1", "gruta": "Parte 1", "ruinas": "Parte 1", "montanha": "Parte 1", "covil": "Parte 1",
+            "vale": "Parte 2", "fenda": "Parte 2", "lago": "Parte 2", "pantano": "Parte 2", "picos": "Parte 2", "tempestade": "Parte 2", "coracao": "Parte 2"}
+ORDEM_AREAS = ["fazenda", "vilarejo", "floresta", "gruta", "ruinas", "montanha", "covil", "vale", "fenda", "lago", "pantano", "picos", "tempestade", "coracao"]
+
+
+def escrever_dimensoes_cenarios(w, img, M):
+    import math
+    mapas = M["mapas"]
+    w("### 22.12 Dimensão de cada cenário")
+    w()
+    w("Cada fase do jogo é uma **grade de tiles** de 32×32 unidades do mundo. A arte do cenário pode chegar de dois jeitos, e as medidas abaixo valem para os dois:")
+    w()
+    w("- **Jeito A — tiles e objetos (recomendado para as fases):** cada tile de chão, parede, água e afins em **128×128 px** (mínimo 96×96), emendando dos 4 lados, mais os objetos soltos (árvores, casas, baús…) nos tamanhos da seção 22.0. O jogo monta o mapa sozinho a partir da planta. É o jeito mais leve e o que deixa mudar a fase depois sem redesenhar.")
+    w("- **Jeito B — cenário pintado inteiro:** uma pintura da fase inteira, na escala de **128 px por tile** (4 px por unidade do mundo). Como fica grande demais para uma imagem só, ela é entregue em **blocos de 2048×2048 px** (16×16 tiles cada), sem sobreposição, com o nome `cenario_<fase>_<coluna>_<linha>.png` contando a partir de 0 no canto de cima à esquerda. Os blocos da última coluna e da última linha ficam menores (o que sobrar). Tudo o que é alto (árvores, casas, pilares) vai numa **camada da frente**, com os mesmos blocos e transparência no resto, para as personagens passarem atrás.")
+    w()
+    w("O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png`, 32 px por tile) mostra a grade, o que é chão (verde), caminho (bege), parede ou mata (escuro), água (azul), lava (laranja), abismo (preto), lama (marrom), vento (branco) e cada objeto (quadradinho colorido), além das **saídas** (verde) e da divisão dos **blocos** de 2048 px (rosa). É só ampliar 4× para ter a medida da entrega. O ponto rosa é onde a heroína chega. Gerado por `tools/gabaritos_mapas.py`.")
+    w()
+    w("| Fase | Parte | Grade (tiles) | Mundo (unidades) | **Pintura inteira (128 px/tile)** | Mínimo (96 px/tile) | Blocos de 2048 px | Gabarito |")
+    w("|---|---|---|---|---|---|---|---|")
+    for id_ in ORDEM_AREAS:
+        m = mapas.get(id_)
+        if not m:
+            continue
+        tw, th = m["w"], m["h"]
+        bc, bl = math.ceil(tw / 16), math.ceil(th / 16)
+        w(f"| **{m['nome']}** | {PARTE_DE.get(id_, '')} | {tw}×{th} | {tw * 32}×{th * 32} | **{tw * 128}×{th * 128}** | {tw * 96}×{th * 96} | {bc}×{bl} = {bc * bl} | `gabaritos/{id_}.png` |")
+    w()
+    w("**Cenas do primeiro encontro (prólogo):** não são grades, são **ilustrações únicas** em pé, sempre na base de 360×640 (9:16), porque as posições da história foram marcadas nessa base (veja a seção 22.11):")
+    w()
+    w("| Cena | Base | **Entrega recomendada** | 4K | Mínimo | Observação |")
+    w("|---|---|---|---|---|---|")
+    w("| Minas Shopping (item 140) | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | gabarito pronto: `arte/referencias/gabarito_minas_shopping_2160x3840.png` |")
+    w("| Playground | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | hoje é desenhado no código; a máquina de soco fica em (204,315) da base e vem à parte (é a da animação `LINE_PUNCH_MACHINE`) |")
+    w("| Túnel | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | o beijo acontece perto de (193,520) da base, com câmera 1,6× |")
+    w()
+    w("**Telas inteiras** (título, “Parte 2”, capítulos, fim): 3840×2160 (16:9), mínimo 1920×1080, com o importante longe das bordas (em celular a tela corta um pouco dos lados).")
+    w()
+    w("**Por que 128 px por tile:** em tela cheia num monitor 1080p um tile aparece com 86 px e em 1440p com 115 px, então 128 fica nítido nos dois; em 4K ou retina (173 px) ainda fica bom. Com 96 px fica nítido em 1080p.")
+    w()
+    for id_ in ORDEM_AREAS:
+        if id_ in mapas:
+            img(f"gabarito-{id_}", f"Gabarito: {mapas[id_]['nome']} ({mapas[id_]['w']}×{mapas[id_]['h']} tiles)")
 
 
 if __name__ == "__main__":

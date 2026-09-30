@@ -66,9 +66,10 @@ def ler_animacoes(caminho):
         if "const descriptions={" in html:
             d = html[html.index("const descriptions={"):]
             d = d[:d.index("};")]
-            desc = dict(re.findall(r"'([A-Z0-9_]+)':'((?:[^'\\]|\\.)*)'", d))
+            desc = {RENOMEAR.get(k, k): v for k, v in re.findall(r"'?([A-Z0-9_]+)'?:'((?:[^'\\]|\\.)*)'", d)}
         saida = {}
         for codigo, dentro in re.findall(r"'([A-Z0-9_]+)':\[(.*?)\]", bloco, re.S):
+            codigo = RENOMEAR.get(codigo, codigo)
             quadros = [q for q in re.findall(r"'(data:[^']+)'", dentro) if len(q.split(",", 1)[-1]) >= 100]
             if quadros:
                 saida[codigo] = {"frames": quadros, "label": desc.get(codigo, codigo)}
@@ -105,6 +106,11 @@ def recusada(nome, codigo):
 
 def movimento_parado(codigo, dados):
     return bool(MOVIMENTO.search(codigo)) and len(set(dados["frames"])) < QUADROS_MINIMOS_MOVIMENTO
+
+
+# Códigos que chegam com outro nome nos itens → nome usado no jogo.
+RENOMEAR = {"MAGE_IDLE": "MAGO_IDLE", "MAGE_CAST": "MAGO_CAST", "MAGE_TALK": "MAGO_TALK",
+            "SPIRIT_POSE_A": "SPIRIT_IDLE", "SPIRIT_POSE_B": "SPIRIT_TALK"}
 
 
 def numero_item(nome):
@@ -431,10 +437,12 @@ def main():
 # de cada uma é ajustada pela altura do primeiro quadro (a pose neutra), para ninguém encolher
 # ou crescer ao trocar de animação. Se o primeiro quadro começa deitado ou agachado, vale a
 # maior altura.
-ALTURA_ALVO = {"LINE_BELL_": ALTURA_LINE_MUNDO, "LINE_": ALTURA_LINE_MUNDO, "BELL_": ALTURA_LINE_MUNDO * 0.96}
+ALTURA_ALVO = {"LINE_BELL_": ALTURA_LINE_MUNDO, "LINE_": ALTURA_LINE_MUNDO, "BELL_": ALTURA_LINE_MUNDO * 0.96,
+               "MAGO_": ALTURA_LINE_MUNDO * 1.08, "SPIRIT_": ALTURA_LINE_MUNDO * 1.1}
 # Poses sentadas (itens 77 a 79): pela altura da pessoa sentada, não pelo primeiro quadro.
 SENTADAS = {"LINE_BELL_SIT_IDLE": 0.75}
-MESMA_ESCALA = {"LINE_BELL_SIT_DOWN": "LINE_BELL_SIT_IDLE", "BELL_HEAD_ON_LINE": "LINE_BELL_SIT_IDLE"}
+MESMA_ESCALA = {"LINE_BELL_SIT_DOWN": "LINE_BELL_SIT_IDLE", "BELL_HEAD_ON_LINE": "LINE_BELL_SIT_IDLE",
+                "SPIRIT_APPEAR": "SPIRIT_IDLE", "SPIRIT_TALK": "SPIRIT_IDLE", "MAGO_TALK": "MAGO_IDLE", "MAGO_CAST": "MAGO_IDLE"}
 # Bichos que chegaram como item (132 em diante): ficam do mesmo tamanho na tela que a arte
 # antiga do pacote da fazenda (altura do bicho de pé, em pixels do mundo).
 # Altura da pose parada (1º quadro do _IDLE) quando não há arte antiga para comparar.

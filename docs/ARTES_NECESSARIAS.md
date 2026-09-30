@@ -78,7 +78,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 59 | 0 | 8 |
-| Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
+| Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
@@ -97,7 +97,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **553** | **247** | **171** | **135** |
+| **Total** | **553** | **253** | **171** | **129** |
 
 A lista com cada código está na seção 10 e, só com o que falta, em `ANIMACOES_PENDENTES.md`.
 
@@ -272,6 +272,86 @@ O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já est�
 *Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala*
 
 **Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 20 de altura, gato uns 18). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.
+
+### Dimensão de cada cenário
+
+Cada fase do jogo é uma **grade de tiles** de 32×32 unidades do mundo. A arte do cenário pode chegar de dois jeitos, e as medidas abaixo valem para os dois:
+
+- **Jeito A — tiles e objetos (recomendado para as fases):** cada tile de chão, parede, água e afins em **128×128 px** (mínimo 96×96), emendando dos 4 lados, mais os objetos soltos (árvores, casas, baús…) nos tamanhos da seção 22.0. O jogo monta o mapa sozinho a partir da planta. É o jeito mais leve e o que deixa mudar a fase depois sem redesenhar.
+- **Jeito B — cenário pintado inteiro:** uma pintura da fase inteira, na escala de **128 px por tile** (4 px por unidade do mundo). Como fica grande demais para uma imagem só, ela é entregue em **blocos de 2048×2048 px** (16×16 tiles cada), sem sobreposição, com o nome `cenario_<fase>_<coluna>_<linha>.png` contando a partir de 0 no canto de cima à esquerda. Os blocos da última coluna e da última linha ficam menores (o que sobrar). Tudo o que é alto (árvores, casas, pilares) vai numa **camada da frente**, com os mesmos blocos e transparência no resto, para as personagens passarem atrás.
+
+O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png`, 32 px por tile) mostra a grade, o que é chão (verde), caminho (bege), parede ou mata (escuro), água (azul), lava (laranja), abismo (preto), lama (marrom), vento (branco) e cada objeto (quadradinho colorido), além das **saídas** (verde) e da divisão dos **blocos** de 2048 px (rosa). É só ampliar 4× para ter a medida da entrega. O ponto rosa é onde a heroína chega. Gerado por `tools/gabaritos_mapas.py`.
+
+| Fase | Parte | Grade (tiles) | Mundo (unidades) | **Pintura inteira (128 px/tile)** | Mínimo (96 px/tile) | Blocos de 2048 px | Gabarito |
+|---|---|---|---|---|---|---|---|
+| **Fazendinha** | Parte 1 | 46×34 | 1472×1088 | **5888×4352** | 4416×3264 | 3×3 = 9 | `gabaritos/fazenda.png` |
+| **Vilarejo do Riacho** | Parte 1 | 60×40 | 1920×1280 | **7680×5120** | 5760×3840 | 4×3 = 12 | `gabaritos/vilarejo.png` |
+| **Floresta Sussurrante** | Parte 1 | 76×44 | 2432×1408 | **9728×5632** | 7296×4224 | 5×3 = 15 | `gabaritos/floresta.png` |
+| **Gruta dos Ecos** | Parte 1 | 64×44 | 2048×1408 | **8192×5632** | 6144×4224 | 4×3 = 12 | `gabaritos/gruta.png` |
+| **Ruínas Encantadas** | Parte 1 | 70×36 | 2240×1152 | **8960×4608** | 6720×3456 | 5×3 = 15 | `gabaritos/ruinas.png` |
+| **Montanha de Brasa** | Parte 1 | 72×40 | 2304×1280 | **9216×5120** | 6912×3840 | 5×3 = 15 | `gabaritos/montanha.png` |
+| **Covil do Dragão** | Parte 1 | 26×20 | 832×640 | **3328×2560** | 2496×1920 | 2×2 = 4 | `gabaritos/covil.png` |
+| **Vale das Raízes** | Parte 2 | 64×42 | 2048×1344 | **8192×5376** | 6144×4032 | 4×3 = 12 | `gabaritos/vale.png` |
+| **Fenda de Magma** | Parte 2 | 36×28 | 1152×896 | **4608×3584** | 3456×2688 | 3×2 = 6 | `gabaritos/fenda.png` |
+| **Lago Espelhado** | Parte 2 | 64×42 | 2048×1344 | **8192×5376** | 6144×4032 | 4×3 = 12 | `gabaritos/lago.png` |
+| **Pântano Sombrio** | Parte 2 | 38×28 | 1216×896 | **4864×3584** | 3648×2688 | 3×2 = 6 | `gabaritos/pantano.png` |
+| **Picos do Vento** | Parte 2 | 64×42 | 2048×1344 | **8192×5376** | 6144×4032 | 4×3 = 12 | `gabaritos/picos.png` |
+| **Olho da Tempestade** | Parte 2 | 36×28 | 1152×896 | **4608×3584** | 3456×2688 | 3×2 = 6 | `gabaritos/tempestade.png` |
+| **Coração dos Elementos** | Parte 2 | 40×32 | 1280×1024 | **5120×4096** | 3840×3072 | 3×2 = 6 | `gabaritos/coracao.png` |
+
+**Cenas do primeiro encontro (prólogo):** não são grades, são **ilustrações únicas** em pé, sempre na base de 360×640 (9:16), porque as posições da história foram marcadas nessa base (veja a seção 22.11):
+
+| Cena | Base | **Entrega recomendada** | 4K | Mínimo | Observação |
+|---|---|---|---|---|---|
+| Minas Shopping (item 140) | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | gabarito pronto: `arte/referencias/gabarito_minas_shopping_2160x3840.png` |
+| Playground | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | hoje é desenhado no código; a máquina de soco fica em (204,315) da base e vem à parte (é a da animação `LINE_PUNCH_MACHINE`) |
+| Túnel | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | o beijo acontece perto de (193,520) da base, com câmera 1,6× |
+
+**Telas inteiras** (título, “Parte 2”, capítulos, fim): 3840×2160 (16:9), mínimo 1920×1080, com o importante longe das bordas (em celular a tela corta um pouco dos lados).
+
+**Por que 128 px por tile:** em tela cheia num monitor 1080p um tile aparece com 86 px e em 1440p com 115 px, então 128 fica nítido nos dois; em 4K ou retina (173 px) ainda fica bom. Com 96 px fica nítido em 1080p.
+
+![Gabarito: Fazendinha (46×34 tiles)](imagens/gabarito-fazenda.jpg)
+*Gabarito: Fazendinha (46×34 tiles)*
+
+![Gabarito: Vilarejo do Riacho (60×40 tiles)](imagens/gabarito-vilarejo.jpg)
+*Gabarito: Vilarejo do Riacho (60×40 tiles)*
+
+![Gabarito: Floresta Sussurrante (76×44 tiles)](imagens/gabarito-floresta.jpg)
+*Gabarito: Floresta Sussurrante (76×44 tiles)*
+
+![Gabarito: Gruta dos Ecos (64×44 tiles)](imagens/gabarito-gruta.jpg)
+*Gabarito: Gruta dos Ecos (64×44 tiles)*
+
+![Gabarito: Ruínas Encantadas (70×36 tiles)](imagens/gabarito-ruinas.jpg)
+*Gabarito: Ruínas Encantadas (70×36 tiles)*
+
+![Gabarito: Montanha de Brasa (72×40 tiles)](imagens/gabarito-montanha.jpg)
+*Gabarito: Montanha de Brasa (72×40 tiles)*
+
+![Gabarito: Covil do Dragão (26×20 tiles)](imagens/gabarito-covil.jpg)
+*Gabarito: Covil do Dragão (26×20 tiles)*
+
+![Gabarito: Vale das Raízes (64×42 tiles)](imagens/gabarito-vale.jpg)
+*Gabarito: Vale das Raízes (64×42 tiles)*
+
+![Gabarito: Fenda de Magma (36×28 tiles)](imagens/gabarito-fenda.jpg)
+*Gabarito: Fenda de Magma (36×28 tiles)*
+
+![Gabarito: Lago Espelhado (64×42 tiles)](imagens/gabarito-lago.jpg)
+*Gabarito: Lago Espelhado (64×42 tiles)*
+
+![Gabarito: Pântano Sombrio (38×28 tiles)](imagens/gabarito-pantano.jpg)
+*Gabarito: Pântano Sombrio (38×28 tiles)*
+
+![Gabarito: Picos do Vento (64×42 tiles)](imagens/gabarito-picos.jpg)
+*Gabarito: Picos do Vento (64×42 tiles)*
+
+![Gabarito: Olho da Tempestade (36×28 tiles)](imagens/gabarito-tempestade.jpg)
+*Gabarito: Olho da Tempestade (36×28 tiles)*
+
+![Gabarito: Coração dos Elementos (40×32 tiles)](imagens/gabarito-coracao.jpg)
+*Gabarito: Coração dos Elementos (40×32 tiles)*
 
 ### Ordem sugerida para produzir
 

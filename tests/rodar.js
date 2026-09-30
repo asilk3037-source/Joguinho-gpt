@@ -669,6 +669,23 @@ teste('arte: as duas sentadas no pôr do sol e o dragão parado (itens 77 a 80)'
   await h.foto('epilogo-sentadas');
 });
 
+teste('arte: Mago e Espírito das Ruínas animados (itens 124 e 125)', async (h) => {
+  const tem = await h.ev(() => ['MAGO_IDLE', 'MAGO_TALK', 'MAGO_CAST', 'SPIRIT_APPEAR', 'SPIRIT_IDLE', 'SPIRIT_TALK', 'THEO_WALK_LEFT', 'THEO_IDLE_FRONT'].filter((c) => LB.sprite(c)));
+  igual(tem.length, 8, 'arte carregada: ' + tem);
+  await h.area('ruinas', Object.assign({}, TODAS, { magia: false, golem: false }));
+  const viu = await h.ev(async () => {
+    const j = LB.jogo, a = j.mapa.props.find((o) => o.tipo === 'altar');
+    j.line.x = a.x; j.line.y = a.y + 40; j.line.voltarLivre();
+    j.iniciarCena(LB.HISTORIA.altar, { semPular: true }, a);
+    let apareceu = false;
+    for (let i = 0; i < 300 && j.cena; i++) { if (j.npcs.some((n) => n.espirito)) apareceu = true; LB.dialogo.clicou = true; await new Promise((r) => setTimeout(r, 40)); }
+    return { apareceu, sobrou: j.npcs.some((n) => n.espirito), magia: !!j.flags.magia };
+  });
+  afirmar(viu.apareceu, 'o Espírito aparece no altar');
+  afirmar(!viu.sobrou, 'e vai embora no fim da cena');
+  afirmar(viu.magia, 'a Line aprende a magia');
+});
+
 // ================= Save =================
 teste('save: continuar volta para a mesma área com os itens', async (h) => {
   await h.area('vilarejo', { espada: true, moedas: 33 });

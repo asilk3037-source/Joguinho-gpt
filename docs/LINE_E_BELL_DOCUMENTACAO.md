@@ -16,8 +16,10 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22 e o arquivo `ARTES_NECESSARIAS.md`).
 
+> 🧙 **Itens 124 a 127 chegaram:** o **Mago** animado (parado, falando e fazendo magia), o **Espírito das Ruínas**, que agora aparece de verdade no altar (surgindo, flutuando e falando), e o **Theo** parado e andando nas 4 direções, alerta e curioso. O Theo está todo com arte nova.
+> 📐 **Dimensão de cada cenário:** tabela e gabarito (planta) de cada fase na seção 22.12.
 > 🎨 **Itens 108 a 137 chegaram:** vitória, magias, andar e correr em combate e pulo para a esquerda da Line; as duas comendo, beijo, toca aqui e costas das andanças; o dragão correndo; o **Guardião de Pedra completo**; o **fogo-fátuo** (a mesma arte colorida por elemento: azul, laranja, verde e branco) e a **sombra**; o **Theo**, a **galinha branca**, o **porco**, o **cavalo** e a **ovelha** com 12 quadros por animação, no mesmo tamanho dos bichos antigos.
-> 🔁 **Para reenviar:** `LINE_BELL_WALK_TOGETHER`, `LINE_BELL_WALK_HANDS` e `LINE_BELL_RUN_TOGETHER` de frente e de lado (itens 110 a 112) vieram com todos os quadros iguais, parados, e o jogo segue com as versões que se mexem; `DRAGON_SLEEP` (item 118) não mostra o dragão dormindo; `LINE_BELL_DANCE` (item 113) perde a Line em alguns quadros; o item 108 veio de novo com 3 quadros vazios. Os itens **124 a 127** não chegaram.
+> 🔁 **Para reenviar:** `LINE_BELL_WALK_TOGETHER`, `LINE_BELL_WALK_HANDS` e `LINE_BELL_RUN_TOGETHER` de frente e de lado (itens 110 a 112) vieram com todos os quadros iguais, parados, e o jogo segue com as versões que se mexem; `DRAGON_SLEEP` (item 118) não mostra o dragão dormindo; `LINE_BELL_DANCE` (item 113) perde a Line em alguns quadros; o item 108 veio de novo com 3 quadros vazios.
 > 🎬 **Itens 77 a 80 chegaram:** as duas sentando juntas, sentadas paradas e a Bell com a cabeça no ombro da Line (no pôr do sol do epílogo, na proporção certa: sentadas, com uns 75% da altura de pé), e o **dragão parado e piscando** de verdade (saiu o quadro provisório do rugido).
 > 🐔 **Arte nova (itens 132 a 134):** galinha marrom completa (9 animações), pintinho (parado, andando e correndo) e vaca (parada, andando, correndo e comendo), com 12 quadros cada, no mesmo tamanho dos bichos antigos.
 > 📐 **Tamanho de cada imagem** pensando na tela cheia: tabela na seção 22.0.
@@ -115,7 +117,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **553**: 247 com arte (temporária), 171 usando uma substituta, 135 desenhadas no código ou sem imagem |
+| Animações catalogadas | **553**: 253 com arte (temporária), 171 usando uma substituta, 129 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1750,7 +1752,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 553 animações. ✅ 247 com arte temporária, 🔁 171 com substituta e ✏️ 135 desenhadas no código.
+**Resumo:** 553 animações. ✅ 253 com arte temporária, 🔁 171 com substituta e ✏️ 129 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1765,7 +1767,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 59 | 0 | 8 |
-| Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
+| Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
@@ -2033,27 +2035,27 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `THEO_ALERT` | Theo — Theo alerta | 1 |  | ✅ temporária | arte/theo/THEO_ALERT |
+| `THEO_ALERT` | Theo — Theo alerta | 12 |  | ✅ temporária | LINE_BELL_ITEM_126 |
 | `THEO_BALL` | Theo — Theo com a bolinha | 12 |  | ✅ temporária | LINE_BELL_ITEM_128 |
 | `THEO_BATH` | Theo — Theo no banho | 12 |  | ✅ temporária | LINE_BELL_ITEM_130 |
 | `THEO_BONE` | Theo — Theo com o osso | 12 |  | ✅ temporária | LINE_BELL_ITEM_128 |
-| `THEO_IDLE_BACK` | Theo — idle back | 3 |  | ✅ temporária | arte/theo/THEO_IDLE_BACK |
-| `THEO_IDLE_FRONT` | Theo — idle front | 3 |  | ✅ temporária | arte/theo/THEO_IDLE_FRONT |
-| `THEO_IDLE_LEFT` | Theo — idle left | 1 |  | ✅ temporária | arte/theo/THEO_IDLE_LEFT |
-| `THEO_IDLE_RIGHT` | Theo — idle right | 1 |  | ✅ temporária | arte/theo/THEO_IDLE_RIGHT |
+| `THEO_IDLE_BACK` | Theo — idle back | 12 |  | ✅ temporária | LINE_BELL_ITEM_126 |
+| `THEO_IDLE_FRONT` | Theo — idle front | 12 |  | ✅ temporária | LINE_BELL_ITEM_126 |
+| `THEO_IDLE_LEFT` | Theo — idle left | 12 |  | ✅ temporária | LINE_BELL_ITEM_126 |
+| `THEO_IDLE_RIGHT` | Theo — idle right | 12 |  | ✅ temporária | LINE_BELL_ITEM_126 |
 | `THEO_LIE` | Theo — Theo deitado | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
 | `THEO_PLAY` | Theo — Theo brincando | 12 |  | ✅ temporária | LINE_BELL_ITEM_128 |
-| `THEO_QUESTION` | Theo — Theo curioso | 1 |  | ✅ temporária | arte/theo/THEO_QUESTION |
+| `THEO_QUESTION` | Theo — Theo curioso | 12 |  | ✅ temporária | LINE_BELL_ITEM_126 |
 | `THEO_ROLL` | Theo — Theo de barriga pra cima | 12 |  | ✅ temporária | LINE_BELL_ITEM_130 |
 | `THEO_RUN` | Theo — Correr | 7 |  | ✅ temporária | LINE_BELL_ITEM_128 |
 | `THEO_SIT` | Theo — sit | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
 | `THEO_SIT_FRONT` | Theo — Theo comendo | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
 | `THEO_SIT_IDLE` | Theo — Theo apaixonado | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
 | `THEO_SLEEP` | Theo — Theo dormindo | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
-| `THEO_WALK_BACK` | Theo — walk back | 3 |  | ✅ temporária | arte/theo/THEO_WALK_BACK |
-| `THEO_WALK_FRONT` | Theo — walk front | 4 |  | ✅ temporária | arte/theo/THEO_WALK_FRONT |
-| `THEO_WALK_LEFT` | Theo — walk left | 6 |  | ✅ temporária | arte/theo/THEO_WALK_LEFT |
-| `THEO_WALK_RIGHT` | Theo — walk right | 4 |  | ✅ temporária | arte/theo/THEO_WALK_RIGHT |
+| `THEO_WALK_BACK` | Theo — walk back | 7 |  | ✅ temporária | LINE_BELL_ITEM_127 |
+| `THEO_WALK_FRONT` | Theo — walk front | 7 |  | ✅ temporária | LINE_BELL_ITEM_127 |
+| `THEO_WALK_LEFT` | Theo — walk left | 7 |  | ✅ temporária | LINE_BELL_ITEM_127 |
+| `THEO_WALK_RIGHT` | Theo — walk right | 7 |  | ✅ temporária | LINE_BELL_ITEM_127 |
 | `CHICKEN_EAT` | Galinha branca — Comer | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
 | `CHICKEN_IDLE` | Galinha branca — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
 | `CHICKEN_LAY_EGG` | Galinha branca — Botar ovo | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
@@ -2105,12 +2107,12 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `MAGO_IDLE` | Mago parado, respirando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `MAGO_TALK` | Mago falando / gesticulando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `MAGO_CAST` | Mago fazendo um feitiço *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `SPIRIT_APPEAR` | Espírito das Ruínas aparecendo no altar *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `SPIRIT_IDLE` | Espírito das Ruínas flutuando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `SPIRIT_TALK` | Espírito das Ruínas falando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
+| `MAGO_IDLE` | Mago parado, respirando *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_124 |
+| `MAGO_TALK` | Mago falando / gesticulando *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_124 |
+| `MAGO_CAST` | Mago fazendo um feitiço *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_124 |
+| `SPIRIT_APPEAR` | Espírito das Ruínas aparecendo no altar *(sugestão nova)* | 9 |  | ✅ temporária | LINE_BELL_ITEM_125 |
+| `SPIRIT_IDLE` | Espírito das Ruínas flutuando *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_125 |
+| `SPIRIT_TALK` | Espírito das Ruínas falando *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_125 |
 
 ### 10.13 Bell jogável (Parte 2)
 
@@ -3211,7 +3213,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 59 | 0 | 8 |
-| Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
+| Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
@@ -3230,7 +3232,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **553** | **247** | **171** | **135** |
+| **Total** | **553** | **253** | **171** | **129** |
 
 A lista com cada código está na seção 10 e, só com o que falta, em `ANIMACOES_PENDENTES.md`.
 
@@ -3405,6 +3407,86 @@ O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já est�
 *Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala*
 
 **Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 20 de altura, gato uns 18). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.
+
+### 22.12 Dimensão de cada cenário
+
+Cada fase do jogo é uma **grade de tiles** de 32×32 unidades do mundo. A arte do cenário pode chegar de dois jeitos, e as medidas abaixo valem para os dois:
+
+- **Jeito A — tiles e objetos (recomendado para as fases):** cada tile de chão, parede, água e afins em **128×128 px** (mínimo 96×96), emendando dos 4 lados, mais os objetos soltos (árvores, casas, baús…) nos tamanhos da seção 22.0. O jogo monta o mapa sozinho a partir da planta. É o jeito mais leve e o que deixa mudar a fase depois sem redesenhar.
+- **Jeito B — cenário pintado inteiro:** uma pintura da fase inteira, na escala de **128 px por tile** (4 px por unidade do mundo). Como fica grande demais para uma imagem só, ela é entregue em **blocos de 2048×2048 px** (16×16 tiles cada), sem sobreposição, com o nome `cenario_<fase>_<coluna>_<linha>.png` contando a partir de 0 no canto de cima à esquerda. Os blocos da última coluna e da última linha ficam menores (o que sobrar). Tudo o que é alto (árvores, casas, pilares) vai numa **camada da frente**, com os mesmos blocos e transparência no resto, para as personagens passarem atrás.
+
+O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png`, 32 px por tile) mostra a grade, o que é chão (verde), caminho (bege), parede ou mata (escuro), água (azul), lava (laranja), abismo (preto), lama (marrom), vento (branco) e cada objeto (quadradinho colorido), além das **saídas** (verde) e da divisão dos **blocos** de 2048 px (rosa). É só ampliar 4× para ter a medida da entrega. O ponto rosa é onde a heroína chega. Gerado por `tools/gabaritos_mapas.py`.
+
+| Fase | Parte | Grade (tiles) | Mundo (unidades) | **Pintura inteira (128 px/tile)** | Mínimo (96 px/tile) | Blocos de 2048 px | Gabarito |
+|---|---|---|---|---|---|---|---|
+| **Fazendinha** | Parte 1 | 46×34 | 1472×1088 | **5888×4352** | 4416×3264 | 3×3 = 9 | `gabaritos/fazenda.png` |
+| **Vilarejo do Riacho** | Parte 1 | 60×40 | 1920×1280 | **7680×5120** | 5760×3840 | 4×3 = 12 | `gabaritos/vilarejo.png` |
+| **Floresta Sussurrante** | Parte 1 | 76×44 | 2432×1408 | **9728×5632** | 7296×4224 | 5×3 = 15 | `gabaritos/floresta.png` |
+| **Gruta dos Ecos** | Parte 1 | 64×44 | 2048×1408 | **8192×5632** | 6144×4224 | 4×3 = 12 | `gabaritos/gruta.png` |
+| **Ruínas Encantadas** | Parte 1 | 70×36 | 2240×1152 | **8960×4608** | 6720×3456 | 5×3 = 15 | `gabaritos/ruinas.png` |
+| **Montanha de Brasa** | Parte 1 | 72×40 | 2304×1280 | **9216×5120** | 6912×3840 | 5×3 = 15 | `gabaritos/montanha.png` |
+| **Covil do Dragão** | Parte 1 | 26×20 | 832×640 | **3328×2560** | 2496×1920 | 2×2 = 4 | `gabaritos/covil.png` |
+| **Vale das Raízes** | Parte 2 | 64×42 | 2048×1344 | **8192×5376** | 6144×4032 | 4×3 = 12 | `gabaritos/vale.png` |
+| **Fenda de Magma** | Parte 2 | 36×28 | 1152×896 | **4608×3584** | 3456×2688 | 3×2 = 6 | `gabaritos/fenda.png` |
+| **Lago Espelhado** | Parte 2 | 64×42 | 2048×1344 | **8192×5376** | 6144×4032 | 4×3 = 12 | `gabaritos/lago.png` |
+| **Pântano Sombrio** | Parte 2 | 38×28 | 1216×896 | **4864×3584** | 3648×2688 | 3×2 = 6 | `gabaritos/pantano.png` |
+| **Picos do Vento** | Parte 2 | 64×42 | 2048×1344 | **8192×5376** | 6144×4032 | 4×3 = 12 | `gabaritos/picos.png` |
+| **Olho da Tempestade** | Parte 2 | 36×28 | 1152×896 | **4608×3584** | 3456×2688 | 3×2 = 6 | `gabaritos/tempestade.png` |
+| **Coração dos Elementos** | Parte 2 | 40×32 | 1280×1024 | **5120×4096** | 3840×3072 | 3×2 = 6 | `gabaritos/coracao.png` |
+
+**Cenas do primeiro encontro (prólogo):** não são grades, são **ilustrações únicas** em pé, sempre na base de 360×640 (9:16), porque as posições da história foram marcadas nessa base (veja a seção 22.11):
+
+| Cena | Base | **Entrega recomendada** | 4K | Mínimo | Observação |
+|---|---|---|---|---|---|
+| Minas Shopping (item 140) | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | gabarito pronto: `arte/referencias/gabarito_minas_shopping_2160x3840.png` |
+| Playground | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | hoje é desenhado no código; a máquina de soco fica em (204,315) da base e vem à parte (é a da animação `LINE_PUNCH_MACHINE`) |
+| Túnel | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | o beijo acontece perto de (193,520) da base, com câmera 1,6× |
+
+**Telas inteiras** (título, “Parte 2”, capítulos, fim): 3840×2160 (16:9), mínimo 1920×1080, com o importante longe das bordas (em celular a tela corta um pouco dos lados).
+
+**Por que 128 px por tile:** em tela cheia num monitor 1080p um tile aparece com 86 px e em 1440p com 115 px, então 128 fica nítido nos dois; em 4K ou retina (173 px) ainda fica bom. Com 96 px fica nítido em 1080p.
+
+![Gabarito: Fazendinha (46×34 tiles)](imagens/gabarito-fazenda.jpg)
+*Gabarito: Fazendinha (46×34 tiles)*
+
+![Gabarito: Vilarejo do Riacho (60×40 tiles)](imagens/gabarito-vilarejo.jpg)
+*Gabarito: Vilarejo do Riacho (60×40 tiles)*
+
+![Gabarito: Floresta Sussurrante (76×44 tiles)](imagens/gabarito-floresta.jpg)
+*Gabarito: Floresta Sussurrante (76×44 tiles)*
+
+![Gabarito: Gruta dos Ecos (64×44 tiles)](imagens/gabarito-gruta.jpg)
+*Gabarito: Gruta dos Ecos (64×44 tiles)*
+
+![Gabarito: Ruínas Encantadas (70×36 tiles)](imagens/gabarito-ruinas.jpg)
+*Gabarito: Ruínas Encantadas (70×36 tiles)*
+
+![Gabarito: Montanha de Brasa (72×40 tiles)](imagens/gabarito-montanha.jpg)
+*Gabarito: Montanha de Brasa (72×40 tiles)*
+
+![Gabarito: Covil do Dragão (26×20 tiles)](imagens/gabarito-covil.jpg)
+*Gabarito: Covil do Dragão (26×20 tiles)*
+
+![Gabarito: Vale das Raízes (64×42 tiles)](imagens/gabarito-vale.jpg)
+*Gabarito: Vale das Raízes (64×42 tiles)*
+
+![Gabarito: Fenda de Magma (36×28 tiles)](imagens/gabarito-fenda.jpg)
+*Gabarito: Fenda de Magma (36×28 tiles)*
+
+![Gabarito: Lago Espelhado (64×42 tiles)](imagens/gabarito-lago.jpg)
+*Gabarito: Lago Espelhado (64×42 tiles)*
+
+![Gabarito: Pântano Sombrio (38×28 tiles)](imagens/gabarito-pantano.jpg)
+*Gabarito: Pântano Sombrio (38×28 tiles)*
+
+![Gabarito: Picos do Vento (64×42 tiles)](imagens/gabarito-picos.jpg)
+*Gabarito: Picos do Vento (64×42 tiles)*
+
+![Gabarito: Olho da Tempestade (36×28 tiles)](imagens/gabarito-tempestade.jpg)
+*Gabarito: Olho da Tempestade (36×28 tiles)*
+
+![Gabarito: Coração dos Elementos (40×32 tiles)](imagens/gabarito-coracao.jpg)
+*Gabarito: Coração dos Elementos (40×32 tiles)*
 
 ### 22.10 Ordem sugerida para produzir
 

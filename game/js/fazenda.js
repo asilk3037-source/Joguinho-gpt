@@ -149,7 +149,7 @@
     // ---------- Ações de interação na fazenda e na floresta ----------
     acoesExtras(acoes, perto) {
       const l = this.line;
-      for (const n of this.npcs) if (perto(n.x, n.y + 24, 64)) acoes.push({ texto: 'Conversar', x: n.x, y: n.y - 90, fazer: () => { n.fala = 3; this.iniciarCena(LB.HISTORIA.mago, { semPular: true }); } });
+      for (const n of this.npcs) if (n instanceof LB.Mago && perto(n.x, n.y + 24, 64)) acoes.push({ texto: 'Conversar', x: n.x, y: n.y - 90, fazer: () => { n.fala = 3; this.iniciarCena(LB.HISTORIA.mago, { semPular: true }); } });
       for (const b of this.bichos) {
         if (b.estado === 'indoComer' || b.estado === 'comendo') continue;
         const r = b.tipo === 'vaca' ? 50 : b.tipo === 'pato' ? 60 : 38;
