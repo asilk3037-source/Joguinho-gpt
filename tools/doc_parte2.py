@@ -1,11 +1,8 @@
 """Seções da Parte 2 e a lista completa de arte necessária.
 
-Usado por tools/gerar_documentacao.py (seções 16 a 22 do documento principal) e para gerar
-docs/ARTES_NECESSARIAS.md sozinho: python3 tools/doc_parte2.py inventario.json roteiro.json
+Usado por tools/gerar_documentacao.py (seções 16 a 22 do documento principal).
 """
-import json
 import os
-import sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -371,7 +368,7 @@ def escrever_arte(w, img, inv):
         w(f"| {g['nome']} | {tot} | {ok} | {via} | {tot - ok - via} |")
     w(f"| **Total** | **{T[0]}** | **{T[1]}** | **{T[2]}** | **{T[0] - T[1] - T[2]}** |")
     w()
-    w("A lista com cada código está na seção 10 e, só com o que falta, em `ANIMACOES_PENDENTES.md`.")
+    w("A lista com cada código está na seção 10 e, só com o que falta, na seção 23.")
     w()
 
     w("### 22.2 Line e Bell (personagens principais)")
@@ -666,25 +663,3 @@ def escrever_dimensoes_cenarios(w, img, M):
     for id_ in ORDEM_AREAS:
         if id_ in mapas:
             img(f"gabarito-{id_}", f"Gabarito: {mapas[id_]['nome']} ({mapas[id_]['w']}×{mapas[id_]['h']} tiles)")
-
-
-if __name__ == "__main__":
-    inv = json.load(open(sys.argv[1], encoding="utf-8"))
-    rot = json.load(open(sys.argv[2], encoding="utf-8"))
-    L = []
-    def w(s=""):
-        L.append(s)
-    def img(nome, legenda):
-        w(f"![{legenda}](imagens/{nome}.jpg)")
-        w(f"*{legenda}*")
-        w()
-    w("# Line & Bell — Arte necessária")
-    w()
-    w("*Gerado a partir do jogo por `tools/doc_parte2.py`. O documento completo está em `LINE_E_BELL_DOCUMENTACAO.md`.*")
-    w()
-    escrever_arte(w, img, inv)
-    saida = os.path.join(RAIZ, "docs", "ARTES_NECESSARIAS.md")
-    import re  # noqa: E402
-    texto = re.sub(r"### 22\.\d+ ", "### ", "\n".join(L).replace("## 22. ", "## "))
-    open(saida, "w", encoding="utf-8").write(texto + "\n")
-    print(saida, len(L))

@@ -14,7 +14,9 @@
 > - **Dicas no modo Fácil:** seta até o objetivo, dicas de cada chefe, aviso de vida baixa e dica na derrota (seção 21).
 > - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Aurora) e a arte de armadura das duas (seção 19.3).
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
-> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22 e o arquivo `ARTES_NECESSARIAS.md`).
+> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
+
+> 📚 **Tudo num documento só:** o que falta criar (seção 23), o índice dos itens de arte recebidos (seção 24), o plano de criação por item (seção 25) e como rodar, publicar e editar o jogo (seção 26) agora ficam aqui dentro. Os arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md`) saíram do repositório.
 
 > 🧙 **Itens 124 a 127 chegaram:** o **Mago** animado (parado, falando e fazendo magia), o **Espírito das Ruínas**, que agora aparece de verdade no altar (surgindo, flutuando e falando), e o **Theo** parado e andando nas 4 direções, alerta e curioso. O Theo está todo com arte nova.
 > 📐 **Dimensão de cada cenário:** tabela e gabarito (planta) de cada fase na seção 22.12.
@@ -31,7 +33,7 @@
 > - **Dragão novo** em todos os golpes, no voo, na tontura, na queda e derrotado. O dragão antigo saiu do jogo. As animações novas duram o mesmo tempo que as antigas, porque é essa duração que está sincronizada com os golpes.
 > - **Efeitos em pixel art:** impacto, faíscas, explosão, ponto fraco, corações, lágrimas, poeira e fumaça (seção 13).
 > - O tamanho de cada personagem agora é **igualado entre as animações** (antes a Line encolhia ao rir, e a Bell nova vinha menor que a Line).
-> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias (veja `ANIMACOES_PENDENTES.md`).
+> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias (veja a seção 23).
 
 > 📖 **Novidades da história (esta versão):**
 > - Um **tema** que costura a aventura inteira: *luz não se rouba, se divide* (seção 3).
@@ -96,6 +98,10 @@
 - [20. Chefes elementais](#20-chefes-elementais)
 - [21. Dicas do modo Fácil](#21-dicas-do-modo-facil)
 - [22. Arte necessária — lista completa](#22-arte-necessaria--lista-completa)
+- [23. O que falta criar](#23-o-que-falta-criar)
+- [24. Índice dos itens de arte recebidos](#24-indice-dos-itens-de-arte-recebidos)
+- [25. Plano de criação das animações por item](#25-plano-de-criacao-das-animacoes-por-item)
+- [26. Como rodar, publicar e editar o jogo](#26-como-rodar-publicar-e-editar-o-jogo)
 
 ## 1. Visão geral
 
@@ -176,7 +182,7 @@ Galinhas (brancas e marrons), pintinhos, vacas, cavalo e porcos já têm arte. O
 *Theo e bichos da fazenda (temporários)*
 
 ### Mago
-Velho sábio da Floresta Sussurrante. Guarda a espada e explica o caminho. Hoje é uma imagem parada que respira e brilha.
+Velho sábio da Floresta Sussurrante. Guarda a espada e explica o caminho. Tem arte animada: parado, falando quando a Line chega perto e fazendo magia antes de entregar a espada.
 
 ### Espírito das Ruínas
 Voz antiga que mora no altar das Ruínas Encantadas e ensina a magia à Line. Ainda não tem visual próprio, só a luz do altar.
@@ -2655,7 +2661,8 @@ Os códigos `FX_*` da seção 10.10 são para quando esses efeitos ganharem arte
 | `game/js/herois.js` | Bell jogável, troca de heroína, companheira que segue atrás |
 | `game/js/parte2.js` | história da Parte 2, moradores e documentos novos, objetivos |
 | `game/js/dicas.js` | dicas do modo Fácil: seta guia, dicas de chefe e de derrota |
-| `tools/doc_parte2.py` | seções 16 a 22 deste documento e o `ARTES_NECESSARIAS.md` |
+| `tools/doc_parte2.py` | seções 16 a 22 deste documento |
+| `tools/doc_apendices.py` | seções 23 a 26: o que falta, índice e plano dos itens, como rodar e editar o jogo |
 | `game/js/entrada.js` | teclado, controle, toque e dificuldade |
 | `game/assets/` | folhas de sprites, retratos, cenário (inclui `cenario/encontro_*.webp` do prólogo) |
 | `tools/extrair_sprites.py` | converte a arte recebida em folhas para o jogo |
@@ -2691,7 +2698,7 @@ A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verd
 | Dicas do Fácil | seta para a saída certa, para o cristal apagado e para o chefe; dica de chefe e de derrota |
 
 ### Como atualizar este documento
-As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json` (também exporta mapas, baús, itens, documentos e loja), `python3 tools/extrair_roteiro.py roteiro.json`, `node tools/fotos_documentacao.js pasta` (capturas das partes novas, depois convertidas para JPG em `docs/imagens`), `python3 tools/gerar_documentacao.py inventario.json roteiro.json` e, para a versão HTML, `python3 tools/gerar_documentacao_html.py`.
+As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.5.
 
 ![No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma](imagens/25-galeria.jpg)
 *No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma*
@@ -3234,7 +3241,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
 | **Total** | **553** | **253** | **171** | **129** |
 
-A lista com cada código está na seção 10 e, só com o que falta, em `ANIMACOES_PENDENTES.md`.
+A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
 ### 22.2 Line e Bell (personagens principais)
 
@@ -3496,6 +3503,760 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 4. **Moradores** (Cora, Tião, Brisa e os do vilarejo) e o **dragão amigo**.
 5. **Armaduras** das duas (parada/andar/correr primeiro).
 6. **Retratos** que faltam, ícones de itens e documentos, interface e efeitos.
+
+## 23. O que falta criar
+
+> Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
+
+**Status:** 253 de 553 animações com arte · 171 usando uma substituta · 129 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+
+### 23.1 Reenviar ou mandar
+
+- **Item 96**: chegou com 2 imagem(ns) vazia(s) em `DRAGON_FALL`, `DRAGON_DEFEATED`. As animações funcionam sem esses quadros, mas ficam incompletas.
+- **Item 106**: chegou com 1 imagem(ns) vazia(s) em `BELL_LAUGH_AT_LINE`. As animações funcionam sem esses quadros, mas ficam incompletas.
+- **Item 108**: chegou com 3 imagem(ns) vazia(s) em `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`. As animações funcionam sem esses quadros, mas ficam incompletas.
+- **Item 110**: `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.2) até chegar a arte certa.
+- **Item 111**: `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.2) até chegar a arte certa.
+- **Item 112**: `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.2) até chegar a arte certa.
+- **Item 113**: `LINE_BELL_DANCE` foi recusado: a Line some em alguns quadros. O jogo segue com a versão anterior.
+- **Item 114**: `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK` estão no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
+- **Item 115**: `LINE_COMBAT_RUN_BACK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
+- **Item 118**: `DRAGON_SLEEP` foi recusado: não é o dragão dormindo (poses de voo). O jogo usa a substituta (seção 23.2) até chegar a arte certa.
+- **Item 119**: `GOLEM_WALK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
+- **Item 140 (Minas Shopping)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+
+### 23.2 Animações ainda sem arte
+
+| Grupo | Código | O que é | Hoje usa |
+|---|---|---|---|
+| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
+| Line e Bell juntas | `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
+| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| Dragão | `DRAGON_SLEEP` | Dormir | `DRAGON_DEFEATED` |
+| Bichos da fazenda | `DUCK_IDLE` | Pato — Parado | desenho no código |
+| Bichos da fazenda | `DUCK_WALK` | Pato — Andar | desenho no código |
+| Bichos da fazenda | `DUCK_SWIM` | Pato — Nadando | desenho no código |
+| Bichos da fazenda | `DUCK_RUN` | Pato — Correr | desenho no código |
+| Bichos da fazenda | `CAT_IDLE` | Gato — Parado | desenho no código |
+| Bichos da fazenda | `CAT_WALK` | Gato — Andar | desenho no código |
+| Bichos da fazenda | `CAT_SLEEP` | Gato — Dormindo | desenho no código |
+| Bichos da fazenda | `CAT_PURR` | Gato — Carinho (ronronando) | desenho no código |
+| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_FRONT` |
+| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_BACK` |
+| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_LEFT` |
+| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_RIGHT` |
+| Bell jogável (Parte 2) | `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | `BELL_HIGH_FIVE` |
+| Bell jogável (Parte 2) | `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | `BELL_DANCE` |
+| Bell jogável (Parte 2) | `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) | `BELL_JUMP` |
+| Bell jogável (Parte 2) | `BELL_SING` | Bell canta a Canção (notas coloridas saindo) | `BELL_HAPPY` |
+| Bell jogável (Parte 2) | `BELL_BLOCK` | Bell se protege com um escudo de luz rosa | `BELL_IDLE_RIGHT` |
+| Bell jogável (Parte 2) | `BELL_DODGE` | Bell esquiva (pulinho de lado) | `BELL_JUMP` |
+| Bell jogável (Parte 2) | `BELL_DASH` | Bell arrancada | `BELL_RUN_RIGHT` |
+| Bell jogável (Parte 2) | `BELL_HIT` | Bell recebe dano | `BELL_SCARED` |
+| Bell jogável (Parte 2) | `BELL_KNOCKDOWN` | Bell cai no chão (golpe forte) | `BELL_FALL` |
+| Bell jogável (Parte 2) | `BELL_EXHAUSTED_IDLE` | Bell cansada, ofegante (pouca vida) | `BELL_IDLE_RIGHT` |
+| Bell jogável (Parte 2) | `BELL_CROUCH` | Bell agachada (beber na fonte / pegar item) | `BELL_IDLE_FRONT` |
+| Bell jogável (Parte 2) | `BELL_DETERMINED` | Bell decidida (punhos fechados) | `BELL_IDLE_FRONT` |
+| Bell jogável (Parte 2) | `BELL_CELEBRATE` | Bell comemora vitória | `BELL_HAPPY` |
+| Bell jogável (Parte 2) | `BELL_TALK` | Bell falando (cenas) | `BELL_IDLE_FRONT` |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_SLEEP` | Colosso de Raízes — dormindo (antes da luta) | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_ROOTS` | Colosso de Raízes — raízes saindo do chão em linha | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_THORNS` | Colosso de Raízes — anel de espinhos | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_MUD` | Colosso de Raízes — cuspe de lama | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_SUMMON` | Colosso de Raízes — chama sombras | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_STUNNED` | Colosso de Raízes — cansado, núcleo exposto (hora de atacar) | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_HIT` | Colosso de Raízes — recebe dano | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_IDLE` | Serpente das Marés — parado, respirando | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_WAKE` | Serpente das Marés — acordando / rugido de apresentação | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_ATTACK` | Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_DIVE` | Serpente das Marés — mergulho (some e reaparece) | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_WATER_JET` | Serpente das Marés — jatos de água | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_WAVE` | Serpente das Marés — onda | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_STUNNED` | Serpente das Marés — cansado, núcleo exposto (hora de atacar) | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_HIT` | Serpente das Marés — recebe dano | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_DEATH` | Serpente das Marés — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_FREED` | Serpente das Marés — libertado, volta às cores verdadeiras e agradece | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_SLEEP` | Grifo da Tempestade — dormindo (antes da luta) | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_IDLE` | Grifo da Tempestade — parado, respirando | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_WAKE` | Grifo da Tempestade — acordando / rugido de apresentação | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_ATTACK` | Grifo da Tempestade — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_GUST` | Grifo da Tempestade — rajada de vento | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_FEATHERS` | Grifo da Tempestade — leque de penas | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_LIGHTNING` | Grifo da Tempestade — chama raios | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_STUNNED` | Grifo da Tempestade — cansado, núcleo exposto (hora de atacar) | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_HIT` | Grifo da Tempestade — recebe dano | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_DEATH` | Grifo da Tempestade — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_FREED` | Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_SLEEP` | Titã de Magma — dormindo (antes da luta) | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_IDLE` | Titã de Magma — parado, respirando | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_WAKE` | Titã de Magma — acordando / rugido de apresentação | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_ATTACK` | Titã de Magma — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_THROW` | Titã de Magma — arremesso de rocha | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_HIT` | Titã de Magma — recebe dano | desenho no código |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_SLEEP` | Hidra de Lama — dormindo (antes da luta) | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_IDLE` | Hidra de Lama — parado, respirando | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WAVE` | Hidra de Lama — onda | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_MUD` | Hidra de Lama — cuspe de lama | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_HIT` | Hidra de Lama — recebe dano | desenho no código |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_SLEEP` | Tempestade Viva — dormindo (antes da luta) | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_IDLE` | Tempestade Viva — parado, respirando | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAVE` | Tempestade Viva — onda | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_SLEEP` | Quimera Primordial — dormindo (antes da luta) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_IDLE` | Quimera Primordial — parado, respirando | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_ATTACK` | Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_SLAM` | Quimera Primordial — pisão (onda no chão) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WAVE` | Quimera Primordial — onda | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_GUST` | Quimera Primordial — rajada de vento | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_HIT` | Quimera Primordial — recebe dano | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | desenho no código |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | desenho no código |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | `WISP_IDLE` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | `WISP_ATTACK` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | `WISP_DEATH` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | `WISP_IDLE` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | `WISP_ATTACK` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | `WISP_DEATH` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | `WISP_IDLE` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | `WISP_ATTACK` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | `WISP_DEATH` |
+| Moradores (todos, incluindo os da Parte 2) | `CORA_IDLE` | Dona Cora (jardineira do vale) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `CORA_TALK` | Dona Cora (jardineira do vale) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `CORA_SLEEP` | Dona Cora (jardineira do vale) — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TIAO_IDLE` | Seu Tião (pescador do lago) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TIAO_TALK` | Seu Tião (pescador do lago) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TIAO_SLEEP` | Seu Tião (pescador do lago) — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `BRISA_IDLE` | Vó Brisa (pastora dos picos) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `BRISA_TALK` | Vó Brisa (pastora dos picos) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `BRISA_SLEEP` | Vó Brisa (pastora dos picos) — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ROSA_IDLE` | Dona Rosa (loja) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ROSA_TALK` | Dona Rosa (loja) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ROSA_SLEEP` | Dona Rosa (loja) — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `BENTO_IDLE` | Seu Bento (ferraria) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `BENTO_TALK` | Seu Bento (ferraria) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `BENTO_SLEEP` | Seu Bento (ferraria) — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ZE_IDLE` | Seu Zé — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ZE_TALK` | Seu Zé — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ZE_SLEEP` | Seu Zé — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `LURDES_IDLE` | Dona Lurdes — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `LURDES_TALK` | Dona Lurdes — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `LURDES_SLEEP` | Dona Lurdes — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `PEDRO_IDLE` | Pedrinho — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `PEDRO_TALK` | Pedrinho — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `PEDRO_SLEEP` | Pedrinho — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TOBIAS_IDLE` | Tobias (caçador) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TOBIAS_TALK` | Tobias (caçador) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TOBIAS_SLEEP` | Tobias (caçador) — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TIAO_FISH` | Seu Tião — pescando no píer | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `BENTO_FORGE` | Seu Bento — martelando na bigorna | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `PEDRO_RUN` | Pedrinho — correndo pra lá e pra cá | desenho no código |
+| Dragão amigo (Parte 2) | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | `DRAGON_IDLE` |
+| Dragão amigo (Parte 2) | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | `DRAGON_IDLE` |
+| Dragão amigo (Parte 2) | `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | `DRAGON_DEFEATED` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_FRONT` | Line com Túnica Acolchoada — parada | `LINE_IDLE_FRONT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_BACK` | Line com Túnica Acolchoada — parada | `LINE_IDLE_BACK` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_LEFT` | Line com Túnica Acolchoada — parada | `LINE_IDLE_LEFT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_RIGHT` | Line com Túnica Acolchoada — parada | `LINE_IDLE_RIGHT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_WALK_FRONT` | Line com Túnica Acolchoada — andando | `LINE_WALK_FRONT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_WALK_BACK` | Line com Túnica Acolchoada — andando | `LINE_WALK_BACK` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_WALK_LEFT` | Line com Túnica Acolchoada — andando | `LINE_WALK_LEFT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_WALK_RIGHT` | Line com Túnica Acolchoada — andando | `LINE_WALK_RIGHT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_RUN_FRONT` | Line com Túnica Acolchoada — correndo | `LINE_RUN_FRONT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_RUN_BACK` | Line com Túnica Acolchoada — correndo | `LINE_RUN_BACK` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_RUN_LEFT` | Line com Túnica Acolchoada — correndo | `LINE_RUN_LEFT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_RUN_RIGHT` | Line com Túnica Acolchoada — correndo | `LINE_RUN_RIGHT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_COMBAT_IDLE` | Line com Túnica Acolchoada — em guarda | `LINE_COMBAT_IDLE` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_ATTACK_HORIZONTAL` | Line com Túnica Acolchoada — golpe horizontal | `LINE_ATTACK_HORIZONTAL` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_ATTACK_VERTICAL` | Line com Túnica Acolchoada — golpe vertical | `LINE_ATTACK_VERTICAL` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_ATTACK_COMBO` | Line com Túnica Acolchoada — golpe final do combo | `LINE_ATTACK_COMBO` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_ATTACK_SPIN` | Line com Túnica Acolchoada — giro | `LINE_ATTACK_SPIN` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_CAST_SPELL` | Line com Túnica Acolchoada — Raio de Luz | `LINE_CAST_SPELL` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_BLOCK` | Line com Túnica Acolchoada — defesa | `LINE_BLOCK` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_DODGE` | Line com Túnica Acolchoada — esquiva | `LINE_DODGE` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_JUMP` | Line com Túnica Acolchoada — pulo | `LINE_JUMP_RIGHT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_HIT_LIGHT` | Line com Túnica Acolchoada — recebe dano | `LINE_HIT_LIGHT` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_KNOCKDOWN` | Line com Túnica Acolchoada — cai no chão | `LINE_KNOCKDOWN` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_IDLE_FRONT` | Line com Cota de Malha — parada | `LINE_IDLE_FRONT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_IDLE_BACK` | Line com Cota de Malha — parada | `LINE_IDLE_BACK` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_IDLE_LEFT` | Line com Cota de Malha — parada | `LINE_IDLE_LEFT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_IDLE_RIGHT` | Line com Cota de Malha — parada | `LINE_IDLE_RIGHT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_WALK_FRONT` | Line com Cota de Malha — andando | `LINE_WALK_FRONT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_WALK_BACK` | Line com Cota de Malha — andando | `LINE_WALK_BACK` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_WALK_LEFT` | Line com Cota de Malha — andando | `LINE_WALK_LEFT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_WALK_RIGHT` | Line com Cota de Malha — andando | `LINE_WALK_RIGHT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_RUN_FRONT` | Line com Cota de Malha — correndo | `LINE_RUN_FRONT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_RUN_BACK` | Line com Cota de Malha — correndo | `LINE_RUN_BACK` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_RUN_LEFT` | Line com Cota de Malha — correndo | `LINE_RUN_LEFT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_RUN_RIGHT` | Line com Cota de Malha — correndo | `LINE_RUN_RIGHT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_COMBAT_IDLE` | Line com Cota de Malha — em guarda | `LINE_COMBAT_IDLE` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_ATTACK_HORIZONTAL` | Line com Cota de Malha — golpe horizontal | `LINE_ATTACK_HORIZONTAL` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_ATTACK_VERTICAL` | Line com Cota de Malha — golpe vertical | `LINE_ATTACK_VERTICAL` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_ATTACK_COMBO` | Line com Cota de Malha — golpe final do combo | `LINE_ATTACK_COMBO` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_ATTACK_SPIN` | Line com Cota de Malha — giro | `LINE_ATTACK_SPIN` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_CAST_SPELL` | Line com Cota de Malha — Raio de Luz | `LINE_CAST_SPELL` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_BLOCK` | Line com Cota de Malha — defesa | `LINE_BLOCK` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_DODGE` | Line com Cota de Malha — esquiva | `LINE_DODGE` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_JUMP` | Line com Cota de Malha — pulo | `LINE_JUMP_RIGHT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_HIT_LIGHT` | Line com Cota de Malha — recebe dano | `LINE_HIT_LIGHT` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_KNOCKDOWN` | Line com Cota de Malha — cai no chão | `LINE_KNOCKDOWN` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_IDLE_FRONT` | Line com Armadura de Brasa — parada | `LINE_IDLE_FRONT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_IDLE_BACK` | Line com Armadura de Brasa — parada | `LINE_IDLE_BACK` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_IDLE_LEFT` | Line com Armadura de Brasa — parada | `LINE_IDLE_LEFT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_IDLE_RIGHT` | Line com Armadura de Brasa — parada | `LINE_IDLE_RIGHT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_WALK_FRONT` | Line com Armadura de Brasa — andando | `LINE_WALK_FRONT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_WALK_BACK` | Line com Armadura de Brasa — andando | `LINE_WALK_BACK` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_WALK_LEFT` | Line com Armadura de Brasa — andando | `LINE_WALK_LEFT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_WALK_RIGHT` | Line com Armadura de Brasa — andando | `LINE_WALK_RIGHT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_RUN_FRONT` | Line com Armadura de Brasa — correndo | `LINE_RUN_FRONT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_RUN_BACK` | Line com Armadura de Brasa — correndo | `LINE_RUN_BACK` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_RUN_LEFT` | Line com Armadura de Brasa — correndo | `LINE_RUN_LEFT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_RUN_RIGHT` | Line com Armadura de Brasa — correndo | `LINE_RUN_RIGHT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_COMBAT_IDLE` | Line com Armadura de Brasa — em guarda | `LINE_COMBAT_IDLE` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_ATTACK_HORIZONTAL` | Line com Armadura de Brasa — golpe horizontal | `LINE_ATTACK_HORIZONTAL` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_ATTACK_VERTICAL` | Line com Armadura de Brasa — golpe vertical | `LINE_ATTACK_VERTICAL` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_ATTACK_COMBO` | Line com Armadura de Brasa — golpe final do combo | `LINE_ATTACK_COMBO` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_ATTACK_SPIN` | Line com Armadura de Brasa — giro | `LINE_ATTACK_SPIN` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_CAST_SPELL` | Line com Armadura de Brasa — Raio de Luz | `LINE_CAST_SPELL` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_BLOCK` | Line com Armadura de Brasa — defesa | `LINE_BLOCK` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_DODGE` | Line com Armadura de Brasa — esquiva | `LINE_DODGE` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_JUMP` | Line com Armadura de Brasa — pulo | `LINE_JUMP_RIGHT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_HIT_LIGHT` | Line com Armadura de Brasa — recebe dano | `LINE_HIT_LIGHT` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_KNOCKDOWN` | Line com Armadura de Brasa — cai no chão | `LINE_KNOCKDOWN` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_IDLE_FRONT` | Bell com Vestido Reforçado — parada | `BELL_IDLE_FRONT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_IDLE_BACK` | Bell com Vestido Reforçado — parada | `BELL_IDLE_BACK` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_IDLE_LEFT` | Bell com Vestido Reforçado — parada | `BELL_IDLE_LEFT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_IDLE_RIGHT` | Bell com Vestido Reforçado — parada | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_WALK_FRONT` | Bell com Vestido Reforçado — andando | `BELL_WALK_FRONT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_WALK_BACK` | Bell com Vestido Reforçado — andando | `BELL_WALK_BACK` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_WALK_LEFT` | Bell com Vestido Reforçado — andando | `BELL_WALK_LEFT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_WALK_RIGHT` | Bell com Vestido Reforçado — andando | `BELL_WALK_RIGHT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_FRONT` | Bell com Vestido Reforçado — correndo | `BELL_RUN_FRONT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | `BELL_RUN_BACK` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | `BELL_RUN_LEFT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | `BELL_RUN_RIGHT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | `BELL_HIGH_FIVE` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | `BELL_DANCE` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | `BELL_HAPPY` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | `BELL_JUMP` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_JUMP` | Bell com Vestido Reforçado — pulo | `BELL_JUMP` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | `BELL_SCARED` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | `BELL_FALL` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_IDLE_FRONT` | Bell com Manto Estelar — parada | `BELL_IDLE_FRONT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_IDLE_BACK` | Bell com Manto Estelar — parada | `BELL_IDLE_BACK` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_IDLE_LEFT` | Bell com Manto Estelar — parada | `BELL_IDLE_LEFT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_IDLE_RIGHT` | Bell com Manto Estelar — parada | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_WALK_FRONT` | Bell com Manto Estelar — andando | `BELL_WALK_FRONT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_WALK_BACK` | Bell com Manto Estelar — andando | `BELL_WALK_BACK` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_WALK_LEFT` | Bell com Manto Estelar — andando | `BELL_WALK_LEFT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_WALK_RIGHT` | Bell com Manto Estelar — andando | `BELL_WALK_RIGHT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_FRONT` | Bell com Manto Estelar — correndo | `BELL_RUN_FRONT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | `BELL_RUN_BACK` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | `BELL_RUN_LEFT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | `BELL_RUN_RIGHT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | `BELL_HIGH_FIVE` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | `BELL_DANCE` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | `BELL_HAPPY` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | `BELL_JUMP` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_JUMP` | Bell com Manto Estelar — pulo | `BELL_JUMP` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | `BELL_SCARED` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | `BELL_FALL` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_IDLE_FRONT` | Bell com Armadura da Aurora — parada | `BELL_IDLE_FRONT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_IDLE_BACK` | Bell com Armadura da Aurora — parada | `BELL_IDLE_BACK` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_IDLE_LEFT` | Bell com Armadura da Aurora — parada | `BELL_IDLE_LEFT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_IDLE_RIGHT` | Bell com Armadura da Aurora — parada | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_WALK_FRONT` | Bell com Armadura da Aurora — andando | `BELL_WALK_FRONT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_WALK_BACK` | Bell com Armadura da Aurora — andando | `BELL_WALK_BACK` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_WALK_LEFT` | Bell com Armadura da Aurora — andando | `BELL_WALK_LEFT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_WALK_RIGHT` | Bell com Armadura da Aurora — andando | `BELL_WALK_RIGHT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_FRONT` | Bell com Armadura da Aurora — correndo | `BELL_RUN_FRONT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | `BELL_RUN_BACK` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | `BELL_RUN_LEFT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | `BELL_RUN_RIGHT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | `BELL_HIGH_FIVE` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | `BELL_DANCE` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | `BELL_HAPPY` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | `BELL_JUMP` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_JUMP` | Bell com Armadura da Aurora — pulo | `BELL_JUMP` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | `BELL_SCARED` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | `BELL_FALL` |
+
+### 23.3 Como mandar arte nova
+
+Qualquer um destes formatos funciona (detalhes e regras de desenho na seção 14; tamanhos na seção 22.0):
+
+1. **HTML de item** (`LINE_BELL_ITEM_NN.html`), nos formatos já usados: `const animations` (PNG por quadro, em JSON ou com aspas simples) ou `const payload` (lista de imagens e, para cada animação, a ordem dos quadros, o fps e uma descrição). Quadros 1254×1254 com fundo transparente.
+2. **HTML de laboratório** (`*LABORATORIO*.html`).
+3. **Pasta em `arte/`**: `arte/<grupo>/<CODIGO>/00.png, 01.png…` com um `config.json` (`{"unidades_por_px": 0.62}`).
+
+Depois, `python3 tools/extrair_sprites.py` (ou `--apenas 138,139` para só alguns itens) gera as folhas e registra tudo no jogo. O código de cada animação precisa ser **exatamente** o da lista. Animações de lado podem vir só viradas para a **direita**: o jogo espelha. O tamanho de cada personagem é igualado sozinho entre as animações. Animações de andar e correr com menos de 3 quadros diferentes são recusadas sozinhas, e a anterior fica.
+
+**Theo:** a arte que está no jogo é o **layout oficial** para a arte final: só melhorar, sem perder os traços (lista completa na seção 2).
+
+## 24. Índice dos itens de arte recebidos
+
+Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB e com animações completas: nenhuma animação é dividida entre arquivos. A tabela é gerada lendo os próprios arquivos.
+
+| Item | Arquivo | Tamanho | Animações incluídas |
+|---:|---|---:|---|
+| 1 | `LINE_BELL_ITEM_01.html` | 11,75 MB | `LINE_IDLE_FRONT` |
+| 2 | `LINE_BELL_ITEM_02.html` | 20,07 MB | `LINE_LOOK_SIDES_FRONT` |
+| 3 | `LINE_BELL_ITEM_03.html` | 17,01 MB | `LINE_BLINK_FRONT`, `LINE_IDLE_LEFT` |
+| 4 | `LINE_BELL_ITEM_04.html` | 17,98 MB | `LINE_IDLE_RIGHT`, `LINE_IDLE_BACK` |
+| 5 | `LINE_BELL_ITEM_05.html` | 14,75 MB | `LINE_WALK_RIGHT` |
+| 6 | `LINE_BELL_ITEM_06.html` | 14,76 MB | `LINE_WALK_LEFT` |
+| 7 | `LINE_BELL_ITEM_07.html` | 20,72 MB | `LINE_WALK_FRONT`, `LINE_WALK_BACK` |
+| 8 | `LINE_BELL_ITEM_08.html` | 4,61 MB | `LINE_RUN_START_RIGHT` |
+| 9 | `LINE_BELL_ITEM_09.html` | 21,49 MB | `LINE_RUN_RIGHT` |
+| 10 | `LINE_BELL_ITEM_10.html` | 21,20 MB | `LINE_RUN_LEFT` |
+| 11 | `LINE_BELL_ITEM_11.html` | 21,78 MB | `LINE_RUN_FRONT`, `LINE_RUN_BACK` |
+| 12 | `LINE_BELL_ITEM_12.html` | 9,74 MB | `LINE_RUN_STOP_RIGHT`, `LINE_RUN_STOP_LEFT` |
+| 13 | `LINE_BELL_ITEM_13.html` | 20,89 MB | `LINE_RUN_START_LEFT`, `LINE_RUN_START_FRONT`, `LINE_RUN_START_BACK`, `LINE_RUN_STOP_FRONT` |
+| 14 | `LINE_BELL_ITEM_14.html` | 5,01 MB | `LINE_RUN_STOP_BACK` |
+| 15 | `LINE_BELL_ITEM_15.html` | 6,00 MB | `LINE_JUMP_RIGHT` |
+| 16 | `LINE_BELL_ITEM_16.html` | 4,81 MB | `LINE_LAND_RIGHT` |
+| 17 | `LINE_BELL_ITEM_17.html` | 4,90 MB | `LINE_CROUCH` |
+| 18 | `LINE_BELL_ITEM_18.html` | 4,97 MB | `LINE_CROUCH_STAND` |
+| 19 | `LINE_BELL_ITEM_19.html` | 8,73 MB | `LINE_STUMBLE` |
+| 20 | `LINE_BELL_ITEM_20.html` | 7,87 MB | `LINE_FALL` |
+| 21 | `LINE_BELL_ITEM_21.html` | 7,84 MB | `LINE_GROUND_STAND` |
+| 22 | `LINE_BELL_ITEM_22.html` | 7,81 MB | `LINE_SWORD_DRAW` |
+| 23 | `LINE_BELL_ITEM_23.html` | 8,72 MB | `LINE_SWORD_SHEATHE` |
+| 24 | `LINE_BELL_ITEM_24.html` | 12,02 MB | `LINE_COMBAT_IDLE` |
+| 25 | `LINE_BELL_ITEM_25.html` | 12,16 MB | `LINE_ATTACK_HORIZONTAL` |
+| 26 | `LINE_BELL_ITEM_26.html` | 13,19 MB | `LINE_ATTACK_VERTICAL` |
+| 27 | `LINE_BELL_ITEM_27.html` | 19,06 MB | `LINE_ATTACK_DIAGONAL` |
+| 28 | `LINE_BELL_ITEM_28.html` | 17,28 MB | `LINE_ATTACK_COMBO` |
+| 29 | `LINE_BELL_ITEM_29.html` | 15,30 MB | `LINE_ATTACK_SPIN` |
+| 30 | `LINE_BELL_ITEM_30.html` | 13,96 MB | `LINE_ATTACK_AIR` |
+| 31 | `LINE_BELL_ITEM_31.html` | 13,26 MB | `LINE_BLOCK` |
+| 32 | `LINE_BELL_ITEM_32.html` | 13,03 MB | `LINE_DODGE` |
+| 33 | `LINE_BELL_ITEM_33.html` | 13,57 MB | `LINE_DASH` |
+| 34 | `LINE_BELL_ITEM_34.html` | 13,13 MB | `LINE_HIT_LIGHT` |
+| 35 | `LINE_BELL_ITEM_35.html` | 1,27 MB | `LINE_HIT_HEAVY` |
+| 36 | `LINE_BELL_ITEM_36.html` | 1,25 MB | `LINE_THROWN` |
+| 37 | `LINE_BELL_ITEM_37.html` | 1,99 MB | `LINE_KNOCKDOWN` |
+| 38 | `LINE_BELL_ITEM_38.html` | 2,27 MB | `LINE_INJURED_STAND` |
+| 39 | `LINE_BELL_ITEM_39.html` | 2,09 MB | `LINE_EXHAUSTED_IDLE` |
+| 40 | `LINE_BELL_ITEM_40.html` | 3,42 MB | `LINE_DRAGON_FINAL_ATTACK` |
+| 41 | `LINE_BELL_ITEM_41.html` | 1,69 MB | `LINE_HAPPY` |
+| 42 | `LINE_BELL_ITEM_42.html` | 2,10 MB | `LINE_LAUGH` |
+| 43 | `LINE_BELL_ITEM_43.html` | 1,74 MB | `LINE_DETERMINED` |
+| 44 | `LINE_BELL_ITEM_44.html` | 1,79 MB | `LINE_ANGRY` |
+| 45 | `LINE_BELL_ITEM_45.html` | 2,19 MB | `LINE_SCARED` |
+| 46 | `LINE_BELL_ITEM_46.html` | 1,64 MB | `LINE_SAD` |
+| 47 | `LINE_BELL_ITEM_47.html` | 2,10 MB | `LINE_CRY` |
+| 48 | `LINE_BELL_ITEM_48.html` | 2,42 MB | `LINE_CALL_BELL` |
+| 49 | `LINE_BELL_ITEM_49.html` | 1,67 MB | `LINE_RELIEVED` |
+| 50 | `LINE_BELL_ITEM_50.html` | 2,63 MB | `BELL_IDLE_FRONT`, `BELL_BLINK_FRONT`, `BELL_LOOK_SIDES_FRONT` |
+| 51 | `LINE_BELL_ITEM_51.html` | 2,19 MB | `BELL_IDLE_LEFT`, `BELL_IDLE_RIGHT`, `BELL_IDLE_BACK` |
+| 52 | `LINE_BELL_ITEM_52.html` | 1,89 MB | `BELL_WALK_RIGHT` |
+| 53 | `LINE_BELL_ITEM_53.html` | 1,88 MB | `BELL_WALK_LEFT` |
+| 54 | `LINE_BELL_ITEM_54.html` | 2,91 MB | `BELL_WALK_FRONT`, `BELL_WALK_BACK` |
+| 55 | `LINE_BELL_ITEM_55.html` | 2,37 MB | `BELL_RUN_RIGHT` |
+| 56 | `LINE_BELL_ITEM_56.html` | 2,34 MB | `BELL_RUN_LEFT` |
+| 57 | `LINE_BELL_ITEM_57.html` | 3,44 MB | `BELL_RUN_FRONT`, `BELL_RUN_BACK` |
+| 58 | `LINE_BELL_ITEM_58.html` | 2,99 MB | `BELL_JUMP`, `BELL_LAND`, `BELL_GROUND_STAND` |
+| 59 | `LINE_BELL_ITEM_59.html` | 3,50 MB | `BELL_SCARED`, `BELL_FLEE` |
+| 60 | `LINE_BELL_ITEM_60.html` | 1,97 MB | `BELL_FALL` |
+| 61 | `LINE_BELL_ITEM_61.html` | 2,11 MB | `BELL_CAPTURED` |
+| 62 | `LINE_BELL_ITEM_62.html` | 22,44 MB | `BELL_DRAGON_CARRIED` |
+| 63 | `LINE_BELL_ITEM_63.html` | 3,25 MB | `BELL_TRAPPED`, `BELL_ESCAPE_ATTEMPT` |
+| 64 | `LINE_BELL_ITEM_64.html` | 1,94 MB | `BELL_BREAK_FREE` |
+| 65 | `LINE_BELL_ITEM_65.html` | 1,78 MB | `BELL_CALL_LINE` |
+| 66 | `LINE_BELL_ITEM_66.html` | 2,42 MB | `BELL_HELP_LINE` |
+| 67 | `LINE_BELL_ITEM_67.html` | 2,87 MB | `BELL_HAPPY`, `BELL_RELIEVED`, `BELL_CRY` |
+| 68 | `LINE_BELL_ITEM_68.html` | 2,64 MB | `LINE_BELL_WALK_TOGETHER` |
+| 69 | `LINE_BELL_ITEM_69.html` | 2,48 MB | `LINE_BELL_WALK_HANDS` |
+| 70 | `LINE_BELL_ITEM_70.html` | 2,99 MB | `LINE_BELL_RUN_TOGETHER` |
+| 71 | `LINE_BELL_ITEM_71.html` | 3,67 MB | `LINE_BELL_TALK`, `LINE_BELL_LAUGH` |
+| 72 | `LINE_BELL_ITEM_72.html` | 1,97 MB | `BELL_LEAN_ON_LINE` |
+| 73 | `LINE_BELL_ITEM_73.html` | 2,37 MB | `LINE_BELL_HOLD_HANDS` |
+| 74 | `LINE_BELL_ITEM_74.html` | 1,99 MB | `LINE_BELL_RESCUE_HUG` |
+| 75 | `LINE_BELL_ITEM_75.html` | 2,29 MB | `LINE_BELL_HUG_RELEASE` |
+| 76 | `LINE_BELL_ITEM_76.html` | 2,65 MB | `LINE_BELL_CELEBRATE` |
+| 77 | `LINE_BELL_ITEM_77.html` | 2,19 MB | `LINE_BELL_SIT_DOWN` |
+| 78 | `LINE_BELL_ITEM_78.html` | 1,96 MB | `BELL_HEAD_ON_LINE` |
+| 79 | `LINE_BELL_ITEM_79.html` | 2,30 MB | `LINE_BELL_SIT_IDLE` |
+| 80 | `LINE_BELL_ITEM_80.html` | 3,32 MB | `DRAGON_IDLE`, `DRAGON_BLINK` |
+| 81 | `LINE_BELL_ITEM_81.html` | 3,93 MB | `DRAGON_WALK`, `DRAGON_TURN` |
+| 82 | `LINE_BELL_ITEM_82.html` | 3,72 MB | `DRAGON_WINGS_OPEN`, `DRAGON_TAKEOFF` |
+| 83 | `LINE_BELL_ITEM_83.html` | 3,38 MB | `DRAGON_FLY`, `DRAGON_GLIDE` |
+| 84 | `LINE_BELL_ITEM_84.html` | 3,64 MB | `DRAGON_LAND` |
+| 85 | `LINE_BELL_ITEM_85.html` | 3,93 MB | `DRAGON_ROAR` |
+| 86 | `LINE_BELL_ITEM_86.html` | 3,50 MB | `DRAGON_BITE` |
+| 87 | `LINE_BELL_ITEM_87.html` | 3,94 MB | `DRAGON_CLAW_ATTACK` |
+| 88 | `LINE_BELL_ITEM_88.html` | 4,03 MB | `DRAGON_TAIL_ATTACK` |
+| 89 | `LINE_BELL_ITEM_89.html` | 10,63 MB | `DRAGON_FIRE_CHARGE`, `DRAGON_FIRE_BREATH` |
+| 90 | `LINE_BELL_ITEM_90.html` | 7,52 MB | `DRAGON_FIRE_STREAM` |
+| 91 | `LINE_BELL_ITEM_91.html` | 4,37 MB | `DRAGON_AIR_ATTACK` |
+| 92 | `LINE_BELL_ITEM_92.html` | 8,34 MB | `DRAGON_HIT`, `DRAGON_WEAK_POINT_HIT` |
+| 93 | `LINE_BELL_ITEM_93.html` | 4,72 MB | `DRAGON_STUNNED` |
+| 94 | `LINE_BELL_ITEM_94.html` | 6,56 MB | `DRAGON_DESPERATE_ATTACK` |
+| 95 | `LINE_BELL_ITEM_95.html` | 6,26 MB | `DRAGON_FINAL_HIT` |
+| 96 | `LINE_BELL_ITEM_96.html` | 5,14 MB | `DRAGON_FALL`, `DRAGON_DEFEATED` ⚠️ 2 imagem(ns) vazia(s): reenviar |
+| 97 | `LINE_BELL_ITEM_97.html` | 1,65 MB | `DRAGON_EYE_OPEN_END` |
+| 98 | `LINE_BELL_ITEM_98.html` | 0,31 MB | `FX_FIRE`, `FX_EMBERS`, `FX_FIRE_LIGHT` |
+| 99 | `LINE_BELL_ITEM_99.html` | 0,01 MB | `FX_SMOKE`, `FX_DUST` |
+| 100 | `LINE_BELL_ITEM_100.html` | 0,05 MB | `FX_IMPACT`, `FX_SPARKS`, `FX_EXPLOSION` |
+| 101 | `LINE_BELL_ITEM_101.html` | 0,05 MB | `FX_SWORD_TRAIL`, `FX_DRAGON_WEAK_POINT` |
+| 102 | `LINE_BELL_ITEM_102.html` | 0,04 MB | `FX_TEARS`, `FX_HEARTS`, `FX_AMBIENT_PARTICLES` |
+| 103 | `LINE_BELL_ITEM_103.html` | 2,98 MB | `LINE_ADMIRE`, `BELL_WAIT` |
+| 104 | `LINE_BELL_ITEM_104.html` | 4,47 MB | `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG` |
+| 105 | `LINE_BELL_ITEM_105.html` | 3,49 MB | `LINE_BELL_BK` |
+| 106 | `LINE_BELL_ITEM_106.html` | 2,25 MB | `LINE_PUNCH_MACHINE`, `BELL_LAUGH_AT_LINE` ⚠️ 1 imagem(ns) vazia(s): reenviar |
+| 107 | `LINE_BELL_ITEM_107.html` | 4,28 MB | `LINE_BELL_TUNNEL_KISS` |
+| 108 | `LINE_BELL_ITEM_108.html` | 5,07 MB | `BELL_LAUGH`, `BELL_CURTSY`, `BELL_HIGH_FIVE`, `BELL_DANCE` ⚠️ 3 imagem(ns) vazia(s): reenviar |
+| 109 | `LINE_BELL_ITEM_109.html` | 0,34 MB | `LINE_VICTORY` |
+| 110 | `LINE_BELL_ITEM_110.html` | 7,50 MB | `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_BACK`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` ⚠️ `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` parado(s): reenviar |
+| 111 | `LINE_BELL_ITEM_111.html` | 7,31 MB | `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_BACK`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` ⚠️ `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` parado(s): reenviar |
+| 112 | `LINE_BELL_ITEM_112.html` | 7,30 MB | `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_BACK`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` ⚠️ `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` parado(s): reenviar |
+| 113 | `LINE_BELL_ITEM_113.html` | 10,71 MB | `LINE_BELL_EAT`, `LINE_BELL_KISS`, `LINE_BELL_HIGH_FIVE`, `LINE_BELL_DANCE` ⚠️ `LINE_BELL_DANCE` recusado: reenviar |
+| 114 | `LINE_BELL_ITEM_114.html` | 6,35 MB | `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK`, `LINE_COMBAT_WALK_LEFT`, `LINE_COMBAT_WALK_RIGHT` ↻ `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK` com pouco movimento |
+| 115 | `LINE_BELL_ITEM_115.html` | 7,87 MB | `LINE_COMBAT_RUN_FRONT`, `LINE_COMBAT_RUN_BACK`, `LINE_COMBAT_RUN_LEFT`, `LINE_COMBAT_RUN_RIGHT` ↻ `LINE_COMBAT_RUN_BACK` com pouco movimento |
+| 116 | `LINE_BELL_ITEM_116.html` | 1,36 MB | `LINE_CAST_CHARGE`, `LINE_CAST_SPELL`, `LINE_CAST_STARS` |
+| 117 | `LINE_BELL_ITEM_117.html` | 7,02 MB | `LINE_JUMP_LEFT`, `LINE_LAND_LEFT` |
+| 118 | `LINE_BELL_ITEM_118.html` | 2,76 MB | `DRAGON_RUN`, `DRAGON_SLEEP` ⚠️ `DRAGON_SLEEP` recusado: reenviar |
+| 119 | `LINE_BELL_ITEM_119.html` | 5,38 MB | `GOLEM_SLEEP`, `GOLEM_IDLE`, `GOLEM_WALK` ↻ `GOLEM_WALK` com pouco movimento |
+| 120 | `LINE_BELL_ITEM_120.html` | 5,51 MB | `GOLEM_SLAM`, `GOLEM_THROW` |
+| 121 | `LINE_BELL_ITEM_121.html` | 3,97 MB | `GOLEM_STUNNED`, `GOLEM_DEATH` |
+| 122 | `LINE_BELL_ITEM_122.html` | 14,87 MB | `WISP_IDLE`, `WISP_ATTACK`, `WISP_DEATH` |
+| 123 | `LINE_BELL_ITEM_123.html` | 12,14 MB | `SHADOW_IDLE`, `SHADOW_ATTACK`, `SHADOW_HIT`, `SHADOW_DEATH`, `SHADOW_MOVE` |
+| 124 | `LINE_BELL_ITEM_124.html` | 7,03 MB | `MAGE_IDLE`, `MAGE_CAST`, `MAGE_TALK` |
+| 125 | `LINE_BELL_ITEM_125.html` | 5,85 MB | `SPIRIT_APPEAR`, `SPIRIT_POSE_A`, `SPIRIT_POSE_B` |
+| 126 | `LINE_BELL_ITEM_126.html` | 11,33 MB | `THEO_IDLE_FRONT`, `THEO_IDLE_BACK`, `THEO_IDLE_LEFT`, `THEO_IDLE_RIGHT`, `THEO_ALERT`, `THEO_QUESTION` |
+| 127 | `LINE_BELL_ITEM_127.html` | 7,43 MB | `THEO_WALK_FRONT`, `THEO_WALK_BACK`, `THEO_WALK_LEFT`, `THEO_WALK_RIGHT` |
+| 128 | `LINE_BELL_ITEM_128.html` | 7,80 MB | `THEO_RUN`, `THEO_PLAY`, `THEO_BALL`, `THEO_BONE` |
+| 129 | `LINE_BELL_ITEM_129.html` | 8,32 MB | `THEO_SIT`, `THEO_SIT_FRONT`, `THEO_SIT_IDLE`, `THEO_LIE`, `THEO_SLEEP` |
+| 130 | `LINE_BELL_ITEM_130.html` | 4,03 MB | `THEO_BATH`, `THEO_ROLL` |
+| 131 | `LINE_BELL_ITEM_131.html` | 6,90 MB | `CHICKEN_IDLE`, `CHICKEN_WALK`, `CHICKEN_RUN`, `CHICKEN_EAT`, `CHICKEN_PECK`, `CHICKEN_SCRATCH`, `CHICKEN_LAY_EGG`, `CHICKEN_SCARED`, `CHICKEN_SLEEP` |
+| 132 | `LINE_BELL_ITEM_132.html` | 4,45 MB | `HEN_BROWN_IDLE`, `HEN_BROWN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_EAT`, `HEN_BROWN_PECK`, `HEN_BROWN_SCRATCH`, `HEN_BROWN_LAY_EGG`, `HEN_BROWN_SCARED`, `HEN_BROWN_SLEEP` |
+| 133 | `LINE_BELL_ITEM_133.html` | 1,07 MB | `CHICK_IDLE`, `CHICK_WALK`, `CHICK_RUN` |
+| 134 | `LINE_BELL_ITEM_134.html` | 3,04 MB | `COW_IDLE`, `COW_WALK`, `COW_RUN`, `COW_EAT` |
+| 135 | `LINE_BELL_ITEM_135.html` | 3,64 MB | `PIG_FRONT`, `PIG_IDLE`, `PIG_WALK`, `PIG_LIE`, `PIG_MUD` |
+| 136 | `LINE_BELL_ITEM_136.html` | 3,83 MB | `HORSE_IDLE`, `HORSE_WALK`, `HORSE_RUN`, `HORSE_EAT` |
+| 137 | `LINE_BELL_ITEM_137.html` | 4,11 MB | `SHEEP_IDLE`, `SHEEP_WALK`, `SHEEP_RUN`, `SHEEP_EAT` |
+
+Todos os itens de 1 a 137 chegaram. Os próximos esperados são o **138** (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`), o **139** (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) e o **140** (Minas Shopping, cenário, nas medidas da seção 22.11).
+
+**Regra de continuidade das pernas:** nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).
+
+## 25. Plano de criação das animações por item
+
+> Plano original de produção, quadro a quadro. Os números dos itens depois do 102 (Parte 2, bichos, Mago, Espírito, Theo e cenários) seguem a lista da seção 22 e o índice da seção 24.
+
+### 25.1 Como os itens funcionarão
+
+- Cada item corresponde a um arquivo HTML autossuficiente.
+- Cada HTML deve ter no máximo 25 MB.
+- Nenhuma animação pode ser dividida no meio apenas para caber no arquivo.
+- Animações grandes ficam sozinhas em um item.
+- Animações curtas só podem compartilhar um item quando pertencem ao mesmo bloco de movimento.
+- Cada frame continua sendo produzido como PNG independente.
+- A produção deve seguir uma animação por vez e um frame por vez.
+- Só avançamos após assistir à animação lentamente, na velocidade normal, frame a frame e em loop.
+
+### 25.2 Regra obrigatória para caminhada e corrida
+
+Nas caminhadas e corridas laterais, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente. Ao mesmo tempo, a outra perna transfere o peso, impulsiona o corpo e dobra para trás.
+
+O ciclo precisa conter:
+
+1. contato;
+2. absorção do peso;
+3. apoio;
+4. passagem da perna traseira;
+5. impulso;
+6. elevação do pé;
+7. avanço completo;
+8. novo contato;
+9. repetição equivalente com a outra perna.
+
+Os braços trabalham de forma cruzada com as pernas. Cabelo, roupa, colar e tronco acompanham o movimento sem mudar a identidade da personagem.
+
+### 25.3 Itens 1 a 14 — pacote básico da Line
+
+| Item | Arquivo | Animações | Situação |
+|---:|---|---|---|
+| 1 | `LINE_BELL_ITEM_01.html` | `LINE_IDLE_FRONT` | Criado; revisar loop e estabilidade |
+| 2 | `LINE_BELL_ITEM_02.html` | `LINE_LOOK_SIDES_FRONT` | Criado; revisar sutileza do rosto |
+| 3 | `LINE_BELL_ITEM_03.html` | `LINE_BLINK_FRONT`, `LINE_IDLE_LEFT` | Criado; revisar rosto e perfil |
+| 4 | `LINE_BELL_ITEM_04.html` | `LINE_IDLE_RIGHT`, `LINE_IDLE_BACK` | Criado; revisar perfis e costas |
+| 5 | `LINE_BELL_ITEM_05.html` | `LINE_WALK_RIGHT` | Criado; aplicar e revisar regra das pernas |
+| 6 | `LINE_BELL_ITEM_06.html` | `LINE_WALK_LEFT` | Criado; aplicar e revisar regra das pernas |
+| 7 | `LINE_BELL_ITEM_07.html` | `LINE_WALK_FRONT`, `LINE_WALK_BACK` | Criado; revisar alternância e pés |
+| 8 | `LINE_BELL_ITEM_08.html` | `LINE_RUN_START_RIGHT` | Criado; revisar transferência de peso |
+| 9 | `LINE_BELL_ITEM_09.html` | `LINE_RUN_RIGHT` | Criado; aplicar e revisar regra das pernas |
+| 10 | `LINE_BELL_ITEM_10.html` | `LINE_RUN_LEFT` | Criado; aplicar e revisar regra das pernas |
+| 11 | `LINE_BELL_ITEM_11.html` | `LINE_RUN_FRONT`, `LINE_RUN_BACK` | Criado; revisar alternância e fase aérea |
+| 12 | `LINE_BELL_ITEM_12.html` | `LINE_RUN_STOP_RIGHT`, `LINE_RUN_STOP_LEFT` | Criado; revisar frenagem e inércia |
+| 13 | `LINE_BELL_ITEM_13.html` | `LINE_RUN_START_LEFT`, `LINE_RUN_START_FRONT`, `LINE_RUN_START_BACK`, `LINE_RUN_STOP_FRONT` | Criado; revisar transições |
+| 14 | `LINE_BELL_ITEM_14.html` | `LINE_RUN_STOP_BACK` | Criado; revisar transição para idle |
+
+### 25.4 Próximos itens — movimentos da Line
+
+| Item | Animação | Código planejado | Observação principal |
+|---:|---|---|---|
+| 15 | Pular para a direita | `LINE_JUMP_RIGHT` | Criado: 12 frames com preparação, impulso, subida, ápice, descida, aterrissagem e recuperação |
+| 16 | Aterrissar para a direita | `LINE_LAND_RIGHT` | Criado: 10 frames com descida, aproximação, contato, compressão e recuperação |
+| 17 | Agachar | `LINE_CROUCH` | Criado: 10 frames com transferência gradual de peso e sustentação no agachamento profundo |
+| 18 | Levantar do agachamento | `LINE_CROUCH_STAND` | Criado: 10 frames com retorno contínuo do agachamento profundo ao idle |
+| 19 | Tropeçar | `LINE_STUMBLE` | Criado: 12 frames com perda gradual de equilíbrio e mãos buscando o chão |
+| 20 | Cair | `LINE_FALL` | Criado: 12 frames conectados ao tropeço, com contato das mãos, descida aos antebraços e posição final no chão |
+| 21 | Levantar do chão | `LINE_GROUND_STAND` | Criado: 14 frames com apoio nos antebraços, mãos e joelhos, agachamento e recuperação até o idle |
+
+### 25.5 Combate da Line
+
+| Item | Animação | Código planejado | Observação principal |
+|---:|---|---|---|
+| 22 | Sacar espada | `LINE_SWORD_DRAW` | Criado: 12 frames com mão no cabo, saque parcial, retirada completa e postura pronta |
+| 23 | Guardar espada | `LINE_SWORD_SHEATHE` | Revisado: 14 frames com duas etapas adicionais da lâmina ainda visivelmente para fora do coldre |
+| 24 | Postura de combate | `LINE_COMBAT_IDLE` | Criado: 16 frames em loop com respiração discreta, ajuste de peso e pés fixos |
+| 25 | Ataque horizontal | `LINE_ATTACK_HORIZONTAL` | Criado: 16 frames com guarda, preparação, corte horizontal, extensão e recuperação |
+| 26 | Ataque vertical | `LINE_ATTACK_VERTICAL` | Revisado: 18 frames com elevação, início, meio e fim do golpe descendente e recuperação gradual |
+| 27 | Ataque diagonal | `LINE_ATTACK_DIAGONAL` | Revisado: 22 frames; as duas mãos permanecem fechadas no mesmo cabo e o arco diagonal recebeu novos intermediários |
+| 28 | Combo | `LINE_ATTACK_COMBO` | Revisado: 22 frames com novos intermediários na preparação, no corte horizontal, no redirecionamento e no final descendente |
+| 29 | Ataque giratório | `LINE_ATTACK_SPIN` | Criado: 18 frames com preparação, pivô, rotação corporal, corte circular e recuperação; espada e cabelo contínuos |
+| 30 | Ataque aéreo | `LINE_ATTACK_AIR` | Criado: 20 frames com preparação, impulso, subida, ápice, golpe descendente, queda e aterrissagem |
+| 31 | Bloquear | `LINE_BLOCK` | Criado: 16 frames com entrada da guarda, firmeza, impacto comprimido, recuo e saída |
+| 32 | Esquivar | `LINE_DODGE` | Criado: 16 frames com antecipação, impulso lateral, evasão aérea, aterrissagem e recuperação |
+| 33 | Dash | `LINE_DASH` | Corrigido: 16 frames; anatomia esquerda/direita revisada na guarda, arrancada e frenagem, com calçados espelhados corretamente |
+| 34 | Receber dano leve | `LINE_HIT_LIGHT` | Corrigido: 16 frames; pernas e calçados diferenciados no contato, recuo, recuperação e retorno à guarda |
+| 35 | Receber golpe forte | `LINE_HIT_HEAVY` | Refeito: 14 frames no pixel art dos itens 1–20, com impacto maior, recuo amplo, perda progressiva do apoio e ponte direta ao arremesso |
+| 36 | Ser arremessada | `LINE_THROWN` | Refeito: 14 frames no pixel art dos itens 1–20, com saída do último apoio, subida, ápice, rotação e descida antes do impacto no chão |
+| 37 | Cair após golpe | `LINE_KNOCKDOWN` | Refeito: 24 frames no pixel art dos itens 1–20, com descida, compressão do impacto, rebote, rotação e acomodação dolorida no chão |
+| 38 | Levantar machucada | `LINE_INJURED_STAND` | Refeito: 28 frames no pixel art dos itens 1–20, com apoio dos braços, transferência de peso, ajoelhamento, subida e estabilização dolorida |
+| 39 | Exausta | `LINE_EXHAUSTED_IDLE` | Refeito: 20 frames no pixel art dos itens 1–20, em loop com respiração, perda breve de força, recuperação, espada rígida e dedão para dentro |
+| 40 | Ataque final contra o dragão | `LINE_DRAGON_FINAL_ATTACK` | Refeito: 32 frames no pixel art dos itens 1–20, com foco, arrancada, salto, golpe, passagem, aterrissagem, espada rígida e pegada corrigida |
+
+### 25.6 Emoções da Line
+
+| Item | Animação | Código planejado | Observação principal |
+|---:|---|---|---|
+| 41 | Feliz | `LINE_HAPPY` | Refeito: 20 frames no pixel art dos itens 1–20, com sorriso progressivo, gesto, impulso leve e retorno suave |
+| 42 | Rindo | `LINE_LAUGH` | Refeito: 24 frames no pixel art dos itens 1–20, com início, dois pulsos de risada, pico, alívio e retorno sorrindo |
+| 43 | Determinada | `LINE_DETERMINED` | Refeito: 20 frames no pixel art dos itens 1–20, com foco crescente, postura firme, avanço curto e retorno controlado |
+| 44 | Brava | `LINE_ANGRY` | Refeito: 20 frames no pixel art dos itens 1–20, com irritação crescente, punhos fechados, explosão curta e retorno tenso |
+| 45 | Assustada | `LINE_SCARED` | Concluída: 20 frames em pixel art alinhada aos itens 1–20 |
+| 46 | Triste | `LINE_SAD` | Concluída: 20 frames em pixel art alinhada aos itens 1–20 |
+| 47 | Chorando | `LINE_CRY` | |
+| 48 | Gritando por Bell | `LINE_CALL_BELL` | |
+| 49 | Aliviada | `LINE_RELIEVED` | |
+
+### 25.7 Pacote da Bell
+
+| Item | Animações | Códigos planejados |
+|---:|---|---|
+| 50 | Idle frontal, piscar e olhar para os lados | `BELL_IDLE_FRONT`, `BELL_BLINK_FRONT`, `BELL_LOOK_SIDES_FRONT` |
+| 51 | Idle esquerda, direita e costas | `BELL_IDLE_LEFT`, `BELL_IDLE_RIGHT`, `BELL_IDLE_BACK` |
+| 52 | Caminhar para a direita | `BELL_WALK_RIGHT` |
+| 53 | Caminhar para a esquerda | `BELL_WALK_LEFT` |
+| 54 | Caminhar para frente e costas | `BELL_WALK_FRONT`, `BELL_WALK_BACK` |
+| 55 | Correr para a direita | `BELL_RUN_RIGHT` |
+| 56 | Correr para a esquerda | `BELL_RUN_LEFT` |
+| 57 | Correr para frente e costas | `BELL_RUN_FRONT`, `BELL_RUN_BACK` |
+| 58 | Pular, aterrissar e levantar | `BELL_JUMP`, `BELL_LAND`, `BELL_GROUND_STAND` |
+| 59 | Assustada e fugir | `BELL_SCARED`, `BELL_FLEE` |
+| 60 | Cair | `BELL_FALL` |
+| 61 | Ser capturada | `BELL_CAPTURED` |
+| 62 | Ser carregada pelo dragão | `BELL_DRAGON_CARRIED` |
+| 63 | Presa e tentar escapar | `BELL_TRAPPED`, `BELL_ESCAPE_ATTEMPT` |
+| 64 | Conseguir se libertar | `BELL_BREAK_FREE` |
+| 65 | Chamar Line | `BELL_CALL_LINE` |
+| 66 | Ajudar Line | `BELL_HELP_LINE` |
+| 67 | Feliz, aliviada e chorando | `BELL_HAPPY`, `BELL_RELIEVED`, `BELL_CRY` |
+
+### 25.8 Interações entre Line e Bell
+
+| Item | Animações | Códigos planejados |
+|---:|---|---|
+| 68 | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
+| 69 | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
+| 70 | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
+| 71 | Conversando e rindo juntas | `LINE_BELL_TALK`, `LINE_BELL_LAUGH` |
+| 72 | Bell encostando na Line | `BELL_LEAN_ON_LINE` |
+| 73 | Segurando as mãos | `LINE_BELL_HOLD_HANDS` |
+| 74 | Abraço do resgate | `LINE_BELL_RESCUE_HUG` |
+| 75 | Separação do abraço | `LINE_BELL_HUG_RELEASE` |
+| 76 | Comemorando a vitória | `LINE_BELL_CELEBRATE` |
+| 77 | Sentando juntas | `LINE_BELL_SIT_DOWN` |
+| 78 | Bell apoiando a cabeça na Line | `BELL_HEAD_ON_LINE` |
+| 79 | Idle das duas sentadas | `LINE_BELL_SIT_IDLE` |
+
+### 25.9 Dragão
+
+| Item | Animações | Códigos planejados |
+|---:|---|---|
+| 80 | Idle, respiração e piscar | `DRAGON_IDLE`, `DRAGON_BLINK` |
+| 81 | Andar e virar | `DRAGON_WALK`, `DRAGON_TURN` |
+| 82 | Abrir asas e decolar | `DRAGON_WINGS_OPEN`, `DRAGON_TAKEOFF` |
+| 83 | Voar e planar | `DRAGON_FLY`, `DRAGON_GLIDE` |
+| 84 | Pousar | `DRAGON_LAND` |
+| 85 | Rugir | `DRAGON_ROAR` |
+| 86 | Morder | `DRAGON_BITE` |
+| 87 | Ataque de garra | `DRAGON_CLAW_ATTACK` |
+| 88 | Golpe de cauda | `DRAGON_TAIL_ATTACK` |
+| 89 | Preparar e cuspir fogo | `DRAGON_FIRE_CHARGE`, `DRAGON_FIRE_BREATH` |
+| 90 | Fogo contínuo | `DRAGON_FIRE_STREAM` |
+| 91 | Ataque aéreo | `DRAGON_AIR_ATTACK` |
+| 92 | Receber dano e ponto fraco atingido | `DRAGON_HIT`, `DRAGON_WEAK_POINT_HIT` |
+| 93 | Atordoado | `DRAGON_STUNNED` |
+| 94 | Ataque desesperado | `DRAGON_DESPERATE_ATTACK` |
+| 95 | Receber golpe final | `DRAGON_FINAL_HIT` |
+| 96 | Cair e ficar derrotado | `DRAGON_FALL`, `DRAGON_DEFEATED` |
+| 97 | Abrir um olho no final | `DRAGON_EYE_OPEN_END` |
+
+### 25.10 Efeitos independentes
+
+| Item | Efeitos | Códigos planejados |
+|---:|---|---|
+| 98 | Fogo, brasas e iluminação | `FX_FIRE`, `FX_EMBERS`, `FX_FIRE_LIGHT` |
+| 99 | Fumaça e poeira | `FX_SMOKE`, `FX_DUST` |
+| 100 | Impacto, faíscas e explosão | `FX_IMPACT`, `FX_SPARKS`, `FX_EXPLOSION` |
+| 101 | Rastro da espada e ponto fraco | `FX_SWORD_TRAIL`, `FX_DRAGON_WEAK_POINT` |
+| 102 | Lágrimas, corações e partículas ambientais | `FX_TEARS`, `FX_HEARTS`, `FX_AMBIENT_PARTICLES` |
+
+### 25.11 Ordem real de execução a partir de agora
+
+1. Revisar os itens 5, 6, 9 e 10 como um conjunto, corrigindo a alternância completa das pernas.
+2. Revisar os itens 7 e 11 nas direções frente e costas.
+3. Revisar as transições de começar e parar de correr nos itens 8, 12, 13 e 14.
+4. Fazer uma revisão final dos itens 1 a 4.
+5. Item 15 concluído e pronto para aprovação.
+6. Item 16 concluído e pronto para aprovação.
+7. Item 17 concluído e pronto para aprovação.
+8. Item 18 concluído e pronto para aprovação.
+9. Item 19 concluído e pronto para aprovação.
+10. Item 20 concluído e pronto para aprovação.
+11. Item 21 concluído e pronto para aprovação.
+12. Item 22 concluído e pronto para aprovação.
+13. Item 23 concluído e pronto para aprovação.
+14. Item 24 concluído e pronto para aprovação.
+15. Item 25 concluído e pronto para aprovação.
+16. Item 26 concluído e pronto para aprovação.
+17. Item 27 concluído e pronto para aprovação.
+18. Item 28 concluído e pronto para aprovação.
+19. Item 29 concluído e pronto para aprovação.
+20. Item 30 concluído e pronto para aprovação.
+21. Item 31 concluído e pronto para aprovação.
+22. Item 32 concluído e pronto para aprovação.
+23. Item 33 concluído e pronto para aprovação.
+24. Item 34 concluído e pronto para aprovação.
+25. Item 35 concluído e pronto para aprovação.
+26. Item 36 concluído e pronto para aprovação.
+27. Item 37 concluído e pronto para aprovação.
+28. Item 38 concluído e pronto para aprovação.
+29. Item 39 concluído e pronto para aprovação.
+30. Item 40 concluído e pronto para aprovação.
+31. Item 45 concluído com 20 frames e retomada do visual pixel art dos itens 1 a 20.
+32. Item 46 concluído com 20 frames e retomada do visual pixel art dos itens 1 a 20.
+
+### 25.12 Regra para alteração futura dos itens
+
+Se um HTML ultrapassar 25 MB, o item deve ser desmembrado antes de iniciar os seguintes. A numeração posterior será deslocada e este documento deverá ser atualizado imediatamente. Nenhuma animação já aprovada será comprimida, reduzida ou cortada apenas para preservar a numeração antiga.
+
+## 26. Como rodar, publicar e editar o jogo
+
+### 26.1 Rodar no computador
+
+O jogo não precisa de instalação. Qualquer servidor simples serve:
+
+```bash
+cd game
+python3 -m http.server 8000
+# abra http://localhost:8000
+```
+
+### 26.2 Publicar
+
+A pasta `game/` é publicada na Vercel: **https://line-e-bell.vercel.app**. Também dá para publicar a mesma pasta no GitHub Pages ou no Netlify e jogar pelo link, inclusive no celular (de preferência na horizontal).
+
+O progresso fica salvo no navegador ao entrar em cada área, e o botão **Continuar** retoma dali. Os controles de teclado, controle e celular estão na seção 8.1.
+
+### 26.3 Editar os mapas
+
+Os mapas ficam em `game/js/mapas.js`, como texto: cada letra é um tile de 32 unidades do mundo. As medidas de cada mapa e o tamanho da arte de cenário estão na seção 22.12.
+
+| Tipo | Letras |
+|---|---|
+| Chão e natureza | `.` grama · `,` mato alto · `F` flores · `:` caminho · `r` raízes (correr derruba) · `T` árvore · `R` pedra · `X` espinheiro (corta com a espada) · `w` riacho (dá para pular) · `~` água funda · `u` lama (deixa lenta) |
+| Fazenda | `H` casa · `D` porta · `B` celeiro · `K` galinheiro · `f` cerca · `h`/`c` horta · `P` poço · `M` moinho · `n` feno · `k` casinha do Theo · `m` mesa · `v` varal |
+| Vilarejo | `b` barraca da feira · `W` bigorna da ferraria |
+| Caverna, gruta e minas | `#` parede · `_` chão · `o` estalagmite · `q` cogumelo luminoso · `%` parede ou pedra rachada (bomba) · `E` estação do carrinho · `=` trilho |
+| Ruínas e montanha | `Q` cristal · `Y` tocha · `U` fonte · `Z` barreira · `A` altar · `I` pilar · `L` lava · `l` brasa rasa (queima sem a Armadura de Brasa) · `j` fenda (nos picos, abismo de céu) · `p` poste do gancho |
+| Objetos | `C` baú · `S` placa · `g` porta trancada (chave antiga) |
+| Parte 2 | `>` `<` corrente de vento (empurra para o lado) |
+
+### 26.4 Como a arte nova entra no jogo
+
+1. Coloque o HTML novo na raiz do repositório (`*_ITEM_*.html` ou `*LABORATORIO*.html`) ou crie uma pasta `arte/<grupo>/<CODIGO>/` com os PNGs e um `config.json`.
+2. Rode, na raiz: `pip install pillow` e `python3 tools/extrair_sprites.py`.
+3. O script gera `game/assets/sprites/<CODIGO>.webp` e atualiza `game/assets/sprites.js`. Toda animação cujo código esteja no catálogo (`game/js/animacoes.js`) passa a aparecer no lugar do desenho provisório.
+
+No menu, a tela **Animações** mostra o que já existe, o que falta e uma prévia de cada uma. A organização dos arquivos do código e os testes automatizados estão na seção 15.
+
+### 26.5 Como regerar esta documentação
+
+Com o jogo servido na porta 8765 (`cd game && python3 -m http.server 8765`), na raiz:
+
+```bash
+node tools/exportar_inventario.js inventario.json   # animações, mapas, baús, itens, documentos, loja, chefes
+python3 tools/extrair_roteiro.py roteiro.json        # falas e cenas
+python3 tools/gabaritos_mapas.py                     # plantas de cada mapa (seção 22.12)
+python3 tools/gerar_documentacao.py inventario.json roteiro.json   # este documento (seções 1 a 26)
+python3 tools/gerar_documentacao_html.py             # a versão HTML
+```
+
+As capturas das partes novas saem de `node tools/fotos_documentacao.js pasta` e são convertidas para JPG em `docs/imagens/`.
 
 ---
 

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Gera docs/LINE_E_BELL_DOCUMENTACAO.md a partir do estado atual do jogo.
 
-Precisa de dois arquivos JSON exportados do jogo rodando (ver docs/README na seção
-"Como atualizar este documento"):
+É o único documento do projeto: tudo o que antes ficava em arquivos soltos (pendências,
+índice e plano dos itens, lista de arte, layout do Theo, README do jogo) entra aqui
+(seções 22 a 26). Precisa de dois arquivos JSON exportados do jogo rodando (seção 26.5):
   - inventario.json: catálogo de animações (LB.inventario() + dados de cada sprite)
   - roteiro.json: falas, títulos, balões e animações de cada cena (tools/extrair_roteiro)
 
@@ -14,6 +15,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import doc_parte2  # noqa: E402
+import doc_apendices  # noqa: E402
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SAIDA = os.path.join(RAIZ, "docs", "LINE_E_BELL_DOCUMENTACAO.md")
@@ -74,7 +76,9 @@ w("> - **Relógio do jogo** com dia e noite: 1 minuto real = 1 hora no jogo; os 
 w("> - **Dicas no modo Fácil:** seta até o objetivo, dicas de cada chefe, aviso de vida baixa e dica na derrota (seção 21).")
 w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Aurora) e a arte de armadura das duas (seção 19.3).")
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
-w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22 e o arquivo `ARTES_NECESSARIAS.md`).")
+w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
+w()
+w("> 📚 **Tudo num documento só:** o que falta criar (seção 23), o índice dos itens de arte recebidos (seção 24), o plano de criação por item (seção 25) e como rodar, publicar e editar o jogo (seção 26) agora ficam aqui dentro. Os arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md`) saíram do repositório.")
 w()
 w("> 🧙 **Itens 124 a 127 chegaram:** o **Mago** animado (parado, falando e fazendo magia), o **Espírito das Ruínas**, que agora aparece de verdade no altar (surgindo, flutuando e falando), e o **Theo** parado e andando nas 4 direções, alerta e curioso. O Theo está todo com arte nova.")
 w("> 📐 **Dimensão de cada cenário:** tabela e gabarito (planta) de cada fase na seção 22.12.")
@@ -91,7 +95,7 @@ w("> - **Line e Bell juntas:** andando lado a lado, de mãos dadas, correndo, co
 w("> - **Dragão novo** em todos os golpes, no voo, na tontura, na queda e derrotado. O dragão antigo saiu do jogo. As animações novas duram o mesmo tempo que as antigas, porque é essa duração que está sincronizada com os golpes.")
 w("> - **Efeitos em pixel art:** impacto, faíscas, explosão, ponto fraco, corações, lágrimas, poeira e fumaça (seção 13).")
 w("> - O tamanho de cada personagem agora é **igualado entre as animações** (antes a Line encolhia ao rir, e a Bell nova vinha menor que a Line).")
-w("> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias (veja `ANIMACOES_PENDENTES.md`).")
+w("> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias (veja a seção 23).")
 w()
 w("> 📖 **Novidades da história (esta versão):**")
 w("> - Um **tema** que costura a aventura inteira: *luz não se rouba, se divide* (seção 3).")
@@ -122,7 +126,7 @@ w("## Sumário")
 w()
 secoes = ["1. Visão geral", "2. Personagens", "3. A história", "4. Roteiro completo, cena a cena", "5. O primeiro encontro (prólogo)",
           "6. As fases", "7. Exploração: mundo interligado, vilarejo, loja, carrinho, itens, documentos e mapa", "8. Como se joga", "9. Inimigos e chefes", "10. Lista completa de animações", "11. Retratos dos diálogos",
-          "12. Cenário e objetos", "13. Efeitos visuais", "14. Como mandar arte nova", "15. Estrutura técnica"] + doc_parte2.SECOES
+          "12. Cenário e objetos", "13. Efeitos visuais", "14. Como mandar arte nova", "15. Estrutura técnica"] + doc_parte2.SECOES + doc_apendices.SECOES
 for s in secoes:
     ancora = s.lower().replace(" ", "-").replace(".", "").replace(",", "").replace("(", "").replace(")", "").replace(":", "").replace("—", "")
     for a, b in (("ã", "a"), ("á", "a"), ("â", "a"), ("é", "e"), ("ê", "e"), ("í", "i"), ("ó", "o"), ("ô", "o"), ("õ", "o"), ("ú", "u"), ("ç", "c")):
@@ -206,7 +210,7 @@ w("Galinhas (brancas e marrons), pintinhos, vacas, cavalo e porcos já têm arte
 w()
 img("arte-bichos", "Theo e bichos da fazenda (temporários)")
 w("### Mago")
-w("Velho sábio da Floresta Sussurrante. Guarda a espada e explica o caminho. Hoje é uma imagem parada que respira e brilha.")
+w("Velho sábio da Floresta Sussurrante. Guarda a espada e explica o caminho. Tem arte animada: parado, falando quando a Line chega perto e fazendo magia antes de entregar a espada.")
 w()
 w("### Espírito das Ruínas")
 w("Voz antiga que mora no altar das Ruínas Encantadas e ensina a magia à Line. Ainda não tem visual próprio, só a luz do altar.")
@@ -1255,7 +1259,7 @@ for a, b in [("game/index.html", "página do jogo, menus, controles de toque"), 
              ("game/js/entidades.js", "Line, Bell, Sombra, partículas"), ("game/js/magia.js", "magia, cristais, tochas, barreiras, fontes, Fogo-fátuo e Guardião"),
              ("game/js/dragao.js", "o dragão e seus ataques"), ("game/js/bichos.js", "bichos da fazenda e o Mago"), ("game/js/fazenda.js", "capítulo da fazenda e tarefas"),
              ("game/js/encontro.js", "prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas"), ("game/js/cenas.js", "cenas e falas da aventura (roteiro)"), ("game/js/mochila.js", "mochila: itens, moedas, documentos e conclusões, mapa com névoa, objetivo, avisos"), ("game/js/mapas.js", "os mapas das 7 áreas da aventura"), ("game/js/mundo.js", "bombas e paredes rachadas, gancho, chão em brasa, escuro das minas, moedas soltas, casas e objetos novos"), ("game/js/loja.js", "vilarejo: moradores e falas, loja, ferraria, armaduras e escudos"), ("game/js/carrinho.js", "carrinho de mina: estações, escolha do destino e a viagem"), ("game/js/ia.js", "inteligência dos inimigos: linha de visão, caminho pela grade, alerta, separação, e o Morcego"), ("tests/rodar.js", "testes automatizados de todas as telas (Playwright)"), ("tools/fotos_documentacao.js", "tira as capturas das partes novas para este documento"), ("game/js/cenario.js", "árvores, casa, objetos e ambiente"),
-             ("game/js/animacoes.js", "catálogo de animações, substitutas e desenho dos sprites (com a troca para a arte da Bell jogável e das armaduras)"), ("game/js/relogio.js", "relógio do jogo, dia e noite, descanso na fonte"), ("game/js/chefes.js", "os sete chefes elementais, ataques, perigos e arenas"), ("game/js/herois.js", "Bell jogável, troca de heroína, companheira que segue atrás"), ("game/js/parte2.js", "história da Parte 2, moradores e documentos novos, objetivos"), ("game/js/dicas.js", "dicas do modo Fácil: seta guia, dicas de chefe e de derrota"), ("tools/doc_parte2.py", "seções 16 a 22 deste documento e o `ARTES_NECESSARIAS.md`"), ("game/js/entrada.js", "teclado, controle, toque e dificuldade"),
+             ("game/js/animacoes.js", "catálogo de animações, substitutas e desenho dos sprites (com a troca para a arte da Bell jogável e das armaduras)"), ("game/js/relogio.js", "relógio do jogo, dia e noite, descanso na fonte"), ("game/js/chefes.js", "os sete chefes elementais, ataques, perigos e arenas"), ("game/js/herois.js", "Bell jogável, troca de heroína, companheira que segue atrás"), ("game/js/parte2.js", "história da Parte 2, moradores e documentos novos, objetivos"), ("game/js/dicas.js", "dicas do modo Fácil: seta guia, dicas de chefe e de derrota"), ("tools/doc_parte2.py", "seções 16 a 22 deste documento"), ("tools/doc_apendices.py", "seções 23 a 26: o que falta, índice e plano dos itens, como rodar e editar o jogo"), ("game/js/entrada.js", "teclado, controle, toque e dificuldade"),
              ("game/assets/", "folhas de sprites, retratos, cenário (inclui `cenario/encontro_*.webp` do prólogo)"), ("tools/extrair_sprites.py", "converte a arte recebida em folhas para o jogo"),
              ("tools/gerar_documentacao.py", "gera este documento")]:
     w(f"| `{a}` | {b} |")
@@ -1293,10 +1297,11 @@ for l in [
     w("| " + " | ".join(l) + " |")
 w()
 w("### Como atualizar este documento")
-w("As tabelas de animações e o roteiro são gerados a partir do jogo. Para regerar, rode o jogo localmente, exporte o inventário e o roteiro e rode, com o jogo servido na porta 8765: `node tools/exportar_inventario.js inventario.json` (também exporta mapas, baús, itens, documentos e loja), `python3 tools/extrair_roteiro.py roteiro.json`, `node tools/fotos_documentacao.js pasta` (capturas das partes novas, depois convertidas para JPG em `docs/imagens`), `python3 tools/gerar_documentacao.py inventario.json roteiro.json` e, para a versão HTML, `python3 tools/gerar_documentacao_html.py`.")
+w("As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.5.")
 w()
 img("25-galeria", "No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma")
 doc_parte2.escrever(w, img, inv, rot, roteiro)
+doc_apendices.escrever(w, inv)
 w("---")
 w()
 w("*Line & Bell: um jogo feito com carinho. Todas as animações e artes atuais são temporárias até a criação completa da arte final.*")
