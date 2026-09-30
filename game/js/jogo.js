@@ -4,10 +4,6 @@
   const TILE = LB.TILE;
   const T = (n) => n * TILE;
   const ALTURA_VISTA = 400;
-  // Celular (tela pequena): a câmera fica mais perto. E, em pé, basta caber 240 unidades de largura:
-  // antes o jogo encolhia tudo até caber 400 de largura e a Line ficava minúscula.
-  const ALTURA_VISTA_CELULAR = 320;
-  const LARGURA_MINIMA = 240;
   const CHAVE_SAVE = 'lineBell.save.v1';
   const $ = (s) => document.querySelector(s);
 
@@ -42,8 +38,7 @@
       const w = window.innerWidth, h = window.innerHeight;
       this.canvas.width = Math.round(w * dpr); this.canvas.height = Math.round(h * dpr);
       this.canvas.style.width = w + 'px'; this.canvas.style.height = h + 'px';
-      const altura = Math.min(w, h) < 600 ? ALTURA_VISTA_CELULAR : ALTURA_VISTA;
-      this.escalaBase = Math.min(h / altura, w / LARGURA_MINIMA) * dpr;
+      this.escalaBase = Math.min(h / ALTURA_VISTA, w / 400) * dpr;
       this.aplicarZoom();
     }
 

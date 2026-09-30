@@ -542,7 +542,7 @@ def escrever_arte(w, img, inv):
 
 
 # ---------------------------------------------------------------------------------------------
-# Tamanho de cada imagem. O jogo mostra 400 unidades de altura do mundo na tela (ALTURA_VISTA; no celular 320):
+# Tamanho de cada imagem. O jogo mostra 400 unidades de altura do mundo na tela (ALTURA_VISTA):
 # escala = altura da tela em pixels ÷ 400 (em telas retina o navegador dobra, até 2×).
 ESCALAS = [("Janela 1280×720", 1.8), ("Tela cheia 1080p", 2.7), ("Tela cheia 1440p", 3.6), ("4K ou retina", 5.4)]
 
@@ -593,11 +593,11 @@ INTERFACE = [
 def escrever_tamanhos(w):
     w("### 22.0 Tamanho de cada imagem (pensando na tela cheia)")
     w()
-    w("No computador o jogo mostra **400 unidades de altura** do mundo na tela e aumenta tudo para caber. Por isso o tamanho de cada coisa depende da tela: em **tela cheia num monitor 1080p** tudo aparece **2,7×** maior que no mundo; num monitor **4K** ou num notebook **retina** em tela cheia, **5,4×**. Uma imagem menor que isso é esticada e fica borrada.")
+    w("O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo para caber. Por isso o tamanho de cada coisa depende da tela: em **tela cheia num monitor 1080p** tudo aparece **2,7×** maior que no mundo; num monitor **4K** ou num notebook **retina** em tela cheia, **5,4×**. Uma imagem menor que isso é esticada e fica borrada.")
     w()
     w("- **Recomendado:** nítido até em 4K ou retina em tela cheia.")
     w("- **Mínimo:** nítido em tela cheia 1080p (o caso mais comum no PC).")
-    w("- **No celular** a câmera fica mais perto: mostra **320 unidades de altura** deitado e, em pé, **240 de largura** (antes, em pé, o jogo encolhia tudo para caber 400 de largura e a Line ficava minúscula). Deitado a escala fica perto de 2,4× e em pé perto de 3,3×: o mínimo ainda basta.")
+    w("- No celular deitado o jogo usa uns 780 px de altura (escala ≈ 2×), então o mínimo já basta.")
     w("- Uma unidade do mundo equivale a 1 pixel do tile de 32×32: um tile tem 32 unidades.")
     w()
     cab = " | ".join(n for n, _ in ESCALAS)
