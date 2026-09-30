@@ -529,8 +529,14 @@ teste('derrota: tela aparece e Tentar de novo volta à fonte', async (h) => {
 teste('pena de fênix levanta a Line', async (h) => {
   await h.area('floresta', { espada: true });
   await h.ev(() => { const j = LB.jogo, l = j.line; LB.mochila.dar(j, 'pena', 1); l.hp = 1; l.invul = 0; l.receberDano(j, 2, true, l.x + 10, l.y, { ignorarDefesa: true, bloqueavel: false }); });
-  await h.espera(2500);
-  const r = await h.ev(() => ({ hp: LB.jogo.line.hp, pena: LB.mochila.qtd(LB.jogo, 'pena'), morta: LB.jogo.line.estado === 'morta' }));
+  // A pena queima no fim da queda (golpe forte → arremessada → no chão): espera a queda terminar,
+  // em vez de um tempo fixo (a sequência leva uns 2,5 s e mais numa máquina carregada).
+  let r;
+  for (let i = 0; i < 60; i++) {
+    await h.espera(100);
+    r = await h.ev(() => ({ hp: LB.jogo.line.hp, pena: LB.mochila.qtd(LB.jogo, 'pena'), morta: LB.jogo.line.estado === 'morta' }));
+    if (r.hp > 0 || r.morta) break;
+  }
   afirmar(!r.morta && r.hp > 0, 'a Line levantou');
   igual(r.pena, 0, 'a pena queimou');
   afirmar(!(await h.visivel('#derrota')), 'sem tela de derrota');
@@ -684,6 +690,41 @@ teste('arte: Mago e Espírito das Ruínas animados (itens 124 e 125)', async (h)
   afirmar(viu.apareceu, 'o Espírito aparece no altar');
   afirmar(!viu.sobrou, 'e vai embora no fim da cena');
   afirmar(viu.magia, 'a Line aprende a magia');
+});
+
+teste('animações: mesmo ritmo de passo para a Line e a Bell e nada de cena acelerada', async (h) => {
+  const r = await h.ev(() => {
+    const dur = (base, dir) => new LB.Animador(base).duracao(dir, 1);
+    const cenas = ['LINE_ADMIRE', 'LINE_BELL_TUNNEL_KISS', 'LINE_BELL_KISS', 'LINE_BELL_GREET_HUG', 'LINE_PUNCH_MACHINE', 'BELL_CURTSY', 'BELL_HIGH_FIVE',
+      'LINE_BELL_HIGH_FIVE', 'LINE_VICTORY', 'LINE_BELL_CELEBRATE', 'BELL_CAPTURED', 'LINE_BELL_HUG_RELEASE', 'LINE_BELL_SIT_DOWN'].filter((c) => LB.sprite(c));
+    return {
+      andar: ['LEFT', 'RIGHT', 'FRONT', 'BACK'].map((d) => [dur('LINE_WALK', d), dur('BELL_WALK', d), dur('LINE_COMBAT_WALK', d)]),
+      correr: ['LEFT', 'RIGHT', 'FRONT', 'BACK'].map((d) => [dur('LINE_RUN', d), dur('BELL_RUN', d)]),
+      cenas: cenas.map((c) => [c, dur(c), LB.sprite(c).seq.length / dur(c)]),
+    };
+  });
+  for (const [l, b, c] of r.andar) afirmar(Math.abs(l - b) < 0.1 && Math.abs(l - c) < 0.1, 'andar no mesmo ritmo: ' + JSON.stringify(r.andar));
+  for (const [l, b] of r.correr) afirmar(Math.abs(l - b) < 0.1, 'correr no mesmo ritmo: ' + JSON.stringify(r.correr));
+  for (const [c, d, fps] of r.cenas) afirmar(d >= 0.75 && fps <= 12.01, `${c} rápida demais: ${d.toFixed(2)} s a ${fps.toFixed(1)} quadros/s`);
+});
+
+teste('animações: Line e Bell do mesmo tamanho (ajuste pela cabeça) e um dragão só no rapto', async (h) => {
+  const aj = await h.ev(() => ['LINE_ANGRY', 'LINE_RUN_BACK', 'LINE_BELL_TUNNEL_KISS', 'LINE_BELL_SIT_IDLE', 'BELL_RUN_LEFT'].map((c) => LB.sprite(c) && LB.sprite(c).ajuste));
+  afirmar(aj[0] < 1 && aj[1] > 1 && aj[2] > 1 && aj[3] > 1 && aj[4] < 1, 'ajustes de tamanho carregados: ' + aj);
+  await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = { encontroFeito: true, manhaVista: true, etapa: 'tarde' }; j.iniciarArea('fazenda', null, true); j.iniciarCapitulo(); });
+  await h.espera(500);
+  const r = await h.ev(async () => {
+    const j = LB.jogo;
+    j.iniciarCena(LB.HISTORIA.porDoSol, { semPular: true });
+    const vistos = new Set(); let dragoes = 0;
+    for (let i = 0; i < 600 && j.cena; i++) {
+      if (j.presa) { vistos.add(j.presa.bell.anim.base); dragoes = Math.max(dragoes, j.presa.bell.visivel ? 1 : 0); if (j.presa.dragao.alturaVoo > 100) break; }
+      LB.dialogo.clicou = true; await new Promise((ok) => setTimeout(ok, 30));
+    }
+    return { vistos: [...vistos], pendurada: j.presa ? j.presa.dragao.alturaVoo - j.presa.bell.z : null };
+  });
+  afirmar(r.vistos.length && !r.vistos.includes('BELL_DRAGON_CARRIED'), 'a Bell levada não usa a arte que já traz outro dragão: ' + r.vistos);
+  afirmar(r.pendurada > 20, 'a Bell fica pendurada embaixo do dragão: ' + r.pendurada);
 });
 
 teste('bichos: maiores, olhando para onde andam e galinha com uma perna depois da outra', async (h) => {

@@ -87,11 +87,11 @@
   function desenharMaquina(g, jogo) {
     const e = jogo.encontro, s = LB.sprite('LINE_PUNCH_MACHINE'), img = LB.personagem('encontro_maquina');
     if (!s) return;
-    const esc = LB.ALTURA_LINE * (s.escala || 1) / s.cell;
+    const aj = s.ajuste || 1, esc = LB.ALTURA_LINE * (s.escala || 1) / s.cell * aj;
     // Enquanto a Line soca, a própria animação desenha a máquina.
     if (!e.socando && img) g.drawImage(img, SOCO.x - s.cell / 2 * esc, SOCO.y - s.ground * esc, s.cell * esc, s.cell * esc);
     // Placar em cima da máquina, como no HTML: 000 → 038.
-    const px = SOCO.x + 17, py = SOCO.y - 70;
+    const px = SOCO.x + 17 * aj, py = SOCO.y - 70 * aj;
     g.fillStyle = '#18131f'; g.fillRect(px - 17, py - 9, 34, 14);
     g.fillStyle = '#df5c7e'; g.fillRect(px - 15, py - 7, 30, 10);
     g.fillStyle = '#ffd56d'; g.font = 'bold 9px monospace'; g.textAlign = 'center';

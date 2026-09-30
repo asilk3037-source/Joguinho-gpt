@@ -549,9 +549,23 @@ def preferir_itens(manifesto):
                 print(f"  {codigo + lado}: substituído por {codigo} (item)")
 
 
+# Ajuste de tamanho por animação (medido pela cabeça e conferido a olho): a Line e a Bell ficam do
+# mesmo tamanho em todas as animações. Vai no campo `ajuste`, que o jogo multiplica na escala.
+AJUSTE_CABECA = os.path.join(RAIZ, "tools", "ajuste_cabeca.json")
+
+
+def aplicar_ajustes(manifesto):
+    fatores = json.load(open(AJUSTE_CABECA, encoding="utf-8"))["fatores"] if os.path.exists(AJUSTE_CABECA) else {}
+    for codigo, m in manifesto.items():
+        m.pop("ajuste", None)
+        if codigo in fatores:
+            m["ajuste"] = fatores[codigo]
+
+
 def gravar(manifesto, retratos):
     preferir_itens(manifesto)
     normalizar_escala(manifesto)
+    aplicar_ajustes(manifesto)
     with open(MANIFESTO, "w", encoding="utf-8") as f:
         f.write("// Gerado por tools/extrair_sprites.py. Não edite à mão.\n")
         f.write("window.SPRITES = ")

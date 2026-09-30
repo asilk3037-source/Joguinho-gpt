@@ -3,7 +3,7 @@
 
 É o único documento do projeto: tudo o que antes ficava em arquivos soltos (pendências,
 índice e plano dos itens, lista de arte, layout do Theo, README do jogo) entra aqui
-(seções 22 a 26). Precisa de dois arquivos JSON exportados do jogo rodando (seção 26.5):
+(seções 22 a 26). Precisa de dois arquivos JSON exportados do jogo rodando (seção 26.6):
   - inventario.json: catálogo de animações (LB.inventario() + dados de cada sprite)
   - roteiro.json: falas, títulos, balões e animações de cada cena (tools/extrair_roteiro)
 
@@ -77,6 +77,8 @@ w("> - **Dicas no modo Fácil:** seta até o objetivo, dicas de cada chefe, avis
 w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Aurora) e a arte de armadura das duas (seção 19.3).")
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
+w()
+w("> 🎞️ **Line e Bell do mesmo tamanho e no mesmo ritmo em todas as animações:** poses inclinadas, agachadas e sentadas não aumentam nem diminuem mais a cabeça (ajuste medido pela cabeça, seção 26.5); a Bell anda e corre no mesmo passo da Line; as cenas do começo tocam no ritmo da artista (o beijo no túnel, a Line admirando a Bell e o soco na máquina estavam acelerados); reverência, toca aqui e vitória não piscam mais em meio segundo. No rapto aparece um dragão só: a arte antiga da Bell carregada já trazia outro dragão desenhado junto.")
 w()
 w("> 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 47 de altura, vaca 71, cavalo 90, porco e ovelha 48, Theo 42, pintinho 27; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).")
 w()
@@ -1261,7 +1263,7 @@ for a, b in [("game/index.html", "página do jogo, menus, controles de toque"), 
              ("game/js/entidades.js", "Line, Bell, Sombra, partículas"), ("game/js/magia.js", "magia, cristais, tochas, barreiras, fontes, Fogo-fátuo e Guardião"),
              ("game/js/dragao.js", "o dragão e seus ataques"), ("game/js/bichos.js", "bichos da fazenda e o Mago"), ("game/js/fazenda.js", "capítulo da fazenda e tarefas"),
              ("game/js/encontro.js", "prólogo *O primeiro encontro*: lugares, máquina de soco, cenas e falas"), ("game/js/cenas.js", "cenas e falas da aventura (roteiro)"), ("game/js/mochila.js", "mochila: itens, moedas, documentos e conclusões, mapa com névoa, objetivo, avisos"), ("game/js/mapas.js", "os mapas das 7 áreas da aventura"), ("game/js/mundo.js", "bombas e paredes rachadas, gancho, chão em brasa, escuro das minas, moedas soltas, casas e objetos novos"), ("game/js/loja.js", "vilarejo: moradores e falas, loja, ferraria, armaduras e escudos"), ("game/js/carrinho.js", "carrinho de mina: estações, escolha do destino e a viagem"), ("game/js/ia.js", "inteligência dos inimigos: linha de visão, caminho pela grade, alerta, separação, e o Morcego"), ("tests/rodar.js", "testes automatizados de todas as telas (Playwright)"), ("tools/fotos_documentacao.js", "tira as capturas das partes novas para este documento"), ("game/js/cenario.js", "árvores, casa, objetos e ambiente"),
-             ("game/js/animacoes.js", "catálogo de animações, substitutas e desenho dos sprites (com a troca para a arte da Bell jogável e das armaduras)"), ("game/js/relogio.js", "relógio do jogo, dia e noite, descanso na fonte"), ("game/js/chefes.js", "os sete chefes elementais, ataques, perigos e arenas"), ("game/js/herois.js", "Bell jogável, troca de heroína, companheira que segue atrás"), ("game/js/parte2.js", "história da Parte 2, moradores e documentos novos, objetivos"), ("game/js/dicas.js", "dicas do modo Fácil: seta guia, dicas de chefe e de derrota"), ("tools/doc_parte2.py", "seções 16 a 22 deste documento"), ("tools/doc_apendices.py", "seções 23 a 26: o que falta, índice e plano dos itens, como rodar e editar o jogo"), ("game/js/entrada.js", "teclado, controle, toque e dificuldade"),
+             ("game/js/animacoes.js", "catálogo de animações, substitutas e desenho dos sprites (com a troca para a arte da Bell jogável e das armaduras)"), ("game/js/relogio.js", "relógio do jogo, dia e noite, descanso na fonte"), ("game/js/chefes.js", "os sete chefes elementais, ataques, perigos e arenas"), ("game/js/herois.js", "Bell jogável, troca de heroína, companheira que segue atrás"), ("game/js/parte2.js", "história da Parte 2, moradores e documentos novos, objetivos"), ("game/js/dicas.js", "dicas do modo Fácil: seta guia, dicas de chefe e de derrota"), ("tools/doc_parte2.py", "seções 16 a 22 deste documento"), ("tools/doc_apendices.py", "seções 23 a 26: o que falta, índice e plano dos itens, como rodar e editar o jogo"), ("tools/medir_cabecas.py", "mede o tamanho da cabeça da Line e da Bell em cada animação; os ajustes ficam em `tools/ajuste_cabeca.json`"), ("tools/pernas_alternadas.py", "refaz as pernas da galinha andando e correndo, uma depois da outra"), ("game/js/entrada.js", "teclado, controle, toque e dificuldade"),
              ("game/assets/", "folhas de sprites, retratos, cenário (inclui `cenario/encontro_*.webp` do prólogo)"), ("tools/extrair_sprites.py", "converte a arte recebida em folhas para o jogo"),
              ("tools/gerar_documentacao.py", "gera este documento")]:
     w(f"| `{a}` | {b} |")
@@ -1299,7 +1301,7 @@ for l in [
     w("| " + " | ".join(l) + " |")
 w()
 w("### Como atualizar este documento")
-w("As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.5.")
+w("As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.6.")
 w()
 img("25-galeria", "No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma")
 doc_parte2.escrever(w, img, inv, rot, roteiro)

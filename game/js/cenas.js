@@ -126,6 +126,11 @@
         return { pronto: () => ent.anim.estado(ent.dir, ent.lado).acabou, pular: () => {} };
       },
 
+      // Espera a animação das duas juntas (duo) chegar ao fim, seja qual for a duração dela.
+      animacaoDuo() {
+        return { pronto: () => !jogo.duo || jogo.duo.anim.estado(jogo.duo.dir, 1).acabou, pular: () => {} };
+      },
+
       animar(ent, base, esperar) {
         ent.anim.tocar(base, true);
         return esperar ? c.animacao(ent) : null;
@@ -259,6 +264,7 @@
       if (c.duo('LINE_BELL_CELEBRATE', meio.x, meio.y)) {
         yield c.espera(0.9);
         j.particulas.emitir('faisca', meio.x, meio.y - 62, 10, { vel: 90, vz: 60, vida: 0.5 });
+        yield c.animacaoDuo();
       }
       yield c.fala('Bell', 'Missão cumprida, fazendeira! Bora almoçar?', 'riso');
       yield c.escurecer(1, 0.8);
@@ -303,7 +309,7 @@
         yield c.espera(3);
         c.fimDuo();
       }
-      if (c.duo('LINE_BELL_KISS', cx, lago.y)) yield c.espera(1.7);
+      if (c.duo('LINE_BELL_KISS', cx, lago.y)) yield c.animacaoDuo();
       j.particulas.emitir('coracao', cx, lago.y - 70, 7, { vel: 30, vida: 1.8 });
       LB.fx.emitir(j, 'FX_HEARTS', cx, lago.y - 78, { sobe: 14 });
       c.fimDuo(); c.duo('LINE_BELL_HOLD_HANDS', cx, lago.y);
@@ -333,7 +339,9 @@
       j.particulas.emitir('poeira', bell.x, bell.y, 16, { vel: 120, vida: 0.7, r: 5 });
       yield c.espera(0.5);
       j.prender(bell, dr);
-      bell.anim.tocar('BELL_DRAGON_CARRIED', true);
+      // A arte BELL_DRAGON_CARRIED já traz um dragão (o antigo) segurando a Bell: com o dragão da
+      // cena ficavam dois. Pendurada nas garras, ela se debate (sem dragão desenhado junto).
+      bell.anim.tocar('BELL_ESCAPE_ATTEMPT', true);
       dr.anim.tocar('DRAGON_TAKEOFF', true);
       yield c.voar(dr, bell.x, bell.y - 30, 190, 0.9);
       yield c.fala('Bell', 'LIIINE!', 'surpresa');
@@ -822,7 +830,7 @@
       if (LB.sprite('LINE_VICTORY')) {
         line.anim.tocar('LINE_VICTORY', true);
         j.particulas.emitir('faisca', line.x, line.y - 70, 12, { vel: 110, vz: 80, vida: 0.6 });
-        yield c.espera(1.3);
+        yield c.animacao(line);
       }
       line.anim.tocar('LINE_EXHAUSTED_IDLE', true);
       yield c.espera(0.6);
@@ -843,7 +851,7 @@
       yield c.fala('Line', 'Você tá bem? Ele te machucou?', 'surpresa');
       bell.anim.tocar('BELL_RELIEVED', true);
       yield c.fala('Bell', 'Agora que você tá aqui, eu tô ótima.', 'apaixonada');
-      if (abraco) { c.fimDuo(); c.duo('LINE_BELL_HUG_RELEASE', (line.x + bell.x) / 2, line.y); yield c.espera(1); c.fimDuo(); }
+      if (abraco) { c.fimDuo(); c.duo('LINE_BELL_HUG_RELEASE', (line.x + bell.x) / 2, line.y); yield c.animacaoDuo(); c.fimDuo(); }
       yield* HISTORIA.dividirLuz(c, j);
       line.anim.tocar('LINE_LAUGH', true);
       yield c.fala('Line', 'Então... será que ainda dá tempo de ver o pôr do sol?', 'maroto');

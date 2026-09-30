@@ -12,7 +12,7 @@ window.LB = window.LB || {};
   function grupo(nome, lista) {
     GRUPOS.push({ nome, codigos: lista.map(([codigo]) => codigo) });
     for (const [codigo, desc, opcoes] of lista) {
-      CATALOGO[codigo] = Object.assign({ fps: 12, loop: false, face: 'R', quadros: 12, desc }, opcoes || {});
+      CATALOGO[codigo] = Object.assign({ fps: 12, loop: false, face: 'R', quadros: 12, desc, codigo }, opcoes || {});
     }
   }
 
@@ -51,8 +51,8 @@ window.LB = window.LB || {};
     ['LINE_SWORD_DRAW', 'Sacar espada', { fps: 24 }],
     ['LINE_SWORD_SHEATHE', 'Guardar espada', { fps: 20, quadros: 14 }],
     ['LINE_COMBAT_IDLE', 'Postura de combate', { fps: 10, loop: true, quadros: 16 }],
-    ['LINE_COMBAT_WALK', 'Andar com a espada em mãos', { dir: QUATRO, fps: 14, loop: true, alt: 'LINE_WALK', nova: true }],
-    ['LINE_COMBAT_RUN', 'Correr com a espada em mãos', { dir: QUATRO, fps: 20, loop: true, alt: 'LINE_RUN', nova: true }],
+    ['LINE_COMBAT_WALK', 'Andar com a espada em mãos', { dir: QUATRO, fps: 14, loop: true, quadros: 16, alt: 'LINE_WALK', nova: true }],
+    ['LINE_COMBAT_RUN', 'Correr com a espada em mãos', { dir: QUATRO, fps: 20, loop: true, quadros: 16, alt: 'LINE_RUN', nova: true }],
     ['LINE_ATTACK_HORIZONTAL', 'Ataque horizontal', { fps: 34, quadros: 16 }],
     ['LINE_ATTACK_VERTICAL', 'Ataque vertical', { fps: 34, quadros: 18 }],
     ['LINE_ATTACK_DIAGONAL', 'Ataque diagonal', { fps: 38, quadros: 22 }],
@@ -65,8 +65,8 @@ window.LB = window.LB || {};
     ['LINE_HIT_LIGHT', 'Receber dano leve', { fps: 32, quadros: 16 }],
     ['LINE_HIT_HEAVY', 'Receber golpe forte', { fps: 22, quadros: 14, chao: 'quadro' }],
     ['LINE_THROWN', 'Ser arremessada', { fps: 22, quadros: 14, chao: 'quadro' }],
-    ['LINE_KNOCKDOWN', 'Cair após golpe', { fps: 26, quadros: 24, chao: 'quadro' }],
-    ['LINE_INJURED_STAND', 'Levantar machucada', { fps: 26, quadros: 28, chao: 'quadro' }],
+    ['LINE_KNOCKDOWN', 'Cair após golpe', { fps: 20, quadros: 24, chao: 'quadro' }],
+    ['LINE_INJURED_STAND', 'Levantar machucada', { fps: 17, quadros: 28, chao: 'quadro' }],
     ['LINE_EXHAUSTED_IDLE', 'Exausta', { fps: 10, loop: true, quadros: 20 }],
     ['LINE_DRAGON_FINAL_ATTACK', 'Ataque final contra o dragão', { fps: 14, quadros: 32 }],
   ]);
@@ -81,7 +81,7 @@ window.LB = window.LB || {};
     ['LINE_CRY', 'Chorando', { fps: 8, loop: true, quadros: 24, alt: 'LINE_SAD' }],
     ['LINE_CALL_BELL', 'Gritando por Bell', { fps: 12, quadros: 24, alt: 'LINE_IDLE_BACK' }],
     ['LINE_RELIEVED', 'Aliviada', { fps: 10, quadros: 20, alt: 'LINE_HAPPY' }],
-    ['LINE_VICTORY', 'Comemorando a vitória', { face: 'F', quadros: 1, alt: 'LINE_HAPPY', nova: true }],
+    ['LINE_VICTORY', 'Comemorando a vitória', { fps: 10, face: 'F', quadros: 20, alt: 'LINE_HAPPY', nova: true }],
   ]);
 
   // Enquanto não houver arte própria, cada animação da Bell usa a mais parecida que já existe.
@@ -89,11 +89,12 @@ window.LB = window.LB || {};
     ['BELL_IDLE', 'Parada', { dir: QUATRO, fps: 8, loop: true, quadros: 16 }],
     ['BELL_BLINK_FRONT', 'Piscar', { face: 'F', alt: 'BELL_IDLE_FRONT' }],
     ['BELL_LOOK_SIDES_FRONT', 'Olhar para os lados', { face: 'F', fps: 8, quadros: 24, alt: 'BELL_IDLE_FRONT' }],
-    ['BELL_WALK', 'Andar', { dir: QUATRO, fps: 10, loop: true, quadros: 8 }],
-    ['BELL_RUN', 'Correr', { dir: QUATRO, fps: 10, loop: true, quadros: 4, alt: 'BELL_WALK' }],
+    // Mesmo passo da Line: andar num ciclo de ~1,1 s e correr em ~0,8 s (antes a Bell andava a 24 quadros por segundo).
+    ['BELL_WALK', 'Andar', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
+    ['BELL_RUN', 'Correr', { dir: QUATRO, fps: 20, loop: true, quadros: 16, alt: 'BELL_WALK' }],
     ['BELL_LAUGH', 'Gargalhada', { fps: 10, loop: true, face: 'F', quadros: 16, nova: true }],
-    ['BELL_JUMP', 'Pular', { fps: 6, quadros: 2, alt: 'BELL_IDLE' }],
-    ['BELL_LAND', 'Aterrissar', { fps: 6, quadros: 1, alt: 'BELL_IDLE' }],
+    ['BELL_JUMP', 'Pular', { fps: 16, quadros: 12, alt: 'BELL_IDLE' }],
+    ['BELL_LAND', 'Aterrissar', { fps: 16, quadros: 8, alt: 'BELL_IDLE' }],
     ['BELL_GROUND_STAND', 'Levantar do chão', { alt: 'BELL_IDLE' }],
     ['BELL_SCARED', 'Assustada', { loop: true, face: 'F', alt: 'BELL_IDLE', tremer: true }],
     ['BELL_FLEE', 'Fugir', { loop: true, alt: 'BELL_RUN' }],
@@ -108,16 +109,16 @@ window.LB = window.LB || {};
     ['BELL_HAPPY', 'Feliz', { loop: true, face: 'F', alt: 'BELL_LAUGH' }],
     ['BELL_RELIEVED', 'Aliviada', { face: 'F', alt: 'BELL_LAUGH' }],
     ['BELL_CRY', 'Chorando', { loop: true, face: 'F', alt: 'BELL_IDLE_FRONT' }],
-    ['BELL_CURTSY', 'Reverência', { face: 'F', quadros: 1, alt: 'BELL_IDLE_FRONT', nova: true }],
-    ['BELL_HIGH_FIVE', 'Toca aqui', { face: 'F', quadros: 1, alt: 'BELL_LAUGH', nova: true }],
+    ['BELL_CURTSY', 'Reverência', { fps: 8, face: 'F', quadros: 12, alt: 'BELL_IDLE_FRONT', nova: true }],
+    ['BELL_HIGH_FIVE', 'Toca aqui', { fps: 8, face: 'F', quadros: 7, alt: 'BELL_LAUGH', nova: true }],
     ['BELL_DANCE', 'Dançando (giro)', { fps: 5, loop: true, face: 'F', quadros: 4, alt: 'BELL_LAUGH', nova: true }],
   ]);
 
   grupo('Line e Bell juntas', [
-    ['LINE_BELL_WALK_TOGETHER', 'Andando lado a lado', { dir: QUATRO, loop: true }],
-    ['LINE_BELL_WALK_HANDS', 'Andando de mãos dadas', { dir: QUATRO, fps: 10, loop: true, quadros: 10 }],
+    ['LINE_BELL_WALK_TOGETHER', 'Andando lado a lado', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
+    ['LINE_BELL_WALK_HANDS', 'Andando de mãos dadas', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
     ['LINE_BELL_RUN_TOGETHER', 'Correndo juntas', { dir: QUATRO, loop: true }],
-    ['LINE_BELL_TALK', 'Conversando', { fps: 1.2, loop: true, face: 'F', quadros: 2 }],
+    ['LINE_BELL_TALK', 'Conversando', { fps: 6, loop: true, face: 'F', quadros: 12 }],
     ['LINE_BELL_LAUGH', 'Rindo juntas', { loop: true }],
     ['LINE_BELL_EAT', 'Almoçando juntas', { fps: 6, loop: true, face: 'F', quadros: 24, nova: true }],
     ['LINE_BELL_KISS', 'Bitoquinha', { fps: 5, face: 'F', quadros: 8, nova: true }],
@@ -125,8 +126,8 @@ window.LB = window.LB || {};
     ['LINE_BELL_HOLD_HANDS', 'Segurando as mãos', { loop: true, face: 'F' }],
     ['LINE_BELL_RESCUE_HUG', 'Abraço do resgate', { quadros: 24, loop: true, face: 'F' }],
     ['LINE_BELL_HUG_RELEASE', 'Separação do abraço'],
-    ['LINE_BELL_CELEBRATE', 'Comemorando (toca aqui)', { fps: 2.5, face: 'F', quadros: 3 }],
-    ['LINE_BELL_HIGH_FIVE', 'Toca aqui com brilho', { face: 'F', quadros: 1, nova: true }],
+    ['LINE_BELL_CELEBRATE', 'Comemorando (toca aqui)', { fps: 8, face: 'F', quadros: 16 }],
+    ['LINE_BELL_HIGH_FIVE', 'Toca aqui com brilho', { fps: 9, face: 'F', quadros: 12, nova: true }],
     ['LINE_BELL_DANCE', 'Dançando juntas', { fps: 4, loop: true, face: 'F', quadros: 4, nova: true }],
     ['LINE_BELL_SIT_DOWN', 'Sentando juntas'],
     ['BELL_HEAD_ON_LINE', 'Bell apoiando a cabeça na Line'],
@@ -604,10 +605,19 @@ window.LB = window.LB || {};
 
   // Velocidade da animação. A arte nova (itens 50 em diante) tem mais quadros que a antiga:
   // mantém a duração do catálogo (sincronizada com os golpes); em loop, vale o fps do artista.
+  // Golpes, pulos, magias, esquivas, o dragão e os efeitos seguem o tempo do jogo; as outras (cenas,
+  // emoções, abraços) não passam de 12 quadros por segundo e, quando a artista deu o fps, usam o dela.
+  const NO_TEMPO_DO_JOGO = /ATTACK|DODGE|DASH|BLOCK|HIT|JUMP|LAND|CAST|RUN_START|RUN_STOP|SWORD|THROWN|KNOCKDOWN|STAR|SPREAD|_WALK|_RUN|^DRAGON_|^FX_|^GOLEM|^SHADOW|^WISP/;
   function fpsDe(inf, s, n) {
-    if (!s || !s.ritmo || n === inf.quadros) return inf.fps;
-    if (inf.loop && s.fpsArte) return s.fpsArte;
-    return Math.max(4, Math.min(24, n * inf.fps / inf.quadros));
+    // Andar e correr (em loop): sempre o mesmo ciclo do catálogo, tenha a arte quantos quadros tiver.
+    if (s && inf.loop && inf.codigo && /_(WALK|RUN)(_|$)/.test(inf.codigo)) return Math.max(4, Math.min(24, n * inf.fps / inf.quadros));
+    if (!s || !s.ritmo) return inf.fps;
+    const doJogo = !!inf.codigo && NO_TEMPO_DO_JOGO.test(inf.codigo);
+    // Andar e correr seguem o passo do deslocamento (senão o pé escorrega), não o fps da arte.
+    const movimento = !!inf.codigo && /_(WALK|RUN)(_|$)/.test(inf.codigo);
+    if (s.fpsArte && (inf.loop ? !movimento : !doJogo)) return s.fpsArte;
+    const fps = n === inf.quadros ? inf.fps : Math.max(4, Math.min(24, n * inf.fps / inf.quadros));
+    return doJogo ? fps : Math.max(6, Math.min(12, fps));
   }
 
   class Animador {
@@ -685,7 +695,9 @@ window.LB = window.LB || {};
     const s = r.sprite, img = imagens[r.codigo];
     if (!s || !img || !img.complete || !img.naturalWidth) return false;
     // `mundo`: tamanho fixo da célula no mundo (arte avulsa), independe da altura pedida.
-    const esc = (s.mundo ? s.mundo : altura * (s.escala || 1)) / s.cell;
+    // `ajuste`: correção de tamanho da animação (tools/ajuste_cabeca.json), para a Line e a Bell terem o
+    // mesmo tamanho em todas as poses.
+    const esc = (s.mundo ? s.mundo : altura * (s.escala || 1)) / s.cell * (s.ajuste || 1);
     const inf = info(r.codigo);
     const chao = inf.chao === 'fim' ? s.groundEnd : inf.chao === 'quadro' ? (s.bases ? s.bases[quadro] : s.ground) : typeof inf.chao === 'number' ? inf.chao : s.ground;
     ctx.save();

@@ -4,6 +4,8 @@
   const TILE = LB.TILE;
   const T = (n) => n * TILE;
   const ALTURA_VISTA = 400;
+  // A Bell levada pelo dragão fica pendurada nas garras: os pés tantas unidades abaixo da altura do voo.
+  const PENDURADA = 48;
   const CHAVE_SAVE = 'lineBell.save.v1';
   const $ = (s) => document.querySelector(s);
 
@@ -603,7 +605,7 @@
       this.avisoMana = Math.max(0, this.avisoMana - dt);
       if (this.bell) this.bell.atualizar(dt, this);
       if (this.duo) this.duo.anim.atualizar(dt);
-      if (this.presa) { const { bell, dragao } = this.presa; bell.x = dragao.x; bell.y = dragao.y + 6; bell.z = Math.max(0, dragao.alturaVoo + 10); }
+      if (this.presa) { const { bell, dragao } = this.presa; bell.x = dragao.x; bell.y = dragao.y + 6; bell.z = Math.max(0, dragao.alturaVoo - PENDURADA); }
       this.particulas.atualizar(dt);
       for (const f of this.efeitos) f.t += dt;
       this.efeitos = this.efeitos.filter((f) => f.t < f.dur);

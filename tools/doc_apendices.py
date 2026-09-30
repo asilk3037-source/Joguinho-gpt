@@ -306,7 +306,7 @@ def fica(item, codigos):
     """O que o jogo usa no lugar das animações que ficaram de fora."""
     if all(c in item["no_jogo"] for c in codigos):
         return "O jogo segue com a versão anterior."
-    return "O jogo usa a substituta (seção 23.2) até chegar a arte certa."
+    return "O jogo usa a substituta (seção 23.3) até chegar a arte certa."
 
 
 def escrever(w, inv, itens=None):
@@ -341,6 +341,8 @@ def escrever(w, inv, itens=None):
     refeitas = sorted(extrair_sprites.PERNAS_ALTERNADAS)
     if refeitas:
         linhas.append("- **Pernas paradas:** " + ", ".join(f"`{c}`" for c in refeitas) + " chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.")
+    if "BELL_DRAGON_CARRIED" in manifesto():
+        linhas.append("- **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.")
     for n, nome in sorted(extrair_sprites.ITENS_CENARIO.items()):
         linhas.append(f"- **Item {n} ({nome})**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).")
     if faltam:
@@ -348,7 +350,22 @@ def escrever(w, inv, itens=None):
     for l in linhas or ["Nada para reenviar agora."]:
         w(l)
     w()
-    w("### 23.2 Animações ainda sem arte")
+    w("### 23.2 Animações com poucos quadros diferentes")
+    w()
+    w("O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo para a Line, a Bell e as duas juntas; cenas e emoções no fps da artista, sem passar de 12 quadros por segundo). Mas estas têm **4 desenhos diferentes ou menos** e repetem quadros, então o movimento fica \"picado\". Vale reenviar com o ciclo completo (8 a 12 desenhos diferentes):")
+    w()
+    w("| Personagem | Animações (desenhos diferentes) |")
+    w("|---|---|")
+    poucos = {}
+    for cod, sp in sorted(manifesto().items()):
+        if cod.startswith(("LINE_", "BELL_")) and sp.get("count", 99) <= 4 and not sp.get("mundo"):
+            quem = "Line e Bell juntas" if cod.startswith("LINE_BELL_") else ("Line" if cod.startswith("LINE_") else "Bell")
+            poucos.setdefault(quem, []).append(f"`{cod}` ({sp['count']})")
+    for quem in ("Line", "Bell", "Line e Bell juntas"):
+        if quem in poucos:
+            w(f"| {quem} | {', '.join(poucos[quem])} |")
+    w()
+    w("### 23.3 Animações ainda sem arte")
     w()
     w("| Grupo | Código | O que é | Hoje usa |")
     w("|---|---|---|---|")
@@ -359,7 +376,7 @@ def escrever(w, inv, itens=None):
             desc = (i.get("desc") or "").replace("|", "/")
             w(f"| {g['nome']} | `{i['codigo']}` | {desc} | {('`' + i['via'] + '`') if i['via'] else 'desenho no código'} |")
     w()
-    w("### 23.3 Como mandar arte nova")
+    w("### 23.4 Como mandar arte nova")
     w()
     w("Qualquer um destes formatos funciona (detalhes e regras de desenho na seção 14; tamanhos na seção 22.0):")
     w()
@@ -447,7 +464,12 @@ def escrever(w, inv, itens=None):
     w()
     w("No menu, a tela **Animações** mostra o que já existe, o que falta e uma prévia de cada uma. A organização dos arquivos do código e os testes automatizados estão na seção 15.")
     w()
-    w("### 26.5 Como regerar esta documentação")
+    w("### 26.5 Tamanho e ritmo iguais em todas as animações")
+    w()
+    w("- **Tamanho:** o extrator iguala a altura de cada animação à da pose parada. Nas poses inclinadas, agachadas ou sentadas, isso deixava a Line e a Bell com a cabeça maior ou menor. Por isso cada animação também tem um **ajuste pela cabeça**: `tools/medir_cabecas.py` compara a cabeça de cada animação com a das poses paradas (em vários tamanhos e inclinações), e o fator conferido a olho vai para `tools/ajuste_cabeca.json`. O jogo multiplica a escala por esse fator (campo `ajuste` em `sprites.js`).")
+    w("- **Ritmo:** andar (~1,1 s por passo) e correr (~0,8 s) têm o mesmo ciclo para a Line, a Bell e as duas juntas, tenha a arte quantos quadros tiver. Golpes, pulos, magias, esquivas e o dragão seguem o tempo do jogo. As cenas e emoções usam o fps que a artista mandou e nunca passam de 12 quadros por segundo.")
+    w()
+    w("### 26.6 Como regerar esta documentação")
     w()
     w("Com o jogo servido na porta 8765 (`cd game && python3 -m http.server 8765`), na raiz:")
     w()
