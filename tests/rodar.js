@@ -686,6 +686,36 @@ teste('arte: Mago e Espírito das Ruínas animados (itens 124 e 125)', async (h)
   afirmar(viu.magia, 'a Line aprende a magia');
 });
 
+teste('bichos: maiores, olhando para onde andam e galinha com uma perna depois da outra', async (h) => {
+  await h.area('fazenda', {});
+  const r = await h.ev(() => {
+    const j = LB.jogo, g = j.bichos.find((b) => b.tipo === 'galinha' && !b.marrom);
+    const s = LB.sprite('CHICKEN_WALK'), vaca = LB.sprite('COW_WALK');
+    const chamadas = [], original = LB.desenharSprite;
+    LB.desenharSprite = (ctx, r, quadro) => { chamadas.push({ cod: r.codigo, flip: r.flip, quadro }); return true; };
+    const ctx = document.createElement('canvas').getContext('2d');
+    g.estado = 'andando'; g.xPasso = null; g.fasePasso = 0;
+    const quadros = [];
+    try {
+      g.lado = 1; g.desenharSprite(ctx, j, 0); const flipDireita = chamadas.pop().flip;
+      g.lado = -1; g.desenharSprite(ctx, j, 0); const flipEsquerda = chamadas.pop().flip;
+      // Anda meio ciclo em passos pequenos: o quadro avança junto com o chão percorrido.
+      const ciclo = s.passo * s.mundo / s.cell, x0 = g.x, t0 = j.tempo;
+      for (let k = 0; k <= 12; k++) { j.tempo = t0 + k * 0.05; g.x = x0 + ciclo * 0.5 * k / 12; g.desenharSprite(ctx, j, 0); quadros.push(chamadas.pop().quadro); }
+      // Parada no mesmo lugar: o quadro não muda (nada de pés andando no ar).
+      const parado = [];
+      for (let k = 1; k <= 5; k++) { j.tempo = t0 + 1 + k * 0.05; g.desenharSprite(ctx, j, 0); parado.push(chamadas.pop().quadro); }
+      g.x = x0;
+      return { flipDireita, flipEsquerda, quadros, parado, galinha: s.mundo, vaca: vaca.mundo, line: LB.ALTURA_LINE };
+    } finally { LB.desenharSprite = original; }
+  });
+  afirmar(r.flipDireita === true && r.flipEsquerda === false, 'a arte da galinha olha para a esquerda: espelha só andando para a direita ' + JSON.stringify(r));
+  afirmar(r.galinha > 50 && r.vaca > 110, 'bichos maiores: galinha ' + r.galinha + ', vaca ' + r.vaca);
+  const ultimo = r.quadros[r.quadros.length - 1];
+  afirmar(ultimo >= 5 && ultimo <= 7, 'meio ciclo andado = meio ciclo de quadros: ' + r.quadros);
+  afirmar(new Set(r.parado).size === 1, 'parada, a galinha não mexe as pernas: ' + r.parado);
+});
+
 // ================= Save =================
 teste('save: continuar volta para a mesma área com os itens', async (h) => {
   await h.area('vilarejo', { espada: true, moedas: 33 });

@@ -338,6 +338,9 @@ def escrever(w, inv, itens=None):
             linhas.append(f"- **Item {i['n']}**: " + ", ".join(f"`{c}`" for c in i["poucos"]) + (" estão" if len(i["poucos"]) > 1 else " está") + " no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.")
         for cod, mot in i["recusados"]:
             linhas.append(f"- **Item {i['n']}**: `{cod}` foi recusado: {mot}. " + fica(i, [cod]))
+    refeitas = sorted(extrair_sprites.PERNAS_ALTERNADAS)
+    if refeitas:
+        linhas.append("- **Pernas paradas:** " + ", ".join(f"`{c}`" for c in refeitas) + " chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.")
     for n, nome in sorted(extrair_sprites.ITENS_CENARIO.items()):
         linhas.append(f"- **Item {n} ({nome})**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).")
     if faltam:

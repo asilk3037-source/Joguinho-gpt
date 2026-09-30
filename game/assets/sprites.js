@@ -583,7 +583,7 @@ window.SPRITES = {
   ],
   "label": "Abaixa a cabeça e mastiga o alimento.",
   "item": "LINE_BELL_ITEM_134.html",
-  "mundo": 82.89,
+  "mundo": 124.33,
   "bicho": true
  },
  "COW_IDLE": {
@@ -623,7 +623,7 @@ window.SPRITES = {
   ],
   "label": "Vaca parada com respiração e ajuste de peso.",
   "item": "LINE_BELL_ITEM_134.html",
-  "mundo": 82.89,
+  "mundo": 124.33,
   "bicho": true
  },
  "COW_RUN": {
@@ -663,7 +663,7 @@ window.SPRITES = {
   ],
   "label": "Corrida com maior impulsão e balanço.",
   "item": "LINE_BELL_ITEM_134.html",
-  "mundo": 82.89,
+  "mundo": 124.33,
   "bicho": true
  },
  "COW_WALK": {
@@ -703,7 +703,7 @@ window.SPRITES = {
   ],
   "label": "Caminhada com passo alternado.",
   "item": "LINE_BELL_ITEM_134.html",
-  "mundo": 82.89,
+  "mundo": 124.33,
   "bicho": true
  },
  "HORSE_EAT": {
@@ -743,7 +743,7 @@ window.SPRITES = {
   ],
   "label": "Abaixa a cabeça para comer e retorna.",
   "item": "LINE_BELL_ITEM_136.html",
-  "mundo": 76.73,
+  "mundo": 107.42,
   "bicho": true
  },
  "HORSE_IDLE": {
@@ -783,7 +783,7 @@ window.SPRITES = {
   ],
   "label": "Cavalo parado com respiração sutil.",
   "item": "LINE_BELL_ITEM_136.html",
-  "mundo": 76.73,
+  "mundo": 107.42,
   "bicho": true
  },
  "HORSE_RUN": {
@@ -823,7 +823,7 @@ window.SPRITES = {
   ],
   "label": "Corrida com impulsão e suspensão.",
   "item": "LINE_BELL_ITEM_136.html",
-  "mundo": 76.73,
+  "mundo": 107.42,
   "bicho": true
  },
  "HORSE_WALK": {
@@ -863,7 +863,7 @@ window.SPRITES = {
   ],
   "label": "Caminhada com passada alternada.",
   "item": "LINE_BELL_ITEM_136.html",
-  "mundo": 76.73,
+  "mundo": 107.42,
   "bicho": true
  },
  "PIG_FRONT": {
@@ -903,7 +903,7 @@ window.SPRITES = {
   ],
   "label": "Porco em apresentação frontal.",
   "item": "LINE_BELL_ITEM_135.html",
-  "mundo": 47.85,
+  "mundo": 71.77,
   "bicho": true
  },
  "PIG_IDLE": {
@@ -943,7 +943,7 @@ window.SPRITES = {
   ],
   "label": "Respiração e ajuste de peso em pose neutra.",
   "item": "LINE_BELL_ITEM_135.html",
-  "mundo": 47.85,
+  "mundo": 71.77,
   "bicho": true
  },
  "PIG_LIE": {
@@ -983,7 +983,7 @@ window.SPRITES = {
   ],
   "label": "O porco se acomoda deitado.",
   "item": "LINE_BELL_ITEM_135.html",
-  "mundo": 47.85,
+  "mundo": 71.77,
   "bicho": true
  },
  "PIG_MUD": {
@@ -1023,7 +1023,7 @@ window.SPRITES = {
   ],
   "label": "O porco se abaixa e se movimenta na lama.",
   "item": "LINE_BELL_ITEM_135.html",
-  "mundo": 47.85,
+  "mundo": 71.77,
   "bicho": true
  },
  "PIG_WALK": {
@@ -1063,7 +1063,7 @@ window.SPRITES = {
   ],
   "label": "Caminhada com apoio alternado.",
   "item": "LINE_BELL_ITEM_135.html",
-  "mundo": 47.85,
+  "mundo": 71.77,
   "bicho": true
  },
  "CHICKEN_EAT": {
@@ -1103,7 +1103,7 @@ window.SPRITES = {
   ],
   "label": "Aproximação e alimentação no chão.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_IDLE": {
@@ -1143,7 +1143,7 @@ window.SPRITES = {
   ],
   "label": "Respiração leve em posição neutra.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_LAY_EGG": {
@@ -1183,7 +1183,7 @@ window.SPRITES = {
   ],
   "label": "Agacha, bota o ovo e retorna à pose.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_PECK": {
@@ -1223,10 +1223,11 @@ window.SPRITES = {
   ],
   "label": "Bicadas marcadas e recuperação.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_RUN": {
+  "passo": 51.4,
   "ritmo": 1,
   "src": "assets/sprites/CHICKEN_RUN.webp",
   "cell": 256,
@@ -1246,24 +1247,24 @@ window.SPRITES = {
    11
   ],
   "ground": 211,
-  "groundEnd": 206,
+  "groundEnd": 212,
   "bases": [
    211,
-   205,
-   202,
-   200,
-   202,
-   205,
    211,
+   213,
+   214,
+   212,
+   208,
    206,
-   203,
-   202,
-   203,
-   206
+   209,
+   214,
+   217,
+   216,
+   212
   ],
   "label": "Corrida rápida com suspensão.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_SCARED": {
@@ -1303,7 +1304,7 @@ window.SPRITES = {
   ],
   "label": "Salto curto de susto e recuperação.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_SCRATCH": {
@@ -1343,7 +1344,7 @@ window.SPRITES = {
   ],
   "label": "Cisca o solo e espalha terra.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_SLEEP": {
@@ -1383,10 +1384,11 @@ window.SPRITES = {
   ],
   "label": "Corpo abaixado, respiração lenta e sono.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICKEN_WALK": {
+  "passo": 40.0,
   "ritmo": 1,
   "src": "assets/sprites/CHICKEN_WALK.webp",
   "cell": 256,
@@ -1406,24 +1408,24 @@ window.SPRITES = {
    11
   ],
   "ground": 211,
-  "groundEnd": 208,
+  "groundEnd": 211,
   "bases": [
    211,
-   208,
-   206,
-   205,
-   206,
-   208,
+   210,
+   212,
+   212,
    210,
    208,
-   207,
-   206,
-   207,
-   208
+   208,
+   209,
+   213,
+   215,
+   214,
+   211
   ],
   "label": "Caminhada com balanço e apoio alternado.",
   "item": "LINE_BELL_ITEM_131.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "CHICK_IDLE": {
@@ -1463,7 +1465,7 @@ window.SPRITES = {
   ],
   "label": "Pintinho parado com respiração sutil.",
   "item": "LINE_BELL_ITEM_133.html",
-  "mundo": 32.85,
+  "mundo": 50.91,
   "bicho": true
  },
  "CHICK_RUN": {
@@ -1503,7 +1505,7 @@ window.SPRITES = {
   ],
   "label": "Corrida rápida com impulsão e aterrissagem.",
   "item": "LINE_BELL_ITEM_133.html",
-  "mundo": 32.85,
+  "mundo": 50.91,
   "bicho": true
  },
  "CHICK_WALK": {
@@ -1543,7 +1545,7 @@ window.SPRITES = {
   ],
   "label": "Passos curtos com alternância.",
   "item": "LINE_BELL_ITEM_133.html",
-  "mundo": 32.85,
+  "mundo": 50.91,
   "bicho": true
  },
  "HEN_BROWN_EAT": {
@@ -1583,7 +1585,7 @@ window.SPRITES = {
   ],
   "label": "Alimentação no chão.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_IDLE": {
@@ -1623,7 +1625,7 @@ window.SPRITES = {
   ],
   "label": "Respiração leve em pose neutra.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_LAY_EGG": {
@@ -1663,7 +1665,7 @@ window.SPRITES = {
   ],
   "label": "Agacha, bota o ovo e se levanta.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_PECK": {
@@ -1703,10 +1705,11 @@ window.SPRITES = {
   ],
   "label": "Bicadas marcadas e recuperação.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_RUN": {
+  "passo": 51.4,
   "ritmo": 1,
   "src": "assets/sprites/HEN_BROWN_RUN.webp",
   "cell": 256,
@@ -1725,25 +1728,25 @@ window.SPRITES = {
    10,
    11
   ],
-  "ground": 211,
-  "groundEnd": 206,
+  "ground": 210,
+  "groundEnd": 212,
   "bases": [
-   211,
-   205,
-   202,
-   200,
-   202,
-   205,
-   211,
+   210,
+   210,
+   213,
+   214,
+   212,
+   208,
    206,
-   203,
-   202,
-   203,
-   206
+   209,
+   214,
+   217,
+   216,
+   212
   ],
   "label": "Corrida rápida com suspensão.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_SCARED": {
@@ -1783,7 +1786,7 @@ window.SPRITES = {
   ],
   "label": "Salto curto de susto.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_SCRATCH": {
@@ -1823,7 +1826,7 @@ window.SPRITES = {
   ],
   "label": "Cisca e espalha terra.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_SLEEP": {
@@ -1863,10 +1866,11 @@ window.SPRITES = {
   ],
   "label": "Corpo abaixado e respiração lenta.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "HEN_BROWN_WALK": {
+  "passo": 40.0,
   "ritmo": 1,
   "src": "assets/sprites/HEN_BROWN_WALK.webp",
   "cell": 256,
@@ -1885,25 +1889,25 @@ window.SPRITES = {
    10,
    11
   ],
-  "ground": 211,
-  "groundEnd": 208,
+  "ground": 210,
+  "groundEnd": 211,
   "bases": [
+   210,
+   210,
    211,
-   208,
-   206,
-   205,
-   206,
-   208,
+   212,
    210,
    208,
    207,
-   206,
-   207,
-   208
+   209,
+   213,
+   215,
+   214,
+   211
   ],
   "label": "Caminhada com apoio alternado.",
   "item": "LINE_BELL_ITEM_132.html",
-  "mundo": 40.25,
+  "mundo": 58.36,
   "bicho": true
  },
  "BELL_CURTSY": {
@@ -2317,7 +2321,7 @@ window.SPRITES = {
   ],
   "label": "Theo ergue o corpo e reage ao alerta.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_BALL": {
@@ -2357,7 +2361,7 @@ window.SPRITES = {
   ],
   "label": "Theo acompanha a bola em saltos sucessivos.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_BATH": {
@@ -2397,7 +2401,7 @@ window.SPRITES = {
   ],
   "label": "Theo se mexe entre bolhas durante o banho.",
   "item": "LINE_BELL_ITEM_130.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_BONE": {
@@ -2437,7 +2441,7 @@ window.SPRITES = {
   ],
   "label": "Theo brinca com o osso e volta à pose inicial.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_BACK": {
@@ -2477,7 +2481,7 @@ window.SPRITES = {
   ],
   "label": "Respiração e cauda vistas de costas.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_FRONT": {
@@ -2517,7 +2521,7 @@ window.SPRITES = {
   ],
   "label": "Respiração e ajuste de peso vistos de frente.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_LEFT": {
@@ -2557,7 +2561,7 @@ window.SPRITES = {
   ],
   "label": "Pose neutra voltada à esquerda.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_RIGHT": {
@@ -2597,7 +2601,7 @@ window.SPRITES = {
   ],
   "label": "Pose neutra voltada à direita.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_LIE": {
@@ -2637,7 +2641,7 @@ window.SPRITES = {
   ],
   "label": "Theo deitado e atento.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_PLAY": {
@@ -2677,7 +2681,7 @@ window.SPRITES = {
   ],
   "label": "Brincadeira de barriga para cima com balanço do corpo.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_QUESTION": {
@@ -2717,7 +2721,7 @@ window.SPRITES = {
   ],
   "label": "Theo inclina a cabeça com curiosidade.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_ROLL": {
@@ -2757,7 +2761,7 @@ window.SPRITES = {
   ],
   "label": "Theo rola de barriga para cima e recupera a posição.",
   "item": "LINE_BELL_ITEM_130.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_RUN": {
@@ -2792,7 +2796,7 @@ window.SPRITES = {
   ],
   "label": "Corrida com impulsão, suspensão e aterrissagem.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SIT": {
@@ -2832,7 +2836,7 @@ window.SPRITES = {
   ],
   "label": "Theo se acomoda sentado.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SIT_FRONT": {
@@ -2872,7 +2876,7 @@ window.SPRITES = {
   ],
   "label": "Theo sentado de frente, respirando.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SIT_IDLE": {
@@ -2912,7 +2916,7 @@ window.SPRITES = {
   ],
   "label": "Theo sentado e apaixonado.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SLEEP": {
@@ -2952,7 +2956,7 @@ window.SPRITES = {
   ],
   "label": "Theo dormindo com respiração lenta.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_BACK": {
@@ -2987,7 +2991,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_FRONT": {
@@ -3022,7 +3026,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_LEFT": {
@@ -3057,7 +3061,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_RIGHT": {
@@ -3092,7 +3096,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 46.79,
+  "mundo": 56.15,
   "bicho": true
  },
  "LINE_IDLE_FRONT": {
@@ -8726,7 +8730,7 @@ window.SPRITES = {
   ],
   "label": "Ovelha parada com respiração sutil.",
   "item": "LINE_BELL_ITEM_137.html",
-  "mundo": 39.38,
+  "mundo": 59.08,
   "bicho": true
  },
  "SHEEP_WALK": {
@@ -8766,7 +8770,7 @@ window.SPRITES = {
   ],
   "label": "Caminhada com apoio alternado.",
   "item": "LINE_BELL_ITEM_137.html",
-  "mundo": 39.38,
+  "mundo": 59.08,
   "bicho": true
  },
  "SHEEP_RUN": {
@@ -8806,7 +8810,7 @@ window.SPRITES = {
   ],
   "label": "Corrida curta com impulsão.",
   "item": "LINE_BELL_ITEM_137.html",
-  "mundo": 39.38,
+  "mundo": 59.08,
   "bicho": true
  },
  "SHEEP_EAT": {
@@ -8846,7 +8850,7 @@ window.SPRITES = {
   ],
   "label": "Abaixa a cabeça, come e retorna à pose.",
   "item": "LINE_BELL_ITEM_137.html",
-  "mundo": 39.38,
+  "mundo": 59.08,
   "bicho": true
  },
  "MAGO_IDLE": {

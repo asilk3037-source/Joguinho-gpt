@@ -133,6 +133,12 @@ def base_dos_pes(celula):
     return altura
 
 
+# Andar/correr que chegaram com as pernas paradas (só o corpo balança): as pernas são refeitas
+# girando no quadril, uma depois da outra (tools/pernas_alternadas.py). (amplitude em graus, quanto o pé sobe)
+PERNAS_ALTERNADAS = {"CHICKEN_WALK": (30, 0.14), "HEN_BROWN_WALK": (30, 0.14),
+                     "CHICKEN_RUN": (40, 0.22), "HEN_BROWN_RUN": (40, 0.22)}
+
+
 def processar(codigo, dados, origem):
     frames = dados["frames"]
     unicos, sequencia, indice = [], [], {}
@@ -145,6 +151,17 @@ def processar(codigo, dados, origem):
     dragao = codigo.startswith("DRAGON_")
     lado = CELULA_DRAGAO if dragao else CELULA
     celulas = [decodificar(u).resize((lado, lado), Image.LANCZOS) for u in unicos]
+    passo = None
+    if codigo in PERNAS_ALTERNADAS:
+        import pernas_alternadas
+        fonte = decodificar(unicos[0])
+        amplitude, erguer = PERNAS_ALTERNADAS[codigo]
+        quadros, passo = pernas_alternadas.refazer(fonte, 12, amplitude, erguer, frente=-1)
+        celulas = [q.resize((lado, lado), Image.LANCZOS) for q in quadros]
+        sequencia = list(range(len(celulas)))
+        # Quanto o bicho anda num ciclo, em px da célula: o jogo casa o quadro com o deslocamento.
+        passo = round(passo * lado / fonte.size[0], 1)
+        print(f"  {codigo}: pernas refeitas (uma depois da outra), passo de {passo} px por ciclo")
 
     # Chão = altura dos pés no primeiro e no último quadro. O jogo usa o primeiro por padrão,
     # pois é nele que a animação emenda na anterior.
@@ -159,6 +176,8 @@ def processar(codigo, dados, origem):
     extra = {}
     if dragao:
         extra["mundo"] = MUNDO_DRAGAO
+    if passo:
+        extra["passo"] = passo
     if numero_item(origem) >= ITEM_RITMO:
         extra["ritmo"] = 1
         if dados.get("fps"):
@@ -446,6 +465,9 @@ MESMA_ESCALA = {"LINE_BELL_SIT_DOWN": "LINE_BELL_SIT_IDLE", "BELL_HEAD_ON_LINE":
 # Bichos que chegaram como item (132 em diante): ficam do mesmo tamanho na tela que a arte
 # antiga do pacote da fazenda (altura do bicho de pé, em pixels do mundo).
 # Altura da pose parada (1º quadro do _IDLE) quando não há arte antiga para comparar.
+# Os bichos ficaram pequenos perto da Line com a altura da arte antiga: cada espécie cresce assim.
+AUMENTO_BICHO = {"COW_": 1.5, "HEN_BROWN_": 1.45, "CHICKEN_": 1.45, "CHICK_": 1.55, "DUCK_": 1.4, "CAT_": 1.4,
+                 "SHEEP_": 1.5, "PIG_": 1.5, "HORSE_": 1.4, "THEO_": 1.2}
 ALTURA_BICHO = {"COW_": 39.5, "HEN_BROWN_": 26.3, "CHICKEN_": 26.3, "CHICK_": 14.1, "DUCK_": 20, "CAT_": 18,
                 "SHEEP_": 26, "PIG_": 27, "HORSE_": 58, "THEO_": 30}
 # Altura de cada pose na arte antiga do pacote da fazenda (tools/alturas_bichos.json): a escala de
@@ -491,7 +513,7 @@ def normalizar_escala(manifesto):
 
 
 def escala_bichos(manifesto, fracoes):
-    """Bichos dos itens: um tamanho no mundo por espécie, igual ao da arte antiga."""
+    """Bichos dos itens: um tamanho no mundo por espécie, o da arte antiga vezes o AUMENTO_BICHO."""
     antigas = json.load(open(ALTURAS_ANTIGAS, encoding="utf-8")) if os.path.exists(ALTURAS_ANTIGAS) else {}
     for prefixo, alvo in ALTURA_BICHO.items():
         codigos = [c for c in fracoes if c.startswith(prefixo)]
@@ -504,6 +526,7 @@ def escala_bichos(manifesto, fracoes):
         else:
             parado = next((c for c in codigos if c == prefixo + "IDLE"), codigos[0])
             mundo = alvo / fracoes[parado][0]
+        mundo *= AUMENTO_BICHO.get(prefixo, 1)
         for c in codigos:
             manifesto[c]["mundo"] = round(mundo, 2)
             manifesto[c]["bicho"] = True
