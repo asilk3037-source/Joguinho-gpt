@@ -7,22 +7,22 @@
   const E = (g, x, y, rx, ry, cor) => { g.fillStyle = cor; g.beginPath(); g.ellipse(x, y, rx, ry, 0, 0, TAU); g.fill(); };
 
   const ESPECIES = {
-    galinha: { vel: 18, fuga: 95, sons: ['Cocó!', 'Pó-pó-pó...', 'Cocoricó?'], nome: 'galinha', altura: 33 },
-    pintinho: { vel: 34, fuga: 80, sons: ['Piu!', 'Piu piu!'], nome: 'pintinho', altura: 19 },
-    vaca: { vel: 13, fuga: 0, sons: ['Muuuu!', 'Muu...'], nome: 'vaca', altura: 60 },
-    ovelha: { vel: 17, fuga: 60, sons: ['Béééé!', 'Bé!'], nome: 'ovelha', altura: 42 },
-    porco: { vel: 15, fuga: 0, sons: ['Oinc!', 'Oinc oinc!'], nome: 'porco', altura: 39 },
-    cachorro: { vel: 70, fuga: 0, sons: ['Au! Au!', 'Au!', 'Auuu~'], nome: 'Theo', altura: 34 },
-    gato: { vel: 0, fuga: 0, sons: ['Miau~', 'Rrrrr...'], nome: 'gato', altura: 30 },
-    pato: { vel: 16, fuga: 0, sons: ['Quack!', 'Quack quack!'], nome: 'pato', altura: 28 },
-    cavalo: { vel: 22, fuga: 0, sons: ['Iiirrííí!', 'Frrr...'], nome: 'cavalo', altura: 72 },
+    galinha: { vel: 18, fuga: 95, sons: ['Cocó!', 'Pó-pó-pó...', 'Cocoricó?'], nome: 'galinha', altura: 40 },
+    pintinho: { vel: 34, fuga: 80, sons: ['Piu!', 'Piu piu!'], nome: 'pintinho', altura: 23 },
+    vaca: { vel: 13, fuga: 0, sons: ['Muuuu!', 'Muu...'], nome: 'vaca', altura: 72 },
+    ovelha: { vel: 17, fuga: 60, sons: ['Béééé!', 'Bé!'], nome: 'ovelha', altura: 50 },
+    porco: { vel: 15, fuga: 0, sons: ['Oinc!', 'Oinc oinc!'], nome: 'porco', altura: 47 },
+    cachorro: { vel: 70, fuga: 0, sons: ['Au! Au!', 'Au!', 'Auuu~'], nome: 'Theo', altura: 40 },
+    gato: { vel: 0, fuga: 0, sons: ['Miau~', 'Rrrrr...'], nome: 'gato', altura: 36 },
+    pato: { vel: 16, fuga: 0, sons: ['Quack!', 'Quack quack!'], nome: 'pato', altura: 34 },
+    cavalo: { vel: 22, fuga: 0, sons: ['Iiirrííí!', 'Frrr...'], nome: 'cavalo', altura: 82 },
   };
 
   // Para que lado a arte de cada bicho olha (1 = direita, -1 = esquerda). A arte dos itens 131 a 137
   // (galinhas, vaca, porco, cavalo e ovelha) olha para a esquerda; o pintinho e o Theo, para a direita.
   const FACE = { galinha: -1, pintinho: 1, vaca: -1, porco: -1, cavalo: -1, ovelha: -1, cachorro: 1 };
   // Os desenhos feitos no código (pato e gato, até a arte chegar) crescem junto com os bichos novos.
-  const ESCALA_DESENHO = 1.4;
+  const ESCALA_DESENHO = 1.7;
 
   // Escolhe o código de animação do sprite para o estado atual (null = usa o desenho do código).
   function animacaoDe(b, jogo) {
@@ -72,7 +72,7 @@
       this.lado = Math.random() < 0.5 ? -1 : 1;
       this.t = Math.random() * 3; this.f = Math.random() * 10;
       this.estado = 'parado'; this.alvo = null; this.espera = Math.random() * 2;
-      this.bicho = true; this.raio = tipo === 'vaca' || tipo === 'cavalo' ? 30 : 15;
+      this.bicho = true; this.raio = tipo === 'vaca' || tipo === 'cavalo' ? 34 : 18;
       this.jeito = Math.floor(Math.random() * 4); this.tAnim = Math.random() * 5; this.animAtual = null;
       Object.assign(this, o || {});
     }
@@ -128,7 +128,7 @@
       if (this.tipo === 'cachorro') return this.cachorro(dt, jogo, dl);
       if (this.tipo === 'gato') { if (this.estado === 'carinho' && this.t > 1.5) { this.estado = 'dormindo'; } return; }
       if (this.tipo === 'pintinho' && this.mae) {
-        const alvo = { x: this.mae.x - this.mae.lado * (16 + this.ordem * 11), y: this.mae.y + 4 + (this.ordem % 2) * 6 };
+        const alvo = { x: this.mae.x - this.mae.lado * (20 + this.ordem * 13), y: this.mae.y + 4 + (this.ordem % 2) * 7 };
         const d = Math.hypot(alvo.x - this.x, alvo.y - this.y);
         this.estado = d > 5 ? 'andando' : 'parado';
         if (d > 5) this.andarPara(alvo, Math.min(60, d * 3), dt, jogo);

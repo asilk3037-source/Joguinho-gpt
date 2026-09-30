@@ -16,7 +16,7 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
-> 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 38 de altura, vaca 59, cavalo 81, porco e ovelha 40, Theo 36, pintinho 22; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).
+> 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 47 de altura, vaca 71, cavalo 90, porco e ovelha 48, Theo 42, pintinho 27; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).
 
 > 📚 **Tudo num documento só:** o que falta criar (seção 23), o índice dos itens de arte recebidos (seção 24), o plano de criação por item (seção 25) e como rodar, publicar e editar o jogo (seção 26) agora ficam aqui dentro. Os arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md`) saíram do repositório.
 
@@ -3170,9 +3170,9 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefes | Quimera Primordial | 200×200 | 360×360 | 540×540 | 720×720 | 1080×1080 | **1280×1280** | 800×800 | maior e mais detalhada: pode passar da borda do quadro nos golpes |
 | Chefes | Guardião de Pedra | 110×110 | 198×198 | 297×297 | 396×396 | 594×594 | **640×640** | 384×384 |  |
 | Inimigos | Sombra, fogos-fátuos (todos os elementos), morcego | 64×64 | 115×115 | 173×173 | 230×230 | 346×346 | **384×384** | 256×256 | o bicho ocupa uns 60% do quadro; o resto é brilho |
-| Bichos | Vaca, cavalo | 124×124 | 223×223 | 335×335 | 446×446 | 670×670 | **512×512** | 384×384 | vaca uns 59 de altura e cavalo uns 81 (a Line tem 62) |
-| Bichos | Theo, porco, ovelha, gato, pato, galinhas | 60×60 | 108×108 | 162×162 | 216×216 | 324×324 | **384×384** | 256×256 | galinha uns 38 de altura, porco e ovelha uns 40, Theo uns 36, pato uns 28, gato uns 25. Andar e correr com as pernas alternando, uma depois da outra |
-| Bichos | Pintinho | 44×44 | 79×79 | 119×119 | 158×158 | 238×238 | **256×256** | 192×192 | uns 22 de altura: pode vir no mesmo quadro da galinha, bem menor |
+| Bichos | Vaca, cavalo | 150×150 | 270×270 | 405×405 | 540×540 | 810×810 | **640×640** | 384×384 | vaca uns 71 de altura e cavalo uns 90 (a Line tem 62) |
+| Bichos | Theo, porco, ovelha, gato, pato, galinhas | 72×72 | 130×130 | 194×194 | 259×259 | 389×389 | **384×384** | 256×256 | galinha uns 47 de altura, porco e ovelha uns 48, Theo uns 42, pato uns 34, gato uns 31. Andar e correr com as pernas alternando, uma depois da outra |
+| Bichos | Pintinho | 62×62 | 112×112 | 167×167 | 223×223 | 335×335 | **384×384** | 256×256 | uns 27 de altura: pode vir no mesmo quadro da galinha, bem menor |
 | Cenário | Tile de chão, parede, água, lama, vento, abismo | 32×32 | 58×58 | 86×86 | 115×115 | 173×173 | **128×128** | 96×96 | tem que emendar sem costura dos 4 lados; faça 3 ou 4 variações de cada |
 | Cenário | Árvores (normal, frutífera, cerejeira, pinheiro, árvore morta do pântano) | 62×75 | 112×135 | 167×202 | 223×270 | 335×405 | **384×448** | 256×300 | hoje são 97×115: ficam borradas em tela cheia |
 | Cenário | Arbustos, pedras, mato alto, flores | 33×33 | 59×59 | 89×89 | 119×119 | 178×178 | **192×192** | 128×128 | hoje uns 55×55 |
@@ -3415,7 +3415,7 @@ O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já est�
 ![Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala](imagens/gabarito-minas-shopping.jpg)
 *Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala*
 
-**Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 28 de altura, gato uns 25). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.
+**Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 34 de altura, gato uns 31). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.
 
 ### 22.12 Dimensão de cada cenário
 

@@ -466,8 +466,8 @@ MESMA_ESCALA = {"LINE_BELL_SIT_DOWN": "LINE_BELL_SIT_IDLE", "BELL_HEAD_ON_LINE":
 # antiga do pacote da fazenda (altura do bicho de pé, em pixels do mundo).
 # Altura da pose parada (1º quadro do _IDLE) quando não há arte antiga para comparar.
 # Os bichos ficaram pequenos perto da Line com a altura da arte antiga: cada espécie cresce assim.
-AUMENTO_BICHO = {"COW_": 1.5, "HEN_BROWN_": 1.45, "CHICKEN_": 1.45, "CHICK_": 1.55, "DUCK_": 1.4, "CAT_": 1.4,
-                 "SHEEP_": 1.5, "PIG_": 1.5, "HORSE_": 1.4, "THEO_": 1.2}
+AUMENTO_BICHO = {"COW_": 1.8, "HEN_BROWN_": 1.8, "CHICKEN_": 1.8, "CHICK_": 1.9, "DUCK_": 1.7, "CAT_": 1.7,
+                 "SHEEP_": 1.8, "PIG_": 1.8, "HORSE_": 1.55, "THEO_": 1.4}
 ALTURA_BICHO = {"COW_": 39.5, "HEN_BROWN_": 26.3, "CHICKEN_": 26.3, "CHICK_": 14.1, "DUCK_": 20, "CAT_": 18,
                 "SHEEP_": 26, "PIG_": 27, "HORSE_": 58, "THEO_": 30}
 # Altura de cada pose na arte antiga do pacote da fazenda (tools/alturas_bichos.json): a escala de

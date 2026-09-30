@@ -527,7 +527,7 @@ def escrever_arte(w, img, inv):
     w("O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já está no tamanho certo, com a grade, a área andável, os pontos da história, os closes e a Line e a Bell em escala, por cima da ilustração atual, para desenhar em cima (gerado por `tools/gabarito_cenario.py`).")
     w()
     img("gabarito-minas-shopping", "Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala")
-    w("**Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 28 de altura, gato uns 25). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.")
+    w("**Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 34 de altura, gato uns 31). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.")
     w()
     escrever_dimensoes_cenarios(w, img, M)
     w("### 22.10 Ordem sugerida para produzir")
@@ -557,9 +557,9 @@ TAMANHOS = [
     ("Chefes", "Quimera Primordial", (200, 200), "1280×1280", "800×800", "maior e mais detalhada: pode passar da borda do quadro nos golpes"),
     ("Chefes", "Guardião de Pedra", (110, 110), "640×640", "384×384", ""),
     ("Inimigos", "Sombra, fogos-fátuos (todos os elementos), morcego", (64, 64), "384×384", "256×256", "o bicho ocupa uns 60% do quadro; o resto é brilho"),
-    ("Bichos", "Vaca, cavalo", (124, 124), "512×512", "384×384", "vaca uns 59 de altura e cavalo uns 81 (a Line tem 62)"),
-    ("Bichos", "Theo, porco, ovelha, gato, pato, galinhas", (60, 60), "384×384", "256×256", "galinha uns 38 de altura, porco e ovelha uns 40, Theo uns 36, pato uns 28, gato uns 25. Andar e correr com as pernas alternando, uma depois da outra"),
-    ("Bichos", "Pintinho", (44, 44), "256×256", "192×192", "uns 22 de altura: pode vir no mesmo quadro da galinha, bem menor"),
+    ("Bichos", "Vaca, cavalo", (150, 150), "640×640", "384×384", "vaca uns 71 de altura e cavalo uns 90 (a Line tem 62)"),
+    ("Bichos", "Theo, porco, ovelha, gato, pato, galinhas", (72, 72), "384×384", "256×256", "galinha uns 47 de altura, porco e ovelha uns 48, Theo uns 42, pato uns 34, gato uns 31. Andar e correr com as pernas alternando, uma depois da outra"),
+    ("Bichos", "Pintinho", (62, 62), "384×384", "256×256", "uns 27 de altura: pode vir no mesmo quadro da galinha, bem menor"),
     ("Cenário", "Tile de chão, parede, água, lama, vento, abismo", (32, 32), "128×128", "96×96", "tem que emendar sem costura dos 4 lados; faça 3 ou 4 variações de cada"),
     ("Cenário", "Árvores (normal, frutífera, cerejeira, pinheiro, árvore morta do pântano)", (62, 75), "384×448", "256×300", "hoje são 97×115: ficam borradas em tela cheia"),
     ("Cenário", "Arbustos, pedras, mato alto, flores", (33, 33), "192×192", "128×128", "hoje uns 55×55"),
