@@ -42,7 +42,7 @@ def ler_animacoes(caminho):
     with open(caminho, encoding="utf-8") as f:
         html = f.read()
     achado = PADRAO_ANIMACOES.search(html)
-    if achado:
+    if achado and not achado.group(1).startswith("{'"):
         return json.loads(achado.group(1))
     if "const payload=" in html:
         inicio = html.index("const payload=") + len("const payload=")
@@ -76,6 +76,11 @@ def ler_animacoes(caminho):
             return saida
     print(f"  aviso: nenhuma animação encontrada em {os.path.basename(caminho)}")
     return {}
+
+
+# Itens de cenário: NÃO passam pelo recorte de animação (quadros de 1254×1254 viram células de
+# 256). Cada cenário tem medida própria combinada antes (ver docs, seção 22.11) e entra à mão.
+ITENS_CENARIO = {140: "Minas Shopping"}
 
 
 def numero_item(nome):
@@ -336,6 +341,9 @@ def main():
             nome = os.path.basename(caminho)
             if numero_item(nome) not in numeros:
                 continue
+            if numero_item(nome) in ITENS_CENARIO:
+                print(f"{nome}: cenário ({ITENS_CENARIO[numero_item(nome)]}), fica de fora do recorte de animação")
+                continue
             print(nome)
             for codigo, dados in ler_animacoes(caminho).items():
                 manifesto[codigo] = processar(codigo, dados, nome)
@@ -365,6 +373,9 @@ def main():
     for caminho in arquivos:
         nome = os.path.basename(caminho)
         print(nome)
+        if numero_item(nome) in ITENS_CENARIO:
+            print(f"  cenário ({ITENS_CENARIO[numero_item(nome)]}): fica de fora do recorte de animação")
+            continue
         for codigo, dados in ler_animacoes(caminho).items():
             manifesto[codigo] = processar(codigo, dados, nome)
             m = manifesto[codigo]
@@ -391,12 +402,21 @@ def main():
 # ou crescer ao trocar de animação. Se o primeiro quadro começa deitado ou agachado, vale a
 # maior altura.
 ALTURA_ALVO = {"LINE_BELL_": ALTURA_LINE_MUNDO, "LINE_": ALTURA_LINE_MUNDO, "BELL_": ALTURA_LINE_MUNDO * 0.96}
+# Poses sentadas (itens 77 a 79): pela altura da pessoa sentada, não pelo primeiro quadro.
+SENTADAS = {"LINE_BELL_SIT_IDLE": 0.75}
+MESMA_ESCALA = {"LINE_BELL_SIT_DOWN": "LINE_BELL_SIT_IDLE", "BELL_HEAD_ON_LINE": "LINE_BELL_SIT_IDLE"}
 # Bichos que chegaram como item (132 em diante): ficam do mesmo tamanho na tela que a arte
 # antiga do pacote da fazenda (altura do bicho de pé, em pixels do mundo).
-ALTURA_BICHO = {"COW_": 39.5, "HEN_BROWN_": 26.3, "CHICKEN_": 26.3, "CHICK_": 14.1}
+# Altura da pose parada (1º quadro do _IDLE) quando não há arte antiga para comparar.
+ALTURA_BICHO = {"COW_": 39.5, "HEN_BROWN_": 26.3, "CHICKEN_": 26.3, "CHICK_": 14.1, "DUCK_": 20, "CAT_": 18,
+                "SHEEP_": 26, "PIG_": 27, "HORSE_": 58, "THEO_": 30}
+# Altura de cada pose na arte antiga do pacote da fazenda (tools/alturas_bichos.json): a escala de
+# cada espécie é a mediana das comparações pose a pose (bolhas e “Zzz” não atrapalham).
+ALTURAS_ANTIGAS = os.path.join(RAIZ, "tools", "alturas_bichos.json")
 
 
 def normalizar_escala(manifesto):
+    fracoes = {}
     for codigo, m in manifesto.items():
         bicho = next((v for k, v in ALTURA_BICHO.items() if codigo.startswith(k)), None)
         alvo = next((v for k, v in ALTURA_ALVO.items() if codigo.startswith(k)), None)
@@ -416,12 +436,39 @@ def normalizar_escala(manifesto):
         primeiro = alturas[m["seq"][0]]
         altura = primeiro if primeiro >= 0.75 * max(alturas) else max(alturas)
         if bicho is not None:
-            # O tamanho da célula inteira no mundo, para o bicho ficar com a altura certa.
-            m["mundo"] = round(bicho * cel / altura, 2)
-            m["bicho"] = True
+            fracoes[codigo] = (primeiro / cel, cel)
+            continue
+        if codigo in SENTADAS:
+            # Sentada, a pessoa tem uns 75% da altura de pé (vale a pose mais alta da animação).
+            altura_mundo = max(alturas) / cel * CELULA_LINE_MUNDO
+            m["escala"] = round(alvo * SENTADAS[codigo] / altura_mundo, 4)
             continue
         altura_mundo = altura / cel * CELULA_LINE_MUNDO
         m["escala"] = round(max(0.8, min(1.35, alvo / altura_mundo)), 4)
+    escala_bichos(manifesto, fracoes)
+    # As poses sentadas que emendam umas nas outras usam a mesma escala (ninguém muda de tamanho).
+    for codigo, base in MESMA_ESCALA.items():
+        if codigo in manifesto and base in manifesto and "escala" in manifesto[base]:
+            manifesto[codigo]["escala"] = manifesto[base]["escala"]
+
+
+def escala_bichos(manifesto, fracoes):
+    """Bichos dos itens: um tamanho no mundo por espécie, igual ao da arte antiga."""
+    antigas = json.load(open(ALTURAS_ANTIGAS, encoding="utf-8")) if os.path.exists(ALTURAS_ANTIGAS) else {}
+    for prefixo, alvo in ALTURA_BICHO.items():
+        codigos = [c for c in fracoes if c.startswith(prefixo)]
+        if not codigos:
+            continue
+        candidatos = sorted(antigas[c] / fracoes[c][0] for c in codigos if c in antigas and fracoes[c][0] > 0)
+        if candidatos:
+            lado = candidatos[len(candidatos) // 2] if len(candidatos) % 2 else (candidatos[len(candidatos) // 2 - 1] + candidatos[len(candidatos) // 2]) / 2
+            mundo = lado
+        else:
+            parado = next((c for c in codigos if c == prefixo + "IDLE"), codigos[0])
+            mundo = alvo / fracoes[parado][0]
+        for c in codigos:
+            manifesto[c]["mundo"] = round(mundo, 2)
+            manifesto[c]["bicho"] = True
 
 
 def preferir_itens(manifesto):

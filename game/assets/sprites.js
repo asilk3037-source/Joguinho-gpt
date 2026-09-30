@@ -6442,18 +6442,164 @@ window.SPRITES = {
   "ritmo": 1,
   "src": "assets/sprites/DRAGON_IDLE.webp",
   "cell": 448,
-  "count": 1,
+  "count": 3,
   "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   1,
+   1,
+   0,
    0
   ],
-  "ground": 397,
-  "groundEnd": 397,
+  "ground": 359,
+  "groundEnd": 359,
   "bases": [
-   397
+   359,
+   378,
+   367
   ],
-  "label": "Dragão parado (provisório: 1º quadro do rugido)",
-  "item": "LINE_BELL_ITEM_85.html",
-  "provisorio": "DRAGON_ROAR"
+  "label": "Dragão — Idle e respiração",
+  "item": "LINE_BELL_ITEM_80.html"
+ },
+ "LINE_BELL_SIT_DOWN": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_SIT_DOWN.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 219,
+  "groundEnd": 227,
+  "bases": [
+   219,
+   209,
+   215,
+   227
+  ],
+  "label": "Line e Bell — Sentando juntas",
+  "item": "LINE_BELL_ITEM_77.html",
+  "escala": 0.8389
+ },
+ "BELL_HEAD_ON_LINE": {
+  "ritmo": 1,
+  "src": "assets/sprites/BELL_HEAD_ON_LINE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 233,
+  "groundEnd": 234,
+  "bases": [
+   233,
+   228,
+   227,
+   234
+  ],
+  "label": "Bell — Apoiando a cabeça na Line",
+  "item": "LINE_BELL_ITEM_78.html",
+  "escala": 0.8389
+ },
+ "LINE_BELL_SIT_IDLE": {
+  "ritmo": 1,
+  "src": "assets/sprites/LINE_BELL_SIT_IDLE.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   3,
+   3
+  ],
+  "ground": 214,
+  "groundEnd": 231,
+  "bases": [
+   214,
+   225,
+   225,
+   231
+  ],
+  "label": "Line e Bell — Idle sentadas",
+  "item": "LINE_BELL_ITEM_79.html",
+  "escala": 0.8389
+ },
+ "DRAGON_BLINK": {
+  "mundo": 215,
+  "ritmo": 1,
+  "src": "assets/sprites/DRAGON_BLINK.webp",
+  "cell": 448,
+  "count": 2,
+  "seq": [
+   0,
+   0,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0
+  ],
+  "ground": 359,
+  "groundEnd": 359,
+  "bases": [
+   359,
+   361
+  ],
+  "label": "Dragão — Piscar",
+  "item": "LINE_BELL_ITEM_80.html"
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

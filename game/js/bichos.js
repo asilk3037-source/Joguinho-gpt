@@ -59,7 +59,7 @@
     return null;
   }
   // Arte nova dos itens (132 em diante) tem 12 quadros por animação: roda mais rápido para o ciclo durar o mesmo.
-  const FPS_ITEM = { WALK: 14, RUN: 18, IDLE: 8, EAT: 9, PECK: 11, SCRATCH: 11, LAY_EGG: 8, SLEEP: 5, SCARED: 16 };
+  const FPS_ITEM = { WALK: 14, RUN: 18, IDLE: 8, EAT: 9, PECK: 11, SCRATCH: 11, LAY_EGG: 8, SLEEP: 5, SCARED: 16, SWIM: 10, PURR: 8 };
   const FPS = { WALK: 8, RUN: 12, IDLE: 5, EAT: 6, PECK: 7, SCRATCH: 7, LAY_EGG: 4, SLEEP: 3, SCARED: 10, MUD: 4, FRONT: 4, SIT: 3, SIT_IDLE: 6, SIT_FRONT: 4, LIE: 1.5 };
 
   class Bicho {

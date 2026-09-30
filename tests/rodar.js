@@ -651,6 +651,24 @@ teste('história: no final a Line divide a luz com o dragão', async (h) => {
   afirmar(r.zerado, 'o jogo chegou ao fim');
 });
 
+teste('arte: as duas sentadas no pôr do sol e o dragão parado (itens 77 a 80)', async (h) => {
+  const tem = await h.ev(() => ['LINE_BELL_SIT_DOWN', 'LINE_BELL_SIT_IDLE', 'BELL_HEAD_ON_LINE', 'DRAGON_IDLE', 'DRAGON_BLINK'].filter((c) => LB.sprite(c) && !LB.sprite(c).provisorio));
+  igual(tem.length, 5, 'as cinco animações novas carregadas: ' + tem);
+  await h.area('covil', TODAS);
+  await h.avancar(300);
+  await h.ev(() => { const j = LB.jogo; j.chefeAtivo = false; j.promptFinal = false; j.dragao.mudar('derrotado', 'DRAGON_DEFEATED'); j.iniciarCena(LB.HISTORIA.vitoria, { semPular: false }); });
+  // Vai passando as falas (sem pular a cena) até o epílogo com as duas sentadas.
+  for (let i = 0; i < 400; i++) {
+    const pronto = await h.ev(() => { const j = LB.jogo; if (j.duo && /SIT|HEAD_ON/.test(j.duo.anim.base) && j.mapa.id === 'fazenda') return true; LB.dialogo.clicou = true; return false; });
+    if (pronto) break;
+    await h.espera(60);
+  }
+  await h.espera(800);
+  const r = await h.ev(() => LB.jogo.duo && LB.jogo.duo.anim.base);
+  afirmar(/SIT/.test(r || ''), 'epílogo com as duas sentadas: ' + r);
+  await h.foto('epilogo-sentadas');
+});
+
 // ================= Save =================
 teste('save: continuar volta para a mesma área com os itens', async (h) => {
   await h.area('vilarejo', { espada: true, moedas: 33 });
