@@ -444,7 +444,12 @@
       const y = this.y - 30 + Math.sin(this.f * 3) * 5;
       // Arte própria (quando chegar) tem prioridade sobre o desenho no código.
       const st = this.anim.estado(null, this.lado);
-      if (st.r.sprite && !st.r.via && (this.tipo === 'luz' || this.tipo === 'fogo')) { LB.desenharSprite(g, st.r, st.quadro, this.x, y + 30, 64); return; }
+      if (st.r.sprite && !st.r.via) {
+        // A arte é azul (luz); os outros elementos usam a mesma arte com outra cor.
+        const cor = { fogo: 'hue-rotate(185deg) saturate(1.6)', terra: 'hue-rotate(-95deg) saturate(1.2)', ar: 'saturate(0.15) brightness(1.35)' }[this.tipo];
+        g.save(); if (cor) g.filter = cor; if (this.flash > 0) g.filter = (cor || '') + ' brightness(2)';
+        LB.desenharSprite(g, st.r, st.quadro, this.x, y + 30, 64); g.restore(); return;
+      }
       const mor = this.estado === 'morrendo' ? 1 - this.t / 0.4 : 1;
       const carga = this.estado === 'mirar' ? this.t / 0.6 : 0;
       const cor = { fogo: ['255,240,180', '255,120,40'], terra: ['230,245,170', '120,160,60'], agua: ['215,245,255', '40,150,230'], ar: ['255,255,255', '170,215,235'] }[this.tipo] || ['230,250,255', '110,180,255'];

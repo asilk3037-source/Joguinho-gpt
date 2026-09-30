@@ -68,16 +68,16 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Grupo | Animações | Com arte | Usando substituta | Faltando |
 |---|---|---|---|---|
 | Primeiro encontro (prólogo) | 8 | 8 | 0 | 0 |
-| Line — movimento | 31 | 29 | 2 | 0 |
-| Line — combate | 27 | 19 | 8 | 0 |
+| Line — movimento | 31 | 31 | 0 | 0 |
+| Line — combate | 27 | 27 | 0 | 0 |
 | Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
-| Line e Bell juntas | 26 | 13 | 10 | 3 |
-| Dragão | 27 | 24 | 3 | 0 |
-| Magia e criaturas (novo) | 13 | 0 | 3 | 10 |
-| Inimigos (novo) | 5 | 0 | 0 | 5 |
+| Line e Bell juntas | 26 | 18 | 8 | 0 |
+| Dragão | 27 | 26 | 1 | 0 |
+| Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
+| Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
-| Bichos da fazenda | 67 | 55 | 0 | 12 |
+| Bichos da fazenda | 67 | 59 | 0 | 8 |
 | Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
@@ -87,7 +87,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Hidra de Lama (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 0 | 9 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 30 | 0 | 0 | 30 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
@@ -97,7 +97,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **553** | **208** | **179** | **166** |
+| **Total** | **553** | **247** | **171** | **135** |
 
 A lista com cada código está na seção 10 e, só com o que falta, em `ANIMACOES_PENDENTES.md`.
 
@@ -237,6 +237,41 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 - **Fases:** riscos de vento no chão (animado), chuva e respingos, relâmpago na tela, névoa do pântano, brasas da fenda, nuvens passando embaixo dos picos, partículas das cinco cores no Coração.
 - **Dia e noite:** vaga-lumes (amarelos, verdes e roxos), estrelas no céu, janelas e lampiões acesos à noite, brilho da fonte ao descansar, tons de amanhecer e entardecer.
 - Os efeitos da Parte 1 continuam na seção 13 (`FX_*`).
+
+### Cenário do Minas Shopping (item 140) — medidas combinadas
+
+> 🔒 **Trava:** cenário **não** passa pelo recorte de animação (os quadros de 1254×1254 que viram células de 256). O extrator deixa o item 140 de fora de propósito; ele entra à mão, com as medidas abaixo.
+
+**Como o Minas Shopping funciona no jogo:** é **uma ilustração inteira** (não é feita de tiles), em pé, na proporção **9:16**. Tudo no jogo foi posicionado numa **base de 360×640** (a tela do HTML do primeiro encontro): onde a Line começa, onde a Bell espera, a mesa do BK, a saída e os dois closes. Por isso a nova arte precisa manter **exatamente essa proporção**, só que maior.
+
+| Medida | Valor |
+|---|---|
+| Base de coordenadas | 360×640 (proporção 9:16, em pé) |
+| Tamanho no mundo do jogo | 480×853 unidades (mapa de 15×27 tiles de 32) |
+| **Entrega recomendada** | **2160×3840** (6× a base): nítido em tela cheia 1440p e nos closes em 1080p |
+| Para 4K | 2880×5120 (8× a base) |
+| Mínimo | 1440×2560 (4× a base): nítido em tela cheia 1080p sem close |
+| Grade de referência | 1 tile do jogo = 24 px da base = **144 px** na entrega de 2160×3840 (15 colunas; a altura não fecha em tiles inteiros, não precisa) |
+| Escala das personagens | a Line de pé tem **47 px da base = 281 px** na entrega de 2160×3840; a mesa, as cadeiras e as portas seguem essa medida |
+| Área andável (chão livre) | x 28–332, y 130–545 na base (**x 168–1992, y 780–3270** na entrega de 2160×3840): nada alto no chão dentro dela |
+| Fundo (vitrines, escada rolante, andar de cima) | faixa de cima, y 0–130 da base |
+| Pontos da história (base) | Line começa (48,520) · Bell espera (274,300) · Line na mesa (142,397) · Bell na mesa (218,397) · mesa do BK (180,397) · saída (280,500) |
+| Closes (câmera 1,6×) | o encontro, perto de (251,270), e a mesa do BK, perto de (180,367): os lugares com mais detalhe |
+| Telas largas | o jogo preenche os lados com a própria imagem borrada: as bordas esquerda e direita devem continuar o cenário naturalmente (sem moldura) |
+
+**Formato da entrega (o “recorte”):**
+
+1. **Fundo:** uma imagem única, PNG ou WebP, **sem transparência**, sem grade e sem textos, na perspectiva de cima em 3/4 como o resto do jogo.
+2. **Camada da frente (opcional):** o que deve passar **na frente** das personagens (pilares, vasos, grade do mezanino, encosto das cadeiras) vem num PNG separado, **do mesmo tamanho do fundo**, com transparência em todo o resto. O jogo desenha essa camada por cima das duas.
+3. **Partes animadas (opcional):** luzes piscando, escada rolante e fonte vêm como animação separada, só do pedaço que mexe, com a posição (x, y) no fundo.
+4. **Não** entregar em sequência de quadros de 1254×1254 nem como prancha de tiles.
+
+O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já está no tamanho certo, com a grade, a área andável, os pontos da história, os closes e a Line e a Bell em escala, por cima da ilustração atual, para desenhar em cima (gerado por `tools/gabarito_cenario.py`).
+
+![Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala](imagens/gabarito-minas-shopping.jpg)
+*Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala*
+
+**Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 20 de altura, gato uns 18). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.
 
 ### Ordem sugerida para produzir
 

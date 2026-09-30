@@ -83,6 +83,30 @@ def ler_animacoes(caminho):
 ITENS_CENARIO = {140: "Minas Shopping"}
 
 
+# Andar e correr precisam se mexer: com menos quadros diferentes que isso a animação do item é
+# ignorada (fica a anterior) e aparece um aviso para reenviar.
+QUADROS_MINIMOS_MOVIMENTO = 3
+MOVIMENTO = re.compile(r"_(WALK|RUN|MOVE)(_|$)")
+
+
+# Animações que chegaram erradas e esperam reenvio: o jogo continua com a anterior.
+RECUSADAS = {
+    ("LINE_BELL_ITEM_118.html", "DRAGON_SLEEP"): "não é o dragão dormindo (poses de voo)",
+    ("LINE_BELL_ITEM_113.html", "LINE_BELL_DANCE"): "a Line some em alguns quadros",
+}
+
+
+def recusada(nome, codigo):
+    motivo = RECUSADAS.get((nome, codigo))
+    if motivo:
+        print(f"  aviso: {codigo} de {nome} recusado ({motivo}): mantida a anterior, reenviar")
+    return bool(motivo)
+
+
+def movimento_parado(codigo, dados):
+    return bool(MOVIMENTO.search(codigo)) and len(set(dados["frames"])) < QUADROS_MINIMOS_MOVIMENTO
+
+
 def numero_item(nome):
     achado = re.search(r"ITEM_(\d+)", nome)
     return int(achado.group(1)) if achado else 0
@@ -346,6 +370,9 @@ def main():
                 continue
             print(nome)
             for codigo, dados in ler_animacoes(caminho).items():
+                if movimento_parado(codigo, dados) or recusada(nome, codigo):
+                    print(f"  aviso: {codigo} veio parado ({len(set(dados['frames']))} quadro(s) diferente(s)): mantida a anterior, reenviar")
+                    continue
                 manifesto[codigo] = processar(codigo, dados, nome)
                 print(f"  {codigo}: {len(manifesto[codigo]['seq'])} frames ({manifesto[codigo]['count']} únicos)")
         return gravar(manifesto, retratos)
@@ -377,6 +404,9 @@ def main():
             print(f"  cenário ({ITENS_CENARIO[numero_item(nome)]}): fica de fora do recorte de animação")
             continue
         for codigo, dados in ler_animacoes(caminho).items():
+            if movimento_parado(codigo, dados) or recusada(nome, codigo):
+                print(f"  aviso: {codigo} veio parado ({len(set(dados['frames']))} quadro(s) diferente(s)): mantida a anterior, reenviar")
+                continue
             manifesto[codigo] = processar(codigo, dados, nome)
             m = manifesto[codigo]
             print(f"  {codigo}: {len(m['seq'])} frames ({m['count']} únicos)")

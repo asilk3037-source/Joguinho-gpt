@@ -2,68 +2,29 @@
 
 > Lista gerada a partir do jogo (`tools/gerar_pendentes.py`). A lista completa, com todas as animações e o status de cada uma, está na seção 10 da **[documentação](docs/LINE_E_BELL_DOCUMENTACAO.md)** e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
-**Status:** 208 de 553 animações com arte · 179 usando uma substituta · 166 desenhadas no código.
+**Status:** 247 de 553 animações com arte · 171 usando uma substituta · 135 desenhadas no código.
 
 ## ⚠️ Reenviar ou mandar
 
 - **Item 96**: chegou com 2 imagem(ns) vazia(s) em `DRAGON_FALL`, `DRAGON_DEFEATED`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 106**: chegou com 1 imagem(ns) vazia(s) em `BELL_LAUGH_AT_LINE`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 108**: chegou com 3 imagem(ns) vazia(s) em `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`. As animações funcionam sem esses quadros, mas ficam incompletas.
-- **Itens que ainda não chegaram:** 77, 78, 79, 80, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131.
+- **Itens que ainda não chegaram:** 124, 125, 126, 127.
 - **`DRAGON_IDLE`** está provisório: usa o 1º quadro do rugido (`DRAGON_ROAR`) até chegar a arte do dragão parado.
 
 ## Ainda sem arte
 
 | Grupo | Código | O que é | Hoje usa |
 |---|---|---|---|
-| Line — movimento | `LINE_JUMP_LEFT` | Pular | `LINE_JUMP_RIGHT` |
-| Line — movimento | `LINE_LAND_LEFT` | Aterrissar | `LINE_LAND_RIGHT` |
-| Line — combate | `LINE_COMBAT_WALK_FRONT` | Andar com a espada em mãos | `LINE_WALK_FRONT` |
-| Line — combate | `LINE_COMBAT_WALK_BACK` | Andar com a espada em mãos | `LINE_WALK_BACK` |
-| Line — combate | `LINE_COMBAT_WALK_LEFT` | Andar com a espada em mãos | `LINE_WALK_LEFT` |
-| Line — combate | `LINE_COMBAT_WALK_RIGHT` | Andar com a espada em mãos | `LINE_WALK_RIGHT` |
-| Line — combate | `LINE_COMBAT_RUN_FRONT` | Correr com a espada em mãos | `LINE_RUN_FRONT` |
-| Line — combate | `LINE_COMBAT_RUN_BACK` | Correr com a espada em mãos | `LINE_RUN_BACK` |
-| Line — combate | `LINE_COMBAT_RUN_LEFT` | Correr com a espada em mãos | `LINE_RUN_LEFT` |
-| Line — combate | `LINE_COMBAT_RUN_RIGHT` | Correr com a espada em mãos | `LINE_RUN_RIGHT` |
 | Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
 | Line e Bell juntas | `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
 | Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_SIT_DOWN` | Sentando juntas | desenho no código |
-| Line e Bell juntas | `BELL_HEAD_ON_LINE` | Bell apoiando a cabeça na Line | desenho no código |
-| Line e Bell juntas | `LINE_BELL_SIT_IDLE` | Idle das duas sentadas | desenho no código |
-| Dragão | `DRAGON_BLINK` | Piscar | `DRAGON_IDLE` |
-| Dragão | `DRAGON_RUN` | Correr | `DRAGON_WALK` |
 | Dragão | `DRAGON_SLEEP` | Dormir | `DRAGON_DEFEATED` |
-| Magia e criaturas (novo) | `LINE_CAST_SPELL` | Line lança o Raio de Luz | `LINE_ATTACK_VERTICAL` |
-| Magia e criaturas (novo) | `LINE_CAST_CHARGE` | Line carregando a Chuva de Estrelas | `LINE_COMBAT_IDLE` |
-| Magia e criaturas (novo) | `LINE_CAST_STARS` | Line solta a Chuva de Estrelas | `LINE_ATTACK_SPIN` |
-| Magia e criaturas (novo) | `GOLEM_SLEEP` | Guardião de Pedra dormindo | desenho no código |
-| Magia e criaturas (novo) | `GOLEM_IDLE` | Guardião parado | desenho no código |
-| Magia e criaturas (novo) | `GOLEM_WALK` | Guardião andando | desenho no código |
-| Magia e criaturas (novo) | `GOLEM_SLAM` | Guardião: pisão (onda no chão) | desenho no código |
-| Magia e criaturas (novo) | `GOLEM_THROW` | Guardião: arremessar pedra | desenho no código |
-| Magia e criaturas (novo) | `GOLEM_STUNNED` | Guardião tonto (cristal rachado) | desenho no código |
-| Magia e criaturas (novo) | `GOLEM_DEATH` | Guardião desmoronando | desenho no código |
-| Magia e criaturas (novo) | `WISP_IDLE` | Fogo-fátuo flutuando | desenho no código |
-| Magia e criaturas (novo) | `WISP_ATTACK` | Fogo-fátuo atirando | desenho no código |
-| Magia e criaturas (novo) | `WISP_DEATH` | Fogo-fátuo apagando | desenho no código |
-| Inimigos (novo) | `SHADOW_IDLE` | Sombra — parada | desenho no código |
-| Inimigos (novo) | `SHADOW_MOVE` | Sombra — andar | desenho no código |
-| Inimigos (novo) | `SHADOW_ATTACK` | Sombra — investida | desenho no código |
-| Inimigos (novo) | `SHADOW_HIT` | Sombra — receber dano | desenho no código |
-| Inimigos (novo) | `SHADOW_DEATH` | Sombra — desaparecer | desenho no código |
-| Bichos da fazenda | `SHEEP_IDLE` | Ovelha — Parado | desenho no código |
-| Bichos da fazenda | `SHEEP_WALK` | Ovelha — Andar | desenho no código |
-| Bichos da fazenda | `SHEEP_RUN` | Ovelha — Correr | desenho no código |
-| Bichos da fazenda | `SHEEP_EAT` | Ovelha — Comer grama | desenho no código |
 | Bichos da fazenda | `DUCK_IDLE` | Pato — Parado | desenho no código |
 | Bichos da fazenda | `DUCK_WALK` | Pato — Andar | desenho no código |
 | Bichos da fazenda | `DUCK_SWIM` | Pato — Nadando | desenho no código |
@@ -187,15 +148,15 @@
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | desenho no código |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | desenho no código |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | desenho no código |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | `WISP_IDLE` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | `WISP_ATTACK` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | `WISP_DEATH` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | `WISP_IDLE` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | `WISP_ATTACK` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | `WISP_DEATH` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | `WISP_IDLE` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | `WISP_ATTACK` |
+| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | `WISP_DEATH` |
 | Moradores (todos, incluindo os da Parte 2) | `CORA_IDLE` | Dona Cora (jardineira do vale) — parado | desenho no código |
 | Moradores (todos, incluindo os da Parte 2) | `CORA_TALK` | Dona Cora (jardineira do vale) — falando | desenho no código |
 | Moradores (todos, incluindo os da Parte 2) | `CORA_SLEEP` | Dona Cora (jardineira do vale) — dormindo (noite) | desenho no código |
@@ -246,7 +207,7 @@
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_ATTACK_VERTICAL` | Line com Túnica Acolchoada — golpe vertical | `LINE_ATTACK_VERTICAL` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_ATTACK_COMBO` | Line com Túnica Acolchoada — golpe final do combo | `LINE_ATTACK_COMBO` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_ATTACK_SPIN` | Line com Túnica Acolchoada — giro | `LINE_ATTACK_SPIN` |
-| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_CAST_SPELL` | Line com Túnica Acolchoada — Raio de Luz | `LINE_ATTACK_VERTICAL` |
+| Line com armadura: Túnica Acolchoada | `LINE_TUNICA_CAST_SPELL` | Line com Túnica Acolchoada — Raio de Luz | `LINE_CAST_SPELL` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_BLOCK` | Line com Túnica Acolchoada — defesa | `LINE_BLOCK` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_DODGE` | Line com Túnica Acolchoada — esquiva | `LINE_DODGE` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_JUMP` | Line com Túnica Acolchoada — pulo | `LINE_JUMP_RIGHT` |
@@ -269,7 +230,7 @@
 | Line com armadura: Cota de Malha | `LINE_MALHA_ATTACK_VERTICAL` | Line com Cota de Malha — golpe vertical | `LINE_ATTACK_VERTICAL` |
 | Line com armadura: Cota de Malha | `LINE_MALHA_ATTACK_COMBO` | Line com Cota de Malha — golpe final do combo | `LINE_ATTACK_COMBO` |
 | Line com armadura: Cota de Malha | `LINE_MALHA_ATTACK_SPIN` | Line com Cota de Malha — giro | `LINE_ATTACK_SPIN` |
-| Line com armadura: Cota de Malha | `LINE_MALHA_CAST_SPELL` | Line com Cota de Malha — Raio de Luz | `LINE_ATTACK_VERTICAL` |
+| Line com armadura: Cota de Malha | `LINE_MALHA_CAST_SPELL` | Line com Cota de Malha — Raio de Luz | `LINE_CAST_SPELL` |
 | Line com armadura: Cota de Malha | `LINE_MALHA_BLOCK` | Line com Cota de Malha — defesa | `LINE_BLOCK` |
 | Line com armadura: Cota de Malha | `LINE_MALHA_DODGE` | Line com Cota de Malha — esquiva | `LINE_DODGE` |
 | Line com armadura: Cota de Malha | `LINE_MALHA_JUMP` | Line com Cota de Malha — pulo | `LINE_JUMP_RIGHT` |
@@ -292,7 +253,7 @@
 | Line com armadura: Armadura de Brasa | `LINE_BRASA_ATTACK_VERTICAL` | Line com Armadura de Brasa — golpe vertical | `LINE_ATTACK_VERTICAL` |
 | Line com armadura: Armadura de Brasa | `LINE_BRASA_ATTACK_COMBO` | Line com Armadura de Brasa — golpe final do combo | `LINE_ATTACK_COMBO` |
 | Line com armadura: Armadura de Brasa | `LINE_BRASA_ATTACK_SPIN` | Line com Armadura de Brasa — giro | `LINE_ATTACK_SPIN` |
-| Line com armadura: Armadura de Brasa | `LINE_BRASA_CAST_SPELL` | Line com Armadura de Brasa — Raio de Luz | `LINE_ATTACK_VERTICAL` |
+| Line com armadura: Armadura de Brasa | `LINE_BRASA_CAST_SPELL` | Line com Armadura de Brasa — Raio de Luz | `LINE_CAST_SPELL` |
 | Line com armadura: Armadura de Brasa | `LINE_BRASA_BLOCK` | Line com Armadura de Brasa — defesa | `LINE_BLOCK` |
 | Line com armadura: Armadura de Brasa | `LINE_BRASA_DODGE` | Line com Armadura de Brasa — esquiva | `LINE_DODGE` |
 | Line com armadura: Armadura de Brasa | `LINE_BRASA_JUMP` | Line com Armadura de Brasa — pulo | `LINE_JUMP_RIGHT` |

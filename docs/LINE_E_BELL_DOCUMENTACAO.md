@@ -16,6 +16,9 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22 e o arquivo `ARTES_NECESSARIAS.md`).
 
+> 🎨 **Itens 108 a 137 chegaram:** vitória, magias, andar e correr em combate e pulo para a esquerda da Line; as duas comendo, beijo, toca aqui e costas das andanças; o dragão correndo; o **Guardião de Pedra completo**; o **fogo-fátuo** (a mesma arte colorida por elemento: azul, laranja, verde e branco) e a **sombra**; o **Theo**, a **galinha branca**, o **porco**, o **cavalo** e a **ovelha** com 12 quadros por animação, no mesmo tamanho dos bichos antigos.
+> 🔁 **Para reenviar:** `LINE_BELL_WALK_TOGETHER`, `LINE_BELL_WALK_HANDS` e `LINE_BELL_RUN_TOGETHER` de frente e de lado (itens 110 a 112) vieram com todos os quadros iguais, parados, e o jogo segue com as versões que se mexem; `DRAGON_SLEEP` (item 118) não mostra o dragão dormindo; `LINE_BELL_DANCE` (item 113) perde a Line em alguns quadros; o item 108 veio de novo com 3 quadros vazios. Os itens **124 a 127** não chegaram.
+> 🎬 **Itens 77 a 80 chegaram:** as duas sentando juntas, sentadas paradas e a Bell com a cabeça no ombro da Line (no pôr do sol do epílogo, na proporção certa: sentadas, com uns 75% da altura de pé), e o **dragão parado e piscando** de verdade (saiu o quadro provisório do rugido).
 > 🐔 **Arte nova (itens 132 a 134):** galinha marrom completa (9 animações), pintinho (parado, andando e correndo) e vaca (parada, andando, correndo e comendo), com 12 quadros cada, no mesmo tamanho dos bichos antigos.
 > 📐 **Tamanho de cada imagem** pensando na tela cheia: tabela na seção 22.0.
 > 🧭 **Modo Fácil:** guia discreto com trilha no chão pelo caminho de verdade, também para as tarefas da fazenda (seção 21).
@@ -26,7 +29,7 @@
 > - **Dragão novo** em todos os golpes, no voo, na tontura, na queda e derrotado. O dragão antigo saiu do jogo. As animações novas duram o mesmo tempo que as antigas, porque é essa duração que está sincronizada com os golpes.
 > - **Efeitos em pixel art:** impacto, faíscas, explosão, ponto fraco, corações, lágrimas, poeira e fumaça (seção 13).
 > - O tamanho de cada personagem agora é **igualado entre as animações** (antes a Line encolhia ao rir, e a Bell nova vinha menor que a Line).
-> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias e os itens **77 a 80** ainda não chegaram; o dragão parado usa um quadro do rugido até lá (veja `ANIMACOES_PENDENTES.md`).
+> - ⚠️ Os itens **96, 106 e 108** chegaram com imagens vazias (veja `ANIMACOES_PENDENTES.md`).
 
 > 📖 **Novidades da história (esta versão):**
 > - Um **tema** que costura a aventura inteira: *luz não se rouba, se divide* (seção 3).
@@ -112,7 +115,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **553**: 208 com arte (temporária), 179 usando uma substituta, 166 desenhadas no código ou sem imagem |
+| Animações catalogadas | **553**: 247 com arte (temporária), 171 usando uma substituta, 135 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1747,21 +1750,21 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 553 animações. ✅ 208 com arte temporária, 🔁 179 com substituta e ✏️ 166 desenhadas no código.
+**Resumo:** 553 animações. ✅ 247 com arte temporária, 🔁 171 com substituta e ✏️ 135 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
 | Primeiro encontro (prólogo) | 8 | 8 | 0 | 0 |
-| Line — movimento | 31 | 29 | 2 | 0 |
-| Line — combate | 27 | 19 | 8 | 0 |
+| Line — movimento | 31 | 31 | 0 | 0 |
+| Line — combate | 27 | 27 | 0 | 0 |
 | Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
-| Line e Bell juntas | 26 | 13 | 10 | 3 |
-| Dragão | 27 | 24 | 3 | 0 |
-| Magia e criaturas (novo) | 13 | 0 | 3 | 10 |
-| Inimigos (novo) | 5 | 0 | 0 | 5 |
+| Line e Bell juntas | 26 | 18 | 8 | 0 |
+| Dragão | 27 | 26 | 1 | 0 |
+| Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
+| Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
-| Bichos da fazenda | 67 | 55 | 0 | 12 |
+| Bichos da fazenda | 67 | 59 | 0 | 8 |
 | Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
@@ -1771,7 +1774,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Hidra de Lama (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 0 | 9 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 30 | 0 | 0 | 30 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
@@ -1821,9 +1824,9 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_RUN_STOP_BACK` | Parar de correr | 7 |  | ✅ temporária | LINE_BELL_ITEM_14 |
 | `LINE_RUN_STOP_LEFT` | Parar de correr | 6 |  | ✅ temporária | LINE_BELL_ITEM_12 |
 | `LINE_RUN_STOP_RIGHT` | Parar de correr | 4 |  | ✅ temporária | LINE_BELL_ITEM_12 |
-| `LINE_JUMP_LEFT` | Pular | 12 |  | 🔁 usa `LINE_JUMP_RIGHT` |  |
+| `LINE_JUMP_LEFT` | Pular | 11 |  | ✅ temporária | LINE_BELL_ITEM_117 |
 | `LINE_JUMP_RIGHT` | Pular | 11 |  | ✅ temporária | LINE_BELL_ITEM_15 |
-| `LINE_LAND_LEFT` | Aterrissar | 10 |  | 🔁 usa `LINE_LAND_RIGHT` |  |
+| `LINE_LAND_LEFT` | Aterrissar | 5 |  | ✅ temporária | LINE_BELL_ITEM_117 |
 | `LINE_LAND_RIGHT` | Aterrissar | 5 |  | ✅ temporária | LINE_BELL_ITEM_16 |
 | `LINE_CROUCH` | Agachar | 3 |  | ✅ temporária | LINE_BELL_ITEM_17 |
 | `LINE_CROUCH_STAND` | Levantar do agachamento | 3 |  | ✅ temporária | LINE_BELL_ITEM_18 |
@@ -1838,14 +1841,14 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_SWORD_DRAW` | Sacar espada | 4 |  | ✅ temporária | LINE_BELL_ITEM_22 |
 | `LINE_SWORD_SHEATHE` | Guardar espada | 6 |  | ✅ temporária | LINE_BELL_ITEM_23 |
 | `LINE_COMBAT_IDLE` | Postura de combate | 3 | sim | ✅ temporária | LINE_BELL_ITEM_24 |
-| `LINE_COMBAT_WALK_FRONT` | Andar com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_WALK_FRONT` |  |
-| `LINE_COMBAT_WALK_BACK` | Andar com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_WALK_BACK` |  |
-| `LINE_COMBAT_WALK_LEFT` | Andar com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_WALK_LEFT` |  |
-| `LINE_COMBAT_WALK_RIGHT` | Andar com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_WALK_RIGHT` |  |
-| `LINE_COMBAT_RUN_FRONT` | Correr com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_RUN_FRONT` |  |
-| `LINE_COMBAT_RUN_BACK` | Correr com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_RUN_BACK` |  |
-| `LINE_COMBAT_RUN_LEFT` | Correr com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_RUN_LEFT` |  |
-| `LINE_COMBAT_RUN_RIGHT` | Correr com a espada em mãos *(sugestão nova)* | 12 | sim | 🔁 usa `LINE_RUN_RIGHT` |  |
+| `LINE_COMBAT_WALK_FRONT` | Andar com a espada em mãos *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_114 |
+| `LINE_COMBAT_WALK_BACK` | Andar com a espada em mãos *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_114 |
+| `LINE_COMBAT_WALK_LEFT` | Andar com a espada em mãos *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_114 |
+| `LINE_COMBAT_WALK_RIGHT` | Andar com a espada em mãos *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_114 |
+| `LINE_COMBAT_RUN_FRONT` | Correr com a espada em mãos *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_115 |
+| `LINE_COMBAT_RUN_BACK` | Correr com a espada em mãos *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_115 |
+| `LINE_COMBAT_RUN_LEFT` | Correr com a espada em mãos *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_115 |
+| `LINE_COMBAT_RUN_RIGHT` | Correr com a espada em mãos *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_115 |
 | `LINE_ATTACK_HORIZONTAL` | Ataque horizontal | 4 |  | ✅ temporária | LINE_BELL_ITEM_25 |
 | `LINE_ATTACK_VERTICAL` | Ataque vertical | 8 |  | ✅ temporária | LINE_BELL_ITEM_26 |
 | `LINE_ATTACK_DIAGONAL` | Ataque diagonal | 9 |  | ✅ temporária | LINE_BELL_ITEM_27 |
@@ -1876,7 +1879,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_CRY` | Chorando | 6 | sim | ✅ temporária | LINE_BELL_ITEM_47 |
 | `LINE_CALL_BELL` | Gritando por Bell | 6 |  | ✅ temporária | LINE_BELL_ITEM_48 |
 | `LINE_RELIEVED` | Aliviada | 5 |  | ✅ temporária | LINE_BELL_ITEM_49 |
-| `LINE_VICTORY` | Comemorando a vitória *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/LINE_VICTORY |
+| `LINE_VICTORY` | Comemorando a vitória *(sugestão nova)* | 4 |  | ✅ temporária | LINE_BELL_ITEM_109 |
 
 ### 10.5 Bell
 
@@ -1922,40 +1925,40 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
 | `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
-| `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | 4 | sim | ✅ temporária | LINE_BELL_ITEM_110 |
 | `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
 | `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
 | `LINE_BELL_WALK_HANDS_FRONT` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
-| `LINE_BELL_WALK_HANDS_BACK` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
+| `LINE_BELL_WALK_HANDS_BACK` | Andando de mãos dadas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_111 |
 | `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 10 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
 | `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 10 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
 | `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
-| `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
+| `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_112 |
 | `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
 | `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
 | `LINE_BELL_TALK` | Conversando | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
 | `LINE_BELL_LAUGH` | Rindo juntas | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
-| `LINE_BELL_EAT` | Almoçando juntas *(sugestão nova)* | 12 | sim | ✅ temporária | Laboratório v7 |
-| `LINE_BELL_KISS` | Bitoquinha *(sugestão nova)* | 8 |  | ✅ temporária | Laboratório v7 |
+| `LINE_BELL_EAT` | Almoçando juntas *(sugestão nova)* | 6 | sim | ✅ temporária | LINE_BELL_ITEM_113 |
+| `LINE_BELL_KISS` | Bitoquinha *(sugestão nova)* | 7 |  | ✅ temporária | LINE_BELL_ITEM_113 |
 | `BELL_LEAN_ON_LINE` | Bell encostando na Line | 4 |  | ✅ temporária | LINE_BELL_ITEM_72 |
 | `LINE_BELL_HOLD_HANDS` | Segurando as mãos | 3 | sim | ✅ temporária | LINE_BELL_ITEM_73 |
 | `LINE_BELL_RESCUE_HUG` | Abraço do resgate | 4 | sim | ✅ temporária | LINE_BELL_ITEM_74 |
 | `LINE_BELL_HUG_RELEASE` | Separação do abraço | 4 |  | ✅ temporária | LINE_BELL_ITEM_75 |
 | `LINE_BELL_CELEBRATE` | Comemorando (toca aqui) | 4 |  | ✅ temporária | LINE_BELL_ITEM_76 |
-| `LINE_BELL_HIGH_FIVE` | Toca aqui com brilho *(sugestão nova)* | 1 |  | ✅ temporária | arte/linebell/LINE_BELL_HIGH_FIVE |
+| `LINE_BELL_HIGH_FIVE` | Toca aqui com brilho *(sugestão nova)* | 3 |  | ✅ temporária | LINE_BELL_ITEM_113 |
 | `LINE_BELL_DANCE` | Dançando juntas *(sugestão nova)* | 4 | sim | ✅ temporária | arte/linebell/LINE_BELL_DANCE |
-| `LINE_BELL_SIT_DOWN` | Sentando juntas | 12 |  | ✏️ código / falta |  |
-| `BELL_HEAD_ON_LINE` | Bell apoiando a cabeça na Line | 12 |  | ✏️ código / falta |  |
-| `LINE_BELL_SIT_IDLE` | Idle das duas sentadas | 12 | sim | ✏️ código / falta |  |
+| `LINE_BELL_SIT_DOWN` | Sentando juntas | 4 |  | ✅ temporária | LINE_BELL_ITEM_77 |
+| `BELL_HEAD_ON_LINE` | Bell apoiando a cabeça na Line | 4 |  | ✅ temporária | LINE_BELL_ITEM_78 |
+| `LINE_BELL_SIT_IDLE` | Idle das duas sentadas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_79 |
 
 ### 10.7 Dragão
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `DRAGON_IDLE` | Parado respirando | 1 | sim | ✅ temporária | LINE_BELL_ITEM_85 |
-| `DRAGON_BLINK` | Piscar | 12 |  | 🔁 usa `DRAGON_IDLE` |  |
+| `DRAGON_IDLE` | Parado respirando | 3 | sim | ✅ temporária | LINE_BELL_ITEM_80 |
+| `DRAGON_BLINK` | Piscar | 2 |  | ✅ temporária | LINE_BELL_ITEM_80 |
 | `DRAGON_WALK` | Andar | 4 | sim | ✅ temporária | LINE_BELL_ITEM_81 |
-| `DRAGON_RUN` | Correr | 6 | sim | 🔁 usa `DRAGON_WALK` |  |
+| `DRAGON_RUN` | Correr | 4 | sim | ✅ temporária | LINE_BELL_ITEM_118 |
 | `DRAGON_TURN` | Virar | 3 |  | ✅ temporária | LINE_BELL_ITEM_81 |
 | `DRAGON_WINGS_OPEN` | Abrir asas | 3 |  | ✅ temporária | LINE_BELL_ITEM_82 |
 | `DRAGON_TAKEOFF` | Decolar | 3 |  | ✅ temporária | LINE_BELL_ITEM_82 |
@@ -1984,29 +1987,29 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `LINE_CAST_SPELL` | Line lança o Raio de Luz *(sugestão nova)* | 18 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
-| `LINE_CAST_CHARGE` | Line carregando a Chuva de Estrelas *(sugestão nova)* | 16 | sim | 🔁 usa `LINE_COMBAT_IDLE` |  |
-| `LINE_CAST_STARS` | Line solta a Chuva de Estrelas *(sugestão nova)* | 18 |  | 🔁 usa `LINE_ATTACK_SPIN` |  |
-| `GOLEM_SLEEP` | Guardião de Pedra dormindo *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `GOLEM_IDLE` | Guardião parado *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `GOLEM_WALK` | Guardião andando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `GOLEM_SLAM` | Guardião: pisão (onda no chão) *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `GOLEM_THROW` | Guardião: arremessar pedra *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `GOLEM_STUNNED` | Guardião tonto (cristal rachado) *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `GOLEM_DEATH` | Guardião desmoronando *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `WISP_IDLE` | Fogo-fátuo flutuando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `WISP_ATTACK` | Fogo-fátuo atirando *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `WISP_DEATH` | Fogo-fátuo apagando *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
+| `LINE_CAST_SPELL` | Line lança o Raio de Luz *(sugestão nova)* | 4 |  | ✅ temporária | LINE_BELL_ITEM_116 |
+| `LINE_CAST_CHARGE` | Line carregando a Chuva de Estrelas *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_116 |
+| `LINE_CAST_STARS` | Line solta a Chuva de Estrelas *(sugestão nova)* | 4 |  | ✅ temporária | LINE_BELL_ITEM_116 |
+| `GOLEM_SLEEP` | Guardião de Pedra dormindo *(sugestão nova)* | 1 | sim | ✅ temporária | LINE_BELL_ITEM_119 |
+| `GOLEM_IDLE` | Guardião parado *(sugestão nova)* | 1 | sim | ✅ temporária | LINE_BELL_ITEM_119 |
+| `GOLEM_WALK` | Guardião andando *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_119 |
+| `GOLEM_SLAM` | Guardião: pisão (onda no chão) *(sugestão nova)* | 2 |  | ✅ temporária | LINE_BELL_ITEM_120 |
+| `GOLEM_THROW` | Guardião: arremessar pedra *(sugestão nova)* | 2 |  | ✅ temporária | LINE_BELL_ITEM_120 |
+| `GOLEM_STUNNED` | Guardião tonto (cristal rachado) *(sugestão nova)* | 1 | sim | ✅ temporária | LINE_BELL_ITEM_121 |
+| `GOLEM_DEATH` | Guardião desmoronando *(sugestão nova)* | 3 |  | ✅ temporária | LINE_BELL_ITEM_121 |
+| `WISP_IDLE` | Fogo-fátuo flutuando *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_122 |
+| `WISP_ATTACK` | Fogo-fátuo atirando *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_122 |
+| `WISP_DEATH` | Fogo-fátuo apagando *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_122 |
 
 ### 10.9 Inimigos (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `SHADOW_IDLE` | Sombra — parada *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `SHADOW_MOVE` | Sombra — andar *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `SHADOW_ATTACK` | Sombra — investida *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `SHADOW_HIT` | Sombra — receber dano *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
-| `SHADOW_DEATH` | Sombra — desaparecer *(sugestão nova)* | 12 |  | ✏️ código / falta |  |
+| `SHADOW_IDLE` | Sombra — parada *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_123 |
+| `SHADOW_MOVE` | Sombra — andar *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_123 |
+| `SHADOW_ATTACK` | Sombra — investida *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_123 |
+| `SHADOW_HIT` | Sombra — receber dano *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_123 |
+| `SHADOW_DEATH` | Sombra — desaparecer *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_123 |
 
 ### 10.10 Efeitos
 
@@ -2031,35 +2034,35 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
 | `THEO_ALERT` | Theo — Theo alerta | 1 |  | ✅ temporária | arte/theo/THEO_ALERT |
-| `THEO_BALL` | Theo — Theo com a bolinha | 1 |  | ✅ temporária | arte/theo/THEO_BALL |
-| `THEO_BATH` | Theo — Theo no banho | 1 |  | ✅ temporária | arte/theo/THEO_BATH |
-| `THEO_BONE` | Theo — Theo com o osso | 1 |  | ✅ temporária | arte/theo/THEO_BONE |
+| `THEO_BALL` | Theo — Theo com a bolinha | 12 |  | ✅ temporária | LINE_BELL_ITEM_128 |
+| `THEO_BATH` | Theo — Theo no banho | 12 |  | ✅ temporária | LINE_BELL_ITEM_130 |
+| `THEO_BONE` | Theo — Theo com o osso | 12 |  | ✅ temporária | LINE_BELL_ITEM_128 |
 | `THEO_IDLE_BACK` | Theo — idle back | 3 |  | ✅ temporária | arte/theo/THEO_IDLE_BACK |
 | `THEO_IDLE_FRONT` | Theo — idle front | 3 |  | ✅ temporária | arte/theo/THEO_IDLE_FRONT |
 | `THEO_IDLE_LEFT` | Theo — idle left | 1 |  | ✅ temporária | arte/theo/THEO_IDLE_LEFT |
 | `THEO_IDLE_RIGHT` | Theo — idle right | 1 |  | ✅ temporária | arte/theo/THEO_IDLE_RIGHT |
-| `THEO_LIE` | Theo — Theo deitado | 1 |  | ✅ temporária | arte/theo/THEO_LIE |
-| `THEO_PLAY` | Theo — Theo brincando | 3 |  | ✅ temporária | arte/theo/THEO_PLAY |
+| `THEO_LIE` | Theo — Theo deitado | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
+| `THEO_PLAY` | Theo — Theo brincando | 12 |  | ✅ temporária | LINE_BELL_ITEM_128 |
 | `THEO_QUESTION` | Theo — Theo curioso | 1 |  | ✅ temporária | arte/theo/THEO_QUESTION |
-| `THEO_ROLL` | Theo — Theo de barriga pra cima | 3 |  | ✅ temporária | arte/theo/THEO_ROLL |
-| `THEO_RUN` | Theo — Correr | 4 |  | ✅ temporária | arte/theo/THEO_RUN |
-| `THEO_SIT` | Theo — sit | 4 |  | ✅ temporária | arte/theo/THEO_SIT |
-| `THEO_SIT_FRONT` | Theo — Theo comendo | 1 |  | ✅ temporária | arte/theo/THEO_SIT_FRONT |
-| `THEO_SIT_IDLE` | Theo — Theo apaixonado | 2 |  | ✅ temporária | arte/theo/THEO_SIT_IDLE |
-| `THEO_SLEEP` | Theo — Theo dormindo | 1 |  | ✅ temporária | arte/theo/THEO_SLEEP |
+| `THEO_ROLL` | Theo — Theo de barriga pra cima | 12 |  | ✅ temporária | LINE_BELL_ITEM_130 |
+| `THEO_RUN` | Theo — Correr | 7 |  | ✅ temporária | LINE_BELL_ITEM_128 |
+| `THEO_SIT` | Theo — sit | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
+| `THEO_SIT_FRONT` | Theo — Theo comendo | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
+| `THEO_SIT_IDLE` | Theo — Theo apaixonado | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
+| `THEO_SLEEP` | Theo — Theo dormindo | 12 |  | ✅ temporária | LINE_BELL_ITEM_129 |
 | `THEO_WALK_BACK` | Theo — walk back | 3 |  | ✅ temporária | arte/theo/THEO_WALK_BACK |
 | `THEO_WALK_FRONT` | Theo — walk front | 4 |  | ✅ temporária | arte/theo/THEO_WALK_FRONT |
 | `THEO_WALK_LEFT` | Theo — walk left | 6 |  | ✅ temporária | arte/theo/THEO_WALK_LEFT |
 | `THEO_WALK_RIGHT` | Theo — walk right | 4 |  | ✅ temporária | arte/theo/THEO_WALK_RIGHT |
-| `CHICKEN_EAT` | Galinha branca — Comer | 5 |  | ✅ temporária | arte/galinhas/CHICKEN_EAT |
-| `CHICKEN_IDLE` | Galinha branca — Parado | 6 |  | ✅ temporária | arte/galinhas/CHICKEN_IDLE |
-| `CHICKEN_LAY_EGG` | Galinha branca — Botar ovo | 7 |  | ✅ temporária | arte/galinhas/CHICKEN_LAY_EGG |
-| `CHICKEN_PECK` | Galinha branca — Bicar o chão | 7 |  | ✅ temporária | arte/galinhas/CHICKEN_PECK |
-| `CHICKEN_RUN` | Galinha branca — Correr | 6 |  | ✅ temporária | arte/galinhas/CHICKEN_RUN |
-| `CHICKEN_SCARED` | Galinha branca — Assustada | 4 |  | ✅ temporária | arte/galinhas/CHICKEN_SCARED |
-| `CHICKEN_SCRATCH` | Galinha branca — Ciscar | 6 |  | ✅ temporária | arte/galinhas/CHICKEN_SCRATCH |
-| `CHICKEN_SLEEP` | Galinha branca — Dormindo | 6 |  | ✅ temporária | arte/galinhas/CHICKEN_SLEEP |
-| `CHICKEN_WALK` | Galinha branca — Andar | 7 |  | ✅ temporária | arte/galinhas/CHICKEN_WALK |
+| `CHICKEN_EAT` | Galinha branca — Comer | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_IDLE` | Galinha branca — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_LAY_EGG` | Galinha branca — Botar ovo | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_PECK` | Galinha branca — Bicar o chão | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_RUN` | Galinha branca — Correr | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_SCARED` | Galinha branca — Assustada | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_SCRATCH` | Galinha branca — Ciscar | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_SLEEP` | Galinha branca — Dormindo | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
+| `CHICKEN_WALK` | Galinha branca — Andar | 12 |  | ✅ temporária | LINE_BELL_ITEM_131 |
 | `HEN_BROWN_EAT` | Galinha marrom — Comer | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
 | `HEN_BROWN_IDLE` | Galinha marrom — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
 | `HEN_BROWN_LAY_EGG` | Galinha marrom — Botar ovo | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
@@ -2076,19 +2079,19 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `COW_IDLE` | Vaca — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_134 |
 | `COW_RUN` | Vaca — Correr | 12 |  | ✅ temporária | LINE_BELL_ITEM_134 |
 | `COW_WALK` | Vaca — Andar | 12 |  | ✅ temporária | LINE_BELL_ITEM_134 |
-| `PIG_FRONT` | Porco — De frente | 2 |  | ✅ temporária | arte/bichos/PIG_FRONT |
-| `PIG_IDLE` | Porco — Parado | 1 |  | ✅ temporária | arte/bichos/PIG_IDLE |
-| `PIG_LIE` | Porco — Deitado | 1 |  | ✅ temporária | arte/bichos/PIG_LIE |
-| `PIG_MUD` | Porco — Rolando na lama | 4 |  | ✅ temporária | arte/bichos/PIG_MUD |
-| `PIG_WALK` | Porco — Andar | 4 |  | ✅ temporária | arte/bichos/PIG_WALK |
-| `HORSE_EAT` | Cavalo — Comer | 1 |  | ✅ temporária | arte/bichos/HORSE_EAT |
-| `HORSE_IDLE` | Cavalo — Parado | 1 |  | ✅ temporária | arte/bichos/HORSE_IDLE |
-| `HORSE_RUN` | Cavalo — Correr | 3 |  | ✅ temporária | arte/bichos/HORSE_RUN |
-| `HORSE_WALK` | Cavalo — Andar | 4 |  | ✅ temporária | arte/bichos/HORSE_WALK |
-| `SHEEP_IDLE` | Ovelha — Parado *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `SHEEP_WALK` | Ovelha — Andar *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `SHEEP_RUN` | Ovelha — Correr *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `SHEEP_EAT` | Ovelha — Comer grama *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
+| `PIG_FRONT` | Porco — De frente | 12 |  | ✅ temporária | LINE_BELL_ITEM_135 |
+| `PIG_IDLE` | Porco — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_135 |
+| `PIG_LIE` | Porco — Deitado | 12 |  | ✅ temporária | LINE_BELL_ITEM_135 |
+| `PIG_MUD` | Porco — Rolando na lama | 12 |  | ✅ temporária | LINE_BELL_ITEM_135 |
+| `PIG_WALK` | Porco — Andar | 12 |  | ✅ temporária | LINE_BELL_ITEM_135 |
+| `HORSE_EAT` | Cavalo — Comer | 12 |  | ✅ temporária | LINE_BELL_ITEM_136 |
+| `HORSE_IDLE` | Cavalo — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_136 |
+| `HORSE_RUN` | Cavalo — Correr | 12 |  | ✅ temporária | LINE_BELL_ITEM_136 |
+| `HORSE_WALK` | Cavalo — Andar | 12 |  | ✅ temporária | LINE_BELL_ITEM_136 |
+| `SHEEP_IDLE` | Ovelha — Parado *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_137 |
+| `SHEEP_WALK` | Ovelha — Andar *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_137 |
+| `SHEEP_RUN` | Ovelha — Correr *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_137 |
+| `SHEEP_EAT` | Ovelha — Comer grama *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_137 |
 | `DUCK_IDLE` | Pato — Parado *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 | `DUCK_WALK` | Pato — Andar *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
 | `DUCK_SWIM` | Pato — Nadando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
@@ -2262,15 +2265,15 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | 8 | sim | ✏️ código / falta |  |
-| `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | 8 |  | ✏️ código / falta |  |
-| `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | 8 |  | ✏️ código / falta |  |
-| `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | 8 | sim | ✏️ código / falta |  |
-| `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | 8 |  | ✏️ código / falta |  |
-| `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | 8 |  | ✏️ código / falta |  |
-| `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | 8 | sim | ✏️ código / falta |  |
-| `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 |  | ✏️ código / falta |  |
-| `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 |  | ✏️ código / falta |  |
+| `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
+| `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
+| `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
+| `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
+| `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
+| `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
+| `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
+| `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
+| `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
 
 ### 10.22 Moradores (todos, incluindo os da Parte 2)
 
@@ -2336,7 +2339,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_TUNICA_ATTACK_VERTICAL` | Line com Túnica Acolchoada — golpe vertical | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
 | `LINE_TUNICA_ATTACK_COMBO` | Line com Túnica Acolchoada — golpe final do combo | 12 |  | 🔁 usa `LINE_ATTACK_COMBO` |  |
 | `LINE_TUNICA_ATTACK_SPIN` | Line com Túnica Acolchoada — giro | 12 |  | 🔁 usa `LINE_ATTACK_SPIN` |  |
-| `LINE_TUNICA_CAST_SPELL` | Line com Túnica Acolchoada — Raio de Luz | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_TUNICA_CAST_SPELL` | Line com Túnica Acolchoada — Raio de Luz | 12 |  | 🔁 usa `LINE_CAST_SPELL` |  |
 | `LINE_TUNICA_BLOCK` | Line com Túnica Acolchoada — defesa | 12 |  | 🔁 usa `LINE_BLOCK` |  |
 | `LINE_TUNICA_DODGE` | Line com Túnica Acolchoada — esquiva | 12 |  | 🔁 usa `LINE_DODGE` |  |
 | `LINE_TUNICA_JUMP` | Line com Túnica Acolchoada — pulo | 12 |  | 🔁 usa `LINE_JUMP_RIGHT` |  |
@@ -2364,7 +2367,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_MALHA_ATTACK_VERTICAL` | Line com Cota de Malha — golpe vertical | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
 | `LINE_MALHA_ATTACK_COMBO` | Line com Cota de Malha — golpe final do combo | 12 |  | 🔁 usa `LINE_ATTACK_COMBO` |  |
 | `LINE_MALHA_ATTACK_SPIN` | Line com Cota de Malha — giro | 12 |  | 🔁 usa `LINE_ATTACK_SPIN` |  |
-| `LINE_MALHA_CAST_SPELL` | Line com Cota de Malha — Raio de Luz | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_MALHA_CAST_SPELL` | Line com Cota de Malha — Raio de Luz | 12 |  | 🔁 usa `LINE_CAST_SPELL` |  |
 | `LINE_MALHA_BLOCK` | Line com Cota de Malha — defesa | 12 |  | 🔁 usa `LINE_BLOCK` |  |
 | `LINE_MALHA_DODGE` | Line com Cota de Malha — esquiva | 12 |  | 🔁 usa `LINE_DODGE` |  |
 | `LINE_MALHA_JUMP` | Line com Cota de Malha — pulo | 12 |  | 🔁 usa `LINE_JUMP_RIGHT` |  |
@@ -2392,7 +2395,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_BRASA_ATTACK_VERTICAL` | Line com Armadura de Brasa — golpe vertical | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
 | `LINE_BRASA_ATTACK_COMBO` | Line com Armadura de Brasa — golpe final do combo | 12 |  | 🔁 usa `LINE_ATTACK_COMBO` |  |
 | `LINE_BRASA_ATTACK_SPIN` | Line com Armadura de Brasa — giro | 12 |  | 🔁 usa `LINE_ATTACK_SPIN` |  |
-| `LINE_BRASA_CAST_SPELL` | Line com Armadura de Brasa — Raio de Luz | 12 |  | 🔁 usa `LINE_ATTACK_VERTICAL` |  |
+| `LINE_BRASA_CAST_SPELL` | Line com Armadura de Brasa — Raio de Luz | 12 |  | 🔁 usa `LINE_CAST_SPELL` |  |
 | `LINE_BRASA_BLOCK` | Line com Armadura de Brasa — defesa | 12 |  | 🔁 usa `LINE_BLOCK` |  |
 | `LINE_BRASA_DODGE` | Line com Armadura de Brasa — esquiva | 12 |  | 🔁 usa `LINE_DODGE` |  |
 | `LINE_BRASA_JUMP` | Line com Armadura de Brasa — pulo | 12 |  | 🔁 usa `LINE_JUMP_RIGHT` |  |
@@ -3198,16 +3201,16 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Grupo | Animações | Com arte | Usando substituta | Faltando |
 |---|---|---|---|---|
 | Primeiro encontro (prólogo) | 8 | 8 | 0 | 0 |
-| Line — movimento | 31 | 29 | 2 | 0 |
-| Line — combate | 27 | 19 | 8 | 0 |
+| Line — movimento | 31 | 31 | 0 | 0 |
+| Line — combate | 27 | 27 | 0 | 0 |
 | Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
-| Line e Bell juntas | 26 | 13 | 10 | 3 |
-| Dragão | 27 | 24 | 3 | 0 |
-| Magia e criaturas (novo) | 13 | 0 | 3 | 10 |
-| Inimigos (novo) | 5 | 0 | 0 | 5 |
+| Line e Bell juntas | 26 | 18 | 8 | 0 |
+| Dragão | 27 | 26 | 1 | 0 |
+| Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
+| Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
-| Bichos da fazenda | 67 | 55 | 0 | 12 |
+| Bichos da fazenda | 67 | 59 | 0 | 8 |
 | Personagens de apoio (novo) | 6 | 0 | 0 | 6 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
@@ -3217,7 +3220,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Hidra de Lama (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 0 | 9 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 30 | 0 | 0 | 30 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
@@ -3227,7 +3230,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **553** | **208** | **179** | **166** |
+| **Total** | **553** | **247** | **171** | **135** |
 
 A lista com cada código está na seção 10 e, só com o que falta, em `ANIMACOES_PENDENTES.md`.
 
@@ -3367,6 +3370,41 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 - **Fases:** riscos de vento no chão (animado), chuva e respingos, relâmpago na tela, névoa do pântano, brasas da fenda, nuvens passando embaixo dos picos, partículas das cinco cores no Coração.
 - **Dia e noite:** vaga-lumes (amarelos, verdes e roxos), estrelas no céu, janelas e lampiões acesos à noite, brilho da fonte ao descansar, tons de amanhecer e entardecer.
 - Os efeitos da Parte 1 continuam na seção 13 (`FX_*`).
+
+### 22.11 Cenário do Minas Shopping (item 140) — medidas combinadas
+
+> 🔒 **Trava:** cenário **não** passa pelo recorte de animação (os quadros de 1254×1254 que viram células de 256). O extrator deixa o item 140 de fora de propósito; ele entra à mão, com as medidas abaixo.
+
+**Como o Minas Shopping funciona no jogo:** é **uma ilustração inteira** (não é feita de tiles), em pé, na proporção **9:16**. Tudo no jogo foi posicionado numa **base de 360×640** (a tela do HTML do primeiro encontro): onde a Line começa, onde a Bell espera, a mesa do BK, a saída e os dois closes. Por isso a nova arte precisa manter **exatamente essa proporção**, só que maior.
+
+| Medida | Valor |
+|---|---|
+| Base de coordenadas | 360×640 (proporção 9:16, em pé) |
+| Tamanho no mundo do jogo | 480×853 unidades (mapa de 15×27 tiles de 32) |
+| **Entrega recomendada** | **2160×3840** (6× a base): nítido em tela cheia 1440p e nos closes em 1080p |
+| Para 4K | 2880×5120 (8× a base) |
+| Mínimo | 1440×2560 (4× a base): nítido em tela cheia 1080p sem close |
+| Grade de referência | 1 tile do jogo = 24 px da base = **144 px** na entrega de 2160×3840 (15 colunas; a altura não fecha em tiles inteiros, não precisa) |
+| Escala das personagens | a Line de pé tem **47 px da base = 281 px** na entrega de 2160×3840; a mesa, as cadeiras e as portas seguem essa medida |
+| Área andável (chão livre) | x 28–332, y 130–545 na base (**x 168–1992, y 780–3270** na entrega de 2160×3840): nada alto no chão dentro dela |
+| Fundo (vitrines, escada rolante, andar de cima) | faixa de cima, y 0–130 da base |
+| Pontos da história (base) | Line começa (48,520) · Bell espera (274,300) · Line na mesa (142,397) · Bell na mesa (218,397) · mesa do BK (180,397) · saída (280,500) |
+| Closes (câmera 1,6×) | o encontro, perto de (251,270), e a mesa do BK, perto de (180,367): os lugares com mais detalhe |
+| Telas largas | o jogo preenche os lados com a própria imagem borrada: as bordas esquerda e direita devem continuar o cenário naturalmente (sem moldura) |
+
+**Formato da entrega (o “recorte”):**
+
+1. **Fundo:** uma imagem única, PNG ou WebP, **sem transparência**, sem grade e sem textos, na perspectiva de cima em 3/4 como o resto do jogo.
+2. **Camada da frente (opcional):** o que deve passar **na frente** das personagens (pilares, vasos, grade do mezanino, encosto das cadeiras) vem num PNG separado, **do mesmo tamanho do fundo**, com transparência em todo o resto. O jogo desenha essa camada por cima das duas.
+3. **Partes animadas (opcional):** luzes piscando, escada rolante e fonte vêm como animação separada, só do pedaço que mexe, com a posição (x, y) no fundo.
+4. **Não** entregar em sequência de quadros de 1254×1254 nem como prancha de tiles.
+
+O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já está no tamanho certo, com a grade, a área andável, os pontos da história, os closes e a Line e a Bell em escala, por cima da ilustração atual, para desenhar em cima (gerado por `tools/gabarito_cenario.py`).
+
+![Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala](imagens/gabarito-minas-shopping.jpg)
+*Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala*
+
+**Próximo lote:** item 138 (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`) e item 139 (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) já têm lugar no jogo e tamanho definido (pato uns 20 de altura, gato uns 18). Eles entram sozinhos no formato normal de item, como a galinha, o pintinho e a vaca.
 
 ### 22.10 Ordem sugerida para produzir
 

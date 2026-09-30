@@ -16,7 +16,7 @@ ARQ = os.path.join(RAIZ, "LINE_BELL_INDICE_PARTES.md")
 def conteudo(caminho):
     html = open(caminho, encoding="utf-8").read()
     m = re.search(r"const animations=(\{.*?\});\s*\n", html, re.S)
-    if m:
+    if m and not m.group(1).startswith("{'"):
         a = json.loads(m.group(1))
         vazias = sum(1 for v in a.values() for u in v["frames"] if len(u.split(",", 1)[-1]) < 100)
         return list(a), vazias
