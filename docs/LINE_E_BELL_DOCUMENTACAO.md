@@ -16,6 +16,7 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 📱 **Tudo maior no celular:** em pé, o jogo encolhia tudo para caber 400 unidades de largura e a Line ficava minúscula. Agora a câmera do celular fica mais perto (320 de altura deitado, 240 de largura em pé), e personagens, bichos e cenário aparecem bem maiores (seção 22.0).
 > 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 38 de altura, vaca 59, cavalo 81, porco e ovelha 40, Theo 36, pintinho 22; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).
 
 > 📚 **Tudo num documento só:** o que falta criar (seção 23), o índice dos itens de arte recebidos (seção 24), o plano de criação por item (seção 25) e como rodar, publicar e editar o jogo (seção 26) agora ficam aqui dentro. Os arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md`) saíram do repositório.
@@ -3152,11 +3153,11 @@ Tudo é **bem discreto**, em branco-creme transparente, para ajudar sem poluir a
 
 ### 22.0 Tamanho de cada imagem (pensando na tela cheia)
 
-O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo para caber. Por isso o tamanho de cada coisa depende da tela: em **tela cheia num monitor 1080p** tudo aparece **2,7×** maior que no mundo; num monitor **4K** ou num notebook **retina** em tela cheia, **5,4×**. Uma imagem menor que isso é esticada e fica borrada.
+No computador o jogo mostra **400 unidades de altura** do mundo na tela e aumenta tudo para caber. Por isso o tamanho de cada coisa depende da tela: em **tela cheia num monitor 1080p** tudo aparece **2,7×** maior que no mundo; num monitor **4K** ou num notebook **retina** em tela cheia, **5,4×**. Uma imagem menor que isso é esticada e fica borrada.
 
 - **Recomendado:** nítido até em 4K ou retina em tela cheia.
 - **Mínimo:** nítido em tela cheia 1080p (o caso mais comum no PC).
-- No celular deitado o jogo usa uns 780 px de altura (escala ≈ 2×), então o mínimo já basta.
+- **No celular** a câmera fica mais perto: mostra **320 unidades de altura** deitado e, em pé, **240 de largura** (antes, em pé, o jogo encolhia tudo para caber 400 de largura e a Line ficava minúscula). Deitado a escala fica perto de 2,4× e em pé perto de 3,3×: o mínimo ainda basta.
 - Uma unidade do mundo equivale a 1 pixel do tile de 32×32: um tile tem 32 unidades.
 
 | Grupo | Imagem | No mundo (L×A) | Janela 1280×720 | Tela cheia 1080p | Tela cheia 1440p | 4K ou retina | **Recomendado** | Mínimo | Observação |
