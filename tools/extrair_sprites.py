@@ -58,6 +58,22 @@ def ler_animacoes(caminho):
             if quadros:
                 saida[codigo] = {"frames": quadros, "label": a.get("description", codigo), "fps": a.get("fps")}
         return saida
+    if "const animations={'" in html:
+        # Itens 132 em diante: const animations={'CODIGO':['data:...', ...]} e descriptions à parte.
+        inicio = html.index("const animations={'")
+        bloco = html[inicio:html.index("};", inicio)]
+        desc = {}
+        if "const descriptions={" in html:
+            d = html[html.index("const descriptions={"):]
+            d = d[:d.index("};")]
+            desc = dict(re.findall(r"'([A-Z0-9_]+)':'((?:[^'\\]|\\.)*)'", d))
+        saida = {}
+        for codigo, dentro in re.findall(r"'([A-Z0-9_]+)':\[(.*?)\]", bloco, re.S):
+            quadros = [q for q in re.findall(r"'(data:[^']+)'", dentro) if len(q.split(",", 1)[-1]) >= 100]
+            if quadros:
+                saida[codigo] = {"frames": quadros, "label": desc.get(codigo, codigo)}
+        if saida:
+            return saida
     print(f"  aviso: nenhuma animação encontrada em {os.path.basename(caminho)}")
     return {}
 
@@ -309,6 +325,22 @@ def main():
         manifesto = json.loads(texto.split("window.SPRITES = ", 1)[1].split(";\nwindow.RETRATOS", 1)[0])
         retratos = json.loads(texto.split("window.RETRATOS = ", 1)[1].rstrip().rstrip(";"))
         return gravar(manifesto, retratos)
+    if "--apenas" in sys.argv:
+        # Só os itens dados (ex.: --apenas 132,133,134), mantendo o resto do manifesto atual.
+        numeros = {int(n) for n in sys.argv[sys.argv.index("--apenas") + 1].split(",")}
+        with open(MANIFESTO, encoding="utf-8") as f:
+            texto = f.read()
+        manifesto = json.loads(texto.split("window.SPRITES = ", 1)[1].split(";\nwindow.RETRATOS", 1)[0])
+        retratos = json.loads(texto.split("window.RETRATOS = ", 1)[1].rstrip().rstrip(";"))
+        for caminho in arquivos:
+            nome = os.path.basename(caminho)
+            if numero_item(nome) not in numeros:
+                continue
+            print(nome)
+            for codigo, dados in ler_animacoes(caminho).items():
+                manifesto[codigo] = processar(codigo, dados, nome)
+                print(f"  {codigo}: {len(manifesto[codigo]['seq'])} frames ({manifesto[codigo]['count']} únicos)")
+        return gravar(manifesto, retratos)
     if "--so-arte" in sys.argv:
         # Refaz só as pastas de arte/, mantendo o resto do manifesto atual.
         with open(MANIFESTO, encoding="utf-8") as f:
@@ -359,12 +391,16 @@ def main():
 # ou crescer ao trocar de animação. Se o primeiro quadro começa deitado ou agachado, vale a
 # maior altura.
 ALTURA_ALVO = {"LINE_BELL_": ALTURA_LINE_MUNDO, "LINE_": ALTURA_LINE_MUNDO, "BELL_": ALTURA_LINE_MUNDO * 0.96}
+# Bichos que chegaram como item (132 em diante): ficam do mesmo tamanho na tela que a arte
+# antiga do pacote da fazenda (altura do bicho de pé, em pixels do mundo).
+ALTURA_BICHO = {"COW_": 39.5, "HEN_BROWN_": 26.3, "CHICKEN_": 26.3, "CHICK_": 14.1}
 
 
 def normalizar_escala(manifesto):
     for codigo, m in manifesto.items():
+        bicho = next((v for k, v in ALTURA_BICHO.items() if codigo.startswith(k)), None)
         alvo = next((v for k, v in ALTURA_ALVO.items() if codigo.startswith(k)), None)
-        if alvo is None or "ITEM" not in m.get("item", "") or m.get("mundo"):
+        if (alvo is None and bicho is None) or "ITEM" not in m.get("item", "") or (m.get("mundo") and not m.get("bicho")):
             continue
         folha = Image.open(os.path.join(RAIZ, "game", m["src"])).convert("RGBA")
         cel = m["cell"]
@@ -379,6 +415,11 @@ def normalizar_escala(manifesto):
             continue
         primeiro = alturas[m["seq"][0]]
         altura = primeiro if primeiro >= 0.75 * max(alturas) else max(alturas)
+        if bicho is not None:
+            # O tamanho da célula inteira no mundo, para o bicho ficar com a altura certa.
+            m["mundo"] = round(bicho * cel / altura, 2)
+            m["bicho"] = True
+            continue
         altura_mundo = altura / cel * CELULA_LINE_MUNDO
         m["escala"] = round(max(0.8, min(1.35, alvo / altura_mundo)), 4)
 

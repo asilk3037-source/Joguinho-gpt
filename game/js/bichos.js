@@ -58,6 +58,8 @@
     }
     return null;
   }
+  // Arte nova dos itens (132 em diante) tem 12 quadros por animação: roda mais rápido para o ciclo durar o mesmo.
+  const FPS_ITEM = { WALK: 14, RUN: 18, IDLE: 8, EAT: 9, PECK: 11, SCRATCH: 11, LAY_EGG: 8, SLEEP: 5, SCARED: 16 };
   const FPS = { WALK: 8, RUN: 12, IDLE: 5, EAT: 6, PECK: 7, SCRATCH: 7, LAY_EGG: 4, SLEEP: 3, SCARED: 10, MUD: 4, FRONT: 4, SIT: 3, SIT_IDLE: 6, SIT_FRONT: 4, LIE: 1.5 };
 
   class Bicho {
@@ -198,7 +200,8 @@
       if (!s) return false;
       if (cod !== this.animAtual) { this.animAtual = cod; this.tAnim = 0; }
       const sufixo = cod.replace(/^(CHICKEN|HEN_BROWN|CHICK|COW|PIG|HORSE|THEO|SHEEP|DUCK|CAT)_/, '').replace(/_(FRONT|BACK|LEFT|RIGHT)$/, (m) => (cod.startsWith('THEO_SIT') ? m : ''));
-      const fps = FPS[sufixo] || FPS[sufixo.split('_')[0]] || 6;
+      const tab = /ITEM/.test(s.item || '') ? FPS_ITEM : FPS;
+      const fps = tab[sufixo] || tab[sufixo.split('_')[0]] || FPS[sufixo] || 6;
       const n = s.seq.length;
       let i = Math.floor(this.tAnim * fps);
       i = /LAY_EGG|FRONT$|SIT_FRONT/.test(cod) && !/WALK/.test(cod) ? Math.min(i, n - 1) % n : i % n;

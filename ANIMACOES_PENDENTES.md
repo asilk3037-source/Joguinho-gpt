@@ -9,7 +9,7 @@
 - **Item 96**: chegou com 2 imagem(ns) vazia(s) em `DRAGON_FALL`, `DRAGON_DEFEATED`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 106**: chegou com 1 imagem(ns) vazia(s) em `BELL_LAUGH_AT_LINE`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 108**: chegou com 3 imagem(ns) vazia(s) em `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`. As animações funcionam sem esses quadros, mas ficam incompletas.
-- **Itens que ainda não chegaram:** 77, 78, 79, 80.
+- **Itens que ainda não chegaram:** 77, 78, 79, 80, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131.
 - **`DRAGON_IDLE`** está provisório: usa o 1º quadro do rugido (`DRAGON_ROAR`) até chegar a arte do dragão parado.
 
 ## Ainda sem arte

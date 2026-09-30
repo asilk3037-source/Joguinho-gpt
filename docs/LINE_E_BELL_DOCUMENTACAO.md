@@ -16,6 +16,10 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22 e o arquivo `ARTES_NECESSARIAS.md`).
 
+> 🐔 **Arte nova (itens 132 a 134):** galinha marrom completa (9 animações), pintinho (parado, andando e correndo) e vaca (parada, andando, correndo e comendo), com 12 quadros cada, no mesmo tamanho dos bichos antigos.
+> 📐 **Tamanho de cada imagem** pensando na tela cheia: tabela na seção 22.0.
+> 🧭 **Modo Fácil:** guia discreto com trilha no chão pelo caminho de verdade, também para as tarefas da fazenda (seção 21).
+
 > 🎨 **Arte nova (itens 50 a 108):**
 > - **Bell** com arte nova: parada, andando e correndo nas 4 direções, pulo, susto, fuga, queda, captura, jaula, fuga da jaula, chamando e ajudando a Line, feliz, aliviada, chorando, risada, reverência, toca aqui e dança.
 > - **Line e Bell juntas:** andando lado a lado, de mãos dadas, correndo, conversando, rindo, encostadas, segurando as mãos, abraço do resgate, fim do abraço, comemoração e as cenas do prólogo (encontro, abraço de chegada, BK, soco na máquina e o beijo no túnel).
@@ -2056,22 +2060,22 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `CHICKEN_SCRATCH` | Galinha branca — Ciscar | 6 |  | ✅ temporária | arte/galinhas/CHICKEN_SCRATCH |
 | `CHICKEN_SLEEP` | Galinha branca — Dormindo | 6 |  | ✅ temporária | arte/galinhas/CHICKEN_SLEEP |
 | `CHICKEN_WALK` | Galinha branca — Andar | 7 |  | ✅ temporária | arte/galinhas/CHICKEN_WALK |
-| `HEN_BROWN_EAT` | Galinha marrom — Comer | 5 |  | ✅ temporária | arte/galinhas/HEN_BROWN_EAT |
-| `HEN_BROWN_IDLE` | Galinha marrom — Parado | 6 |  | ✅ temporária | arte/galinhas/HEN_BROWN_IDLE |
-| `HEN_BROWN_LAY_EGG` | Galinha marrom — Botar ovo | 7 |  | ✅ temporária | arte/galinhas/HEN_BROWN_LAY_EGG |
-| `HEN_BROWN_PECK` | Galinha marrom — Bicar o chão | 7 |  | ✅ temporária | arte/galinhas/HEN_BROWN_PECK |
-| `HEN_BROWN_RUN` | Galinha marrom — Correr | 6 |  | ✅ temporária | arte/galinhas/HEN_BROWN_RUN |
-| `HEN_BROWN_SCARED` | Galinha marrom — Assustada | 4 |  | ✅ temporária | arte/galinhas/HEN_BROWN_SCARED |
-| `HEN_BROWN_SCRATCH` | Galinha marrom — Ciscar | 6 |  | ✅ temporária | arte/galinhas/HEN_BROWN_SCRATCH |
-| `HEN_BROWN_SLEEP` | Galinha marrom — Dormindo | 6 |  | ✅ temporária | arte/galinhas/HEN_BROWN_SLEEP |
-| `HEN_BROWN_WALK` | Galinha marrom — Andar | 7 |  | ✅ temporária | arte/galinhas/HEN_BROWN_WALK |
-| `CHICK_IDLE` | Pintinho — Parado | 6 |  | ✅ temporária | arte/galinhas/CHICK_IDLE |
-| `CHICK_RUN` | Pintinho — Correr | 5 |  | ✅ temporária | arte/galinhas/CHICK_RUN |
-| `CHICK_WALK` | Pintinho — Andar | 6 |  | ✅ temporária | arte/galinhas/CHICK_WALK |
-| `COW_EAT` | Vaca — Comer | 4 |  | ✅ temporária | arte/bichos/COW_EAT |
-| `COW_IDLE` | Vaca — Parado | 2 |  | ✅ temporária | arte/bichos/COW_IDLE |
-| `COW_RUN` | Vaca — Correr | 2 |  | ✅ temporária | arte/bichos/COW_RUN |
-| `COW_WALK` | Vaca — Andar | 4 |  | ✅ temporária | arte/bichos/COW_WALK |
+| `HEN_BROWN_EAT` | Galinha marrom — Comer | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_IDLE` | Galinha marrom — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_LAY_EGG` | Galinha marrom — Botar ovo | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_PECK` | Galinha marrom — Bicar o chão | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_RUN` | Galinha marrom — Correr | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_SCARED` | Galinha marrom — Assustada | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_SCRATCH` | Galinha marrom — Ciscar | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_SLEEP` | Galinha marrom — Dormindo | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `HEN_BROWN_WALK` | Galinha marrom — Andar | 12 |  | ✅ temporária | LINE_BELL_ITEM_132 |
+| `CHICK_IDLE` | Pintinho — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_133 |
+| `CHICK_RUN` | Pintinho — Correr | 12 |  | ✅ temporária | LINE_BELL_ITEM_133 |
+| `CHICK_WALK` | Pintinho — Andar | 12 |  | ✅ temporária | LINE_BELL_ITEM_133 |
+| `COW_EAT` | Vaca — Comer | 12 |  | ✅ temporária | LINE_BELL_ITEM_134 |
+| `COW_IDLE` | Vaca — Parado | 12 |  | ✅ temporária | LINE_BELL_ITEM_134 |
+| `COW_RUN` | Vaca — Correr | 12 |  | ✅ temporária | LINE_BELL_ITEM_134 |
+| `COW_WALK` | Vaca — Andar | 12 |  | ✅ temporária | LINE_BELL_ITEM_134 |
 | `PIG_FRONT` | Porco — De frente | 2 |  | ✅ temporária | arte/bichos/PIG_FRONT |
 | `PIG_IDLE` | Porco — Parado | 1 |  | ✅ temporária | arte/bichos/PIG_IDLE |
 | `PIG_LIE` | Porco — Deitado | 1 |  | ✅ temporária | arte/bichos/PIG_LIE |
@@ -3110,7 +3114,17 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 
 No **Fácil**, além de chefes mais fracos, o jogo ajuda a jogadora a não se perder:
 
-- **Seta guia:** uma setinha dourada gira em volta da heroína apontando para o próximo objetivo, com o nome embaixo quando está longe. Se o objetivo é em outra área, aponta a saída certa (pelo caminho mais curto entre as saídas já abertas). Dentro da área, aponta o cristal/tocha/farol apagado mais perto, depois o chefe. Some durante as lutas e as cenas. Vale para a Parte 1 e a Parte 2.
+Tudo é **bem discreto**, em branco-creme transparente, para ajudar sem poluir a tela:
+
+- **Trilha no chão:** pontinhos claros e fracos só nos próximos passos, com um brilho suave que corre na direção certa. Eles seguem **o caminho de verdade**, contornando paredes, água e árvores (contam pulos, espinhos para cortar e o gancho).
+- **Setinha nos pés:** um “›” transparente perto da heroína mostra para onde a trilha segue.
+- **No objetivo:** uma estrelinha piscando devagar e um anel fino no chão. O nome (“Cristal apagado (1/3 acesos)”, “Ovo escondido”…) só aparece quando a heroína está perto.
+- **Legenda embaixo da tela:** texto pequeno e transparente com o que procurar, quantos passos faltam e, se for o caso, “pule por cima”, “corte os espinhos” ou “use o gancho no poste”.
+- **Outra área:** a trilha leva até a saída certa pelo caminho mais curto entre as saídas já abertas.
+- **Caminho fechado:** se uma barreira de luz está no meio, a trilha leva primeiro até a tocha ou o cristal que abre a passagem.
+- **Tarefas da fazenda:** a trilha leva à tarefa mais perto (ovo escondido, regador, horta, ração do Theo, tigela ou o bichinho que ainda não ganhou carinho).
+- **Coisas para achar:** baús fechados e documentos por perto têm uma estrelinha clara bem fraca.
+- **Mapa (M):** tracejado claro com o caminho e uma estrela no objetivo, e todos os baús aparecem (como a Bússola do Mago). No mapa do mundo, a região do objetivo ganha um anel e 🧭.
 - **Dicas de chefe:** ao acordar, quando cansa pela primeira vez e quando muda de fase, aparece um balão com a dica daquele chefe (seção 20).
 - **Vida baixa:** com 1 coração ou menos, lembra de usar poção, trocar de heroína ou voltar a uma fonte (uma vez por área).
 - **Tela de derrota:** mostra uma dica do que fazer diferente, conforme onde a heroína caiu (o chefe da luta, o dragão, o Guardião ou uma dica geral).
@@ -3121,6 +3135,63 @@ No **Fácil**, além de chefes mais fracos, o jogo ajuda a jogadora a não se pe
 ## 22. Arte necessária — lista completa
 
 > Esta é a lista de **tudo o que precisa de arte** no jogo, das duas partes: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, objetos, itens, interface, efeitos e dia/noite. Tudo que está hoje no jogo é **temporário** (emojis, desenhos no código ou arte provisória) e é trocado sozinho quando a arte com o código certo chega.
+
+### 22.0 Tamanho de cada imagem (pensando na tela cheia)
+
+O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo para caber. Por isso o tamanho de cada coisa depende da tela: em **tela cheia num monitor 1080p** tudo aparece **2,7×** maior que no mundo; num monitor **4K** ou num notebook **retina** em tela cheia, **5,4×**. Uma imagem menor que isso é esticada e fica borrada.
+
+- **Recomendado:** nítido até em 4K ou retina em tela cheia.
+- **Mínimo:** nítido em tela cheia 1080p (o caso mais comum no PC).
+- No celular deitado o jogo usa uns 780 px de altura (escala ≈ 2×), então o mínimo já basta.
+- Uma unidade do mundo equivale a 1 pixel do tile de 32×32: um tile tem 32 unidades.
+
+| Grupo | Imagem | No mundo (L×A) | Janela 1280×720 | Tela cheia 1080p | Tela cheia 1440p | 4K ou retina | **Recomendado** | Mínimo | Observação |
+|---|---|---|---|---|---|---|---|---|---|
+| Personagens | Line, Bell e as duas juntas (cada quadro) | 74×74 | 133×133 | 200×200 | 266×266 | 400×400 | **512×512** | 400×400 | corpo de pé com uns 62 de altura (≈ 85% do quadro), pés sempre na mesma linha. Os 1254×1254 que chegam hoje estão ótimos |
+| Personagens | Line e Bell com armadura | 74×74 | 133×133 | 200×200 | 266×266 | 400×400 | **512×512** | 400×400 | mesmo quadro e mesma posição dos pés da versão sem armadura |
+| Personagens | Moradores (Rosa, Bento, Zé, Lurdes, Tobias, Cora, Tião, Brisa) e Mago | 74×74 | 133×133 | 200×200 | 266×266 | 400×400 | **512×512** | 400×400 | adulto uns 56 de altura, o Pedrinho uns 42: no mesmo quadro da Line, para ficarem na proporção certa |
+| Personagens | Espírito das Ruínas | 90×110 | 162×198 | 243×297 | 324×396 | 486×594 | **512×640** | 400×500 | flutua; deixe espaço embaixo para o brilho |
+| Chefes | Dragão Vermelho (cada quadro) | 215×215 | 387×387 | 580×580 | 774×774 | 1161×1161 | **1024×1024** | 640×640 | o maior desenho do jogo; asas abertas cabem no quadro |
+| Chefes | Colosso, Serpente, Grifo, Titã de Magma, Hidra, Tempestade | 200×200 | 360×360 | 540×540 | 720×720 | 1080×1080 | **1024×1024** | 640×640 | um quadro por pose; o Grifo de asas abertas usa o quadro todo |
+| Chefes | Quimera Primordial | 200×200 | 360×360 | 540×540 | 720×720 | 1080×1080 | **1280×1280** | 800×800 | maior e mais detalhada: pode passar da borda do quadro nos golpes |
+| Chefes | Guardião de Pedra | 110×110 | 198×198 | 297×297 | 396×396 | 594×594 | **640×640** | 384×384 |  |
+| Inimigos | Sombra, fogos-fátuos (todos os elementos), morcego | 64×64 | 115×115 | 173×173 | 230×230 | 346×346 | **384×384** | 256×256 | o bicho ocupa uns 60% do quadro; o resto é brilho |
+| Bichos | Vaca, cavalo | 58×58 | 104×104 | 157×157 | 209×209 | 313×313 | **384×384** | 256×256 | vaca uns 40 de altura, cavalo uns 50 |
+| Bichos | Theo, porco, ovelha, gato, pato, galinhas | 36×36 | 65×65 | 97×97 | 130×130 | 194×194 | **256×256** | 160×160 | galinha uns 26 de altura; o Theo sentado uns 24 |
+| Bichos | Pintinho | 36×36 | 65×65 | 97×97 | 130×130 | 194×194 | **256×256** | 128×128 | uns 14 de altura: pode vir no mesmo quadro da galinha, bem menor |
+| Cenário | Tile de chão, parede, água, lama, vento, abismo | 32×32 | 58×58 | 86×86 | 115×115 | 173×173 | **128×128** | 96×96 | tem que emendar sem costura dos 4 lados; faça 3 ou 4 variações de cada |
+| Cenário | Árvores (normal, frutífera, cerejeira, pinheiro, árvore morta do pântano) | 62×75 | 112×135 | 167×202 | 223×270 | 335×405 | **384×448** | 256×300 | hoje são 97×115: ficam borradas em tela cheia |
+| Cenário | Arbustos, pedras, mato alto, flores | 33×33 | 59×59 | 89×89 | 119×119 | 178×178 | **192×192** | 128×128 | hoje uns 55×55 |
+| Cenário | Casa da fazenda | 264×150 | 475×270 | 713×405 | 950×540 | 1426×810 | **1440×816** | 720×408 | hoje 501×280: a arte que mais precisa de resolução |
+| Cenário | Celeiro, casas do vilarejo, casa da Cora e do Tião | 244×150 | 439×270 | 659×405 | 878×540 | 1318×810 | **1280×800** | 660×400 | a casa ocupa um bloco de 7×5 tiles |
+| Cenário | Galinheiro, carroça, barco, píer | 114×70 | 205×126 | 308×189 | 410×252 | 616×378 | **640×384** | 320×192 |  |
+| Cenário | Poço, moinho, fonte, bigorna, estação do carrinho | 54×70 | 97×126 | 146×189 | 194×252 | 292×378 | **320×384** | 160×192 |  |
+| Cenário | Baú, placa, barril, lampião, caixa, poste do gancho | 32×40 | 58×72 | 86×108 | 115×144 | 173×216 | **192×224** | 96×112 | o baú precisa de 2 poses: fechado e aberto |
+| Cenário | Cristal, tocha, farol do vento, pérola-cristal (apagado e aceso) | 32×64 | 58×115 | 86×173 | 115×230 | 173×346 | **192×384** | 96×192 | o aceso pode ter 4 a 6 quadros de brilho |
+| Cenário | Pilar, altar, pilares dos elementos | 32×80 | 58×144 | 86×216 | 115×288 | 173×432 | **192×448** | 96×224 |  |
+| Cenário | Barreira de luz, de raízes, parede de água, muro de vento (por tile) | 32×48 | 58×86 | 86×130 | 115×173 | 173×259 | **192×256** | 96×128 | emenda lado a lado |
+| Cenário | Jaula da Bell | 70×90 | 126×162 | 189×243 | 252×324 | 378×486 | **384×512** | 192×256 |  |
+| Efeitos | Impacto, faíscas, poeira, fumaça, brasas, lágrimas | 140×140 | 252×252 | 378×378 | 504×504 | 756×756 | **768×768** | 384×384 | o desenho fica no meio; o resto do quadro é transparente |
+| Efeitos | Explosão, ponto fraco do dragão, corações | 300×300 | 540×540 | 810×810 | 1080×1080 | 1620×1620 | **1024×1024** | 640×640 | explosão é o maior efeito |
+| Efeitos | Projéteis (estrela da Bell, luz, fogo, água, lama, pena, rocha) | 24×24 | 43×43 | 65×65 | 86×86 | 130×130 | **128×128** | 64×64 | com o brilho em volta |
+| Efeitos | Aviso no chão (círculo de raiz, raio, bolha, poça de lava, poça de lama) | 96×96 | 173×173 | 259×259 | 346×346 | 518×518 | **512×512** | 256×256 | visto de cima, achatado |
+
+**Interface** (estes não crescem com o mundo, crescem com a tela e com a densidade de pixels):
+
+| Imagem | Tamanho na tela | **Recomendado** | Mínimo |
+|---|---|---|---|
+| Retratos dos diálogos (cada expressão) | 108×108 na tela (76×76 no celular) | **512×512** | 256×256 |
+| Ícones dos itens, documentos e armaduras | 30×30 na mochila, 24×24 no HUD | **128×128** | 64×64 |
+| Corações, escudos, gotas de magia, moeda | de 18 a 50 px, conforme a tela | **128×128** | 64×64 |
+| Botões de toque (atacar, pular, 🔄…) | 62×62 (celular) | **192×192** | 128×128 |
+| Relógio e moldura do HUD, barra de chefe | a barra tem até metade da largura da tela | **1600×64 (barra) · 256×64 (relógio)** | 800×32 · 128×32 |
+| Fundos de tela cheia (título, Parte 2, capítulos, fundos do prólogo) | a tela inteira | **3840×2160** | 1920×1080 |
+| Fundos do prólogo com close | a câmera aproxima até 1,6× | **3840×2160, sem nada importante a menos de 10% da borda** | 2560×1440 |
+| Mapa do mundo (pergaminho) | até 900 px de largura na janela da mochila | **2400×1500** | 1600×1000 |
+
+**Regras que valem para todas:** fundo transparente de verdade (PNG), sem sombra no chão (o jogo desenha), todos os quadros de uma animação do mesmo tamanho, com os pés na mesma linha, e as animações de lado viradas para a direita.
+
+> ⚙️ **Observação técnica:** hoje o jogo guarda cada quadro dos personagens em 256×256 e cada quadro do dragão em 448×448. Isso fica nítido até 1440p. Para aproveitar a arte em 4K e retina, dá para subir esses tamanhos (pede só gerar as folhas de novo), com o custo de o jogo carregar um pouco mais devagar.
 
 ### 22.1 Resumo das animações
 

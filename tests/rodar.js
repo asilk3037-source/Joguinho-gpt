@@ -886,6 +886,38 @@ teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe'
   } finally { await h.ev(() => LB.dificuldade.definir('normal')); }
 });
 
+teste('guia do Fácil: trilha dourada acha o caminho em todas as fases e nas tarefas da fazenda', async (h) => {
+  await h.ev(() => LB.dificuldade.definir('facil'));
+  try {
+    // Fazenda, antes do rapto: aponta uma tarefa do dia.
+    await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = { encontroFeito: true, manhaVista: true, versaoMundo: 2, etapa: 'manha' }; j.iniciarArea('fazenda', null, true); j.iniciarCapitulo(); });
+    await h.espera(300); await h.avancar();
+    let g = await h.ev(() => { const x = LB.dicas.guia(LB.jogo); return x && { r: x.alvo.rotulo, n: x.pts ? x.pts.length : 0 }; });
+    afirmar(g && g.n > 0 && /Ovo|regador|ração|carinho/i.test(g.r), 'fazenda: guia para uma tarefa ' + JSON.stringify(g));
+    await h.foto('guia-fazenda');
+    // Parte 1 e Parte 2: de cada área, existe caminho até o próximo objetivo.
+    const casos = [
+      ['fazenda', { prologo: true }], ['floresta', { prologo: true }], ['floresta', { prologo: true, magoVisto: true }],
+      ['floresta', { prologo: true, magoVisto: true, espada: true }], ['ruinas', Object.assign({}, TODAS, { magia: false, golem: false, estrela: false, montanhaVista: false })],
+      ['ruinas', Object.assign({}, TODAS, { golem: false, estrela: false, montanhaVista: false })], ['montanha', TODAS],
+      ['vilarejo', P2], ['vale', Object.assign({ visto_vale: true }, P2)], ['lago', Object.assign({ visto_lago: true, chefeTerra: true, fusaoMagma: true }, P2)],
+      ['picos', Object.assign({ visto_picos: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true }, P2)],
+      ['picos', Object.assign({ visto_picos: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true, fusaoTempestade: true, portalCoracao: true }, P2)],
+    ];
+    for (const [area, flags] of casos) {
+      await h.area(area, flags);
+      g = await h.ev(() => { const x = LB.dicas.guia(LB.jogo); return x && { r: x.alvo.rotulo, n: x.pts ? x.pts.length : 0 }; });
+      afirmar(g && g.n > 1, `${area} ${JSON.stringify(flags).slice(0, 60)}: sem caminho ${JSON.stringify(g)}`);
+    }
+    await h.area('vale', Object.assign({ visto_vale: true }, P2));
+    await h.espera(400);
+    await h.foto('guia-vale');
+    await h.ev(() => LB.mochila.tela.abrir('mapa'));
+    await h.espera(300);
+    await h.foto('guia-mapa');
+  } finally { await h.ev(() => LB.dificuldade.definir('normal')); }
+});
+
 teste('parte 2: vento empurra, lama deixa lenta', async (h) => {
   await h.area('picos', Object.assign({ visto_picos: true }, P2));
   await h.ir(31.5, 29.5);

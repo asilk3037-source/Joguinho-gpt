@@ -20,6 +20,13 @@ def conteudo(caminho):
         a = json.loads(m.group(1))
         vazias = sum(1 for v in a.values() for u in v["frames"] if len(u.split(",", 1)[-1]) < 100)
         return list(a), vazias
+    if "const animations={'" in html:
+        # Itens 132 em diante: const animations={'CODIGO':['data:...', ...]}.
+        bloco = html[html.index("const animations={'"):]
+        bloco = bloco[:bloco.index("};")]
+        codigos = re.findall(r"'([A-Z0-9_]+)':\[", bloco)
+        vazias = sum(1 for u in re.findall(r"'(data:[^']*)'", bloco) if len(u.split(",", 1)[-1]) < 100)
+        return codigos, vazias
     i = html.index("const payload=") + len("const payload=")
     p, _ = json.JSONDecoder().raw_decode(html[i:])
     vazias = sum(1 for u in p["images"] if len(u.split(",", 1)[-1]) < 100)

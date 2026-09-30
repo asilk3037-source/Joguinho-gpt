@@ -331,7 +331,17 @@ def escrever(w, img, inv, rot, roteiro):
     w()
     w("No **Fácil**, além de chefes mais fracos, o jogo ajuda a jogadora a não se perder:")
     w()
-    w("- **Seta guia:** uma setinha dourada gira em volta da heroína apontando para o próximo objetivo, com o nome embaixo quando está longe. Se o objetivo é em outra área, aponta a saída certa (pelo caminho mais curto entre as saídas já abertas). Dentro da área, aponta o cristal/tocha/farol apagado mais perto, depois o chefe. Some durante as lutas e as cenas. Vale para a Parte 1 e a Parte 2.")
+    w("Tudo é **bem discreto**, em branco-creme transparente, para ajudar sem poluir a tela:")
+    w()
+    w("- **Trilha no chão:** pontinhos claros e fracos só nos próximos passos, com um brilho suave que corre na direção certa. Eles seguem **o caminho de verdade**, contornando paredes, água e árvores (contam pulos, espinhos para cortar e o gancho).")
+    w("- **Setinha nos pés:** um “›” transparente perto da heroína mostra para onde a trilha segue.")
+    w("- **No objetivo:** uma estrelinha piscando devagar e um anel fino no chão. O nome (“Cristal apagado (1/3 acesos)”, “Ovo escondido”…) só aparece quando a heroína está perto.")
+    w("- **Legenda embaixo da tela:** texto pequeno e transparente com o que procurar, quantos passos faltam e, se for o caso, “pule por cima”, “corte os espinhos” ou “use o gancho no poste”.")
+    w("- **Outra área:** a trilha leva até a saída certa pelo caminho mais curto entre as saídas já abertas.")
+    w("- **Caminho fechado:** se uma barreira de luz está no meio, a trilha leva primeiro até a tocha ou o cristal que abre a passagem.")
+    w("- **Tarefas da fazenda:** a trilha leva à tarefa mais perto (ovo escondido, regador, horta, ração do Theo, tigela ou o bichinho que ainda não ganhou carinho).")
+    w("- **Coisas para achar:** baús fechados e documentos por perto têm uma estrelinha clara bem fraca.")
+    w("- **Mapa (M):** tracejado claro com o caminho e uma estrela no objetivo, e todos os baús aparecem (como a Bússola do Mago). No mapa do mundo, a região do objetivo ganha um anel e 🧭.")
     w("- **Dicas de chefe:** ao acordar, quando cansa pela primeira vez e quando muda de fase, aparece um balão com a dica daquele chefe (seção 20).")
     w("- **Vida baixa:** com 1 coração ou menos, lembra de usar poção, trocar de heroína ou voltar a uma fonte (uma vez por área).")
     w("- **Tela de derrota:** mostra uma dica do que fazer diferente, conforme onde a heroína caiu (o chefe da luta, o dragão, o Guardião ou uma dica geral).")
@@ -349,6 +359,7 @@ def escrever_arte(w, img, inv):
     w()
     w("> Esta é a lista de **tudo o que precisa de arte** no jogo, das duas partes: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, objetos, itens, interface, efeitos e dia/noite. Tudo que está hoje no jogo é **temporário** (emojis, desenhos no código ou arte provisória) e é trocado sozinho quando a arte com o código certo chega.")
     w()
+    escrever_tamanhos(w)
     w("### 22.1 Resumo das animações")
     w()
     w("| Grupo | Animações | Com arte | Usando substituta | Faltando |")
@@ -499,6 +510,85 @@ def escrever_arte(w, img, inv):
     w()
 
 
+# ---------------------------------------------------------------------------------------------
+# Tamanho de cada imagem. O jogo mostra 400 unidades de altura do mundo na tela (ALTURA_VISTA):
+# escala = altura da tela em pixels ÷ 400 (em telas retina o navegador dobra, até 2×).
+ESCALAS = [("Janela 1280×720", 1.8), ("Tela cheia 1080p", 2.7), ("Tela cheia 1440p", 3.6), ("4K ou retina", 5.4)]
+
+# (grupo, elemento, largura e altura no mundo, recomendado para desenhar, mínimo, observação)
+TAMANHOS = [
+    ("Personagens", "Line, Bell e as duas juntas (cada quadro)", (74, 74), "512×512", "400×400", "corpo de pé com uns 62 de altura (≈ 85% do quadro), pés sempre na mesma linha. Os 1254×1254 que chegam hoje estão ótimos"),
+    ("Personagens", "Line e Bell com armadura", (74, 74), "512×512", "400×400", "mesmo quadro e mesma posição dos pés da versão sem armadura"),
+    ("Personagens", "Moradores (Rosa, Bento, Zé, Lurdes, Tobias, Cora, Tião, Brisa) e Mago", (74, 74), "512×512", "400×400", "adulto uns 56 de altura, o Pedrinho uns 42: no mesmo quadro da Line, para ficarem na proporção certa"),
+    ("Personagens", "Espírito das Ruínas", (90, 110), "512×640", "400×500", "flutua; deixe espaço embaixo para o brilho"),
+    ("Chefes", "Dragão Vermelho (cada quadro)", (215, 215), "1024×1024", "640×640", "o maior desenho do jogo; asas abertas cabem no quadro"),
+    ("Chefes", "Colosso, Serpente, Grifo, Titã de Magma, Hidra, Tempestade", (200, 200), "1024×1024", "640×640", "um quadro por pose; o Grifo de asas abertas usa o quadro todo"),
+    ("Chefes", "Quimera Primordial", (200, 200), "1280×1280", "800×800", "maior e mais detalhada: pode passar da borda do quadro nos golpes"),
+    ("Chefes", "Guardião de Pedra", (110, 110), "640×640", "384×384", ""),
+    ("Inimigos", "Sombra, fogos-fátuos (todos os elementos), morcego", (64, 64), "384×384", "256×256", "o bicho ocupa uns 60% do quadro; o resto é brilho"),
+    ("Bichos", "Vaca, cavalo", (58, 58), "384×384", "256×256", "vaca uns 40 de altura, cavalo uns 50"),
+    ("Bichos", "Theo, porco, ovelha, gato, pato, galinhas", (36, 36), "256×256", "160×160", "galinha uns 26 de altura; o Theo sentado uns 24"),
+    ("Bichos", "Pintinho", (36, 36), "256×256", "128×128", "uns 14 de altura: pode vir no mesmo quadro da galinha, bem menor"),
+    ("Cenário", "Tile de chão, parede, água, lama, vento, abismo", (32, 32), "128×128", "96×96", "tem que emendar sem costura dos 4 lados; faça 3 ou 4 variações de cada"),
+    ("Cenário", "Árvores (normal, frutífera, cerejeira, pinheiro, árvore morta do pântano)", (62, 75), "384×448", "256×300", "hoje são 97×115: ficam borradas em tela cheia"),
+    ("Cenário", "Arbustos, pedras, mato alto, flores", (33, 33), "192×192", "128×128", "hoje uns 55×55"),
+    ("Cenário", "Casa da fazenda", (264, 150), "1440×816", "720×408", "hoje 501×280: a arte que mais precisa de resolução"),
+    ("Cenário", "Celeiro, casas do vilarejo, casa da Cora e do Tião", (244, 150), "1280×800", "660×400", "a casa ocupa um bloco de 7×5 tiles"),
+    ("Cenário", "Galinheiro, carroça, barco, píer", (114, 70), "640×384", "320×192", ""),
+    ("Cenário", "Poço, moinho, fonte, bigorna, estação do carrinho", (54, 70), "320×384", "160×192", ""),
+    ("Cenário", "Baú, placa, barril, lampião, caixa, poste do gancho", (32, 40), "192×224", "96×112", "o baú precisa de 2 poses: fechado e aberto"),
+    ("Cenário", "Cristal, tocha, farol do vento, pérola-cristal (apagado e aceso)", (32, 64), "192×384", "96×192", "o aceso pode ter 4 a 6 quadros de brilho"),
+    ("Cenário", "Pilar, altar, pilares dos elementos", (32, 80), "192×448", "96×224", ""),
+    ("Cenário", "Barreira de luz, de raízes, parede de água, muro de vento (por tile)", (32, 48), "192×256", "96×128", "emenda lado a lado"),
+    ("Cenário", "Jaula da Bell", (70, 90), "384×512", "192×256", ""),
+    ("Efeitos", "Impacto, faíscas, poeira, fumaça, brasas, lágrimas", (140, 140), "768×768", "384×384", "o desenho fica no meio; o resto do quadro é transparente"),
+    ("Efeitos", "Explosão, ponto fraco do dragão, corações", (300, 300), "1024×1024", "640×640", "explosão é o maior efeito"),
+    ("Efeitos", "Projéteis (estrela da Bell, luz, fogo, água, lama, pena, rocha)", (24, 24), "128×128", "64×64", "com o brilho em volta"),
+    ("Efeitos", "Aviso no chão (círculo de raiz, raio, bolha, poça de lava, poça de lama)", (96, 96), "512×512", "256×256", "visto de cima, achatado"),
+]
+
+INTERFACE = [
+    ("Retratos dos diálogos (cada expressão)", "108×108 na tela (76×76 no celular)", "512×512", "256×256"),
+    ("Ícones dos itens, documentos e armaduras", "30×30 na mochila, 24×24 no HUD", "128×128", "64×64"),
+    ("Corações, escudos, gotas de magia, moeda", "de 18 a 50 px, conforme a tela", "128×128", "64×64"),
+    ("Botões de toque (atacar, pular, 🔄…)", "62×62 (celular)", "192×192", "128×128"),
+    ("Relógio e moldura do HUD, barra de chefe", "a barra tem até metade da largura da tela", "1600×64 (barra) · 256×64 (relógio)", "800×32 · 128×32"),
+    ("Fundos de tela cheia (título, Parte 2, capítulos, fundos do prólogo)", "a tela inteira", "3840×2160", "1920×1080"),
+    ("Fundos do prólogo com close", "a câmera aproxima até 1,6×", "3840×2160, sem nada importante a menos de 10% da borda", "2560×1440"),
+    ("Mapa do mundo (pergaminho)", "até 900 px de largura na janela da mochila", "2400×1500", "1600×1000"),
+]
+
+
+def escrever_tamanhos(w):
+    w("### 22.0 Tamanho de cada imagem (pensando na tela cheia)")
+    w()
+    w("O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo para caber. Por isso o tamanho de cada coisa depende da tela: em **tela cheia num monitor 1080p** tudo aparece **2,7×** maior que no mundo; num monitor **4K** ou num notebook **retina** em tela cheia, **5,4×**. Uma imagem menor que isso é esticada e fica borrada.")
+    w()
+    w("- **Recomendado:** nítido até em 4K ou retina em tela cheia.")
+    w("- **Mínimo:** nítido em tela cheia 1080p (o caso mais comum no PC).")
+    w("- No celular deitado o jogo usa uns 780 px de altura (escala ≈ 2×), então o mínimo já basta.")
+    w("- Uma unidade do mundo equivale a 1 pixel do tile de 32×32: um tile tem 32 unidades.")
+    w()
+    cab = " | ".join(n for n, _ in ESCALAS)
+    w(f"| Grupo | Imagem | No mundo (L×A) | {cab} | **Recomendado** | Mínimo | Observação |")
+    w("|---|---|---|" + "---|" * len(ESCALAS) + "---|---|---|")
+    for grupo, nome, (lw, la), rec, minimo, obs in TAMANHOS:
+        telas = " | ".join(f"{round(lw * k)}×{round(la * k)}" for _, k in ESCALAS)
+        w(f"| {grupo} | {nome} | {lw}×{la} | {telas} | **{rec}** | {minimo} | {obs} |")
+    w()
+    w("**Interface** (estes não crescem com o mundo, crescem com a tela e com a densidade de pixels):")
+    w()
+    w("| Imagem | Tamanho na tela | **Recomendado** | Mínimo |")
+    w("|---|---|---|---|")
+    for nome, tela, rec, minimo in INTERFACE:
+        w(f"| {nome} | {tela} | **{rec}** | {minimo} |")
+    w()
+    w("**Regras que valem para todas:** fundo transparente de verdade (PNG), sem sombra no chão (o jogo desenha), todos os quadros de uma animação do mesmo tamanho, com os pés na mesma linha, e as animações de lado viradas para a direita.")
+    w()
+    w("> ⚙️ **Observação técnica:** hoje o jogo guarda cada quadro dos personagens em 256×256 e cada quadro do dragão em 448×448. Isso fica nítido até 1440p. Para aproveitar a arte em 4K e retina, dá para subir esses tamanhos (pede só gerar as folhas de novo), com o custo de o jogo carregar um pouco mais devagar.")
+    w()
+
+
 if __name__ == "__main__":
     inv = json.load(open(sys.argv[1], encoding="utf-8"))
     rot = json.load(open(sys.argv[2], encoding="utf-8"))
@@ -515,5 +605,7 @@ if __name__ == "__main__":
     w()
     escrever_arte(w, img, inv)
     saida = os.path.join(RAIZ, "docs", "ARTES_NECESSARIAS.md")
-    open(saida, "w", encoding="utf-8").write("\n".join(L).replace("## 22. ", "## ").replace("### 22.", "### ") + "\n")
+    import re  # noqa: E402
+    texto = re.sub(r"### 22\.\d+ ", "### ", "\n".join(L).replace("## 22. ", "## "))
+    open(saida, "w", encoding="utf-8").write(texto + "\n")
     print(saida, len(L))

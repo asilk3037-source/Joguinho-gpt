@@ -716,6 +716,7 @@
       if (this.dragao && this.chefeAtivo) this.dragao.desenharAvisos(g, this);
       for (const e of this.inimigos) if (e.desenharAvisos) e.desenharAvisos(g, this);
       LB.chefes.desenharArena(g, this);
+      LB.dicas.desenharTrilha(g, this);
       for (const it of this.itens) if (it.tipo === 'coracao' || it.tipo === 'mana') LB.desenho.sombraChao(g, it.x, it.y, 6, 0.2);
       const atores = [this.line, ...this.inimigos, ...this.bichos, ...this.npcs, ...this.moradores.filter((m) => !m.dormindo)];
       if (this.bell) atores.push(this.bell);
@@ -759,7 +760,7 @@
       this.particulas.desenhar(g);
       this.ambiente.desenharCeu(g, this);
       this.desenharBaloes(g);
-      LB.dicas.desenharSeta(g, this);
+      LB.dicas.desenharMarcas(g, this);
 
       // Camadas de tela.
       g.setTransform(1, 0, 0, 1, 0, 0);
@@ -839,6 +840,7 @@
       const s = this.escala;
       const l = this.line;
       if (!l || (this.cena && !this.chefeAtivo && this.line.estado === 'cena')) return;
+      LB.dicas.desenharHud(g, this, s);
       if (!this.flags.prologo) return;
       for (let i = 0; i < l.hpMax / 2; i++) {
         const x = (22 + i * 24) * s, y = 24 * s;

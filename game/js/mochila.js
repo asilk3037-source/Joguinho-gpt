@@ -472,7 +472,8 @@
     }
     const P = (tx, ty) => [ox + (tx + 0.5) * esc, oy + (ty + 0.5) * esc];
     const r = Math.max(3, esc * 0.9);
-    const bussola = tem(j, 'bussola');
+    // No Fácil o mapa já mostra os baús (como a Bússola do Mago).
+    const bussola = tem(j, 'bussola') || (LB.dicas && LB.dicas.ligado());
     const abertos = j.flags.baus || [];
     const icone = (x, y, tipo, extra) => {
       g.save(); g.translate(x, y);
@@ -538,6 +539,7 @@
     }
     if (id === 'floresta' && vistoAqui(7, 13)) { const [x, y] = P(7, 13); icone(x, y, 'mago'); }
     if (def.golem && !j.flags.golem && vistoAqui(def.golem.x, def.golem.y)) { const [x, y] = P(def.golem.x, def.golem.y); icone(x, y, 'golem'); }
+    if (LB.dicas) LB.dicas.desenharNoMapa(g, j, id, P, r);
     if (def.jaula && vistoAqui(def.jaula.x, def.jaula.y)) { const [x, y] = P(def.jaula.x, def.jaula.y); icone(x, y, 'bell'); }
     // Alfinetes dos documentos (não acendem a área: só marcam o ponto).
     g.font = `700 ${Math.max(9, Math.min(12, esc * 1.4))}px system-ui, sans-serif`; g.textAlign = 'center';
@@ -638,6 +640,7 @@
       const temPin = pins.some((m) => m.area === n.id);
       if (!sabe && !vizinho && !temPin) continue;
       const R = pequeno ? 16 : 22;
+      if (LB.dicas && LB.dicas.areaAlvo(j) === n.id && n.id !== atual) { const k = 0.5 + 0.5 * Math.sin(performance.now() / 400); g.strokeStyle = `rgba(90,60,30,${0.3 + 0.2 * k})`; g.lineWidth = 2; g.beginPath(); g.arc(x, y, R + 8 + k * 4, 0, TAU); g.stroke(); g.font = `${R * 0.8}px system-ui`; g.textAlign = 'center'; g.fillText('🧭', x - R * 0.9, y - R * 0.6); }
       if (n.id === atual) { const k = 0.5 + 0.5 * Math.sin(performance.now() / 300); g.strokeStyle = `rgba(255,111,159,${0.5 + 0.4 * k})`; g.lineWidth = 4; g.beginPath(); g.arc(x, y, R + 6 + k * 3, 0, TAU); g.stroke(); }
       g.fillStyle = sabe ? n.cor : '#c9b58f';
       g.strokeStyle = '#4a3320'; g.lineWidth = 2.5;

@@ -108,6 +108,9 @@ Cada arquivo é autossuficiente, possui menos de 25 MB e contém animações com
 | 106 | `LINE_BELL_ITEM_106.html` | 2,25 MB | `LINE_PUNCH_MACHINE`, `BELL_LAUGH_AT_LINE` ⚠️ 1 imagem(ns) vazia(s): reenviar |
 | 107 | `LINE_BELL_ITEM_107.html` | 4,28 MB | `LINE_BELL_TUNNEL_KISS` |
 | 108 | `LINE_BELL_ITEM_108.html` | 5,07 MB | `BELL_LAUGH`, `BELL_CURTSY`, `BELL_HIGH_FIVE`, `BELL_DANCE` ⚠️ 3 imagem(ns) vazia(s): reenviar |
+| 132 | `LINE_BELL_ITEM_132.html` | 4,45 MB | `HEN_BROWN_IDLE`, `HEN_BROWN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_EAT`, `HEN_BROWN_PECK`, `HEN_BROWN_SCRATCH`, `HEN_BROWN_LAY_EGG`, `HEN_BROWN_SCARED`, `HEN_BROWN_SLEEP` |
+| 133 | `LINE_BELL_ITEM_133.html` | 1,07 MB | `CHICK_IDLE`, `CHICK_WALK`, `CHICK_RUN` |
+| 134 | `LINE_BELL_ITEM_134.html` | 3,04 MB | `COW_IDLE`, `COW_WALK`, `COW_RUN`, `COW_EAT` |
 
 Itens que ainda não chegaram: 77, 78, 79, 80.
 
