@@ -78,6 +78,14 @@
         ['farm_lily_pads', 11.8, 26.6, 46], ['farm_lily_pads', 16.8, 29.4, 34, null, 0, true], ['farm_crate', 22.3, 29.0, 26],
         // Cogumelos debaixo das árvores.
         ['farm_mushroom_cluster', 4.4, 29.4, 26], ['farm_mushroom_cluster', 31.6, 29.6, 22, null, 0, true],
+        // Itens 188 a 202: arco com a placa de boas-vindas na estrada norte, cata-vento no celeiro, sino na varanda,
+        // mel junto à colmeia, comedouro no galinheiro, feno, sal e bebedouro no pasto, bancada de mudas perto da horta.
+        ['farm_garden_arch', 23.0, 3.05, 66], ['farm_welcome_sign', 23.0, 3.07, 40, null, 34],
+        ['farm_weather_vane', 29.0, 10.03, 30, null, 135], ['farm_hand_bell', 13.4, 11.02, 12, null, 20],
+        ['farm_bee_smoker', 4.8, 5.9, 16], ['farm_honey_jar', 2.9, 6.0, 14], ['farm_planter_box', 17.4, 10.7, 40, [1, 1]],
+        ['farm_chicken_feeder', 7.0, 19.3, 26, [1, 1]], ['farm_hay_rack', 33.5, 18.8, 48, [2, 1]], ['farm_salt_lick', 39.2, 20.4, 26, [1, 1]],
+        ['farm_water_trough', 30.5, 22.6, 50, [2, 1]], ['farm_potting_bench', 24.6, 17.0, 40, [1, 1]],
+        ['farm_garden_gloves', 24.4, 17.02, 12, null, 22], ['farm_seedling_tray', 25.8, 17.6, 32], ['farm_rope_coil', 20.4, 28.8, 22],
       ],
       placas: {},
       pontos: {

@@ -16,6 +16,8 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 🌻 **Itens 188 a 202 chegaram:** arco de jardim com a placa de boas-vindas na estrada norte da fazenda, cata-vento de galo no telhado do celeiro, sino na varanda, fumigador e pote de mel junto à colmeia, floreira na frente da casa, comedouro no galinheiro, cocho de feno, pedra de sal e bebedouro no pasto, bancada de mudas com luvas e bandeja de mudinhas ao lado da horta e um rolo de corda no píer.
+
 > 🧺 **Itens 154 a 187 chegaram — a fazenda e a casa ganharam vida:** a casa da fazenda tem ilha de cozinha com banquetas, despensa, prateleira de temperos, relógio, quadro, vasos de planta e de flores, luminárias pendentes, arandelas, uma janela e a porta da despensa, que abre quando a Line chega perto. No terreno: caixa de correio, capacho, cadeira de balanço na varanda, lenha, colmeia, casinha de passarinho, espantalho, carrinho de mão, pá, enxada, suporte de ferramentas, sacos de sementes, balde, barril de chuva, cesto de colheita, ninho e cesto de ovos, cocho no pasto, latão de leite, composteira, ferradura no celeiro, banco e fogueira na beira do lago, taboas, vitórias-régias, caixote no píer e cogumelos. O regador da tarefa da manhã agora aparece de verdade no poço, e a pontezinha está no riacho do Lago Espelhado. Luminárias, janela e fogueira acendem sozinhas à noite. O item 153 não veio.
 
 > 📱 **Ajustes do teste no celular (seção 23.5):** a Line não “cai” mais ao pegar a espada (a arte de “Feliz” era uma corrida com queda e saiu do jogo); as duas de mãos dadas e a dança do pôr do sol voltaram ao tamanho certo; a casa da fazenda não some mais da tela; no lanche do shopping aparece só a mesa delas. **Pedido de arte novo:** o Minas Shopping em peças — base só com chão e teto e cada loja, móvel e enfeite separado (seção 22.11.1).
@@ -1081,7 +1083,7 @@ Os três lugares do prólogo (Minas Shopping, Playground e Túnel) estão na se�
 ### 6.1 Fazendinha
 O chão da fazenda é o **terreno oficial** (item 144), uma imagem só, e o mapa foi ajustado em cima dela: a casa fica no noroeste, com a casinha do Theo e a tigela ao lado, o varal e o galinheiro logo abaixo, a horta e o poço no meio, o pasto com porteira a leste e o lago ao sul. A porta da casa leva para dentro (seção 6.8).
 
-**Objetos da fazenda (itens 158 a 187):** caixa de correio, capacho e cadeira de balanço na varanda; lenha, colmeia e casinha de passarinho perto da casa; suporte de ferramentas, balde, sacos de sementes e o **regador** (que some quando a Line o pega na tarefa da manhã) junto do poço; espantalho, cesto de colheita, pá, enxada e carrinho de mão na horta; ninho e cesto de ovos no galinheiro; barril de chuva, ferradura, latão de leite e composteira no celeiro; cocho no pasto; banco e **fogueira** (acesa à noite) na beira do lago, com taboas, vitórias-régias e um caixote no píer; cogumelos debaixo das árvores. Cada objeto tem volume: a Line passa na frente e atrás, e os maiores ocupam o chão.
+**Objetos da fazenda (itens 158 a 202):** arco com a placa de boas-vindas na estrada norte; caixa de correio, capacho, cadeira de balanço e sino na varanda; floreira na frente da casa; fumigador e pote de mel junto à colmeia; cata-vento no telhado do celeiro; comedouro no galinheiro; cocho de feno, pedra de sal e bebedouro no pasto; bancada de mudas com luvas e bandeja ao lado da horta; rolo de corda no píer; lenha, colmeia e casinha de passarinho perto da casa; suporte de ferramentas, balde, sacos de sementes e o **regador** (que some quando a Line o pega na tarefa da manhã) junto do poço; espantalho, cesto de colheita, pá, enxada e carrinho de mão na horta; ninho e cesto de ovos no galinheiro; barril de chuva, ferradura, latão de leite e composteira no celeiro; cocho no pasto; banco e **fogueira** (acesa à noite) na beira do lago, com taboas, vitórias-régias e um caixote no píer; cogumelos debaixo das árvores. Cada objeto tem volume: a Line passa na frente e atrás, e os maiores ocupam o chão.
 
 ![Objetos novos perto da casa: caixa de correio, capacho, cadeira de balanço, lenha, colmeia, ferramentas, balde e regador](imagens/fazenda-objetos.jpg)
 *Objetos novos perto da casa: caixa de correio, capacho, cadeira de balanço, lenha, colmeia, ferramentas, balde e regador*
@@ -2725,7 +2727,7 @@ A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verd
 | Mapa | só acende áreas visitadas; documento marca sem acender |
 | Todas as áreas | cada uma das 7 áreas carrega, desenha e roda sem erros, e a Line não nasce dentro de parede |
 | Tamanho e conectividade | tamanho das fases; todo baú, documento, morador, estação e saída alcançável (contando pulos, gancho, bombas, chaves e barreiras); toda saída chega em chão livre, fora de outra saída, e tem caminho de volta |
-| Objetos e ajustes do celular | todos os objetos dos itens 146 a 187 carregam; a fazenda e a casa usam cada um; o regador aparece no poço; a casa não some quando a Line anda para a direita; no lanche do BK o shopping fica sem a mesa redonda; a arte de “Feliz” que caía saiu do jogo |
+| Objetos e ajustes do celular | todos os objetos dos itens 146 a 202 carregam; a fazenda e a casa usam cada um; o regador aparece no poço; a casa não some quando a Line anda para a direita; no lanche do BK o shopping fica sem a mesa redonda; a arte de “Feliz” que caía saiu do jogo |
 | Casas por dentro | todas as portas levam a um interior mobiliado com piso e paredes desenhados; Entrar na porta, sair pelo caminho de pedra; o bilhete da cabana vem antes de entrar; de frente para a Dona Rosa ainda dá para conversar |
 | Vilarejo | loja da Dona Rosa (comprar, falta de dinheiro, botas), ferraria (armadura, escudo segurando golpe, Armadura de Brasa liberada pela receita), conversas com os moradores |
 | Carrinho | quebrado sem alavanca, encaixar a alavanca, tela de destino só com estações descobertas, viagem até as Minas |
@@ -4139,10 +4141,25 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 185 | `LINE_BELL_ITEM_185.html` | 0,21 MB | `FARM_WOODPILE` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 | 186 | `LINE_BELL_ITEM_186.html` | 0,19 MB | `FARM_CAMPFIRE_OFF` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 | 187 | `LINE_BELL_ITEM_187.html` | 0,19 MB | `FARM_CAMPFIRE_ON` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 188 | `LINE_BELL_ITEM_188.html` | 0,23 MB | `FARM_HAY_RACK` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 189 | `LINE_BELL_ITEM_189.html` | 0,14 MB | `FARM_SALT_LICK` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 190 | `LINE_BELL_ITEM_190.html` | 0,21 MB | `FARM_CHICKEN_FEEDER` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 191 | `LINE_BELL_ITEM_191.html` | 0,16 MB | `FARM_WATER_TROUGH` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 192 | `LINE_BELL_ITEM_192.html` | 0,20 MB | `FARM_GARDEN_ARCH` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 193 | `LINE_BELL_ITEM_193.html` | 0,18 MB | `FARM_PLANTER_BOX` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 194 | `LINE_BELL_ITEM_194.html` | 0,19 MB | `FARM_POTTING_BENCH` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 195 | `LINE_BELL_ITEM_195.html` | 0,16 MB | `FARM_GARDEN_GLOVES` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 196 | `LINE_BELL_ITEM_196.html` | 0,19 MB | `FARM_SEEDLING_TRAY` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 197 | `LINE_BELL_ITEM_197.html` | 0,20 MB | `FARM_BEE_SMOKER` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 198 | `LINE_BELL_ITEM_198.html` | 0,13 MB | `FARM_HONEY_JAR` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 199 | `LINE_BELL_ITEM_199.html` | 0,19 MB | `FARM_ROPE_COIL` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 200 | `LINE_BELL_ITEM_200.html` | 0,10 MB | `FARM_HAND_BELL` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 201 | `LINE_BELL_ITEM_201.html` | 0,18 MB | `FARM_WEATHER_VANE` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 202 | `LINE_BELL_ITEM_202.html` | 0,18 MB | `FARM_WELCOME_SIGN` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 
 Itens que ainda não chegaram: 153.
 
-Os itens 140 a 187 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio no lote de 154 a 187.
+Os itens 140 a 202 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio (os lotes foram de 154 a 187 e de 188 a 202).
 
 **Regra de continuidade das pernas:** nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).
 
@@ -4410,7 +4427,7 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 - **Mapa com imagem de base:** um mapa pode ter `base` (o nome de uma imagem do catálogo, 2 px por unidade do mundo, 64 px por tile). O jogo desenha essa imagem no lugar dos tiles do chão; o texto do mapa continua valendo para colisão, saídas e objetos. Com `sobreBase`, as letras listadas (na fazenda, `u`, o mato alto) ainda são desenhadas por cima da imagem. A fazenda usa o terreno oficial (item 144) e a casa da fazenda usa a planta do item 145.
 - **Móveis:** cada mapa pode ter uma lista `moveis` com `[nome, x, y, largura, pegada, alto, espelhar]`. O móvel vira um objeto desenhado por profundidade (a Line passa na frente e atrás), e a `pegada` (em tiles) vira chão sólido. As imagens ficam em `game/assets/moveis/` (itens 148 a 152, na resolução original) e os objetos da fazenda (casinha do Theo, tigela cheia e vazia, varal, mesa de piquenique, cerca, porteira, flores e mato, itens 146 e 147) em `game/assets/cenario/`.
 - **Portas (`entradas`):** perto de uma porta aparece **Entrar**. Colada na porta, ela ganha da conversa com quem está de frente (Dona Rosa, Seu Bento); um bilhete ainda não lido na porta vem antes (cabana do caçador). Para sair, basta descer pelo caminho de pedra. A Bell, se estiver acompanhando, entra junto.
-- **Objetos avulsos (itens 146 a 187):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.
+- **Objetos avulsos (itens 146 a 202):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.
 - **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.
 
 ### 26.7 Como regerar esta documentação

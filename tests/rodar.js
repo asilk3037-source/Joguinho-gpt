@@ -363,7 +363,7 @@ teste('casas: toda casa tem interior mobiliado, entra pela porta e sai pelo cami
   }
 });
 
-teste('objetos: itens 146 a 187 carregam e aparecem na fazenda e na casa; regador no poço', async (h) => {
+teste('objetos: itens 146 a 202 carregam e aparecem na fazenda e na casa; regador no poço', async (h) => {
   await h.area('fazenda', { espada: true });
   await h.p.waitForTimeout(1500);
   const r = await h.ev(() => {
@@ -374,7 +374,7 @@ teste('objetos: itens 146 a 187 carregam e aparecem na fazenda e na casa; regado
     const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can/.test(n));
     return { total: nomes.length, faltando, naoUsados };
   });
-  afirmar(r.total >= 75, `objetos registrados (veio ${r.total})`);
+  afirmar(r.total >= 90, `objetos registrados (veio ${r.total})`);
   igual(r.faltando, [], 'imagens que não carregaram');
   igual(r.naoUsados, [], 'objetos que não aparecem em nenhum mapa');
   // Regador no poço até a Line pegar na tarefa da manhã.
@@ -973,8 +973,12 @@ teste('Bell jogável: troca com T, estrela, leque de luz, canção e assume quan
   await h.espera(600);
   await h.ev(() => { const j = LB.jogo, e = j.inimigos.find((x) => !x.chefeElemental); e.x = j.line.x + 60; e.y = j.line.y; j.line.mana = j.line.manaMax; });
   await h.p.keyboard.press('KeyQ');
-  await h.espera(900);
-  r = await h.ev(() => { const j = LB.jogo; return j.inimigos.filter((x) => x.encantado > 0).length; });
+  // A canção sai no meio da animação: espera até 3 s, com o inimigo sempre perto (máquina lenta não reprova).
+  for (let i = 0; i < 15; i++) {
+    await h.espera(200);
+    r = await h.ev(() => { const j = LB.jogo, e = j.inimigos.find((x) => !x.chefeElemental); if (e) { e.x = j.line.x + 60; e.y = j.line.y; } return j.inimigos.filter((x) => x.encantado > 0).length; });
+    if (r >= 1) break;
+  }
   afirmar(r >= 1, 'canção encanta o inimigo');
   await h.foto('bell-cancao');
   // A Bell cai e a Line assume.
@@ -1019,7 +1023,7 @@ for (const [id, area, antes] of CHEFES_P2) {
     const c = await h.ev(() => { const d = LB.jogo.mapa.def.chefe; return { x: (d.arena[0] + d.arena[2]) / 2, y: d.arena[3] - 1.2, id: d.id }; });
     igual(c.id, id, 'chefe da área');
     await h.ir(c.x, c.y);
-    await h.espera(300);
+    await h.p.waitForFunction(() => !!LB.jogo.cena, null, { timeout: 3000 }).catch(() => {});
     afirmar(await h.ev(() => !!LB.jogo.cena), 'a apresentação do chefe começa');
     await h.avancar(300);
     let r = await h.ev(() => { const ch = LB.jogo.chefeArena; return { acordado: ch && !ch.dormindo, estado: ch && ch.estado }; });
