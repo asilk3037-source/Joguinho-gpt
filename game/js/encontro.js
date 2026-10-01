@@ -52,7 +52,8 @@
 
   // Fundo da área (antes do chão): ilustração do HTML + bordas borradas para telas largas.
   function desenharFundo(g, jogo, cx, cy) {
-    const m = jogo.mapa, nome = m.def.fundo;
+    // No lanche do BK a mesa redonda do fundo sai: a animação já traz a mesa delas.
+    const m = jogo.mapa, nome = m.def.fundo + (jogo.semMesaShopping && m.def.fundo === 'encontro_shopping' ? '_sem_mesa' : '');
     g.fillStyle = '#1c1524'; g.fillRect(cx - 2, cy - 2, jogo.vw + 4, jogo.vh + 4);
     const img = LB.personagem(nome), b = borrado(nome);
     // Sem a ilustração (ainda carregando), o playground desenhado no código.
@@ -147,6 +148,7 @@
     jogo.line.modoPasseio = true;
     jogo.line.temEspada = false;
     if (id === 'shopping') {
+      jogo.semMesaShopping = false;
       const b = P(274, 300);
       jogo.bell = new LB.Bell(b.x, b.y, 'LEFT'); jogo.bell.lado = -1; jogo.bell.anim.tocar('BELL_WAIT', true);
       jogo.line.dir = 'BACK';
@@ -200,6 +202,7 @@
       line.dir = 'BACK'; bell.dir = 'BACK';
       const mesa = P(180, 397);
       j.camAlvo = { x: mesa.x, y: mesa.y - 40 }; j.zoomAlvo = 1.6;
+      j.semMesaShopping = true;
       c.duo('LINE_BELL_BK', mesa.x, mesa.y);
       yield c.espera(1.2);
       yield c.fala('Bell', 'você parece estar tímida', 'neutro');

@@ -72,7 +72,7 @@ window.LB = window.LB || {};
   ]);
 
   grupo('Line — emoções', [
-    ['LINE_HAPPY', 'Feliz', { fps: 12, face: 'F', quadros: 20 }],
+    ['LINE_HAPPY', 'Feliz', { fps: 12, face: 'F', quadros: 20, alt: 'LINE_VICTORY' }],
     ['LINE_LAUGH', 'Rindo', { fps: 12, face: 'F', quadros: 24 }],
     ['LINE_DETERMINED', 'Determinada', { fps: 10, loop: true, quadros: 20, alt: 'LINE_COMBAT_IDLE' }],
     ['LINE_ANGRY', 'Brava', { fps: 10, loop: true, quadros: 20, alt: 'LINE_COMBAT_IDLE' }],
@@ -671,11 +671,14 @@ window.LB = window.LB || {};
 
   // Personagens de imagem única (animados por movimento no código).
   const PERSONAGENS = { dragao: 'assets/personagens/dragao.png', mago: 'assets/personagens/mago.png' };
-  for (const n of ['encontro_shopping', 'encontro_tunel', 'encontro_playground', 'encontro_maquina', 'encontro_maquina_000', 'encontro_maquina_038', 'arbusto_a', 'arbusto_b', 'arbusto_c', 'arbusto_d', 'arbusto_e', 'arbusto_f', 'arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'barco', 'barril', 'cachoeira', 'caixa', 'carroca', 'casa', 'celeiro', 'cenoura_0', 'cenoura_1', 'cenoura_2', 'cenoura_3', 'cerca', 'cerejeira_a', 'cerejeira_b', 'feno', 'feno_pilha', 'florida', 'galinheiro', 'girassol_0', 'girassol_1', 'girassol_2', 'lago', 'lampiao', 'macieira_a', 'macieira_b', 'macieira_c', 'milho_0', 'milho_1', 'milho_2', 'moinho', 'moita', 'pedra1', 'pedra2', 'pier', 'pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'placa', 'placa2', 'poco', 'porteira', 'tomate_0', 'tomate_1', 'tomate_2', 'tomate_3', 'tomate_4', 'tomate_5', 'trigo_0', 'trigo_1', 'trigo_2']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
+  for (const n of ['encontro_shopping', 'encontro_shopping_sem_mesa', 'encontro_tunel', 'encontro_playground', 'encontro_maquina', 'encontro_maquina_000', 'encontro_maquina_038', 'arbusto_a', 'arbusto_b', 'arbusto_c', 'arbusto_d', 'arbusto_e', 'arbusto_f', 'arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'barco', 'barril', 'cachoeira', 'caixa', 'carroca', 'casa', 'celeiro', 'cenoura_0', 'cenoura_1', 'cenoura_2', 'cenoura_3', 'cerca', 'cerejeira_a', 'cerejeira_b', 'feno', 'feno_pilha', 'florida', 'galinheiro', 'girassol_0', 'girassol_1', 'girassol_2', 'lago', 'lampiao', 'macieira_a', 'macieira_b', 'macieira_c', 'milho_0', 'milho_1', 'milho_2', 'moinho', 'moita', 'pedra1', 'pedra2', 'pier', 'pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'placa', 'placa2', 'poco', 'porteira', 'tomate_0', 'tomate_1', 'tomate_2', 'tomate_3', 'tomate_4', 'tomate_5', 'trigo_0', 'trigo_1', 'trigo_2']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
   // Lote 144 a 152: bases de cenário (terreno da fazenda e planta da casa), objetos da fazenda e móveis.
   for (const n of ['base_fazenda', 'base_casa_fazenda', 'farm_dog_house', 'farm_theo_bowl', 'farm_theo_bowl_vazia', 'farm_clothesline', 'farm_picnic_table', 'farm_fence', 'farm_gate', 'farm_small_flowers', 'farm_wild_grass']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
   for (const n of ['fridge', 'stove', 'sink_counter', 'dining_table', 'sofa', 'bed', 'theo_bed', 'bathroom_vanity', 'toilet', 'fireplace_off', 'fireplace_on', 'armchair', 'coffee_table', 'dresser', 'wardrobe', 'nightstand', 'bookshelf', 'shower', 'bathroom_mirror', 'towel_rack', 'laundry_basket']) PERSONAGENS['farmhouse_' + n] = 'assets/moveis/farmhouse_' + n + '.webp';
   const personagens = {};
+  // Objetos avulsos dos itens (tools/extrair_objetos.py): móveis da casa e objetos da fazenda.
+  for (const [n, src] of Object.entries(LB.OBJETOS || {})) if (!PERSONAGENS[n]) PERSONAGENS[n] = src;
+
   function personagem(nome) {
     const img = personagens[nome];
     return img && img.complete && img.naturalWidth ? img : null;

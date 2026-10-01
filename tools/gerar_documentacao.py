@@ -78,6 +78,10 @@ w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Au
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
 w()
+w("> 🧺 **Itens 154 a 187 chegaram — a fazenda e a casa ganharam vida:** a casa da fazenda tem ilha de cozinha com banquetas, despensa, prateleira de temperos, relógio, quadro, vasos de planta e de flores, luminárias pendentes, arandelas, uma janela e a porta da despensa, que abre quando a Line chega perto. No terreno: caixa de correio, capacho, cadeira de balanço na varanda, lenha, colmeia, casinha de passarinho, espantalho, carrinho de mão, pá, enxada, suporte de ferramentas, sacos de sementes, balde, barril de chuva, cesto de colheita, ninho e cesto de ovos, cocho no pasto, latão de leite, composteira, ferradura no celeiro, banco e fogueira na beira do lago, taboas, vitórias-régias, caixote no píer e cogumelos. O regador da tarefa da manhã agora aparece de verdade no poço, e a pontezinha está no riacho do Lago Espelhado. Luminárias, janela e fogueira acendem sozinhas à noite. O item 153 não veio.")
+w()
+w("> 📱 **Ajustes do teste no celular (seção 23.5):** a Line não “cai” mais ao pegar a espada (a arte de “Feliz” era uma corrida com queda e saiu do jogo); as duas de mãos dadas e a dança do pôr do sol voltaram ao tamanho certo; a casa da fazenda não some mais da tela; no lanche do shopping aparece só a mesa delas. **Pedido de arte novo:** o Minas Shopping em peças — base só com chão e teto e cada loja, móvel e enfeite separado (seção 22.11.1).")
+w()
 w("> 🏡 **Itens 137 a 152 chegaram — fazenda nova e todas as casas por dentro:** a fazenda agora é o **terreno oficial** (item 144), com a casinha do Theo, a tigela (cheia e vazia), o varal, a mesa de piquenique, a cerca, a porteira, flores e mato da arte nova (itens 146 e 147). **Toda casa tem interior:** a casa da fazenda (cozinha, sala, quarto e banheiro, item 145, com os móveis dos itens 148 a 152), a cabana do caçador, a loja da Dona Rosa, a ferraria do Seu Bento, as três casas do vilarejo, a casa da Dona Cora e a do Seu Tião (seção 6.8). O prólogo usa o playground e a máquina de soco novos (itens 141 e 142), o pato e o gato entraram (138 e 139); a ovelha reenviada (137) foi recusada.")
 w()
 w("> 🎞️ **Line e Bell do mesmo tamanho e no mesmo ritmo em todas as animações:** poses inclinadas, agachadas e sentadas não aumentam nem diminuem mais a cabeça (ajuste medido pela cabeça, seção 26.5); a Bell anda e corre no mesmo passo da Line; as cenas do começo tocam no ritmo da artista (o beijo no túnel, a Line admirando a Bell e o soco na máquina estavam acelerados); reverência, toca aqui e vitória não piscam mais em meio segundo. No rapto aparece um dragão só: a arte antiga da Bell carregada já trazia outro dragão desenhado junto.")
@@ -634,6 +638,9 @@ w()
 w("### 6.1 Fazendinha")
 w("O chão da fazenda é o **terreno oficial** (item 144), uma imagem só, e o mapa foi ajustado em cima dela: a casa fica no noroeste, com a casinha do Theo e a tigela ao lado, o varal e o galinheiro logo abaixo, a horta e o poço no meio, o pasto com porteira a leste e o lago ao sul. A porta da casa leva para dentro (seção 6.8).")
 w()
+w("**Objetos da fazenda (itens 158 a 187):** caixa de correio, capacho e cadeira de balanço na varanda; lenha, colmeia e casinha de passarinho perto da casa; suporte de ferramentas, balde, sacos de sementes e o **regador** (que some quando a Line o pega na tarefa da manhã) junto do poço; espantalho, cesto de colheita, pá, enxada e carrinho de mão na horta; ninho e cesto de ovos no galinheiro; barril de chuva, ferradura, latão de leite e composteira no celeiro; cocho no pasto; banco e **fogueira** (acesa à noite) na beira do lago, com taboas, vitórias-régias e um caixote no píer; cogumelos debaixo das árvores. Cada objeto tem volume: a Line passa na frente e atrás, e os maiores ocupam o chão.")
+w()
+img("fazenda-objetos", "Objetos novos perto da casa: caixa de correio, capacho, cadeira de balanço, lenha, colmeia, ferramentas, balde e regador")
 w("Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho, pasto, chiqueiro, lago com píer e barco, varal, casinha do Theo, mesa de piquenique, árvores frutíferas e flores. Tem borboletas, pássaros, nuvens, folhas caindo e fumaça nas chaminés. De manhã, a luz é clara. À tarde, o céu fica alaranjado, e depois do rapto vira noite com vaga-lumes.")
 w()
 w("Depois do rapto, abre a **estrada do leste**, que leva ao Vilarejo do Riacho. Antes disso a estrada fica fechada: a Line não sai da fazenda no meio do dia com a Bell.")
@@ -720,10 +727,10 @@ w()
 w("| Casa | Onde fica | Piso | O que tem dentro |")
 w("|---|---|---|---|")
 for casa, onde, piso, dentro in [
-    ("Casa da fazenda", "fazendinha (noroeste)", "madeira, terracota na cozinha, azulejo no banheiro", "cozinha com fogão, geladeira, pia e mesa; sala com lareira, sofá, poltronas e estantes; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box"),
-    ("Cabana do caçador", "floresta (nordeste)", "madeira", "lareira, estante, cama, poltrona, cestos e uma caminha de cachorro"),
-    ("Loja da Dona Rosa", "vilarejo (oeste)", "terracota", "estantes cheias, balcão, barril, caixote e cesto"),
-    ("Ferraria do Seu Bento", "vilarejo (leste)", "lajota de pedra", "forja acesa, bigorna, bancada, barris e caixote"),
+    ("Casa da fazenda", "fazendinha (noroeste)", "madeira, terracota na cozinha, azulejo no banheiro", "cozinha com fogão, geladeira, pia, ilha com banquetas, despensa, temperos, relógio, quadro e mesa com vaso e luminária; sala com lareira, sofá, poltronas, estantes, plantas e luminária; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box; corredor com a porta da despensa (abre quando a Line chega perto), janela e arandelas"),
+    ("Cabana do caçador", "floresta (nordeste)", "madeira", "lareira, estante, cama, poltrona, cestos, uma caminha de cachorro, relógio e o suporte de ferramentas com balde"),
+    ("Loja da Dona Rosa", "vilarejo (oeste)", "terracota", "estantes cheias, balcão com vaso e luminária, barril, caixote, cestos, sacos de sementes, cesto de colheita e planta"),
+    ("Ferraria do Seu Bento", "vilarejo (leste)", "lajota de pedra", "forja acesa, bigorna, bancada, barris, caixote, lenha, ferramentas e balde"),
     ("Casas do vilarejo (3)", "vilarejo (sul)", "madeira e terracota", "fogão, geladeira, mesa, camas, sofá, poltronas e estantes"),
     ("Casa da Dona Cora", "Vale das Raízes", "terracota", "cozinha completa, mesa, cama e cesto"),
     ("Casa do Seu Tião", "Lago Espelhado", "azulejo", "cômoda, cama, poltrona, mesinha e cesto"),
@@ -1306,6 +1313,7 @@ for l in [
     ("Mapa", "só acende áreas visitadas; documento marca sem acender"),
     ("Todas as áreas", "cada uma das 7 áreas carrega, desenha e roda sem erros, e a Line não nasce dentro de parede"),
     ("Tamanho e conectividade", "tamanho das fases; todo baú, documento, morador, estação e saída alcançável (contando pulos, gancho, bombas, chaves e barreiras); toda saída chega em chão livre, fora de outra saída, e tem caminho de volta"),
+    ("Objetos e ajustes do celular", "todos os objetos dos itens 146 a 187 carregam; a fazenda e a casa usam cada um; o regador aparece no poço; a casa não some quando a Line anda para a direita; no lanche do BK o shopping fica sem a mesa redonda; a arte de “Feliz” que caía saiu do jogo"),
     ("Casas por dentro", "todas as portas levam a um interior mobiliado com piso e paredes desenhados; Entrar na porta, sair pelo caminho de pedra; o bilhete da cabana vem antes de entrar; de frente para a Dona Rosa ainda dá para conversar"),
     ("Vilarejo", "loja da Dona Rosa (comprar, falta de dinheiro, botas), ferraria (armadura, escudo segurando golpe, Armadura de Brasa liberada pela receita), conversas com os moradores"),
     ("Carrinho", "quebrado sem alavanca, encaixar a alavanca, tela de destino só com estações descobertas, viagem até as Minas"),

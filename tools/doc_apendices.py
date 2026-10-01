@@ -354,12 +354,28 @@ def escrever(w, inv, itens=None):
         linhas.append("- **Pernas paradas:** " + ", ".join(f"`{c}`" for c in refeitas) + " chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.")
     if "BELL_DRAGON_CARRIED" in manifesto():
         linhas.append("- **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.")
-    for n, nome in sorted(extrair_sprites.ITENS_CENARIO.items()):
-        linhas.append(f"- **Item {n} ({nome})**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).")
+    for codigo, motivo in extrair_sprites.DESCARTADAS.items():
+        linhas.append(f"- `{codigo}` saiu do jogo: {motivo}. Para reenviar.")
+    linhas.append("- **Item 140 (Minas Shopping), em peças:** o jogo precisa de uma base **só com o chão e o teto** e de cada móvel, loja e enfeite como **arte individual** (lista completa na seção 22.11.1). Enquanto isso, no lanche do BK o jogo usa uma cópia do fundo sem a mesa redonda do meio.")
+    linhas.append("- `LINE_BELL_WALK_HANDS_FRONT` (as duas de mãos dadas andando de frente) ainda é a arte pequena do laboratório, ampliada: fica borrada perto das outras. Para reenviar no tamanho e no traço dos itens novos.")
     if faltam:
         linhas.append(f"- **Itens que ainda não chegaram:** {', '.join(map(str, faltam))}.")
     for l in linhas or ["Nada para reenviar agora."]:
         w(l)
+    w()
+    w("### 23.5 Anotações do teste no celular (1º de outubro)")
+    w()
+    w("O que apareceu jogando no celular, o que foi feito e o que ainda depende de arte:")
+    w()
+    w("| # | O que aconteceu | O que foi feito | Falta |")
+    w("|---|---|---|---|")
+    for linha in [
+        ("1", "Perto do Mago, ao pegar a espada, a Line fazia um movimento estranho e parecia cair.", "A arte de “Feliz” (`LINE_HAPPY`, item 41) é, na verdade, uma corrida que termina com a Line caída para a frente. Ela saiu do jogo; no lugar entra a comemoração (`LINE_VICTORY`).", "Reenviar `LINE_HAPPY`: a Line parada, feliz, sorrindo, sem sair do lugar."),
+        ("2", "Andando de mãos dadas até o lago, Line e Bell ficavam minúsculas.", "De frente, o par usa a arte antiga do laboratório (`LINE_BELL_WALK_HANDS_FRONT`), muito pequena dentro do quadro: ela foi ampliada para a Line do par ficar da altura da Line sozinha. A dança do pôr do sol (`LINE_BELL_DANCE`) também estava pequena e foi igualada.", "Reenviar `LINE_BELL_WALK_HANDS_FRONT` no traço dos itens novos (a ampliada fica borrada)."),
+        ("3", "Andando até a casinha do Theo, a casa da fazenda sumia do terreno.", "O jogo deixava de desenhar objetos cujo canto esquerdo saía da tela, e a casa é larga. Agora a folga leva em conta a largura e a altura de cada objeto (casa, celeiro).", "—"),
+        ("4", "No shopping, as duas apareciam sentadas numa mesa gigante em cima da mesa.", "A animação do BK já traz a mesa delas, e o fundo do shopping (item 140) tem uma mesa redonda desenhada no mesmo lugar. No lanche, o jogo troca para uma cópia do fundo sem a mesa redonda e as cadeiras (`tools/shopping_sem_mesa.py`).", "Shopping em peças: base só com chão e teto e cada item em arte individual (seção 22.11.1)."),
+    ]:
+        w("| " + " | ".join(linha) + " |")
     w()
     w("### 23.2 Animações com poucos quadros diferentes")
     w()
@@ -424,8 +440,8 @@ def escrever(w, inv, itens=None):
     w()
     if faltam:
         w(f"Itens que ainda não chegaram: {', '.join(map(str, faltam))}.")
-    else:
-        w(f"Todos os itens de 1 a {max(numeros)} chegaram. Os itens 140 a 152 são cenário e móveis: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior.")
+        w()
+    w(f"Os itens 140 a 187 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio no lote de 154 a 187.")
     w()
     w("**Regra de continuidade das pernas:** nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).")
     w()
@@ -485,6 +501,7 @@ def escrever(w, inv, itens=None):
     w("- **Mapa com imagem de base:** um mapa pode ter `base` (o nome de uma imagem do catálogo, 2 px por unidade do mundo, 64 px por tile). O jogo desenha essa imagem no lugar dos tiles do chão; o texto do mapa continua valendo para colisão, saídas e objetos. Com `sobreBase`, as letras listadas (na fazenda, `u`, o mato alto) ainda são desenhadas por cima da imagem. A fazenda usa o terreno oficial (item 144) e a casa da fazenda usa a planta do item 145.")
     w("- **Móveis:** cada mapa pode ter uma lista `moveis` com `[nome, x, y, largura, pegada, alto, espelhar]`. O móvel vira um objeto desenhado por profundidade (a Line passa na frente e atrás), e a `pegada` (em tiles) vira chão sólido. As imagens ficam em `game/assets/moveis/` (itens 148 a 152, na resolução original) e os objetos da fazenda (casinha do Theo, tigela cheia e vazia, varal, mesa de piquenique, cerca, porteira, flores e mato, itens 146 e 147) em `game/assets/cenario/`.")
     w("- **Portas (`entradas`):** perto de uma porta aparece **Entrar**. Colada na porta, ela ganha da conversa com quem está de frente (Dona Rosa, Seu Bento); um bilhete ainda não lido na porta vem antes (cabana do caçador). Para sair, basta descer pelo caminho de pedra. A Bell, se estiver acompanhando, entra junto.")
+    w("- **Objetos avulsos (itens 146 a 187):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.")
     w("- **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.")
     w()
     w("### 26.7 Como regerar esta documentação")

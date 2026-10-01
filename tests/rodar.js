@@ -363,6 +363,46 @@ teste('casas: toda casa tem interior mobiliado, entra pela porta e sai pelo cami
   }
 });
 
+teste('objetos: itens 146 a 187 carregam e aparecem na fazenda e na casa; regador no poço', async (h) => {
+  await h.area('fazenda', { espada: true });
+  await h.p.waitForTimeout(1500);
+  const r = await h.ev(() => {
+    const nomes = Object.keys(LB.OBJETOS || {});
+    const faltando = nomes.filter((n) => !LB.personagem(n));
+    const usados = new Set();
+    for (const id of Object.keys(LB.MAPAS)) for (const [n] of LB.MAPAS[id].moveis || []) usados.add(n);
+    const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can/.test(n));
+    return { total: nomes.length, faltando, naoUsados };
+  });
+  afirmar(r.total >= 75, `objetos registrados (veio ${r.total})`);
+  igual(r.faltando, [], 'imagens que não carregaram');
+  igual(r.naoUsados, [], 'objetos que não aparecem em nenhum mapa');
+  // Regador no poço até a Line pegar na tarefa da manhã.
+  const reg = await h.ev(() => { const j = LB.jogo; j.flags.prologo = false; j.flags.etapa = 'manha'; j.flags.tarefas = { ovos: 0, regador: false, regados: [], racao: false, theo: false, carinhos: [] }; return !!j.pontoMapa('regador'); });
+  afirmar(reg, 'ponto do regador');
+  await h.foto('fazenda-objetos');
+});
+
+teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping sem a mesa no lanche', async (h) => {
+  await h.area('fazenda', { espada: true });
+  // Câmera com o canto esquerdo da casa fora da tela: ela continua na lista de desenho.
+  const casa = await h.ev(() => {
+    const j = LB.jogo, p = j.mapa.props.find((q) => q.tipo === 'casaFazenda');
+    j.line.x = p.x + p.w + 40; j.line.y = p.y + 40; j.cameraEm(j.line.x, j.line.y);
+    j.cam.x = p.x + 160; return { x: p.x, w: p.w };
+  });
+  afirmar(casa.w > 100, 'casa da fazenda é larga');
+  const desenhada = await h.ev(() => {
+    const j = LB.jogo; let viu = false; const orig = j.desenharProp.bind(j);
+    j.desenharProp = (g, p) => { if (p.tipo === 'casaFazenda') viu = true; return orig(g, p); };
+    j.desenhar(); j.desenharProp = orig; return viu;
+  });
+  afirmar(desenhada, 'a casa é desenhada com o canto esquerdo fora da tela');
+  afirmar(!(await h.ev(() => !!(window.SPRITES || {}).LINE_HAPPY)), 'LINE_HAPPY (corrida com queda) fora do jogo');
+  const fundo = await h.ev(() => !!LB.personagem('encontro_shopping_sem_mesa') || new Promise((ok) => setTimeout(() => ok(!!LB.personagem('encontro_shopping_sem_mesa')), 1500)));
+  afirmar(fundo, 'fundo do shopping sem a mesa carregado');
+});
+
 teste('casas: bilhete da cabana vem antes de entrar e a loja ainda conversa de frente', async (h) => {
   await h.area('floresta', { espada: true });
   await h.ir(68.5, 6.7);

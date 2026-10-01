@@ -101,7 +101,12 @@ def ler_animacoes(caminho):
 ITENS_CENARIO = {140: "Minas Shopping", 141: "Playground", 142: "máquina de soco", 143: "Túnel",
                  144: "terreno da Fazendinha", 145: "casa da fazenda por dentro", 146: "objetos da Fazendinha",
                  147: "cercas, porteira, flores e mato", 148: "cozinha", 149: "sala, quarto e banheiro",
-                 150: "lareira e sala", 151: "quarto", 152: "banheiro"}
+                 150: "lareira e sala", 151: "quarto", 152: "banheiro",
+                 154: "cozinha: ilha, despensa, prateleira de temperos e banqueta",
+                 155: "vaso de planta, quadro, vaso de flores e relógio", 156: "porta e janela",
+                 157: "arandela e luminária pendente"}
+# Itens 158 a 187: um objeto da fazenda cada (tools/extrair_objetos.py).
+ITENS_CENARIO.update({n: "objeto da fazenda" for n in range(158, 188)})
 
 
 # Andar e correr precisam se mexer: com menos quadros diferentes que isso a animação do item é
@@ -115,6 +120,11 @@ RECUSADAS = {
     ("LINE_BELL_ITEM_137.html", "SHEEP_IDLE"): "reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior",
     ("LINE_BELL_ITEM_118.html", "DRAGON_SLEEP"): "não é o dragão dormindo (poses de voo)",
     ("LINE_BELL_ITEM_113.html", "LINE_BELL_DANCE"): "a Line some em alguns quadros",
+}
+
+# Arte que saiu do jogo de vez (o jogo usa a substituta do catálogo, o `alt`).
+DESCARTADAS = {
+    "LINE_HAPPY": "é uma corrida que termina com a Line caída para a frente, e não a Line feliz (no lugar, o jogo usa `LINE_VICTORY`)",
 }
 
 
@@ -613,6 +623,12 @@ def aplicar_ajustes(manifesto):
 
 
 def gravar(manifesto, retratos):
+    for codigo, motivo in DESCARTADAS.items():
+        if manifesto.pop(codigo, None):
+            print(f"  aviso: {codigo} descartado ({motivo})")
+        arq = os.path.join(RAIZ, "game", "assets", "sprites", codigo + ".webp")
+        if os.path.exists(arq):
+            os.remove(arq)
     preferir_itens(manifesto)
     normalizar_escala(manifesto)
     aplicar_ajustes(manifesto)

@@ -328,7 +328,11 @@
   // Móveis dos interiores (itens 148 a 152). A lareira acende à noite.
   function movel(g, p, jogo) {
     let nome = p.nome;
-    if (nome === 'farmhouse_fireplace') nome = jogo && LB.relogio && LB.relogio.noite(jogo) ? 'farmhouse_fireplace_on' : 'farmhouse_fireplace_off';
+    // Peças com versão de dia e de noite (lareira, luminárias, janela, fogueira): acende sozinha à noite.
+    const noite = !!(jogo && LB.relogio && LB.relogio.noite(jogo));
+    if (LB.OBJETOS && LB.OBJETOS[nome + '_on']) nome += noite ? '_on' : '_off';
+    else if (LB.OBJETOS && LB.OBJETOS[nome + '_day']) nome += noite ? '_night' : '_day';
+    else if (nome === 'farmhouse_door') nome = jogo && jogo.line && Math.hypot(jogo.line.x - p.x, jogo.line.y - p.y) < 48 ? 'farmhouse_door_open' : 'farmhouse_door_closed';
     if (nome === 'forja') nome = 'farmhouse_fireplace_on';       // a forja da ferraria fica sempre acesa
     if (nome === 'bigorna' && LB.mundo) { LB.mundo.desenharProp(g, { tipo: 'bigorna', x: p.x, y: p.y, v: 0 }, jogo); return; }
     if (!p.alto) E(g, p.x, p.y - 1, p.larg * 0.42, 4, 'rgba(40,20,10,.22)');

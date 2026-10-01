@@ -767,7 +767,11 @@
 
       // Tudo que tem altura, ordenado pela linha dos pés.
       const lista = [];
-      for (const p of m.props) if (p.x > vis.x - 60 && p.x < vis.x + vis.w + 60 && p.y > vis.y && p.y < vis.y + vis.h + 80) lista.push({ y: p.y, p });
+      // Casa e celeiro começam na borda esquerda e são largos: a folga leva em conta o tamanho deles.
+      for (const p of m.props) {
+        const fx = 60 + Math.max(p.w || 0, p.larg || 0), fy = 80 + 1.5 * (p.h || 0);
+        if (p.x > vis.x - fx && p.x < vis.x + vis.w + 60 && p.y > vis.y && p.y < vis.y + vis.h + fy) lista.push({ y: p.plano ? -1e9 : p.y, p });
+      }
       for (const a of atores) lista.push({ y: a.y, a });
       for (const it of this.itens) lista.push({ y: it.y, item: it });
       for (const pr of this.projeteis) lista.push({ y: pr.y, proj: pr });
@@ -775,6 +779,9 @@
       if (m.def.jaula) lista.push({ y: T(m.def.jaula.y) + 2, jaula: true });
       const tigela = this.pontoMapa('tigela');
       if (tigela) lista.push({ y: tigela.y - 2, tigela });
+      // Regador (item 162) ao lado do poço; some enquanto a Line está com ele na tarefa da manhã.
+      const regador = this.pontoMapa('regador'), tf = this.flags.tarefas;
+      if (regador && !(tf && tf.regador && !this.flags.prologo && this.flags.etapa === 'manha')) lista.push({ y: regador.y, p: { tipo: 'movel', nome: 'farm_watering_can', x: regador.x, y: regador.y, larg: 24, alto: 0 } });
       if (this.duo) lista.push({ y: this.duo.y, duo: this.duo });
       for (const b of this.bombas || []) lista.push({ y: b.y, bomba: b });
       if (this.viagem) lista.push({ y: this.viagem.y + 1, viagem: true });

@@ -285,7 +285,7 @@ window.SPRITES = {
   "escala": 3.0797,
   "label": "LINE_BELL_WALK_HANDS_FRONT",
   "item": "BELL_LINE_LABORATORIO_V7.html",
-  "ajuste": 0.88
+  "ajuste": 1.12
  },
  "LINE_BELL_WALK_HANDS_BACK": {
   "ritmo": 1,
@@ -2192,7 +2192,7 @@ window.SPRITES = {
   "mundo": 92.4,
   "label": "Dançando juntas",
   "item": "arte/linebell/LINE_BELL_DANCE",
-  "ajuste": 0.926
+  "ajuste": 1.17
  },
  "LINE_BELL_HIGH_FIVE": {
   "ritmo": 1,
@@ -4828,47 +4828,6 @@ window.SPRITES = {
   "label": "Line — Ataque final contra o dragão",
   "item": "LINE_BELL_ITEM_40.html",
   "escala": 1.1732
- },
- "LINE_HAPPY": {
-  "src": "assets/sprites/LINE_HAPPY.webp",
-  "cell": 256,
-  "count": 6,
-  "seq": [
-   0,
-   0,
-   0,
-   1,
-   1,
-   1,
-   2,
-   2,
-   2,
-   2,
-   3,
-   3,
-   3,
-   3,
-   4,
-   4,
-   4,
-   5,
-   5,
-   5
-  ],
-  "ground": 225,
-  "groundEnd": 222,
-  "bases": [
-   225,
-   226,
-   229,
-   234,
-   231,
-   222
-  ],
-  "label": "Line — Feliz",
-  "item": "LINE_BELL_ITEM_41.html",
-  "escala": 1.2551,
-  "ajuste": 0.909
  },
  "LINE_LAUGH": {
   "src": "assets/sprites/LINE_LAUGH.webp",

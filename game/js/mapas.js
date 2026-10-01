@@ -58,6 +58,27 @@
       ],
       inicio: { x: 22.5, y: 3.6, dir: 'FRONT' },
       porta: { x: 10.7, y: 11.2 },
+      // Objetos da fazenda (itens 158 a 187): [nome, x, y (base, em tiles), largura, pegada, alto, espelhar].
+      moveis: [
+        // Casa: caixa de correio, capacho, cadeira de balanço na varanda e lenha.
+        ['farm_mailbox', 4.6, 11.05, 20, [1, 1]], ['farm_doormat', 10.7, 11.55, 34], ['farm_rocking_chair', 12.7, 11.02, 26, null, 12],
+        ['farm_woodpile', 4.7, 9.75, 44, [2, 1]], ['farm_beehive_box', 3.8, 5.6, 28, [1, 1]], ['farm_birdhouse', 18.3, 6.4, 18, [1, 1]],
+        // Poço, horta e ferramentas.
+        ['farm_tool_rack', 15.0, 14.0, 38, [1, 1]], ['farm_wooden_bucket', 16.3, 14.6, 18], ['farm_seed_sacks', 13.4, 14.4, 30],
+        ['farm_scarecrow', 21.2, 16.9, 40, [1, 1]], ['farm_harvest_basket', 21.3, 18.5, 26], ['farm_shovel', 21.4, 19.9, 22], ['farm_hoe', 20.8, 20.6, 26],
+        ['farm_wheelbarrow', 14.0, 21.0, 44, [1, 1]],
+        // Galinheiro.
+        ['farm_chicken_nest', 10.6, 15.9, 32, [1, 1]], ['farm_egg_basket', 9.2, 16.6, 22],
+        // Celeiro e pasto.
+        ['farm_rain_barrel', 26.4, 9.9, 22, [1, 1]], ['farm_horseshoe_sign', 31.7, 10.02, 30, null, 44], ['farm_milk_can', 35.4, 10.7, 16],
+        ['farm_compost_bin', 25.4, 14.8, 30, [1, 1]], ['farm_feed_trough', 36.6, 17.4, 52, [2, 1]],
+        // Lago: banco, fogueira (acesa à noite), taboas, vitórias-régias e caixote no píer.
+        ['farm_garden_bench', 4.6, 22.5, 44, [2, 1]], ['farm_campfire', 4.7, 24.1, 34, [1, 1]],
+        ['farm_reeds', 7.6, 24.6, 30], ['farm_reeds', 21.5, 27.4, 28, null, 0, true], ['farm_reeds', 9.6, 30.6, 26],
+        ['farm_lily_pads', 11.8, 26.6, 46], ['farm_lily_pads', 16.8, 29.4, 34, null, 0, true], ['farm_crate', 22.3, 29.0, 26],
+        // Cogumelos debaixo das árvores.
+        ['farm_mushroom_cluster', 4.4, 29.4, 26], ['farm_mushroom_cluster', 31.6, 29.6, 22, null, 0, true],
+      ],
       placas: {},
       pontos: {
         tigela: { x: 15.7, y: 10.85 },
@@ -132,11 +153,20 @@
       moveis: [
         // Cozinha (piso de terracota)
         ['farmhouse_fridge', 2.9, 6.5, 51, [1, 1]], ['farmhouse_stove', 4.7, 6.3, 57, [2, 1]], ['farmhouse_sink_counter', 7.5, 6.3, 92, [3, 1]],
-        ['farmhouse_towel_rack', 9.3, 4.95, 30, null, 18], ['farmhouse_dining_table', 5.8, 11.3, 110, [3, 2]],
+        ['farmhouse_towel_rack', 9.3, 4.95, 30, null, 18], ['farmhouse_dining_table', 5.8, 12.7, 110, [3, 2]],
+        ['farmhouse_kitchen_island', 5.6, 8.7, 88, [3, 1]], ['farmhouse_bar_stool', 4.8, 9.6, 18], ['farmhouse_bar_stool', 6.4, 9.6, 18],
+        ['farmhouse_pantry_cabinet', 9.3, 10.9, 34, [1, 1]], ['farmhouse_spice_shelf', 7.5, 4.95, 44, null, 43],
+        ['farmhouse_wall_clock', 2.9, 4.95, 22, null, 59], ['farmhouse_botanical_frame', 4.7, 4.95, 18, null, 46],
+        ['farmhouse_flower_vase', 5.8, 12.72, 16, null, 26], ['farmhouse_hanging_lamp', 5.8, 12.75, 20, null, 95],
         // Sala
         ['farmhouse_bookshelf', 11.9, 6.0, 53, [1, 1]], ['farmhouse_fireplace', 15.9, 5.9, 106, [3, 1]], ['farmhouse_bookshelf', 19.9, 6.0, 53, [1, 1]],
         ['farmhouse_armchair', 13.0, 8.5, 57, [1, 1]], ['farmhouse_coffee_table', 15.9, 9.1, 83, [2, 1]], ['farmhouse_armchair', 18.8, 8.5, 57, [1, 1], 0, true],
         ['farmhouse_sofa', 15.9, 12.4, 110, [3, 1]], ['farmhouse_theo_bed', 19.6, 18.95, 46, [1, 1]],
+        ['farmhouse_potted_plant', 11.8, 13.6, 30, [1, 1]], ['farmhouse_potted_plant', 20.0, 13.6, 30, [1, 1], 0, true],
+        ['farmhouse_hanging_lamp', 15.9, 9.15, 20, null, 52],
+        // Corredor da entrada: porta da despensa (abre quando a Line chega perto), janela e arandelas.
+        ['farmhouse_door', 12.2, 18.0, 36], ['farmhouse_window', 19.0, 17.95, 46, null, 22],
+        ['farmhouse_wall_sconce', 13.6, 17.95, 16, null, 46], ['farmhouse_wall_sconce', 17.6, 17.95, 16, null, 46, true],
         // Quarto (o espelho fica na parede do fundo)
         ['farmhouse_bathroom_mirror', 22.7, 4.95, 24, null, 22], ['farmhouse_nightstand', 23.0, 6.5, 34, [1, 1]], ['farmhouse_bed', 25.4, 8.5, 115, [3, 3]],
         ['farmhouse_nightstand', 27.8, 6.5, 34, [1, 1]], ['farmhouse_wardrobe', 29.2, 6.4, 53, [1, 1]], ['farmhouse_dresser', 28.5, 9.95, 80, [2, 1]],
@@ -714,6 +744,8 @@
         { x: 63, y: 31, w: 1, h: 2, para: 'pantano', requer: 'chefeAgua', chegada: { x: 2.5, y: 14.2, dir: 'RIGHT' } },
         { x: 30, y: 0, w: 2, h: 1, para: 'picos', requer: 'fusaoLama', chegada: { x: 30.5, y: 39.4, dir: 'BACK' } },
       ],
+      // Pontezinha (item 168) no riacho que a estrada atravessa.
+      moveis: [['farm_small_bridge', 45.0, 32.3, 100]],
       inicio: { x: 30.5, y: 39.4, dir: 'BACK' },
       placas: { '27,32': 'Fonte do Lago. O lago era tão limpo que refletia as estrelas de dia. Agora a água anda turva e brava.', '33,39': 'Lago Espelhado. A ponte da ilha está fechada por uma parede de água: acenda as três pérolas-cristal da margem.' },
       baus: { '4,20': { itens: [['pocao', 1]], moedas: 35 }, '59,35': { itens: [['bomba', 3]], moedas: 25 }, '22,5': { itens: [['elixir', 1]], moedas: 40 } },
@@ -1034,12 +1066,14 @@
     criarProps() {
       // Móveis dos interiores: [nome, x, y (base, em tiles), largura no mundo, pegada [larg, alt] em tiles, alto, espelhar].
       // A pegada vira chão ocupado ('O'); móvel de parede (espelho, toalheiro) não tem pegada e fica no alto.
+      // Também serve ao ar livre (objetos da fazenda): a pegada só ocupa chão livre (piso, grama, flor).
+      // Capacho, vitórias-régias e a pontezinha ficam rentes ao chão: a Line passa por cima deles.
       for (const [nome, x, y, larg, pegada, alto, flip] of this.def.moveis || []) {
-        this.props.push({ tipo: 'movel', nome, x: x * TILE, y: y * TILE, larg, alto: alto || 0, flip: !!flip });
+        this.props.push({ tipo: 'movel', nome, x: x * TILE, y: y * TILE, larg, alto: alto || 0, flip: !!flip, plano: /doormat|lily_pads|small_bridge/.test(nome) });
         if (!pegada) continue;
         const [pw, ph] = pegada;
         const tx0 = Math.round(x - pw / 2), ty0 = Math.round(y - ph);
-        for (let ty = ty0; ty < ty0 + ph; ty++) for (let tx = tx0; tx < tx0 + pw; tx++) if (this.l[ty] && this.l[ty][tx] === '_') this.l[ty][tx] = 'O';
+        for (let ty = ty0; ty < ty0 + ph; ty++) for (let tx = tx0; tx < tx0 + pw; tx++) if (this.l[ty] && '_.,'.includes(this.l[ty][tx])) this.l[ty][tx] = 'O';
       }
       for (const [nome, x, y, larg, raio] of this.def.decoracoes || []) {
         this.props.push({ tipo: 'decoracao', nome, x: x * TILE, y: y * TILE, larg, raio, balanca: /girassol|milho|trigo|moita|arbusto/.test(nome), flip: ruido(Math.round(x * 3), Math.round(y * 3), 9) > 0.5 && nome !== 'placa2' });
