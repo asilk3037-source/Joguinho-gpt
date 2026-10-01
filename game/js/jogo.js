@@ -481,6 +481,14 @@
         if ((this.flags.exames || []).includes(e.id) || (e.requer && !this.flags[e.requer]) || !perto(T(e.x + 0.5), T(e.y + 0.5), 48)) continue;
         acoes.push({ texto: e.texto, x: T(e.x + 0.5), y: T(e.y) - 30, prio: 1, fazer: () => this.iniciarCena(LB.HISTORIA.exame, { semPular: true }, e) });
       }
+      // Portas de casa: entra no interior.
+      for (const en of this.mapa.def.entradas || []) {
+        const ex = T(en.x + 0.5), ey = T(en.y + 1);
+        if (!perto(ex, ey + 8, 40) || !this.podeEntrar(en)) continue;
+        // Colada na porta, ganha de quem está de frente para ela (Dona Rosa, Seu Bento).
+        const colada = Math.abs(this.line.x - ex) < 22 && this.line.y - ey < 26;
+        acoes.push(Object.assign({ texto: en.texto || 'Entrar', x: ex, y: ey - 58, prio: 1, fazer: () => this.entrarCasa(en) }, colada && { px: ex, py: ey + 8, prio: 1.05 }));
+      }
       this.acoesExtras(acoes, perto);
       LB.encontro.acoes(this, acoes, perto);
       LB.mundo.acoes(this, acoes, perto);
@@ -497,6 +505,26 @@
     }
 
     objetoProximo() { return this.acoesPossiveis(); }
+
+    // No passeio da tarde até o lago (antes do rapto) a casa fica para depois.
+    podeEntrar(en) {
+      if (en.requer && !this.flags[en.requer]) return false;
+      // Um bilhete ainda não lido na porta vem antes (cabana da floresta).
+      if ((this.mapa.def.exames || []).some((e) => Math.abs(e.x - en.x) <= 1 && Math.abs(e.y - en.y) <= 1 && !(this.flags.exames || []).includes(e.id) && !(e.requer && !this.flags[e.requer]))) return false;
+      return !!this.flags.prologo || this.flags.etapa !== 'tarde';
+    }
+
+    // Entra ou sai de uma casa. A Bell que estiver acompanhando a Line vai junto.
+    entrarCasa(en) {
+      const comBell = !!(this.bell && this.bell.seguir && this.bell.visivel !== false);
+      this.iniciarArea(en.para, en.chegada);
+      if (comBell && !this.bell) {
+        const l = this.line;
+        this.bell = new LB.Bell(l.x + 26, l.y + 12, 'LEFT');
+        this.bell.lado = -1; this.bell.seguir = true;
+      }
+      if (!this.flags.prologo && this.mapa.id === 'fazenda' && this.atualizarPainel) this.atualizarPainel(true);
+    }
 
     // Vida máxima: 3 corações + baús + um coração a mais no fácil.
     hpMaxLine() { return 6 + 2 * (this.flags.coracoes || 0) + 2 * LB.dif().coracoesExtra; }
@@ -709,6 +737,16 @@
       if (m.tema === 'encontro') LB.encontro.desenharFundo(g, this, cx, cy);
       const x0 = Math.max(0, cx), y0 = Math.max(0, cy);
       const x1 = Math.min(m.larg, cx + this.vw), y1 = Math.min(m.alt, cy + this.vh);
+      // Terreno/planta em imagem: quando ela termina de carregar, o chão tile a tile sai de baixo.
+      if (m.def.base) {
+        const base = m.imagemBase;
+        if (base && !m.comBase) m.renderizarChao();
+        if (base && x1 > x0 && y1 > y0) {
+          const kx = base.naturalWidth / m.larg, ky = base.naturalHeight / m.alt;
+          if (m.tema === 'casa') { g.fillStyle = '#0d0f1c'; g.fillRect(cx - 2, cy - 2, this.vw + 4, this.vh + 4); }
+          g.drawImage(base, x0 * kx, y0 * ky, (x1 - x0) * kx, (y1 - y0) * ky, x0, y0, x1 - x0, y1 - y0);
+        }
+      }
       if (x1 > x0 && y1 > y0) g.drawImage(m.chao, x0 * R, y0 * R, (x1 - x0) * R, (y1 - y0) * R, x0, y0, x1 - x0, y1 - y0);
       const vis = { x: cx - 40, y: cy - 40, w: this.vw + 80, h: this.vh + 120 };
       m.desenharAnimado(g, this.tempo, vis);
@@ -802,6 +840,8 @@
         case 'feno': LB.cenario.feno(g, p); break;
         case 'mesa': LB.cenario.mesa(g, p, this.tempo, this.mesaOculta); break;
         case 'casinha': LB.cenario.casinha(g, p); break;
+        case 'movel': LB.cenario.movel(g, p, this); break;
+        case 'porteira': LB.cenario.porteira(g, p); break;
         case 'varal': LB.cenario.varal(g, p, this.tempo); break;
         case 'decoracao': LB.cenario.decoracao(g, p, this.tempo); break;
         case 'pedra': d.pedra(g, p); break;

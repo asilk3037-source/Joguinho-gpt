@@ -3,7 +3,7 @@
 
 É o único documento do projeto: tudo o que antes ficava em arquivos soltos (pendências,
 índice e plano dos itens, lista de arte, layout do Theo, README do jogo) entra aqui
-(seções 22 a 26). Precisa de dois arquivos JSON exportados do jogo rodando (seção 26.6):
+(seções 22 a 26). Precisa de dois arquivos JSON exportados do jogo rodando (seção 26.7):
   - inventario.json: catálogo de animações (LB.inventario() + dados de cada sprite)
   - roteiro.json: falas, títulos, balões e animações de cada cena (tools/extrair_roteiro)
 
@@ -77,6 +77,8 @@ w("> - **Dicas no modo Fácil:** seta até o objetivo, dicas de cada chefe, avis
 w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Aurora) e a arte de armadura das duas (seção 19.3).")
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
+w()
+w("> 🏡 **Itens 137 a 152 chegaram — fazenda nova e todas as casas por dentro:** a fazenda agora é o **terreno oficial** (item 144), com a casinha do Theo, a tigela (cheia e vazia), o varal, a mesa de piquenique, a cerca, a porteira, flores e mato da arte nova (itens 146 e 147). **Toda casa tem interior:** a casa da fazenda (cozinha, sala, quarto e banheiro, item 145, com os móveis dos itens 148 a 152), a cabana do caçador, a loja da Dona Rosa, a ferraria do Seu Bento, as três casas do vilarejo, a casa da Dona Cora e a do Seu Tião (seção 6.8). O prólogo usa o playground e a máquina de soco novos (itens 141 e 142), o pato e o gato entraram (138 e 139); a ovelha reenviada (137) foi recusada.")
 w()
 w("> 🎞️ **Line e Bell do mesmo tamanho e no mesmo ritmo em todas as animações:** poses inclinadas, agachadas e sentadas não aumentam nem diminuem mais a cabeça (ajuste medido pela cabeça, seção 26.5); a Bell anda e corre no mesmo passo da Line; as cenas do começo tocam no ritmo da artista (o beijo no túnel, a Line admirando a Bell e o soco na máquina estavam acelerados); reverência, toca aqui e vitória não piscam mais em meio segundo. No rapto aparece um dragão só: a arte antiga da Bell carregada já trazia outro dragão desenhado junto.")
 w()
@@ -630,11 +632,14 @@ for id_ in ["fazenda", "vilarejo", "floresta", "gruta", "ruinas", "montanha", "c
     w(f"| {m['nome']} | {m['w']} × {m['h']} | {len(m['baus'])} | {ini} | {NOVIDADE[id_]} |")
 w()
 w("### 6.1 Fazendinha")
+w("O chão da fazenda é o **terreno oficial** (item 144), uma imagem só, e o mapa foi ajustado em cima dela: a casa fica no noroeste, com a casinha do Theo e a tigela ao lado, o varal e o galinheiro logo abaixo, a horta e o poço no meio, o pasto com porteira a leste e o lago ao sul. A porta da casa leva para dentro (seção 6.8).")
+w()
 w("Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho, pasto, chiqueiro, lago com píer e barco, varal, casinha do Theo, mesa de piquenique, árvores frutíferas e flores. Tem borboletas, pássaros, nuvens, folhas caindo e fumaça nas chaminés. De manhã, a luz é clara. À tarde, o céu fica alaranjado, e depois do rapto vira noite com vaga-lumes.")
 w()
 w("Depois do rapto, abre a **estrada do leste**, que leva ao Vilarejo do Riacho. Antes disso a estrada fica fechada: a Line não sai da fazenda no meio do dia com a Bell.")
 w()
-img("04-pasto", "Pasto com vacas, cavalo e ovelhas")
+img("fazenda-casa", "A casa da fazenda no terreno oficial: casinha do Theo, tigela, varal, galinheiro, horta e poço")
+img("fazenda-centro", "Horta, pomar, lago e o pasto com cerca nova")
 img("mapa-fazenda", "Mapa da fazendinha: saída norte para a floresta e estrada leste para o vilarejo")
 w("### 6.2 Vilarejo do Riacho (área nova)")
 w("Um vilarejo pequeno a leste da fazenda, com uma praça de terra batida no meio, fonte, quadro de avisos, casinhas de telhado colorido, barraca de feira, um riacho ao sul e a estação do carrinho de mina a leste. Não tem inimigos: é o lugar seguro da aventura.")
@@ -709,6 +714,25 @@ w("### 6.7 Covil do Dragão")
 w("Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao fundo. Quando a Line entra, a entrada desmorona e a luta começa. É a única área sem volta.")
 w()
 img("23-dragao-fogo", "O dragão cospe fogo no covil")
+w("### 6.8 Casas por dentro")
+w("Toda casa do jogo tem interior. Perto da porta aparece **Entrar**; para sair, é só descer pelo caminho de pedra até a porta. Os móveis têm volume: a Line passa na frente e atrás deles, e não atravessa camas, mesas e estantes.")
+w()
+w("| Casa | Onde fica | Piso | O que tem dentro |")
+w("|---|---|---|---|")
+for casa, onde, piso, dentro in [
+    ("Casa da fazenda", "fazendinha (noroeste)", "madeira, terracota na cozinha, azulejo no banheiro", "cozinha com fogão, geladeira, pia e mesa; sala com lareira, sofá, poltronas e estantes; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box"),
+    ("Cabana do caçador", "floresta (nordeste)", "madeira", "lareira, estante, cama, poltrona, cestos e uma caminha de cachorro"),
+    ("Loja da Dona Rosa", "vilarejo (oeste)", "terracota", "estantes cheias, balcão, barril, caixote e cesto"),
+    ("Ferraria do Seu Bento", "vilarejo (leste)", "lajota de pedra", "forja acesa, bigorna, bancada, barris e caixote"),
+    ("Casas do vilarejo (3)", "vilarejo (sul)", "madeira e terracota", "fogão, geladeira, mesa, camas, sofá, poltronas e estantes"),
+    ("Casa da Dona Cora", "Vale das Raízes", "terracota", "cozinha completa, mesa, cama e cesto"),
+    ("Casa do Seu Tião", "Lago Espelhado", "azulejo", "cômoda, cama, poltrona, mesinha e cesto"),
+]:
+    w(f"| {casa} | {onde} | {piso} | {dentro} |")
+w()
+img("interior-fazenda", "A casa da fazenda por dentro: quarto, sala e banheiro")
+img("interior-fazenda-sala", "Cozinha e sala da casa da fazenda")
+img("interiores-casas", "As outras casas por dentro: cabana, loja, ferraria, três casas do vilarejo, casa da Cora e casa do Tião")
 
 # =====================================================================
 w("## 7. Exploração: mundo interligado, vilarejo, loja, carrinho, itens, documentos e mapa")
@@ -1282,6 +1306,7 @@ for l in [
     ("Mapa", "só acende áreas visitadas; documento marca sem acender"),
     ("Todas as áreas", "cada uma das 7 áreas carrega, desenha e roda sem erros, e a Line não nasce dentro de parede"),
     ("Tamanho e conectividade", "tamanho das fases; todo baú, documento, morador, estação e saída alcançável (contando pulos, gancho, bombas, chaves e barreiras); toda saída chega em chão livre, fora de outra saída, e tem caminho de volta"),
+    ("Casas por dentro", "todas as portas levam a um interior mobiliado com piso e paredes desenhados; Entrar na porta, sair pelo caminho de pedra; o bilhete da cabana vem antes de entrar; de frente para a Dona Rosa ainda dá para conversar"),
     ("Vilarejo", "loja da Dona Rosa (comprar, falta de dinheiro, botas), ferraria (armadura, escudo segurando golpe, Armadura de Brasa liberada pela receita), conversas com os moradores"),
     ("Carrinho", "quebrado sem alavanca, encaixar a alavanca, tela de destino só com estações descobertas, viagem até as Minas"),
     ("Bombas, gancho, brasa, escuro", "bomba quebra a parede e fica salvo; gancho atravessa; brasa queima sem a armadura e não queima com ela; galeria escura"),
@@ -1301,7 +1326,7 @@ for l in [
     w("| " + " | ".join(l) + " |")
 w()
 w("### Como atualizar este documento")
-w("As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.6.")
+w("As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.7.")
 w()
 img("25-galeria", "No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma")
 doc_parte2.escrever(w, img, inv, rot, roteiro)

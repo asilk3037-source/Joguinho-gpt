@@ -157,12 +157,12 @@ teste('fazenda: capítulo da manhã começa com a Bell', async (h) => {
 
 teste('fazenda: estrada do vilarejo fica fechada antes do rapto', async (h) => {
   await h.area('fazenda', { prologo: false });
-  const bloqueado = await h.ev(() => LB.jogo.bloqueia(44.9 * 32, 13.9 * 32, LB.jogo.line));
+  const bloqueado = await h.ev(() => LB.jogo.bloqueia(44.9 * 32, 11.9 * 32, LB.jogo.line));
   afirmar(bloqueado, 'a saída leste deveria bloquear antes do prólogo');
   await h.area('fazenda', {});
-  const livre = await h.ev(() => LB.jogo.bloqueia(44.9 * 32, 13.9 * 32, LB.jogo.line));
+  const livre = await h.ev(() => LB.jogo.bloqueia(44.9 * 32, 11.9 * 32, LB.jogo.line));
   afirmar(!livre, 'depois do rapto a estrada abre');
-  await h.ir(45.3, 14.2);
+  await h.ir(45.3, 11.7);
   await h.espera(300);
   igual(await h.ev(() => LB.jogo.mapa.id), 'vilarejo', 'a estrada leva ao vilarejo');
 });
@@ -326,12 +326,52 @@ teste('mapas: tudo alcançável e saídas ligadas nos dois sentidos', async (h) 
         const cx = s.chegada.x, cy = s.chegada.y;
         if (md.colide(cx * 32, cy * 32 - 4, 6, 4)) problemas.push(`${id} → ${s.para}: chegada (${cx},${cy}) dentro de parede`);
         for (const s2 of dest.saidas || []) if (cx >= s2.x && cx < s2.x + s2.w && (cy * 32 - 4) / 32 >= s2.y - 0.5 && (cy * 32 - 4) / 32 < s2.y + s2.h) problemas.push(`${id} → ${s.para}: chegada cai dentro da saída para ${s2.para}`);
-        if (s.para !== 'covil' && !(dest.saidas || []).some((s2) => s2.para === id)) problemas.push(`${s.para} não tem saída de volta para ${id}`);
+        if (s.para !== 'covil' && !(dest.saidas || []).concat(dest.entradas || []).some((s2) => s2.para === id)) problemas.push(`${s.para} não tem saída de volta para ${id}`);
       }
     }
     return problemas;
   });
   igual(r, [], 'problemas de conectividade');
+});
+
+teste('casas: toda casa tem interior mobiliado, entra pela porta e sai pelo caminho', async (h) => {
+  const portas = await h.ev(() => {
+    const r = [];
+    for (const [area, d] of Object.entries(LB.MAPAS)) for (const en of d.entradas || []) r.push({ area, para: en.para, x: en.x, y: en.y });
+    return r;
+  });
+  afirmar(portas.length >= 9, `portas com interior (veio ${portas.length})`);
+  for (const pt of portas) {
+    await h.area(pt.area, { espada: true, exames: ['cacador'] });
+    await h.ir(pt.x + 0.5, pt.y + 1.7);
+    igual(await h.prompt(), 'Entrar', `prompt na porta de ${pt.para}`);
+    await h.interagir();
+    const dentro = await h.ev(() => {
+      const j = LB.jogo, m = j.mapa;
+      const moveis = m.props.filter((p) => p.tipo === 'movel').length;
+      return { id: m.id, tema: m.def.tema, base: !!m.imagemBase, moveis, livre: !m.colide(j.line.x, j.line.y - 4, 6, 4) };
+    });
+    igual(dentro.id, pt.para, `entrou em ${pt.para}`);
+    afirmar(dentro.tema === 'casa' && dentro.base, `${pt.para} com piso e paredes desenhados`);
+    afirmar(dentro.moveis >= 4, `${pt.para} mobiliada (veio ${dentro.moveis})`);
+    afirmar(dentro.livre, `${pt.para}: Line nasce em chão livre`);
+    if (pt.para === 'casa_fazenda') await h.foto('interior-fazenda');
+    const s = await h.ev(() => LB.jogo.mapa.def.saidas[0]);
+    await h.ir(s.x + s.w / 2, s.y + 0.6);
+    await h.p.waitForTimeout(250);
+    igual(await h.ev(() => LB.jogo.mapa.id), pt.area, `saiu de ${pt.para} para ${pt.area}`);
+  }
+});
+
+teste('casas: bilhete da cabana vem antes de entrar e a loja ainda conversa de frente', async (h) => {
+  await h.area('floresta', { espada: true });
+  await h.ir(68.5, 6.7);
+  igual(await h.prompt(), 'Ler o bilhete na porta', 'bilhete primeiro');
+  await h.area('vilarejo', { espada: true });
+  await h.ir(15.5, 12.6);
+  afirmar(/Comprar/.test(await h.prompt() || ''), 'de frente para a Dona Rosa, conversa');
+  await h.ir(15.5, 10.7);
+  igual(await h.prompt(), 'Entrar', 'colada na porta, entra');
 });
 
 // ================= Vilarejo, loja e ferraria =================

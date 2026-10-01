@@ -4,6 +4,7 @@
 // (borboletas, pássaros, nuvens, folhas caindo, vaga-lumes, brasas).
 (function (LB) {
   const TAU = Math.PI * 2;
+  const TILE = 32;
   const E = (g, x, y, rx, ry, cor) => { g.fillStyle = cor; g.beginPath(); g.ellipse(x, y, rx, ry, 0, 0, TAU); g.fill(); };
 
   // Vento suave: varia com o tempo e com a posição, como rajadas passando pelo mapa.
@@ -14,6 +15,7 @@
   // ---------- Plantas ----------
   function mato(g, p, t) {
     const w = vento(t, p.x, p.y);
+    if (objeto(g, 'farm_wild_grass', p.x - 2 + p.v * 4, p.y + 8, 24 + p.v * 6, { inclina: w * 0.06, flip: p.v > 0.5 })) return;
     for (let i = 0; i < 7; i++) {
       const bx = p.x - 12 + ((p.v * 97 + i * 37) % 24), by = p.y + ((i * 13 + p.v * 50) % 8);
       const h = 9 + ((i * 7 + p.v * 30) % 6);
@@ -25,6 +27,7 @@
   const CORES_FLOR = ['#ff8fb1', '#ffe066', '#ffffff', '#c9a0ff', '#ff9f68'];
   function flores(g, p, t) {
     const w = vento(t, p.x, p.y);
+    if (objeto(g, 'farm_small_flowers', p.x - 2 + p.v * 4, p.y + 10, 22 + p.v * 6, { inclina: w * 0.05, flip: p.v > 0.5 })) return;
     for (let i = 0; i < 5; i++) {
       const bx = p.x - 11 + ((p.v * 71 + i * 29) % 22), by = p.y + 6 + ((i * 11) % 7);
       const h = 7 + (i * 5 % 5);
@@ -215,6 +218,20 @@
 
   function cerca(g, p) {
     const x = p.x, y = p.y;
+    const im = img('farm_fence');
+    if (im && !p.oculta) {
+      // A peça da arte (2 postes e 2 trilhos) mede 2 tiles; cada tile mostra a metade da esquerda
+      // (poste + trilhos até o próximo tile). Sem vizinho à direita, só o poste.
+      const H = 22, W = im.naturalWidth * H / im.naturalHeight;
+      g.save(); g.beginPath(); g.rect(x - 5, y - H - 2, p.d ? TILE + 5 : 10, H + 8); g.clip();
+      g.drawImage(im, x - 5, y - H + 4, W, H); g.restore();
+      if (p.b) {
+        g.fillStyle = '#7a4f2c'; g.fillRect(x - 2, y - 8, 4, TILE + 2);
+        g.fillStyle = '#a8764a'; g.fillRect(x - 2, y - 8, 1.5, TILE + 2);
+      }
+      return;
+    }
+    if (p.oculta) return;
     g.fillStyle = '#8b5e34'; g.fillRect(x - 3, y - 18, 6, 20);
     g.fillStyle = '#a8764a'; g.fillRect(x - 3, y - 18, 6, 3);
     g.fillStyle = '#a8764a';
@@ -266,6 +283,7 @@
 
   function mesa(g, p, t, oculta) {
     if (oculta) return;
+    if (objeto(g, 'farm_picnic_table', p.x + p.w / 2, p.y + 2, 84)) return;
     const x = p.x + p.w / 2, y = p.y - 6;
     E(g, x, y + 4, 34, 8, 'rgba(0,0,0,.25)');
     g.fillStyle = '#8b5e34'; g.fillRect(x - 30, y - 6, 60, 5); g.fillRect(x - 30, y + 8, 60, 5);
@@ -277,6 +295,7 @@
   }
 
   function casinha(g, p) {
+    if (objeto(g, 'farm_dog_house', p.x, p.y + 4, 50)) return;
     const x = p.x, y = p.y;
     E(g, x, y + 1, 16, 5, 'rgba(0,0,0,.25)');
     g.fillStyle = '#e8c9a0'; g.fillRect(x - 13, y - 22, 26, 22);
@@ -286,6 +305,7 @@
   }
 
   function varal(g, p, t) {
+    if (objeto(g, 'farm_clothesline', (p.x + p.x2) / 2, p.y + 5, p.x2 - p.x + 22, { inclina: vento(t, p.x, p.y) * 0.02 })) return;
     const x1 = p.x, x2 = p.x2, y = p.y;
     for (const x of [x1, x2]) { g.fillStyle = '#6e4a2c'; g.fillRect(x - 2, y - 40, 4, 40); E(g, x, y, 5, 2, 'rgba(0,0,0,.2)'); }
     g.strokeStyle = '#ddd'; g.lineWidth = 1;
@@ -300,9 +320,25 @@
     });
   }
 
+  // Porteira da arte (item 147) no lugar de um trecho de cerca: { x, y (tiles), w (tiles) }.
+  function porteira(g, p) {
+    objeto(g, 'farm_gate', p.x, p.y + 4, p.w);
+  }
+
+  // Móveis dos interiores (itens 148 a 152). A lareira acende à noite.
+  function movel(g, p, jogo) {
+    let nome = p.nome;
+    if (nome === 'farmhouse_fireplace') nome = jogo && LB.relogio && LB.relogio.noite(jogo) ? 'farmhouse_fireplace_on' : 'farmhouse_fireplace_off';
+    if (nome === 'forja') nome = 'farmhouse_fireplace_on';       // a forja da ferraria fica sempre acesa
+    if (nome === 'bigorna' && LB.mundo) { LB.mundo.desenharProp(g, { tipo: 'bigorna', x: p.x, y: p.y, v: 0 }, jogo); return; }
+    if (!p.alto) E(g, p.x, p.y - 1, p.larg * 0.42, 4, 'rgba(40,20,10,.22)');
+    if (objeto(g, nome, p.x, p.y - p.alto, p.larg, { flip: p.flip })) return;
+    g.fillStyle = '#7a4f2c'; g.fillRect(p.x - p.larg / 2, p.y - p.alto - 20, p.larg, 20);
+  }
+
   // ---------- Vida ambiente ----------
   // Temas sem céu aberto (sem nuvens nem pássaros).
-  const SEM_CEU = ['covil', 'montanha', 'encontro', 'gruta', 'fenda', 'coracao'];
+  const SEM_CEU = ['covil', 'montanha', 'encontro', 'gruta', 'fenda', 'coracao', 'casa'];
   class Ambiente {
     constructor(mapa) {
       this.mapa = mapa;
@@ -453,5 +489,5 @@
     objeto(g, p.nome, p.x, p.y, p.larg, o);
   }
 
-  LB.cenario = { decoracao, objeto, vento, mato, flores, planta, arvore, casaFazenda, celeiro, galinheiro, cerca, poco, moinho, feno, mesa, casinha, varal, Ambiente };
+  LB.cenario = { decoracao, objeto, vento, mato, flores, planta, arvore, casaFazenda, celeiro, galinheiro, cerca, poco, moinho, feno, mesa, casinha, varal, porteira, movel, Ambiente };
 })(window.LB);

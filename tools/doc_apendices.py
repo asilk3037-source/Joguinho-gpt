@@ -45,6 +45,17 @@ def conteudo(caminho):
         bloco = bloco[:bloco.index("};")]
         codigos = re.findall(r"'([A-Z0-9_]+)':\[", bloco)
         return codigos, sum(1 for u in re.findall(r"'(data:[^']*)'", bloco) if vazia(u)), {}
+    if 'const animations={"' in html:
+        # Itens 137 a 139: const animations={"CODIGO":["data:...", ...]} (lista ou {frames}).
+        i = html.index('const animations={"') + len("const animations=")
+        a, _ = json.JSONDecoder().raw_decode(html[i:])
+        quadros = [u for v in a.values() for u in (v if isinstance(v, list) else v.get("frames", []))]
+        return list(a), sum(1 for u in quadros if isinstance(u, str) and vazia(u)), {}
+    if "const payload=" not in html:
+        # Itens de cenário e móveis (140 em diante): imagens soltas, sem animação.
+        nomes = [re.sub(r"(_\d+x\d+)?\.[a-z]+$", "", n) for n in re.findall(r'data-name="([^"]+)"', html)]
+        nomes = nomes or re.findall(r"<code>([A-Z0-9_]+)</code>", html)
+        return list(dict.fromkeys(nomes)), 0, {}
     i = html.index("const payload=") + len("const payload=")
     p, _ = json.JSONDecoder().raw_decode(html[i:])
     vazias = {k for k, u in enumerate(p["images"]) if vazia(u)}
@@ -414,7 +425,7 @@ def escrever(w, inv, itens=None):
     if faltam:
         w(f"Itens que ainda não chegaram: {', '.join(map(str, faltam))}.")
     else:
-        w(f"Todos os itens de 1 a {max(numeros)} chegaram. Os próximos esperados são o **138** (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`), o **139** (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) e o **140** (Minas Shopping, cenário, nas medidas da seção 22.11).")
+        w(f"Todos os itens de 1 a {max(numeros)} chegaram. Os itens 140 a 152 são cenário e móveis: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior.")
     w()
     w("**Regra de continuidade das pernas:** nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).")
     w()
@@ -469,7 +480,14 @@ def escrever(w, inv, itens=None):
     w("- **Tamanho:** o extrator iguala a altura de cada animação à da pose parada. Nas poses inclinadas, agachadas ou sentadas, isso deixava a Line e a Bell com a cabeça maior ou menor. Por isso cada animação também tem um **ajuste pela cabeça**: `tools/medir_cabecas.py` compara a cabeça de cada animação com a das poses paradas (em vários tamanhos e inclinações), e o fator conferido a olho vai para `tools/ajuste_cabeca.json`. O jogo multiplica a escala por esse fator (campo `ajuste` em `sprites.js`).")
     w("- **Ritmo:** andar (~1,1 s por passo) e correr (~0,8 s) têm o mesmo ciclo para a Line, a Bell e as duas juntas, tenha a arte quantos quadros tiver. Golpes, pulos, magias, esquivas e o dragão seguem o tempo do jogo. As cenas e emoções usam o fps que a artista mandou e nunca passam de 12 quadros por segundo.")
     w()
-    w("### 26.6 Como regerar esta documentação")
+    w("### 26.6 Cenário em imagem, móveis e casas por dentro")
+    w()
+    w("- **Mapa com imagem de base:** um mapa pode ter `base` (o nome de uma imagem do catálogo, 2 px por unidade do mundo, 64 px por tile). O jogo desenha essa imagem no lugar dos tiles do chão; o texto do mapa continua valendo para colisão, saídas e objetos. Com `sobreBase`, as letras listadas (na fazenda, `u`, o mato alto) ainda são desenhadas por cima da imagem. A fazenda usa o terreno oficial (item 144) e a casa da fazenda usa a planta do item 145.")
+    w("- **Móveis:** cada mapa pode ter uma lista `moveis` com `[nome, x, y, largura, pegada, alto, espelhar]`. O móvel vira um objeto desenhado por profundidade (a Line passa na frente e atrás), e a `pegada` (em tiles) vira chão sólido. As imagens ficam em `game/assets/moveis/` (itens 148 a 152, na resolução original) e os objetos da fazenda (casinha do Theo, tigela cheia e vazia, varal, mesa de piquenique, cerca, porteira, flores e mato, itens 146 e 147) em `game/assets/cenario/`.")
+    w("- **Portas (`entradas`):** perto de uma porta aparece **Entrar**. Colada na porta, ela ganha da conversa com quem está de frente (Dona Rosa, Seu Bento); um bilhete ainda não lido na porta vem antes (cabana do caçador). Para sair, basta descer pelo caminho de pedra. A Bell, se estiver acompanhando, entra junto.")
+    w("- **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.")
+    w()
+    w("### 26.7 Como regerar esta documentação")
     w()
     w("Com o jogo servido na porta 8765 (`cd game && python3 -m http.server 8765`), na raiz:")
     w()

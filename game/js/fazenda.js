@@ -243,6 +243,8 @@
       if (cao.estado === 'comendo' && LB.sprite('THEO_SIT_FRONT')) return;
       const cheia = tf.theo && !cao.comeu;
       LB.desenho.sombraChao(g, p.x, p.y + 1, 9, 0.2);
+      // Tigela da arte (item 146): cheia de ração ou vazia.
+      if (LB.cenario.objeto(g, cheia || this.flags.prologo ? 'farm_theo_bowl' : 'farm_theo_bowl_vazia', p.x, p.y + 2, 20)) return;
       g.fillStyle = '#d63a3a'; g.beginPath(); g.ellipse(p.x, p.y - 2, 9, 4, 0, 0, Math.PI * 2); g.fill();
       g.fillStyle = '#a82a2a'; g.beginPath(); g.ellipse(p.x, p.y - 3, 7, 2.6, 0, 0, Math.PI * 2); g.fill();
       if (cheia) { g.fillStyle = '#8a5a2b'; for (let i = 0; i < 6; i++) { g.beginPath(); g.arc(p.x - 4 + (i % 3) * 4, p.y - 4 - Math.floor(i / 3) * 1.5, 1.6, 0, Math.PI * 2); g.fill(); } }

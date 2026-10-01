@@ -16,6 +16,8 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 🏡 **Itens 137 a 152 chegaram — fazenda nova e todas as casas por dentro:** a fazenda agora é o **terreno oficial** (item 144), com a casinha do Theo, a tigela (cheia e vazia), o varal, a mesa de piquenique, a cerca, a porteira, flores e mato da arte nova (itens 146 e 147). **Toda casa tem interior:** a casa da fazenda (cozinha, sala, quarto e banheiro, item 145, com os móveis dos itens 148 a 152), a cabana do caçador, a loja da Dona Rosa, a ferraria do Seu Bento, as três casas do vilarejo, a casa da Dona Cora e a do Seu Tião (seção 6.8). O prólogo usa o playground e a máquina de soco novos (itens 141 e 142), o pato e o gato entraram (138 e 139); a ovelha reenviada (137) foi recusada.
+
 > 🎞️ **Line e Bell do mesmo tamanho e no mesmo ritmo em todas as animações:** poses inclinadas, agachadas e sentadas não aumentam nem diminuem mais a cabeça (ajuste medido pela cabeça, seção 26.5); a Bell anda e corre no mesmo passo da Line; as cenas do começo tocam no ritmo da artista (o beijo no túnel, a Line admirando a Bell e o soco na máquina estavam acelerados); reverência, toca aqui e vitória não piscam mais em meio segundo. No rapto aparece um dragão só: a arte antiga da Bell carregada já trazia outro dragão desenhado junto.
 
 > 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 47 de altura, vaca 71, cavalo 90, porco e ovelha 48, Theo 36, pintinho 27; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).
@@ -127,7 +129,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **553**: 253 com arte (temporária), 171 usando uma substituta, 129 desenhadas no código ou sem imagem |
+| Animações catalogadas | **553**: 261 com arte (temporária), 171 usando uma substituta, 121 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1073,12 +1075,17 @@ Os três lugares do prólogo (Minas Shopping, Playground e Túnel) estão na se�
 | Covil do Dragão | 26 × 20 | 0 | — | — |
 
 ### 6.1 Fazendinha
+O chão da fazenda é o **terreno oficial** (item 144), uma imagem só, e o mapa foi ajustado em cima dela: a casa fica no noroeste, com a casinha do Theo e a tigela ao lado, o varal e o galinheiro logo abaixo, a horta e o poço no meio, o pasto com porteira a leste e o lago ao sul. A porta da casa leva para dentro (seção 6.8).
+
 Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho, pasto, chiqueiro, lago com píer e barco, varal, casinha do Theo, mesa de piquenique, árvores frutíferas e flores. Tem borboletas, pássaros, nuvens, folhas caindo e fumaça nas chaminés. De manhã, a luz é clara. À tarde, o céu fica alaranjado, e depois do rapto vira noite com vaga-lumes.
 
 Depois do rapto, abre a **estrada do leste**, que leva ao Vilarejo do Riacho. Antes disso a estrada fica fechada: a Line não sai da fazenda no meio do dia com a Bell.
 
-![Pasto com vacas, cavalo e ovelhas](imagens/04-pasto.jpg)
-*Pasto com vacas, cavalo e ovelhas*
+![A casa da fazenda no terreno oficial: casinha do Theo, tigela, varal, galinheiro, horta e poço](imagens/fazenda-casa.jpg)
+*A casa da fazenda no terreno oficial: casinha do Theo, tigela, varal, galinheiro, horta e poço*
+
+![Horta, pomar, lago e o pasto com cerca nova](imagens/fazenda-centro.jpg)
+*Horta, pomar, lago e o pasto com cerca nova*
 
 ![Mapa da fazendinha: saída norte para a floresta e estrada leste para o vilarejo](imagens/mapa-fazenda.jpg)
 *Mapa da fazendinha: saída norte para a floresta e estrada leste para o vilarejo*
@@ -1187,6 +1194,28 @@ Caverna escura com lava nas laterais e estalagmites. A Bell fica numa jaula ao f
 
 ![O dragão cospe fogo no covil](imagens/23-dragao-fogo.jpg)
 *O dragão cospe fogo no covil*
+
+### 6.8 Casas por dentro
+Toda casa do jogo tem interior. Perto da porta aparece **Entrar**; para sair, é só descer pelo caminho de pedra até a porta. Os móveis têm volume: a Line passa na frente e atrás deles, e não atravessa camas, mesas e estantes.
+
+| Casa | Onde fica | Piso | O que tem dentro |
+|---|---|---|---|
+| Casa da fazenda | fazendinha (noroeste) | madeira, terracota na cozinha, azulejo no banheiro | cozinha com fogão, geladeira, pia e mesa; sala com lareira, sofá, poltronas e estantes; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box |
+| Cabana do caçador | floresta (nordeste) | madeira | lareira, estante, cama, poltrona, cestos e uma caminha de cachorro |
+| Loja da Dona Rosa | vilarejo (oeste) | terracota | estantes cheias, balcão, barril, caixote e cesto |
+| Ferraria do Seu Bento | vilarejo (leste) | lajota de pedra | forja acesa, bigorna, bancada, barris e caixote |
+| Casas do vilarejo (3) | vilarejo (sul) | madeira e terracota | fogão, geladeira, mesa, camas, sofá, poltronas e estantes |
+| Casa da Dona Cora | Vale das Raízes | terracota | cozinha completa, mesa, cama e cesto |
+| Casa do Seu Tião | Lago Espelhado | azulejo | cômoda, cama, poltrona, mesinha e cesto |
+
+![A casa da fazenda por dentro: quarto, sala e banheiro](imagens/interior-fazenda.jpg)
+*A casa da fazenda por dentro: quarto, sala e banheiro*
+
+![Cozinha e sala da casa da fazenda](imagens/interior-fazenda-sala.jpg)
+*Cozinha e sala da casa da fazenda*
+
+![As outras casas por dentro: cabana, loja, ferraria, três casas do vilarejo, casa da Cora e casa do Tião](imagens/interiores-casas.jpg)
+*As outras casas por dentro: cabana, loja, ferraria, três casas do vilarejo, casa da Cora e casa do Tião*
 
 ## 7. Exploração: mundo interligado, vilarejo, loja, carrinho, itens, documentos e mapa
 
@@ -1762,7 +1791,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 553 animações. ✅ 253 com arte temporária, 🔁 171 com substituta e ✏️ 129 desenhadas no código.
+**Resumo:** 553 animações. ✅ 261 com arte temporária, 🔁 171 com substituta e ✏️ 121 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1776,7 +1805,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
-| Bichos da fazenda | 67 | 59 | 0 | 8 |
+| Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
@@ -1936,14 +1965,14 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
 | `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | 4 | sim | ✅ temporária | LINE_BELL_ITEM_110 |
-| `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
-| `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 12 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
 | `LINE_BELL_WALK_HANDS_FRONT` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
 | `LINE_BELL_WALK_HANDS_BACK` | Andando de mãos dadas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_111 |
-| `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 10 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
-| `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 10 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
+| `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 16 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
+| `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 16 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
 | `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
 | `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_112 |
 | `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
@@ -2104,14 +2133,14 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SHEEP_WALK` | Ovelha — Andar *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_137 |
 | `SHEEP_RUN` | Ovelha — Correr *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_137 |
 | `SHEEP_EAT` | Ovelha — Comer grama *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_137 |
-| `DUCK_IDLE` | Pato — Parado *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `DUCK_WALK` | Pato — Andar *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `DUCK_SWIM` | Pato — Nadando *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `DUCK_RUN` | Pato — Correr *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `CAT_IDLE` | Gato — Parado *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `CAT_WALK` | Gato — Andar *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `CAT_SLEEP` | Gato — Dormindo *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
-| `CAT_PURR` | Gato — Carinho (ronronando) *(sugestão nova)* | 12 | sim | ✏️ código / falta |  |
+| `DUCK_IDLE` | Pato — Parado *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_138 |
+| `DUCK_WALK` | Pato — Andar *(sugestão nova)* | 11 | sim | ✅ temporária | LINE_BELL_ITEM_138 |
+| `DUCK_SWIM` | Pato — Nadando *(sugestão nova)* | 11 | sim | ✅ temporária | LINE_BELL_ITEM_138 |
+| `DUCK_RUN` | Pato — Correr *(sugestão nova)* | 11 | sim | ✅ temporária | LINE_BELL_ITEM_138 |
+| `CAT_IDLE` | Gato — Parado *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_139 |
+| `CAT_WALK` | Gato — Andar *(sugestão nova)* | 11 | sim | ✅ temporária | LINE_BELL_ITEM_139 |
+| `CAT_SLEEP` | Gato — Dormindo *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_139 |
+| `CAT_PURR` | Gato — Carinho (ronronando) *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_139 |
 
 ### 10.12 Personagens de apoio (novo)
 
@@ -2687,6 +2716,7 @@ A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verd
 | Mapa | só acende áreas visitadas; documento marca sem acender |
 | Todas as áreas | cada uma das 7 áreas carrega, desenha e roda sem erros, e a Line não nasce dentro de parede |
 | Tamanho e conectividade | tamanho das fases; todo baú, documento, morador, estação e saída alcançável (contando pulos, gancho, bombas, chaves e barreiras); toda saída chega em chão livre, fora de outra saída, e tem caminho de volta |
+| Casas por dentro | todas as portas levam a um interior mobiliado com piso e paredes desenhados; Entrar na porta, sair pelo caminho de pedra; o bilhete da cabana vem antes de entrar; de frente para a Dona Rosa ainda dá para conversar |
 | Vilarejo | loja da Dona Rosa (comprar, falta de dinheiro, botas), ferraria (armadura, escudo segurando golpe, Armadura de Brasa liberada pela receita), conversas com os moradores |
 | Carrinho | quebrado sem alavanca, encaixar a alavanca, tela de destino só com estações descobertas, viagem até as Minas |
 | Bombas, gancho, brasa, escuro | bomba quebra a parede e fica salvo; gancho atravessa; brasa queima sem a armadura e não queima com ela; galeria escura |
@@ -2704,7 +2734,7 @@ A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verd
 | Dicas do Fácil | seta para a saída certa, para o cristal apagado e para o chefe; dica de chefe e de derrota |
 
 ### Como atualizar este documento
-As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.6.
+As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.7.
 
 ![No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma](imagens/25-galeria.jpg)
 *No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma*
@@ -3225,7 +3255,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
-| Bichos da fazenda | 67 | 59 | 0 | 8 |
+| Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 18 | 0 | 18 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
@@ -3245,7 +3275,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **553** | **253** | **171** | **129** |
+| **Total** | **553** | **261** | **171** | **121** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3514,7 +3544,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 253 de 553 animações com arte · 171 usando uma substituta · 129 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 261 de 553 animações com arte · 171 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3529,9 +3559,22 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Item 115**: `LINE_COMBAT_RUN_BACK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
 - **Item 118**: `DRAGON_SLEEP` foi recusado: não é o dragão dormindo (poses de voo). O jogo usa a substituta (seção 23.3) até chegar a arte certa.
 - **Item 119**: `GOLEM_WALK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
+- **Item 137**: `SHEEP_IDLE` foi recusado: reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior. O jogo segue com a versão anterior.
 - **Pernas paradas:** `CHICKEN_RUN`, `CHICKEN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_WALK` chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.
 - **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.
 - **Item 140 (Minas Shopping)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 141 (Playground)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 142 (máquina de soco)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 143 (Túnel)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 144 (terreno da Fazendinha)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 145 (casa da fazenda por dentro)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 146 (objetos da Fazendinha)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 147 (cercas, porteira, flores e mato)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 148 (cozinha)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 149 (sala, quarto e banheiro)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 150 (lareira e sala)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 151 (quarto)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
+- **Item 152 (banheiro)**: é cenário, não animação. Só entra no jogo depois de seguir as medidas da seção 22.11 (não usa o quadro de 1254×1254).
 
 ### 23.2 Animações com poucos quadros diferentes
 
@@ -3556,14 +3599,6 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
 | Dragão | `DRAGON_SLEEP` | Dormir | `DRAGON_DEFEATED` |
-| Bichos da fazenda | `DUCK_IDLE` | Pato — Parado | desenho no código |
-| Bichos da fazenda | `DUCK_WALK` | Pato — Andar | desenho no código |
-| Bichos da fazenda | `DUCK_SWIM` | Pato — Nadando | desenho no código |
-| Bichos da fazenda | `DUCK_RUN` | Pato — Correr | desenho no código |
-| Bichos da fazenda | `CAT_IDLE` | Gato — Parado | desenho no código |
-| Bichos da fazenda | `CAT_WALK` | Gato — Andar | desenho no código |
-| Bichos da fazenda | `CAT_SLEEP` | Gato — Dormindo | desenho no código |
-| Bichos da fazenda | `CAT_PURR` | Gato — Carinho (ronronando) | desenho no código |
 | Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_FRONT` |
 | Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_BACK` |
 | Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_LEFT` |
@@ -4002,9 +4037,24 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 134 | `LINE_BELL_ITEM_134.html` | 3,04 MB | `COW_IDLE`, `COW_WALK`, `COW_RUN`, `COW_EAT` |
 | 135 | `LINE_BELL_ITEM_135.html` | 3,64 MB | `PIG_FRONT`, `PIG_IDLE`, `PIG_WALK`, `PIG_LIE`, `PIG_MUD` |
 | 136 | `LINE_BELL_ITEM_136.html` | 3,83 MB | `HORSE_IDLE`, `HORSE_WALK`, `HORSE_RUN`, `HORSE_EAT` |
-| 137 | `LINE_BELL_ITEM_137.html` | 4,11 MB | `SHEEP_IDLE`, `SHEEP_WALK`, `SHEEP_RUN`, `SHEEP_EAT` |
+| 137 | `LINE_BELL_ITEM_137.html` | 4,11 MB | `SHEEP_IDLE`, `SHEEP_WALK`, `SHEEP_RUN`, `SHEEP_EAT` ⚠️ `SHEEP_IDLE` recusado: reenviar |
+| 138 | `LINE_BELL_ITEM_138.html` | 17,35 MB | `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM` |
+| 139 | `LINE_BELL_ITEM_139.html` | 19,60 MB | `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR` |
+| 140 | `LINE_BELL_ITEM_140.html` | 4,55 MB |  🏙️ cenário (Minas Shopping), fora do recorte de animação |
+| 141 | `LINE_BELL_ITEM_141.html` | 2,48 MB |  🏙️ cenário (Playground), fora do recorte de animação |
+| 142 | `LINE_BELL_ITEM_142.html` | 2,32 MB |  🏙️ cenário (máquina de soco), fora do recorte de animação |
+| 143 | `LINE_BELL_ITEM_143.html` | 3,98 MB |  🏙️ cenário (Túnel), fora do recorte de animação |
+| 144 | `LINE_BELL_ITEM_144.html` | 5,30 MB |  🏙️ cenário (terreno da Fazendinha), fora do recorte de animação |
+| 145 | `LINE_BELL_ITEM_145.html` | 3,25 MB |  🏙️ cenário (casa da fazenda por dentro), fora do recorte de animação |
+| 146 | `LINE_BELL_ITEM_146.html` | 0,66 MB | `FARM_DOG_HOUSE`, `FARM_THEO_BOWL`, `FARM_CLOTHESLINE`, `FARM_PICNIC_TABLE` 🏙️ cenário (objetos da Fazendinha), fora do recorte de animação |
+| 147 | `LINE_BELL_ITEM_147.html` | 0,25 MB | `FARM_FENCE`, `FARM_GATE`, `FARM_SMALL_FLOWERS`, `FARM_WILD_GRASS` 🏙️ cenário (cercas, porteira, flores e mato), fora do recorte de animação |
+| 148 | `LINE_BELL_ITEM_148.html` | 0,66 MB | `FARMHOUSE_FRIDGE`, `FARMHOUSE_STOVE`, `FARMHOUSE_SINK_COUNTER`, `FARMHOUSE_DINING_TABLE` 🏙️ cenário (cozinha), fora do recorte de animação |
+| 149 | `LINE_BELL_ITEM_149.html` | 0,80 MB | `FARMHOUSE_SOFA`, `FARMHOUSE_BED`, `FARMHOUSE_THEO_BED`, `FARMHOUSE_BATHROOM_VANITY`, `FARMHOUSE_TOILET` 🏙️ cenário (sala, quarto e banheiro), fora do recorte de animação |
+| 150 | `LINE_BELL_ITEM_150.html` | 0,84 MB | `FARMHOUSE_FIREPLACE_OFF`, `FARMHOUSE_FIREPLACE_ON`, `FARMHOUSE_ARMCHAIR`, `FARMHOUSE_COFFEE_TABLE` 🏙️ cenário (lareira e sala), fora do recorte de animação |
+| 151 | `LINE_BELL_ITEM_151.html` | 0,81 MB | `FARMHOUSE_DRESSER`, `FARMHOUSE_WARDROBE`, `FARMHOUSE_NIGHTSTAND`, `FARMHOUSE_BOOKSHELF` 🏙️ cenário (quarto), fora do recorte de animação |
+| 152 | `LINE_BELL_ITEM_152.html` | 0,53 MB | `FARMHOUSE_SHOWER`, `FARMHOUSE_BATHROOM_MIRROR`, `FARMHOUSE_TOWEL_RACK`, `FARMHOUSE_LAUNDRY_BASKET` 🏙️ cenário (banheiro), fora do recorte de animação |
 
-Todos os itens de 1 a 137 chegaram. Os próximos esperados são o **138** (pato: `DUCK_IDLE`, `DUCK_WALK`, `DUCK_RUN`, `DUCK_SWIM`), o **139** (gato: `CAT_IDLE`, `CAT_WALK`, `CAT_SLEEP`, `CAT_PURR`) e o **140** (Minas Shopping, cenário, nas medidas da seção 22.11).
+Todos os itens de 1 a 152 chegaram. Os itens 140 a 152 são cenário e móveis: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior.
 
 **Regra de continuidade das pernas:** nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).
 
@@ -4267,7 +4317,14 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 - **Tamanho:** o extrator iguala a altura de cada animação à da pose parada. Nas poses inclinadas, agachadas ou sentadas, isso deixava a Line e a Bell com a cabeça maior ou menor. Por isso cada animação também tem um **ajuste pela cabeça**: `tools/medir_cabecas.py` compara a cabeça de cada animação com a das poses paradas (em vários tamanhos e inclinações), e o fator conferido a olho vai para `tools/ajuste_cabeca.json`. O jogo multiplica a escala por esse fator (campo `ajuste` em `sprites.js`).
 - **Ritmo:** andar (~1,1 s por passo) e correr (~0,8 s) têm o mesmo ciclo para a Line, a Bell e as duas juntas, tenha a arte quantos quadros tiver. Golpes, pulos, magias, esquivas e o dragão seguem o tempo do jogo. As cenas e emoções usam o fps que a artista mandou e nunca passam de 12 quadros por segundo.
 
-### 26.6 Como regerar esta documentação
+### 26.6 Cenário em imagem, móveis e casas por dentro
+
+- **Mapa com imagem de base:** um mapa pode ter `base` (o nome de uma imagem do catálogo, 2 px por unidade do mundo, 64 px por tile). O jogo desenha essa imagem no lugar dos tiles do chão; o texto do mapa continua valendo para colisão, saídas e objetos. Com `sobreBase`, as letras listadas (na fazenda, `u`, o mato alto) ainda são desenhadas por cima da imagem. A fazenda usa o terreno oficial (item 144) e a casa da fazenda usa a planta do item 145.
+- **Móveis:** cada mapa pode ter uma lista `moveis` com `[nome, x, y, largura, pegada, alto, espelhar]`. O móvel vira um objeto desenhado por profundidade (a Line passa na frente e atrás), e a `pegada` (em tiles) vira chão sólido. As imagens ficam em `game/assets/moveis/` (itens 148 a 152, na resolução original) e os objetos da fazenda (casinha do Theo, tigela cheia e vazia, varal, mesa de piquenique, cerca, porteira, flores e mato, itens 146 e 147) em `game/assets/cenario/`.
+- **Portas (`entradas`):** perto de uma porta aparece **Entrar**. Colada na porta, ela ganha da conversa com quem está de frente (Dona Rosa, Seu Bento); um bilhete ainda não lido na porta vem antes (cabana do caçador). Para sair, basta descer pelo caminho de pedra. A Bell, se estiver acompanhando, entra junto.
+- **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.
+
+### 26.7 Como regerar esta documentação
 
 Com o jogo servido na porta 8765 (`cd game && python3 -m http.server 8765`), na raiz:
 

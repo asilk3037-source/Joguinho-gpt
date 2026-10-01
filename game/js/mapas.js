@@ -14,6 +14,8 @@
     fazenda: {
       nome: 'Fazendinha',
       tema: 'fazenda',
+      // Terreno do item 144 (grama, estradas, canteiros e lago) por baixo; a lama do chiqueiro vai por cima.
+      base: 'base_fazenda', sobreBase: 'u',
       linhas: [
         'TTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTT',
         'TTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTT',
@@ -26,63 +28,122 @@
         'TT....HHHHHHH.........::...BBBBBBB..fuuuuuf.TT',
         'TTF...HHHHHHH.........::...BBBBBBB..fffffff.TT',
         'TT....HHHDHHH.k...,...::..n...:...n......C..TT',
-        'TT..T.FF,:FF,.........::F.....:....n........TT',
-        'TT.......::::::::::::::::::::::...F.F......TTT',
-        'TT................,..,:...,...F.,........M.:::',
-        'TT.vF,.v.F...F.,.P....:....F.,........,.,.::::',
-        'TT..F..............,.F:...Ffffffffffffffff..TT',
-        'TT...............,....:.,.Ff.,,..........f..TT',
-        'TTffffffffff..ccccccc,:....f............,f..TT',
-        'TTfKKKF....f..hhhhhhh,:....f.,..F........f..TT',
-        'TTfKKK..F..f..ccccccc.:,,..f......F....,.f..TT',
-        'TTf...........hhhhhhh.:.....,,.......,...f..TT',
-        'TTf.........,Fccccccc.:.T..............,.f..TT',
-        'TTf..,.....f..hhhhhhh.:....f...........F.fF.TT',
-        'TTf........f.,........:.mm.f....,,....,..f..TT',
-        'TTffffffffff..F.......:..,.f........FF...f..TT',
-        'TT,........~~~~~~~...,.....f..,..........f..TT',
-        'TT.T......~~~~~~~~~........fffffffffffffff,,TT',
-        'TT.......~~~~~~~~~~~...,.....,..........,...TT',
-        'TT...T,..~~~~~~~~~~~.,,,............,....T,.TT',
-        'TT........~~~~~~~~~......T...T.F...,,T......TT',
-        'TTFF.......~~~~~~~...............T........F.TT',
-        'TT...,.F..........F..........,.......,F...F.TT',
+        'TT::::::::::::::::::::::::::::::::::::::::::::',
+        'TT....................::..........F.F......TTT',
+        'TT..v....v........,..,::..,...F.,........M..TT',
+        'TT.ffffffffff..,.P....::...F.,........,.,...TT',
+        'TT.fKKK.....f.cccccccF::..Ffffffffffffffff..TT',
+        'TT.fKKK.....f.hhhhhhh.::,.Ff.,,..........f..TT',
+        'TT.f..........ccccccc,::...f............,f..TT',
+        'TT.f..........hhhhhhh,::...f.,..F........f..TT',
+        'TT.f........f.ccccccc.::,..f......F....,.f..TT',
+        'TT.f........f.........::....,,.......,...f..TT',
+        'TT.ffffffffff.........::T..............,.f..TT',
+        'TT....................::...f...........F.fF.TT',
+        'TT.......~~~~~~.......::mm.f....,,....,..f..TT',
+        'TT.....~~~~~~~~~~~....::.,.f........FF...f..TT',
+        'TT,....~~~~~~~~~~~...,.....f..,..........f..TT',
+        'TT.T....~~~~~~~~~~.........fffffffffffffff,,TT',
+        'TT.......~~~~~~~~~~~~..,.....,..........,...TT',
+        'TT...T,.~~~~~~~~~~~~~,,,............,....T,.TT',
+        'TT......~~~~~~~~~~~~~~...T...T.F...,,T......TT',
+        'TTFF.....~~~~~~~~~~~~............T........F.TT',
+        'TT...,.F...~~~~~~~~..........,.......,F...F.TT',
         'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
         'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
       ],
       saidas: [
         { x: 22, y: 0, w: 2, h: 1, para: 'floresta', chegada: { x: 17.5, y: 27.6, dir: 'BACK' } },
-        { x: 45, y: 13, w: 1, h: 2, para: 'vilarejo', requer: 'prologo', chegada: { x: 2.2, y: 20.2, dir: 'RIGHT' } },
+        { x: 45, y: 11, w: 1, h: 1, para: 'vilarejo', requer: 'prologo', chegada: { x: 2.2, y: 20.2, dir: 'RIGHT' } },
       ],
       inicio: { x: 22.5, y: 3.6, dir: 'FRONT' },
       porta: { x: 10.7, y: 11.2 },
       placas: {},
       pontos: {
-        tigela: { x: 15.6, y: 11.3 },
+        tigela: { x: 15.7, y: 10.85 },
         racao: { x: 30.5, y: 10.4 },
-        regador: { x: 17.5, y: 15.5 },
+        regador: { x: 18.6, y: 14.7 },
         mesa: { x: 25, y: 23.9 },
-        lago: { x: 21.2, y: 27.4 },
+        lago: { x: 22.3, y: 27.6 },
       },
-      canteiros: ['15,17', '18,19', '14,21', '20,21'],
+      canteiros: ['15,15', '18,17', '14,19', '20,19'],
+      // Porteira do pasto (item 147), no meio da cerca de baixo.
+      porteiras: [{ x: 33, y: 26, w: 3 }],
+      // Porta da casa: entra na casa por dentro (item 145).
+      entradas: [{ x: 9, y: 10, para: 'casa_fazenda', chegada: { x: 15.5, y: 18.6, dir: 'BACK' } }],
       baus: { '41,10': { moedas: 20, depoisDe: 'prologo' } },
-      chao: [{ x: 5, y: 14, moedas: 5, requer: 'prologo' }],
-      exames: [{ id: 'pegadas', x: 21, y: 27, texto: 'Examinar as marcas', doc: 'pegadas', requer: 'prologo' }],
+      chao: [{ x: 5, y: 12, moedas: 5, requer: 'prologo' }],
+      exames: [{ id: 'pegadas', x: 22, y: 26, texto: 'Examinar as marcas', doc: 'pegadas', requer: 'prologo' }],
       // Objetos soltos do pacote de arte: [nome, x, y (base, em tiles), largura, raio de colisão].
       decoracoes: [
-        ['carroca', 35.5, 12.9, 70, 16], ['lampiao', 13.5, 11.9, 26, 5], ['lampiao', 20.6, 25.4, 26, 5],
-        ['barril', 26.4, 11.8, 14, 6], ['caixa', 27.2, 11.9, 16, 6], ['placa2', 21.3, 3.9, 30, 6],
-        ['arbusto_c', 4.5, 13.9, 26, 8], ['arbusto_b', 12.5, 15.9, 24, 8], ['arbusto_d', 26.5, 30.9, 28, 8],
-        ['girassol_0', 5.5, 11.9, 16, 0], ['girassol_1', 13.2, 10.9, 16, 0], ['girassol_2', 32.5, 13.9, 16, 0],
+        ['carroca', 35.5, 12.9, 70, 16], ['lampiao', 13.5, 12.95, 26, 5], ['lampiao', 20.6, 25.4, 26, 5],
+        ['barril', 24.6, 10.9, 14, 6], ['caixa', 25.4, 10.95, 16, 6], ['placa2', 21.3, 3.9, 30, 6],
+        ['arbusto_c', 2.6, 13.9, 26, 8], ['arbusto_b', 13.6, 13.9, 24, 8], ['arbusto_d', 26.5, 30.9, 28, 8],
+        ['girassol_0', 5.5, 10.9, 16, 0], ['girassol_1', 13.2, 10.9, 16, 0], ['girassol_2', 32.5, 13.9, 16, 0],
         ['milho_1', 24.5, 17.9, 15, 0], ['trigo_1', 24.5, 19.9, 15, 0], ['pedra1', 8.5, 31.9, 24, 8], ['moita', 41.5, 31.9, 26, 0],
-        ['pier', 17.2, 28.9, 120, 0], ['barco', 13.6, 29.6, 38, 0],
+        ['pier', 19.6, 28.9, 120, 0], ['barco', 14.6, 29.6, 38, 0],
       ],
       areas: {
-        galinhas: { x0: 3, y0: 18, x1: 10, y1: 23 },
+        galinhas: { x0: 4, y0: 17, x1: 11, y1: 20 },
         pasto: { x0: 28, y0: 16, x1: 40, y1: 25 },
         chiqueiro: { x0: 37, y0: 5, x1: 41, y1: 8 },
-        lago: { x0: 10, y0: 25, x1: 19, y1: 30 },
+        lago: { x0: 9, y0: 24, x1: 19, y1: 30 },
       },
+    },
+
+    // Casa da fazenda por dentro (item 145, planta de 32×24 tiles) com os móveis dos itens 148 a 152.
+    casa_fazenda: {
+      nome: 'Casa da fazenda',
+      tema: 'casa',
+      base: 'base_casa_fazenda',
+      interior: true,
+      linhas: [
+        '################################',
+        '################################',
+        '################################',
+        '################################',
+        '################################',
+        '##________#__________#________##',
+        '##________#__________#________##',
+        '##___________________#________##',
+        '##____________________________##',
+        '##____________________________##',
+        '##________#__________###______##',
+        '##________#__________###______##',
+        '##________#__________###______##',
+        '##________#___________________##',
+        '##############____######______##',
+        '##############____##############',
+        '##############____##############',
+        '##############____##############',
+        '###########__________###########',
+        '###############__###############',
+        '###############__###############',
+        '##############____##############',
+        '#############______#############',
+        '#############______#############',
+      ],
+      saidas: [
+        { x: 13, y: 23, w: 6, h: 1, para: 'fazenda', chegada: { x: 9.5, y: 11.7, dir: 'FRONT' } },
+      ],
+      inicio: { x: 15.5, y: 18.6, dir: 'BACK' },
+      placas: {},
+      // [nome, x, y (base, em tiles), largura no mundo, pegada [larg, alt] em tiles, altura na parede]
+      moveis: [
+        // Cozinha (piso de terracota)
+        ['farmhouse_fridge', 2.9, 6.5, 51, [1, 1]], ['farmhouse_stove', 4.7, 6.3, 57, [2, 1]], ['farmhouse_sink_counter', 7.5, 6.3, 92, [3, 1]],
+        ['farmhouse_towel_rack', 9.3, 4.95, 30, null, 18], ['farmhouse_dining_table', 5.8, 11.3, 110, [3, 2]],
+        // Sala
+        ['farmhouse_bookshelf', 11.9, 6.0, 53, [1, 1]], ['farmhouse_fireplace', 15.9, 5.9, 106, [3, 1]], ['farmhouse_bookshelf', 19.9, 6.0, 53, [1, 1]],
+        ['farmhouse_armchair', 13.0, 8.5, 57, [1, 1]], ['farmhouse_coffee_table', 15.9, 9.1, 83, [2, 1]], ['farmhouse_armchair', 18.8, 8.5, 57, [1, 1], 0, true],
+        ['farmhouse_sofa', 15.9, 12.4, 110, [3, 1]], ['farmhouse_theo_bed', 19.6, 18.95, 46, [1, 1]],
+        // Quarto (o espelho fica na parede do fundo)
+        ['farmhouse_bathroom_mirror', 22.7, 4.95, 24, null, 22], ['farmhouse_nightstand', 23.0, 6.5, 34, [1, 1]], ['farmhouse_bed', 25.4, 8.5, 115, [3, 3]],
+        ['farmhouse_nightstand', 27.8, 6.5, 34, [1, 1]], ['farmhouse_wardrobe', 29.2, 6.4, 53, [1, 1]], ['farmhouse_dresser', 28.5, 9.95, 80, [2, 1]],
+        // Banheiro (azulejo verde-água)
+        ['farmhouse_toilet', 25.0, 11.6, 35, [1, 1]], ['farmhouse_bathroom_vanity', 26.8, 11.5, 48, [1, 1]], ['farmhouse_shower', 28.9, 11.8, 46, [1, 1]],
+        ['farmhouse_laundry_basket', 29.0, 14.9, 32, [1, 1]],
+      ],
     },
 
     floresta: {
@@ -202,7 +263,7 @@
         'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
       ],
       saidas: [
-        { x: 0, y: 19, w: 1, h: 2, para: 'fazenda', chegada: { x: 43.4, y: 14.2, dir: 'LEFT' } },
+        { x: 0, y: 19, w: 1, h: 2, para: 'fazenda', chegada: { x: 43.4, y: 11.8, dir: 'LEFT' } },
         { x: 29, y: 0, w: 2, h: 1, para: 'floresta', chegada: { x: 62.9, y: 41.6, dir: 'BACK' } },
         { x: 59, y: 13, w: 1, h: 2, para: 'vale', requer: 'parte2', chegada: { x: 2.5, y: 21.2, dir: 'RIGHT' } },
       ],
@@ -881,7 +942,8 @@
     },
   };
 
-  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v', 'I', 'Q', 'A', 'Y', 'U', 'Z', 'j', 'g', 'q', '%', 'p', 'E', 'b', 'W']);
+  // 'O': chão ocupado por um móvel (interiores).
+  const SOLIDOS = new Set(['T', 'R', 'H', 'D', '~', 'w', 'X', 'C', 'S', '#', 'L', 'o', 'B', 'K', 'f', 'P', 'M', 'n', 'm', 'k', 'v', 'I', 'Q', 'A', 'Y', 'U', 'Z', 'j', 'g', 'q', '%', 'p', 'E', 'b', 'W', 'O']);
   const CAVERNA = new Set(['covil', 'ruinas', 'montanha', 'gruta', 'fenda', 'picos', 'tempestade', 'coracao']);
   // Temas desenhados com o chão de pedra (paredes '#', lajes, lava e abismos).
   const PEDRA = new Set(['ruinas', 'montanha', 'fenda', 'picos', 'tempestade', 'coracao']);
@@ -970,9 +1032,20 @@
     }
 
     criarProps() {
+      // Móveis dos interiores: [nome, x, y (base, em tiles), largura no mundo, pegada [larg, alt] em tiles, alto, espelhar].
+      // A pegada vira chão ocupado ('O'); móvel de parede (espelho, toalheiro) não tem pegada e fica no alto.
+      for (const [nome, x, y, larg, pegada, alto, flip] of this.def.moveis || []) {
+        this.props.push({ tipo: 'movel', nome, x: x * TILE, y: y * TILE, larg, alto: alto || 0, flip: !!flip });
+        if (!pegada) continue;
+        const [pw, ph] = pegada;
+        const tx0 = Math.round(x - pw / 2), ty0 = Math.round(y - ph);
+        for (let ty = ty0; ty < ty0 + ph; ty++) for (let tx = tx0; tx < tx0 + pw; tx++) if (this.l[ty] && this.l[ty][tx] === '_') this.l[ty][tx] = 'O';
+      }
       for (const [nome, x, y, larg, raio] of this.def.decoracoes || []) {
         this.props.push({ tipo: 'decoracao', nome, x: x * TILE, y: y * TILE, larg, raio, balanca: /girassol|milho|trigo|moita|arbusto/.test(nome), flip: ruido(Math.round(x * 3), Math.round(y * 3), 9) > 0.5 && nome !== 'placa2' });
       }
+      // Porteiras da arte no lugar de um trecho de cerca (a cerca continua sólida).
+      for (const pt of this.def.porteiras || []) this.props.push({ tipo: 'porteira', x: (pt.x + pt.w / 2) * TILE, y: (pt.y + 1) * TILE - 4, w: pt.w * TILE });
       const casas = new Set();
       const canteiros = new Set(this.def.canteiros || []);
       for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) {
@@ -984,7 +1057,8 @@
         if (t === 'K') { this.props.push(Object.assign({ tipo: 'galinheiro' }, this.bloco(tx, ty, 'K', casas))); continue; }
         if (t === 'f') {
           const liga = (c) => c === 'f';
-          this.props.push({ tipo: 'cerca', tx, ty, x: cx, y: base - 6, d: liga(this.tile(tx + 1, ty)), e: liga(this.tile(tx - 1, ty)), b: liga(this.tile(tx, ty + 1)), c: liga(this.tile(tx, ty - 1)) });
+          const oculta = (this.def.porteiras || []).some((pt) => ty === pt.y && tx >= pt.x && tx < pt.x + pt.w);
+          this.props.push({ tipo: 'cerca', tx, ty, x: cx, y: base - 6, oculta, d: liga(this.tile(tx + 1, ty)), e: liga(this.tile(tx - 1, ty)), b: liga(this.tile(tx, ty + 1)), c: liga(this.tile(tx, ty - 1)) });
           continue;
         }
         if (t === ',') { this.props.push({ tipo: 'mato', tx, ty, x: cx, y: base - 8, v }); continue; }
@@ -1036,24 +1110,40 @@
       }
     }
 
+    // Imagem de base (terreno da fazenda, planta das casas): o jogo desenha a imagem por baixo e aqui
+    // só entram os tiles que mudam por cima dela (`sobreBase`, ex.: a lama do chiqueiro). Sem a imagem
+    // (ainda carregando), o chão é desenhado tile a tile como antes.
+    get imagemBase() { return this.def.base ? LB.personagem(this.def.base) : null; }
+
     renderizarChao() {
       const RES = 2;
       const c = this.chao || document.createElement('canvas');
       c.width = this.larg * RES; c.height = this.alt * RES;
       const g = c.getContext('2d');
       g.setTransform(RES, 0, 0, RES, 0, 0);
-      for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) this.desenharTile(g, tx, ty);
+      this.comBase = !!this.imagemBase;
+      const sobre = this.def.sobreBase || '';
+      for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) {
+        if (!this.comBase) this.desenharTile(g, tx, ty);
+        else if (sobre.includes(this.l[ty][tx])) this.desenharTile(g, tx, ty, true);
+      }
       this.chao = c;
       this.resChao = RES;
     }
 
-    desenharTile(g, tx, ty) {
+    desenharTile(g, tx, ty, soTopo) {
       const t = this.l[ty][tx];
       const x = tx * TILE, y = ty * TILE;
       const cor = CORES[this.tema];
       const rnd = (s) => ruido(tx, ty, s);
 
       if (this.tema === 'encontro') return;
+      if (this.tema === 'casa') {
+        // Interior sem a imagem da planta: piso de madeira e paredes escuras.
+        g.fillStyle = t === '#' ? '#4a2f20' : (tx + ty) % 2 ? '#b07a48' : '#a8713f'; g.fillRect(x, y, TILE, TILE);
+        if (t !== '#') { g.fillStyle = 'rgba(70,40,20,.25)'; g.fillRect(x, y + TILE - 2, TILE, 2); }
+        return;
+      }
       if (PEDRA.has(this.tema)) { this.desenharTilePedra(g, tx, ty, t, x, y, cor, rnd); this.desenharTileExtra(g, tx, ty, t, x, y, rnd); return; }
       if (this.tema === 'gruta') { this.desenharTileGruta(g, tx, ty, t, x, y, cor, rnd); this.desenharTileExtra(g, tx, ty, t, x, y, rnd); return; }
       if (this.tema === 'covil') {
@@ -1081,10 +1171,12 @@
       }
 
       // Base de grama com variações.
-      g.fillStyle = cor.grama; g.fillRect(x, y, TILE, TILE);
-      for (let i = 0; i < 7; i++) {
-        g.fillStyle = rnd(i + 20) > 0.5 ? cor.grama2 : cor.grama3;
-        g.fillRect(x + rnd(i) * 30, y + rnd(i + 7) * 30, 2, 3);
+      if (!soTopo) {
+        g.fillStyle = cor.grama; g.fillRect(x, y, TILE, TILE);
+        for (let i = 0; i < 7; i++) {
+          g.fillStyle = rnd(i + 20) > 0.5 ? cor.grama2 : cor.grama3;
+          g.fillRect(x + rnd(i) * 30, y + rnd(i + 7) * 30, 2, 3);
+        }
       }
 
       if (t === ':') {
