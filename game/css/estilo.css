@@ -112,7 +112,7 @@ th { color: var(--destaque); }
 #b-especial { right: 92px; bottom: 78px; }
 #b-defender { right: 166px; bottom: 30px; }
 #b-magia { right: 172px; bottom: 108px; background: rgba(90, 140, 255, 0.55); }
-#b-interagir { right: 0; bottom: 172px; pointer-events: auto; padding: 10px 16px; border-radius: 12px; border: 2px solid #ffcf9a; background: rgba(240, 138, 75, 0.85); color: #2a1305; font-weight: 700; }
+#b-interagir { right: 0; bottom: 238px; pointer-events: auto; padding: 10px 16px; border-radius: 12px; border: 2px solid #ffcf9a; background: rgba(240, 138, 75, 0.85); color: #2a1305; font-weight: 700; }
 
 #tarefas { position: fixed; left: max(14px, env(safe-area-inset-left)); top: 58px; background: rgba(22, 17, 32, 0.82); border: 1px solid var(--borda); border-radius: 12px; padding: 8px 12px; font-size: 14px; z-index: 9; pointer-events: none; min-width: 190px; }
 #tarefas b { color: var(--destaque); display: block; margin-bottom: 4px; }
@@ -256,7 +256,8 @@ th { color: var(--destaque); }
 #viagem-lista button:disabled { opacity: 0.55; cursor: default; }
 
 /* Botão do item do atalho */
-#b-item { right: 246px; bottom: 58px; background: rgba(127, 214, 255, 0.45); font-size: 15px; }
+/* Item do atalho e troca de heroína ficam acima dos botões de ação, longe do joystick. */
+#b-item { right: 128px; bottom: 184px; background: rgba(127, 214, 255, 0.45); font-size: 15px; }
 #toque.passeio #b-item { display: none; }
-#b-trocar { right: 246px; bottom: 110px; background: rgba(255, 158, 207, 0.5); font-size: 13px; }
+#b-trocar { right: 180px; bottom: 184px; background: rgba(255, 158, 207, 0.5); font-size: 13px; }
 #toque.passeio #b-trocar { display: none; }
