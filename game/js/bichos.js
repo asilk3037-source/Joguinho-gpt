@@ -19,8 +19,8 @@
   };
 
   // Para que lado a arte de cada bicho olha (1 = direita, -1 = esquerda). A arte dos itens 131 a 137
-  // (galinhas, vaca, porco, cavalo e ovelha) olha para a esquerda; o pintinho e o Theo, para a direita.
-  const FACE = { galinha: -1, pintinho: 1, vaca: -1, porco: -1, cavalo: -1, ovelha: -1, cachorro: 1 };
+  // (galinhas, vaca, porco, cavalo, ovelha, pato e gato) olha para a esquerda; o pintinho e o Theo, para a direita.
+  const FACE = { galinha: -1, pintinho: 1, vaca: -1, porco: -1, cavalo: -1, ovelha: -1, pato: -1, gato: -1, cachorro: 1 };
   // Os desenhos feitos no código (pato e gato, até a arte chegar) crescem junto com os bichos novos.
   const ESCALA_DESENHO = 1.7;
 
@@ -42,7 +42,6 @@
       case 'vaca': return b.estado === 'fugindo' ? 'COW_RUN' : andando ? 'COW_WALK' : b.estado === 'comendo' ? 'COW_EAT' : 'COW_IDLE';
       case 'porco': return b.estado === 'fugindo' || andando ? 'PIG_WALK' : b.estado === 'comendo' ? 'PIG_MUD' : b.estado === 'carinho' ? 'PIG_FRONT' : noite ? 'PIG_LIE' : 'PIG_IDLE';
       case 'cavalo': return b.estado === 'fugindo' ? 'HORSE_RUN' : andando ? 'HORSE_WALK' : b.estado === 'comendo' ? 'HORSE_EAT' : 'HORSE_IDLE';
-      // Ovelha, pato e gato: usam a arte quando ela chegar; até lá, o desenho do código.
       case 'ovelha': return b.estado === 'fugindo' ? 'SHEEP_RUN' : andando ? 'SHEEP_WALK' : b.estado === 'comendo' ? 'SHEEP_EAT' : 'SHEEP_IDLE';
       case 'pato': return b.estado === 'fugindo' ? 'DUCK_RUN' : jogo.mapa.tileEm(b.x, b.y) === '~' ? 'DUCK_SWIM' : andando ? 'DUCK_WALK' : 'DUCK_IDLE';
       case 'gato': return b.estado === 'dormindo' ? 'CAT_SLEEP' : b.estado === 'carinho' ? 'CAT_PURR' : andando || b.estado === 'fugindo' ? 'CAT_WALK' : 'CAT_IDLE';

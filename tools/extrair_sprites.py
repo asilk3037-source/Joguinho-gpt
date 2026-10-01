@@ -44,6 +44,23 @@ def ler_animacoes(caminho):
     achado = PADRAO_ANIMACOES.search(html)
     if achado and not achado.group(1).startswith("{'"):
         return json.loads(achado.group(1))
+    if 'const animations={"' in html:
+        # Item 137 reenviado: const animations={"CODIGO":["data:...", ...]} e descriptions em JSON,
+        # tudo na mesma linha do resto do script.
+        inicio = html.index("const animations=") + len("const animations=")
+        anims, _ = json.JSONDecoder().raw_decode(html[inicio:])
+        desc = {}
+        if "const descriptions=" in html:
+            d = html.index("const descriptions=") + len("const descriptions=")
+            desc, _ = json.JSONDecoder().raw_decode(html[d:])
+        saida = {}
+        for codigo, valor in anims.items():
+            quadros = valor["frames"] if isinstance(valor, dict) else valor
+            quadros = [q for q in quadros if len(q.split(",", 1)[-1]) >= 100]
+            if quadros:
+                rotulo = valor.get("label") if isinstance(valor, dict) else desc.get(codigo, codigo)
+                saida[RENOMEAR.get(codigo, codigo)] = {"frames": quadros, "label": rotulo or codigo}
+        return saida
     if "const payload=" in html:
         inicio = html.index("const payload=") + len("const payload=")
         payload, _ = json.JSONDecoder().raw_decode(html[inicio:])
@@ -81,7 +98,10 @@ def ler_animacoes(caminho):
 
 # Itens de cenário: NÃO passam pelo recorte de animação (quadros de 1254×1254 viram células de
 # 256). Cada cenário tem medida própria combinada antes (ver docs, seção 22.11) e entra à mão.
-ITENS_CENARIO = {140: "Minas Shopping"}
+ITENS_CENARIO = {140: "Minas Shopping", 141: "Playground", 142: "máquina de soco", 143: "Túnel",
+                 144: "terreno da Fazendinha", 145: "casa da fazenda por dentro", 146: "objetos da Fazendinha",
+                 147: "cercas, porteira, flores e mato", 148: "cozinha", 149: "sala, quarto e banheiro",
+                 150: "lareira e sala", 151: "quarto", 152: "banheiro"}
 
 
 # Andar e correr precisam se mexer: com menos quadros diferentes que isso a animação do item é
@@ -92,6 +112,7 @@ MOVIMENTO = re.compile(r"_(WALK|RUN|MOVE)(_|$)")
 
 # Animações que chegaram erradas e esperam reenvio: o jogo continua com a anterior.
 RECUSADAS = {
+    ("LINE_BELL_ITEM_137.html", "SHEEP_IDLE"): "reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior",
     ("LINE_BELL_ITEM_118.html", "DRAGON_SLEEP"): "não é o dragão dormindo (poses de voo)",
     ("LINE_BELL_ITEM_113.html", "LINE_BELL_DANCE"): "a Line some em alguns quadros",
 }
@@ -139,6 +160,33 @@ PERNAS_ALTERNADAS = {"CHICKEN_WALK": (30, 0.14), "HEN_BROWN_WALK": (30, 0.14),
                      "CHICKEN_RUN": (40, 0.22), "HEN_BROWN_RUN": (40, 0.22)}
 
 
+# Animações com um objeto parado desenhado junto que hoje tem arte própria (item 142: a máquina de
+# soco nova). O objeto é o que não muda entre os quadros; sai da animação e o jogo desenha a arte nova.
+SEM_MAQUINA = {"LINE_PUNCH_MACHINE"}
+
+
+def tirar_maquina(fontes, lado):
+    import numpy as np
+    from scipy import ndimage
+    A = np.stack([np.asarray(f.convert("RGBA")).astype(np.int32) for f in fontes])
+    dif = np.abs(A[..., :3] - A[0:1, ..., :3]).sum(-1).max(0)
+    parado = (dif < 30) & (A[..., 3] > 0).all(0)
+    rot, n = ndimage.label(parado)
+    tam = ndimage.sum(parado, rot, range(1, n + 1))
+    objs = ndimage.find_objects(rot)
+    w = parado.shape[1]
+    # O maior pedaço parado na metade direita é a máquina (a Line soca para a direita).
+    cand = [i for i in range(n) if (objs[i][1].start + objs[i][1].stop) / 2 > 0.55 * w]
+    i = max(cand, key=lambda k: tam[k])
+    maquina = ndimage.binary_dilation(rot == i + 1, iterations=3)
+    saida = []
+    for a in A:
+        a = a.copy(); a[maquina, 3] = 0
+        saida.append(Image.fromarray(a.astype(np.uint8), "RGBA").resize((lado, lado), Image.LANCZOS))
+    print(f"  máquina tirada da animação (região x {objs[i][1].start}–{objs[i][1].stop}, y {objs[i][0].start}–{objs[i][0].stop} de {w})")
+    return saida
+
+
 def processar(codigo, dados, origem):
     frames = dados["frames"]
     unicos, sequencia, indice = [], [], {}
@@ -152,6 +200,8 @@ def processar(codigo, dados, origem):
     lado = CELULA_DRAGAO if dragao else CELULA
     celulas = [decodificar(u).resize((lado, lado), Image.LANCZOS) for u in unicos]
     passo = None
+    if codigo in SEM_MAQUINA:
+        celulas = tirar_maquina([decodificar(u) for u in unicos], lado)
     if codigo in PERNAS_ALTERNADAS:
         import pernas_alternadas
         fonte = decodificar(unicos[0])

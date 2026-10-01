@@ -13,7 +13,7 @@
 
   const MAPAS = {
     shopping: { nome: 'Minas Shopping', lugar: 'Minas Shopping', fundo: 'encontro_shopping' },
-    playground: { nome: 'Playground', lugar: 'Playground', fundo: null },
+    playground: { nome: 'Playground', lugar: 'Playground', fundo: 'encontro_playground' },
     tunel: { nome: 'Túnel', lugar: 'Túnel', fundo: 'encontro_tunel' },
   };
   for (const [id, m] of Object.entries(MAPAS)) {
@@ -54,8 +54,9 @@
   function desenharFundo(g, jogo, cx, cy) {
     const m = jogo.mapa, nome = m.def.fundo;
     g.fillStyle = '#1c1524'; g.fillRect(cx - 2, cy - 2, jogo.vw + 4, jogo.vh + 4);
-    if (!nome) { playground(g); return; }
     const img = LB.personagem(nome), b = borrado(nome);
+    // Sem a ilustração (ainda carregando), o playground desenhado no código.
+    if (nome === 'encontro_playground' && !img) { playground(g); return; }
     const W = 360 * K, H = 640 * K;
     if (b) {
       g.save(); g.globalAlpha = 0.5; g.imageSmoothingEnabled = true;
@@ -84,18 +85,17 @@
     return [{ y: SOCO.y - 1, desenhar: (g) => desenharMaquina(g, jogo) }];
   }
 
+  // Máquina de soco do item 142 (com o placar já desenhado: 000 antes do soco, 038 depois). A animação
+  // do soco não traz mais a máquina antiga (o extrator tira), então ela fica sempre desenhada aqui.
+  // Posição: onde ficava o gabinete antigo dentro da animação (x de 58% a 87% do quadro).
   function desenharMaquina(g, jogo) {
-    const e = jogo.encontro, s = LB.sprite('LINE_PUNCH_MACHINE'), img = LB.personagem('encontro_maquina');
-    if (!s) return;
-    const aj = s.ajuste || 1, esc = LB.ALTURA_LINE * (s.escala || 1) / s.cell * aj;
-    // Enquanto a Line soca, a própria animação desenha a máquina.
-    if (!e.socando && img) g.drawImage(img, SOCO.x - s.cell / 2 * esc, SOCO.y - s.ground * esc, s.cell * esc, s.cell * esc);
-    // Placar em cima da máquina, como no HTML: 000 → 038.
-    const px = SOCO.x + 17 * aj, py = SOCO.y - 70 * aj;
-    g.fillStyle = '#18131f'; g.fillRect(px - 17, py - 9, 34, 14);
-    g.fillStyle = '#df5c7e'; g.fillRect(px - 15, py - 7, 30, 10);
-    g.fillStyle = '#ffd56d'; g.font = 'bold 9px monospace'; g.textAlign = 'center';
-    g.fillText(e.placar || '000', px, py + 1);
+    const e = jogo.encontro, s = LB.sprite('LINE_PUNCH_MACHINE');
+    const img = LB.personagem(e.placar === '038' ? 'encontro_maquina_038' : 'encontro_maquina_000') || LB.personagem('encontro_maquina');
+    if (!s || !img) return;
+    const aj = s.ajuste || 1, esc = LB.ALTURA_LINE * (s.escala || 1) / s.cell * aj, cel = s.cell * esc;
+    const alt = cel * 0.74, larg = alt * img.width / img.height;
+    const x0 = SOCO.x - cel * 0.03;
+    g.drawImage(img, x0, SOCO.y - alt + 2, larg, alt);
   }
 
   // ---------------- Interação ----------------
