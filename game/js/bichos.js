@@ -12,7 +12,7 @@
     vaca: { vel: 13, fuga: 0, sons: ['Muuuu!', 'Muu...'], nome: 'vaca', altura: 72 },
     ovelha: { vel: 17, fuga: 60, sons: ['Béééé!', 'Bé!'], nome: 'ovelha', altura: 50 },
     porco: { vel: 15, fuga: 0, sons: ['Oinc!', 'Oinc oinc!'], nome: 'porco', altura: 47 },
-    cachorro: { vel: 70, fuga: 0, sons: ['Au! Au!', 'Au!', 'Auuu~'], nome: 'Theo', altura: 40 },
+    cachorro: { vel: 70, fuga: 0, sons: ['Au! Au!', 'Au!', 'Auuu~'], nome: 'Theo', altura: 35 },
     gato: { vel: 0, fuga: 0, sons: ['Miau~', 'Rrrrr...'], nome: 'gato', altura: 36 },
     pato: { vel: 16, fuga: 0, sons: ['Quack!', 'Quack quack!'], nome: 'pato', altura: 34 },
     cavalo: { vel: 22, fuga: 0, sons: ['Iiirrííí!', 'Frrr...'], nome: 'cavalo', altura: 82 },

@@ -18,7 +18,7 @@
 
 > 🎞️ **Line e Bell do mesmo tamanho e no mesmo ritmo em todas as animações:** poses inclinadas, agachadas e sentadas não aumentam nem diminuem mais a cabeça (ajuste medido pela cabeça, seção 26.5); a Bell anda e corre no mesmo passo da Line; as cenas do começo tocam no ritmo da artista (o beijo no túnel, a Line admirando a Bell e o soco na máquina estavam acelerados); reverência, toca aqui e vitória não piscam mais em meio segundo. No rapto aparece um dragão só: a arte antiga da Bell carregada já trazia outro dragão desenhado junto.
 
-> 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 47 de altura, vaca 71, cavalo 90, porco e ovelha 48, Theo 42, pintinho 27; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).
+> 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 47 de altura, vaca 71, cavalo 90, porco e ovelha 48, Theo 36, pintinho 27; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).
 
 > 📚 **Tudo num documento só:** o que falta criar (seção 23), o índice dos itens de arte recebidos (seção 24), o plano de criação por item (seção 25) e como rodar, publicar e editar o jogo (seção 26) agora ficam aqui dentro. Os arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md`) saíram do repositório.
 
@@ -3175,7 +3175,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefes | Guardião de Pedra | 110×110 | 198×198 | 297×297 | 396×396 | 594×594 | **640×640** | 384×384 |  |
 | Inimigos | Sombra, fogos-fátuos (todos os elementos), morcego | 64×64 | 115×115 | 173×173 | 230×230 | 346×346 | **384×384** | 256×256 | o bicho ocupa uns 60% do quadro; o resto é brilho |
 | Bichos | Vaca, cavalo | 150×150 | 270×270 | 405×405 | 540×540 | 810×810 | **640×640** | 384×384 | vaca uns 71 de altura e cavalo uns 90 (a Line tem 62) |
-| Bichos | Theo, porco, ovelha, gato, pato, galinhas | 72×72 | 130×130 | 194×194 | 259×259 | 389×389 | **384×384** | 256×256 | galinha uns 47 de altura, porco e ovelha uns 48, Theo uns 42, pato uns 34, gato uns 31. Andar e correr com as pernas alternando, uma depois da outra |
+| Bichos | Theo, porco, ovelha, gato, pato, galinhas | 72×72 | 130×130 | 194×194 | 259×259 | 389×389 | **384×384** | 256×256 | galinha uns 47 de altura, porco e ovelha uns 48, Theo uns 36, pato uns 34, gato uns 31. Andar e correr com as pernas alternando, uma depois da outra |
 | Bichos | Pintinho | 62×62 | 112×112 | 167×167 | 223×223 | 335×335 | **384×384** | 256×256 | uns 27 de altura: pode vir no mesmo quadro da galinha, bem menor |
 | Cenário | Tile de chão, parede, água, lama, vento, abismo | 32×32 | 58×58 | 86×86 | 115×115 | 173×173 | **128×128** | 96×96 | tem que emendar sem costura dos 4 lados; faça 3 ou 4 variações de cada |
 | Cenário | Árvores (normal, frutífera, cerejeira, pinheiro, árvore morta do pântano) | 62×75 | 112×135 | 167×202 | 223×270 | 335×405 | **384×448** | 256×300 | hoje são 97×115: ficam borradas em tela cheia |

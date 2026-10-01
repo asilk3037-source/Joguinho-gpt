@@ -558,7 +558,7 @@ TAMANHOS = [
     ("Chefes", "Guardião de Pedra", (110, 110), "640×640", "384×384", ""),
     ("Inimigos", "Sombra, fogos-fátuos (todos os elementos), morcego", (64, 64), "384×384", "256×256", "o bicho ocupa uns 60% do quadro; o resto é brilho"),
     ("Bichos", "Vaca, cavalo", (150, 150), "640×640", "384×384", "vaca uns 71 de altura e cavalo uns 90 (a Line tem 62)"),
-    ("Bichos", "Theo, porco, ovelha, gato, pato, galinhas", (72, 72), "384×384", "256×256", "galinha uns 47 de altura, porco e ovelha uns 48, Theo uns 42, pato uns 34, gato uns 31. Andar e correr com as pernas alternando, uma depois da outra"),
+    ("Bichos", "Theo, porco, ovelha, gato, pato, galinhas", (72, 72), "384×384", "256×256", "galinha uns 47 de altura, porco e ovelha uns 48, Theo uns 36, pato uns 34, gato uns 31. Andar e correr com as pernas alternando, uma depois da outra"),
     ("Bichos", "Pintinho", (62, 62), "384×384", "256×256", "uns 27 de altura: pode vir no mesmo quadro da galinha, bem menor"),
     ("Cenário", "Tile de chão, parede, água, lama, vento, abismo", (32, 32), "128×128", "96×96", "tem que emendar sem costura dos 4 lados; faça 3 ou 4 variações de cada"),
     ("Cenário", "Árvores (normal, frutífera, cerejeira, pinheiro, árvore morta do pântano)", (62, 75), "384×448", "256×300", "hoje são 97×115: ficam borradas em tela cheia"),

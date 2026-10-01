@@ -80,7 +80,7 @@ w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, 
 w()
 w("> 🎞️ **Line e Bell do mesmo tamanho e no mesmo ritmo em todas as animações:** poses inclinadas, agachadas e sentadas não aumentam nem diminuem mais a cabeça (ajuste medido pela cabeça, seção 26.5); a Bell anda e corre no mesmo passo da Line; as cenas do começo tocam no ritmo da artista (o beijo no túnel, a Line admirando a Bell e o soco na máquina estavam acelerados); reverência, toca aqui e vitória não piscam mais em meio segundo. No rapto aparece um dragão só: a arte antiga da Bell carregada já trazia outro dragão desenhado junto.")
 w()
-w("> 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 47 de altura, vaca 71, cavalo 90, porco e ovelha 48, Theo 42, pintinho 27; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).")
+w("> 🐄 **Bichos maiores e galinhas andando de verdade:** todos os bichos cresceram (galinha 47 de altura, vaca 71, cavalo 90, porco e ovelha 48, Theo 36, pintinho 27; a Line tem 62). A galinha agora anda com uma perna depois da outra, e cada bicho olha para o lado em que anda (antes a galinha, a vaca, o cavalo e a ovelha andavam de ré).")
 w()
 w("> 📚 **Tudo num documento só:** o que falta criar (seção 23), o índice dos itens de arte recebidos (seção 24), o plano de criação por item (seção 25) e como rodar, publicar e editar o jogo (seção 26) agora ficam aqui dentro. Os arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md`) saíram do repositório.")
 w()

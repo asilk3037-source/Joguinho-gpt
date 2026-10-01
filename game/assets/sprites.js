@@ -2332,7 +2332,7 @@ window.SPRITES = {
   ],
   "label": "Theo ergue o corpo e reage ao alerta.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_BALL": {
@@ -2372,7 +2372,7 @@ window.SPRITES = {
   ],
   "label": "Theo acompanha a bola em saltos sucessivos.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_BATH": {
@@ -2412,7 +2412,7 @@ window.SPRITES = {
   ],
   "label": "Theo se mexe entre bolhas durante o banho.",
   "item": "LINE_BELL_ITEM_130.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_BONE": {
@@ -2452,7 +2452,7 @@ window.SPRITES = {
   ],
   "label": "Theo brinca com o osso e volta à pose inicial.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_BACK": {
@@ -2492,7 +2492,7 @@ window.SPRITES = {
   ],
   "label": "Respiração e cauda vistas de costas.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_FRONT": {
@@ -2532,7 +2532,7 @@ window.SPRITES = {
   ],
   "label": "Respiração e ajuste de peso vistos de frente.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_LEFT": {
@@ -2572,7 +2572,7 @@ window.SPRITES = {
   ],
   "label": "Pose neutra voltada à esquerda.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_IDLE_RIGHT": {
@@ -2612,7 +2612,7 @@ window.SPRITES = {
   ],
   "label": "Pose neutra voltada à direita.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_LIE": {
@@ -2652,7 +2652,7 @@ window.SPRITES = {
   ],
   "label": "Theo deitado e atento.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_PLAY": {
@@ -2692,7 +2692,7 @@ window.SPRITES = {
   ],
   "label": "Brincadeira de barriga para cima com balanço do corpo.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_QUESTION": {
@@ -2732,7 +2732,7 @@ window.SPRITES = {
   ],
   "label": "Theo inclina a cabeça com curiosidade.",
   "item": "LINE_BELL_ITEM_126.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_ROLL": {
@@ -2772,7 +2772,7 @@ window.SPRITES = {
   ],
   "label": "Theo rola de barriga para cima e recupera a posição.",
   "item": "LINE_BELL_ITEM_130.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_RUN": {
@@ -2807,7 +2807,7 @@ window.SPRITES = {
   ],
   "label": "Corrida com impulsão, suspensão e aterrissagem.",
   "item": "LINE_BELL_ITEM_128.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SIT": {
@@ -2847,7 +2847,7 @@ window.SPRITES = {
   ],
   "label": "Theo se acomoda sentado.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SIT_FRONT": {
@@ -2887,7 +2887,7 @@ window.SPRITES = {
   ],
   "label": "Theo sentado de frente, respirando.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SIT_IDLE": {
@@ -2927,7 +2927,7 @@ window.SPRITES = {
   ],
   "label": "Theo sentado e apaixonado.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_SLEEP": {
@@ -2967,7 +2967,7 @@ window.SPRITES = {
   ],
   "label": "Theo dormindo com respiração lenta.",
   "item": "LINE_BELL_ITEM_129.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_BACK": {
@@ -3002,7 +3002,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_FRONT": {
@@ -3037,7 +3037,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_LEFT": {
@@ -3072,7 +3072,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "THEO_WALK_RIGHT": {
@@ -3107,7 +3107,7 @@ window.SPRITES = {
   ],
   "label": "Ciclo de caminhada direcional com passada, apoio e recuperação.",
   "item": "LINE_BELL_ITEM_127.html",
-  "mundo": 65.51,
+  "mundo": 56.15,
   "bicho": true
  },
  "LINE_IDLE_FRONT": {
