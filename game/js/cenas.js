@@ -455,7 +455,7 @@
       yield c.titulo('Espada encontrada!', 'Agora a Line pode lutar', 2);
       yield c.fala('Line', 'Uma espada! Com isso eu consigo cortar os espinhos no caminho do norte.', 'riso');
       yield c.fala('', LB.entrada.usandoToque()
-        ? 'ATACAR: golpe (aperte 3x para combo) · GIRO: ataque em volta · ESQUIVA: desvia (correndo vira dash) · DEFESA: segure para bloquear · PULAR + ATACAR: ataque aéreo'
+        ? 'ATACAR: golpe (aperte 3x para combo; segure para o giro em volta) · ESQUIVA: desvia (correndo vira dash) · DEFESA: segure para bloquear · PULAR + ATACAR: ataque aéreo'
         : 'J ou Z: atacar (3x = combo) · K ou X: giro · L ou C: esquivar (correndo = dash) · V ou B: defender (segure) · Espaço e depois J: ataque aéreo');
       j.flags.espada = true;
       j.salvar();

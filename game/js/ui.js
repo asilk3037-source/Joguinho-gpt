@@ -81,7 +81,7 @@
       $('#toque').classList.toggle('oculto', !toque || j.estado !== 'jogo');
       const l = j.line;
       const botoesCombate = l && l.temEspada;
-      for (const id of ['#b-especial', '#b-defender']) $(id).classList.toggle('apagado', !botoesCombate);
+      $('#b-defender').classList.toggle('apagado', !botoesCombate);
       $('#b-magia').classList.toggle('oculto', !(l && l.temMagia));
       $('#b-interagir').classList.toggle('oculto', !(j.textoPrompt && !j.promptFinal));
       if (j.textoPrompt) $('#b-interagir').textContent = j.textoPrompt;

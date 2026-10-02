@@ -26,7 +26,7 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 - <strong>Armaduras da Bell</strong> (Vestido Reforçado, Manto Estelar e Armadura da Aurora) e a arte de armadura das duas (seção 19.3).
 - <strong>Novos moradores</strong> (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 - <strong>Lista completa de arte necessária</strong> para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).</p>
-<p>📱 <strong>Botões do celular:</strong> a poção (🧪), o trocar heroína (🔄) e o item do atalho (💣) subiram para cima dos botões de ação, longe do joystick (seção 8.1).</p>
+<p>📱 <strong>Botões do celular:</strong> a poção (🧪), o trocar heroína (🔄) e o item do atalho (💣) subiram para cima dos botões de ação, longe do joystick. O botão do giro (🌀) saiu: <strong>segurar o ⚔</strong> faz o giro da Line (ou o leque de estrelas da Bell). <strong>Sem espada, o ⚔ dá um soco</strong> (seção 8.1).</p>
 <p>🌻 <strong>Itens 188 a 202 chegaram:</strong> arco de jardim com a placa de boas-vindas na estrada norte da fazenda, cata-vento de galo no telhado do celeiro, sino na varanda, fumigador e pote de mel junto à colmeia, floreira na frente da casa, comedouro no galinheiro, cocho de feno, pedra de sal e bebedouro no pasto, bancada de mudas com luvas e bandeja de mudinhas ao lado da horta e um rolo de corda no píer.</p>
 <p>🧺 <strong>Itens 154 a 187 chegaram — a fazenda e a casa ganharam vida:</strong> a casa da fazenda tem ilha de cozinha com banquetas, despensa, prateleira de temperos, relógio, quadro, vasos de planta e de flores, luminárias pendentes, arandelas, uma janela e a porta da despensa, que abre quando a Line chega perto. No terreno: caixa de correio, capacho, cadeira de balanço na varanda, lenha, colmeia, casinha de passarinho, espantalho, carrinho de mão, pá, enxada, suporte de ferramentas, sacos de sementes, balde, barril de chuva, cesto de colheita, ninho e cesto de ovos, cocho no pasto, latão de leite, composteira, ferradura no celeiro, banco e fogueira na beira do lago, taboas, vitórias-régias, caixote no píer e cogumelos. O regador da tarefa da manhã agora aparece de verdade no poço, e a pontezinha está no riacho do Lago Espelhado. Luminárias, janela e fogueira acendem sozinhas à noite. O item 153 não veio.</p>
 <p>📱 <strong>Ajustes do teste no celular (seção 23.5):</strong> a Line não “cai” mais ao pegar a espada (a arte de “Feliz” era uma corrida com queda e saiu do jogo); as duas de mãos dadas e a dança do pôr do sol voltaram ao tamanho certo; a casa da fazenda não some mais da tela; no lanche do shopping aparece só a mesa delas. <strong>Pedido de arte novo:</strong> o Minas Shopping em peças — base só com chão e teto e cada loja, móvel e enfeite separado (seção 22.11.1).</p>
@@ -182,7 +182,7 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 </tr>
 <tr>
 <td>Animações catalogadas</td>
-<td><strong>553</strong>: 260 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
+<td><strong>554</strong>: 261 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
 </tr>
 </tbody>
 </table>
@@ -1233,6 +1233,12 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 <tr>
 <td><code>LINE_PUNCH_MACHINE</code></td>
 <td>A Line soca a máquina, com a máquina e o placar na mesma animação. O impacto é por volta da metade.</td>
+<td style="text-align: right;">3</td>
+<td>✅ temporária</td>
+</tr>
+<tr>
+<td><code>LINE_PUNCH</code></td>
+<td>Soco sem espada (usa a arte do soco na máquina, em 6 quadros)</td>
 <td style="text-align: right;">3</td>
 <td>✅ temporária</td>
 </tr>
@@ -2526,7 +2532,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td>arrastar até o fim</td>
 </tr>
 <tr>
-<td>Atacar (3x = combo)</td>
+<td>Atacar (3x = combo; sem espada, soco)</td>
 <td>J / Z</td>
 <td>A</td>
 <td>⚔</td>
@@ -2535,7 +2541,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td>Ataque giratório</td>
 <td>K / X</td>
 <td>X</td>
-<td>🌀</td>
+<td>segurar ⚔</td>
 </tr>
 <tr>
 <td>Esquivar (correndo = dash)</td>
@@ -2611,7 +2617,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 </tbody>
 </table>
-<p><strong>Posição dos botões no celular:</strong> o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; a <strong>poção (🧪)</strong>, o <strong>🔄 trocar heroína</strong> e o <strong>item do atalho (💣)</strong> ficam numa fileira <strong>acima</strong> deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda.</p>
+<p><strong>Posição dos botões no celular:</strong> o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; a <strong>poção (🧪)</strong>, o <strong>🔄 trocar heroína</strong> e o <strong>item do atalho (💣)</strong> ficam numa fileira <strong>acima</strong> deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: <strong>segurando o ⚔</strong> sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. <strong>Sem espada</strong>, o ⚔ dá um <strong>soco</strong> de alcance curto (a arte do soco na máquina do primeiro encontro).</p>
 <h3 id="82-combate-com-espada">8.2 Combate com espada</h3>
 <table>
 <thead>
@@ -2819,7 +2825,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 - ✅ <strong>Tem arte (temporária):</strong> já aparece no jogo, mas ainda será trocada pela final.
 - 🔁 <strong>Substituta:</strong> ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ <strong>Desenho no código:</strong> ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.</p>
-<p><strong>Resumo:</strong> 553 animações. ✅ 260 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
+<p><strong>Resumo:</strong> 554 animações. ✅ 261 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
 <table>
 <thead>
 <tr>
@@ -2833,8 +2839,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <tbody>
 <tr>
 <td>Primeiro encontro (prólogo)</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -3099,6 +3105,14 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <tr>
 <td><code>LINE_PUNCH_MACHINE</code></td>
 <td>Soco na máquina (primeiro encontro)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_106</td>
+</tr>
+<tr>
+<td><code>LINE_PUNCH</code></td>
+<td>Soco sem espada (usa a arte do soco na máquina, em 6 quadros)</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: center;"></td>
 <td>✅ temporária</td>
@@ -8884,7 +8898,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td>combo de espada</td>
 </tr>
 <tr>
-<td>🌀 Especial (K)</td>
+<td>Especial (K; no celular, segurar ⚔)</td>
 <td><strong>Leque de estrelas</strong>: três estrelas de luz em leque (1 de magia). Acendem cristais, faróis e pérolas e <strong>abrem a guarda dos chefes</strong></td>
 <td>giro</td>
 </tr>
@@ -9480,8 +9494,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <tbody>
 <tr>
 <td>Primeiro encontro (prólogo)</td>
-<td>8</td>
-<td>8</td>
+<td>9</td>
+<td>9</td>
 <td>0</td>
 <td>0</td>
 </tr>
@@ -9690,8 +9704,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>553</strong></td>
-<td><strong>260</strong></td>
+<td><strong>554</strong></td>
+<td><strong>261</strong></td>
 <td><strong>172</strong></td>
 <td><strong>121</strong></td>
 </tr>
@@ -10139,7 +10153,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <li><strong>Corações</strong> (cheio, meio, vazio), <strong>escudos</strong> (cheio e vazio) e <strong>gotas de magia</strong>.</li>
 <li><strong>Relógio:</strong> moldura do topo, ícones de sol, sol nascendo/se pondo e lua, e o número do dia.</li>
 <li><strong>Vida da outra heroína:</strong> mini-retrato da Line e da Bell para o painel pequeno.</li>
-<li><strong>Botões de toque:</strong> atacar, giro/leque, esquivar, pular, defender, magia/canção, poção, item, mochila, pausa e <strong>🔄 trocar heroína</strong> (com a cara de quem entra).</li>
+<li><strong>Botões de toque:</strong> atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, poção, item, mochila, pausa e <strong>🔄 trocar heroína</strong> (com a cara de quem entra).</li>
 <li><strong>Seta guia do Fácil</strong> (dourada) e o balão de dica 💡.</li>
 <li><strong>Barra de chefe</strong> com moldura e o ícone do elemento (pedra, fogo, terra, água, ar e o da Quimera), e a versão “núcleo exposto”.</li>
 <li><strong>Mapa do mundo:</strong> ilustração em pergaminho com as 14 regiões (7 da Parte 1 e 7 da Parte 2), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌋 🌊 🐸 🏔️ ⛈️ 💠.</li>
@@ -10665,7 +10679,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <blockquote>
 <p>Esta seção junta o que antes ficava em arquivos soltos (<code>ANIMACOES_PENDENTES.md</code>, <code>LINE_BELL_INDICE_PARTES.md</code>, <code>LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md</code>, <code>docs/ARTES_NECESSARIAS.md</code>, <code>arte/theo/LAYOUT_OFICIAL.md</code> e <code>game/README.md</code>). Agora <strong>tudo fica só neste documento</strong>: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.</p>
 </blockquote>
-<p><strong>Status:</strong> 260 de 553 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
+<p><strong>Status:</strong> 261 de 554 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
 <h3 id="231-reenviar-ou-mandar">23.1 Reenviar ou mandar</h3>
 <ul>
 <li><strong>Item 96</strong>: chegou com 2 imagem(ns) vazia(s) em <code>DRAGON_FALL</code>, <code>DRAGON_DEFEATED</code>. As animações funcionam sem esses quadros, mas ficam incompletas.</li>

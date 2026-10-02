@@ -86,6 +86,8 @@
     LINE_ATTACK_DIAGONAL: { janelas: [[0.28, 0.52]], dano: 2, alcance: 68, largura: 32, empurra: 160, investida: 170 },
     LINE_ATTACK_SPIN: { janelas: [[0.28, 0.76]], dano: 2, raio: 66, empurra: 170 },
     LINE_ATTACK_AIR: { janelas: [[0.5, 0.74]], dano: 2, raio: 60, empurra: 170 },
+    // Sem espada, a Line soca (alcance curto, sem combo).
+    LINE_PUNCH: { janelas: [[0.3, 0.6]], dano: 1, alcance: 44, largura: 24, empurra: 80 },
   };
   const SEQUENCIA = ['LINE_ATTACK_HORIZONTAL', 'LINE_ATTACK_VERTICAL', 'LINE_ATTACK_COMBO'];
 
@@ -170,6 +172,10 @@
           else if (st.progresso < 0.3) this.mover(this.lado * 30 * dt, 0, jogo);
           this.golpear(jogo, g, st.progresso);
           if (controlavel && E.apertou('atacar') && st.progresso > 0.3) this.filaAtaque = true;
+          // ⚔ segurado no celular (ou K no meio do golpe): emenda no giro.
+          if (controlavel && this.temEspada && E.apertou('especial') && this.cooldownGiro <= 0) {
+            this.mirar(jogo); this.mudar('giro', 'LINE_ATTACK_SPIN'); this.alvosAtingidos.clear(); this.janela = -1; break;
+          }
           if (controlavel && st.progresso > 0.4) {
             if (E.apertou('esquivar')) { this.esquivar(jogo, E.eixo()); break; }
             if (E.apertou('pular')) { this.pular(jogo, E.eixo()); break; }
@@ -354,7 +360,10 @@
             if (this.correndo) { this.atacarCorrendo(jogo); return; }
             this.atacar(jogo, 0); return;
           }
-          jogo.dica('semEspada', 'A Line ainda não tem uma arma. Explore a floresta!');
+          // Sem espada: soco.
+          this.mirar(jogo); this.mudar('ataque', 'LINE_PUNCH');
+          this.alvosAtingidos.clear(); this.janela = -1; this.filaAtaque = false; this.semCombate = 0;
+          return;
         }
         if (E.apertou('especial') && this.temEspada) {
           if (!this.armada) { this.mudar('sacar', 'LINE_SWORD_DRAW'); return; }

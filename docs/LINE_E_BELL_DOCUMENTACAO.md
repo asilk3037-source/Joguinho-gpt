@@ -16,7 +16,7 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
-> 📱 **Botões do celular:** a poção (🧪), o trocar heroína (🔄) e o item do atalho (💣) subiram para cima dos botões de ação, longe do joystick (seção 8.1).
+> 📱 **Botões do celular:** a poção (🧪), o trocar heroína (🔄) e o item do atalho (💣) subiram para cima dos botões de ação, longe do joystick. O botão do giro (🌀) saiu: **segurar o ⚔** faz o giro da Line (ou o leque de estrelas da Bell). **Sem espada, o ⚔ dá um soco** (seção 8.1).
 
 > 🌻 **Itens 188 a 202 chegaram:** arco de jardim com a placa de boas-vindas na estrada norte da fazenda, cata-vento de galo no telhado do celeiro, sino na varanda, fumigador e pote de mel junto à colmeia, floreira na frente da casa, comedouro no galinheiro, cocho de feno, pedra de sal e bebedouro no pasto, bancada de mudas com luvas e bandeja de mudinhas ao lado da horta e um rolo de corda no píer.
 
@@ -137,7 +137,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **553**: 260 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem |
+| Animações catalogadas | **554**: 261 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1029,6 +1029,7 @@ Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (p
 | `LINE_BELL_GREET_HUG` | Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada. | 4 | ✅ temporária |
 | `LINE_BELL_BK` | As duas sentadas à mesa comendo BK (hambúrguer, batata e refri), com a mesa desenhada. O HTML tem 3 quadros. | 6 | ✅ temporária |
 | `LINE_PUNCH_MACHINE` | A Line soca a máquina, com a máquina e o placar na mesma animação. O impacto é por volta da metade. | 3 | ✅ temporária |
+| `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 3 | ✅ temporária |
 | `BELL_LAUGH_AT_LINE` | A Bell gargalhando da Line: se dobra de rir, bate na perna, enxuga as lágrimas. | 2 | ✅ temporária |
 | `LINE_BELL_TUNNEL_KISS` | O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo. O HTML tem 8 quadros. | 7 | ✅ temporária |
 
@@ -1666,8 +1667,8 @@ São **24 baús** (3 com coração extra), **3 portas trancadas** e **3 chaves**
 |---|---|---|---|
 | Andar | WASD / setas | analógico | arrastar no lado esquerdo |
 | Correr | Shift (segurar) | gatilho / analógico até o fim | arrastar até o fim |
-| Atacar (3x = combo) | J / Z | A | ⚔ |
-| Ataque giratório | K / X | X | 🌀 |
+| Atacar (3x = combo; sem espada, soco) | J / Z | A | ⚔ |
+| Ataque giratório | K / X | X | segurar ⚔ |
 | Esquivar (correndo = dash) | L / C | B | 💨 |
 | Defender (segurar) | V / B | LB | 🛡 |
 | Pular (+ atacar no ar) | Espaço | Y | ⤴ |
@@ -1681,7 +1682,7 @@ São **24 baús** (3 com coração extra), **3 portas trancadas** e **3 chaves**
 | Pausar | Esc / P | Start | ⏸ |
 | Pular cena | Tab | — | Pular cena |
 
-**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; a **poção (🧪)**, o **🔄 trocar heroína** e o **item do atalho (💣)** ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda.
+**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; a **poção (🧪)**, o **🔄 trocar heroína** e o **item do atalho (💣)** ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).
 
 ### 8.2 Combate com espada
 
@@ -1806,11 +1807,11 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 553 animações. ✅ 260 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.
+**Resumo:** 554 animações. ✅ 261 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
-| Primeiro encontro (prólogo) | 8 | 8 | 0 | 0 |
+| Primeiro encontro (prólogo) | 9 | 9 | 0 | 0 |
 | Line — movimento | 31 | 31 | 0 | 0 |
 | Line — combate | 27 | 27 | 0 | 0 |
 | Line — emoções | 10 | 9 | 1 | 0 |
@@ -1851,6 +1852,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_BELL_GREET_HUG` | Abraço de chegada (“Você tá atrasada”) *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_104 |
 | `LINE_BELL_BK` | Comendo BK juntas no shopping *(sugestão nova)* | 6 | sim | ✅ temporária | LINE_BELL_ITEM_105 |
 | `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) | 3 |  | ✅ temporária | LINE_BELL_ITEM_106 |
+| `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 3 |  | ✅ temporária | LINE_BELL_ITEM_106 |
 | `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_106 |
 | `LINE_BELL_TUNNEL_KISS` | O primeiro beijo, no túnel *(sugestão nova)* | 7 |  | ✅ temporária | LINE_BELL_ITEM_107 |
 
@@ -3095,7 +3097,7 @@ Salão de cristal roxo no alto dos picos, com cinco pilares, um por elemento.
 | Botão | Bell | Line |
 |---|---|---|
 | ⚔ Atacar (J) | **Estrela**: atira uma estrela rosa à distância (1 de dano). Apertando de novo, atira em sequência | combo de espada |
-| 🌀 Especial (K) | **Leque de estrelas**: três estrelas de luz em leque (1 de magia). Acendem cristais, faróis e pérolas e **abrem a guarda dos chefes** | giro |
+| Especial (K; no celular, segurar ⚔) | **Leque de estrelas**: três estrelas de luz em leque (1 de magia). Acendem cristais, faróis e pérolas e **abrem a guarda dos chefes** | giro |
 | ✨ Magia (Q) | **Canção** (2 de magia): acalma todos os inimigos em volta por uns 2 s (eles param e ficam ouvindo, com notinhas), cura 1 de vida das duas; nos chefes, segura o ataque por 1,4 s, ou deixa o núcleo exposto por mais tempo se ele estiver cansado | Raio de Luz / Chuva de Estrelas |
 | 🛡 Defender (V) | escudo de luz rosa | defesa com a espada |
 | 💨 Esquivar, ⤴ Pular | iguais às da Line | |
@@ -3261,7 +3263,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 
 | Grupo | Animações | Com arte | Usando substituta | Faltando |
 |---|---|---|---|---|
-| Primeiro encontro (prólogo) | 8 | 8 | 0 | 0 |
+| Primeiro encontro (prólogo) | 9 | 9 | 0 | 0 |
 | Line — movimento | 31 | 31 | 0 | 0 |
 | Line — combate | 27 | 27 | 0 | 0 |
 | Line — emoções | 10 | 9 | 1 | 0 |
@@ -3291,7 +3293,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **553** | **260** | **172** | **121** |
+| **Total** | **554** | **261** | **172** | **121** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3417,7 +3419,7 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 - **Corações** (cheio, meio, vazio), **escudos** (cheio e vazio) e **gotas de magia**.
 - **Relógio:** moldura do topo, ícones de sol, sol nascendo/se pondo e lua, e o número do dia.
 - **Vida da outra heroína:** mini-retrato da Line e da Bell para o painel pequeno.
-- **Botões de toque:** atacar, giro/leque, esquivar, pular, defender, magia/canção, poção, item, mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).
+- **Botões de toque:** atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, poção, item, mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).
 - **Seta guia do Fácil** (dourada) e o balão de dica 💡.
 - **Barra de chefe** com moldura e o ícone do elemento (pedra, fogo, terra, água, ar e o da Quimera), e a versão “núcleo exposto”.
 - **Mapa do mundo:** ilustração em pergaminho com as 14 regiões (7 da Parte 1 e 7 da Parte 2), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌋 🌊 🐸 🏔️ ⛈️ 💠.
@@ -3599,7 +3601,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 260 de 553 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 261 de 554 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 

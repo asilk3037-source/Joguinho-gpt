@@ -132,6 +132,8 @@
       const E = LB.entrada;
       if (l.estado === 'tiro') {
         if (!l.feitoTiro && st.progresso >= 0.35) { l.feitoTiro = true; estrela(jogo, l, 0, 'estrelaBell', 1); }
+        // ⚔ segurado no celular: emenda no leque de estrelas.
+        if (E.apertou('especial') && l.mana >= CUSTO_LEQUE) { l.mana -= CUSTO_LEQUE; l.mirar(jogo); l.mudar('leque', 'LINE_ATTACK_SPIN'); l.feitoTiro = false; return; }
         if (st.progresso > 0.5 && E.apertou('atacar')) { l.mirar(jogo); l.mudar('tiro', 'LINE_ATTACK_HORIZONTAL'); l.feitoTiro = false; return; }
         if (st.acabou || st.progresso > 0.75) l.voltarLivre();
       } else if (l.estado === 'leque') {

@@ -81,11 +81,15 @@
 
     for (const botao of document.querySelectorAll('[data-acao]')) {
       const acao = botao.dataset.acao;
+      // Segurar o botão dispara outra ação (o ⚔ segurado vira o giro da Line ou o leque da Bell).
+      const segurar = botao.dataset.segurar;
+      let timer = null;
       botao.addEventListener('touchstart', (e) => {
         e.preventDefault();
         apertar(acao); botao.classList.add('ativo');
+        if (segurar) { clearTimeout(timer); timer = setTimeout(() => { apertar(segurar); setTimeout(() => segurando.delete(segurar), 60); }, 450); }
       }, { passive: false });
-      const fim = (e) => { e.preventDefault(); segurando.delete(acao); botao.classList.remove('ativo'); };
+      const fim = (e) => { e.preventDefault(); clearTimeout(timer); segurando.delete(acao); botao.classList.remove('ativo'); };
       botao.addEventListener('touchend', fim);
       botao.addEventListener('touchcancel', fim);
       botao.addEventListener('mousedown', () => apertar(acao));

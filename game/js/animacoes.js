@@ -26,6 +26,7 @@ window.LB = window.LB || {};
     ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
     ['LINE_BELL_BK', 'Comendo BK juntas no shopping', { fps: 6, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_EAT', nova: true }],
     ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16 }],
+    ['LINE_PUNCH', 'Soco sem espada (usa a arte do soco na máquina, em 6 quadros)', { fps: 16, face: 'R', quadros: 6 }],
     ['BELL_LAUGH_AT_LINE', 'Bell gargalhando do soco da Line', { fps: 10, loop: true, face: 'F', quadros: 16, alt: 'BELL_LAUGH', nova: true }],
     ['LINE_BELL_TUNNEL_KISS', 'O primeiro beijo, no túnel', { fps: 5, face: 'F', quadros: 8, alt: 'LINE_BELL_KISS', nova: true }],
   ]);
@@ -682,6 +683,12 @@ window.LB = window.LB || {};
   function personagem(nome) {
     const img = personagens[nome];
     return img && img.complete && img.naturalWidth ? img : null;
+  }
+
+  // Soco sem espada: a mesma arte do soco na máquina (item 106), só o golpe (preparo, soco, volta).
+  if (window.SPRITES && SPRITES.LINE_PUNCH_MACHINE && !SPRITES.LINE_PUNCH) {
+    SPRITES.LINE_PUNCH = Object.assign({}, SPRITES.LINE_PUNCH_MACHINE, { seq: [0, 1, 2, 2, 2, 1], label: 'Soco sem espada' });
+    delete SPRITES.LINE_PUNCH.ritmo; delete SPRITES.LINE_PUNCH.fpsArte;
   }
 
   function carregarSprites(aoProgredir) {

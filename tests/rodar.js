@@ -1145,9 +1145,39 @@ teste('celular: controles de toque, mochila e botão do item', async () => {
     await h.p.click('#btn-fechar-mochila');
     await h.p.tap('#b-item');
     igual(await h.ev(() => LB.jogo.bombas.length), 1, 'botão do item coloca bomba');
+    // Sem o botão do giro: ⚔ segurado faz o giro.
+    afirmar(!(await h.ev(() => !!document.querySelector('#b-especial'))), 'botão 🌀 saiu');
+    await h.espera(900);
+    await h.ev(() => { const j = LB.jogo; j.line.voltarLivre(); j.line.armada = true; j.line.cooldownGiro = 0; });
+    const caixa = await h.ev(() => { const r = document.querySelector('#b-atacar').getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; });
+    const cdp = await h.p.context().newCDPSession(h.p);
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: caixa.x, y: caixa.y }] });
+    let giro = false;
+    for (let i = 0; i < 12 && !giro; i++) { await h.espera(100); giro = await h.ev(() => LB.jogo.line.estado === 'giro'); }
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+    afirmar(giro, '⚔ segurado faz o giro');
     afirmar(!h.erros.length, h.erros.join('\n'));
   } finally { await h.fechar(); }
 }, { semPagina: true });
+
+teste('sem espada, o ataque é um soco que machuca', async (h) => {
+  await h.area('floresta', { espada: false });
+  await h.espera(300);
+  const r0 = await h.ev(() => {
+    const j = LB.jogo, l = j.line;
+    const s = new LB.Sombra(l.x + 30, l.y); j.inimigos.push(s); l.lado = 1; l.dir = 'RIGHT';
+    return { hp: s.hp, espada: l.temEspada };
+  });
+  afirmar(!r0.espada, 'Line sem espada');
+  await h.p.keyboard.press('KeyJ');
+  let anim = null;
+  for (let i = 0; i < 10 && anim !== 'LINE_PUNCH'; i++) { await h.espera(50); anim = await h.ev(() => LB.jogo.line.anim.base); }
+  igual(anim, 'LINE_PUNCH', 'animação do soco');
+  await h.espera(600);
+  const hp = await h.ev(() => LB.jogo.inimigos[LB.jogo.inimigos.length - 1].hp);
+  afirmar(hp < r0.hp, `o soco machuca (hp ${r0.hp} → ${hp})`);
+  afirmar(await h.ev(() => !!LB.desenharSprite && !!window.SPRITES.LINE_PUNCH), 'arte do soco carregada');
+});
 
 // ================= Execução =================
 (async () => {

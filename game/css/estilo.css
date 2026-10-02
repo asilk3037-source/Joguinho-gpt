@@ -109,9 +109,8 @@ th { color: var(--destaque); }
 #b-atacar { right: 0; bottom: 0; }
 #b-pular { right: 94px; bottom: 0; }
 #b-esquivar { right: 8px; bottom: 94px; }
-#b-especial { right: 92px; bottom: 78px; }
 #b-defender { right: 166px; bottom: 30px; }
-#b-magia { right: 172px; bottom: 108px; background: rgba(90, 140, 255, 0.55); }
+#b-magia { right: 92px; bottom: 84px; background: rgba(90, 140, 255, 0.55); }
 #b-interagir { right: 0; bottom: 238px; pointer-events: auto; padding: 10px 16px; border-radius: 12px; border: 2px solid #ffcf9a; background: rgba(240, 138, 75, 0.85); color: #2a1305; font-weight: 700; }
 
 #tarefas { position: fixed; left: max(14px, env(safe-area-inset-left)); top: 58px; background: rgba(22, 17, 32, 0.82); border: 1px solid var(--borda); border-radius: 12px; padding: 8px 12px; font-size: 14px; z-index: 9; pointer-events: none; min-width: 190px; }
@@ -132,7 +131,7 @@ th { color: var(--destaque); }
 #etiquetas.oculto { display: none; }
 #etiquetas .etiqueta { background: #fff8edee; color: #4c354e; border: 2px solid #6f4c67; border-radius: 12px; padding: 7px 12px; font-size: 12px; font-weight: 800; box-shadow: 0 4px 0 #3f2b46; white-space: nowrap; }
 #etiquetas .coracao { color: #e85b73; }
-#toque.passeio #b-especial, #toque.passeio #b-defender, #toque.passeio #b-esquivar, #toque.passeio #b-pular, #toque.passeio #b-magia, #toque.passeio #b-atacar { display: none; }
+#toque.passeio #b-defender, #toque.passeio #b-esquivar, #toque.passeio #b-pular, #toque.passeio #b-magia, #toque.passeio #b-atacar { display: none; }
 
 /* Mochila (itens, pistas e mapa) */
 .linha2 { display: flex; gap: 8px; }

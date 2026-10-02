@@ -115,7 +115,7 @@
     LB.herois.aplicar(j, true);
     j.salvar();
     j.dica('bellJogavel', LB.entrada.usandoToque()
-      ? 'Bell: ⚔ atira estrela · 🌀 leque de 3 estrelas de luz (acende cristais e abre a guarda dos chefes) · ✨ canção (acalma os inimigos e cura). 🔄 troca de heroína.'
+      ? 'Bell: ⚔ atira estrela · segure ⚔ para o leque de 3 estrelas de luz (acende cristais e abre a guarda dos chefes) · ✨ canção (acalma os inimigos e cura). 🔄 troca de heroína.'
       : 'Bell: J atira estrela · K leque de 3 estrelas de luz (acende cristais e abre a guarda dos chefes) · Q canção (acalma os inimigos e cura). T troca de heroína.');
     LB.mochila.atualizarBotoes(j);
   };
