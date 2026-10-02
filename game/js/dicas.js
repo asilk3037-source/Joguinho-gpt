@@ -315,7 +315,7 @@
     if (l.hp > 0 && l.hp <= 2 && !j['dicaVida_' + j.mapa.id]) {
       j['dicaVida_' + j.mapa.id] = true;
       const partes = [];
-      if (LB.mochila.qtd(j, 'pocao')) partes.push(LB.entrada.usandoToque() ? 'use uma poção (🧪)' : 'use uma poção (H)');
+      if (LB.mochila.qtd(j, 'pocao')) partes.push(LB.entrada.usandoToque() ? 'equipe a poção na mochila e use pelo botão do item' : 'use uma poção (H)');
       if (LB.herois && LB.herois.liberada(j)) partes.push(LB.entrada.usandoToque() ? 'troque de heroína (🔄)' : 'troque de heroína (T)');
       partes.push('ou volte a uma fonte');
       mostrar(j, `Vida baixa! ${partes.join(', ')}.`, 6);

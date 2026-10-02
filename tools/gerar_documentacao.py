@@ -78,6 +78,10 @@ w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Au
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
 w()
+w("> 🧺 **Itens 203 a 217 chegaram:** bebedouro de passarinho, dois postes de lampião na estrada, roda de carroça no celeiro, carrinho de flores, treliça, mangueira, tesoura de poda, cesto de maçãs, abóboras, banquinho e balde de ordenha no pasto, sapateira e galochas na varanda, cesto de prendedores debaixo do varal e silo de grãos.")
+w()
+w("> 🎮 **Poção e bomba no mesmo botão:** no celular há um botão só para o item do atalho; equipe na mochila o que quer deixar nele (bomba, poção, elixir…). Se o item equipado acabar, o botão passa sozinho para outro que ainda tenha. Os **ícones de todos os botões** estão na seção 8.1.")
+w()
 w("> 📱 **Botões do celular:** a poção (🧪), o trocar heroína (🔄) e o item do atalho (💣) subiram para cima dos botões de ação, longe do joystick. O botão do giro (🌀) saiu: **segurar o ⚔** faz o giro da Line (ou o leque de estrelas da Bell). **Sem espada, o ⚔ dá um soco** (seção 8.1).")
 w()
 w("> 🌻 **Itens 188 a 202 chegaram:** arco de jardim com a placa de boas-vindas na estrada norte da fazenda, cata-vento de galo no telhado do celeiro, sino na varanda, fumigador e pote de mel junto à colmeia, floreira na frente da casa, comedouro no galinheiro, cocho de feno, pedra de sal e bebedouro no pasto, bancada de mudas com luvas e bandeja de mudinhas ao lado da horta e um rolo de corda no píer.")
@@ -642,7 +646,7 @@ w()
 w("### 6.1 Fazendinha")
 w("O chão da fazenda é o **terreno oficial** (item 144), uma imagem só, e o mapa foi ajustado em cima dela: a casa fica no noroeste, com a casinha do Theo e a tigela ao lado, o varal e o galinheiro logo abaixo, a horta e o poço no meio, o pasto com porteira a leste e o lago ao sul. A porta da casa leva para dentro (seção 6.8).")
 w()
-w("**Objetos da fazenda (itens 158 a 202):** arco com a placa de boas-vindas na estrada norte; caixa de correio, capacho, cadeira de balanço e sino na varanda; floreira na frente da casa; fumigador e pote de mel junto à colmeia; cata-vento no telhado do celeiro; comedouro no galinheiro; cocho de feno, pedra de sal e bebedouro no pasto; bancada de mudas com luvas e bandeja ao lado da horta; rolo de corda no píer; lenha, colmeia e casinha de passarinho perto da casa; suporte de ferramentas, balde, sacos de sementes e o **regador** (que some quando a Line o pega na tarefa da manhã) junto do poço; espantalho, cesto de colheita, pá, enxada e carrinho de mão na horta; ninho e cesto de ovos no galinheiro; barril de chuva, ferradura, latão de leite e composteira no celeiro; cocho no pasto; banco e **fogueira** (acesa à noite) na beira do lago, com taboas, vitórias-régias e um caixote no píer; cogumelos debaixo das árvores. Cada objeto tem volume: a Line passa na frente e atrás, e os maiores ocupam o chão.")
+w("**Objetos da fazenda (itens 158 a 217):** arco com a placa de boas-vindas na estrada norte; postes de lampião na estrada; bebedouro de passarinho, treliça, mangueira, carrinho de flores, cesto de maçãs e abóboras pela fazenda; sapateira e galochas na varanda; cesto de prendedores debaixo do varal; roda de carroça e silo de grãos no celeiro; banquinho e balde de ordenha no pasto; caixa de correio, capacho, cadeira de balanço e sino na varanda; floreira na frente da casa; fumigador e pote de mel junto à colmeia; cata-vento no telhado do celeiro; comedouro no galinheiro; cocho de feno, pedra de sal e bebedouro no pasto; bancada de mudas com luvas e bandeja ao lado da horta; rolo de corda no píer; lenha, colmeia e casinha de passarinho perto da casa; suporte de ferramentas, balde, sacos de sementes e o **regador** (que some quando a Line o pega na tarefa da manhã) junto do poço; espantalho, cesto de colheita, pá, enxada e carrinho de mão na horta; ninho e cesto de ovos no galinheiro; barril de chuva, ferradura, latão de leite e composteira no celeiro; cocho no pasto; banco e **fogueira** (acesa à noite) na beira do lago, com taboas, vitórias-régias e um caixote no píer; cogumelos debaixo das árvores. Cada objeto tem volume: a Line passa na frente e atrás, e os maiores ocupam o chão.")
 w()
 img("fazenda-objetos", "Objetos novos perto da casa: caixa de correio, capacho, cadeira de balanço, lenha, colmeia, ferramentas, balde e regador")
 w("Casa com varanda e duas chaminés, celeiro, galinheiro, horta, poço, moinho, pasto, chiqueiro, lago com píer e barco, varal, casinha do Theo, mesa de piquenique, árvores frutíferas e flores. Tem borboletas, pássaros, nuvens, folhas caindo e fumaça nas chaminés. De manhã, a luz é clara. À tarde, o céu fica alaranjado, e depois do rapto vira noite com vaga-lumes.")
@@ -995,12 +999,35 @@ w("|---|---|---|---|")
 for l in [("Andar", "WASD / setas", "analógico", "arrastar no lado esquerdo"), ("Correr", "Shift (segurar)", "gatilho / analógico até o fim", "arrastar até o fim"),
           ("Atacar (3x = combo; sem espada, soco)", "J / Z", "A", "⚔"), ("Ataque giratório", "K / X", "X", "segurar ⚔"), ("Esquivar (correndo = dash)", "L / C", "B", "💨"),
           ("Defender (segurar)", "V / B", "LB", "🛡"), ("Pular (+ atacar no ar)", "Espaço", "Y", "⤴"), ("Magia: Raio de Luz", "Q / U", "RB", "✨"),
-          ("Chuva de Estrelas", "segurar Q / U e soltar", "segurar RB", "segurar ✨"), ("Interagir / ler / abrir", "E / Enter", "Select", "botão que aparece"), ("Mochila (itens e documentos)", "I", "—", "🎒"), ("Mapa", "M", "—", "🎒 → Mapa"), ("Usar poção", "H", "—", "🧪"), ("Usar o item do atalho (bomba, elixir…)", "F", "—", "botão do item (💣)"),
+          ("Chuva de Estrelas", "segurar Q / U e soltar", "segurar RB", "segurar ✨"), ("Interagir / ler / abrir", "E / Enter", "Select", "botão que aparece"), ("Mochila (itens e documentos)", "I", "—", "🎒"), ("Mapa", "M", "—", "🎒 → Mapa"), ("Usar poção", "H", "—", "equipe a poção e use o botão do item"), ("Usar o item do atalho (bomba, poção, elixir…)", "F", "—", "botão do item (💣 / 🧪 …)"),
           ("Pausar", "Esc / P", "Start", "⏸"), ("Pular cena", "Tab", "—", "Pular cena")]:
     w("| " + " | ".join(l) + " |")
 w()
-w("**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; a **poção (🧪)**, o **🔄 trocar heroína** e o **item do atalho (💣)** ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).")
+w("**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; o **🔄 trocar heroína** e o **item do atalho** (bomba, poção, elixir… o que estiver equipado) ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).")
 w()
+w("#### Ícones dos botões do celular")
+w()
+w("Todos os botões de toque, o que cada um faz e quando aparece. Hoje são emojis: para a arte final, cada ícone vira um desenho em pixel art no mesmo estilo do jogo (tamanhos na tabela).")
+w()
+w("| Ícone | Botão | O que faz | Quando aparece | Onde fica | Arte final (desenhar) |")
+w("|---|---|---|---|---|---|")
+for linha in [
+    ("—", "Joystick", "arrastar na metade esquerda move a Line; até o fim, corre", "sempre (em jogo)", "metade esquerda da tela", "base 120×120 e pino 52×52 (desenhar em 2×: 240 e 104)"),
+    ("⚔", "Atacar", "golpe de espada (3 toques = combo); **segurar** = giro da Line ou leque de estrelas da Bell; **sem espada, soco**; perto de algo, interage", "sempre", "canto inferior direito (o maior)", "ícone 80×80 (desenhar 160×160): espada; com a Bell, estrela"),
+    ("⤴", "Pular", "pula; no ar, ⚔ faz o ataque aéreo", "com espada", "à esquerda do ⚔", "62×62 (desenhar 124×124)"),
+    ("💨", "Esquivar", "esquiva; correndo vira dash", "com espada", "acima do ⚔", "62×62 (124×124)"),
+    ("🛡", "Defender", "segurar para bloquear", "com espada (apagado antes)", "à esquerda do ⤴", "62×62 (124×124)"),
+    ("✨", "Magia", "Raio de Luz; segurar e soltar = Chuva de Estrelas; com a Bell, canção", "depois de aprender a magia", "acima do ⤴", "62×62 (124×124); com a Bell, nota musical"),
+    ("💣 🧪 💧…", "Item do atalho", "usa o item equipado na mochila: bomba, poção, elixir, pena… (mostra o ícone e a quantidade). **Poção e bomba usam o mesmo botão**: equipe na mochila o que quiser deixar ali", "quando há um item equipado com quantidade", "fileira de cima, à direita", "44×44 (88×88): um ícone por item, os mesmos da mochila"),
+    ("🔄", "Trocar heroína", "troca entre a Line e a Bell (mostra quem entra: 💖 Bell ou ⚔ Line)", "Parte 2, com a Bell jogável", "fileira de cima, à esquerda", "44×44 (88×88): as duas carinhas com setas"),
+    ("🎒", "Mochila", "itens, documentos, conclusões e mapa", "fora das cenas", "canto superior direito", "44×44 (88×88)"),
+    ("⏸", "Pausar", "abre a pausa", "fora das cenas", "canto superior direito", "44×44 (88×88)"),
+    ("texto", "Interagir", "aparece com o nome da ação (Abrir, Ler, Entrar, Comprar / conversar, Carinho…)", "perto de algo que dá para usar", "acima de todos, à direita", "botão de texto (borda e fundo em pixel art, 9-slice)"),
+    ("Pular cena ⏭", "Pular cena", "pula a cena atual", "durante as cenas", "canto superior direito", "botão de texto"),
+]:
+    w("| " + " | ".join(linha) + " |")
+w()
+img("botoes-celular", "Os botões no celular: o item do atalho e a troca de heroína em cima; ataque, pulo, esquiva, defesa e magia embaixo")
 w("### 8.2 Combate com espada")
 w()
 w("| Golpe | Animação | Dano | Observação |")
@@ -1319,7 +1346,7 @@ for l in [
     ("Mapa", "só acende áreas visitadas; documento marca sem acender"),
     ("Todas as áreas", "cada uma das 7 áreas carrega, desenha e roda sem erros, e a Line não nasce dentro de parede"),
     ("Tamanho e conectividade", "tamanho das fases; todo baú, documento, morador, estação e saída alcançável (contando pulos, gancho, bombas, chaves e barreiras); toda saída chega em chão livre, fora de outra saída, e tem caminho de volta"),
-    ("Objetos e ajustes do celular", "todos os objetos dos itens 146 a 202 carregam; a fazenda e a casa usam cada um; o regador aparece no poço; a casa não some quando a Line anda para a direita; no lanche do BK o shopping fica sem a mesa redonda; a arte de “Feliz” que caía saiu do jogo"),
+    ("Objetos e ajustes do celular", "todos os objetos dos itens 146 a 217 carregam; ⚔ segurado faz o giro; sem espada a Line soca; poção e bomba pelo mesmo botão do item; a fazenda e a casa usam cada um; o regador aparece no poço; a casa não some quando a Line anda para a direita; no lanche do BK o shopping fica sem a mesa redonda; a arte de “Feliz” que caía saiu do jogo"),
     ("Casas por dentro", "todas as portas levam a um interior mobiliado com piso e paredes desenhados; Entrar na porta, sair pelo caminho de pedra; o bilhete da cabana vem antes de entrar; de frente para a Dona Rosa ainda dá para conversar"),
     ("Vilarejo", "loja da Dona Rosa (comprar, falta de dinheiro, botas), ferraria (armadura, escudo segurando golpe, Armadura de Brasa liberada pela receita), conversas com os moradores"),
     ("Carrinho", "quebrado sem alavanca, encaixar a alavanca, tela de destino só com estações descobertas, viagem até as Minas"),

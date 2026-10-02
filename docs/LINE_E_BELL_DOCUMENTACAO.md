@@ -16,6 +16,10 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 🧺 **Itens 203 a 217 chegaram:** bebedouro de passarinho, dois postes de lampião na estrada, roda de carroça no celeiro, carrinho de flores, treliça, mangueira, tesoura de poda, cesto de maçãs, abóboras, banquinho e balde de ordenha no pasto, sapateira e galochas na varanda, cesto de prendedores debaixo do varal e silo de grãos.
+
+> 🎮 **Poção e bomba no mesmo botão:** no celular há um botão só para o item do atalho; equipe na mochila o que quer deixar nele (bomba, poção, elixir…). Se o item equipado acabar, o botão passa sozinho para outro que ainda tenha. Os **ícones de todos os botões** estão na seção 8.1.
+
 > 📱 **Botões do celular:** a poção (🧪), o trocar heroína (🔄) e o item do atalho (💣) subiram para cima dos botões de ação, longe do joystick. O botão do giro (🌀) saiu: **segurar o ⚔** faz o giro da Line (ou o leque de estrelas da Bell). **Sem espada, o ⚔ dá um soco** (seção 8.1).
 
 > 🌻 **Itens 188 a 202 chegaram:** arco de jardim com a placa de boas-vindas na estrada norte da fazenda, cata-vento de galo no telhado do celeiro, sino na varanda, fumigador e pote de mel junto à colmeia, floreira na frente da casa, comedouro no galinheiro, cocho de feno, pedra de sal e bebedouro no pasto, bancada de mudas com luvas e bandeja de mudinhas ao lado da horta e um rolo de corda no píer.
@@ -1086,7 +1090,7 @@ Os três lugares do prólogo (Minas Shopping, Playground e Túnel) estão na se�
 ### 6.1 Fazendinha
 O chão da fazenda é o **terreno oficial** (item 144), uma imagem só, e o mapa foi ajustado em cima dela: a casa fica no noroeste, com a casinha do Theo e a tigela ao lado, o varal e o galinheiro logo abaixo, a horta e o poço no meio, o pasto com porteira a leste e o lago ao sul. A porta da casa leva para dentro (seção 6.8).
 
-**Objetos da fazenda (itens 158 a 202):** arco com a placa de boas-vindas na estrada norte; caixa de correio, capacho, cadeira de balanço e sino na varanda; floreira na frente da casa; fumigador e pote de mel junto à colmeia; cata-vento no telhado do celeiro; comedouro no galinheiro; cocho de feno, pedra de sal e bebedouro no pasto; bancada de mudas com luvas e bandeja ao lado da horta; rolo de corda no píer; lenha, colmeia e casinha de passarinho perto da casa; suporte de ferramentas, balde, sacos de sementes e o **regador** (que some quando a Line o pega na tarefa da manhã) junto do poço; espantalho, cesto de colheita, pá, enxada e carrinho de mão na horta; ninho e cesto de ovos no galinheiro; barril de chuva, ferradura, latão de leite e composteira no celeiro; cocho no pasto; banco e **fogueira** (acesa à noite) na beira do lago, com taboas, vitórias-régias e um caixote no píer; cogumelos debaixo das árvores. Cada objeto tem volume: a Line passa na frente e atrás, e os maiores ocupam o chão.
+**Objetos da fazenda (itens 158 a 217):** arco com a placa de boas-vindas na estrada norte; postes de lampião na estrada; bebedouro de passarinho, treliça, mangueira, carrinho de flores, cesto de maçãs e abóboras pela fazenda; sapateira e galochas na varanda; cesto de prendedores debaixo do varal; roda de carroça e silo de grãos no celeiro; banquinho e balde de ordenha no pasto; caixa de correio, capacho, cadeira de balanço e sino na varanda; floreira na frente da casa; fumigador e pote de mel junto à colmeia; cata-vento no telhado do celeiro; comedouro no galinheiro; cocho de feno, pedra de sal e bebedouro no pasto; bancada de mudas com luvas e bandeja ao lado da horta; rolo de corda no píer; lenha, colmeia e casinha de passarinho perto da casa; suporte de ferramentas, balde, sacos de sementes e o **regador** (que some quando a Line o pega na tarefa da manhã) junto do poço; espantalho, cesto de colheita, pá, enxada e carrinho de mão na horta; ninho e cesto de ovos no galinheiro; barril de chuva, ferradura, latão de leite e composteira no celeiro; cocho no pasto; banco e **fogueira** (acesa à noite) na beira do lago, com taboas, vitórias-régias e um caixote no píer; cogumelos debaixo das árvores. Cada objeto tem volume: a Line passa na frente e atrás, e os maiores ocupam o chão.
 
 ![Objetos novos perto da casa: caixa de correio, capacho, cadeira de balanço, lenha, colmeia, ferramentas, balde e regador](imagens/fazenda-objetos.jpg)
 *Objetos novos perto da casa: caixa de correio, capacho, cadeira de balanço, lenha, colmeia, ferramentas, balde e regador*
@@ -1677,12 +1681,34 @@ São **24 baús** (3 com coração extra), **3 portas trancadas** e **3 chaves**
 | Interagir / ler / abrir | E / Enter | Select | botão que aparece |
 | Mochila (itens e documentos) | I | — | 🎒 |
 | Mapa | M | — | 🎒 → Mapa |
-| Usar poção | H | — | 🧪 |
-| Usar o item do atalho (bomba, elixir…) | F | — | botão do item (💣) |
+| Usar poção | H | — | equipe a poção e use o botão do item |
+| Usar o item do atalho (bomba, poção, elixir…) | F | — | botão do item (💣 / 🧪 …) |
 | Pausar | Esc / P | Start | ⏸ |
 | Pular cena | Tab | — | Pular cena |
 
-**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; a **poção (🧪)**, o **🔄 trocar heroína** e o **item do atalho (💣)** ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).
+**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; o **🔄 trocar heroína** e o **item do atalho** (bomba, poção, elixir… o que estiver equipado) ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).
+
+#### Ícones dos botões do celular
+
+Todos os botões de toque, o que cada um faz e quando aparece. Hoje são emojis: para a arte final, cada ícone vira um desenho em pixel art no mesmo estilo do jogo (tamanhos na tabela).
+
+| Ícone | Botão | O que faz | Quando aparece | Onde fica | Arte final (desenhar) |
+|---|---|---|---|---|---|
+| — | Joystick | arrastar na metade esquerda move a Line; até o fim, corre | sempre (em jogo) | metade esquerda da tela | base 120×120 e pino 52×52 (desenhar em 2×: 240 e 104) |
+| ⚔ | Atacar | golpe de espada (3 toques = combo); **segurar** = giro da Line ou leque de estrelas da Bell; **sem espada, soco**; perto de algo, interage | sempre | canto inferior direito (o maior) | ícone 80×80 (desenhar 160×160): espada; com a Bell, estrela |
+| ⤴ | Pular | pula; no ar, ⚔ faz o ataque aéreo | com espada | à esquerda do ⚔ | 62×62 (desenhar 124×124) |
+| 💨 | Esquivar | esquiva; correndo vira dash | com espada | acima do ⚔ | 62×62 (124×124) |
+| 🛡 | Defender | segurar para bloquear | com espada (apagado antes) | à esquerda do ⤴ | 62×62 (124×124) |
+| ✨ | Magia | Raio de Luz; segurar e soltar = Chuva de Estrelas; com a Bell, canção | depois de aprender a magia | acima do ⤴ | 62×62 (124×124); com a Bell, nota musical |
+| 💣 🧪 💧… | Item do atalho | usa o item equipado na mochila: bomba, poção, elixir, pena… (mostra o ícone e a quantidade). **Poção e bomba usam o mesmo botão**: equipe na mochila o que quiser deixar ali | quando há um item equipado com quantidade | fileira de cima, à direita | 44×44 (88×88): um ícone por item, os mesmos da mochila |
+| 🔄 | Trocar heroína | troca entre a Line e a Bell (mostra quem entra: 💖 Bell ou ⚔ Line) | Parte 2, com a Bell jogável | fileira de cima, à esquerda | 44×44 (88×88): as duas carinhas com setas |
+| 🎒 | Mochila | itens, documentos, conclusões e mapa | fora das cenas | canto superior direito | 44×44 (88×88) |
+| ⏸ | Pausar | abre a pausa | fora das cenas | canto superior direito | 44×44 (88×88) |
+| texto | Interagir | aparece com o nome da ação (Abrir, Ler, Entrar, Comprar / conversar, Carinho…) | perto de algo que dá para usar | acima de todos, à direita | botão de texto (borda e fundo em pixel art, 9-slice) |
+| Pular cena ⏭ | Pular cena | pula a cena atual | durante as cenas | canto superior direito | botão de texto |
+
+![Os botões no celular: o item do atalho e a troca de heroína em cima; ataque, pulo, esquiva, defesa e magia embaixo](imagens/botoes-celular.jpg)
+*Os botões no celular: o item do atalho e a troca de heroína em cima; ataque, pulo, esquiva, defesa e magia embaixo*
 
 ### 8.2 Combate com espada
 
@@ -2733,7 +2759,7 @@ A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verd
 | Mapa | só acende áreas visitadas; documento marca sem acender |
 | Todas as áreas | cada uma das 7 áreas carrega, desenha e roda sem erros, e a Line não nasce dentro de parede |
 | Tamanho e conectividade | tamanho das fases; todo baú, documento, morador, estação e saída alcançável (contando pulos, gancho, bombas, chaves e barreiras); toda saída chega em chão livre, fora de outra saída, e tem caminho de volta |
-| Objetos e ajustes do celular | todos os objetos dos itens 146 a 202 carregam; a fazenda e a casa usam cada um; o regador aparece no poço; a casa não some quando a Line anda para a direita; no lanche do BK o shopping fica sem a mesa redonda; a arte de “Feliz” que caía saiu do jogo |
+| Objetos e ajustes do celular | todos os objetos dos itens 146 a 217 carregam; ⚔ segurado faz o giro; sem espada a Line soca; poção e bomba pelo mesmo botão do item; a fazenda e a casa usam cada um; o regador aparece no poço; a casa não some quando a Line anda para a direita; no lanche do BK o shopping fica sem a mesa redonda; a arte de “Feliz” que caía saiu do jogo |
 | Casas por dentro | todas as portas levam a um interior mobiliado com piso e paredes desenhados; Entrar na porta, sair pelo caminho de pedra; o bilhete da cabana vem antes de entrar; de frente para a Dona Rosa ainda dá para conversar |
 | Vilarejo | loja da Dona Rosa (comprar, falta de dinheiro, botas), ferraria (armadura, escudo segurando golpe, Armadura de Brasa liberada pela receita), conversas com os moradores |
 | Carrinho | quebrado sem alavanca, encaixar a alavanca, tela de destino só com estações descobertas, viagem até as Minas |
@@ -3419,7 +3445,7 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 - **Corações** (cheio, meio, vazio), **escudos** (cheio e vazio) e **gotas de magia**.
 - **Relógio:** moldura do topo, ícones de sol, sol nascendo/se pondo e lua, e o número do dia.
 - **Vida da outra heroína:** mini-retrato da Line e da Bell para o painel pequeno.
-- **Botões de toque:** atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, poção, item, mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).
+- **Botões de toque:** atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, item do atalho (bomba, poção…), mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).
 - **Seta guia do Fácil** (dourada) e o balão de dica 💡.
 - **Barra de chefe** com moldura e o ícone do elemento (pedra, fogo, terra, água, ar e o da Quimera), e a versão “núcleo exposto”.
 - **Mapa do mundo:** ilustração em pergaminho com as 14 regiões (7 da Parte 1 e 7 da Parte 2), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌋 🌊 🐸 🏔️ ⛈️ 💠.
@@ -4162,10 +4188,25 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 200 | `LINE_BELL_ITEM_200.html` | 0,10 MB | `FARM_HAND_BELL` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 | 201 | `LINE_BELL_ITEM_201.html` | 0,18 MB | `FARM_WEATHER_VANE` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 | 202 | `LINE_BELL_ITEM_202.html` | 0,18 MB | `FARM_WELCOME_SIGN` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 203 | `LINE_BELL_ITEM_203.html` | 0,35 MB | `FARM_BIRDBATH` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 204 | `LINE_BELL_ITEM_204.html` | 0,24 MB | `FARM_LANTERN_POST` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 205 | `LINE_BELL_ITEM_205.html` | 0,35 MB | `FARM_WAGON_WHEEL` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 206 | `LINE_BELL_ITEM_206.html` | 0,28 MB | `FARM_FLOWER_CART` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 207 | `LINE_BELL_ITEM_207.html` | 0,25 MB | `FARM_WOODEN_TRELLIS` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 208 | `LINE_BELL_ITEM_208.html` | 0,26 MB | `FARM_GARDEN_HOSE` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 209 | `LINE_BELL_ITEM_209.html` | 0,10 MB | `FARM_PRUNING_SHEARS` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 210 | `LINE_BELL_ITEM_210.html` | 0,31 MB | `FARM_APPLE_BASKET` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 211 | `LINE_BELL_ITEM_211.html` | 0,24 MB | `FARM_PUMPKIN_CLUSTER` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 212 | `LINE_BELL_ITEM_212.html` | 0,14 MB | `FARM_MILKING_STOOL` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 213 | `LINE_BELL_ITEM_213.html` | 0,19 MB | `FARM_MILKING_PAIL` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 214 | `LINE_BELL_ITEM_214.html` | 0,26 MB | `FARM_BOOT_RACK` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 215 | `LINE_BELL_ITEM_215.html` | 0,17 MB | `FARM_RAIN_BOOTS` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 216 | `LINE_BELL_ITEM_216.html` | 0,33 MB | `FARM_CLOTHESPIN_BASKET` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 217 | `LINE_BELL_ITEM_217.html` | 0,29 MB | `FARM_GRAIN_BIN` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 
 Itens que ainda não chegaram: 153.
 
-Os itens 140 a 202 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio (os lotes foram de 154 a 187 e de 188 a 202).
+Os itens 140 a 217 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio (os lotes foram de 154 a 187, 188 a 202 e 203 a 217).
 
 **Regra de continuidade das pernas:** nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).
 
@@ -4433,7 +4474,7 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 - **Mapa com imagem de base:** um mapa pode ter `base` (o nome de uma imagem do catálogo, 2 px por unidade do mundo, 64 px por tile). O jogo desenha essa imagem no lugar dos tiles do chão; o texto do mapa continua valendo para colisão, saídas e objetos. Com `sobreBase`, as letras listadas (na fazenda, `u`, o mato alto) ainda são desenhadas por cima da imagem. A fazenda usa o terreno oficial (item 144) e a casa da fazenda usa a planta do item 145.
 - **Móveis:** cada mapa pode ter uma lista `moveis` com `[nome, x, y, largura, pegada, alto, espelhar]`. O móvel vira um objeto desenhado por profundidade (a Line passa na frente e atrás), e a `pegada` (em tiles) vira chão sólido. As imagens ficam em `game/assets/moveis/` (itens 148 a 152, na resolução original) e os objetos da fazenda (casinha do Theo, tigela cheia e vazia, varal, mesa de piquenique, cerca, porteira, flores e mato, itens 146 e 147) em `game/assets/cenario/`.
 - **Portas (`entradas`):** perto de uma porta aparece **Entrar**. Colada na porta, ela ganha da conversa com quem está de frente (Dona Rosa, Seu Bento); um bilhete ainda não lido na porta vem antes (cabana do caçador). Para sair, basta descer pelo caminho de pedra. A Bell, se estiver acompanhando, entra junto.
-- **Objetos avulsos (itens 146 a 202):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.
+- **Objetos avulsos (itens 146 a 217):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.
 - **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.
 
 ### 26.7 Como regerar esta documentação

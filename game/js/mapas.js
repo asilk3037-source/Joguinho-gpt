@@ -86,6 +86,15 @@
         ['farm_chicken_feeder', 7.0, 19.3, 26, [1, 1]], ['farm_hay_rack', 33.5, 18.8, 48, [2, 1]], ['farm_salt_lick', 39.2, 20.4, 26, [1, 1]],
         ['farm_water_trough', 30.5, 22.6, 50, [2, 1]], ['farm_potting_bench', 24.6, 17.0, 40, [1, 1]],
         ['farm_garden_gloves', 24.4, 17.02, 12, null, 22], ['farm_seedling_tray', 25.8, 17.6, 32], ['farm_rope_coil', 20.4, 28.8, 22],
+        // Itens 203 a 217: bebedouro de passarinho, postes de lampião na estrada, roda de carroça, carrinho de flores,
+        // treliça, mangueira, tesoura de poda, cesto de maçãs, abóboras, banquinho e balde de ordenha, botas, cesto de
+        // prendedores debaixo do varal e silo de grãos.
+        ['farm_birdbath', 16.6, 8.2, 30, [1, 1]], ['farm_lantern_post', 21.3, 10.9, 22, [1, 1]], ['farm_lantern_post', 24.6, 13.3, 22, [1, 1], 0, true],
+        ['farm_wagon_wheel', 31.0, 10.5, 28], ['farm_flower_cart', 39.5, 10.6, 46, [1, 1]], ['farm_wooden_trellis', 21.3, 15.2, 32],
+        ['farm_garden_hose', 19.2, 13.6, 34], ['farm_pruning_shears', 25.0, 17.03, 12, null, 22], ['farm_apple_basket', 25.4, 19.6, 24],
+        ['farm_pumpkin_cluster', 19.8, 21.0, 40], ['farm_milking_stool', 30.4, 16.6, 18], ['farm_milking_pail', 31.2, 16.8, 18],
+        ['farm_boot_rack', 8.6, 11.02, 28, null, 10], ['farm_rain_boots', 11.8, 11.5, 16], ['farm_clothespin_basket', 6.6, 13.95, 24],
+        ['farm_grain_bin', 35.6, 9.4, 30, [1, 1]],
       ],
       placas: {},
       pontos: {

@@ -363,7 +363,7 @@ teste('casas: toda casa tem interior mobiliado, entra pela porta e sai pelo cami
   }
 });
 
-teste('objetos: itens 146 a 202 carregam e aparecem na fazenda e na casa; regador no poço', async (h) => {
+teste('objetos: itens 146 a 217 carregam e aparecem na fazenda e na casa; regador no poço', async (h) => {
   await h.area('fazenda', { espada: true });
   await h.p.waitForTimeout(1500);
   const r = await h.ev(() => {
@@ -374,7 +374,7 @@ teste('objetos: itens 146 a 202 carregam e aparecem na fazenda e na casa; regado
     const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can/.test(n));
     return { total: nomes.length, faltando, naoUsados };
   });
-  afirmar(r.total >= 90, `objetos registrados (veio ${r.total})`);
+  afirmar(r.total >= 105, `objetos registrados (veio ${r.total})`);
   igual(r.faltando, [], 'imagens que não carregaram');
   igual(r.naoUsados, [], 'objetos que não aparecem em nenhum mapa');
   // Regador no poço até a Line pegar na tarefa da manhã.
@@ -1134,7 +1134,7 @@ teste('celular: controles de toque, mochila e botão do item', async () => {
     await h.espera(200);
     afirmar(await h.visivel('#toque'), 'controles de toque visíveis');
     afirmar(await h.visivel('#b-item'), 'botão do item (bomba)');
-    afirmar(await h.visivel('#b-pocao'), 'botão da poção');
+    afirmar(!(await h.ev(() => !!document.querySelector('#b-pocao'))), 'sem botão separado da poção');
     await h.foto('celular-jogo');
     await h.p.tap('#b-mochila');
     await h.espera(200);
@@ -1145,17 +1145,23 @@ teste('celular: controles de toque, mochila e botão do item', async () => {
     await h.p.click('#btn-fechar-mochila');
     await h.p.tap('#b-item');
     igual(await h.ev(() => LB.jogo.bombas.length), 1, 'botão do item coloca bomba');
+    // A poção usa o mesmo botão: equipa na mochila e aperta.
+    await h.ev(() => { const j = LB.jogo; LB.mochila.equipar(j, 'pocao'); j.line.hp = 2; j.line.voltarLivre(); });
+    igual(await h.ev(() => document.querySelector('#b-item').textContent), '🧪1', 'botão mostra a poção equipada');
+    await h.p.tap('#b-item');
+    afirmar(await h.ev(() => LB.jogo.line.hp > 2), 'botão do item usa a poção');
     // Sem o botão do giro: ⚔ segurado faz o giro.
     afirmar(!(await h.ev(() => !!document.querySelector('#b-especial'))), 'botão 🌀 saiu');
     await h.espera(900);
-    await h.ev(() => { const j = LB.jogo; j.line.voltarLivre(); j.line.armada = true; j.line.cooldownGiro = 0; });
+    await h.ev(() => { const j = LB.jogo; j.inimigos = []; j.line.invul = 5; j.line.voltarLivre(); j.line.armada = true; j.line.cooldownGiro = 0; });
     const caixa = await h.ev(() => { const r = document.querySelector('#b-atacar').getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2 }; });
     const cdp = await h.p.context().newCDPSession(h.p);
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: caixa.x, y: caixa.y }] });
     let giro = false;
-    for (let i = 0; i < 12 && !giro; i++) { await h.espera(100); giro = await h.ev(() => LB.jogo.line.estado === 'giro'); }
+    const vistos = [];
+    for (let i = 0; i < 12 && !giro; i++) { await h.espera(100); const e = await h.ev(() => LB.jogo.line.estado + ':' + LB.jogo.estado); vistos.push(e); giro = e.startsWith('giro'); }
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
-    afirmar(giro, '⚔ segurado faz o giro');
+    afirmar(giro, '⚔ segurado faz o giro (' + vistos.join(' ') + ')');
     afirmar(!h.erros.length, h.erros.join('\n'));
   } finally { await h.fechar(); }
 }, { semPagina: true });

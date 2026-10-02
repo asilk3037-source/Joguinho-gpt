@@ -474,7 +474,7 @@ def escrever_arte(w, img, inv):
         "**Corações** (cheio, meio, vazio), **escudos** (cheio e vazio) e **gotas de magia**.",
         "**Relógio:** moldura do topo, ícones de sol, sol nascendo/se pondo e lua, e o número do dia.",
         "**Vida da outra heroína:** mini-retrato da Line e da Bell para o painel pequeno.",
-        "**Botões de toque:** atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, poção, item, mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).",
+        "**Botões de toque:** atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, item do atalho (bomba, poção…), mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).",
         "**Seta guia do Fácil** (dourada) e o balão de dica 💡.",
         "**Barra de chefe** com moldura e o ícone do elemento (pedra, fogo, terra, água, ar e o da Quimera), e a versão “núcleo exposto”.",
         "**Mapa do mundo:** ilustração em pergaminho com as 14 regiões (7 da Parte 1 e 7 da Parte 2), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌋 🌊 🐸 🏔️ ⛈️ 💠.",

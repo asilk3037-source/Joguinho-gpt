@@ -201,8 +201,6 @@ th { color: var(--destaque); }
 #b-mochila.novo::after { content: attr(data-novos); position: absolute; top: -4px; right: -4px; background: var(--rosa); color: #fff; font-size: 10px; font-weight: 700; border-radius: 10px; min-width: 16px; height: 16px; line-height: 16px; text-align: center; padding: 0 3px; }
 #toque.em-cena #b-mochila, #toque.passeio #b-mochila { visibility: hidden; }
 .botoes { width: 290px; }
-#b-pocao { right: 232px; bottom: 184px; background: rgba(255, 111, 159, 0.5); font-size: 15px; }
-#toque.passeio #b-pocao { display: none; }
 
 /* Equipamento na mochila */
 .equipamento { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -255,7 +253,7 @@ th { color: var(--destaque); }
 #viagem-lista button:disabled { opacity: 0.55; cursor: default; }
 
 /* Botão do item do atalho */
-/* Poção, item do atalho e troca de heroína ficam numa fileira acima dos botões de ação, longe do joystick. */
+/* Item do atalho (bomba, poção…) e troca de heroína ficam numa fileira acima dos botões de ação, longe do joystick. */
 #b-item { right: 128px; bottom: 184px; background: rgba(127, 214, 255, 0.45); font-size: 15px; }
 #toque.passeio #b-item { display: none; }
 #b-trocar { right: 180px; bottom: 184px; background: rgba(255, 158, 207, 0.5); font-size: 13px; }

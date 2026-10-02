@@ -298,12 +298,13 @@
     const n = i.novos || 0;
     const b = $('#b-mochila');
     if (b) { b.classList.toggle('novo', n > 0); b.dataset.novos = n; }
-    const p = $('#b-pocao');
-    if (p) { p.classList.toggle('oculto', !qtd(j, 'pocao') || !j.flags.prologo); p.textContent = `🧪${qtd(j, 'pocao')}`; }
+    // Um botão só para o item do atalho (bomba, poção, elixir…): o que estiver equipado na mochila.
+    // Se o equipado acabar, passa para outro item equipável que ainda tenha.
+    if (i.equipado && !qtd(j, i.equipado)) i.equipado = ORDEM_ITENS.find((id) => ITENS[id] && ITENS[id].equipavel && qtd(j, id)) || i.equipado;
     const bi = $('#b-item');
     if (bi) {
       const eq = i.equipado && qtd(j, i.equipado) ? i.equipado : null;
-      bi.classList.toggle('oculto', !eq || !j.flags.prologo || eq === 'pocao');
+      bi.classList.toggle('oculto', !eq || !j.flags.prologo);
       if (eq) bi.textContent = `${ITENS[eq].icone}${qtd(j, eq)}`;
     }
     const bt = $('#b-trocar');
@@ -673,7 +674,6 @@
       $('#btn-mapa-area').onclick = () => { this.mapaModo = 'area'; this.atualizarMapa(); };
       $('#btn-mapa-mundo').onclick = () => { this.mapaModo = 'mundo'; this.atualizarMapa(); };
       const bm = $('#b-mochila'); if (bm) bm.addEventListener('click', () => { if (j.estado === 'jogo' && !j.cena) this.abrir('itens'); });
-      const bp = $('#b-pocao'); if (bp) bp.addEventListener('click', () => { if (j.estado === 'jogo' && !j.cena) usarCuraRapida(j); });
       const bi = $('#b-item'); if (bi) bi.addEventListener('click', () => { if (j.estado === 'jogo' && !j.cena) usarEquipado(j); });
       const pm = $('#btn-pausa-mochila'); if (pm) pm.onclick = () => { $('#pausa').classList.add('oculto'); this.abrir('itens', true); };
       const pmap = $('#btn-pausa-mapa'); if (pmap) pmap.onclick = () => { $('#pausa').classList.add('oculto'); this.abrir('mapa', true); };
