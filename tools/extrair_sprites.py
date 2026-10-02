@@ -105,8 +105,8 @@ ITENS_CENARIO = {140: "Minas Shopping", 141: "Playground", 142: "máquina de soc
                  154: "cozinha: ilha, despensa, prateleira de temperos e banqueta",
                  155: "vaso de planta, quadro, vaso de flores e relógio", 156: "porta e janela",
                  157: "arandela e luminária pendente"}
-# Itens 158 a 217: um objeto da fazenda cada (tools/extrair_objetos.py).
-ITENS_CENARIO.update({n: "objeto da fazenda" for n in range(158, 218)})
+# Itens 158 a 227: um objeto da fazenda cada (tools/extrair_objetos.py).
+ITENS_CENARIO.update({n: "objeto da fazenda" for n in range(158, 228)})
 
 
 # Andar e correr precisam se mexer: com menos quadros diferentes que isso a animação do item é

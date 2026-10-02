@@ -95,6 +95,12 @@
         ['farm_pumpkin_cluster', 19.8, 21.0, 40], ['farm_milking_stool', 30.4, 16.6, 18], ['farm_milking_pail', 31.2, 16.8, 18],
         ['farm_boot_rack', 8.6, 11.02, 28, null, 10], ['farm_rain_boots', 11.8, 11.5, 16], ['farm_clothespin_basket', 6.6, 13.95, 24],
         ['farm_grain_bin', 35.6, 9.4, 30, [1, 1]],
+        // Itens 218 a 227: canto do cavalo no pasto (cavalete com sela, cabresto e escova), tosquia perto das ovelhas,
+        // bebedouro no galinheiro, concha no silo, ferraduras no celeiro e balde de ração no cocho.
+        ['farm_saddle_stand', 29.0, 18.4, 32, [1, 1]], ['farm_saddle', 29.0, 18.42, 30, null, 18], ['farm_bridle', 29.9, 18.8, 24],
+        ['farm_horse_brush', 28.6, 19.0, 16], ['farm_wool_basket', 38.0, 22.5, 26], ['farm_shearing_scissors', 38.8, 22.7, 16],
+        ['farm_chicken_waterer', 5.0, 19.0, 22, [1, 1]], ['farm_grain_scoop', 36.5, 9.9, 18], ['farm_horseshoe_set', 32.3, 10.6, 20],
+        ['farm_animal_feed_bucket', 38.0, 17.6, 18],
       ],
       placas: {},
       pontos: {

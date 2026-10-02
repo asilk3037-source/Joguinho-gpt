@@ -363,7 +363,7 @@ teste('casas: toda casa tem interior mobiliado, entra pela porta e sai pelo cami
   }
 });
 
-teste('objetos: itens 146 a 217 carregam e aparecem na fazenda e na casa; regador no poço', async (h) => {
+teste('objetos: itens 146 a 227 carregam e aparecem na fazenda e na casa; regador no poço', async (h) => {
   await h.area('fazenda', { espada: true });
   await h.p.waitForTimeout(1500);
   const r = await h.ev(() => {
@@ -374,7 +374,7 @@ teste('objetos: itens 146 a 217 carregam e aparecem na fazenda e na casa; regado
     const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can/.test(n));
     return { total: nomes.length, faltando, naoUsados };
   });
-  afirmar(r.total >= 105, `objetos registrados (veio ${r.total})`);
+  afirmar(r.total >= 115, `objetos registrados (veio ${r.total})`);
   igual(r.faltando, [], 'imagens que não carregaram');
   igual(r.naoUsados, [], 'objetos que não aparecem em nenhum mapa');
   // Regador no poço até a Line pegar na tarefa da manhã.
