@@ -16,6 +16,8 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 🎨 **Revisão geral de design (seção 23.6):** todos os objetos e móveis agora seguem uma **régua de tamanhos** (medida real × a altura da Line); a fazenda, o vilarejo e todos os interiores foram reorganizados por zonas, com os caminhos livres; as casas do vilarejo, da floresta, do vale e do lago usam a casa em pixel art com telhados de cores diferentes; a Dona Rosa e o Seu Bento atendem dentro das lojas, atrás do balcão, e as lojas fecham à noite; os botões do celular formam um arco em volta do ⚔; a biblioteca foi limpa (arte antiga e fotos sem uso saíram) e as fotos foram refeitas.
+
 > 🐴 **Itens 218 a 227 chegaram:** canto do cavalo no pasto (cavalete com sela, cabresto e escova), cesto de lã e tesoura de tosquia perto das ovelhas, bebedouro no galinheiro, concha de grãos no silo, ferraduras no celeiro e balde de ração perto do cocho.
 
 > 🧺 **Itens 203 a 217 chegaram:** bebedouro de passarinho, dois postes de lampião na estrada, roda de carroça no celeiro, carrinho de flores, treliça, mangueira, tesoura de poda, cesto de maçãs, abóboras, banquinho e balde de ordenha no pasto, sapateira e galochas na varanda, cesto de prendedores debaixo do varal e silo de grãos.
@@ -190,7 +192,7 @@ O shih-tzu da família. Late, pede comida, segue a Line pela fazenda depois de c
 - Deixar o contorno mais limpo e as animações mais suaves, com mais quadros em andar, correr e brincar.
 - Manter as 4 direções coerentes: frente, costas e lado direito. O lado esquerdo o jogo espelha.
 
-A prancha original fica em `arte/referencias/theo_shihtzu.png`, e os quadros recortados em `arte/theo/`.
+A prancha original fica em `arte/referencias/theo_shihtzu.png`; a arte do Theo no jogo vem dos itens 126 a 130.
 
 ![Prancha original do Theo (layout oficial, referência para a arte final)](imagens/theo-layout-oficial.jpg)
 *Prancha original do Theo (layout oficial, referência para a arte final)*
@@ -1114,8 +1116,8 @@ Depois do rapto, abre a **estrada do leste**, que leva ao Vilarejo do Riacho. An
 Um vilarejo pequeno a leste da fazenda, com uma praça de terra batida no meio, fonte, quadro de avisos, casinhas de telhado colorido, barraca de feira, um riacho ao sul e a estação do carrinho de mina a leste. Não tem inimigos: é o lugar seguro da aventura.
 
 - **Praça:** a fonte (cura e vira ponto de retorno) e o **cartaz do vilarejo**, que é um documento de investigação.
-- **Loja da Dona Rosa** (casa do oeste, com letreiro): vende poções, elixir, bombas, a Pena de Fênix e as Botas de Andarilha.
-- **Ferraria do Seu Bento** (casa do leste, com letreiro e bigorna): vende as armaduras.
+- **Loja da Dona Rosa** (casa de telhado roxo, a oeste da praça, com letreiro; a Dona Rosa atende **lá dentro, atrás do balcão**): vende poções, elixir, bombas, a Pena de Fênix e as Botas de Andarilha.
+- **Ferraria do Seu Bento** (casa de telhado azul, a leste, com letreiro; a bigorna, a lenha e o barril ficam do lado de fora): o Seu Bento atende **lá dentro, atrás do balcão**, e vende as armaduras. As duas lojas fecham à noite.
 - **Estação do Vilarejo:** o carrinho de mina parado nos trilhos, esperando a alavanca do freio.
 - **Moradores:** Dona Rosa, Seu Bento, Seu Zé (o mais velho, conta a história do carrinho), Dona Lurdes (mulher do caçador) e o Pedrinho (que corre de um lado para o outro e conta da pedra rachada).
 - **Saídas:** oeste para a fazenda e norte para a floresta.
@@ -1688,7 +1690,7 @@ São **24 baús** (3 com coração extra), **3 portas trancadas** e **3 chaves**
 | Pausar | Esc / P | Start | ⏸ |
 | Pular cena | Tab | — | Pular cena |
 
-**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; o **🔄 trocar heroína** e o **item do atalho** (bomba, poção, elixir… o que estiver equipado) ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).
+**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação formam um **arco em volta do ⚔**, no canto direito: ⤴ pular à esquerda, ✨ magia na diagonal, 💨 esquivar em cima e 🛡 defender no arco de fora; o **item do atalho** (bomba, poção, elixir… o que estiver equipado) e o **🔄 trocar heroína** ficam no topo do arco, longe do joystick. O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).
 
 #### Ícones dos botões do celular
 
@@ -1700,10 +1702,10 @@ Todos os botões de toque, o que cada um faz e quando aparece. Hoje são emojis:
 | ⚔ | Atacar | golpe de espada (3 toques = combo); **segurar** = giro da Line ou leque de estrelas da Bell; **sem espada, soco**; perto de algo, interage | sempre | canto inferior direito (o maior) | ícone 80×80 (desenhar 160×160): espada; com a Bell, estrela |
 | ⤴ | Pular | pula; no ar, ⚔ faz o ataque aéreo | com espada | à esquerda do ⚔ | 62×62 (desenhar 124×124) |
 | 💨 | Esquivar | esquiva; correndo vira dash | com espada | acima do ⚔ | 62×62 (124×124) |
-| 🛡 | Defender | segurar para bloquear | com espada (apagado antes) | à esquerda do ⤴ | 62×62 (124×124) |
-| ✨ | Magia | Raio de Luz; segurar e soltar = Chuva de Estrelas; com a Bell, canção | depois de aprender a magia | acima do ⤴ | 62×62 (124×124); com a Bell, nota musical |
-| 💣 🧪 💧… | Item do atalho | usa o item equipado na mochila: bomba, poção, elixir, pena… (mostra o ícone e a quantidade). **Poção e bomba usam o mesmo botão**: equipe na mochila o que quiser deixar ali | quando há um item equipado com quantidade | fileira de cima, à direita | 44×44 (88×88): um ícone por item, os mesmos da mochila |
-| 🔄 | Trocar heroína | troca entre a Line e a Bell (mostra quem entra: 💖 Bell ou ⚔ Line) | Parte 2, com a Bell jogável | fileira de cima, à esquerda | 44×44 (88×88): as duas carinhas com setas |
+| 🛡 | Defender | segurar para bloquear | com espada (apagado antes) | arco de fora, à esquerda | 62×62 (124×124) |
+| ✨ | Magia | Raio de Luz; segurar e soltar = Chuva de Estrelas; com a Bell, canção | depois de aprender a magia | na diagonal, entre ⤴ e 💨 | 62×62 (124×124); com a Bell, nota musical |
+| 💣 🧪 💧… | Item do atalho | usa o item equipado na mochila: bomba, poção, elixir, pena… (mostra o ícone e a quantidade). **Poção e bomba usam o mesmo botão**: equipe na mochila o que quiser deixar ali | quando há um item equipado com quantidade | topo do arco | 44×44 (88×88): um ícone por item, os mesmos da mochila |
+| 🔄 | Trocar heroína | troca entre a Line e a Bell (mostra quem entra: 💖 Bell ou ⚔ Line) | Parte 2, com a Bell jogável | topo do arco, à direita do item | 44×44 (88×88): as duas carinhas com setas |
 | 🎒 | Mochila | itens, documentos, conclusões e mapa | fora das cenas | canto superior direito | 44×44 (88×88) |
 | ⏸ | Pausar | abre a pausa | fora das cenas | canto superior direito | 44×44 (88×88) |
 | texto | Interagir | aparece com o nome da ação (Abrir, Ler, Entrar, Comprar / conversar, Carinho…) | perto de algo que dá para usar | acima de todos, à direita | botão de texto (borda e fundo em pixel art, 9-slice) |
@@ -2643,7 +2645,7 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 
 **Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada, cogumelos luminosos, documentos no chão, os 10 itens da mochila (hoje emojis), moedas, tochas, moradores, casas do vilarejo, carrinho, estações e trilhos, postes do gancho, bombas, paredes rachadas, chão em brasa, morcegos e o mapa do mundo. A lista completa, com o que cada um deve mostrar, está na **seção 7.12**.
 
-Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.
+Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, Theo, galinhas, pacote Line & Bell, tileset, o modelo do Minas Shopping e os gabaritos de cada fase. As referências do dragão antigo saíram (o dragão do jogo vem dos itens 80 a 97).
 
 ## 13. Efeitos visuais
 
@@ -3663,6 +3665,42 @@ O que apareceu jogando no celular, o que foi feito e o que ainda depende de arte
 | 3 | Andando até a casinha do Theo, a casa da fazenda sumia do terreno. | O jogo deixava de desenhar objetos cujo canto esquerdo saía da tela, e a casa é larga. Agora a folga leva em conta a largura e a altura de cada objeto (casa, celeiro). | — |
 | 4 | No shopping, as duas apareciam sentadas numa mesa gigante em cima da mesa. | A animação do BK já traz a mesa delas, e o fundo do shopping (item 140) tem uma mesa redonda desenhada no mesmo lugar. No lanche, o jogo troca para uma cópia do fundo sem a mesa redonda e as cadeiras (`tools/shopping_sem_mesa.py`). | Shopping em peças: base só com chão e teto e cada item em arte individual (seção 22.11.1). |
 
+### 23.6 Revisão geral de design (2 de outubro)
+
+Revisão do jogo inteiro como designer e engenheira: tamanho de cada arte, organização de cada mapa, moradores, botões e biblioteca.
+
+**1. Régua de tamanhos.** Todo objeto e móvel tem uma medida real em `tools/extrair_objetos.py` (`MEDIDAS`): altura em metros ou, para o que fica deitado ou é visto em profundidade (cama, mesa, cocho, tapete), largura. A Line tem 1,60 m e 62 unidades de altura; os objetos usam 15% a mais para ficarem legíveis, e nada fica com menos de 12 unidades de largura. A largura no mundo sai da medida × a proporção da imagem e vai para `LB.LARGURA_OBJETOS` (`game/js/objetos.js`). Nas listas `moveis` dos mapas, largura `0` quer dizer "pela régua". Prédios (casas, celeiro) seguem a escala da arte oficial da fazenda, um pouco compacta, como é comum em jogos de fazenda em pixel art. Ajustes feitos com a régua: postes de lampião, espantalho, treliça, roda de carroça, silo, taboas, sela, mesa da sala, cama, poltronas e pia ficaram no tamanho certo em relação à Line.
+
+**2. Cada mapa organizado por zonas** (nada encosta nos caminhos de terra; objetos grandes ocupam o chão e a Line contorna):
+
+| Mapa | Zonas |
+|---|---|
+| Fazenda | entrada norte com arco e placa · casa (lenha, caixa de correio, varanda com sapateira, galochas, cadeira de balanço e sino, capacho) · colmeia com mel e fumigador · jardim da frente (bancada de mudas, floreiras, banho e casinha de passarinho) · varal com cesto de prendedores · galinheiro (ninho, ovos, comedouro, bebedouro) · faixa de trabalho da horta (ferramentas, sementes, poço, regador, mangueira, treliça) · horta com espantalho e colheita · celeiro (composteira, barril, roda, ferraduras, latão, silo, cata-vento) · pasto (canto do cavalo, canto das vacas, bebedouro e sal, tosquia) · lago (banco, fogueira, taboas, vitórias-régias, píer) · postes de lampião nos caminhos · dragão da Parte 2 dormindo no gramado ao sul do pasto (antes ficava em cima do celeiro) |
+| Vilarejo | praça com fonte, postes nas quatro esquinas, dois bancos virados para a fonte e floreiras · feira na frente da loja (barracas, frutas, abóboras, caixotes, carrinho de flores) · ferraria (lenha, barril, ferradura, balde, bigorna, feno) · casas com caixa de correio e capacho · placa de boas-vindas na entrada oeste · taboas na beira do riacho |
+| Interiores | corredor livre da porta até o meio; cada cômodo num canto; móveis encostados nas paredes; luminária sobre a mesa; a loja e a ferraria com balcão no meio |
+| Floresta, vale e lago | casas em pixel art; lenha e ferramentas na cabana do caçador; cesto, regador e sementes na horta da Dona Cora; corda e caixote do pescador Tião; pontezinha no riacho do lago |
+
+**3. Moradores.** Quem trabalha numa casa fica **dentro dela**: a Dona Rosa atrás do balcão da loja e o Seu Bento atrás do balcão da ferraria. Para falar com eles, a Line entra e para na frente do balcão. À noite as lojas fecham (a porta mostra "Loja fechada"). No mapa da mochila, o ícone da loja fica na porta. Os outros moradores (Zé, Lurdes, Pedrinho, Cora, Tião, Brisa, Tobias) ficam na rua, longe das portas.
+
+**4. Casas em pixel art.** As casas do vilarejo, a cabana da floresta, a casa da Cora e a do Tião usam a casa da fazenda em pixel art, cada uma com uma cor de telhado (`tools/variantes_casa.py`: roxo na loja, azul na ferraria, verde, mostarda, vermelho e marrom-escuro na cabana). A porta da imagem cai exatamente na porta do mapa, e a colisão de cada casa foi refeita no tamanho da arte.
+
+**5. Botões do celular.** Ficam num arco em volta do ⚔: pular à esquerda, magia na diagonal, esquivar em cima; defender no arco de fora; o item do atalho e a troca de heroína no topo do arco; o botão de interagir acima de todos (seção 8.1).
+
+**6. Biblioteca limpa.** Saíram as pastas de `arte/` cuja arte já veio nos itens (vaca, cavalo, porco, galinhas, Theo, dragão antigo, Bell e casal antigos: 88 pastas), as referências do dragão antigo, 9 imagens de cenário sem uso (arbustos, cachoeira, fases de milho e trigo, pedra) e 11 fotos antigas da documentação. As fotos dos mapas, da fazenda, do vilarejo, das lojas e dos interiores foram refeitas. As regras (pernas, tamanho pela cabeça, ritmo, layout do Theo, medidas do Minas Shopping) continuam.
+
+**7. Arte que ainda falta, mapa por mapa** (hoje desenhada no código):
+
+| Mapa | O que ainda é desenhado no código |
+|---|---|
+| Todos | os moradores (Rosa, Bento, Zé, Lurdes, Pedrinho, Tobias, Cora, Tião, Brisa) em todas as poses; a fonte da praça e a fonte das fases; placas; baús; corações e moedas no chão |
+| Vilarejo | chão em tiles (grama e terra), poço, barracas da feira, bigorna, estação e trilhos do carrinho, riacho |
+| Floresta | chão em tiles, raízes, espinhos, riacho, pedra rachada, postes do gancho, lago com ilha |
+| Gruta e Minas | paredes e chão, cogumelos luminosos, cristais, portas trancadas, paredes rachadas, abismo |
+| Ruínas | paredes, pilares, cristais, barreiras de luz, altar, lagos |
+| Montanha e Covil | rocha, lava, brasa, tochas, portão de fogo, jaula |
+| Parte 2 (sete fases) | chão de cada fase (lama, vento, abismo de céu, chuva), cristais de terra, pérolas, faróis, ninho do Grifo; os sete chefes |
+| Minas Shopping | o pedido em peças (seção 22.11.1) |
+
 ### 23.2 Animações com poucos quadros diferentes
 
 O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo para a Line, a Bell e as duas juntas; cenas e emoções no fps da artista, sem passar de 12 quadros por segundo). Mas estas têm **4 desenhos diferentes ou menos** e repetem quadros, então o movimento fica "picado". Vale reenviar com o ciclo completo (8 a 12 desenhos diferentes):
@@ -4486,6 +4524,7 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 - **Mapa com imagem de base:** um mapa pode ter `base` (o nome de uma imagem do catálogo, 2 px por unidade do mundo, 64 px por tile). O jogo desenha essa imagem no lugar dos tiles do chão; o texto do mapa continua valendo para colisão, saídas e objetos. Com `sobreBase`, as letras listadas (na fazenda, `u`, o mato alto) ainda são desenhadas por cima da imagem. A fazenda usa o terreno oficial (item 144) e a casa da fazenda usa a planta do item 145.
 - **Móveis:** cada mapa pode ter uma lista `moveis` com `[nome, x, y, largura, pegada, alto, espelhar]`. O móvel vira um objeto desenhado por profundidade (a Line passa na frente e atrás), e a `pegada` (em tiles) vira chão sólido. As imagens ficam em `game/assets/moveis/` (itens 148 a 152, na resolução original) e os objetos da fazenda (casinha do Theo, tigela cheia e vazia, varal, mesa de piquenique, cerca, porteira, flores e mato, itens 146 e 147) em `game/assets/cenario/`.
 - **Portas (`entradas`):** perto de uma porta aparece **Entrar**. Colada na porta, ela ganha da conversa com quem está de frente (Dona Rosa, Seu Bento); um bilhete ainda não lido na porta vem antes (cabana do caçador). Para sair, basta descer pelo caminho de pedra. A Bell, se estiver acompanhando, entra junto.
+- **Régua de tamanhos:** a largura de cada objeto vem da medida real em `MEDIDAS` (`tools/extrair_objetos.py`); depois de mudar uma medida, rode `python3 tools/extrair_objetos.py --so-medidas`. Nas listas `moveis`, largura `0` usa a régua (seção 23.6).
 - **Objetos avulsos (itens 146 a 227):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.
 - **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.
 

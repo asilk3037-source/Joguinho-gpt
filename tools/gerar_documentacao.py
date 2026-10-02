@@ -78,6 +78,8 @@ w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Au
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
 w()
+w("> 🎨 **Revisão geral de design (seção 23.6):** todos os objetos e móveis agora seguem uma **régua de tamanhos** (medida real × a altura da Line); a fazenda, o vilarejo e todos os interiores foram reorganizados por zonas, com os caminhos livres; as casas do vilarejo, da floresta, do vale e do lago usam a casa em pixel art com telhados de cores diferentes; a Dona Rosa e o Seu Bento atendem dentro das lojas, atrás do balcão, e as lojas fecham à noite; os botões do celular formam um arco em volta do ⚔; a biblioteca foi limpa (arte antiga e fotos sem uso saíram) e as fotos foram refeitas.")
+w()
 w("> 🐴 **Itens 218 a 227 chegaram:** canto do cavalo no pasto (cavalete com sela, cabresto e escova), cesto de lã e tesoura de tosquia perto das ovelhas, bebedouro no galinheiro, concha de grãos no silo, ferraduras no celeiro e balde de ração perto do cocho.")
 w()
 w("> 🧺 **Itens 203 a 217 chegaram:** bebedouro de passarinho, dois postes de lampião na estrada, roda de carroça no celeiro, carrinho de flores, treliça, mangueira, tesoura de poda, cesto de maçãs, abóboras, banquinho e balde de ordenha no pasto, sapateira e galochas na varanda, cesto de prendedores debaixo do varal e silo de grãos.")
@@ -222,7 +224,7 @@ w("- **Fundo transparente de verdade**, sem a sombra marrom da prancha e sem som
 w("- Deixar o contorno mais limpo e as animações mais suaves, com mais quadros em andar, correr e brincar.")
 w("- Manter as 4 direções coerentes: frente, costas e lado direito. O lado esquerdo o jogo espelha.")
 w()
-w("A prancha original fica em `arte/referencias/theo_shihtzu.png`, e os quadros recortados em `arte/theo/`.")
+w("A prancha original fica em `arte/referencias/theo_shihtzu.png`; a arte do Theo no jogo vem dos itens 126 a 130.")
 w()
 img("theo-layout-oficial", "Prancha original do Theo (layout oficial, referência para a arte final)")
 w("### Bichos da fazenda")
@@ -662,8 +664,8 @@ w("### 6.2 Vilarejo do Riacho (área nova)")
 w("Um vilarejo pequeno a leste da fazenda, com uma praça de terra batida no meio, fonte, quadro de avisos, casinhas de telhado colorido, barraca de feira, um riacho ao sul e a estação do carrinho de mina a leste. Não tem inimigos: é o lugar seguro da aventura.")
 w()
 w("- **Praça:** a fonte (cura e vira ponto de retorno) e o **cartaz do vilarejo**, que é um documento de investigação.")
-w("- **Loja da Dona Rosa** (casa do oeste, com letreiro): vende poções, elixir, bombas, a Pena de Fênix e as Botas de Andarilha.")
-w("- **Ferraria do Seu Bento** (casa do leste, com letreiro e bigorna): vende as armaduras.")
+w("- **Loja da Dona Rosa** (casa de telhado roxo, a oeste da praça, com letreiro; a Dona Rosa atende **lá dentro, atrás do balcão**): vende poções, elixir, bombas, a Pena de Fênix e as Botas de Andarilha.")
+w("- **Ferraria do Seu Bento** (casa de telhado azul, a leste, com letreiro; a bigorna, a lenha e o barril ficam do lado de fora): o Seu Bento atende **lá dentro, atrás do balcão**, e vende as armaduras. As duas lojas fecham à noite.")
 w("- **Estação do Vilarejo:** o carrinho de mina parado nos trilhos, esperando a alavanca do freio.")
 w("- **Moradores:** Dona Rosa, Seu Bento, Seu Zé (o mais velho, conta a história do carrinho), Dona Lurdes (mulher do caçador) e o Pedrinho (que corre de um lado para o outro e conta da pedra rachada).")
 w("- **Saídas:** oeste para a fazenda e norte para a floresta.")
@@ -1005,7 +1007,7 @@ for l in [("Andar", "WASD / setas", "analógico", "arrastar no lado esquerdo"), 
           ("Pausar", "Esc / P", "Start", "⏸"), ("Pular cena", "Tab", "—", "Pular cena")]:
     w("| " + " | ".join(l) + " |")
 w()
-w("**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação ficam no canto direito; o **🔄 trocar heroína** e o **item do atalho** (bomba, poção, elixir… o que estiver equipado) ficam numa fileira **acima** deles, longe do joystick (antes ficavam ao lado esquerdo dos botões, perto demais do polegar do movimento). O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).")
+w("**Posição dos botões no celular:** o joystick fica na metade esquerda da tela. Os botões de ação formam um **arco em volta do ⚔**, no canto direito: ⤴ pular à esquerda, ✨ magia na diagonal, 💨 esquivar em cima e 🛡 defender no arco de fora; o **item do atalho** (bomba, poção, elixir… o que estiver equipado) e o **🔄 trocar heroína** ficam no topo do arco, longe do joystick. O botão de interagir aparece mais acima ainda. Não existe mais o botão 🌀: **segurando o ⚔** sai o giro (Line) ou o leque de estrelas (Bell), emendado no golpe. **Sem espada**, o ⚔ dá um **soco** de alcance curto (a arte do soco na máquina do primeiro encontro).")
 w()
 w("#### Ícones dos botões do celular")
 w()
@@ -1018,10 +1020,10 @@ for linha in [
     ("⚔", "Atacar", "golpe de espada (3 toques = combo); **segurar** = giro da Line ou leque de estrelas da Bell; **sem espada, soco**; perto de algo, interage", "sempre", "canto inferior direito (o maior)", "ícone 80×80 (desenhar 160×160): espada; com a Bell, estrela"),
     ("⤴", "Pular", "pula; no ar, ⚔ faz o ataque aéreo", "com espada", "à esquerda do ⚔", "62×62 (desenhar 124×124)"),
     ("💨", "Esquivar", "esquiva; correndo vira dash", "com espada", "acima do ⚔", "62×62 (124×124)"),
-    ("🛡", "Defender", "segurar para bloquear", "com espada (apagado antes)", "à esquerda do ⤴", "62×62 (124×124)"),
-    ("✨", "Magia", "Raio de Luz; segurar e soltar = Chuva de Estrelas; com a Bell, canção", "depois de aprender a magia", "acima do ⤴", "62×62 (124×124); com a Bell, nota musical"),
-    ("💣 🧪 💧…", "Item do atalho", "usa o item equipado na mochila: bomba, poção, elixir, pena… (mostra o ícone e a quantidade). **Poção e bomba usam o mesmo botão**: equipe na mochila o que quiser deixar ali", "quando há um item equipado com quantidade", "fileira de cima, à direita", "44×44 (88×88): um ícone por item, os mesmos da mochila"),
-    ("🔄", "Trocar heroína", "troca entre a Line e a Bell (mostra quem entra: 💖 Bell ou ⚔ Line)", "Parte 2, com a Bell jogável", "fileira de cima, à esquerda", "44×44 (88×88): as duas carinhas com setas"),
+    ("🛡", "Defender", "segurar para bloquear", "com espada (apagado antes)", "arco de fora, à esquerda", "62×62 (124×124)"),
+    ("✨", "Magia", "Raio de Luz; segurar e soltar = Chuva de Estrelas; com a Bell, canção", "depois de aprender a magia", "na diagonal, entre ⤴ e 💨", "62×62 (124×124); com a Bell, nota musical"),
+    ("💣 🧪 💧…", "Item do atalho", "usa o item equipado na mochila: bomba, poção, elixir, pena… (mostra o ícone e a quantidade). **Poção e bomba usam o mesmo botão**: equipe na mochila o que quiser deixar ali", "quando há um item equipado com quantidade", "topo do arco", "44×44 (88×88): um ícone por item, os mesmos da mochila"),
+    ("🔄", "Trocar heroína", "troca entre a Line e a Bell (mostra quem entra: 💖 Bell ou ⚔ Line)", "Parte 2, com a Bell jogável", "topo do arco, à direita do item", "44×44 (88×88): as duas carinhas com setas"),
     ("🎒", "Mochila", "itens, documentos, conclusões e mapa", "fora das cenas", "canto superior direito", "44×44 (88×88)"),
     ("⏸", "Pausar", "abre a pausa", "fora das cenas", "canto superior direito", "44×44 (88×88)"),
     ("texto", "Interagir", "aparece com o nome da ação (Abrir, Ler, Entrar, Comprar / conversar, Carinho…)", "perto de algo que dá para usar", "acima de todos, à direita", "botão de texto (borda e fundo em pixel art, 9-slice)"),
@@ -1244,7 +1246,7 @@ w("| Covil | — | chão, paredes, lava, estalagmites, jaula da Bell |")
 w()
 w("**Objetos novos desenhados no código (precisam de arte):** porta de ferro trancada, cogumelos luminosos, documentos no chão, os 10 itens da mochila (hoje emojis), moedas, tochas, moradores, casas do vilarejo, carrinho, estações e trilhos, postes do gancho, bombas, paredes rachadas, chão em brasa, morcegos e o mapa do mundo. A lista completa, com o que cada um deve mostrar, está na **seção 7.12**.")
 w()
-w("Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, dragões, Theo, pacote Line & Bell e tileset.")
+w("Pranchas de referência já recebidas ficam em `arte/referencias/`: fazenda, casa, Theo, galinhas, pacote Line & Bell, tileset, o modelo do Minas Shopping e os gabaritos de cada fase. As referências do dragão antigo saíram (o dragão do jogo vem dos itens 80 a 97).")
 w()
 
 # =====================================================================

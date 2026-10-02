@@ -377,6 +377,48 @@ def escrever(w, inv, itens=None):
     ]:
         w("| " + " | ".join(linha) + " |")
     w()
+    w("### 23.6 Revisão geral de design (2 de outubro)")
+    w()
+    w("Revisão do jogo inteiro como designer e engenheira: tamanho de cada arte, organização de cada mapa, moradores, botões e biblioteca.")
+    w()
+    w("**1. Régua de tamanhos.** Todo objeto e móvel tem uma medida real em `tools/extrair_objetos.py` (`MEDIDAS`): altura em metros ou, para o que fica deitado ou é visto em profundidade (cama, mesa, cocho, tapete), largura. A Line tem 1,60 m e 62 unidades de altura; os objetos usam 15% a mais para ficarem legíveis, e nada fica com menos de 12 unidades de largura. A largura no mundo sai da medida × a proporção da imagem e vai para `LB.LARGURA_OBJETOS` (`game/js/objetos.js`). Nas listas `moveis` dos mapas, largura `0` quer dizer \"pela régua\". Prédios (casas, celeiro) seguem a escala da arte oficial da fazenda, um pouco compacta, como é comum em jogos de fazenda em pixel art. Ajustes feitos com a régua: postes de lampião, espantalho, treliça, roda de carroça, silo, taboas, sela, mesa da sala, cama, poltronas e pia ficaram no tamanho certo em relação à Line.")
+    w()
+    w("**2. Cada mapa organizado por zonas** (nada encosta nos caminhos de terra; objetos grandes ocupam o chão e a Line contorna):")
+    w()
+    w("| Mapa | Zonas |")
+    w("|---|---|")
+    for zona in [
+        ("Fazenda", "entrada norte com arco e placa · casa (lenha, caixa de correio, varanda com sapateira, galochas, cadeira de balanço e sino, capacho) · colmeia com mel e fumigador · jardim da frente (bancada de mudas, floreiras, banho e casinha de passarinho) · varal com cesto de prendedores · galinheiro (ninho, ovos, comedouro, bebedouro) · faixa de trabalho da horta (ferramentas, sementes, poço, regador, mangueira, treliça) · horta com espantalho e colheita · celeiro (composteira, barril, roda, ferraduras, latão, silo, cata-vento) · pasto (canto do cavalo, canto das vacas, bebedouro e sal, tosquia) · lago (banco, fogueira, taboas, vitórias-régias, píer) · postes de lampião nos caminhos · dragão da Parte 2 dormindo no gramado ao sul do pasto (antes ficava em cima do celeiro)"),
+        ("Vilarejo", "praça com fonte, postes nas quatro esquinas, dois bancos virados para a fonte e floreiras · feira na frente da loja (barracas, frutas, abóboras, caixotes, carrinho de flores) · ferraria (lenha, barril, ferradura, balde, bigorna, feno) · casas com caixa de correio e capacho · placa de boas-vindas na entrada oeste · taboas na beira do riacho"),
+        ("Interiores", "corredor livre da porta até o meio; cada cômodo num canto; móveis encostados nas paredes; luminária sobre a mesa; a loja e a ferraria com balcão no meio"),
+        ("Floresta, vale e lago", "casas em pixel art; lenha e ferramentas na cabana do caçador; cesto, regador e sementes na horta da Dona Cora; corda e caixote do pescador Tião; pontezinha no riacho do lago"),
+    ]:
+        w(f"| {zona[0]} | {zona[1]} |")
+    w()
+    w("**3. Moradores.** Quem trabalha numa casa fica **dentro dela**: a Dona Rosa atrás do balcão da loja e o Seu Bento atrás do balcão da ferraria. Para falar com eles, a Line entra e para na frente do balcão. À noite as lojas fecham (a porta mostra \"Loja fechada\"). No mapa da mochila, o ícone da loja fica na porta. Os outros moradores (Zé, Lurdes, Pedrinho, Cora, Tião, Brisa, Tobias) ficam na rua, longe das portas.")
+    w()
+    w("**4. Casas em pixel art.** As casas do vilarejo, a cabana da floresta, a casa da Cora e a do Tião usam a casa da fazenda em pixel art, cada uma com uma cor de telhado (`tools/variantes_casa.py`: roxo na loja, azul na ferraria, verde, mostarda, vermelho e marrom-escuro na cabana). A porta da imagem cai exatamente na porta do mapa, e a colisão de cada casa foi refeita no tamanho da arte.")
+    w()
+    w("**5. Botões do celular.** Ficam num arco em volta do ⚔: pular à esquerda, magia na diagonal, esquivar em cima; defender no arco de fora; o item do atalho e a troca de heroína no topo do arco; o botão de interagir acima de todos (seção 8.1).")
+    w()
+    w("**6. Biblioteca limpa.** Saíram as pastas de `arte/` cuja arte já veio nos itens (vaca, cavalo, porco, galinhas, Theo, dragão antigo, Bell e casal antigos: 88 pastas), as referências do dragão antigo, 9 imagens de cenário sem uso (arbustos, cachoeira, fases de milho e trigo, pedra) e 11 fotos antigas da documentação. As fotos dos mapas, da fazenda, do vilarejo, das lojas e dos interiores foram refeitas. As regras (pernas, tamanho pela cabeça, ritmo, layout do Theo, medidas do Minas Shopping) continuam.")
+    w()
+    w("**7. Arte que ainda falta, mapa por mapa** (hoje desenhada no código):")
+    w()
+    w("| Mapa | O que ainda é desenhado no código |")
+    w("|---|---|")
+    for linha in [
+        ("Todos", "os moradores (Rosa, Bento, Zé, Lurdes, Pedrinho, Tobias, Cora, Tião, Brisa) em todas as poses; a fonte da praça e a fonte das fases; placas; baús; corações e moedas no chão"),
+        ("Vilarejo", "chão em tiles (grama e terra), poço, barracas da feira, bigorna, estação e trilhos do carrinho, riacho"),
+        ("Floresta", "chão em tiles, raízes, espinhos, riacho, pedra rachada, postes do gancho, lago com ilha"),
+        ("Gruta e Minas", "paredes e chão, cogumelos luminosos, cristais, portas trancadas, paredes rachadas, abismo"),
+        ("Ruínas", "paredes, pilares, cristais, barreiras de luz, altar, lagos"),
+        ("Montanha e Covil", "rocha, lava, brasa, tochas, portão de fogo, jaula"),
+        ("Parte 2 (sete fases)", "chão de cada fase (lama, vento, abismo de céu, chuva), cristais de terra, pérolas, faróis, ninho do Grifo; os sete chefes"),
+        ("Minas Shopping", "o pedido em peças (seção 22.11.1)"),
+    ]:
+        w(f"| {linha[0]} | {linha[1]} |")
+    w()
     w("### 23.2 Animações com poucos quadros diferentes")
     w()
     w("O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo para a Line, a Bell e as duas juntas; cenas e emoções no fps da artista, sem passar de 12 quadros por segundo). Mas estas têm **4 desenhos diferentes ou menos** e repetem quadros, então o movimento fica \"picado\". Vale reenviar com o ciclo completo (8 a 12 desenhos diferentes):")
@@ -501,6 +543,7 @@ def escrever(w, inv, itens=None):
     w("- **Mapa com imagem de base:** um mapa pode ter `base` (o nome de uma imagem do catálogo, 2 px por unidade do mundo, 64 px por tile). O jogo desenha essa imagem no lugar dos tiles do chão; o texto do mapa continua valendo para colisão, saídas e objetos. Com `sobreBase`, as letras listadas (na fazenda, `u`, o mato alto) ainda são desenhadas por cima da imagem. A fazenda usa o terreno oficial (item 144) e a casa da fazenda usa a planta do item 145.")
     w("- **Móveis:** cada mapa pode ter uma lista `moveis` com `[nome, x, y, largura, pegada, alto, espelhar]`. O móvel vira um objeto desenhado por profundidade (a Line passa na frente e atrás), e a `pegada` (em tiles) vira chão sólido. As imagens ficam em `game/assets/moveis/` (itens 148 a 152, na resolução original) e os objetos da fazenda (casinha do Theo, tigela cheia e vazia, varal, mesa de piquenique, cerca, porteira, flores e mato, itens 146 e 147) em `game/assets/cenario/`.")
     w("- **Portas (`entradas`):** perto de uma porta aparece **Entrar**. Colada na porta, ela ganha da conversa com quem está de frente (Dona Rosa, Seu Bento); um bilhete ainda não lido na porta vem antes (cabana do caçador). Para sair, basta descer pelo caminho de pedra. A Bell, se estiver acompanhando, entra junto.")
+    w("- **Régua de tamanhos:** a largura de cada objeto vem da medida real em `MEDIDAS` (`tools/extrair_objetos.py`); depois de mudar uma medida, rode `python3 tools/extrair_objetos.py --so-medidas`. Nas listas `moveis`, largura `0` usa a régua (seção 23.6).")
     w("- **Objetos avulsos (itens 146 a 227):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.")
     w("- **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.")
     w()

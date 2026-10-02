@@ -20,51 +20,77 @@
 
   // [nome, x, y (base, em tiles), largura no mundo, pegada [larg, alt] em tiles, altura na parede, espelhar].
   // O piso começa na linha 5; a porta fica no meio da parede de baixo.
+  // Móveis de cada casa: [nome, x, y (base, em tiles), largura (0 = régua de tamanhos), pegada [larg, alt] em tiles,
+  // altura na parede, espelhar]. O piso começa na linha 5; a porta fica no meio da parede de baixo e o corredor
+  // da porta até o meio da casa fica sempre livre. Os móveis encostam nas paredes, cada cômodo num canto.
   const MOVEIS = {
+    // Cabana do caçador: lareira e poltrona à esquerda, cama à direita, ferramentas e caminha de cachorro embaixo.
     casa_floresta: [
-      ['farmhouse_fireplace', 2.8, 5.9, 96, [3, 1]], ['farmhouse_bookshelf', 5.2, 6.0, 53, [1, 1]], ['farmhouse_nightstand', 6.6, 6.5, 34, [1, 1]],
-      ['farmhouse_bed', 8.6, 8.5, 110, [3, 3]], ['farmhouse_armchair', 3.0, 9.0, 57, [1, 1]], ['farmhouse_theo_bed', 1.8, 11.7, 46, [1, 1]],
-      ['farmhouse_laundry_basket', 9.6, 11.6, 32, [1, 1]],
-      ['farm_tool_rack', 3.2, 11.6, 38, [1, 1]], ['farm_wooden_bucket', 4.1, 11.7, 18], ['farmhouse_wall_clock', 6.6, 4.95, 20, null, 58],
+      ['farmhouse_fireplace', 2.6, 5.95, 0, [3, 1]], ['farmhouse_bookshelf', 4.6, 6.0, 0, [1, 1]], ['farmhouse_wall_clock', 6.0, 4.95, 0, null, 58],
+      ['farmhouse_nightstand', 6.6, 6.4, 0, [1, 1]], ['farmhouse_bed', 8.6, 7.9, 0, [3, 3]],
+      ['farmhouse_armchair', 2.9, 8.7, 0, [1, 1]], ['farmhouse_theo_bed', 2.0, 11.0, 0, [1, 1]],
+      ['farm_tool_rack', 9.4, 11.1, 0, [1, 1]], ['farm_wooden_bucket', 8.3, 11.3, 0], ['farmhouse_hanging_lamp', 3.0, 8.75, 0, null, 70],
     ],
+    // Loja da Dona Rosa: prateleiras no fundo, balcão no meio (ela fica atrás) e mercadorias nos cantos da frente.
     casa_loja: [
-      ['farmhouse_bookshelf', 2.0, 6.0, 53, [1, 1]], ['farmhouse_bookshelf', 3.7, 6.0, 53, [1, 1]], ['farmhouse_bookshelf', 10.3, 6.0, 53, [1, 1]],
-      ['farmhouse_bookshelf', 12.0, 6.0, 53, [1, 1]], ['farmhouse_dresser', 7.0, 8.2, 92, [3, 1]], ['barril', 1.8, 10.8, 26, [1, 1]],
-      ['caixa', 3.0, 10.9, 28, [1, 1]], ['farmhouse_laundry_basket', 11.5, 10.8, 32, [1, 1]],
-      ['farm_seed_sacks', 9.2, 11.6, 30], ['farm_harvest_basket', 10.4, 11.6, 26], ['farmhouse_potted_plant', 1.9, 8.5, 28, [1, 1]],
-      ['farmhouse_hanging_lamp', 7.0, 8.25, 20, null, 64], ['farmhouse_flower_vase', 7.4, 8.22, 12, null, 26],
+      ['farmhouse_bookshelf', 2.0, 6.0, 0, [1, 1]], ['farmhouse_bookshelf', 3.7, 6.0, 0, [1, 1]],
+      ['farmhouse_bookshelf', 10.3, 6.0, 0, [1, 1]], ['farmhouse_bookshelf', 12.0, 6.0, 0, [1, 1]],
+      ['farmhouse_spice_shelf', 7.0, 4.95, 0, null, 43],
+      ['farmhouse_kitchen_island', 7.0, 8.3, 0, [3, 1]], ['farmhouse_flower_vase', 6.0, 8.32, 0, null, 30], ['farmhouse_hanging_lamp', 7.0, 8.35, 0, null, 72],
+      ['barril', 1.8, 10.9, 26, [1, 1]], ['caixa', 2.9, 11.0, 28, [1, 1]], ['farm_seed_sacks', 4.2, 11.2, 0],
+      ['farm_apple_basket', 9.8, 11.2, 0], ['farm_harvest_basket', 11.0, 11.1, 0], ['farmhouse_potted_plant', 12.1, 11.0, 0, [1, 1]],
     ],
+    // Ferraria do Seu Bento: forja e lenha à esquerda, balcão no meio (ele fica atrás), bigorna e barris na frente.
     casa_ferraria: [
-      ['forja', 3.0, 5.9, 106, [3, 1]], ['farmhouse_bookshelf', 10.5, 6.0, 53, [1, 1]], ['bigorna', 6.5, 8.6, 0, [1, 1]],
-      ['barril', 11.6, 9.8, 26, [1, 1]], ['barril', 11.6, 10.9, 26, [1, 1]], ['caixa', 1.9, 10.9, 28, [1, 1]], ['farmhouse_dresser', 8.9, 6.3, 80, [2, 1]],
-      ['farm_tool_rack', 4.8, 10.9, 38, [1, 1]], ['farm_wooden_bucket', 8.2, 9.3, 18], ['farm_woodpile', 2.2, 8.4, 40, [1, 1]],
+      ['forja', 2.8, 5.95, 106, [3, 1]], ['farm_woodpile', 1.9, 8.2, 0, [1, 1]],
+      ['farm_tool_rack', 10.6, 6.0, 0, [1, 1]], ['farm_horseshoe_sign', 8.4, 4.95, 0, null, 46],
+      ['farmhouse_kitchen_island', 7.5, 8.3, 0, [3, 1]], ['farm_horseshoe_set', 8.2, 8.33, 0, null, 30],
+      ['bigorna', 3.4, 9.9, 0, [1, 1]], ['farm_wooden_bucket', 4.6, 10.2, 0],
+      ['barril', 11.6, 9.8, 26, [1, 1]], ['barril', 11.6, 10.9, 26, [1, 1]], ['caixa', 10.4, 11.0, 28, [1, 1]],
     ],
+    // Casa A do vilarejo: cozinha à esquerda (fogão, geladeira e mesa), quarto à direita.
     casa_vila_a: [
-      ['farmhouse_stove', 2.0, 6.3, 57, [2, 1]], ['farmhouse_fridge', 3.8, 6.5, 51, [1, 1]], ['farmhouse_nightstand', 6.7, 6.5, 34, [1, 1]],
-      ['farmhouse_bed', 8.6, 8.4, 110, [3, 3]], ['farmhouse_dining_table', 3.0, 9.4, 96, [3, 2]],
-      ['farmhouse_potted_plant', 10.2, 10.6, 28, [1, 1]], ['farmhouse_hanging_lamp', 3.0, 9.45, 20, null, 80], ['farmhouse_flower_vase', 3.0, 9.47, 14, null, 24],
+      ['farmhouse_stove', 1.9, 6.3, 0, [1, 1]], ['farmhouse_fridge', 3.3, 6.5, 0, [1, 1]], ['farmhouse_spice_shelf', 2.6, 4.95, 0, null, 43],
+      ['farmhouse_dining_table', 3.0, 9.6, 0, [3, 2]], ['farmhouse_hanging_lamp', 3.0, 9.65, 0, null, 78], ['farmhouse_flower_vase', 3.0, 9.62, 0, null, 26],
+      ['farmhouse_nightstand', 6.9, 6.4, 0, [1, 1]], ['farmhouse_bed', 8.6, 7.9, 0, [3, 3]], ['farmhouse_potted_plant', 9.7, 10.5, 0, [1, 1]],
     ],
+    // Casa B: sala com sofá, mesinha e poltrona à esquerda, estantes à direita, caminha de cachorro.
     casa_vila_b: [
-      ['farmhouse_wardrobe', 1.8, 6.4, 53, [1, 1]], ['farmhouse_sofa', 5.5, 7.0, 100, [3, 1]], ['farmhouse_bookshelf', 9.4, 6.0, 53, [1, 1]],
-      ['farmhouse_armchair', 2.2, 8.6, 57, [1, 1]], ['farmhouse_coffee_table', 5.5, 8.7, 72, [2, 1]], ['farmhouse_theo_bed', 8.8, 10.6, 46, [1, 1]],
-      ['farmhouse_potted_plant', 1.8, 10.6, 28, [1, 1]], ['farmhouse_flower_vase', 5.5, 8.72, 12, null, 16], ['farmhouse_hanging_lamp', 5.5, 8.75, 20, null, 50],
+      ['farmhouse_sofa', 3.0, 6.7, 0, [3, 1]], ['farmhouse_coffee_table', 3.0, 8.4, 0, [2, 1]], ['farmhouse_flower_vase', 3.0, 8.42, 0, null, 16],
+      ['farmhouse_armchair', 1.6, 9.9, 0, [1, 1]], ['farmhouse_botanical_frame', 3.0, 4.95, 0, null, 50],
+      ['farmhouse_bookshelf', 8.2, 6.0, 0, [1, 1]], ['farmhouse_bookshelf', 9.6, 6.0, 0, [1, 1]], ['farmhouse_theo_bed', 9.0, 10.4, 0, [1, 1]],
+      ['farmhouse_potted_plant', 6.9, 6.3, 0, [1, 1]],
     ],
+    // Casa C: quarto, com a cama e o criado-mudo à esquerda, cômoda e poltrona à direita.
     casa_vila_c: [
-      ['farmhouse_bed', 2.6, 8.4, 110, [3, 3]], ['farmhouse_nightstand', 4.6, 6.5, 34, [1, 1]], ['farmhouse_dresser', 8.2, 6.3, 80, [2, 1]],
-      ['farmhouse_armchair', 8.4, 9.3, 57, [1, 1], 0, true], ['farmhouse_laundry_basket', 9.6, 10.7, 32, [1, 1]],
-      ['farmhouse_potted_plant', 6.0, 6.6, 26, [1, 1]], ['farmhouse_wall_sconce', 4.6, 4.95, 16, null, 40],
+      ['farmhouse_bed', 2.6, 7.9, 0, [3, 3]], ['farmhouse_nightstand', 4.4, 6.4, 0, [1, 1]], ['farmhouse_wall_sconce', 5.6, 4.95, 0, null, 40],
+      ['farmhouse_dresser', 8.2, 6.4, 0, [2, 1]], ['farmhouse_armchair', 9.2, 9.0, 0, [1, 1], 0, true],
+      ['farmhouse_laundry_basket', 9.6, 10.6, 0, [1, 1]], ['farmhouse_potted_plant', 1.7, 10.5, 0, [1, 1]],
     ],
+    // Casa da Dona Cora (jardineira): cozinha no fundo, mesa no meio à esquerda, cama à direita, cestos da horta.
     casa_vale: [
-      ['farmhouse_stove', 1.9, 6.3, 57, [2, 1]], ['farmhouse_sink_counter', 4.6, 6.3, 92, [3, 1]], ['farmhouse_fridge', 6.9, 6.5, 51, [1, 1]],
-      ['farmhouse_bed', 8.9, 8.5, 110, [3, 3]], ['farmhouse_dining_table', 4.3, 9.6, 104, [3, 2]], ['farmhouse_laundry_basket', 1.8, 11.6, 32, [1, 1]],
-      ['farmhouse_hanging_lamp', 4.3, 9.65, 20, null, 80], ['farmhouse_potted_plant', 10.3, 11.6, 26, [1, 1]], ['farmhouse_spice_shelf', 4.6, 4.95, 40, null, 43],
+      ['farmhouse_stove', 1.9, 6.3, 0, [1, 1]], ['farmhouse_sink_counter', 3.8, 6.3, 0, [2, 1]], ['farmhouse_fridge', 5.6, 6.5, 0, [1, 1]],
+      ['farmhouse_spice_shelf', 3.8, 4.95, 0, null, 43], ['farmhouse_bed', 8.7, 7.9, 0, [3, 3]],
+      ['farmhouse_dining_table', 3.2, 9.8, 0, [3, 2]], ['farmhouse_hanging_lamp', 3.2, 9.85, 0, null, 78],
+      ['farm_harvest_basket', 9.4, 11.3, 0], ['farm_seed_sacks', 8.2, 11.4, 0], ['farmhouse_potted_plant', 1.6, 11.2, 0, [1, 1]],
     ],
+    // Casa do Seu Tião (pescador): cômoda e cesto no fundo, sala à esquerda, cama à direita, corda e caixote.
     casa_lago: [
-      ['farmhouse_dresser', 2.6, 6.3, 80, [2, 1]], ['farmhouse_laundry_basket', 4.4, 6.6, 32, [1, 1]], ['farmhouse_towel_rack', 5.6, 4.95, 30, null, 18],
-      ['farmhouse_bed', 8.6, 8.4, 110, [3, 3]], ['farmhouse_armchair', 2.4, 9.2, 57, [1, 1]], ['farmhouse_coffee_table', 4.4, 10.0, 66, [2, 1]],
-      ['farmhouse_potted_plant', 10.2, 10.6, 26, [1, 1]], ['farm_wooden_bucket', 6.4, 6.7, 18], ['farmhouse_hanging_lamp', 4.4, 10.05, 20, null, 56],
+      ['farmhouse_dresser', 2.6, 6.3, 0, [2, 1]], ['farmhouse_towel_rack', 4.5, 4.95, 0, null, 30],
+      ['farmhouse_armchair', 1.9, 9.0, 0, [1, 1]], ['farmhouse_coffee_table', 3.6, 9.4, 0, [2, 1]], ['farmhouse_hanging_lamp', 3.6, 9.45, 0, null, 60],
+      ['farmhouse_bed', 8.6, 7.9, 0, [3, 3]], ['farm_rope_coil', 9.4, 10.5, 0], ['farm_crate', 8.2, 10.6, 0, [1, 1]],
+      ['farmhouse_potted_plant', 6.9, 6.3, 0, [1, 1]],
     ],
   };
+
+  // Quem trabalha numa casa fica lá dentro: a Dona Rosa atrás do balcão da loja e o Seu Bento atrás do
+  // balcão da ferraria. `balcao`: até onde a Line chega para conversar (na frente do balcão).
+  const NPCS = {
+    casa_loja: [{ id: 'rosa', x: 7.0, y: 7.95, loja: 'rosa', balcao: 46 }],
+    casa_ferraria: [{ id: 'bento', x: 7.5, y: 7.95, loja: 'bento', balcao: 46 }],
+  };
+  // Lojas fecham à noite: a porta não abre.
+  const FECHA_NOITE = { casa_loja: 'Loja da Rosa', casa_ferraria: 'Ferraria' };
 
   for (const [id, [fora, tx, ty]] of Object.entries(PORTAS)) {
     const g = G[id], def = LB.MAPAS[fora];
@@ -74,8 +100,8 @@
     LB.MAPAS[id] = {
       nome: g.nome, tema: 'casa', base: 'base_' + id, interior: true, linhas: g.linhas, placas: {},
       saidas: [{ x: g.saida.x, y: g.saida.y, w: g.saida.w, h: 1, para: fora, chegada: { x: tx + 0.5, y: ty + 1.7, dir: 'FRONT' } }],
-      inicio: dentro, moveis: MOVEIS[id] || [],
+      inicio: dentro, moveis: MOVEIS[id] || [], npcs: NPCS[id] || [],
     };
-    def.entradas = (def.entradas || []).concat({ x: tx, y: ty, para: id, chegada: dentro });
+    def.entradas = (def.entradas || []).concat({ x: tx, y: ty, para: id, chegada: dentro, fechaNoite: FECHA_NOITE[id] || null, loja: (NPCS[id] || [])[0] && NPCS[id][0].loja });
   }
 })(window.LB);

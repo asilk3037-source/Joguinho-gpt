@@ -295,7 +295,7 @@
       }
     }
     for (const m of j.moradores || []) {
-      if (m.dormindo || !perto(m.x, m.y + 10, 58)) continue;
+      if (m.dormindo || !perto(m.x, m.y + (m.balcao || 10), 58)) continue;
       lista.push({ texto: m.loja ? (m.loja === 'rosa' ? 'Comprar / conversar' : 'Armaduras / conversar') : 'Conversar', x: m.x, y: m.y - 92, prio: 1, fazer: () => {
         m.fala = 2;
         j.iniciarCena(LB.HISTORIA.morador, { semPular: true }, m);

@@ -251,7 +251,26 @@
   }
 
   // Casa genérica (vilarejo, cabana da floresta): porta no lugar certo e letreiro opcional.
+  // Cor do telhado de cada casa (variações da casa em pixel art, tools/variantes_casa.py), pela porta.
+  const CORES_CASA = {
+    vilarejo: { '15,9': 'roxo', '44,9': 'azul', '8,30': '', '18,30': 'verde', '42,30': 'mostarda' },
+    floresta: { '68,5': 'cabana' }, vale: { '7,7': 'verde' }, lago: { '6,36': 'azul' },
+  };
+  const FRACAO_PORTA = 0.648;   // onde fica a porta na largura da imagem da casa
+
   function casa(g, p) {
+    // Casa em pixel art: a porta da imagem cai na porta de verdade; letreiro acima da varanda.
+    const nome = 'casa' + (p.cor ? '_' + p.cor : '');
+    if (p.cor != null && LB.cenario.objeto(g, nome, p.porta - (FRACAO_PORTA - 0.5) * p.w, p.y + 6, p.w)) {
+      if (p.letreiro) {
+        g.font = '700 10px system-ui, sans-serif'; g.textAlign = 'center';
+        const lw = g.measureText(p.letreiro).width + 14, ly = p.y + 6 - p.w * 0.36;
+        g.fillStyle = 'rgba(40,24,12,.85)'; g.fillRect(p.porta - lw / 2 - 1, ly - 1, lw + 2, 18);
+        g.fillStyle = '#7a5230'; g.fillRect(p.porta - lw / 2, ly, lw, 16);
+        g.fillStyle = '#f7e7c4'; g.fillText(p.letreiro, p.porta, ly + 12);
+      }
+      return;
+    }
     const x = p.x, y = p.y, w = p.w, h = p.h, topo = y - h;
     const v = LB.ruido(p.tx, p.ty, 5);
     const parede = p.estilo === 'cabana' ? '#8a6a48' : ['#e9d8b4', '#f0e2c8', '#e4cfa8'][Math.floor(v * 3)];
@@ -307,6 +326,8 @@
       const porta = Math.floor(p.porta / TILE) + ',' + (p.y / TILE - 1);
       p.letreiro = (j.mapa.def.letreiros || {})[porta];
       if (id === 'floresta') p.estilo = 'cabana';
+      const cor = (CORES_CASA[id] || {})[porta];
+      if (cor != null) p.cor = cor;
     }
     j.bombas = [];
     j._escuro = noEscuro(j, j.line.x, j.line.y - 10) ? 1 : 0;

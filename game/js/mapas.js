@@ -58,49 +58,61 @@
       ],
       inicio: { x: 22.5, y: 3.6, dir: 'FRONT' },
       porta: { x: 10.7, y: 11.2 },
-      // Objetos da fazenda (itens 158 a 187): [nome, x, y (base, em tiles), largura, pegada, alto, espelhar].
+      // Objetos da fazenda (itens 146 a 227), organizados por zona. [nome, x, y (base, em tiles), largura (0 = pela régua
+      // de tamanhos), pegada [larg, alt] em tiles, alto (acima do chão), espelhar]. Nada encosta nos caminhos de terra.
       moveis: [
-        // Casa: caixa de correio, capacho, cadeira de balanço na varanda e lenha.
-        ['farm_mailbox', 4.6, 11.05, 20, [1, 1]], ['farm_doormat', 10.7, 11.55, 34], ['farm_rocking_chair', 12.7, 11.02, 26, null, 12],
-        ['farm_woodpile', 4.7, 9.75, 44, [2, 1]], ['farm_beehive_box', 3.8, 5.6, 28, [1, 1]], ['farm_birdhouse', 18.3, 6.4, 18, [1, 1]],
-        // Poço, horta e ferramentas.
-        ['farm_tool_rack', 15.0, 14.0, 38, [1, 1]], ['farm_wooden_bucket', 16.3, 14.6, 18], ['farm_seed_sacks', 13.4, 14.4, 30],
-        ['farm_scarecrow', 21.2, 16.9, 40, [1, 1]], ['farm_harvest_basket', 21.3, 18.5, 26], ['farm_shovel', 21.4, 19.9, 22], ['farm_hoe', 20.8, 20.6, 26],
-        ['farm_wheelbarrow', 14.0, 21.0, 44, [1, 1]],
-        // Galinheiro.
-        ['farm_chicken_nest', 10.6, 15.9, 32, [1, 1]], ['farm_egg_basket', 9.2, 16.6, 22],
-        // Celeiro e pasto.
-        ['farm_rain_barrel', 26.4, 9.9, 22, [1, 1]], ['farm_horseshoe_sign', 31.7, 10.02, 30, null, 44], ['farm_milk_can', 35.4, 10.7, 16],
-        ['farm_compost_bin', 25.4, 14.8, 30, [1, 1]], ['farm_feed_trough', 36.6, 17.4, 52, [2, 1]],
-        // Lago: banco, fogueira (acesa à noite), taboas, vitórias-régias e caixote no píer.
-        ['farm_garden_bench', 4.6, 22.5, 44, [2, 1]], ['farm_campfire', 4.7, 24.1, 34, [1, 1]],
-        ['farm_reeds', 7.6, 24.6, 30], ['farm_reeds', 21.5, 27.4, 28, null, 0, true], ['farm_reeds', 9.6, 30.6, 26],
-        ['farm_lily_pads', 11.8, 26.6, 46], ['farm_lily_pads', 16.8, 29.4, 34, null, 0, true], ['farm_crate', 22.3, 29.0, 26],
-        // Cogumelos debaixo das árvores.
-        ['farm_mushroom_cluster', 4.4, 29.4, 26], ['farm_mushroom_cluster', 31.6, 29.6, 22, null, 0, true],
-        // Itens 188 a 202: arco com a placa de boas-vindas na estrada norte, cata-vento no celeiro, sino na varanda,
-        // mel junto à colmeia, comedouro no galinheiro, feno, sal e bebedouro no pasto, bancada de mudas perto da horta.
-        ['farm_garden_arch', 23.0, 3.05, 66], ['farm_welcome_sign', 23.0, 3.07, 40, null, 34],
-        ['farm_weather_vane', 29.0, 10.03, 30, null, 135], ['farm_hand_bell', 13.4, 11.02, 12, null, 20],
-        ['farm_bee_smoker', 4.8, 5.9, 16], ['farm_honey_jar', 2.9, 6.0, 14], ['farm_planter_box', 17.4, 10.7, 40, [1, 1]],
-        ['farm_chicken_feeder', 7.0, 19.3, 26, [1, 1]], ['farm_hay_rack', 33.5, 18.8, 48, [2, 1]], ['farm_salt_lick', 39.2, 20.4, 26, [1, 1]],
-        ['farm_water_trough', 30.5, 22.6, 50, [2, 1]], ['farm_potting_bench', 24.6, 17.0, 40, [1, 1]],
-        ['farm_garden_gloves', 24.4, 17.02, 12, null, 22], ['farm_seedling_tray', 25.8, 17.6, 32], ['farm_rope_coil', 20.4, 28.8, 22],
-        // Itens 203 a 217: bebedouro de passarinho, postes de lampião na estrada, roda de carroça, carrinho de flores,
-        // treliça, mangueira, tesoura de poda, cesto de maçãs, abóboras, banquinho e balde de ordenha, botas, cesto de
-        // prendedores debaixo do varal e silo de grãos.
-        ['farm_birdbath', 16.6, 8.2, 30, [1, 1]], ['farm_lantern_post', 21.3, 10.9, 22, [1, 1]], ['farm_lantern_post', 24.6, 13.3, 22, [1, 1], 0, true],
-        ['farm_wagon_wheel', 31.0, 10.5, 28], ['farm_flower_cart', 39.5, 10.6, 46, [1, 1]], ['farm_wooden_trellis', 21.3, 15.2, 32],
-        ['farm_garden_hose', 19.2, 13.6, 34], ['farm_pruning_shears', 25.0, 17.03, 12, null, 22], ['farm_apple_basket', 25.4, 19.6, 24],
-        ['farm_pumpkin_cluster', 19.8, 21.0, 40], ['farm_milking_stool', 30.4, 16.6, 18], ['farm_milking_pail', 31.2, 16.8, 18],
-        ['farm_boot_rack', 8.6, 11.02, 28, null, 10], ['farm_rain_boots', 11.8, 11.5, 16], ['farm_clothespin_basket', 6.6, 13.95, 24],
-        ['farm_grain_bin', 35.6, 9.4, 30, [1, 1]],
-        // Itens 218 a 227: canto do cavalo no pasto (cavalete com sela, cabresto e escova), tosquia perto das ovelhas,
-        // bebedouro no galinheiro, concha no silo, ferraduras no celeiro e balde de ração no cocho.
-        ['farm_saddle_stand', 29.0, 18.4, 32, [1, 1]], ['farm_saddle', 29.0, 18.42, 30, null, 18], ['farm_bridle', 29.9, 18.8, 24],
-        ['farm_horse_brush', 28.6, 19.0, 16], ['farm_wool_basket', 38.0, 22.5, 26], ['farm_shearing_scissors', 38.8, 22.7, 16],
-        ['farm_chicken_waterer', 5.0, 19.0, 22, [1, 1]], ['farm_grain_scoop', 36.5, 9.9, 18], ['farm_horseshoe_set', 32.3, 10.6, 20],
-        ['farm_animal_feed_bucket', 38.0, 17.6, 18],
+        // Entrada norte: arco de jardim com a placa de boas-vindas.
+        ['farm_garden_arch', 23.0, 3.05, 0], ['farm_welcome_sign', 23.0, 3.07, 0, null, 40],
+        // Casa: lenha e caixa de correio do lado esquerdo; na varanda, sapateira, galochas, cadeira de balanço e sino;
+        // capacho no pé da escada. Colmeia com fumigador e mel no canto do pomar.
+        ['farm_woodpile', 4.5, 9.0, 0, [2, 1]], ['farm_mailbox', 5.3, 11.05, 0, [1, 1]],
+        ['farm_boot_rack', 8.6, 11.0, 0, null, 10], ['farm_rain_boots', 9.35, 11.02, 0, null, 10],
+        ['farm_rocking_chair', 12.7, 11.02, 0, null, 12], ['farm_hand_bell', 13.45, 11.0, 0, null, 38],
+        ['farm_doormat', 10.9, 11.6, 0],
+        ['farm_beehive_box', 3.6, 6.0, 0, [1, 1]], ['farm_bee_smoker', 4.6, 6.15, 0], ['farm_honey_jar', 2.8, 6.2, 0],
+        // Jardim da frente (o terreiro de terra à direita da casa): bancada de mudas com bandeja, luvas e tesoura;
+        // floreiras; banho de passarinho no meio e casinha de passarinho.
+        ['farm_potting_bench', 14.6, 7.5, 0, [1, 1]], ['farm_seedling_tray', 14.45, 7.52, 0, null, 30],
+        ['farm_garden_gloves', 15.05, 7.53, 0, null, 30], ['farm_pruning_shears', 14.0, 7.54, 0, null, 30],
+        ['farm_planter_box', 16.3, 7.3, 0, [1, 1]], ['farm_planter_box', 16.3, 9.2, 0, [1, 1], 0, true],
+        ['farm_birdbath', 17.0, 8.6, 0, [1, 1]], ['farm_birdhouse', 19.6, 6.4, 0, [1, 1]],
+        // Varal com o cesto de prendedores.
+        ['farm_clothespin_basket', 6.9, 13.95, 0],
+        // Galinheiro: ninho, cesto de ovos, comedouro e bebedouro dentro da cerca.
+        ['farm_chicken_nest', 10.6, 15.9, 0, [1, 1]], ['farm_egg_basket', 9.3, 16.3, 0],
+        ['farm_chicken_feeder', 6.4, 20.6, 0, [1, 1]], ['farm_chicken_waterer', 8.0, 20.7, 0, [1, 1]],
+        // Faixa de trabalho acima da horta: suporte de ferramentas com pá e enxada, sacos de sementes, poço com balde,
+        // regador (desenhado à parte, some quando a Line pega) e mangueira; treliça no canto.
+        ['farm_tool_rack', 14.4, 14.1, 0, [1, 1]], ['farm_shovel', 15.6, 14.55, 0], ['farm_hoe', 13.6, 14.7, 0, null, 0, true],
+        ['farm_seed_sacks', 15.9, 13.5, 0], ['farm_wooden_bucket', 16.2, 14.6, 0], ['farm_garden_hose', 19.6, 14.1, 0],
+        ['farm_wooden_trellis', 21.2, 14.7, 0],
+        // Horta: espantalho na beira; embaixo, a colheita (carrinho de mão, cesto de colheita e abóboras).
+        ['farm_scarecrow', 21.2, 17.4, 0, [1, 1]],
+        ['farm_wheelbarrow', 15.0, 21.2, 0, [1, 1]], ['farm_harvest_basket', 17.4, 20.9, 0], ['farm_pumpkin_cluster', 19.7, 21.2, 0],
+        // Celeiro: composteira e barril de chuva à esquerda; roda de carroça, ferraduras, latão de leite, silo com a concha
+        // à direita; ferradura na parede e cata-vento no telhado.
+        ['farm_compost_bin', 25.1, 8.9, 0, [1, 1]], ['farm_rain_barrel', 26.2, 10.0, 0, [1, 1]], ['farm_crate', 25.1, 10.6, 0],
+        ['farm_wagon_wheel', 33.9, 10.05, 0], ['farm_horseshoe_set', 33.2, 10.6, 0], ['farm_milk_can', 35.2, 10.75, 0],
+        ['farm_grain_bin', 35.9, 9.6, 0, [1, 1]], ['farm_grain_scoop', 36.9, 10.0, 0],
+        ['farm_horseshoe_sign', 31.7, 10.02, 0, null, 44], ['farm_weather_vane', 29.0, 10.03, 0, null, 140],
+        // Caminhos: postes de lampião no cruzamento, na trilha da casa e na descida para o lago; carrinho de flores na saída leste.
+        ['farm_lantern_post', 21.2, 10.95, 0, [1, 1]], ['farm_lantern_post', 13.5, 12.95, 0, [1, 1]], ['farm_lantern_post', 20.6, 25.4, 0, [1, 1]],
+        ['farm_flower_cart', 40.0, 10.7, 0, [1, 1]],
+        // Pasto: canto do cavalo (cavalete com sela, cabresto, escova e cocho de feno), canto das vacas (cocho, balde de
+        // ração, banquinho e balde de ordenha), bebedouro e pedra de sal no meio, tosquia no canto das ovelhas.
+        ['farm_saddle_stand', 29.2, 17.3, 0, [1, 1]], ['farm_saddle', 29.2, 17.32, 0, null, 26], ['farm_bridle', 30.4, 17.4, 0],
+        ['farm_horse_brush', 28.8, 17.8, 0], ['farm_hay_rack', 32.2, 17.2, 0, [2, 1]],
+        ['farm_feed_trough', 37.0, 17.2, 0, [2, 1]], ['farm_animal_feed_bucket', 38.8, 17.4, 0],
+        ['farm_milking_stool', 39.7, 17.7, 0], ['farm_milking_pail', 40.4, 17.8, 0],
+        ['farm_water_trough', 34.0, 21.4, 0, [2, 1]], ['farm_salt_lick', 36.8, 21.5, 0, [1, 1]],
+        ['farm_wool_basket', 29.4, 24.7, 0], ['farm_shearing_scissors', 30.3, 24.9, 0],
+        // Lago: banco e fogueira (acesa à noite) na margem oeste, taboas, vitórias-régias, corda e caixote no píer;
+        // cesto de maçãs debaixo da macieira perto do piquenique; cogumelos na sombra das árvores.
+        ['farm_garden_bench', 5.0, 22.9, 0, [2, 1]], ['farm_campfire', 5.0, 24.7, 0, [1, 1]],
+        ['farm_reeds', 7.4, 24.4, 0], ['farm_reeds', 20.9, 27.0, 0, null, 0, true], ['farm_reeds', 10.2, 30.7, 0],
+        ['farm_lily_pads', 11.8, 26.6, 0], ['farm_lily_pads', 16.8, 29.4, 0, null, 0, true],
+        ['farm_rope_coil', 20.3, 28.75, 0], ['farm_crate', 22.1, 29.15, 0],
+        ['farm_apple_basket', 25.7, 20.3, 0], ['farm_mushroom_cluster', 4.4, 29.4, 0], ['farm_mushroom_cluster', 31.6, 29.6, 0, null, 0, true],
       ],
       placas: {},
       pontos: {
@@ -120,9 +132,8 @@
       exames: [{ id: 'pegadas', x: 22, y: 26, texto: 'Examinar as marcas', doc: 'pegadas', requer: 'prologo' }],
       // Objetos soltos do pacote de arte: [nome, x, y (base, em tiles), largura, raio de colisão].
       decoracoes: [
-        ['carroca', 35.5, 12.9, 70, 16], ['lampiao', 13.5, 12.95, 26, 5], ['lampiao', 20.6, 25.4, 26, 5],
-        ['barril', 24.6, 10.9, 14, 6], ['caixa', 25.4, 10.95, 16, 6], ['placa2', 21.3, 3.9, 30, 6],
-        ['arbusto_c', 2.6, 13.9, 26, 8], ['arbusto_b', 13.6, 13.9, 24, 8], ['arbusto_d', 26.5, 30.9, 28, 8],
+        ['carroca', 35.5, 12.9, 70, 16], ['placa2', 21.3, 3.9, 30, 6],
+        ['arbusto_c', 2.6, 13.9, 26, 8], ['arbusto_d', 26.5, 30.9, 28, 8],
         ['girassol_0', 5.5, 10.9, 16, 0], ['girassol_1', 13.2, 10.9, 16, 0], ['girassol_2', 32.5, 13.9, 16, 0],
         ['milho_1', 24.5, 17.9, 15, 0], ['trigo_1', 24.5, 19.9, 15, 0], ['pedra1', 8.5, 31.9, 24, 8], ['moita', 41.5, 31.9, 26, 0],
         ['pier', 19.6, 28.9, 120, 0], ['barco', 14.6, 29.6, 38, 0],
@@ -205,10 +216,10 @@
       linhas: [
         'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
         'TTTT....,,......TTTTT.........::..TTTTTTTTTTTTTTTTTTTTTTTTT...............TT',
-        'TT........,,,.........TT......::..TTTTTTTTTTTTTTTTTTTTTTTT..T.....HHHHHH...T',
-        'T..........F..........TT......::...TTTTTTTTTTTTTTTTTTTTTTT...T....HHHHHH...T',
-        'T....TT.....R.............,,..::...TTTTTTTTTTTTTTTTTTTTTTT........HHHHHH...T',
-        'T....TT..........::::::::::::::..TTTTTTTTTTTTTTTTTTTTTTTTT........HHDHHH...T',
+        'TT........,,,.........TT......::..TTTTTTTTTTTTTTTTTTTTTTTT..T..............T',
+        'T..........F..........TT......::...TTTTTTTTTTTTTTTTTTTTTTT...T...HHHHHH....T',
+        'T....TT.....R.............,,..::...TTTTTTTTTTTTTTTTTTTTTTT.......HHHHHH....T',
+        'T....TT..........::::::::::::::..TTTTTTTTTTTTTTTTTTTTTTTTT.......HHHDHH....T',
         'TT....,,.........::..........,,...TTTTTTTTTTTTTTTTTTTT..................TTTT',
         'TTTTTTTTTTTTT....::....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...........F........TTT',
         'TTTTTTTTTTTTTTXXXXXXXXTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....T............T...TT',
@@ -254,6 +265,8 @@
         { x: 75, y: 13, w: 1, h: 2, para: 'gruta', chegada: { x: 1.6, y: 14.4, dir: 'RIGHT' } },
         { x: 62, y: 43, w: 2, h: 1, para: 'vilarejo', chegada: { x: 30, y: 2.4, dir: 'FRONT' } },
       ],
+      // Cabana do caçador: lenha, suporte de ferramentas e balde.
+      moveis: [['farm_woodpile', 63.4, 5.9, 0, [2, 1]], ['farm_tool_rack', 71.6, 5.9, 0, [1, 1]], ['farm_wooden_bucket', 72.6, 6.0, 0]],
       inicio: { x: 17.5, y: 27.6, dir: 'BACK' },
       placas: {
         '15,26': 'Cuidado com as raízes! Correndo por cima delas você pode tropeçar. Ande devagar (solte o correr).',
@@ -279,11 +292,11 @@
         'TT...........................::...........................TT',
         'TT......T....................::...........................TT',
         'TT..T.................T......::.....T...............T.....TT',
-        'TT..........HHHHHHH..........::..........HHHHHHH..........TT',
-        'TT..........HHHHHHH..........::..,.......HHHHHHH..........TT',
-        'TT..........HHHHHHH......T...::..........HHHHHHH..,.......TT',
-        'TT.....,....HHHHHHH..........::..........HHHHHHH.......T..TT',
-        'TT..........HHHDHHH..T.......::......T...HHHDHHH..........TT',
+        'TT...........................::...........................TT',
+        'TT...........................::..,........................TT',
+        'TT.........HHHHHHH.......T...::.........HHHHHHH...,.......TT',
+        'TT.....,...HHHHHHH...........::.........HHHHHHH........T..TT',
+        'TT.........HHHHDHH...T.......::......T..HHHHDHH...........TT',
         'TT.............:.............::...P.........:...W.........TT',
         'TT..........b..:..b..........::.............:.............TT',
         'TT....T........:...F.........::.........F...:..F..........TT',
@@ -301,10 +314,10 @@
         'TT.T..................:::::::::::::::::..........R........TT',
         'TT..........F.........:::::::::::::::::.........T.........TT',
         'TT........................::..................F...........TT',
-        'TT....HHHHHH....HHHHHH....::..F.........HHHHHH........T...TT',
-        'TT....HHHHHH....HHHHHH....::............HHHHHH............TT',
-        'TT....HHHHHH....HHHHHH..,.::.......T....HHHHHH............TT',
-        'TT....HHDHHH....HHDHHH....::............HHDHHH.......,....TT',
+        'TT........................::..F.......................T...TT',
+        'TT...HHHHHH....HHHHHH.....::...........HHHHHH.............TT',
+        'TT...HHHHHH....HHHHHH...,.::.......T...HHHHHH.............TT',
+        'TT...HHHDHH....HHHDHH.....::...........HHHDHH........,....TT',
         'TT......:.........:.......::..............:...............TT',
         'TT......:::::::::::::::::::::::::::::::::::...............TT',
         'TT........................................................TT',
@@ -330,13 +343,34 @@
       estacao: { x: 52, y: 20, id: 'vilarejo', nome: 'Estação do Vilarejo' },
       letreiros: { '15,9': 'Loja da Rosa', '44,9': 'Ferraria' },
       npcs: [
-        { id: 'rosa', x: 15.5, y: 11.7, loja: 'rosa' },
-        { id: 'bento', x: 44.5, y: 11.7, loja: 'bento' },
         { id: 'ze', x: 34.5, y: 21.8 },
         { id: 'lurdes', x: 12.5, y: 32.9 },
         { id: 'pedro', x: 47.5, y: 21.8 },
       ],
-      decoracoes: [['barril', 19.4, 11.8, 14, 6], ['caixa', 11.2, 12.8, 16, 6], ['lampiao', 27.5, 13.9, 26, 5], ['lampiao', 33.5, 25.9, 26, 5], ['carroca', 7.5, 24.9, 70, 16], ['feno_pilha', 49.5, 15.9, 40, 12], ['girassol_1', 21.4, 26.9, 16, 0], ['arbusto_b', 38.5, 27.9, 24, 8]],
+      decoracoes: [['carroca', 7.5, 24.9, 70, 16], ['feno_pilha', 51.5, 11.9, 40, 12], ['arbusto_b', 38.5, 27.9, 24, 8]],
+      // Objetos do vilarejo (régua de tamanhos), por zona: praça, feira da loja, ferraria, casas e beira do riacho.
+      moveis: [
+        // Praça: postes nas quatro esquinas, bancos virados para a fonte e floreiras dos lados.
+        ['farm_lantern_post', 21.5, 14.95, 0, [1, 1]], ['farm_lantern_post', 39.5, 14.95, 0, [1, 1], 0, true],
+        ['farm_lantern_post', 21.5, 24.95, 0, [1, 1]], ['farm_lantern_post', 39.5, 24.95, 0, [1, 1], 0, true],
+        ['farm_garden_bench', 26.5, 16.6, 0, [2, 1, 1]], ['farm_garden_bench', 34.5, 16.6, 0, [2, 1, 1]],
+        ['farm_planter_box', 26.5, 23.4, 0, [1, 1, 1]], ['farm_planter_box', 34.5, 23.4, 0, [1, 1, 1]],
+        // Entrada oeste: placa de boas-vindas.
+        ['farm_welcome_sign', 5.5, 22.0, 0, [1, 1]],
+        // Feira na frente da loja da Dona Rosa: frutas, abóboras e caixotes junto das barracas.
+        ['farm_apple_basket', 10.6, 12.0, 0], ['farm_pumpkin_cluster', 9.0, 12.3, 0], ['farm_crate', 19.6, 12.0, 0, [1, 1]],
+        ['farm_harvest_basket', 20.6, 12.2, 0], ['farm_flower_cart', 9.2, 9.7, 0, [1, 1]],
+        // Ferraria do Seu Bento: lenha, barril de chuva, ferradura na parede e balde junto da bigorna.
+        ['farm_woodpile', 38.6, 9.7, 0, [2, 1]], ['farm_rain_barrel', 47.6, 8.9, 0, [1, 1]],
+        ['farm_horseshoe_sign', 42.0, 9.97, 0, null, 52], ['farm_wooden_bucket', 49.2, 10.6, 0],
+        // Casas: caixa de correio na beira do caminho e capacho em cada porta.
+        ['farm_mailbox', 10.6, 31.95, 0, [1, 1]], ['farm_doormat', 8.5, 31.55, 0],
+        ['farm_mailbox', 20.6, 31.95, 0, [1, 1]], ['farm_doormat', 18.5, 31.55, 0],
+        ['farm_mailbox', 44.6, 31.95, 0, [1, 1]], ['farm_doormat', 42.5, 31.55, 0],
+        ['farm_doormat', 15.5, 10.55, 0], ['farm_doormat', 44.5, 10.55, 0],
+        // Beira do riacho: taboas.
+        ['farm_reeds', 12.0, 33.9, 0], ['farm_reeds', 37.0, 33.9, 0, null, 0, true], ['farm_reeds', 52.0, 33.9, 0],
+      ],
       inimigos: [],
     },
 
@@ -606,10 +640,10 @@
         'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
         'TT.T......F...............F...::.T...,..RRRRRRRRRRRRRRRRRRRRRRTT',
         'TT...........,................::....,...R....................RTT',
-        'TT...HHHHHH...................::..:.....R....................RTT',
-        'TTT,.HHHHHH.............,.....::::::C...R....................RTT',
-        'TT.T.HHHHHH....Q..........T.T.::..:.....R....................RTT',
-        'TT...HHDHHH............T......::..:.....R........uuuu........RTT',
+        'TT............................::..:.....R....................RTT',
+        'TTT,HHHHHH..............,.....::::::C...R....................RTT',
+        'TT.THHHHHH.....Q..........T.T.::..:.....R....................RTT',
+        'TT..HHHDHH.............T......::..:.....R........uuuu........RTT',
         'TT.....:...................T..::..:...T.R.......uuuuuu.......RTT',
         'TT.....:....cccccc............::..:.....R.......uuuuuu.......RTT',
         'TT.....:....cccccc.........F,.::..:..F..R........uuuu........RTT',
@@ -650,6 +684,8 @@
         { x: 30, y: 0, w: 2, h: 1, para: 'lago', requer: 'fusaoMagma', chegada: { x: 30.5, y: 39.4, dir: 'BACK' } },
         { x: 63, y: 28, w: 1, h: 2, para: 'fenda', requer: 'chefeTerra', chegada: { x: 2.5, y: 14.2, dir: 'RIGHT' } },
       ],
+      // Casa da Dona Cora: cesto de colheita, regador e sacos de sementes na beira da horta.
+      moveis: [['farm_harvest_basket', 10.7, 8.4, 0], ['farm_watering_can', 11.6, 8.5, 0], ['farm_seed_sacks', 10.6, 10.3, 0]],
       inicio: { x: 2.5, y: 21.2, dir: 'RIGHT' },
       placas: { '3,18': 'Vale das Raízes. A terra aqui respira devagar. Desde que o Colosso adoeceu, as raízes andam soltas: correndo por cima delas, a gente tropeça.', '24,19': 'Fonte do Vale: beba para recuperar vida e magia (das duas). À noite dá para descansar até de manhã.', '48,18': 'A barreira de raízes só se abre com os três cristais de terra acesos: um na horta da Dona Cora, um no campo de raízes e um no bosque do leste.' },
       baus: { '5,37': { itens: [['pocao', 1]], moedas: 30 }, '33,37': { itens: [['bomba', 2]], moedas: 20 }, '58,36': { itens: [['elixir', 1]], moedas: 60 }, '36,5': { moedas: 45 } },
@@ -753,9 +789,9 @@
         'TT.......:::::::::::::::::::::::::::::::::::::::::::::::::::::::',
         'TTT......................U.S..::...,........ww......,...::::::::',
         'TT,.............ww.......,....::............ww..,...........F.TT',
-        'TT,.HHHHHH......ww............::............ww................TT',
-        'TT..HHHHHH......ww...FF.F.....::............ww...T.........CF.TT',
-        'TTF.HHDHHH......ww............::F....T.F....ww................TT',
+        'TT,HHHHHH.......ww............::............ww................TT',
+        'TT.HHHHHH.......ww...FF.F.....::............ww...T.........CF.TT',
+        'TTFHHHDHH.......ww............::F....T.F....ww................TT',
         'TT....:.....Q...ww.......F....::............ww................TT',
         'TT....:.........ww............::...,..,.....ww................TT',
         'TT.............Tww........,.T.::.S..........ww................TT',
@@ -768,7 +804,8 @@
         { x: 30, y: 0, w: 2, h: 1, para: 'picos', requer: 'fusaoLama', chegada: { x: 30.5, y: 39.4, dir: 'BACK' } },
       ],
       // Pontezinha (item 168) no riacho que a estrada atravessa.
-      moveis: [['farm_small_bridge', 45.0, 32.3, 100]],
+      // Pontezinha no riacho e, na casa do pescador Tião, corda e caixote.
+      moveis: [['farm_small_bridge', 45.0, 32.3, 0], ['farm_rope_coil', 9.4, 35.8, 0], ['farm_crate', 2.6, 38.0, 0, [1, 1]]],
       inicio: { x: 30.5, y: 39.4, dir: 'BACK' },
       placas: { '27,32': 'Fonte do Lago. O lago era tão limpo que refletia as estrelas de dia. Agora a água anda turva e brava.', '33,39': 'Lago Espelhado. A ponte da ilha está fechada por uma parede de água: acenda as três pérolas-cristal da margem.' },
       baus: { '4,20': { itens: [['pocao', 1]], moedas: 35 }, '59,35': { itens: [['bomba', 3]], moedas: 25 }, '22,5': { itens: [['elixir', 1]], moedas: 40 } },
@@ -1049,6 +1086,8 @@
 
     tile(tx, ty) {
       if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return CAVERNA.has(this.tema) ? '#' : 'T';
+      // Enquanto o chão é desenhado, o chão debaixo de um móvel conta como o chão original (sem bordas de grama).
+      if (this.desenhandoChao && this.l[ty][tx] === 'O' && this.sobO) return this.sobO[tx + ',' + ty] || '.';
       return this.l[ty][tx];
     }
 
@@ -1091,12 +1130,21 @@
       // A pegada vira chão ocupado ('O'); móvel de parede (espelho, toalheiro) não tem pegada e fica no alto.
       // Também serve ao ar livre (objetos da fazenda): a pegada só ocupa chão livre (piso, grama, flor).
       // Capacho, vitórias-régias e a pontezinha ficam rentes ao chão: a Line passa por cima deles.
+      // A largura vem da régua de tamanhos (LB.LARGURA_OBJETOS, tools/extrair_objetos.py); o número da lista só vale
+      // para o que não está na régua (barril, caixa, forja desenhados no código).
+      const L = LB.LARGURA_OBJETOS || {};
+      const regua = (n) => L[n] || L[n + '_off'] || L[n + '_day'] || L[n + '_closed'];
       for (const [nome, x, y, larg, pegada, alto, flip] of this.def.moveis || []) {
-        this.props.push({ tipo: 'movel', nome, x: x * TILE, y: y * TILE, larg, alto: alto || 0, flip: !!flip, plano: /doormat|lily_pads|small_bridge/.test(nome) });
+        this.props.push({ tipo: 'movel', nome, x: x * TILE, y: y * TILE, larg: regua(nome) || larg, alto: alto || 0, flip: !!flip, plano: /doormat|lily_pads|small_bridge/.test(nome) });
         if (!pegada) continue;
         const [pw, ph] = pegada;
         const tx0 = Math.round(x - pw / 2), ty0 = Math.round(y - ph);
-        for (let ty = ty0; ty < ty0 + ph; ty++) for (let tx = tx0; tx < tx0 + pw; tx++) if (this.l[ty] && '_.,'.includes(this.l[ty][tx])) this.l[ty][tx] = 'O';
+        const livre = pegada[2] ? '_.,:' : '_.,';   // pegada [l, a, 1]: ocupa também a terra (banco na praça)
+        for (let ty = ty0; ty < ty0 + ph; ty++) for (let tx = tx0; tx < tx0 + pw; tx++) {
+          if (!this.l[ty] || !livre.includes(this.l[ty][tx])) continue;
+          (this.sobO || (this.sobO = {}))[tx + ',' + ty] = this.l[ty][tx];   // o chão continua o mesmo por baixo
+          this.l[ty][tx] = 'O';
+        }
       }
       for (const [nome, x, y, larg, raio] of this.def.decoracoes || []) {
         this.props.push({ tipo: 'decoracao', nome, x: x * TILE, y: y * TILE, larg, raio, balanca: /girassol|milho|trigo|moita|arbusto/.test(nome), flip: ruido(Math.round(x * 3), Math.round(y * 3), 9) > 0.5 && nome !== 'placa2' });
@@ -1180,16 +1228,18 @@
       g.setTransform(RES, 0, 0, RES, 0, 0);
       this.comBase = !!this.imagemBase;
       const sobre = this.def.sobreBase || '';
+      this.desenhandoChao = true;
       for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) {
         if (!this.comBase) this.desenharTile(g, tx, ty);
         else if (sobre.includes(this.l[ty][tx])) this.desenharTile(g, tx, ty, true);
       }
+      this.desenhandoChao = false;
       this.chao = c;
       this.resChao = RES;
     }
 
     desenharTile(g, tx, ty, soTopo) {
-      const t = this.l[ty][tx];
+      const t = this.l[ty][tx] === 'O' && this.sobO ? this.sobO[tx + ',' + ty] || '.' : this.l[ty][tx];
       const x = tx * TILE, y = ty * TILE;
       const cor = CORES[this.tema];
       const rnd = (s) => ruido(tx, ty, s);

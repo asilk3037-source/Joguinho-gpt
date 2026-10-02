@@ -403,21 +403,32 @@ teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping
   afirmar(fundo, 'fundo do shopping sem a mesa carregado');
 });
 
-teste('casas: bilhete da cabana vem antes de entrar e a loja ainda conversa de frente', async (h) => {
+teste('casas: bilhete antes de entrar, Rosa e Bento atendem atrás do balcão e a loja fecha à noite', async (h) => {
   await h.area('floresta', { espada: true });
   await h.ir(68.5, 6.7);
   igual(await h.prompt(), 'Ler o bilhete na porta', 'bilhete primeiro');
   await h.area('vilarejo', { espada: true });
-  await h.ir(15.5, 12.6);
-  afirmar(/Comprar/.test(await h.prompt() || ''), 'de frente para a Dona Rosa, conversa');
+  const fora = await h.ev(() => LB.jogo.moradores.map((m) => m.id));
+  afirmar(!fora.includes('rosa') && !fora.includes('bento'), `Rosa e Bento não ficam na porta (veio ${fora})`);
   await h.ir(15.5, 10.7);
-  igual(await h.prompt(), 'Entrar', 'colada na porta, entra');
+  igual(await h.prompt(), 'Entrar', 'na porta da loja, entra');
+  for (const [casa, quem] of [['casa_loja', 'rosa'], ['casa_ferraria', 'bento']]) {
+    await h.area(casa, { espada: true });
+    const r = await h.ev((q) => { const j = LB.jogo, m = j.moradores.find((x) => x.id === q), bal = j.mapa.props.find((p) => p.nome === 'farmhouse_kitchen_island'); return { m: !!m, atras: m && bal && m.y < bal.y && Math.abs(m.x - bal.x) < 24, x: m && m.x / 32, y: m && bal && bal.y / 32 }; }, quem);
+    afirmar(r.m && r.atras, `${quem} atrás do balcão em ${casa}`);
+    await h.ir(r.x, r.y + 0.9);
+    afirmar(/conversar/.test(await h.prompt() || ''), `na frente do balcão, fala com ${quem}`);
+  }
+  // À noite a porta da loja não abre.
+  await h.area('vilarejo', { espada: true, minutos: 23 * 60 });
+  await h.ir(15.5, 10.7);
+  afirmar((await h.prompt()) !== 'Entrar', 'loja fechada à noite');
 });
 
 // ================= Vilarejo, loja e ferraria =================
 teste('loja da Dona Rosa: conversa abre a loja e compra funciona', async (h) => {
-  await h.area('vilarejo', { espada: true, moedas: 100 });
-  await h.ir(15.5, 12.6);
+  await h.area('casa_loja', { espada: true, moedas: 100 });
+  await h.ir(7.0, 9.2);
   const pr = await h.prompt();
   afirmar(/Comprar/.test(pr || ''), `prompt da Dona Rosa (veio ${pr})`);
   await h.interagir();
@@ -440,8 +451,8 @@ teste('loja da Dona Rosa: conversa abre a loja e compra funciona', async (h) => 
 });
 
 teste('ferraria do Seu Bento: armaduras dão escudos que seguram golpes', async (h) => {
-  await h.area('vilarejo', { espada: true, moedas: 200 });
-  await h.ir(44.5, 12.6);
+  await h.area('casa_ferraria', { espada: true, moedas: 200 });
+  await h.ir(7.5, 9.2);
   await h.interagir();
   afirmar(await h.visivel('#loja'), 'ferraria aberta');
   const bloq = await h.ev(() => document.querySelectorAll('#loja-lista .produto')[2].classList.contains('bloqueado'));

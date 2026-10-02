@@ -84,6 +84,8 @@ def main():
     mapas = inv['mundo']['mapas']
     nomes = {k: v['nome'] for k, v in mapas.items()}
     for id_, m in mapas.items():
+        if id_.startswith("casa_"):
+            continue   # interiores: a planta é a própria base (tools/gerar_interiores.py)
         w, h = gerar(id_, m, nomes, os.path.join(RAIZ, 'arte', 'referencias', 'gabaritos'))
         print(id_, w, h)
 

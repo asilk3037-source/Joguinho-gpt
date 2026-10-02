@@ -107,11 +107,11 @@ th { color: var(--destaque); }
 .botoes { position: absolute; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); width: 220px; height: 210px; }
 .botoes button { position: absolute; }
 #b-atacar { right: 0; bottom: 0; }
-#b-pular { right: 94px; bottom: 0; }
-#b-esquivar { right: 8px; bottom: 94px; }
-#b-defender { right: 166px; bottom: 30px; }
-#b-magia { right: 92px; bottom: 84px; background: rgba(90, 140, 255, 0.55); }
-#b-interagir { right: 0; bottom: 238px; pointer-events: auto; padding: 10px 16px; border-radius: 12px; border: 2px solid #ffcf9a; background: rgba(240, 138, 75, 0.85); color: #2a1305; font-weight: 700; }
+#b-pular { right: 115px; bottom: 9px; }
+#b-esquivar { right: 9px; bottom: 115px; }
+#b-defender { right: 191px; bottom: 65px; }
+#b-magia { right: 84px; bottom: 84px; background: rgba(90, 140, 255, 0.55); }
+#b-interagir { right: 0; bottom: 250px; pointer-events: auto; padding: 10px 16px; border-radius: 12px; border: 2px solid #ffcf9a; background: rgba(240, 138, 75, 0.85); color: #2a1305; font-weight: 700; }
 
 #tarefas { position: fixed; left: max(14px, env(safe-area-inset-left)); top: 58px; background: rgba(22, 17, 32, 0.82); border: 1px solid var(--borda); border-radius: 12px; padding: 8px 12px; font-size: 14px; z-index: 9; pointer-events: none; min-width: 190px; }
 #tarefas b { color: var(--destaque); display: block; margin-bottom: 4px; }
@@ -200,7 +200,7 @@ th { color: var(--destaque); }
 #b-mochila { position: absolute; top: max(12px, env(safe-area-inset-top)); right: calc(max(12px, env(safe-area-inset-right)) + 54px); pointer-events: auto; }
 #b-mochila.novo::after { content: attr(data-novos); position: absolute; top: -4px; right: -4px; background: var(--rosa); color: #fff; font-size: 10px; font-weight: 700; border-radius: 10px; min-width: 16px; height: 16px; line-height: 16px; text-align: center; padding: 0 3px; }
 #toque.em-cena #b-mochila, #toque.passeio #b-mochila { visibility: hidden; }
-.botoes { width: 290px; }
+.botoes { width: 290px; height: 260px; }
 
 /* Equipamento na mochila */
 .equipamento { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -254,7 +254,7 @@ th { color: var(--destaque); }
 
 /* Botão do item do atalho */
 /* Item do atalho (bomba, poção…) e troca de heroína ficam numa fileira acima dos botões de ação, longe do joystick. */
-#b-item { right: 128px; bottom: 184px; background: rgba(127, 214, 255, 0.45); font-size: 15px; }
+#b-item { right: 131px; bottom: 163px; background: rgba(127, 214, 255, 0.45); font-size: 15px; }
 #toque.passeio #b-item { display: none; }
-#b-trocar { right: 180px; bottom: 184px; background: rgba(255, 158, 207, 0.5); font-size: 13px; }
+#b-trocar { right: 63px; bottom: 197px; background: rgba(255, 158, 207, 0.5); font-size: 13px; }
 #toque.passeio #b-trocar { display: none; }

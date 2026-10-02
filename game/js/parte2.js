@@ -120,11 +120,11 @@
     LB.mochila.atualizarBotoes(j);
   };
 
-  // Na fazenda, depois da abertura, o dragão fica dormindo perto da casa.
+  // Na fazenda, depois da abertura, o dragão fica dormindo no gramado aberto ao sul do pasto (longe do celeiro e dos caminhos).
   function prepararArea(j, id) {
     if (!j.flags.parte2 || j.flags.quimeraVencida) return;
     if (id === 'fazenda' && !j.cena) {
-      const dr = j.criarDragaoCena(T(29), T(8), 0);
+      const dr = j.criarDragaoCena(T(34), T(29.4), 0);
       dr.anim.tocar('DRAGON_CURL_SLEEP', true); dr.lado = -1; dr.inimigo = false; dr.dormindoNaFazenda = true;
     }
   }

@@ -509,6 +509,7 @@
     // No passeio da tarde até o lago (antes do rapto) a casa fica para depois.
     podeEntrar(en) {
       if (en.requer && !this.flags[en.requer]) return false;
+      if (en.fechaNoite && LB.relogio.ativo(this) && LB.relogio.noite(this)) return false;
       // Um bilhete ainda não lido na porta vem antes (cabana da floresta).
       if ((this.mapa.def.exames || []).some((e) => Math.abs(e.x - en.x) <= 1 && Math.abs(e.y - en.y) <= 1 && !(this.flags.exames || []).includes(e.id) && !(e.requer && !this.flags[e.requer]))) return false;
       return !!this.flags.prologo || this.flags.etapa !== 'tarde';

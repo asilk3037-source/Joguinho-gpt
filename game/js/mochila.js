@@ -538,6 +538,11 @@
       const [x, y] = P(n.x - 0.5, n.y - 1);
       if (n.loja) icone(x, y, 'loja', n.loja === 'rosa' ? '🧪' : '⚒');
     }
+    // Lojas: o ícone fica na porta (a Dona Rosa e o Seu Bento trabalham lá dentro).
+    for (const en of def.entradas || []) {
+      if (!en.loja || !vistoAqui(en.x, en.y)) continue;
+      const [x, y] = P(en.x, en.y); icone(x, y, 'loja', en.loja === 'rosa' ? '🧪' : '⚒');
+    }
     if (id === 'floresta' && vistoAqui(7, 13)) { const [x, y] = P(7, 13); icone(x, y, 'mago'); }
     if (def.golem && !j.flags.golem && vistoAqui(def.golem.x, def.golem.y)) { const [x, y] = P(def.golem.x, def.golem.y); icone(x, y, 'golem'); }
     if (LB.dicas) LB.dicas.desenharNoMapa(g, j, id, P, r);
