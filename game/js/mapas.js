@@ -58,61 +58,53 @@
       ],
       inicio: { x: 22.5, y: 3.6, dir: 'FRONT' },
       porta: { x: 10.7, y: 11.2 },
-      // Objetos da fazenda (itens 146 a 227), organizados por zona. [nome, x, y (base, em tiles), largura (0 = pela régua
-      // de tamanhos), pegada [larg, alt] em tiles, alto (acima do chão), espelhar]. Nada encosta nos caminhos de terra.
+      // Objetos da fazenda, poucos e agrupados: cada grupo encosta numa construção ou cerca e as passagens
+      // ficam livres (os caminhos de terra, a faixa entre a casa e a horta, a beira do lago, as portas e porteiras).
+      // [nome, x, y (base, em tiles), largura (0 = régua de tamanhos), pegada [larg, alt] em tiles, alto, espelhar]
       moveis: [
         // Entrada norte: arco de jardim com a placa de boas-vindas.
         ['farm_garden_arch', 23.0, 3.05, 0], ['farm_welcome_sign', 23.0, 3.07, 0, null, 40],
-        // Casa: lenha e caixa de correio do lado esquerdo; na varanda, sapateira, galochas, cadeira de balanço e sino;
-        // capacho no pé da escada. Colmeia com fumigador e mel no canto do pomar.
+        // Casa: lenha encostada na parede da esquerda, caixa de correio na beira do caminho; na varanda, cadeira de
+        // balanço, galochas e sino; capacho no pé da escada. Colmeia com mel no canto do pomar.
         ['farm_woodpile', 4.5, 9.0, 0, [2, 1]], ['farm_mailbox', 5.3, 11.05, 0, [1, 1]],
-        ['farm_boot_rack', 8.6, 11.0, 0, null, 10], ['farm_rain_boots', 9.35, 11.02, 0, null, 10],
-        ['farm_rocking_chair', 12.7, 11.02, 0, null, 12], ['farm_hand_bell', 13.45, 11.0, 0, null, 38],
-        ['farm_doormat', 10.9, 11.6, 0],
-        ['farm_beehive_box', 3.6, 6.0, 0, [1, 1]], ['farm_bee_smoker', 4.6, 6.15, 0], ['farm_honey_jar', 2.8, 6.2, 0],
-        // Jardim da frente (o terreiro de terra à direita da casa): bancada de mudas com bandeja, luvas e tesoura;
-        // floreiras; banho de passarinho no meio e casinha de passarinho.
+        ['farm_rocking_chair', 12.7, 11.02, 0, null, 12], ['farm_rain_boots', 9.3, 11.02, 0, null, 10],
+        ['farm_hand_bell', 13.45, 11.0, 0, null, 38], ['farm_doormat', 10.9, 11.6, 0],
+        ['farm_beehive_box', 3.6, 6.0, 0, [1, 1]], ['farm_bee_smoker', 4.5, 6.15, 0], ['farm_honey_jar', 2.7, 6.2, 0],
+        // Jardim da frente (o terreiro de terra à direita da casa): bancada de mudas, duas floreiras e o banho de passarinho.
         ['farm_potting_bench', 14.6, 7.5, 0, [1, 1]], ['farm_seedling_tray', 14.45, 7.52, 0, null, 30],
         ['farm_garden_gloves', 15.05, 7.53, 0, null, 30], ['farm_pruning_shears', 14.0, 7.54, 0, null, 30],
         ['farm_planter_box', 16.3, 7.3, 0, [1, 1]], ['farm_planter_box', 16.3, 9.2, 0, [1, 1], 0, true],
         ['farm_birdbath', 17.0, 8.6, 0, [1, 1]], ['farm_birdhouse', 19.6, 6.4, 0, [1, 1]],
         // Varal com o cesto de prendedores.
         ['farm_clothespin_basket', 6.9, 13.95, 0],
-        // Galinheiro: ninho, cesto de ovos, comedouro e bebedouro dentro da cerca.
+        // Galinheiro (dentro da cerca): ninho, cesto de ovos, comedouro e bebedouro.
         ['farm_chicken_nest', 10.6, 15.9, 0, [1, 1]], ['farm_egg_basket', 9.3, 16.3, 0],
         ['farm_chicken_feeder', 6.4, 20.6, 0, [1, 1]], ['farm_chicken_waterer', 8.0, 20.7, 0, [1, 1]],
-        // Faixa de trabalho acima da horta: suporte de ferramentas com pá e enxada, sacos de sementes, poço com balde,
-        // regador (desenhado à parte, some quando a Line pega) e mangueira; treliça no canto.
-        ['farm_tool_rack', 14.4, 14.1, 0, [1, 1]], ['farm_shovel', 15.6, 14.55, 0], ['farm_hoe', 13.6, 14.7, 0, null, 0, true],
-        ['farm_seed_sacks', 15.9, 13.5, 0], ['farm_wooden_bucket', 16.2, 14.6, 0], ['farm_garden_hose', 19.6, 14.1, 0],
-        ['farm_wooden_trellis', 21.2, 14.7, 0],
-        // Horta: espantalho na beira; embaixo, a colheita (carrinho de mão, cesto de colheita e abóboras).
-        ['farm_scarecrow', 21.2, 17.4, 0, [1, 1]],
+        // Horta: o poço e o regador (desenhado à parte, some quando a Line pega) ficam sozinhos na faixa de cima;
+        // o espantalho fica dentro da horta, entre os canteiros; a colheita (carrinho, cesto e abóboras) embaixo.
+        ['farm_scarecrow', 17.2, 18.25, 0],
         ['farm_wheelbarrow', 15.0, 21.2, 0, [1, 1]], ['farm_harvest_basket', 17.4, 20.9, 0], ['farm_pumpkin_cluster', 19.7, 21.2, 0],
-        // Celeiro: composteira e barril de chuva à esquerda; roda de carroça, ferraduras, latão de leite, silo com a concha
-        // à direita; ferradura na parede e cata-vento no telhado.
-        ['farm_compost_bin', 25.1, 8.9, 0, [1, 1]], ['farm_rain_barrel', 26.2, 10.0, 0, [1, 1]], ['farm_crate', 25.1, 10.6, 0],
-        ['farm_wagon_wheel', 33.9, 10.05, 0], ['farm_horseshoe_set', 33.2, 10.6, 0], ['farm_milk_can', 35.2, 10.75, 0],
-        ['farm_grain_bin', 35.9, 9.6, 0, [1, 1]], ['farm_grain_scoop', 36.9, 10.0, 0],
-        ['farm_horseshoe_sign', 31.7, 10.02, 0, null, 44], ['farm_weather_vane', 29.0, 10.03, 0, null, 140],
-        // Caminhos: postes de lampião no cruzamento, na trilha da casa e na descida para o lago; carrinho de flores na saída leste.
-        ['farm_lantern_post', 21.2, 10.95, 0, [1, 1]], ['farm_lantern_post', 13.5, 12.95, 0, [1, 1]], ['farm_lantern_post', 20.6, 25.4, 0, [1, 1]],
-        ['farm_flower_cart', 40.0, 10.7, 0, [1, 1]],
-        // Pasto: canto do cavalo (cavalete com sela, cabresto, escova e cocho de feno), canto das vacas (cocho, balde de
-        // ração, banquinho e balde de ordenha), bebedouro e pedra de sal no meio, tosquia no canto das ovelhas.
-        ['farm_saddle_stand', 29.2, 17.3, 0, [1, 1]], ['farm_saddle', 29.2, 17.32, 0, null, 26], ['farm_bridle', 30.4, 17.4, 0],
-        ['farm_horse_brush', 28.8, 17.8, 0], ['farm_hay_rack', 32.2, 17.2, 0, [2, 1]],
-        ['farm_feed_trough', 37.0, 17.2, 0, [2, 1]], ['farm_animal_feed_bucket', 38.8, 17.4, 0],
-        ['farm_milking_stool', 39.7, 17.7, 0], ['farm_milking_pail', 40.4, 17.8, 0],
-        ['farm_water_trough', 34.0, 21.4, 0, [2, 1]], ['farm_salt_lick', 36.8, 21.5, 0, [1, 1]],
-        ['farm_wool_basket', 29.4, 24.7, 0], ['farm_shearing_scissors', 30.3, 24.9, 0],
-        // Lago: banco e fogueira (acesa à noite) na margem oeste, taboas, vitórias-régias, corda e caixote no píer;
-        // cesto de maçãs debaixo da macieira perto do piquenique; cogumelos na sombra das árvores.
-        ['farm_garden_bench', 5.0, 22.9, 0, [2, 1]], ['farm_campfire', 5.0, 24.7, 0, [1, 1]],
+        // Celeiro: silo e barril de chuva encostados na parede da esquerda; roda de carroça, ferraduras e latão de leite
+        // na da direita; ferradura e cabresto na parede e cata-vento no telhado.
+        ['farm_grain_bin', 25.6, 8.9, 0, [1, 1]], ['farm_grain_scoop', 26.4, 9.4, 0], ['farm_rain_barrel', 26.4, 10.1, 0, [1, 1]],
+        ['farm_wagon_wheel', 33.9, 10.05, 0], ['farm_horseshoe_set', 33.1, 10.6, 0], ['farm_milk_can', 34.9, 10.7, 0],
+        ['farm_horseshoe_sign', 31.7, 10.02, 0, null, 44], ['farm_bridle', 30.4, 10.02, 0, null, 30], ['farm_weather_vane', 29.0, 10.03, 0, null, 140],
+        // Pasto: tudo encostado na cerca de cima (o campo fica livre para os bichos): cavalete com sela e escova,
+        // cocho de feno, bebedouro, cocho de ração com balde, banquinho e balde de ordenha; tosquia e sal no canto de baixo.
+        ['farm_saddle_stand', 29.0, 17.4, 0, [1, 1]], ['farm_saddle', 29.0, 17.42, 0, null, 26], ['farm_horse_brush', 29.9, 17.6, 0],
+        ['farm_hay_rack', 31.8, 17.3, 0, [2, 1]], ['farm_water_trough', 34.6, 17.3, 0, [2, 1]],
+        ['farm_feed_trough', 37.6, 17.3, 0, [2, 1]], ['farm_animal_feed_bucket', 39.2, 17.5, 0],
+        ['farm_milking_stool', 40.1, 18.6, 0], ['farm_milking_pail', 40.4, 19.3, 0],
+        ['farm_wool_basket', 29.2, 24.6, 0], ['farm_shearing_scissors', 30.0, 24.8, 0], ['farm_salt_lick', 39.6, 24.6, 0, [1, 1]],
+        // Piquenique: cesto de maçãs debaixo da macieira.
+        ['farm_apple_basket', 25.7, 20.3, 0],
+        // Lago: banco e fogueira (acesa à noite) no gramado da esquerda, longe da cerca do galinheiro;
+        // taboas na margem, vitórias-régias na água, corda e caixote na ponta do píer; cogumelos debaixo das árvores.
+        ['farm_campfire', 4.9, 25.4, 0, [1, 1]], ['farm_garden_bench', 4.9, 27.0, 0, [2, 1]],
         ['farm_reeds', 7.4, 24.4, 0], ['farm_reeds', 20.9, 27.0, 0, null, 0, true], ['farm_reeds', 10.2, 30.7, 0],
         ['farm_lily_pads', 11.8, 26.6, 0], ['farm_lily_pads', 16.8, 29.4, 0, null, 0, true],
         ['farm_rope_coil', 20.3, 28.75, 0], ['farm_crate', 22.1, 29.15, 0],
-        ['farm_apple_basket', 25.7, 20.3, 0], ['farm_mushroom_cluster', 4.4, 29.4, 0], ['farm_mushroom_cluster', 31.6, 29.6, 0, null, 0, true],
+        ['farm_mushroom_cluster', 4.4, 30.4, 0], ['farm_mushroom_cluster', 31.6, 29.6, 0, null, 0, true],
       ],
       placas: {},
       pontos: {
@@ -201,6 +193,7 @@
         // Corredor da entrada: porta da despensa (abre quando a Line chega perto), janela e arandelas.
         ['farmhouse_door', 12.2, 18.0, 36], ['farmhouse_window', 19.0, 17.95, 46, null, 22],
         ['farmhouse_wall_sconce', 13.6, 17.95, 16, null, 46], ['farmhouse_wall_sconce', 17.6, 17.95, 16, null, 46, true],
+        ['farm_boot_rack', 13.6, 18.9, 0],
         // Quarto (o espelho fica na parede do fundo)
         ['farmhouse_bathroom_mirror', 22.7, 4.95, 24, null, 22], ['farmhouse_nightstand', 23.0, 6.5, 34, [1, 1]], ['farmhouse_bed', 25.4, 8.5, 115, [3, 3]],
         ['farmhouse_nightstand', 27.8, 6.5, 34, [1, 1]], ['farmhouse_wardrobe', 29.2, 6.4, 53, [1, 1]], ['farmhouse_dresser', 28.5, 9.95, 80, [2, 1]],
@@ -684,8 +677,13 @@
         { x: 30, y: 0, w: 2, h: 1, para: 'lago', requer: 'fusaoMagma', chegada: { x: 30.5, y: 39.4, dir: 'BACK' } },
         { x: 63, y: 28, w: 1, h: 2, para: 'fenda', requer: 'chefeTerra', chegada: { x: 2.5, y: 14.2, dir: 'RIGHT' } },
       ],
-      // Casa da Dona Cora: cesto de colheita, regador e sacos de sementes na beira da horta.
-      moveis: [['farm_harvest_basket', 10.7, 8.4, 0], ['farm_watering_can', 11.6, 8.5, 0], ['farm_seed_sacks', 10.6, 10.3, 0]],
+      // Casa da Dona Cora (jardineira): cesto, regador, sementes e o cantinho de jardinagem em volta da horta.
+      moveis: [
+        ['farm_harvest_basket', 10.7, 8.4, 0], ['farm_watering_can', 11.6, 8.5, 0], ['farm_seed_sacks', 10.6, 10.3, 0],
+        // Cantinho de jardinagem da Cora: mangueira, pá e enxada à esquerda da horta; treliça e composteira à direita.
+        ['farm_garden_hose', 10.6, 12.6, 0], ['farm_shovel', 11.0, 11.5, 0], ['farm_hoe', 10.4, 11.9, 0, null, 0, true],
+        ['farm_wooden_trellis', 19.0, 9.9, 0, [1, 1]], ['farm_compost_bin', 19.0, 12.6, 0, [1, 1]],
+      ],
       inicio: { x: 2.5, y: 21.2, dir: 'RIGHT' },
       placas: { '3,18': 'Vale das Raízes. A terra aqui respira devagar. Desde que o Colosso adoeceu, as raízes andam soltas: correndo por cima delas, a gente tropeça.', '24,19': 'Fonte do Vale: beba para recuperar vida e magia (das duas). À noite dá para descansar até de manhã.', '48,18': 'A barreira de raízes só se abre com os três cristais de terra acesos: um na horta da Dona Cora, um no campo de raízes e um no bosque do leste.' },
       baus: { '5,37': { itens: [['pocao', 1]], moedas: 30 }, '33,37': { itens: [['bomba', 2]], moedas: 20 }, '58,36': { itens: [['elixir', 1]], moedas: 60 }, '36,5': { moedas: 45 } },

@@ -334,6 +334,23 @@ teste('mapas: tudo alcançável e saídas ligadas nos dois sentidos', async (h) 
   igual(r, [], 'problemas de conectividade');
 });
 
+teste('fazenda: estradas e passagens livres de objetos', async (h) => {
+  await h.area('fazenda', { espada: true });
+  const r = await h.ev(() => {
+    const m = LB.jogo.mapa, ruins = [];
+    for (let ty = 0; ty < m.h; ty++) for (let tx = 0; tx < m.w; tx++) {
+      // Nenhum objeto ocupa a terra das estradas; nem a faixa de grama colada nelas (para não estreitar a passagem).
+      const solo = m.sobO && m.sobO[tx + ',' + ty];
+      if (m.l[ty][tx] === 'O' && solo === ':') ruins.push(`${tx},${ty} na estrada`);
+    }
+    // A Line atravessa a estrada leste–oeste inteira e a norte–sul sem bater em nada.
+    for (let tx = 2; tx < 45; tx++) if (m.colide(tx * 32 + 16, 11 * 32 + 16, 6, 4)) ruins.push(`${tx},11 bloqueado`);
+    for (let ty = 1; ty < 27; ty++) if (m.colide(22.5 * 32, ty * 32 + 16, 6, 4) && m.colide(23.5 * 32, ty * 32 + 16, 6, 4)) ruins.push(`22-23,${ty} bloqueado`);
+    return ruins;
+  });
+  igual(r, [], 'passagens da fazenda');
+});
+
 teste('casas: toda casa tem interior mobiliado, entra pela porta e sai pelo caminho', async (h) => {
   const portas = await h.ev(() => {
     const r = [];
