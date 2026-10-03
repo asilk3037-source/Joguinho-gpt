@@ -390,7 +390,7 @@ def escrever(w, inv, itens=None):
     for zona in [
         ("Fazenda", "(refeita em 3/10 para desafogar as passagens) entrada norte com arco e placa · casa (lenha, caixa de correio, varanda com sapateira, galochas, cadeira de balanço e sino, capacho) · colmeia com mel e fumigador · jardim da frente (bancada de mudas, floreiras, banho e casinha de passarinho) · varal com cesto de prendedores · galinheiro (ninho, ovos, comedouro, bebedouro) · faixa de trabalho da horta (ferramentas, sementes, poço, regador, mangueira, treliça) · horta com espantalho e colheita · celeiro (composteira, barril, roda, ferraduras, latão, silo, cata-vento) · pasto (canto do cavalo, canto das vacas, bebedouro e sal, tosquia) · lago (banco, fogueira, taboas, vitórias-régias, píer) · postes de lampião nos caminhos · dragão da Parte 2 dormindo no gramado ao sul do pasto (antes ficava em cima do celeiro)"),
         ("Vilarejo", "praça com fonte, postes nas quatro esquinas, dois bancos virados para a fonte e floreiras · feira na frente da loja (barracas, frutas, abóboras, caixotes, carrinho de flores) · ferraria (lenha, barril, ferradura, balde, bigorna, feno) · casas com caixa de correio e capacho · placa de boas-vindas na entrada oeste · taboas na beira do riacho"),
-        ("Interiores", "corredor livre da porta até o meio; cada cômodo num canto; móveis encostados nas paredes; luminária sobre a mesa; a loja e a ferraria com balcão no meio"),
+        ("Interiores", "corredor livre da porta até o meio; cada cômodo num canto; móveis encostados nas paredes; a loja e a ferraria com balcão no meio"),
         ("Floresta, vale e lago", "casas em pixel art; lenha e ferramentas na cabana do caçador; cesto, regador e sementes na horta da Dona Cora; corda e caixote do pescador Tião; pontezinha no riacho do lago"),
     ]:
         w(f"| {zona[0]} | {zona[1]} |")
@@ -402,6 +402,8 @@ def escrever(w, inv, itens=None):
     w("**5. Botões do celular.** Ficam num arco em volta do ⚔: pular à esquerda, magia na diagonal, esquivar em cima; defender no arco de fora; o item do atalho e a troca de heroína no topo do arco; o botão de interagir acima de todos (seção 8.1).")
     w()
     w("**6. Biblioteca limpa.** Saíram as pastas de `arte/` cuja arte já veio nos itens (vaca, cavalo, porco, galinhas, Theo, dragão antigo, Bell e casal antigos: 88 pastas), as referências do dragão antigo, 9 imagens de cenário sem uso (arbustos, cachoeira, fases de milho e trigo, pedra) e 11 fotos antigas da documentação. As fotos dos mapas, da fazenda, do vilarejo, das lojas e dos interiores foram refeitas. As regras (pernas, tamanho pela cabeça, ritmo, layout do Theo, medidas do Minas Shopping) continuam.")
+    w()
+    w("**Direção das artes (regra):** sofá, banco, estante, lareira, cômoda e guarda-roupa são vistos **de frente**: ficam encostados numa parede do fundo ou ao norte do que \"olham\" (o banco do lago fica acima da fogueira). A poltrona, sem espelhar, olha para a **esquerda**: a que fica à esquerda de uma mesa ou lareira vai espelhada. A cadeira de balanço olha para a direita. Nada de lustre pendurado no meio do cômodo (a vista de cima não mostra o teto, e ele parece flutuar), nem janela, porta ou placa fora de uma parede. As artes guardadas sem lugar por enquanto: luminária pendente, janela e porta avulsas (itens 156 e 157).")
     w()
     w("**7. Arte que ainda falta, mapa por mapa** (hoje desenhada no código):")
     w()

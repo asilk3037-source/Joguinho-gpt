@@ -28,15 +28,15 @@
     casa_floresta: [
       ['farmhouse_fireplace', 2.6, 5.95, 0, [3, 1]], ['farmhouse_bookshelf', 4.6, 6.0, 0, [1, 1]], ['farmhouse_wall_clock', 6.0, 4.95, 0, null, 58],
       ['farmhouse_nightstand', 6.6, 6.4, 0, [1, 1]], ['farmhouse_bed', 8.6, 7.9, 0, [3, 3]],
-      ['farmhouse_armchair', 2.9, 8.7, 0, [1, 1]], ['farmhouse_theo_bed', 2.0, 11.0, 0, [1, 1]],
-      ['farm_tool_rack', 9.4, 11.1, 0, [1, 1]], ['farm_wooden_bucket', 8.3, 11.3, 0], ['farmhouse_hanging_lamp', 3.0, 8.75, 0, null, 70],
+      ['farmhouse_armchair', 2.9, 8.7, 0, [1, 1], 0, true], ['farmhouse_theo_bed', 2.0, 11.0, 0, [1, 1]],
+      ['farm_tool_rack', 9.4, 11.1, 0, [1, 1]], ['farm_wooden_bucket', 8.3, 11.3, 0],
     ],
     // Loja da Dona Rosa: prateleiras no fundo, balcão no meio (ela fica atrás) e mercadorias nos cantos da frente.
     casa_loja: [
       ['farmhouse_bookshelf', 2.0, 6.0, 0, [1, 1]], ['farmhouse_bookshelf', 3.7, 6.0, 0, [1, 1]],
       ['farmhouse_bookshelf', 10.3, 6.0, 0, [1, 1]], ['farmhouse_bookshelf', 12.0, 6.0, 0, [1, 1]],
       ['farmhouse_spice_shelf', 7.0, 4.95, 0, null, 43],
-      ['farmhouse_kitchen_island', 7.0, 8.3, 0, [3, 1]], ['farmhouse_flower_vase', 6.0, 8.32, 0, null, 30], ['farmhouse_hanging_lamp', 7.0, 8.35, 0, null, 72],
+      ['farmhouse_kitchen_island', 7.0, 8.3, 0, [3, 1]], ['farmhouse_flower_vase', 6.0, 8.32, 0, null, 30],
       ['barril', 1.8, 10.9, 26, [1, 1]], ['caixa', 2.9, 11.0, 28, [1, 1]], ['farm_seed_sacks', 4.2, 11.2, 0],
       ['farm_apple_basket', 9.8, 11.2, 0], ['farm_harvest_basket', 11.0, 11.1, 0], ['farmhouse_potted_plant', 12.1, 11.0, 0, [1, 1]],
     ],
@@ -51,33 +51,33 @@
     // Casa A do vilarejo: cozinha à esquerda (fogão, geladeira e mesa), quarto à direita.
     casa_vila_a: [
       ['farmhouse_stove', 1.9, 6.3, 0, [1, 1]], ['farmhouse_fridge', 3.3, 6.5, 0, [1, 1]], ['farmhouse_spice_shelf', 2.6, 4.95, 0, null, 43],
-      ['farmhouse_dining_table', 3.0, 9.6, 0, [3, 2]], ['farmhouse_hanging_lamp', 3.0, 9.65, 0, null, 78], ['farmhouse_flower_vase', 3.0, 9.62, 0, null, 26],
+      ['farmhouse_dining_table', 3.0, 9.6, 0, [3, 2]], ['farmhouse_flower_vase', 3.0, 9.62, 0, null, 26],
       ['farmhouse_nightstand', 6.9, 6.4, 0, [1, 1]], ['farmhouse_bed', 8.6, 7.9, 0, [3, 3]], ['farmhouse_potted_plant', 9.7, 10.5, 0, [1, 1]],
     ],
     // Casa B: sala com sofá, mesinha e poltrona à esquerda, estantes à direita, caminha de cachorro.
     casa_vila_b: [
       ['farmhouse_sofa', 3.0, 6.7, 0, [3, 1]], ['farmhouse_coffee_table', 3.0, 8.4, 0, [2, 1]], ['farmhouse_flower_vase', 3.0, 8.42, 0, null, 16],
-      ['farmhouse_armchair', 1.6, 9.9, 0, [1, 1]], ['farmhouse_botanical_frame', 3.0, 4.95, 0, null, 50],
+      ['farmhouse_armchair', 1.6, 9.9, 0, [1, 1], 0, true], ['farmhouse_botanical_frame', 3.0, 4.95, 0, null, 50],
       ['farmhouse_bookshelf', 8.2, 6.0, 0, [1, 1]], ['farmhouse_bookshelf', 9.6, 6.0, 0, [1, 1]], ['farmhouse_theo_bed', 9.0, 10.4, 0, [1, 1]],
       ['farmhouse_potted_plant', 6.9, 6.3, 0, [1, 1]],
     ],
     // Casa C: quarto, com a cama e o criado-mudo à esquerda, cômoda e poltrona à direita.
     casa_vila_c: [
       ['farmhouse_bed', 2.6, 7.9, 0, [3, 3]], ['farmhouse_nightstand', 4.4, 6.4, 0, [1, 1]], ['farmhouse_wall_sconce', 5.6, 4.95, 0, null, 40],
-      ['farmhouse_dresser', 8.2, 6.4, 0, [2, 1]], ['farmhouse_armchair', 9.2, 9.0, 0, [1, 1], 0, true],
+      ['farmhouse_dresser', 8.2, 6.4, 0, [2, 1]], ['farmhouse_armchair', 9.2, 9.0, 0, [1, 1]],
       ['farmhouse_laundry_basket', 9.6, 10.6, 0, [1, 1]], ['farmhouse_potted_plant', 1.7, 10.5, 0, [1, 1]],
     ],
     // Casa da Dona Cora (jardineira): cozinha no fundo, mesa no meio à esquerda, cama à direita, cestos da horta.
     casa_vale: [
       ['farmhouse_stove', 1.9, 6.3, 0, [1, 1]], ['farmhouse_sink_counter', 3.8, 6.3, 0, [2, 1]], ['farmhouse_fridge', 5.6, 6.5, 0, [1, 1]],
       ['farmhouse_spice_shelf', 3.8, 4.95, 0, null, 43], ['farmhouse_bed', 8.7, 7.9, 0, [3, 3]],
-      ['farmhouse_dining_table', 3.2, 9.8, 0, [3, 2]], ['farmhouse_hanging_lamp', 3.2, 9.85, 0, null, 78],
+      ['farmhouse_dining_table', 3.2, 9.8, 0, [3, 2]],
       ['farm_harvest_basket', 9.4, 11.3, 0], ['farm_seed_sacks', 8.2, 11.4, 0], ['farmhouse_potted_plant', 1.6, 11.2, 0, [1, 1]],
     ],
     // Casa do Seu Tião (pescador): cômoda e cesto no fundo, sala à esquerda, cama à direita, corda e caixote.
     casa_lago: [
       ['farmhouse_dresser', 2.6, 6.3, 0, [2, 1]], ['farmhouse_towel_rack', 4.5, 4.95, 0, null, 30],
-      ['farmhouse_armchair', 1.9, 9.0, 0, [1, 1]], ['farmhouse_coffee_table', 3.6, 9.4, 0, [2, 1]], ['farmhouse_hanging_lamp', 3.6, 9.45, 0, null, 60],
+      ['farmhouse_armchair', 1.9, 9.0, 0, [1, 1], 0, true], ['farmhouse_coffee_table', 3.6, 9.4, 0, [2, 1]],
       ['farmhouse_bed', 8.6, 7.9, 0, [3, 3]], ['farm_rope_coil', 9.4, 10.5, 0], ['farm_crate', 8.2, 10.6, 0, [1, 1]],
       ['farmhouse_potted_plant', 6.9, 6.3, 0, [1, 1]],
     ],

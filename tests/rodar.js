@@ -351,6 +351,22 @@ teste('fazenda: estradas e passagens livres de objetos', async (h) => {
   igual(r, [], 'passagens da fazenda');
 });
 
+teste('casa da fazenda: banheiro pela porta da esquerda, parede do quarto fechada, sala virada para dentro', async (h) => {
+  await h.area('casa_fazenda', { espada: true });
+  const r = await h.ev(() => {
+    const m = LB.jogo.mapa, livre = (x, y) => !m.solido(x, y);
+    // Busca a partir da sala até o meio do banheiro, sem passar pela parede de baixo do quarto (linha 9).
+    const vis = new Set(['15,10']), fila = [[15, 10]];
+    while (fila.length) { const [x, y] = fila.shift(); for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const k = (x + dx) + ',' + (y + dy); if (!vis.has(k) && livre(x + dx, y + dy)) { vis.add(k); fila.push([x + dx, y + dy]); } } }
+    const parede = [24, 25, 26, 27, 28, 29].every((x) => m.solido(x, 9));
+    const props = m.props.filter((p) => p.tipo === 'movel');
+    const sofa = props.find((p) => p.nome === 'farmhouse_sofa'), lareira = props.find((p) => p.nome === 'farmhouse_fireplace');
+    const poltronas = props.filter((p) => p.nome === 'farmhouse_armchair').sort((a, b) => a.x - b.x);
+    return { banheiro: vis.has('26,12'), parede, sofaNaParede: sofa.y < 7 * 32, olhamJuntas: poltronas[0].flip && !poltronas[1].flip, semLustre: !props.some((p) => /hanging_lamp|farmhouse_window|farmhouse_door/.test(p.nome)) };
+  });
+  igual(r, { banheiro: true, parede: true, sofaNaParede: true, olhamJuntas: true, semLustre: true }, 'casa da fazenda');
+});
+
 teste('casas: toda casa tem interior mobiliado, entra pela porta e sai pelo caminho', async (h) => {
   const portas = await h.ev(() => {
     const r = [];
@@ -388,7 +404,7 @@ teste('objetos: itens 146 a 227 carregam e aparecem na fazenda e na casa; regado
     const faltando = nomes.filter((n) => !LB.personagem(n));
     const usados = new Set();
     for (const id of Object.keys(LB.MAPAS)) for (const [n] of LB.MAPAS[id].moveis || []) usados.add(n);
-    const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can/.test(n));
+    const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can|hanging_lamp|farmhouse_window|farmhouse_door/.test(n));
     return { total: nomes.length, faltando, naoUsados };
   });
   afirmar(r.total >= 115, `objetos registrados (veio ${r.total})`);

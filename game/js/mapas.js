@@ -98,9 +98,9 @@
         ['farm_wool_basket', 29.2, 24.6, 0], ['farm_shearing_scissors', 30.0, 24.8, 0], ['farm_salt_lick', 39.6, 24.6, 0, [1, 1]],
         // Piquenique: cesto de maçãs debaixo da macieira.
         ['farm_apple_basket', 25.7, 20.3, 0],
-        // Lago: banco e fogueira (acesa à noite) no gramado da esquerda, longe da cerca do galinheiro;
+        // Lago: banco (visto de frente) virado para a fogueira (acesa à noite), no gramado da esquerda;
         // taboas na margem, vitórias-régias na água, corda e caixote na ponta do píer; cogumelos debaixo das árvores.
-        ['farm_campfire', 4.9, 25.4, 0, [1, 1]], ['farm_garden_bench', 4.9, 27.0, 0, [2, 1]],
+        ['farm_garden_bench', 4.9, 24.4, 0, [2, 1]], ['farm_campfire', 4.9, 26.0, 0, [1, 1]],
         ['farm_reeds', 7.4, 24.4, 0], ['farm_reeds', 20.9, 27.0, 0, null, 0, true], ['farm_reeds', 10.2, 30.7, 0],
         ['farm_lily_pads', 11.8, 26.6, 0], ['farm_lily_pads', 16.8, 29.4, 0, null, 0, true],
         ['farm_rope_coil', 20.3, 28.75, 0], ['farm_crate', 22.1, 29.15, 0],
@@ -154,7 +154,7 @@
         '##________#__________#________##',
         '##___________________#________##',
         '##____________________________##',
-        '##____________________________##',
+        '##______________________########',
         '##________#__________###______##',
         '##________#__________###______##',
         '##________#__________###______##',
@@ -183,21 +183,20 @@
         ['farmhouse_kitchen_island', 5.6, 8.7, 88, [3, 1]], ['farmhouse_bar_stool', 4.8, 9.6, 18], ['farmhouse_bar_stool', 6.4, 9.6, 18],
         ['farmhouse_pantry_cabinet', 9.3, 10.9, 34, [1, 1]], ['farmhouse_spice_shelf', 7.5, 4.95, 44, null, 43],
         ['farmhouse_wall_clock', 2.9, 4.95, 22, null, 59], ['farmhouse_botanical_frame', 4.7, 4.95, 18, null, 46],
-        ['farmhouse_flower_vase', 5.8, 12.72, 16, null, 26], ['farmhouse_hanging_lamp', 5.8, 12.75, 20, null, 95],
-        // Sala
-        ['farmhouse_bookshelf', 11.9, 6.0, 53, [1, 1]], ['farmhouse_fireplace', 15.9, 5.9, 106, [3, 1]], ['farmhouse_bookshelf', 19.9, 6.0, 53, [1, 1]],
-        ['farmhouse_armchair', 13.0, 8.5, 57, [1, 1]], ['farmhouse_coffee_table', 15.9, 9.1, 83, [2, 1]], ['farmhouse_armchair', 18.8, 8.5, 57, [1, 1], 0, true],
-        ['farmhouse_sofa', 15.9, 12.4, 110, [3, 1]], ['farmhouse_theo_bed', 19.6, 18.95, 46, [1, 1]],
-        ['farmhouse_potted_plant', 11.8, 13.6, 30, [1, 1]], ['farmhouse_potted_plant', 20.0, 13.6, 30, [1, 1], 0, true],
-        ['farmhouse_hanging_lamp', 15.9, 9.15, 20, null, 52],
-        // Corredor da entrada: porta da despensa (abre quando a Line chega perto), janela e arandelas.
-        ['farmhouse_door', 12.2, 18.0, 36], ['farmhouse_window', 19.0, 17.95, 46, null, 22],
-        ['farmhouse_wall_sconce', 13.6, 17.95, 16, null, 46], ['farmhouse_wall_sconce', 17.6, 17.95, 16, null, 46, true],
-        ['farm_boot_rack', 13.6, 18.9, 0],
+        ['farmhouse_flower_vase', 5.8, 12.72, 16, null, 26],
+        // Sala. Sofá, estante e lareira vistos de frente: encostados na parede do fundo, virados para a sala.
+        // A poltrona sem espelhar olha para a esquerda: a da esquerda é espelhada para as duas ficarem de frente
+        // uma para a outra, diante da lareira. A mesinha fica na frente do sofá.
+        ['farmhouse_sofa', 12.6, 6.5, 0, [3, 1]], ['farmhouse_fireplace', 16.0, 5.9, 0, [3, 1]], ['farmhouse_bookshelf', 19.9, 6.0, 0, [1, 1]],
+        ['farmhouse_coffee_table', 12.6, 8.4, 0, [2, 1]],
+        ['farmhouse_armchair', 14.7, 8.7, 0, [1, 1], 0, true], ['farmhouse_armchair', 18.6, 8.7, 0, [1, 1]],
+        ['farmhouse_potted_plant', 11.6, 13.2, 0, [1, 1]], ['farmhouse_potted_plant', 18.3, 13.2, 0, [1, 1], 0, true],
+        // Corredor da entrada: sapateira e a caminha do Theo.
+        ['farm_boot_rack', 13.6, 18.9, 0], ['farmhouse_theo_bed', 19.6, 18.95, 0, [1, 1]],
         // Quarto (o espelho fica na parede do fundo)
         ['farmhouse_bathroom_mirror', 22.7, 4.95, 24, null, 22], ['farmhouse_nightstand', 23.0, 6.5, 34, [1, 1]], ['farmhouse_bed', 25.4, 8.5, 115, [3, 3]],
-        ['farmhouse_nightstand', 27.8, 6.5, 34, [1, 1]], ['farmhouse_wardrobe', 29.2, 6.4, 53, [1, 1]], ['farmhouse_dresser', 28.5, 9.95, 80, [2, 1]],
-        // Banheiro (azulejo verde-água)
+        ['farmhouse_nightstand', 27.8, 6.5, 34, [1, 1]], ['farmhouse_wardrobe', 29.2, 6.4, 53, [1, 1]],
+        // Banheiro (azulejo verde-água). A porta é a abertura na parede da esquerda (linha 13), pelo corredor que sai da sala.
         ['farmhouse_toilet', 25.0, 11.6, 35, [1, 1]], ['farmhouse_bathroom_vanity', 26.8, 11.5, 48, [1, 1]], ['farmhouse_shower', 28.9, 11.8, 46, [1, 1]],
         ['farmhouse_laundry_basket', 29.0, 14.9, 32, [1, 1]],
       ],
@@ -348,8 +347,6 @@
         ['farm_lantern_post', 21.5, 24.95, 0, [1, 1]], ['farm_lantern_post', 39.5, 24.95, 0, [1, 1], 0, true],
         ['farm_garden_bench', 26.5, 16.6, 0, [2, 1, 1]], ['farm_garden_bench', 34.5, 16.6, 0, [2, 1, 1]],
         ['farm_planter_box', 26.5, 23.4, 0, [1, 1, 1]], ['farm_planter_box', 34.5, 23.4, 0, [1, 1, 1]],
-        // Entrada oeste: placa de boas-vindas.
-        ['farm_welcome_sign', 5.5, 22.0, 0, [1, 1]],
         // Feira na frente da loja da Dona Rosa: frutas, abóboras e caixotes junto das barracas.
         ['farm_apple_basket', 10.6, 12.0, 0], ['farm_pumpkin_cluster', 9.0, 12.3, 0], ['farm_crate', 19.6, 12.0, 0, [1, 1]],
         ['farm_harvest_basket', 20.6, 12.2, 0], ['farm_flower_cart', 9.2, 9.7, 0, [1, 1]],

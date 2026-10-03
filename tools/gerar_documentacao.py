@@ -78,6 +78,8 @@ w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Au
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
 w()
+w("> 🧭 **Direções e portas certas:** sofá, banco do lago e poltronas virados para onde fazem sentido (a arte da poltrona olha para a esquerda; a da esquerda é espelhada); saíram os lustres que pareciam flutuar, a janela e a porta soltas no corredor da casa e a placa pendurada que estava no chão do vilarejo; o banheiro da casa da fazenda abre pela porta da esquerda e a parede entre o quarto e o banheiro não deixa mais passar. Seção 23.6.")
+w()
 w("> 🧹 **Fazenda arrumada:** menos objetos, agrupados junto das construções e cercas; as estradas e as passagens ficaram livres (um teste garante que nada volta a bloquear o caminho). Seção 6.1.")
 w()
 w("> 🎨 **Revisão geral de design (seção 23.6):** todos os objetos e móveis agora seguem uma **régua de tamanhos** (medida real × a altura da Line); a fazenda, o vilarejo e todos os interiores foram reorganizados por zonas, com os caminhos livres; as casas do vilarejo, da floresta, do vale e do lago usam a casa em pixel art com telhados de cores diferentes; a Dona Rosa e o Seu Bento atendem dentro das lojas, atrás do balcão, e as lojas fecham à noite; os botões do celular formam um arco em volta do ⚔; a biblioteca foi limpa (arte antiga e fotos sem uso saíram) e as fotos foram refeitas.")
@@ -741,9 +743,9 @@ w()
 w("| Casa | Onde fica | Piso | O que tem dentro |")
 w("|---|---|---|---|")
 for casa, onde, piso, dentro in [
-    ("Casa da fazenda", "fazendinha (noroeste)", "madeira, terracota na cozinha, azulejo no banheiro", "cozinha com fogão, geladeira, pia, ilha com banquetas, despensa, temperos, relógio, quadro e mesa com vaso e luminária; sala com lareira, sofá, poltronas, estantes, plantas e luminária; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box; corredor com a porta da despensa (abre quando a Line chega perto), janela e arandelas"),
+    ("Casa da fazenda", "fazendinha (noroeste)", "madeira, terracota na cozinha, azulejo no banheiro", "cozinha com fogão, geladeira, pia, ilha com banquetas, despensa, temperos, relógio, quadro e mesa com vaso; sala com o sofá e a estante encostados na parede do fundo, a mesinha na frente do sofá e duas poltronas de frente uma para a outra diante da lareira; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box (entra-se pela abertura na parede da esquerda, pelo corredor que sai da sala); corredor da entrada com a sapateira e a caminha do Theo"),
     ("Cabana do caçador", "floresta (nordeste)", "madeira", "lareira, estante, cama, poltrona, cestos, uma caminha de cachorro, relógio e o suporte de ferramentas com balde"),
-    ("Loja da Dona Rosa", "vilarejo (oeste)", "terracota", "estantes cheias, balcão com vaso e luminária, barril, caixote, cestos, sacos de sementes, cesto de colheita e planta"),
+    ("Loja da Dona Rosa", "vilarejo (oeste)", "terracota", "estantes cheias, balcão com vaso, barril, caixote, cestos, sacos de sementes, cesto de colheita e planta"),
     ("Ferraria do Seu Bento", "vilarejo (leste)", "lajota de pedra", "forja acesa, bigorna, bancada, barris, caixote, lenha, ferramentas e balde"),
     ("Casas do vilarejo (3)", "vilarejo (sul)", "madeira e terracota", "fogão, geladeira, mesa, camas, sofá, poltronas e estantes"),
     ("Casa da Dona Cora", "Vale das Raízes", "terracota", "cozinha completa, mesa, cama e cesto"),

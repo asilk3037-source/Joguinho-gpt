@@ -16,6 +16,8 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 🧭 **Direções e portas certas:** sofá, banco do lago e poltronas virados para onde fazem sentido (a arte da poltrona olha para a esquerda; a da esquerda é espelhada); saíram os lustres que pareciam flutuar, a janela e a porta soltas no corredor da casa e a placa pendurada que estava no chão do vilarejo; o banheiro da casa da fazenda abre pela porta da esquerda e a parede entre o quarto e o banheiro não deixa mais passar. Seção 23.6.
+
 > 🧹 **Fazenda arrumada:** menos objetos, agrupados junto das construções e cercas; as estradas e as passagens ficaram livres (um teste garante que nada volta a bloquear o caminho). Seção 6.1.
 
 > 🎨 **Revisão geral de design (seção 23.6):** todos os objetos e móveis agora seguem uma **régua de tamanhos** (medida real × a altura da Line); a fazenda, o vilarejo e todos os interiores foram reorganizados por zonas, com os caminhos livres; as casas do vilarejo, da floresta, do vale e do lago usam a casa em pixel art com telhados de cores diferentes; a Dona Rosa e o Seu Bento atendem dentro das lojas, atrás do balcão, e as lojas fecham à noite; os botões do celular formam um arco em volta do ⚔; a biblioteca foi limpa (arte antiga e fotos sem uso saíram) e as fotos foram refeitas.
@@ -1224,9 +1226,9 @@ Toda casa do jogo tem interior. Perto da porta aparece **Entrar**; para sair, é
 
 | Casa | Onde fica | Piso | O que tem dentro |
 |---|---|---|---|
-| Casa da fazenda | fazendinha (noroeste) | madeira, terracota na cozinha, azulejo no banheiro | cozinha com fogão, geladeira, pia, ilha com banquetas, despensa, temperos, relógio, quadro e mesa com vaso e luminária; sala com lareira, sofá, poltronas, estantes, plantas e luminária; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box; corredor com a porta da despensa (abre quando a Line chega perto), janela e arandelas |
+| Casa da fazenda | fazendinha (noroeste) | madeira, terracota na cozinha, azulejo no banheiro | cozinha com fogão, geladeira, pia, ilha com banquetas, despensa, temperos, relógio, quadro e mesa com vaso; sala com o sofá e a estante encostados na parede do fundo, a mesinha na frente do sofá e duas poltronas de frente uma para a outra diante da lareira; quarto com cama de casal, criados-mudos, guarda-roupa e espelho; banheiro com vaso, pia e box (entra-se pela abertura na parede da esquerda, pelo corredor que sai da sala); corredor da entrada com a sapateira e a caminha do Theo |
 | Cabana do caçador | floresta (nordeste) | madeira | lareira, estante, cama, poltrona, cestos, uma caminha de cachorro, relógio e o suporte de ferramentas com balde |
-| Loja da Dona Rosa | vilarejo (oeste) | terracota | estantes cheias, balcão com vaso e luminária, barril, caixote, cestos, sacos de sementes, cesto de colheita e planta |
+| Loja da Dona Rosa | vilarejo (oeste) | terracota | estantes cheias, balcão com vaso, barril, caixote, cestos, sacos de sementes, cesto de colheita e planta |
 | Ferraria do Seu Bento | vilarejo (leste) | lajota de pedra | forja acesa, bigorna, bancada, barris, caixote, lenha, ferramentas e balde |
 | Casas do vilarejo (3) | vilarejo (sul) | madeira e terracota | fogão, geladeira, mesa, camas, sofá, poltronas e estantes |
 | Casa da Dona Cora | Vale das Raízes | terracota | cozinha completa, mesa, cama e cesto |
@@ -3679,7 +3681,7 @@ Revisão do jogo inteiro como designer e engenheira: tamanho de cada arte, organ
 |---|---|
 | Fazenda | (refeita em 3/10 para desafogar as passagens) entrada norte com arco e placa · casa (lenha, caixa de correio, varanda com sapateira, galochas, cadeira de balanço e sino, capacho) · colmeia com mel e fumigador · jardim da frente (bancada de mudas, floreiras, banho e casinha de passarinho) · varal com cesto de prendedores · galinheiro (ninho, ovos, comedouro, bebedouro) · faixa de trabalho da horta (ferramentas, sementes, poço, regador, mangueira, treliça) · horta com espantalho e colheita · celeiro (composteira, barril, roda, ferraduras, latão, silo, cata-vento) · pasto (canto do cavalo, canto das vacas, bebedouro e sal, tosquia) · lago (banco, fogueira, taboas, vitórias-régias, píer) · postes de lampião nos caminhos · dragão da Parte 2 dormindo no gramado ao sul do pasto (antes ficava em cima do celeiro) |
 | Vilarejo | praça com fonte, postes nas quatro esquinas, dois bancos virados para a fonte e floreiras · feira na frente da loja (barracas, frutas, abóboras, caixotes, carrinho de flores) · ferraria (lenha, barril, ferradura, balde, bigorna, feno) · casas com caixa de correio e capacho · placa de boas-vindas na entrada oeste · taboas na beira do riacho |
-| Interiores | corredor livre da porta até o meio; cada cômodo num canto; móveis encostados nas paredes; luminária sobre a mesa; a loja e a ferraria com balcão no meio |
+| Interiores | corredor livre da porta até o meio; cada cômodo num canto; móveis encostados nas paredes; a loja e a ferraria com balcão no meio |
 | Floresta, vale e lago | casas em pixel art; lenha e ferramentas na cabana do caçador; cesto, regador e sementes na horta da Dona Cora; corda e caixote do pescador Tião; pontezinha no riacho do lago |
 
 **3. Moradores.** Quem trabalha numa casa fica **dentro dela**: a Dona Rosa atrás do balcão da loja e o Seu Bento atrás do balcão da ferraria. Para falar com eles, a Line entra e para na frente do balcão. À noite as lojas fecham (a porta mostra "Loja fechada"). No mapa da mochila, o ícone da loja fica na porta. Os outros moradores (Zé, Lurdes, Pedrinho, Cora, Tião, Brisa, Tobias) ficam na rua, longe das portas.
@@ -3689,6 +3691,8 @@ Revisão do jogo inteiro como designer e engenheira: tamanho de cada arte, organ
 **5. Botões do celular.** Ficam num arco em volta do ⚔: pular à esquerda, magia na diagonal, esquivar em cima; defender no arco de fora; o item do atalho e a troca de heroína no topo do arco; o botão de interagir acima de todos (seção 8.1).
 
 **6. Biblioteca limpa.** Saíram as pastas de `arte/` cuja arte já veio nos itens (vaca, cavalo, porco, galinhas, Theo, dragão antigo, Bell e casal antigos: 88 pastas), as referências do dragão antigo, 9 imagens de cenário sem uso (arbustos, cachoeira, fases de milho e trigo, pedra) e 11 fotos antigas da documentação. As fotos dos mapas, da fazenda, do vilarejo, das lojas e dos interiores foram refeitas. As regras (pernas, tamanho pela cabeça, ritmo, layout do Theo, medidas do Minas Shopping) continuam.
+
+**Direção das artes (regra):** sofá, banco, estante, lareira, cômoda e guarda-roupa são vistos **de frente**: ficam encostados numa parede do fundo ou ao norte do que "olham" (o banco do lago fica acima da fogueira). A poltrona, sem espelhar, olha para a **esquerda**: a que fica à esquerda de uma mesa ou lareira vai espelhada. A cadeira de balanço olha para a direita. Nada de lustre pendurado no meio do cômodo (a vista de cima não mostra o teto, e ele parece flutuar), nem janela, porta ou placa fora de uma parede. As artes guardadas sem lugar por enquanto: luminária pendente, janela e porta avulsas (itens 156 e 157).
 
 **7. Arte que ainda falta, mapa por mapa** (hoje desenhada no código):
 
