@@ -78,6 +78,10 @@ w("> - **Armaduras da Bell** (Vestido Reforçado, Manto Estelar e Armadura da Au
 w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.")
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
 w()
+w("> 🕹️ **Playground pronto em peças (itens 235 a 240):** a sala vazia nova, os dois fliperamas, o painel e o balcão de prêmios e a máquina de soco, cada um no tamanho da régua e na posição do guia do item 240 (seção 5.2). O soco da Line (item 238) e a risada da Bell (item 239) chegaram com seis quadros cada e substituem os antigos, inclusive o soco sem espada. Saíram o playground e a máquina antigos (itens 141 e 142).")
+w()
+w("> 🛗 **Primeiras peças do shopping guardadas:** escada rolante (4 quadros), guarda-corpo do mezanino e pilar. O shopping só é montado em peças quando chegarem as lojas, os móveis, as plantas e o **guia de posição** (item 234); a tabela da seção 22.11.1 mostra o que já chegou (✅) e o que falta (⏳). As **bases** dos cenários (itens 218 a 223) estão na seção 22.11.2.")
+w()
 w("> 🧭 **Direções e portas certas:** sofá, banco do lago e poltronas virados para onde fazem sentido (a arte da poltrona olha para a esquerda; a da esquerda é espelhada); saíram os lustres que pareciam flutuar, a janela e a porta soltas no corredor da casa e a placa pendurada que estava no chão do vilarejo; o banheiro da casa da fazenda abre pela porta da esquerda e a parede entre o quarto e o banheiro não deixa mais passar. Seção 23.6.")
 w()
 w("> 🧹 **Fazenda arrumada:** menos objetos, agrupados junto das construções e cercas; as estradas e as passagens ficaram livres (um teste garante que nada volta a bloquear o caminho). Seção 6.1.")
@@ -430,7 +434,7 @@ w()
 # =====================================================================
 w("## 5. O primeiro encontro (prólogo)")
 w()
-w("> ⚠️ **As animações e artes do prólogo também são temporárias.** Várias usam uma animação substituta, e o playground ainda é desenhado no código.")
+w("> ⚠️ **Parte das animações e artes do prólogo ainda é temporária** (várias usam uma animação substituta). O **Playground já está pronto em peças** (itens 235 a 237 e 240) e o soco da Line e a risada da Bell têm arte final (itens 238 e 239).")
 w()
 w("O prólogo é a história de como a Line e a Bell se conheceram. Ele vem **antes de tudo**: ao escolher **Novo jogo**, o jogo começa no Minas Shopping, em 09/05/2024. Tudo segue o HTML *Bell-Line-Primeiro-Encontro-v26*: os três lugares, as posições, as falas (com a mesma grafia), as expressões dos retratos, a narradora, as dicas, o placar da máquina de soco e as etiquetas de lugar e data. O menu do HTML não foi usado: o jogo mantém o próprio menu. As ilustrações de close-up do HTML viraram animações das duas juntas com a câmera se aproximando (zoom).")
 w()
@@ -488,34 +492,29 @@ w("- As setas, o ícone de hambúrguer e coxinha e o triângulo que aparecem na 
 w()
 w("A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.")
 w()
-w("**Playground**")
-w("- **Fundo:** desenhado no código igual ao HTML. Tem o piso xadrez roxo, parede escura, dois fliperamas à esquerda (um rosa com tela azul-piscina e um azul com tela rosa), um painel rosa no alto e um balcão de prêmios embaixo.")
-w("- **Máquina de soco:** a mesma que aparece na animação `LINE_PUNCH_MACHINE`, parada no lugar do soco. Em cima dela há um **placar** rosa com números amarelos que mostra **000** e vira **038** no impacto.")
-w("- **Precisa de arte final:** a ilustração do playground (fliperamas, balcão, luzes, piso) e a máquina de soco separada, parada e com o placar.")
+w("**Playground** (pronto, montado em peças)")
+w("- **Fundo:** a sala vazia do item 235 (2160×3840): teto com luzes neon rosa e azul, parede roxa ao fundo, paredes laterais com portas iluminadas, piso xadrez roxo brilhante e a saída por um corredor, embaixo à direita.")
+w("- **Peças:** cada uma é um PNG à parte (itens 236 e 237), no tamanho da **régua** (medida real × a altura da Line, seção 23.6) e na posição do guia do item 240. O jogo desenha cada peça pela linha em que ela encosta no chão, então a Line e a Bell passam na frente e atrás de tudo.")
+w("- **Máquina de soco:** a do item 237, com o placar **000** antes do soco e **038** no impacto. A arte chegou só com o 038; o 000 foi feito copiando o “0” da própria arte por cima do “3” e do “8”.")
+w("- **Animações:** `LINE_PUNCH_MACHINE` (item 238) e `BELL_LAUGH_AT_LINE` (item 239), seis quadros cada, já sem a máquina desenhada junto.")
 w()
-w("#### Playground: o cenário como está no jogo")
+w("#### Playground: o cenário no jogo")
 w()
-w("> Este é o playground que aparece hoje no jogo, desenhado no código a partir do HTML do primeiro encontro. Ele é **temporário** e serve de **mapa** para a ilustração final: onde fica cada coisa e onde as duas se posicionam.")
-w()
-img("encontro-playground", "Playground no jogo hoje, com cada parte numerada e o placar antes e depois do soco")
-w("| # | Parte | Como está hoje | O que a arte final deve mostrar |")
-w("|---|---|---|---|")
+img("encontro-playground", "Playground montado em peças, com cada parte numerada, e o placar antes e depois do soco")
+w("| # | Parte | Arte | Tamanho (régua) | Onde fica (tela de 360×640) |")
+w("|---|---|---|---|---|")
 for l in [
-    ("1", "Fliperama rosa", "alto, à esquerda: letreiro rosa, tela azul-piscina e dois botões amarelos", "máquina de fliperama com tela acesa, controles e luzes"),
-    ("2", "Fliperama azul", "logo abaixo do primeiro: letreiro azul e tela rosa", "outro fliperama, com cores diferentes do primeiro"),
-    ("3", "Painel rosa", "no alto, ao centro", "letreiro luminoso ou painel de prêmios do playground"),
-    ("4", "Máquina de soco e placar", "no meio da sala, com o saco vermelho. O placar mostra 000 e vira 038 no soco", "a mesma máquina da `LINE_PUNCH_MACHINE`, parada, com o placar digital em cima"),
-    ("5", "Balcão de prêmios", "embaixo, à direita, com sete prêmios rosa", "balcão com bichinhos de pelúcia e brindes"),
-    ("6", "Piso", "xadrez roxo em quadrados de 32 px", "piso de playground colorido, que combine com as luzes"),
-    ("7", "Paredes", "faixas rosadas nas laterais e embaixo", "paredes com luzes neon e decoração"),
-    ("8", "Fundo", "roxo bem escuro em cima e embaixo", "teto e entrada do playground, com luz baixa e clima de fliperama"),
+    ("1", "Painel de prêmios", "`PLAYGROUND_PAINEL_PREMIOS`", "4 m de largura", "na parede do fundo, ao centro (x 180, base 122)"),
+    ("2", "Fliperama rosa", "`PLAYGROUND_FLIPERAMA_ROSA`", "1,80 m de altura", "à esquerda, no alto (x 62, base 235); **espelhado** para a tela olhar para dentro da sala"),
+    ("3", "Balcão de prêmios", "`PLAYGROUND_BALCAO_PREMIOS`", "2,60 m de largura", "à direita, no alto (x 268, base 228)"),
+    ("4", "Fliperama azul", "`PLAYGROUND_FLIPERAMA_AZUL`", "1,80 m de altura", "à esquerda, no meio (x 66, base 398)"),
+    ("5", "Máquina de soco", "`PLAYGROUND_MAQUINA_SOCO_000` / `_038`", "2,20 m de altura", "no meio, à direita (x 231, base 438); a plataforma fica sob os pés da Line"),
+    ("6", "Line", "`LINE_PUNCH_MACHINE`", "—", "em frente ao saco (x 203, y 428): o punho do quadro do golpe alcança o saco"),
+    ("7", "Bell", "`BELL_LAUGH_AT_LINE`", "—", "olhando, à esquerda (x 135, y 442)"),
+    ("8", "Entrada", "—", "—", "embaixo, à esquerda (as duas chegam por aqui)"),
+    ("9", "Saída", "—", "—", "pelo corredor, embaixo à direita"),
 ]:
     w("| " + " | ".join(l) + " |")
-w()
-w("**Posições (na tela de 360×640 do HTML):**")
-w("- **A Line** para em frente à máquina de soco (x 204, y 315).")
-w("- **A Bell** fica olhando do lado esquerdo (x 150, y 340).")
-w("- As duas **entram por baixo, à esquerda**, e saem pela direita, embaixo.")
 w()
 w("**Clima:** playground de shopping, com luz baixa roxa e rosa, telas brilhando e um ar divertido. É onde a Bell morre de rir.")
 w()
@@ -550,8 +549,8 @@ USO = {
     "LINE_BELL_MEET": "As duas frente a frente, conversando e sorrindo. Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem.",
     "LINE_BELL_GREET_HUG": "Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada.",
     "LINE_BELL_BK": "As duas sentadas à mesa comendo BK (hambúrguer, batata e refri), com a mesa desenhada. O HTML tem 3 quadros.",
-    "LINE_PUNCH_MACHINE": "A Line soca a máquina, com a máquina e o placar na mesma animação. O impacto é por volta da metade.",
-    "BELL_LAUGH_AT_LINE": "A Bell gargalhando da Line: se dobra de rir, bate na perna, enxuga as lágrimas.",
+    "LINE_PUNCH_MACHINE": "A Line na máquina de soco (item 238): guarda, preparo, avanço, soco e volta. A máquina é uma peça à parte; o placar vira 038 no quadro do soco. Os mesmos quadros fazem o soco sem espada.",
+    "BELL_LAUGH_AT_LINE": "A Bell gargalhando da Line (item 239): tapa a boca, se curva de rir, chora de rir e enxuga a lágrima.",
     "LINE_BELL_TUNNEL_KISS": "O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo. O HTML tem 8 quadros.",
 }
 w("| Código | Quando aparece e o que precisa mostrar | Quadros | Status hoje |")
@@ -582,9 +581,10 @@ w()
 img("encontro-referencia-html", "Ilustrações do HTML do primeiro encontro (referência para a arte final)")
 w("### 5.8 O que falta para a versão final do prólogo")
 w()
-w("- [ ] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` com arte própria.")
-w("- [ ] `LINE_PUNCH_MACHINE` final e a máquina de soco parada, com o mesmo desenho.")
-w("- [ ] Ilustração do Playground (hoje desenhada no código).")
+w("- [ ] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK` e `LINE_BELL_TUNNEL_KISS` com arte própria.")
+w("- [x] `LINE_PUNCH_MACHINE` e `BELL_LAUGH_AT_LINE` finais (itens 238 e 239) e a máquina de soco à parte (item 237).")
+w("- [x] Playground em peças (itens 235 a 237 e 240).")
+w("- [ ] Máquina de soco com o placar **000** desenhado pela artista (hoje o 000 é feito a partir do 038).")
 w("- [ ] Ilustração final do Minas Shopping seguindo a foto-modelo da praça de alimentação (seção 5.2), com o Burger King.")
 w("- [ ] Versão final da ilustração do Túnel.")
 w("- [ ] Line parada de costas (`LINE_IDLE_BACK`) caprichada para a entrada no shopping.")
@@ -1239,7 +1239,7 @@ w()
 w("| Área | Já usa arte (temporária) | Ainda desenhado no código (precisa de arte) |")
 w("|---|---|---|")
 w("| Minas Shopping (prólogo) | ilustração do shopping, vinda do HTML do primeiro encontro (temporária; a final segue a foto-modelo da seção 5.2) | — |")
-w("| Playground (prólogo) | máquina de soco (recortada da animação `LINE_PUNCH_MACHINE`) | piso xadrez, paredes, fliperamas, painel, balcão de prêmios, placar da máquina |")
+w("| Playground (prólogo) | tudo: fundo, fliperamas, painel, balcão de prêmios e máquina de soco com placar (itens 235 a 237) | — |")
 w("| Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |")
 w("| Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |")
 w("| Floresta | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras |")

@@ -13,7 +13,7 @@
 
   const MAPAS = {
     shopping: { nome: 'Minas Shopping', lugar: 'Minas Shopping', fundo: 'encontro_shopping' },
-    playground: { nome: 'Playground', lugar: 'Playground', fundo: 'encontro_playground' },
+    playground: { nome: 'Playground', lugar: 'Playground', fundo: 'playground_fundo' },
     tunel: { nome: 'Túnel', lugar: 'Túnel', fundo: 'encontro_tunel' },
   };
   for (const [id, m] of Object.entries(MAPAS)) {
@@ -34,30 +34,12 @@
     return (borrados[nome] = c);
   }
 
-  // Playground desenhado igual ao HTML (fliperamas, balcão, piso xadrez), sem a máquina de soco antiga.
-  function playground(g) {
-    g.save(); g.scale(K, K); g.imageSmoothingEnabled = false;
-    g.fillStyle = '#21182d'; g.fillRect(0, 0, 360, 640); g.fillStyle = '#553b62'; g.fillRect(0, 112, 360, 448);
-    for (let y = 112; y < 560; y += 32) for (let x = 0; x < 360; x += 32) { g.fillStyle = ((x + y) / 32) % 2 ? '#4a3457' : '#573d64'; g.fillRect(x, y, 32, 32); }
-    g.fillStyle = '#261c31'; g.fillRect(14, 130, 94, 122); g.fillRect(14, 278, 94, 116);
-    g.fillStyle = '#df7197'; g.fillRect(24, 140, 74, 18); g.fillStyle = '#6ce0df'; g.fillRect(30, 170, 62, 48);
-    g.fillStyle = '#75b9e7'; g.fillRect(24, 288, 74, 18); g.fillStyle = '#f09db7'; g.fillRect(30, 318, 62, 44);
-    g.fillStyle = '#f5d06f'; g.fillRect(40, 224, 12, 18); g.fillRect(78, 224, 12, 18); g.fillRect(40, 368, 12, 18); g.fillRect(78, 368, 12, 18);
-    g.fillStyle = '#6d4a79'; g.fillRect(120, 136, 102, 58); g.fillStyle = '#f4c3d4'; g.fillRect(130, 146, 82, 38);
-    g.fillStyle = '#251b30'; g.fillRect(116, 458, 220, 66); g.fillStyle = '#805a76'; g.fillRect(126, 468, 200, 46);
-    g.fillStyle = '#e7a7bf'; for (let x = 136; x < 320; x += 28) g.fillRect(x, 480, 14, 20);
-    g.fillStyle = '#a36b8a'; g.fillRect(0, 112, 8, 448); g.fillRect(352, 112, 8, 448); g.fillRect(0, 552, 360, 8);
-    g.restore();
-  }
-
   // Fundo da área (antes do chão): ilustração do HTML + bordas borradas para telas largas.
   function desenharFundo(g, jogo, cx, cy) {
     // No lanche do BK a mesa redonda do fundo sai: a animação já traz a mesa delas.
     const m = jogo.mapa, nome = m.def.fundo + (jogo.semMesaShopping && m.def.fundo === 'encontro_shopping' ? '_sem_mesa' : '');
     g.fillStyle = '#1c1524'; g.fillRect(cx - 2, cy - 2, jogo.vw + 4, jogo.vh + 4);
     const img = LB.personagem(nome), b = borrado(nome);
-    // Sem a ilustração (ainda carregando), o playground desenhado no código.
-    if (nome === 'encontro_playground' && !img) { playground(g); return; }
     const W = 360 * K, H = 640 * K;
     if (b) {
       g.save(); g.globalAlpha = 0.5; g.imageSmoothingEnabled = true;
@@ -78,25 +60,39 @@
     }
   }
 
-  // Máquina de soco: a mesma da animação LINE_PUNCH_MACHINE, no lugar onde a Line vai socar.
-  const SOCO = P(204, 315);
+  // Playground montado em peças (itens 235 a 240): fundo vazio + cada móvel na régua de tamanhos
+  // (LB.LARGURA_OBJETOS), na posição do guia do item 240 (base de 360×640). `base` é onde a peça
+  // encosta no chão; a ordem de desenho segue essa linha, então a Line e a Bell passam na frente e atrás.
+  // O fliperama rosa é espelhado para a tela olhar para dentro da sala.
+  const PECAS = [
+    { nome: 'playground_painel_premios', x: 180, base: 122, parede: true },
+    { nome: 'playground_fliperama_rosa', x: 62, base: 235, flip: true },
+    { nome: 'playground_balcao_premios', x: 268, base: 228 },
+    { nome: 'playground_fliperama_azul', x: 66, base: 398 },
+    { nome: 'playground_maquina_soco', x: 231, base: 438, frente: 14 },
+  ];
+  // Onde a Line fica para socar: o punho do quadro do golpe alcança o saco da máquina.
+  const SOCO = P(203, 428);
+  // Saco de pancada (centro), para a faísca do impacto.
+  const SACO = P(226, 396);
   function objetos(jogo) {
-    const e = jogo.encontro;
-    if (jogo.mapa.id !== 'playground' || !e) return [];
-    return [{ y: SOCO.y - 1, desenhar: (g) => desenharMaquina(g, jogo) }];
+    if (jogo.mapa.id !== 'playground') return [];
+    const placar = jogo.encontro && jogo.encontro.placar === '038' ? '038' : '000';
+    return PECAS.map((p) => ({
+      // A plataforma da máquina fica sob os pés da Line: a peça vai para trás dela (`frente`).
+      y: p.parede ? 0 : (p.base - (p.frente || 0)) * K,
+      desenhar: (g) => desenharPeca(g, p, p.nome === 'playground_maquina_soco' ? p.nome + '_' + placar : p.nome),
+    }));
   }
 
-  // Máquina de soco do item 142 (com o placar já desenhado: 000 antes do soco, 038 depois). A animação
-  // do soco não traz mais a máquina antiga (o extrator tira), então ela fica sempre desenhada aqui.
-  // Posição: onde ficava o gabinete antigo dentro da animação (x de 58% a 87% do quadro).
-  function desenharMaquina(g, jogo) {
-    const e = jogo.encontro, s = LB.sprite('LINE_PUNCH_MACHINE');
-    const img = LB.personagem(e.placar === '038' ? 'encontro_maquina_038' : 'encontro_maquina_000') || LB.personagem('encontro_maquina');
-    if (!s || !img) return;
-    const aj = s.ajuste || 1, esc = LB.ALTURA_LINE * (s.escala || 1) / s.cell * aj, cel = s.cell * esc;
-    const alt = cel * 0.74, larg = alt * img.width / img.height;
-    const x0 = SOCO.x - cel * 0.03;
-    g.drawImage(img, x0, SOCO.y - alt + 2, larg, alt);
+  function desenharPeca(g, p, nome) {
+    const img = LB.personagem(nome), L = (LB.LARGURA_OBJETOS || {})[nome];
+    if (!img || !L) return;
+    const w = L, h = w * img.height / img.width, x = p.x * K, y = p.base * K;
+    g.save(); g.imageSmoothingEnabled = true;
+    if (p.flip) { g.translate(x, 0); g.scale(-1, 1); g.drawImage(img, -w / 2, y - h, w, h); }
+    else g.drawImage(img, x - w / 2, y - h, w, h);
+    g.restore();
   }
 
   // ---------------- Interação ----------------
@@ -232,7 +228,7 @@
       j.tint = { cor: '247,178,200', a: 0.35 };
       c.junto(c.escurecer(0, 0.6));
       c.junto(c.tingir('247,178,200', 0, 0.9));
-      yield andarJuntas(c, line, bell, P(204, 315), P(150, 340));
+      yield andarJuntas(c, line, bell, SOCO, P(135, 442));
       yield c.quando(() => !bell.alvoCena);
       line.dir = 'RIGHT'; line.lado = 1; bell.dir = 'RIGHT'; bell.lado = 1;
       j.encontro.etapa = 'soco';
@@ -250,7 +246,7 @@
       yield c.quando(() => line.anim.estado(line.dir, line.lado).progresso > 0.55);
       e.placar = '038';
       j.tremer(3, 0.25);
-      j.particulas.emitir('impacto', SOCO.x + 22, SOCO.y - 44, 1, { r: 4, vida: 0.25, vel: 0 });
+      j.particulas.emitir('impacto', SACO.x, SACO.y, 1, { r: 4, vida: 0.25, vel: 0 });
       yield c.animacao(line);
       e.socando = false;
       line.anim.tocar('LINE_IDLE', true);

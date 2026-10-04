@@ -143,6 +143,22 @@ teste('prólogo: Novo jogo abre o Primeiro Encontro', async (h) => {
   await h.foto('prologo');
 });
 
+teste('prólogo: playground montado em peças e o soco vira 038', async (h) => {
+  await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = {}; j.encontro = { etapa: 'intro', placar: '000' }; j.iniciarArea('playground', null, true); j.fade = 0; j.iniciarCena(LB.HISTORIA.encontroPlayground); });
+  for (let i = 0; i < 80 && (await h.ev(() => LB.jogo.encontro.etapa)) !== 'soco'; i++) await h.espera(150);
+  const r = await h.ev(() => {
+    const pecas = LB.encontro.objetos(LB.jogo);
+    const nomes = ['playground_fundo', 'playground_painel_premios', 'playground_fliperama_rosa', 'playground_fliperama_azul', 'playground_balcao_premios', 'playground_maquina_soco_000', 'playground_maquina_soco_038'];
+    return { pecas: pecas.length, faltando: nomes.filter((n) => !LB.personagem(n)), quadros: [SPRITES.LINE_PUNCH_MACHINE.count, SPRITES.BELL_LAUGH_AT_LINE.count] };
+  });
+  igual(r.pecas, 5, 'peças do playground');
+  igual(r.faltando, [], 'artes do playground carregadas');
+  igual(r.quadros, [6, 6], 'quadros do soco e da risada');
+  await h.ev(() => LB.jogo.iniciarCena(LB.HISTORIA.encontroSoco));
+  for (let i = 0; i < 60 && (await h.ev(() => LB.jogo.encontro.placar)) !== '038'; i++) await h.espera(50);
+  igual(await h.ev(() => LB.jogo.encontro.placar), '038', 'placar depois do soco');
+});
+
 teste('fazenda: capítulo da manhã começa com a Bell', async (h) => {
   await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = { encontroFeito: true }; j.iniciarArea('fazenda', null, true); j.iniciarCapitulo(); });
   await h.espera(300);
@@ -404,7 +420,9 @@ teste('objetos: itens 146 a 227 carregam e aparecem na fazenda e na casa; regado
     const faltando = nomes.filter((n) => !LB.personagem(n));
     const usados = new Set();
     for (const id of Object.keys(LB.MAPAS)) for (const [n] of LB.MAPAS[id].moveis || []) usados.add(n);
-    const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can|hanging_lamp|farmhouse_window|farmhouse_door/.test(n));
+    // As peças do shopping (shop_*) chegam aos poucos e só entram quando a base e o guia de posição chegarem;
+    // as do playground (playground_*) são desenhadas pela cena do primeiro encontro, não por um mapa.
+    const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/^shop_|^playground_|theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can|hanging_lamp|farmhouse_window|farmhouse_door/.test(n));
     return { total: nomes.length, faltando, naoUsados };
   });
   afirmar(r.total >= 115, `objetos registrados (veio ${r.total})`);

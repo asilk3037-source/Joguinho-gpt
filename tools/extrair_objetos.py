@@ -6,9 +6,13 @@ no contorno (sem a margem transparente), mantido na resolução original e salvo
   FARMHOUSE_* → game/assets/moveis/farmhouse_*.webp   (móveis da casa)
   FARM_*      → game/assets/cenario/farm_*.webp       (objetos do terreno)
   SHOP_*      → game/assets/cenario/shop_*.webp       (peças do Minas Shopping)
+  PLAYGROUND_* → game/assets/cenario/playground_*.webp (peças do Playground do primeiro encontro)
 A lista vai para game/js/objetos.js (LB.OBJETOS: nome → caminho), que o catálogo de imagens lê.
 
-Uso: python3 tools/extrair_objetos.py [arquivos.html ...]   (sem argumento: todos os LINE_BELL_ITEM_*.html da raiz)
+Também aceita PNG avulso com o código na frente: SHOP_PILAR=caminho/imagem.png.
+Quadros de animação (CODIGO_FRAME_01, _02...) são recortados com a mesma caixa, para não tremerem.
+
+Uso: python3 tools/extrair_objetos.py [arquivos.html | CODIGO=imagem.png ...]   (sem argumento: todos os LINE_BELL_ITEM_*.html da raiz)
 """
 import base64
 import glob
@@ -73,6 +77,14 @@ MEDIDAS = {
     "farm_garden_bench": ("l", 1.5), "farm_campfire_off": ("l", 1.1), "farm_campfire_on": ("l", 1.1), "farm_reeds": ("a", 1.1),
     "farm_lily_pads": ("l", 1.4), "farm_crate": ("l", 0.6), "farm_rope_coil": ("l", 0.6), "farm_mushroom_cluster": ("l", 0.5),
     "farm_small_bridge": ("l", 3.0),
+    # Minas Shopping (peças avulsas)
+    "shop_escada_rolante_frame_01": ("a", 4.6), "shop_escada_rolante_frame_02": ("a", 4.6),
+    "shop_escada_rolante_frame_03": ("a", 4.6), "shop_escada_rolante_frame_04": ("a", 4.6),
+    "shop_mezanino": ("l", 4.5), "shop_pilar": ("a", 4.2),
+    # Playground do primeiro encontro
+    "playground_fliperama_rosa": ("a", 1.8), "playground_fliperama_azul": ("a", 1.8),
+    "playground_maquina_soco_000": ("a", 2.2), "playground_maquina_soco_038": ("a", 2.2),
+    "playground_balcao_premios": ("l", 2.6), "playground_painel_premios": ("l", 4.0),
 }
 
 
@@ -90,10 +102,14 @@ def larguras(lista):
 
 
 def objetos(caminho):
+    if "=" in caminho and caminho.lower().endswith(".png"):
+        codigo, arq = caminho.split("=", 1)
+        yield codigo.upper(), Image.open(arq).convert("RGBA")
+        return
     html = open(caminho, encoding="utf-8").read()
     for b64, nome in IMG.findall(html):
         codigo = re.sub(r"(_\d+x\d+)?\.png$", "", nome)
-        if codigo.startswith(("FARMHOUSE_", "FARM_", "SHOP_")):
+        if codigo.startswith(("FARMHOUSE_", "FARM_", "SHOP_", "PLAYGROUND_")):
             yield codigo, Image.open(io.BytesIO(base64.b64decode(b64))).convert("RGBA")
 
 
@@ -108,17 +124,24 @@ def main():
     lista = {}
     if os.path.exists(SAIDA_JS):
         lista = json.loads(open(SAIDA_JS, encoding="utf-8").read().split("LB.OBJETOS = ", 1)[1].split(";\n", 1)[0])
-    for caminho in arquivos:
-        for codigo, im in objetos(caminho):
-            caixa = im.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
-            if not caixa:
-                print(f"  aviso: {codigo} veio vazio")
-                continue
-            im = im.crop(caixa)
-            rel = destino(codigo)
-            im.save(os.path.join(RAIZ, "game", rel), "WEBP", quality=92, method=6)
-            lista[codigo.lower()] = rel
-            print(f"{os.path.basename(caminho)}: {codigo} {im.size}")
+    lidos = [(caminho, codigo, im) for caminho in arquivos for codigo, im in objetos(caminho)]
+    caixas = {}
+    for _, codigo, im in lidos:
+        caixa = im.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
+        grupo = re.sub(r"_FRAME_\d+$", "", codigo)
+        if caixa:
+            c = caixas.get(grupo, caixa)
+            caixas[grupo] = (min(c[0], caixa[0]), min(c[1], caixa[1]), max(c[2], caixa[2]), max(c[3], caixa[3]))
+    for caminho, codigo, im in lidos:
+        caixa = caixas.get(re.sub(r"_FRAME_\d+$", "", codigo))
+        if not caixa:
+            print(f"  aviso: {codigo} veio vazio")
+            continue
+        im = im.crop(caixa)
+        rel = destino(codigo)
+        im.save(os.path.join(RAIZ, "game", rel), "WEBP", quality=92, method=6)
+        lista[codigo.lower()] = rel
+        print(f"{os.path.basename(caminho)}: {codigo} {im.size}")
     sem = sorted(n for n in lista if n not in MEDIDAS)
     if sem:
         print("  aviso: sem medida na régua:", ", ".join(sem))

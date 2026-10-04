@@ -170,9 +170,10 @@ PERNAS_ALTERNADAS = {"CHICKEN_WALK": (30, 0.14), "HEN_BROWN_WALK": (30, 0.14),
                      "CHICKEN_RUN": (40, 0.22), "HEN_BROWN_RUN": (40, 0.22)}
 
 
-# Animações com um objeto parado desenhado junto que hoje tem arte própria (item 142: a máquina de
-# soco nova). O objeto é o que não muda entre os quadros; sai da animação e o jogo desenha a arte nova.
-SEM_MAQUINA = {"LINE_PUNCH_MACHINE"}
+# Animações com um objeto parado desenhado junto que hoje tem arte própria (a máquina de soco). O objeto
+# é o que não muda entre os quadros; sai da animação e o jogo desenha a arte nova. Só no item 106: o
+# soco do item 238 já veio sem a máquina.
+SEM_MAQUINA = {"LINE_PUNCH_MACHINE": 106}
 
 
 def tirar_maquina(fontes, lado):
@@ -210,7 +211,7 @@ def processar(codigo, dados, origem):
     lado = CELULA_DRAGAO if dragao else CELULA
     celulas = [decodificar(u).resize((lado, lado), Image.LANCZOS) for u in unicos]
     passo = None
-    if codigo in SEM_MAQUINA:
+    if SEM_MAQUINA.get(codigo) == numero_item(origem):
         celulas = tirar_maquina([decodificar(u) for u in unicos], lado)
     if codigo in PERNAS_ALTERNADAS:
         import pernas_alternadas

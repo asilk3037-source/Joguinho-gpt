@@ -16,6 +16,10 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 🕹️ **Playground pronto em peças (itens 235 a 240):** a sala vazia nova, os dois fliperamas, o painel e o balcão de prêmios e a máquina de soco, cada um no tamanho da régua e na posição do guia do item 240 (seção 5.2). O soco da Line (item 238) e a risada da Bell (item 239) chegaram com seis quadros cada e substituem os antigos, inclusive o soco sem espada. Saíram o playground e a máquina antigos (itens 141 e 142).
+
+> 🛗 **Primeiras peças do shopping guardadas:** escada rolante (4 quadros), guarda-corpo do mezanino e pilar. O shopping só é montado em peças quando chegarem as lojas, os móveis, as plantas e o **guia de posição** (item 234); a tabela da seção 22.11.1 mostra o que já chegou (✅) e o que falta (⏳). As **bases** dos cenários (itens 218 a 223) estão na seção 22.11.2.
+
 > 🧭 **Direções e portas certas:** sofá, banco do lago e poltronas virados para onde fazem sentido (a arte da poltrona olha para a esquerda; a da esquerda é espelhada); saíram os lustres que pareciam flutuar, a janela e a porta soltas no corredor da casa e a placa pendurada que estava no chão do vilarejo; o banheiro da casa da fazenda abre pela porta da esquerda e a parede entre o quarto e o banheiro não deixa mais passar. Seção 23.6.
 
 > 🧹 **Fazenda arrumada:** menos objetos, agrupados junto das construções e cercas; as estradas e as passagens ficaram livres (um teste garante que nada volta a bloquear o caminho). Seção 6.1.
@@ -432,7 +436,7 @@ No píer do lago. Esta é a cena mais longa do jogo.
 > **Line** *(surpresa)*: BELL! CORRE!  
 > ▶ `DRAGON_AIR_ATTACK`  
 > ▶ `BELL_CAPTURED`  
-> ▶ `BELL_DRAGON_CARRIED`  
+> ▶ `BELL_ESCAPE_ATTEMPT`  
 > ▶ `DRAGON_TAKEOFF`  
 > **Bell** *(surpresa)*: LIIINE!  
 > ▶ `DRAGON_FLY`  
@@ -919,7 +923,7 @@ Numa estação, antes de consertar o carrinho. Sem a alavanca, a Line comenta o 
 
 ## 5. O primeiro encontro (prólogo)
 
-> ⚠️ **As animações e artes do prólogo também são temporárias.** Várias usam uma animação substituta, e o playground ainda é desenhado no código.
+> ⚠️ **Parte das animações e artes do prólogo ainda é temporária** (várias usam uma animação substituta). O **Playground já está pronto em peças** (itens 235 a 237 e 240) e o soco da Line e a risada da Bell têm arte final (itens 238 e 239).
 
 O prólogo é a história de como a Line e a Bell se conheceram. Ele vem **antes de tudo**: ao escolher **Novo jogo**, o jogo começa no Minas Shopping, em 09/05/2024. Tudo segue o HTML *Bell-Line-Primeiro-Encontro-v26*: os três lugares, as posições, as falas (com a mesma grafia), as expressões dos retratos, a narradora, as dicas, o placar da máquina de soco e as etiquetas de lugar e data. O menu do HTML não foi usado: o jogo mantém o próprio menu. As ilustrações de close-up do HTML viraram animações das duas juntas com a câmera se aproximando (zoom).
 
@@ -978,33 +982,28 @@ A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma área, 
 
 A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.
 
-**Playground**
-- **Fundo:** desenhado no código igual ao HTML. Tem o piso xadrez roxo, parede escura, dois fliperamas à esquerda (um rosa com tela azul-piscina e um azul com tela rosa), um painel rosa no alto e um balcão de prêmios embaixo.
-- **Máquina de soco:** a mesma que aparece na animação `LINE_PUNCH_MACHINE`, parada no lugar do soco. Em cima dela há um **placar** rosa com números amarelos que mostra **000** e vira **038** no impacto.
-- **Precisa de arte final:** a ilustração do playground (fliperamas, balcão, luzes, piso) e a máquina de soco separada, parada e com o placar.
+**Playground** (pronto, montado em peças)
+- **Fundo:** a sala vazia do item 235 (2160×3840): teto com luzes neon rosa e azul, parede roxa ao fundo, paredes laterais com portas iluminadas, piso xadrez roxo brilhante e a saída por um corredor, embaixo à direita.
+- **Peças:** cada uma é um PNG à parte (itens 236 e 237), no tamanho da **régua** (medida real × a altura da Line, seção 23.6) e na posição do guia do item 240. O jogo desenha cada peça pela linha em que ela encosta no chão, então a Line e a Bell passam na frente e atrás de tudo.
+- **Máquina de soco:** a do item 237, com o placar **000** antes do soco e **038** no impacto. A arte chegou só com o 038; o 000 foi feito copiando o “0” da própria arte por cima do “3” e do “8”.
+- **Animações:** `LINE_PUNCH_MACHINE` (item 238) e `BELL_LAUGH_AT_LINE` (item 239), seis quadros cada, já sem a máquina desenhada junto.
 
-#### Playground: o cenário como está no jogo
+#### Playground: o cenário no jogo
 
-> Este é o playground que aparece hoje no jogo, desenhado no código a partir do HTML do primeiro encontro. Ele é **temporário** e serve de **mapa** para a ilustração final: onde fica cada coisa e onde as duas se posicionam.
+![Playground montado em peças, com cada parte numerada, e o placar antes e depois do soco](imagens/encontro-playground.jpg)
+*Playground montado em peças, com cada parte numerada, e o placar antes e depois do soco*
 
-![Playground no jogo hoje, com cada parte numerada e o placar antes e depois do soco](imagens/encontro-playground.jpg)
-*Playground no jogo hoje, com cada parte numerada e o placar antes e depois do soco*
-
-| # | Parte | Como está hoje | O que a arte final deve mostrar |
-|---|---|---|---|
-| 1 | Fliperama rosa | alto, à esquerda: letreiro rosa, tela azul-piscina e dois botões amarelos | máquina de fliperama com tela acesa, controles e luzes |
-| 2 | Fliperama azul | logo abaixo do primeiro: letreiro azul e tela rosa | outro fliperama, com cores diferentes do primeiro |
-| 3 | Painel rosa | no alto, ao centro | letreiro luminoso ou painel de prêmios do playground |
-| 4 | Máquina de soco e placar | no meio da sala, com o saco vermelho. O placar mostra 000 e vira 038 no soco | a mesma máquina da `LINE_PUNCH_MACHINE`, parada, com o placar digital em cima |
-| 5 | Balcão de prêmios | embaixo, à direita, com sete prêmios rosa | balcão com bichinhos de pelúcia e brindes |
-| 6 | Piso | xadrez roxo em quadrados de 32 px | piso de playground colorido, que combine com as luzes |
-| 7 | Paredes | faixas rosadas nas laterais e embaixo | paredes com luzes neon e decoração |
-| 8 | Fundo | roxo bem escuro em cima e embaixo | teto e entrada do playground, com luz baixa e clima de fliperama |
-
-**Posições (na tela de 360×640 do HTML):**
-- **A Line** para em frente à máquina de soco (x 204, y 315).
-- **A Bell** fica olhando do lado esquerdo (x 150, y 340).
-- As duas **entram por baixo, à esquerda**, e saem pela direita, embaixo.
+| # | Parte | Arte | Tamanho (régua) | Onde fica (tela de 360×640) |
+|---|---|---|---|---|
+| 1 | Painel de prêmios | `PLAYGROUND_PAINEL_PREMIOS` | 4 m de largura | na parede do fundo, ao centro (x 180, base 122) |
+| 2 | Fliperama rosa | `PLAYGROUND_FLIPERAMA_ROSA` | 1,80 m de altura | à esquerda, no alto (x 62, base 235); **espelhado** para a tela olhar para dentro da sala |
+| 3 | Balcão de prêmios | `PLAYGROUND_BALCAO_PREMIOS` | 2,60 m de largura | à direita, no alto (x 268, base 228) |
+| 4 | Fliperama azul | `PLAYGROUND_FLIPERAMA_AZUL` | 1,80 m de altura | à esquerda, no meio (x 66, base 398) |
+| 5 | Máquina de soco | `PLAYGROUND_MAQUINA_SOCO_000` / `_038` | 2,20 m de altura | no meio, à direita (x 231, base 438); a plataforma fica sob os pés da Line |
+| 6 | Line | `LINE_PUNCH_MACHINE` | — | em frente ao saco (x 203, y 428): o punho do quadro do golpe alcança o saco |
+| 7 | Bell | `BELL_LAUGH_AT_LINE` | — | olhando, à esquerda (x 135, y 442) |
+| 8 | Entrada | — | — | embaixo, à esquerda (as duas chegam por aqui) |
+| 9 | Saída | — | — | pelo corredor, embaixo à direita |
 
 **Clima:** playground de shopping, com luz baixa roxa e rosa, telas brilhando e um ar divertido. É onde a Bell morre de rir.
 
@@ -1040,9 +1039,9 @@ Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (p
 | `LINE_BELL_MEET` | As duas frente a frente, conversando e sorrindo. Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem. | 3 | ✅ temporária |
 | `LINE_BELL_GREET_HUG` | Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada. | 4 | ✅ temporária |
 | `LINE_BELL_BK` | As duas sentadas à mesa comendo BK (hambúrguer, batata e refri), com a mesa desenhada. O HTML tem 3 quadros. | 6 | ✅ temporária |
-| `LINE_PUNCH_MACHINE` | A Line soca a máquina, com a máquina e o placar na mesma animação. O impacto é por volta da metade. | 3 | ✅ temporária |
-| `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 3 | ✅ temporária |
-| `BELL_LAUGH_AT_LINE` | A Bell gargalhando da Line: se dobra de rir, bate na perna, enxuga as lágrimas. | 2 | ✅ temporária |
+| `LINE_PUNCH_MACHINE` | A Line na máquina de soco (item 238): guarda, preparo, avanço, soco e volta. A máquina é uma peça à parte; o placar vira 038 no quadro do soco. Os mesmos quadros fazem o soco sem espada. | 6 | ✅ temporária |
+| `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 6 | ✅ temporária |
+| `BELL_LAUGH_AT_LINE` | A Bell gargalhando da Line (item 239): tapa a boca, se curva de rir, chora de rir e enxuga a lágrima. | 6 | ✅ temporária |
 | `LINE_BELL_TUNNEL_KISS` | O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo. O HTML tem 8 quadros. | 7 | ✅ temporária |
 
 **Animações que o prólogo reaproveita** (já existem, também temporárias): `LINE_IDLE`, `LINE_IDLE_BACK`, `LINE_WALK_RIGHT`, `LINE_WALK_LEFT`, `LINE_WALK_FRONT`, `LINE_WALK_BACK`, `BELL_IDLE`, `BELL_WALK_RIGHT`, `BELL_WALK_LEFT`, `BELL_WALK_FRONT`, `BELL_WALK_BACK` e `LINE_BELL_WALK_HANDS` (saindo do shopping de mãos dadas).
@@ -1067,9 +1066,10 @@ O HTML do primeiro encontro já traz ilustrações das duas juntas: o abraço, o
 
 ### 5.8 O que falta para a versão final do prólogo
 
-- [ ] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` com arte própria.
-- [ ] `LINE_PUNCH_MACHINE` final e a máquina de soco parada, com o mesmo desenho.
-- [ ] Ilustração do Playground (hoje desenhada no código).
+- [ ] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK` e `LINE_BELL_TUNNEL_KISS` com arte própria.
+- [x] `LINE_PUNCH_MACHINE` e `BELL_LAUGH_AT_LINE` finais (itens 238 e 239) e a máquina de soco à parte (item 237).
+- [x] Playground em peças (itens 235 a 237 e 240).
+- [ ] Máquina de soco com o placar **000** desenhado pela artista (hoje o 000 é feito a partir do 038).
 - [ ] Ilustração final do Minas Shopping seguindo a foto-modelo da praça de alimentação (seção 5.2), com o Burger King.
 - [ ] Versão final da ilustração do Túnel.
 - [ ] Line parada de costas (`LINE_IDLE_BACK`) caprichada para a entrada no shopping.
@@ -1885,9 +1885,9 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_BELL_MEET` | Frente a frente, sorrindo (conversa no shopping) *(sugestão nova)* | 3 | sim | ✅ temporária | LINE_BELL_ITEM_104 |
 | `LINE_BELL_GREET_HUG` | Abraço de chegada (“Você tá atrasada”) *(sugestão nova)* | 4 | sim | ✅ temporária | LINE_BELL_ITEM_104 |
 | `LINE_BELL_BK` | Comendo BK juntas no shopping *(sugestão nova)* | 6 | sim | ✅ temporária | LINE_BELL_ITEM_105 |
-| `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) | 3 |  | ✅ temporária | LINE_BELL_ITEM_106 |
-| `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 3 |  | ✅ temporária | LINE_BELL_ITEM_106 |
-| `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 2 | sim | ✅ temporária | LINE_BELL_ITEM_106 |
+| `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) | 6 |  | ✅ temporária | LINE_BELL_ITEM_238 |
+| `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 6 |  | ✅ temporária | LINE_BELL_ITEM_238 |
+| `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 6 | sim | ✅ temporária | LINE_BELL_ITEM_239 |
 | `LINE_BELL_TUNNEL_KISS` | O primeiro beijo, no túnel *(sugestão nova)* | 7 |  | ✅ temporária | LINE_BELL_ITEM_107 |
 
 ### 10.2 Line — movimento
@@ -2638,7 +2638,7 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 | Área | Já usa arte (temporária) | Ainda desenhado no código (precisa de arte) |
 |---|---|---|
 | Minas Shopping (prólogo) | ilustração do shopping, vinda do HTML do primeiro encontro (temporária; a final segue a foto-modelo da seção 5.2) | — |
-| Playground (prólogo) | máquina de soco (recortada da animação `LINE_PUNCH_MACHINE`) | piso xadrez, paredes, fliperamas, painel, balcão de prêmios, placar da máquina |
+| Playground (prólogo) | tudo: fundo, fliperamas, painel, balcão de prêmios e máquina de soco com placar (itens 235 a 237) | — |
 | Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |
 | Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |
 | Floresta | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras |
@@ -3513,34 +3513,56 @@ O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já est�
 
 **2. Cada item em arte individual.** Um PNG por peça, com transparência, recortado no contorno, na mesma escala da base (1 tile = 144 px; a Line de pé = 281 px) e na mesma perspectiva de cima em 3/4. Pode vir num HTML de item com `data-name="SHOP_NOME.png"`, igual aos itens 154 a 187 (o `tools/extrair_objetos.py` já lê o prefixo `SHOP_`).
 
-| # | Código | Peça | Tamanho aproximado (tiles) | Observação |
-|---|---|---|---|---|
-| 1 | `SHOP_BURGER_KING` | Fachada do Burger King: letreiro, toldo, balcão e cardápio luminoso | 3 × 3 | é para onde as duas olham antes do lanche |
-| 2 | `SHOP_CONFEITARIA` | Fachada da confeitaria: placa de cupcake, toldo listrado | 3,5 × 4,5 | sem a vitrine (vem separada) |
-| 3 | `SHOP_VITRINE_BOLOS` | Vitrine refrigerada de bolos e doces | 2,5 × 1,5 | com luz por dentro |
-| 4 | `SHOP_CAFETERIA` | Fachada da cafeteria: placa da xícara, balcão, máquinas de café | 3 × 5 | — |
-| 5 | `SHOP_ESCADA_ROLANTE` | Escada rolante dupla (subindo e descendo) | 2 × 4 | de preferência animada: 4 a 6 quadros dos degraus andando |
-| 6 | `SHOP_MEZANINO` | Guarda-corpo de vidro do andar de cima, com corações | peça de 4 × 1 que se repete | vem em pedaços que encaixam lado a lado |
-| 7 | `SHOP_PILAR` | Pilar rosa com corações | 1 × 6 | fica na frente das personagens quando elas passam atrás |
-| 8 | `SHOP_CORACAO_NEON` | Coração de neon | 1,5 × 1,5 | aceso e apagado (dois PNGs) para piscar |
-| 9 | `SHOP_ARVORE_CANTEIRO` | Árvore no canteiro grande de madeira | 2,5 × 3,5 | a do centro do shopping |
-| 10 | `SHOP_CANTEIRO_RETANGULAR` | Canteiro de madeira comprido com plantas e flores | 3 × 1,5 | — |
-| 11 | `SHOP_CANTEIRO_QUADRADO` | Canteiro de madeira pequeno com flores | 1,5 × 1,5 | — |
-| 12 | `SHOP_CANTEIRO_CANTO` | Canteiro de canto (em L) com folhagens | 2 × 2 | — |
-| 13 | `SHOP_LANTERNA` | Lanterna de madeira no chão (poste de luz) | 0,5 × 1,3 | acesa |
-| 14 | `SHOP_LUMINARIA` | Luminária pendente de globo | 0,5 × 1 | pendurada; o jogo põe no alto |
-| 15 | `SHOP_MESA_REDONDA` | Mesa redonda de mármore, sem nada em cima | 1,4 × 1,1 | a mesa do encontro |
-| 16 | `SHOP_VASO_MESA` | Vasinho de flores para cima da mesa | 0,4 × 0,4 | — |
-| 17 | `SHOP_BANDEJA_BK` | Bandeja do BK: dois lanches, batata e dois refris | 0,7 × 0,4 | vai em cima da mesa redonda no lanche |
-| 18 | `SHOP_POLTRONA_ROSA` | Poltrona rosa | 1 × 1,3 | 4 lados: de frente, de costas, virada para a esquerda e para a direita |
-| 19 | `SHOP_CADEIRA_VERDE` | Cadeira verde-água | 1 × 1,3 | 4 lados |
-| 20 | `SHOP_SOFA_MEIA_LUA` | Sofá vermelho em meia-lua (booth) | 3 × 1,5 | — |
-| 21 | `SHOP_PUFE` | Banco/pufe vermelho | 1,5 × 0,8 | — |
-| 22 | `SHOP_LIXEIRA` | Lixeira | 0,5 × 0,8 | — |
-| 23 | `SHOP_PLACA` | Placa de direção (Saída, Banheiros, Praça de alimentação) | 0,8 × 1,5 | — |
-| 24 | `SHOP_BANCO_ESPERA` | Banco de espera | 2 × 1 | — |
+A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a peça já está guardada no jogo, ⏳ ainda falta. O shopping só é montado em peças quando chegarem também a **base** (chão e teto) e o **guia de posicionamento**; até lá a ilustração atual continua.
+
+| # | Código | Peça | Tamanho aproximado (tiles) | Observação | Chegou |
+|---|---|---|---|---|---|
+| 1 | `SHOP_BURGER_KING` | Fachada do Burger King: letreiro, toldo, balcão e cardápio luminoso | 3 × 3 | é para onde as duas olham antes do lanche | ⏳ |
+| 2 | `SHOP_CONFEITARIA` | Fachada da confeitaria: placa de cupcake, toldo listrado | 3,5 × 4,5 | sem a vitrine (vem separada) | ⏳ |
+| 3 | `SHOP_VITRINE_BOLOS` | Vitrine refrigerada de bolos e doces | 2,5 × 1,5 | com luz por dentro | ⏳ |
+| 4 | `SHOP_CAFETERIA` | Fachada da cafeteria: placa da xícara, balcão, máquinas de café | 3 × 5 | — | ⏳ |
+| 5 | `SHOP_ESCADA_ROLANTE` | Escada rolante dupla (subindo e descendo) | 2 × 4 | de preferência animada: 4 a 6 quadros dos degraus andando | ✅ |
+| 6 | `SHOP_MEZANINO` | Guarda-corpo de vidro do andar de cima, com corações | peça de 4 × 1 que se repete | vem em pedaços que encaixam lado a lado | ✅ |
+| 7 | `SHOP_PILAR` | Pilar rosa com corações | 1 × 6 | fica na frente das personagens quando elas passam atrás | ✅ |
+| 8 | `SHOP_CORACAO_NEON` | Coração de neon | 1,5 × 1,5 | aceso e apagado (dois PNGs) para piscar | ⏳ |
+| 9 | `SHOP_ARVORE_CANTEIRO` | Árvore no canteiro grande de madeira | 2,5 × 3,5 | a do centro do shopping | ⏳ |
+| 10 | `SHOP_CANTEIRO_RETANGULAR` | Canteiro de madeira comprido com plantas e flores | 3 × 1,5 | — | ⏳ |
+| 11 | `SHOP_CANTEIRO_QUADRADO` | Canteiro de madeira pequeno com flores | 1,5 × 1,5 | — | ⏳ |
+| 12 | `SHOP_CANTEIRO_CANTO` | Canteiro de canto (em L) com folhagens | 2 × 2 | — | ⏳ |
+| 13 | `SHOP_LANTERNA` | Lanterna de madeira no chão (poste de luz) | 0,5 × 1,3 | acesa | ⏳ |
+| 14 | `SHOP_LUMINARIA` | Luminária pendente de globo | 0,5 × 1 | pendurada; o jogo põe no alto | ⏳ |
+| 15 | `SHOP_MESA_REDONDA` | Mesa redonda de mármore, sem nada em cima | 1,4 × 1,1 | a mesa do encontro | ⏳ |
+| 16 | `SHOP_VASO_MESA` | Vasinho de flores para cima da mesa | 0,4 × 0,4 | — | ⏳ |
+| 17 | `SHOP_BANDEJA_BK` | Bandeja do BK: dois lanches, batata e dois refris | 0,7 × 0,4 | vai em cima da mesa redonda no lanche | ⏳ |
+| 18 | `SHOP_POLTRONA_ROSA` | Poltrona rosa | 1 × 1,3 | 4 lados: de frente, de costas, virada para a esquerda e para a direita | ⏳ |
+| 19 | `SHOP_CADEIRA_VERDE` | Cadeira verde-água | 1 × 1,3 | 4 lados | ⏳ |
+| 20 | `SHOP_SOFA_MEIA_LUA` | Sofá vermelho em meia-lua (booth) | 3 × 1,5 | — | ⏳ |
+| 21 | `SHOP_PUFE` | Banco/pufe vermelho | 1,5 × 0,8 | — | ⏳ |
+| 22 | `SHOP_LIXEIRA` | Lixeira | 0,5 × 0,8 | — | ⏳ |
+| 23 | `SHOP_PLACA` | Placa de direção (Saída, Banheiros, Praça de alimentação) | 0,8 × 1,5 | — | ⏳ |
+| 24 | `SHOP_BANCO_ESPERA` | Banco de espera | 2 × 1 | — | ⏳ |
 
 **3. O lanche sentadas.** Com a mesa redonda e as poltronas separadas, a cena do BK fica certa com as duas **sentadas nas poltronas**, comendo. Para isso faltam duas animações: `LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT` (sentada de lado numa poltrona, comendo e rindo, sem mesa e sem poltrona no desenho; a Line virada para a direita e a Bell para a esquerda). Até lá o jogo usa `LINE_BELL_BK`, que já traz a mesa delas.
+
+#### 22.11.2 Bases dos cenários (itens 218 a 223): guardadas, ainda não entram no jogo
+
+Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **Ruínas Encantadas**, da **Montanha de Brasa** e do **Minas Shopping**; a da **Gruta e Minas** (item 223) ainda não veio. Elas estão guardadas em `arte/referencias/bases_cenarios/`, mas **não dá para usá-las como chão dos mapas** do jeito que vieram:
+
+![Bases recebidas: Vilarejo do Riacho, Floresta Sussurrante, Ruínas Encantadas e Montanha de Brasa](imagens/bases-cenarios.jpg)
+*Bases recebidas: Vilarejo do Riacho, Floresta Sussurrante, Ruínas Encantadas e Montanha de Brasa*
+
+| Problema | Como veio | O que o jogo precisa |
+|---|---|---|
+| **Tamanho** | 1536×1024 para a fase inteira (uns 25 px por tile) | 128 px por tile: o Vilarejo, por exemplo, tem 60×40 tiles = **7680×5120** (tabela 22.12), em blocos de 2048 px. Esticada, a base fica borrada |
+| **Ponto de vista** | em perspectiva, com céu e horizonte no alto | vista **de cima** (3/4), igual à fazenda e às casas: o mapa inteiro é chão, sem céu |
+| **Desenho do mapa** | caminhos e campos livres | seguir o **gabarito** de cada fase (`arte/referencias/gabaritos/<fase>.png`): o riacho e a ponte do Vilarejo, as matas fechadas da Floresta, os muros das Ruínas, a lava da Montanha, as saídas e as casas nos lugares certos. Se o desenho não bater com a planta, a heroína anda por cima de árvores e água |
+
+Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da fazenda: o jogo desenha a imagem por baixo e as casas, árvores e objetos por cima.
+
+![Base do Minas Shopping recebida (1774×887, deitada)](imagens/base-minas-shopping.jpg)
+*Base do Minas Shopping recebida (1774×887, deitada)*
+
+A **base do Minas Shopping** veio deitada (1774×887), mas a cena do shopping é **em pé** (2160×3840, como o playground); falta também o **guia de posicionamento** (item 234). O piso de mármore com losangos e o teto com luzes embutidas estão ótimos: basta a mesma arte na proporção 9:16.
 
 ### 22.12 Dimensão de cada cenário
 
@@ -3573,7 +3595,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 | Cena | Base | **Entrega recomendada** | 4K | Mínimo | Observação |
 |---|---|---|---|---|---|
 | Minas Shopping (item 140) | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | gabarito pronto: `arte/referencias/gabarito_minas_shopping_2160x3840.png` |
-| Playground | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | hoje é desenhado no código; a máquina de soco fica em (204,315) da base e vem à parte (é a da animação `LINE_PUNCH_MACHINE`) |
+| Playground | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | ✅ pronto em peças (itens 235 a 240): fundo vazio + cada peça na régua; máquina de soco em (231,438) da base e a Line soca de (203,428) |
 | Túnel | 360×640 | **2160×3840** | 2880×5120 | 1440×2560 | o beijo acontece perto de (193,520) da base, com câmera 1,6× |
 
 **Telas inteiras** (título, “Parte 2”, capítulos, fim): 3840×2160 (16:9), mínimo 1920×1080, com o importante longe das bordas (em celular a tela corta um pouco dos lados).
@@ -3713,8 +3735,8 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 
 | Personagem | Animações (desenhos diferentes) |
 |---|---|
-| Line | `LINE_ATTACK_HORIZONTAL` (4), `LINE_CAST_CHARGE` (4), `LINE_CAST_SPELL` (4), `LINE_CAST_STARS` (4), `LINE_COMBAT_IDLE` (3), `LINE_COMBAT_RUN_BACK` (2), `LINE_COMBAT_RUN_FRONT` (4), `LINE_COMBAT_RUN_LEFT` (4), `LINE_COMBAT_RUN_RIGHT` (4), `LINE_COMBAT_WALK_BACK` (2), `LINE_COMBAT_WALK_FRONT` (2), `LINE_COMBAT_WALK_LEFT` (4), `LINE_COMBAT_WALK_RIGHT` (4), `LINE_CROUCH` (3), `LINE_CROUCH_STAND` (3), `LINE_FALL` (4), `LINE_HIT_HEAVY` (4), `LINE_IDLE_BACK` (2), `LINE_IDLE_LEFT` (3), `LINE_PUNCH_MACHINE` (3), `LINE_RUN_BACK` (4), `LINE_RUN_STOP_RIGHT` (4), `LINE_SAD` (4), `LINE_SCARED` (4), `LINE_STUMBLE` (4), `LINE_SWORD_DRAW` (4), `LINE_THROWN` (4), `LINE_VICTORY` (4), `LINE_WALK_BACK` (4), `LINE_WALK_FRONT` (4) |
-| Bell | `BELL_BLINK_FRONT` (2), `BELL_BREAK_FREE` (4), `BELL_CALL_LINE` (4), `BELL_CAPTURED` (4), `BELL_CRY` (3), `BELL_CURTSY` (4), `BELL_DANCE` (3), `BELL_DRAGON_CARRIED` (4), `BELL_ESCAPE_ATTEMPT` (3), `BELL_FALL` (4), `BELL_FLEE` (4), `BELL_GROUND_STAND` (2), `BELL_HAPPY` (2), `BELL_HEAD_ON_LINE` (4), `BELL_HELP_LINE` (4), `BELL_HIGH_FIVE` (2), `BELL_IDLE_BACK` (1), `BELL_IDLE_FRONT` (3), `BELL_IDLE_LEFT` (1), `BELL_IDLE_RIGHT` (1), `BELL_JUMP` (3), `BELL_LAND` (2), `BELL_LAUGH` (2), `BELL_LAUGH_AT_LINE` (2), `BELL_LEAN_ON_LINE` (4), `BELL_LOOK_SIDES_FRONT` (3), `BELL_RELIEVED` (2), `BELL_RUN_BACK` (4), `BELL_RUN_FRONT` (4), `BELL_SCARED` (3), `BELL_TRAPPED` (3), `BELL_WAIT` (4), `BELL_WALK_BACK` (4), `BELL_WALK_FRONT` (4) |
+| Line | `LINE_ATTACK_HORIZONTAL` (4), `LINE_CAST_CHARGE` (4), `LINE_CAST_SPELL` (4), `LINE_CAST_STARS` (4), `LINE_COMBAT_IDLE` (3), `LINE_COMBAT_RUN_BACK` (2), `LINE_COMBAT_RUN_FRONT` (4), `LINE_COMBAT_RUN_LEFT` (4), `LINE_COMBAT_RUN_RIGHT` (4), `LINE_COMBAT_WALK_BACK` (2), `LINE_COMBAT_WALK_FRONT` (2), `LINE_COMBAT_WALK_LEFT` (4), `LINE_COMBAT_WALK_RIGHT` (4), `LINE_CROUCH` (3), `LINE_CROUCH_STAND` (3), `LINE_FALL` (4), `LINE_HIT_HEAVY` (4), `LINE_IDLE_BACK` (2), `LINE_IDLE_LEFT` (3), `LINE_RUN_BACK` (4), `LINE_RUN_STOP_RIGHT` (4), `LINE_SAD` (4), `LINE_SCARED` (4), `LINE_STUMBLE` (4), `LINE_SWORD_DRAW` (4), `LINE_THROWN` (4), `LINE_VICTORY` (4), `LINE_WALK_BACK` (4), `LINE_WALK_FRONT` (4) |
+| Bell | `BELL_BLINK_FRONT` (2), `BELL_BREAK_FREE` (4), `BELL_CALL_LINE` (4), `BELL_CAPTURED` (4), `BELL_CRY` (3), `BELL_CURTSY` (4), `BELL_DANCE` (3), `BELL_DRAGON_CARRIED` (4), `BELL_ESCAPE_ATTEMPT` (3), `BELL_FALL` (4), `BELL_FLEE` (4), `BELL_GROUND_STAND` (2), `BELL_HAPPY` (2), `BELL_HEAD_ON_LINE` (4), `BELL_HELP_LINE` (4), `BELL_HIGH_FIVE` (2), `BELL_IDLE_BACK` (1), `BELL_IDLE_FRONT` (3), `BELL_IDLE_LEFT` (1), `BELL_IDLE_RIGHT` (1), `BELL_JUMP` (3), `BELL_LAND` (2), `BELL_LAUGH` (2), `BELL_LEAN_ON_LINE` (4), `BELL_LOOK_SIDES_FRONT` (3), `BELL_RELIEVED` (2), `BELL_RUN_BACK` (4), `BELL_RUN_FRONT` (4), `BELL_SCARED` (3), `BELL_TRAPPED` (3), `BELL_WAIT` (4), `BELL_WALK_BACK` (4), `BELL_WALK_FRONT` (4) |
 | Line e Bell juntas | `LINE_BELL_CELEBRATE` (4), `LINE_BELL_GREET_HUG` (4), `LINE_BELL_HIGH_FIVE` (3), `LINE_BELL_HOLD_HANDS` (3), `LINE_BELL_HUG_RELEASE` (4), `LINE_BELL_LAUGH` (3), `LINE_BELL_MEET` (3), `LINE_BELL_RESCUE_HUG` (4), `LINE_BELL_RUN_TOGETHER_BACK` (4), `LINE_BELL_SIT_DOWN` (4), `LINE_BELL_SIT_IDLE` (4), `LINE_BELL_TALK` (3), `LINE_BELL_WALK_HANDS` (4), `LINE_BELL_WALK_HANDS_BACK` (4), `LINE_BELL_WALK_TOGETHER` (4), `LINE_BELL_WALK_TOGETHER_BACK` (4) |
 
 ### 23.3 Animações ainda sem arte
@@ -4259,8 +4281,12 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 225 | `LINE_BELL_ITEM_225.html` | 0,24 MB | `FARM_HORSESHOE_SET` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 | 226 | `LINE_BELL_ITEM_226.html` | 0,18 MB | `FARM_CHICKEN_WATERER` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
 | 227 | `LINE_BELL_ITEM_227.html` | 0,26 MB | `FARM_ANIMAL_FEED_BUCKET` 🏙️ cenário (objeto da fazenda), fora do recorte de animação |
+| 238 | `LINE_BELL_ITEM_238.html` | 3,70 MB | `LINE_PUNCH_MACHINE` |
+| 239 | `LINE_BELL_ITEM_239.html` | 4,31 MB | `BELL_LAUGH_AT_LINE` |
 
 Itens que ainda não chegaram: 153.
+
+**Lote do shopping, das bases e do playground (itens 218 a 240 da numeração nova):** chegou como páginas de prévia sem as imagens, e as imagens vieram soltas. Os números 218 a 227 repetem os do lote anterior (objetos da fazenda), então as peças novas são chamadas pelo código (`SHOP_*`, `PLAYGROUND_*`, `base_*`). Só os itens 238 e 239 (o soco e a risada) viraram fichas na raiz, porque as animações são refeitas a partir delas. O que entrou está nas seções 5.2 (playground), 22.11.1 (peças do shopping) e 22.11.2 (bases).
 
 Os itens 140 a 227 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio (os lotes foram de 154 a 187, 188 a 202, 203 a 217 e 218 a 227).
 

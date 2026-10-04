@@ -115,7 +115,19 @@ LB.OBJETOS = {
  "farmhouse_wall_sconce_on": "assets/moveis/farmhouse_wall_sconce_on.webp",
  "farmhouse_wardrobe": "assets/moveis/farmhouse_wardrobe.webp",
  "farmhouse_window_day": "assets/moveis/farmhouse_window_day.webp",
- "farmhouse_window_night": "assets/moveis/farmhouse_window_night.webp"
+ "farmhouse_window_night": "assets/moveis/farmhouse_window_night.webp",
+ "playground_balcao_premios": "assets/cenario/playground_balcao_premios.webp",
+ "playground_fliperama_azul": "assets/cenario/playground_fliperama_azul.webp",
+ "playground_fliperama_rosa": "assets/cenario/playground_fliperama_rosa.webp",
+ "playground_maquina_soco_000": "assets/cenario/playground_maquina_soco_000.webp",
+ "playground_maquina_soco_038": "assets/cenario/playground_maquina_soco_038.webp",
+ "playground_painel_premios": "assets/cenario/playground_painel_premios.webp",
+ "shop_escada_rolante_frame_01": "assets/cenario/shop_escada_rolante_frame_01.webp",
+ "shop_escada_rolante_frame_02": "assets/cenario/shop_escada_rolante_frame_02.webp",
+ "shop_escada_rolante_frame_03": "assets/cenario/shop_escada_rolante_frame_03.webp",
+ "shop_escada_rolante_frame_04": "assets/cenario/shop_escada_rolante_frame_04.webp",
+ "shop_mezanino": "assets/cenario/shop_mezanino.webp",
+ "shop_pilar": "assets/cenario/shop_pilar.webp"
 };
 // Largura de cada objeto no mundo, pela régua (medida real × proporção da imagem).
 LB.LARGURA_OBJETOS = {
@@ -229,5 +241,17 @@ LB.LARGURA_OBJETOS = {
  "farmhouse_wall_sconce_on": 14.8,
  "farmhouse_wardrobe": 59.6,
  "farmhouse_window_day": 51.2,
- "farmhouse_window_night": 51.2
+ "farmhouse_window_night": 51.2,
+ "playground_balcao_premios": 115.9,
+ "playground_fliperama_azul": 44.2,
+ "playground_fliperama_rosa": 42.0,
+ "playground_maquina_soco_000": 51.5,
+ "playground_maquina_soco_038": 51.5,
+ "playground_painel_premios": 178.2,
+ "shop_escada_rolante_frame_01": 153.4,
+ "shop_escada_rolante_frame_02": 153.4,
+ "shop_escada_rolante_frame_03": 153.4,
+ "shop_escada_rolante_frame_04": 153.4,
+ "shop_mezanino": 200.5,
+ "shop_pilar": 52.1
 };

@@ -672,7 +672,7 @@ window.LB = window.LB || {};
 
   // Personagens de imagem única (animados por movimento no código).
   const PERSONAGENS = { dragao: 'assets/personagens/dragao.png', mago: 'assets/personagens/mago.png' };
-  for (const n of ['encontro_shopping', 'encontro_shopping_sem_mesa', 'casa_azul', 'casa_roxo', 'casa_verde', 'casa_mostarda', 'casa_cabana', 'encontro_tunel', 'encontro_playground', 'encontro_maquina', 'encontro_maquina_000', 'encontro_maquina_038', 'arbusto_b', 'arbusto_c', 'arbusto_d', 'arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'barco', 'barril', 'caixa', 'carroca', 'casa', 'celeiro', 'cenoura_0', 'cenoura_1', 'cenoura_2', 'cenoura_3', 'cerca', 'cerejeira_a', 'cerejeira_b', 'feno', 'feno_pilha', 'florida', 'galinheiro', 'girassol_0', 'girassol_1', 'girassol_2', 'lago', 'lampiao', 'macieira_a', 'macieira_b', 'macieira_c', 'milho_1', 'moinho', 'moita', 'pedra1', 'pier', 'pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'placa', 'placa2', 'poco', 'porteira', 'tomate_0', 'tomate_1', 'tomate_2', 'tomate_3', 'tomate_4', 'tomate_5', 'trigo_1']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
+  for (const n of ['encontro_shopping', 'encontro_shopping_sem_mesa', 'casa_azul', 'casa_roxo', 'casa_verde', 'casa_mostarda', 'casa_cabana', 'encontro_tunel', 'playground_fundo', 'arbusto_b', 'arbusto_c', 'arbusto_d', 'arvore_a', 'arvore_b', 'arvore_c', 'arvore_d', 'barco', 'barril', 'caixa', 'carroca', 'casa', 'celeiro', 'cenoura_0', 'cenoura_1', 'cenoura_2', 'cenoura_3', 'cerca', 'cerejeira_a', 'cerejeira_b', 'feno', 'feno_pilha', 'florida', 'galinheiro', 'girassol_0', 'girassol_1', 'girassol_2', 'lago', 'lampiao', 'macieira_a', 'macieira_b', 'macieira_c', 'milho_1', 'moinho', 'moita', 'pedra1', 'pier', 'pinheiro_a', 'pinheiro_b', 'pinheiro_c', 'placa', 'placa2', 'poco', 'porteira', 'tomate_0', 'tomate_1', 'tomate_2', 'tomate_3', 'tomate_4', 'tomate_5', 'trigo_1']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
   // Lote 144 a 152: bases de cenário (terreno da fazenda e planta da casa), objetos da fazenda e móveis.
   for (const n of ['base_fazenda', 'base_casa_fazenda', 'farm_dog_house', 'farm_theo_bowl', 'farm_theo_bowl_vazia', 'farm_clothesline', 'farm_picnic_table', 'farm_fence', 'farm_gate', 'farm_small_flowers', 'farm_wild_grass']) PERSONAGENS[n] = 'assets/cenario/' + n + '.webp';
   for (const n of ['fridge', 'stove', 'sink_counter', 'dining_table', 'sofa', 'bed', 'theo_bed', 'bathroom_vanity', 'toilet', 'fireplace_off', 'fireplace_on', 'armchair', 'coffee_table', 'dresser', 'wardrobe', 'nightstand', 'bookshelf', 'shower', 'bathroom_mirror', 'towel_rack', 'laundry_basket']) PERSONAGENS['farmhouse_' + n] = 'assets/moveis/farmhouse_' + n + '.webp';
@@ -685,9 +685,10 @@ window.LB = window.LB || {};
     return img && img.complete && img.naturalWidth ? img : null;
   }
 
-  // Soco sem espada: a mesma arte do soco na máquina (item 106), só o golpe (preparo, soco, volta).
+  // Soco sem espada: a mesma arte do soco na máquina (item 238), só o golpe (preparo, avanço, soco, volta).
   if (window.SPRITES && SPRITES.LINE_PUNCH_MACHINE && !SPRITES.LINE_PUNCH) {
-    SPRITES.LINE_PUNCH = Object.assign({}, SPRITES.LINE_PUNCH_MACHINE, { seq: [0, 1, 2, 2, 2, 1], label: 'Soco sem espada' });
+    const seq = SPRITES.LINE_PUNCH_MACHINE.count >= 6 ? [1, 2, 3, 3, 4, 5] : [0, 1, 2, 2, 2, 1];
+    SPRITES.LINE_PUNCH = Object.assign({}, SPRITES.LINE_PUNCH_MACHINE, { seq, label: 'Soco sem espada' });
     delete SPRITES.LINE_PUNCH.ritmo; delete SPRITES.LINE_PUNCH.fpsArte;
   }
 

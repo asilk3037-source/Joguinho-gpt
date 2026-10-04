@@ -327,7 +327,10 @@ def escrever(w, inv, itens=None):
     prontas = sum(i["existe"] for g in grupos for i in g["itens"])
     subst = sum(1 for g in grupos for i in g["itens"] if not i["existe"] and i["via"])
     numeros = [i["n"] for i in itens]
-    faltam = [n for n in range(1, max(numeros) + 1) if n not in numeros] if numeros else []
+    # Itens 228 a 237 (peças do shopping e do playground) chegaram como imagens soltas, sem a ficha HTML:
+    # as peças estão na biblioteca (seções 5.2 e 22.11.1), não na lista de fichas.
+    soltos = set(range(228, 238))
+    faltam = [n for n in range(1, max(numeros) + 1) if n not in numeros and n not in soltos] if numeros else []
 
     # ============================ 23 ============================
     w("## 23. O que falta criar")
@@ -485,6 +488,8 @@ def escrever(w, inv, itens=None):
     if faltam:
         w(f"Itens que ainda não chegaram: {', '.join(map(str, faltam))}.")
         w()
+    w("**Lote do shopping, das bases e do playground (itens 218 a 240 da numeração nova):** chegou como páginas de prévia sem as imagens, e as imagens vieram soltas. Os números 218 a 227 repetem os do lote anterior (objetos da fazenda), então as peças novas são chamadas pelo código (`SHOP_*`, `PLAYGROUND_*`, `base_*`). Só os itens 238 e 239 (o soco e a risada) viraram fichas na raiz, porque as animações são refeitas a partir delas. O que entrou está nas seções 5.2 (playground), 22.11.1 (peças do shopping) e 22.11.2 (bases).")
+    w()
     w(f"Os itens 140 a 227 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio (os lotes foram de 154 a 187, 188 a 202, 203 a 217 e 218 a 227).")
     w()
     w("**Regra de continuidade das pernas:** nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).")
