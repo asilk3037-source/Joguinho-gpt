@@ -539,7 +539,7 @@ def escrever_arte(w, img, inv):
     w()
     w("**2. Cada item em arte individual.** Um PNG por peça, com transparência, recortado no contorno, na mesma escala da base (1 tile = 144 px; a Line de pé = 281 px) e na mesma perspectiva de cima em 3/4. Pode vir num HTML de item com `data-name=\"SHOP_NOME.png\"`, igual aos itens 154 a 187 (o `tools/extrair_objetos.py` já lê o prefixo `SHOP_`).")
     w()
-    w("A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a peça já está guardada no jogo, ⏳ ainda falta. O shopping só é montado em peças quando chegarem também a **base** (chão e teto) e o **guia de posicionamento**; até lá a ilustração atual continua.")
+    w("A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a peça já está guardada no jogo, ⏳ ainda falta. A base e as peças já chegaram e o shopping já é montado em peças (veja a foto em 22.11.2); só falta o banco de espera e o guia de posicionamento (item 234).")
     w()
     w("| # | Código | Peça | Tamanho aproximado (tiles) | Observação | Chegou |")
     w("|---|---|---|---|---|---|")
@@ -564,6 +564,7 @@ def escrever_arte(w, img, inv):
         ("SHOP_POLTRONA_ROSA", "Poltrona rosa", "1 × 1,3", "4 lados: de frente, de costas, virada para a esquerda e para a direita"),
         ("SHOP_CADEIRA_VERDE", "Cadeira verde-água", "1 × 1,3", "4 lados"),
         ("SHOP_SOFA_MEIA_LUA", "Sofá vermelho em meia-lua (booth)", "3 × 1,5", ""),
+        ("SHOP_SOFA_ROSA", "Sofá rosa reto de dois lugares", "2 × 1", "fica onde a Bell espera"),
         ("SHOP_PUFE", "Banco/pufe vermelho", "1,5 × 0,8", ""),
         ("SHOP_LIXEIRA", "Lixeira", "0,5 × 0,8", ""),
         ("SHOP_PLACA", "Placa de direção (Saída, Banheiros, Praça de alimentação)", "0,8 × 1,5", ""),
@@ -593,8 +594,8 @@ def escrever_arte(w, img, inv):
     w()
     w("Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da fazenda: o jogo desenha a imagem por baixo e as casas, árvores e objetos por cima.")
     w()
-    img("shopping-em-pecas", "Minas Shopping montado em peças: base nova (chão e teto), mezanino, escada rolante e pilares")
-    w("O **Minas Shopping** agora é montado em peças, como o playground: a base nova (deitada, 1774×887) foi remontada em pé, com o teto em cima e o piso de losangos repetido, e por cima entram o guarda-corpo do mezanino (3 pedaços), a escada rolante animada (4 quadros) e os dois pilares. A ilustração antiga saiu. As lojas, mesas, poltronas e plantas entram quando chegarem, na posição do guia (item 234).")
+    img("shopping-em-pecas", "Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares")
+    w("O **Minas Shopping** agora é montado em peças, como o playground: a base nova (deitada, 1774×887) foi remontada em pé, com o teto em cima e o piso de losangos repetido, e por cima entram o guarda-corpo do mezanino (3 pedaços), a escada rolante animada (4 quadros) e os dois pilares, e as **lojas e móveis** (confeitaria, Burger King, cafeteria, vitrine de bolos, coração neon que pisca, luminárias, lanternas, sofá meia-lua, sofá rosa, pufe, duas mesas com cadeiras verdes e poltronas rosa, bandeja do BK, vaso, lixeira, placa, árvore e três canteiros): 36 peças ao todo. A ilustração antiga saiu. Falta só o banco de espera e o guia de posicionamento (item 234).")
     w()
     escrever_dimensoes_cenarios(w, img, M)
     w("### 22.10 Ordem sugerida para produzir")

@@ -255,18 +255,19 @@ w("**Bases recebidas (itens 218 a 222):** já estão no jogo como **textura do c
 w()
 w("### 8.2 Minas Shopping em peças")
 w()
-w("O playground e o **shopping** já são montados em peças. O shopping usa a **base nova** (item 218: o teto e o piso de losangos, montados em pé a partir da base deitada), o guarda-corpo do mezanino, a escada rolante animada e os pilares. As lojas, mesas, poltronas e plantas entram conforme chegarem, na posição do **guia de posicionamento** (item 234, que ainda não veio):")
+w("O playground e o **shopping** já são montados em peças. O shopping usa a **base nova** (item 218: o teto e o piso de losangos, montados em pé a partir da base deitada) e, por cima, **36 peças**: a confeitaria e o Burger King sob o mezanino, com as lanternas nas portas; o coração neon no vidro do mezanino (aceso, com duas piscadas a cada 4 s) e as luminárias penduradas no teto; a cafeteria à esquerda com a vitrine de bolos; o sofá meia-lua com o pufe no meio; o sofá rosa onde a Bell espera; duas mesas na praça de alimentação (uma com as 4 cadeiras verdes e a bandeja do BK, outra com as 4 poltronas rosa e o vaso); a lixeira, a placa, os pilares, a árvore e os canteiros. O meio da praça fica livre para a cena das duas comendo, que traz a própria mesa. Enquanto o **guia de posicionamento** (item 234) não vem, a disposição foi feita pela foto do Minas Shopping:")
 w()
-img("shopping-em-pecas", "Minas Shopping montado em peças: base nova (chão e teto), mezanino, escada rolante e pilares")
+img("shopping-em-pecas", "Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares")
 w()
 PECAS = ["SHOP_BURGER_KING", "SHOP_CONFEITARIA", "SHOP_VITRINE_BOLOS", "SHOP_CAFETERIA", "SHOP_ESCADA_ROLANTE", "SHOP_MEZANINO", "SHOP_PILAR", "SHOP_CORACAO_NEON",
          "SHOP_ARVORE_CANTEIRO", "SHOP_CANTEIRO_RETANGULAR", "SHOP_CANTEIRO_QUADRADO", "SHOP_CANTEIRO_CANTO", "SHOP_LANTERNA", "SHOP_LUMINARIA", "SHOP_MESA_REDONDA",
-         "SHOP_VASO_MESA", "SHOP_BANDEJA_BK", "SHOP_POLTRONA_ROSA", "SHOP_CADEIRA_VERDE", "SHOP_SOFA_MEIA_LUA", "SHOP_PUFE", "SHOP_LIXEIRA", "SHOP_PLACA", "SHOP_BANCO_ESPERA"]
+         "SHOP_VASO_MESA", "SHOP_BANDEJA_BK", "SHOP_POLTRONA_ROSA", "SHOP_CADEIRA_VERDE", "SHOP_SOFA_MEIA_LUA", "SHOP_SOFA_ROSA", "SHOP_PUFE", "SHOP_LIXEIRA", "SHOP_PLACA", "SHOP_BANCO_ESPERA"]
 faltam = [p for p in PECAS if not any(existe(f"assets/cenario/{p.lower()}{suf}.webp") for suf in ("", "_frame_01", "_on", "_front"))]
 chegaram = [p for p in PECAS if p not in faltam]
 w("- **Já chegaram ✅:** " + (", ".join(f"`{p}`" for p in chegaram) or "nenhuma"))
 w("- **Faltam ✏️:** " + ", ".join(f"`{p}`" for p in faltam))
-w("- A poltrona rosa e a cadeira verde em **4 lados** (`_FRONT`, `_BACK`, `_LEFT`, `_RIGHT`); o coração neon `_ON` e `_OFF`.")
+w("- A poltrona rosa e a cadeira verde chegaram nos **4 lados** e o coração neon `_ON` e `_OFF`. As duas poltronas rosa de lado vieram **viradas para a direita**: uma ficou como `_RIGHT` e a outra foi espelhada para virar `_LEFT`.")
+w("- **Ainda faltam:** o **banco de espera** (`SHOP_BANCO_ESPERA`) e o **guia de posicionamento** (item 234). Se o guia vier com outra disposição, as peças mudam de lugar só no código (`PECAS.shopping` em `game/js/encontro.js`).")
 w()
 w("### 8.3 Túnel")
 w()

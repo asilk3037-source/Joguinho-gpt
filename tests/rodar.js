@@ -454,7 +454,13 @@ teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping
   const fundo = await h.ev(() => !!LB.personagem('shopping_base') || new Promise((ok) => setTimeout(() => ok(!!LB.personagem('shopping_base')), 1500)));
   afirmar(fundo, 'base do shopping (chão e teto) carregada');
   const pecas = await h.ev(() => { const j = LB.jogo; j.iniciarArea('shopping', null, true); return LB.encontro.objetos(j).length; });
-  igual(pecas, 6, 'peças do shopping (mezanino, escada rolante e pilares)');
+  igual(pecas, 36, 'peças do shopping (lojas, mesas, poltronas, plantas, mezanino, escada e pilares)');
+  const semMedida = await h.ev(() => {
+    const L = LB.LARGURA_OBJETOS, nomes = ['shop_burger_king', 'shop_confeitaria', 'shop_cafeteria', 'shop_vitrine_bolos', 'shop_coracao_neon_on', 'shop_coracao_neon_off',
+      'shop_sofa_meia_lua', 'shop_pufe', 'shop_arvore_canteiro', 'shop_vaso_mesa', 'shop_poltrona_rosa_left', 'shop_cadeira_verde_back', 'shop_canteiro_canto'];
+    return nomes.filter((n) => !L[n] || !LB.OBJETOS[n]);
+  });
+  igual(semMedida.join(','), '', 'toda peça do shopping tem arte e medida na régua');
 });
 
 teste('casas: bilhete antes de entrar, Rosa e Bento atendem atrás do balcão e a loja fecha à noite', async (h) => {

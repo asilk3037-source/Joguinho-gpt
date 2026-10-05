@@ -18,6 +18,8 @@
 
 > 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> 🛍️ **Minas Shopping mobiliado:** chegaram as lojas e os móveis — confeitaria, Burger King, cafeteria, vitrine de bolos, coração neon que pisca, luminárias, lanternas, sofá meia-lua, sofá rosa, pufe, mesas com cadeiras verdes e poltronas rosa (nos 4 lados), bandeja do BK, vaso, lixeira, placa, árvore e três canteiros. O shopping agora tem 36 peças por cima da base; as personagens passam na frente e atrás de cada uma. Falta só o banco de espera e o guia de posicionamento (item 234).
+
 > 🎛️ **HUD e controles com a arte nova (componentes 01 a 09):** retrato da heroína na moldura redonda, barras de vida e magia, contador de moedas com o item do atalho, **minimapa** com a névoa no canto de cima, painel de objetivo com a moldura dourada, selo **!** de novidade na mochila, moldura dourada em todos os botões redondos e o joystick novo. Os ícones de dentro dos botões ainda são emoji (pedido no documento de pendências).
 
 > ⚔️ **Ataque para cima e para baixo:** o golpe (espada ou soco) agora acerta na direção em que a Line está virada, inclusive para cima e para baixo, e a mira vira sozinha para o inimigo mais perto. A arte do golpe de frente e de costas ainda falta (o jogo usa a de lado).
@@ -3523,34 +3525,35 @@ O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já est�
 
 **2. Cada item em arte individual.** Um PNG por peça, com transparência, recortado no contorno, na mesma escala da base (1 tile = 144 px; a Line de pé = 281 px) e na mesma perspectiva de cima em 3/4. Pode vir num HTML de item com `data-name="SHOP_NOME.png"`, igual aos itens 154 a 187 (o `tools/extrair_objetos.py` já lê o prefixo `SHOP_`).
 
-A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a peça já está guardada no jogo, ⏳ ainda falta. O shopping só é montado em peças quando chegarem também a **base** (chão e teto) e o **guia de posicionamento**; até lá a ilustração atual continua.
+A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a peça já está guardada no jogo, ⏳ ainda falta. A base e as peças já chegaram e o shopping já é montado em peças (veja a foto em 22.11.2); só falta o banco de espera e o guia de posicionamento (item 234).
 
 | # | Código | Peça | Tamanho aproximado (tiles) | Observação | Chegou |
 |---|---|---|---|---|---|
-| 1 | `SHOP_BURGER_KING` | Fachada do Burger King: letreiro, toldo, balcão e cardápio luminoso | 3 × 3 | é para onde as duas olham antes do lanche | ⏳ |
-| 2 | `SHOP_CONFEITARIA` | Fachada da confeitaria: placa de cupcake, toldo listrado | 3,5 × 4,5 | sem a vitrine (vem separada) | ⏳ |
-| 3 | `SHOP_VITRINE_BOLOS` | Vitrine refrigerada de bolos e doces | 2,5 × 1,5 | com luz por dentro | ⏳ |
-| 4 | `SHOP_CAFETERIA` | Fachada da cafeteria: placa da xícara, balcão, máquinas de café | 3 × 5 | — | ⏳ |
+| 1 | `SHOP_BURGER_KING` | Fachada do Burger King: letreiro, toldo, balcão e cardápio luminoso | 3 × 3 | é para onde as duas olham antes do lanche | ✅ |
+| 2 | `SHOP_CONFEITARIA` | Fachada da confeitaria: placa de cupcake, toldo listrado | 3,5 × 4,5 | sem a vitrine (vem separada) | ✅ |
+| 3 | `SHOP_VITRINE_BOLOS` | Vitrine refrigerada de bolos e doces | 2,5 × 1,5 | com luz por dentro | ✅ |
+| 4 | `SHOP_CAFETERIA` | Fachada da cafeteria: placa da xícara, balcão, máquinas de café | 3 × 5 | — | ✅ |
 | 5 | `SHOP_ESCADA_ROLANTE` | Escada rolante dupla (subindo e descendo) | 2 × 4 | de preferência animada: 4 a 6 quadros dos degraus andando | ✅ |
 | 6 | `SHOP_MEZANINO` | Guarda-corpo de vidro do andar de cima, com corações | peça de 4 × 1 que se repete | vem em pedaços que encaixam lado a lado | ✅ |
 | 7 | `SHOP_PILAR` | Pilar rosa com corações | 1 × 6 | fica na frente das personagens quando elas passam atrás | ✅ |
-| 8 | `SHOP_CORACAO_NEON` | Coração de neon | 1,5 × 1,5 | aceso e apagado (dois PNGs) para piscar | ⏳ |
-| 9 | `SHOP_ARVORE_CANTEIRO` | Árvore no canteiro grande de madeira | 2,5 × 3,5 | a do centro do shopping | ⏳ |
-| 10 | `SHOP_CANTEIRO_RETANGULAR` | Canteiro de madeira comprido com plantas e flores | 3 × 1,5 | — | ⏳ |
-| 11 | `SHOP_CANTEIRO_QUADRADO` | Canteiro de madeira pequeno com flores | 1,5 × 1,5 | — | ⏳ |
-| 12 | `SHOP_CANTEIRO_CANTO` | Canteiro de canto (em L) com folhagens | 2 × 2 | — | ⏳ |
-| 13 | `SHOP_LANTERNA` | Lanterna de madeira no chão (poste de luz) | 0,5 × 1,3 | acesa | ⏳ |
-| 14 | `SHOP_LUMINARIA` | Luminária pendente de globo | 0,5 × 1 | pendurada; o jogo põe no alto | ⏳ |
-| 15 | `SHOP_MESA_REDONDA` | Mesa redonda de mármore, sem nada em cima | 1,4 × 1,1 | a mesa do encontro | ⏳ |
-| 16 | `SHOP_VASO_MESA` | Vasinho de flores para cima da mesa | 0,4 × 0,4 | — | ⏳ |
-| 17 | `SHOP_BANDEJA_BK` | Bandeja do BK: dois lanches, batata e dois refris | 0,7 × 0,4 | vai em cima da mesa redonda no lanche | ⏳ |
-| 18 | `SHOP_POLTRONA_ROSA` | Poltrona rosa | 1 × 1,3 | 4 lados: de frente, de costas, virada para a esquerda e para a direita | ⏳ |
-| 19 | `SHOP_CADEIRA_VERDE` | Cadeira verde-água | 1 × 1,3 | 4 lados | ⏳ |
-| 20 | `SHOP_SOFA_MEIA_LUA` | Sofá vermelho em meia-lua (booth) | 3 × 1,5 | — | ⏳ |
-| 21 | `SHOP_PUFE` | Banco/pufe vermelho | 1,5 × 0,8 | — | ⏳ |
-| 22 | `SHOP_LIXEIRA` | Lixeira | 0,5 × 0,8 | — | ⏳ |
-| 23 | `SHOP_PLACA` | Placa de direção (Saída, Banheiros, Praça de alimentação) | 0,8 × 1,5 | — | ⏳ |
-| 24 | `SHOP_BANCO_ESPERA` | Banco de espera | 2 × 1 | — | ⏳ |
+| 8 | `SHOP_CORACAO_NEON` | Coração de neon | 1,5 × 1,5 | aceso e apagado (dois PNGs) para piscar | ✅ |
+| 9 | `SHOP_ARVORE_CANTEIRO` | Árvore no canteiro grande de madeira | 2,5 × 3,5 | a do centro do shopping | ✅ |
+| 10 | `SHOP_CANTEIRO_RETANGULAR` | Canteiro de madeira comprido com plantas e flores | 3 × 1,5 | — | ✅ |
+| 11 | `SHOP_CANTEIRO_QUADRADO` | Canteiro de madeira pequeno com flores | 1,5 × 1,5 | — | ✅ |
+| 12 | `SHOP_CANTEIRO_CANTO` | Canteiro de canto (em L) com folhagens | 2 × 2 | — | ✅ |
+| 13 | `SHOP_LANTERNA` | Lanterna de madeira no chão (poste de luz) | 0,5 × 1,3 | acesa | ✅ |
+| 14 | `SHOP_LUMINARIA` | Luminária pendente de globo | 0,5 × 1 | pendurada; o jogo põe no alto | ✅ |
+| 15 | `SHOP_MESA_REDONDA` | Mesa redonda de mármore, sem nada em cima | 1,4 × 1,1 | a mesa do encontro | ✅ |
+| 16 | `SHOP_VASO_MESA` | Vasinho de flores para cima da mesa | 0,4 × 0,4 | — | ✅ |
+| 17 | `SHOP_BANDEJA_BK` | Bandeja do BK: dois lanches, batata e dois refris | 0,7 × 0,4 | vai em cima da mesa redonda no lanche | ✅ |
+| 18 | `SHOP_POLTRONA_ROSA` | Poltrona rosa | 1 × 1,3 | 4 lados: de frente, de costas, virada para a esquerda e para a direita | ✅ |
+| 19 | `SHOP_CADEIRA_VERDE` | Cadeira verde-água | 1 × 1,3 | 4 lados | ✅ |
+| 20 | `SHOP_SOFA_MEIA_LUA` | Sofá vermelho em meia-lua (booth) | 3 × 1,5 | — | ✅ |
+| 21 | `SHOP_SOFA_ROSA` | Sofá rosa reto de dois lugares | 2 × 1 | fica onde a Bell espera | ✅ |
+| 22 | `SHOP_PUFE` | Banco/pufe vermelho | 1,5 × 0,8 | — | ✅ |
+| 23 | `SHOP_LIXEIRA` | Lixeira | 0,5 × 0,8 | — | ✅ |
+| 24 | `SHOP_PLACA` | Placa de direção (Saída, Banheiros, Praça de alimentação) | 0,8 × 1,5 | — | ✅ |
+| 25 | `SHOP_BANCO_ESPERA` | Banco de espera | 2 × 1 | — | ⏳ |
 
 **3. O lanche sentadas.** Com a mesa redonda e as poltronas separadas, a cena do BK fica certa com as duas **sentadas nas poltronas**, comendo. Para isso faltam duas animações: `LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT` (sentada de lado numa poltrona, comendo e rindo, sem mesa e sem poltrona no desenho; a Line virada para a direita e a Bell para a esquerda). Até lá o jogo usa `LINE_BELL_BK`, que já traz a mesa delas.
 
@@ -3576,10 +3579,10 @@ Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **
 
 Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da fazenda: o jogo desenha a imagem por baixo e as casas, árvores e objetos por cima.
 
-![Minas Shopping montado em peças: base nova (chão e teto), mezanino, escada rolante e pilares](imagens/shopping-em-pecas.jpg)
-*Minas Shopping montado em peças: base nova (chão e teto), mezanino, escada rolante e pilares*
+![Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares](imagens/shopping-em-pecas.jpg)
+*Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares*
 
-O **Minas Shopping** agora é montado em peças, como o playground: a base nova (deitada, 1774×887) foi remontada em pé, com o teto em cima e o piso de losangos repetido, e por cima entram o guarda-corpo do mezanino (3 pedaços), a escada rolante animada (4 quadros) e os dois pilares. A ilustração antiga saiu. As lojas, mesas, poltronas e plantas entram quando chegarem, na posição do guia (item 234).
+O **Minas Shopping** agora é montado em peças, como o playground: a base nova (deitada, 1774×887) foi remontada em pé, com o teto em cima e o piso de losangos repetido, e por cima entram o guarda-corpo do mezanino (3 pedaços), a escada rolante animada (4 quadros) e os dois pilares, e as **lojas e móveis** (confeitaria, Burger King, cafeteria, vitrine de bolos, coração neon que pisca, luminárias, lanternas, sofá meia-lua, sofá rosa, pufe, duas mesas com cadeiras verdes e poltronas rosa, bandeja do BK, vaso, lixeira, placa, árvore e três canteiros): 36 peças ao todo. A ilustração antiga saiu. Falta só o banco de espera e o guia de posicionamento (item 234).
 
 ### 22.12 Dimensão de cada cenário
 

@@ -73,13 +73,46 @@
       { nome: 'playground_fliperama_azul', x: 66, base: 398 },
       { nome: 'playground_maquina_soco', x: 231, base: 438, frente: 14 },
     ],
+    // Lojas sob o mezanino, cafeteria à esquerda, sofá meia-lua no meio, o sofá rosa onde a Bell espera,
+    // duas mesas na praça de alimentação e plantas embaixo. O lugar da mesa do BK (180, 397) fica livre:
+    // a cena LINE_BELL_BK traz a própria mesa.
     shopping: [
+      { nome: 'shop_luminaria', x: 70, base: 56, parede: true },
+      { nome: 'shop_luminaria', x: 200, base: 56, parede: true },
       { nome: 'shop_mezanino', x: 30, base: 104, parede: true },
       { nome: 'shop_mezanino', x: 180, base: 104, parede: true },
       { nome: 'shop_mezanino', x: 330, base: 104, parede: true },
+      { nome: 'shop_coracao_neon', x: 135, base: 100, parede: true, neon: true },
       { nome: 'shop_escada_rolante', x: 300, base: 196, quadros: 4 },
-      { nome: 'shop_pilar', x: 22, base: 330 },
-      { nome: 'shop_pilar', x: 338, base: 330 },
+      { nome: 'shop_confeitaria', x: 58, base: 200 },
+      { nome: 'shop_burger_king', x: 166, base: 200 },
+      { nome: 'shop_lanterna', x: 112, base: 214 },
+      { nome: 'shop_lanterna', x: 226, base: 214 },
+      { nome: 'shop_vitrine_bolos', x: 58, base: 252 },
+      { nome: 'shop_sofa_rosa', x: 300, base: 262 },
+      { nome: 'shop_sofa_meia_lua', x: 175, base: 300 },
+      { nome: 'shop_pufe', x: 175, base: 330 },
+      { nome: 'shop_cafeteria', x: 45, base: 348 },
+      { nome: 'shop_canteiro_quadrado', x: 106, base: 346 },
+      { nome: 'shop_placa', x: 340, base: 352 },
+      { nome: 'shop_cadeira_verde_front', x: 80, base: 418 },
+      { nome: 'shop_cadeira_verde_right', x: 52, base: 436 },
+      { nome: 'shop_mesa_redonda', x: 80, base: 438 },
+      { nome: 'shop_bandeja_bk', x: 80, base: 420, frente: -20 },
+      { nome: 'shop_cadeira_verde_left', x: 108, base: 436 },
+      { nome: 'shop_cadeira_verde_back', x: 80, base: 458 },
+      { nome: 'shop_poltrona_rosa_front', x: 300, base: 404 },
+      { nome: 'shop_poltrona_rosa_right', x: 268, base: 424 },
+      { nome: 'shop_mesa_redonda', x: 300, base: 426 },
+      { nome: 'shop_vaso_mesa', x: 300, base: 410, frente: -18 },
+      { nome: 'shop_poltrona_rosa_left', x: 332, base: 424 },
+      { nome: 'shop_poltrona_rosa_back', x: 300, base: 450 },
+      { nome: 'shop_lixeira', x: 152, base: 480 },
+      { nome: 'shop_pilar', x: 22, base: 560 },
+      { nome: 'shop_pilar', x: 338, base: 560 },
+      { nome: 'shop_arvore_canteiro', x: 95, base: 638 },
+      { nome: 'shop_canteiro_retangular', x: 210, base: 628 },
+      { nome: 'shop_canteiro_canto', x: 300, base: 636 },
     ],
   };
   // Onde a Line fica para socar: o punho do quadro do golpe alcança o saco da máquina.
@@ -90,7 +123,10 @@
     const pecas = PECAS[jogo.mapa.id];
     if (!pecas) return [];
     const placar = jogo.encontro && jogo.encontro.placar === '038' ? '038' : '000';
+    // O coração neon fica aceso e falha de vez em quando (duas piscadas a cada 4 s).
+    const t = jogo.tempo % 4, neon = (t > 3.2 && t < 3.32) || (t > 3.45 && t < 3.6) ? '_off' : '_on';
     const nomeDe = (p) => p.nome === 'playground_maquina_soco' ? p.nome + '_' + placar
+      : p.neon ? p.nome + neon
       : p.quadros ? p.nome + '_frame_0' + (1 + Math.floor(jogo.tempo * 6) % p.quadros) : p.nome;
     return pecas.map((p) => ({
       // A plataforma da máquina fica sob os pés da Line: a peça vai para trás dela (`frente`).

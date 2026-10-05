@@ -80,6 +80,8 @@ w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, 
 w()
 w("> 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.")
 w()
+w("> 🛍️ **Minas Shopping mobiliado:** chegaram as lojas e os móveis — confeitaria, Burger King, cafeteria, vitrine de bolos, coração neon que pisca, luminárias, lanternas, sofá meia-lua, sofá rosa, pufe, mesas com cadeiras verdes e poltronas rosa (nos 4 lados), bandeja do BK, vaso, lixeira, placa, árvore e três canteiros. O shopping agora tem 36 peças por cima da base; as personagens passam na frente e atrás de cada uma. Falta só o banco de espera e o guia de posicionamento (item 234).")
+w()
 w("> 🎛️ **HUD e controles com a arte nova (componentes 01 a 09):** retrato da heroína na moldura redonda, barras de vida e magia, contador de moedas com o item do atalho, **minimapa** com a névoa no canto de cima, painel de objetivo com a moldura dourada, selo **!** de novidade na mochila, moldura dourada em todos os botões redondos e o joystick novo. Os ícones de dentro dos botões ainda são emoji (pedido no documento de pendências).")
 w()
 w("> ⚔️ **Ataque para cima e para baixo:** o golpe (espada ou soco) agora acerta na direção em que a Line está virada, inclusive para cima e para baixo, e a mira vira sozinha para o inimigo mais perto. A arte do golpe de frente e de costas ainda falta (o jogo usa a de lado).")
