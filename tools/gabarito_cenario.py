@@ -25,16 +25,16 @@ def main():
         d.line([(x, 0), (x, H)], fill=(255, 255, 255, 40), width=2)
     for y in range(0, H + 1, T):
         d.line([(0, y), (W, y)], fill=(255, 255, 255, 40), width=2)
-    d.rectangle([0, 0, W, 130 * F], fill=(120, 150, 255, 40))
-    d.text(P(10, 8), 'FUNDO / VITRINES (y 0–130): ninguém anda aqui', font=fonte, fill=(200, 215, 255, 255))
-    x0, y0, x1, y1 = P(28, 130) + P(332, 545)
+    d.rectangle([0, 0, W, 186 * F], fill=(120, 150, 255, 40))
+    d.text(P(10, 8), 'TETO E LOJAS (y 0–186): ninguém anda aqui', font=fonte, fill=(200, 215, 255, 255))
+    x0, y0, x1, y1 = P(28, 186) + P(332, 545)
     d.rectangle([x0, y0, x1, y1], outline=(120, 255, 150, 230), width=8)
-    d.text((x0 + 20, y0 + 16), 'CHÃO ANDÁVEL: x 28–332, y 130–545 (base 360×640)', font=fonte, fill=(150, 255, 170, 255))
+    d.text((x0 + 20, y0 + 16), 'CHÃO ANDÁVEL: x 28–332, y 186–545 (base 360×640), menos as mesas', font=fonte, fill=(150, 255, 170, 255))
     d.text((x0 + 20, y0 + 70), f'= x {x0}–{x1}, y {y0}–{y1} neste gabarito ({W}×{H})', font=peq, fill=(150, 255, 170, 255))
     d.rectangle([0, 545 * F, W, H], fill=(255, 150, 120, 35))
     d.text(P(10, 560), 'FRENTE (y 545–640): borda de baixo', font=fonte, fill=(255, 190, 170, 255))
     # Closes (zoom 1,6×): numa tela 16:9 a câmera mostra 250 unidades de altura = 187,5 px da base.
-    for nome, (cx, cy) in [('CLOSE 1: o encontro', (251, 270)), ('CLOSE 2: mesa do BK', (180, 367))]:
+    for nome, (cx, cy) in [('CLOSE 1: o encontro', (159, 325)), ('CLOSE 2: lanche do BK', (180, 416))]:
         hh, ww = 187.5 / 2, 187.5 * 16 / 9 / 2
         r = [max(0, (cx - ww) * F), (cy - hh) * F, min(W - 4, (cx + ww) * F), (cy + hh) * F]
         d.rectangle(r, outline=(255, 120, 200, 220), width=6)
@@ -53,15 +53,15 @@ def main():
         q = q.resize((round(c * esc), round(c * esc)), Image.LANCZOS)
         ov.alpha_composite(q, (round(x * F - q.width / 2), round(y * F - m['ground'] * esc)))
 
-    pontos = [('Line começa aqui', (48, 520), 'LINE_IDLE_BACK'), ('Bell espera aqui', (274, 300), 'BELL_WAIT'),
-              ('Line na mesa', (142, 397), 'LINE_IDLE_FRONT'), ('Bell na mesa', (218, 397), 'BELL_IDLE_FRONT'), ('saída das duas', (280, 500), None)]
+    pontos = [('Line começa aqui', (178, 528), 'LINE_IDLE_BACK'), ('Bell espera aqui', (182, 355), 'BELL_WAIT'),
+              ('Line no lanche', (142, 446), 'LINE_IDLE_FRONT'), ('Bell no lanche', (218, 446), 'BELL_IDLE_FRONT'), ('saída das duas', (180, 610), None)]
     for nome, (x, y), cod in pontos:
         if cod and cod in man:
             boneca(cod, x, y, cod == 'BELL_WAIT')
         d.ellipse([x * F - 18, y * F - 18, x * F + 18, y * F + 18], fill=(255, 230, 120, 230))
         d.text((x * F + 26, y * F - 10), f'{nome} ({x},{y})', font=peq, fill=(255, 235, 150, 255))
-    d.ellipse([180 * F - 30, 397 * F - 30, 180 * F + 30, 397 * F + 30], outline=(255, 230, 120, 255), width=6)
-    d.text(P(150, 405), 'MESA DO BK (180,397)', font=peq, fill=(255, 235, 150, 255))
+    d.ellipse([180 * F - 30, 446 * F - 30, 180 * F + 30, 446 * F + 30], outline=(255, 230, 120, 255), width=6)
+    d.text(P(150, 454), 'LANCHE DO BK (180,446)', font=peq, fill=(255, 235, 150, 255))
     linhas = ['ESCALA', 'Line de pé: 47 px da base = 281 px aqui', '1 tile (32 do mundo) = 24 px da base = 144 px aqui',
               'Base 360×640 · entregue 2160×3840 (×6)', 'ou 2880×5120 (×8) para 4K']
     d.rectangle([W - 1060, H - 330, W - 30, H - 30], fill=(20, 16, 30, 220))

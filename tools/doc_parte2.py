@@ -496,91 +496,45 @@ def escrever_arte(w, img, inv):
         w(f"- {linha}")
     w()
 
-    w("### 22.11 Cenário do Minas Shopping (item 140) — medidas combinadas")
+    w("### 22.11 Minas Shopping: a praça de alimentação")
     w()
-    w("> 🔒 **Trava:** cenário **não** passa pelo recorte de animação (os quadros de 1254×1254 que viram células de 256). O extrator deixa o item 140 de fora de propósito; ele entra à mão, com as medidas abaixo.")
+    w("> 🍔 **Decisão (versão atual):** o Minas Shopping é a **praça de alimentação** do modelo que a dona do jogo mandou (`arte/referencias/minas_shopping_praca_modelo.png`): duas lojas de lanche no fundo, embaixo do teto de madeira com as luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas, o corredor livre no meio e os canteiros na direita. A montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás e poltronas) saiu do jogo.")
     w()
-    w("**Como o Minas Shopping funciona no jogo:** é **uma ilustração inteira** (não é feita de tiles), em pé, na proporção **9:16**. Tudo no jogo foi posicionado numa **base de 360×640** (a tela do HTML do primeiro encontro): onde a Line começa, onde a Bell espera, a mesa do BK, a saída e os dois closes. Por isso a nova arte precisa manter **exatamente essa proporção**, só que maior.")
+    img("encontro-praca-modelo", "Modelo da praça de alimentação: é assim que o shopping deve ficar")
+    w("**Como é montado:** a cena continua na base de **360×640** (9:16, em pé). O fundo `shopping_base.webp` tem o teto de madeira e a coluna recortados do modelo e o piso de losangos; por cima o jogo desenha as peças da praça, cada uma na régua de tamanhos (a mesma da fazenda: altura real em relação à Line de 1,60 m), e ordena tudo pela linha do chão, então a Line e a Bell passam na frente e atrás das mesas. As mesas são **sólidas** (não dá para atravessar) e o fundo das lojas fica fora da área andável.")
+    w()
+    w("| Peça | Código | Medida na régua | Onde fica |")
+    w("|---|---|---|---|")
+    for cod, med, onde in [
+        ("SHOP_PRACA_LOJA_HAMBURGUER", "4,89 m de largura", "fundo, metade esquerda"),
+        ("SHOP_PRACA_LOJA_FRANGO", "4,89 m de largura", "fundo, metade direita, até a coluna"),
+        ("SHOP_PRACA_MESA_REDONDA", "1,1 m de diâmetro", "6 mesas: x 84 e 276; y 300, 396 e 492"),
+        ("SHOP_PRACA_CADEIRA_MADEIRA_FRONT", "0,95 m de altura", "duas atrás de cada mesa"),
+        ("SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT", "0,95 m de altura", "na frente de cada mesa, viradas para ela"),
+        ("SHOP_PRACA_CADEIRA_MADEIRA_BACK", "0,95 m de altura", "guardada (o modelo não usa)"),
+        ("SHOP_PRACA_CANTEIRO_RETANGULAR", "2,6 m de largura", "dois na borda direita"),
+    ]:
+        w(f"| {cod.split('_', 2)[2].replace('_', ' ').lower()} | `{cod}` | {med} | {onde} |")
+    w()
+    w("> 📏 **Regra mantida:** no modelo as mesas e as cadeiras aparecem quase do tamanho da Line. No jogo elas seguem a régua (mesa de 1,1 m, cadeira de 0,95 m), por isso a praça parece mais espaçosa que no desenho. As lojas não têm marca: o letreiro é o hambúrguer e o frango das peças.")
     w()
     w("| Medida | Valor |")
     w("|---|---|")
-    w("| Base de coordenadas | 360×640 (proporção 9:16, em pé) |")
-    w("| Tamanho no mundo do jogo | 480×853 unidades (mapa de 15×27 tiles de 32) |")
-    w("| **Entrega recomendada** | **2160×3840** (6× a base): nítido em tela cheia 1440p e nos closes em 1080p |")
-    w("| Para 4K | 2880×5120 (8× a base) |")
-    w("| Mínimo | 1440×2560 (4× a base): nítido em tela cheia 1080p sem close |")
-    w("| Grade de referência | 1 tile do jogo = 24 px da base = **144 px** na entrega de 2160×3840 (15 colunas; a altura não fecha em tiles inteiros, não precisa) |")
-    w("| Escala das personagens | a Line de pé tem **47 px da base = 281 px** na entrega de 2160×3840; a mesa, as cadeiras e as portas seguem essa medida |")
-    w("| Área andável (chão livre) | x 28–332, y 130–545 na base (**x 168–1992, y 780–3270** na entrega de 2160×3840): nada alto no chão dentro dela |")
-    w("| Fundo (vitrines, escada rolante, andar de cima) | faixa de cima, y 0–130 da base |")
-    w("| Pontos da história (base) | Line começa (48,520) · Bell espera (274,300) · Line na mesa (142,397) · Bell na mesa (218,397) · mesa do BK (180,397) · saída (280,500) |")
-    w("| Closes (câmera 1,6×) | o encontro, perto de (251,270), e a mesa do BK, perto de (180,367): os lugares com mais detalhe |")
-    w("| Telas largas | o jogo preenche os lados com a própria imagem borrada: as bordas esquerda e direita devem continuar o cenário naturalmente (sem moldura) |")
+    w("| Base de coordenadas | 360×640 (9:16, em pé); no mundo, 480×853 unidades |")
+    w("| Fundo (teto, coluna e lojas) | y 0–166 da base; ninguém anda acima de y 186 |")
+    w("| Área andável | x 28–332, y 186–545, menos o pé de cada mesa |")
+    w("| Pontos da história (base) | Line começa (178,528) · Bell espera (182,355) · Line no lanche (142,446) · Bell no lanche (218,446) · lanche do BK (180,446) · saída por baixo (180,610) |")
+    w("| Closes (câmera 1,6×) | o encontro, perto de (159,325), e o lanche, perto de (180,416) |")
+    w("| Telas largas | o jogo preenche os lados com a própria imagem borrada |")
     w()
-    w("**Formato da entrega (o “recorte”):**")
-    w()
-    w("1. **Fundo:** uma imagem única, PNG ou WebP, **sem transparência**, sem grade e sem textos, na perspectiva de cima em 3/4 como o resto do jogo.")
-    w("2. **Camada da frente (opcional):** o que deve passar **na frente** das personagens (pilares, vasos, grade do mezanino, encosto das cadeiras) vem num PNG separado, **do mesmo tamanho do fundo**, com transparência em todo o resto. O jogo desenha essa camada por cima das duas.")
-    w("3. **Partes animadas (opcional):** luzes piscando, escada rolante e fonte vêm como animação separada, só do pedaço que mexe, com a posição (x, y) no fundo.")
-    w("4. **Não** entregar em sequência de quadros de 1254×1254 nem como prancha de tiles.")
-    w()
-    w("O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já está no tamanho certo, com a grade, a área andável, os pontos da história, os closes e a Line e a Bell em escala, por cima da ilustração atual, para desenhar em cima (gerado por `tools/gabarito_cenario.py`).")
+    w("O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` mostra a área andável, os pontos da história, os closes e a Line e a Bell em escala por cima da base (gerado por `tools/gabarito_cenario.py`).")
     w()
     img("gabarito-minas-shopping", "Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala")
-    w("#### 22.11.1 Novo pedido: o shopping em peças (chão e teto + cada item separado)")
-    w()
-    w("> 🧩 **Decisão:** o Minas Shopping deixa de ser uma ilustração única. A ilustração atual (item 140) continua no jogo até as peças chegarem, mas tem o problema da mesa desenhada no fundo: as personagens não conseguem passar atrás de nada, e a mesa do BK ficava em cima da mesa redonda (seção 23.5). Com as peças separadas, o jogo monta o shopping como monta a casa da fazenda: a Line e a Bell passam na frente e atrás de cada móvel, e cada coisa pode mudar de lugar.")
-    w()
-    w("**1. A base: só o chão e o teto.** Mesmo tamanho e mesma proporção de hoje (entrega de **2160×3840**, 144 px por tile), sem nenhuma loja, móvel, planta ou enfeite:")
-    w()
-    w("- o **piso** inteiro (o xadrez de losangos rosa e creme, com os reflexos de luz), cobrindo toda a área andável;")
-    w("- o **teto** e a estrutura do alto, na faixa de cima (y 0 a 130 da base): vigas, luzes embutidas e o vão do andar de cima, sem as lojas do fundo;")
-    w("- sem sombras de objetos no chão (cada peça traz a própria sombra).")
-    w()
-    w("**2. Cada item em arte individual.** Um PNG por peça, com transparência, recortado no contorno, na mesma escala da base (1 tile = 144 px; a Line de pé = 281 px) e na mesma perspectiva de cima em 3/4. Pode vir num HTML de item com `data-name=\"SHOP_NOME.png\"`, igual aos itens 154 a 187 (o `tools/extrair_objetos.py` já lê o prefixo `SHOP_`).")
-    w()
-    w("A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a peça já está guardada no jogo, ⏳ ainda falta. A base e as peças já chegaram e o shopping já é montado em peças (veja a foto em 22.11.2); só falta o banco de espera e o guia de posicionamento (item 234).")
-    w()
-    w("| # | Código | Peça | Tamanho aproximado (tiles) | Observação | Chegou |")
-    w("|---|---|---|---|---|---|")
-    for n, linha in enumerate([
-        ("SHOP_BURGER_KING", "Fachada do Burger King: letreiro, toldo, balcão e cardápio luminoso", "3 × 3", "é para onde as duas olham antes do lanche"),
-        ("SHOP_CONFEITARIA", "Fachada da confeitaria: placa de cupcake, toldo listrado", "3,5 × 4,5", "sem a vitrine (vem separada)"),
-        ("SHOP_VITRINE_BOLOS", "Vitrine refrigerada de bolos e doces", "2,5 × 1,5", "com luz por dentro"),
-        ("SHOP_CAFETERIA", "Fachada da cafeteria: placa da xícara, balcão, máquinas de café", "3 × 5", ""),
-        ("SHOP_ESCADA_ROLANTE", "Escada rolante dupla (subindo e descendo)", "2 × 4", "de preferência animada: 4 a 6 quadros dos degraus andando"),
-        ("SHOP_MEZANINO", "Guarda-corpo de vidro do andar de cima, com corações", "peça de 4 × 1 que se repete", "vem em pedaços que encaixam lado a lado"),
-        ("SHOP_PILAR", "Pilar rosa com corações", "1 × 6", "fica na frente das personagens quando elas passam atrás"),
-        ("SHOP_CORACAO_NEON", "Coração de neon", "1,5 × 1,5", "aceso e apagado (dois PNGs) para piscar"),
-        ("SHOP_ARVORE_CANTEIRO", "Árvore no canteiro grande de madeira", "2,5 × 3,5", "a do centro do shopping"),
-        ("SHOP_CANTEIRO_RETANGULAR", "Canteiro de madeira comprido com plantas e flores", "3 × 1,5", ""),
-        ("SHOP_CANTEIRO_QUADRADO", "Canteiro de madeira pequeno com flores", "1,5 × 1,5", ""),
-        ("SHOP_CANTEIRO_CANTO", "Canteiro de canto (em L) com folhagens", "2 × 2", ""),
-        ("SHOP_LANTERNA", "Lanterna de madeira no chão (poste de luz)", "0,5 × 1,3", "acesa"),
-        ("SHOP_LUMINARIA", "Luminária pendente de globo", "0,5 × 1", "pendurada; o jogo põe no alto"),
-        ("SHOP_MESA_REDONDA", "Mesa redonda de mármore, sem nada em cima", "1,4 × 1,1", "a mesa do encontro"),
-        ("SHOP_VASO_MESA", "Vasinho de flores para cima da mesa", "0,4 × 0,4", ""),
-        ("SHOP_BANDEJA_BK", "Bandeja do BK: dois lanches, batata e dois refris", "0,7 × 0,4", "vai em cima da mesa redonda no lanche"),
-        ("SHOP_POLTRONA_ROSA", "Poltrona rosa", "1 × 1,3", "4 lados: de frente, de costas, virada para a esquerda e para a direita"),
-        ("SHOP_CADEIRA_VERDE", "Cadeira verde-água", "1 × 1,3", "4 lados"),
-        ("SHOP_SOFA_MEIA_LUA", "Sofá vermelho em meia-lua (booth)", "3 × 1,5", ""),
-        ("SHOP_SOFA_ROSA", "Sofá rosa reto de dois lugares", "2 × 1", "fica onde a Bell espera"),
-        ("SHOP_PUFE", "Banco/pufe vermelho", "1,5 × 0,8", ""),
-        ("SHOP_LIXEIRA", "Lixeira", "0,5 × 0,8", ""),
-        ("SHOP_PLACA", "Placa de direção (Saída, Banheiros, Praça de alimentação)", "0,8 × 1,5", ""),
-        ("SHOP_BANCO_ESPERA", "Banco de espera", "2 × 1", ""),
-    ], 1):
-        base = os.path.join(RAIZ, "game", "assets", "cenario", linha[0].lower())
-        chegou = any(os.path.exists(base + suf + ".webp") for suf in ("", "_frame_01", "_on", "_front"))
-        w(f"| {n} | `{linha[0]}` | {linha[1]} | {linha[2]} | {linha[3] or '—'} | {'✅' if chegou else '⏳'} |")
-    w()
-    w("**3. O lanche sentadas.** Com a mesa redonda e as poltronas separadas, a cena do BK fica certa com as duas **sentadas nas poltronas**, comendo. Para isso faltam duas animações: `LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT` (sentada de lado numa poltrona, comendo e rindo, sem mesa e sem poltrona no desenho; a Line virada para a direita e a Bell para a esquerda). Até lá o jogo usa `LINE_BELL_BK`, que já traz a mesa delas.")
-    w()
     w("#### 22.11.2 Bases dos cenários (itens 218 a 223): o chão das fases e do shopping")
     w()
     w("Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **Ruínas Encantadas**, da **Montanha de Brasa** e do **Minas Shopping**; a da **Gruta e Minas** (item 223) ainda não veio. Os originais ficam em `arte/referencias/bases_cenarios/`.")
     w()
-    w("**Como entraram no jogo:** cada base virou a **textura do chão** da sua fase (`game/assets/texturas/`). Do Vilarejo e da Floresta saíram dois recortes, a grama e a terra do caminho; das Ruínas, a laje; da Montanha, a rocha com brasa. A textura cobre o chão inteiro, os caminhos da fase usam a terra da própria base com a borda suave, e a água, as paredes, a lava e os abismos continuam desenhados por cima, tile a tile. A base do shopping foi montada em pé (o teto em cima e o piso de losangos repetido) e virou o fundo da cena, com as peças por cima.")
+    w("**Como entraram no jogo:** cada base virou a **textura do chão** da sua fase (`game/assets/texturas/`). Do Vilarejo e da Floresta saíram dois recortes, a grama e a terra do caminho; das Ruínas, a laje; da Montanha, a rocha com brasa. A textura cobre o chão inteiro, os caminhos da fase usam a terra da própria base com a borda suave, e a água, as paredes, a lava e os abismos continuam desenhados por cima, tile a tile. A base do shopping foi montada em pé (o piso de losangos repetido) e ganhou em cima o teto de madeira do modelo da praça de alimentação (seção 22.11).")
     w()
     img("bases-em-uso", "As bases como chão: Vilarejo, Floresta, Ruínas e Montanha")
     w("**Para a pintura final de cada fase** (no lugar da textura), a próxima versão da base precisa:")
@@ -594,8 +548,8 @@ def escrever_arte(w, img, inv):
     w()
     w("Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da fazenda: o jogo desenha a imagem por baixo e as casas, árvores e objetos por cima.")
     w()
-    img("shopping-em-pecas", "Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares")
-    w("O **Minas Shopping** agora é montado em peças, como o playground: a base nova (deitada, 1774×887) foi remontada em pé, com o teto em cima e o piso de losangos repetido, e por cima entram o guarda-corpo do mezanino (3 pedaços), a escada rolante animada (4 quadros) e os dois pilares, e as **lojas e móveis** (confeitaria, Burger King, cafeteria, vitrine de bolos, coração neon que pisca, luminárias, lanternas, sofá meia-lua, sofá rosa, pufe, duas mesas com cadeiras verdes e poltronas rosa, bandeja do BK, vaso, lixeira, placa, árvore e três canteiros): 36 peças ao todo. A ilustração antiga saiu. Falta só o banco de espera e o guia de posicionamento (item 234).")
+    img("shopping-em-pecas", "Minas Shopping: a praça de alimentação montada em peças")
+    w("O **Minas Shopping** é montado em peças, como o playground: a base em pé com o teto de madeira e, por cima, as duas lojas, as seis mesas com cadeiras e os canteiros da praça de alimentação (34 peças, seção 22.11).")
     w()
     escrever_dimensoes_cenarios(w, img, M)
     w("### 22.10 Ordem sugerida para produzir")

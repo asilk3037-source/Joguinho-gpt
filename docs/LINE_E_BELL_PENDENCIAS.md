@@ -32,7 +32,7 @@
 4. **Nada solto no ar:** sem lustre pendurado, janela, porta ou placa soltas no chão. Coisa de parede vem já presa numa parede.
 5. **Dia e noite:** o que acende vem em dois PNGs (`_ON` e `_OFF`, ou `_DAY` e `_NIGHT`).
 6. **Mapas das fases:** vista **de cima**, sem céu nem horizonte, desenhados **em cima do gabarito** da fase (`arte/referencias/gabaritos/<fase>.png`), na escala de **128 px por tile**, entregues em **blocos de 2048×2048**. O que é alto (árvore, casa, pilar) vai numa camada da frente, com transparência.
-7. **Cenas em pé (prólogo):** base 360×640 (9:16), entrega **2160×3840**; chão e teto numa base vazia e cada móvel/loja à parte, mais um **guia de posicionamento**.
+7. **Cenas em pé (prólogo):** base 360×640 (9:16), entrega **2160×3840**; chão e teto numa base vazia e cada móvel/loja à parte, mais um **modelo** de como a cena fica (como o da praça de alimentação).
 8. **Telas cheias:** 3840×2160 (16:9), nada importante a menos de 10% da borda.
 
 ## 2. Animações que precisam de ajuste (refazer)
@@ -64,7 +64,7 @@ Estas cenas têm só 3 a 7 quadros diferentes e ficavam corridas. O jogo já toc
 | `BELL_WAIT` | a Bell esperando no shopping | 4 | 10 a 12 |
 | `LINE_BELL_MEET` | conversa frente a frente | 3 | 10 a 12 |
 | `LINE_BELL_GREET_HUG` | abraço de chegada | 4 | 10 a 12 |
-| `LINE_BELL_BK` | comendo BK (sem a mesa: as duas sentadas nas poltronas) | 6 | 10 a 12 |
+| `LINE_BELL_BK` | comendo BK (sem a mesa: as duas sentadas nas cadeiras de madeira da praça) | 6 | 10 a 12 |
 | `LINE_BELL_TUNNEL_KISS` | o beijo no túnel | 7 | 10 a 12 |
 | `BELL_LAUGH_AT_LINE` | a Bell rindo do soco | 6 | 10 a 12 |
 | `LINE_BELL_WALK_HANDS` | saindo de mãos dadas | 4 | 10 a 12 |
@@ -616,18 +616,17 @@ Cada fase precisa do chão em imagem (seguindo o gabarito) e das peças altas po
 
 **Bases recebidas (itens 218 a 222):** já estão no jogo como **textura do chão** (seção 22.11.2 da documentação completa). Para virar a pintura final da fase, a próxima versão de cada uma precisa: o **tamanho** da tabela (128 px por tile), a vista **de cima, sem céu nem horizonte**, e o **desenho do gabarito** (o riacho, as matas, os muros e a lava onde a fase tem). A da **Gruta e Minas** (item 223) não veio.
 
-### 8.2 Minas Shopping em peças
+### 8.2 Minas Shopping: praça de alimentação
 
-O playground e o **shopping** já são montados em peças. O shopping usa a **base nova** (item 218: o teto e o piso de losangos, montados em pé a partir da base deitada) e, por cima, **36 peças**: a confeitaria e o Burger King sob o mezanino, com as lanternas nas portas; o coração neon no vidro do mezanino (aceso, com duas piscadas a cada 4 s) e as luminárias penduradas no teto; a cafeteria à esquerda com a vitrine de bolos; o sofá meia-lua com o pufe no meio; o sofá rosa onde a Bell espera; duas mesas na praça de alimentação (uma com as 4 cadeiras verdes e a bandeja do BK, outra com as 4 poltronas rosa e o vaso); a lixeira, a placa, os pilares, a árvore e os canteiros. O meio da praça fica livre para a cena das duas comendo, que traz a própria mesa. Enquanto o **guia de posicionamento** (item 234) não vem, a disposição foi feita pela foto do Minas Shopping:
+O shopping agora segue o **modelo da praça de alimentação** (`arte/referencias/minas_shopping_praca_modelo.png`) e está montado em peças: a loja de hambúrguer e a de frango no fundo, o teto de madeira e a coluna branca na base, seis mesas redondas com quatro cadeiras de madeira e dois canteiros (seção 22.11 da documentação completa). As mesas são sólidas e a história passa pelo corredor do meio.
 
-![Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares](imagens/shopping-em-pecas.jpg)
-*Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares*
+![Minas Shopping: a praça de alimentação montada em peças](imagens/shopping-em-pecas.jpg)
+*Minas Shopping: a praça de alimentação montada em peças*
 
 
-- **Já chegaram ✅:** `SHOP_BURGER_KING`, `SHOP_CONFEITARIA`, `SHOP_VITRINE_BOLOS`, `SHOP_CAFETERIA`, `SHOP_ESCADA_ROLANTE`, `SHOP_MEZANINO`, `SHOP_PILAR`, `SHOP_CORACAO_NEON`, `SHOP_ARVORE_CANTEIRO`, `SHOP_CANTEIRO_RETANGULAR`, `SHOP_CANTEIRO_QUADRADO`, `SHOP_CANTEIRO_CANTO`, `SHOP_LANTERNA`, `SHOP_LUMINARIA`, `SHOP_MESA_REDONDA`, `SHOP_VASO_MESA`, `SHOP_BANDEJA_BK`, `SHOP_POLTRONA_ROSA`, `SHOP_CADEIRA_VERDE`, `SHOP_SOFA_MEIA_LUA`, `SHOP_SOFA_ROSA`, `SHOP_PUFE`, `SHOP_LIXEIRA`, `SHOP_PLACA`
-- **Faltam ✏️:** `SHOP_BANCO_ESPERA`
-- A poltrona rosa e a cadeira verde chegaram nos **4 lados** e o coração neon `_ON` e `_OFF`. As duas poltronas rosa de lado vieram **viradas para a direita**: uma ficou como `_RIGHT` e a outra foi espelhada para virar `_LEFT`.
-- **Ainda faltam:** o **banco de espera** (`SHOP_BANCO_ESPERA`) e o **guia de posicionamento** (item 234). Se o guia vier com outra disposição, as peças mudam de lugar só no código (`PECAS.shopping` em `game/js/encontro.js`).
+- **Já no jogo ✅:** `SHOP_PRACA_LOJA_HAMBURGUER`, `SHOP_PRACA_LOJA_FRANGO`, `SHOP_PRACA_MESA_REDONDA`, `SHOP_PRACA_CADEIRA_MADEIRA`, `SHOP_PRACA_CANTEIRO_RETANGULAR` (a cadeira nos 4 lados).
+- **Pode melhorar ✏️:** um **teto/fundo em pixel art** do mesmo tamanho da base (1080×1920 ou 2160×3840), sem lojas nem móveis: hoje o teto de madeira e a coluna foram recortados do modelo. E o casal **sentado numa das mesas** comendo (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, seção 2.2), para o lanche acontecer na mesa da praça e não no corredor.
+- No modelo as mesas e cadeiras são quase do tamanho da Line; no jogo seguem a **régua** (mesa de 1,1 m, cadeira de 0,95 m).
 
 ### 8.3 Túnel
 
@@ -637,7 +636,7 @@ A ilustração do túnel (onde acontece o beijo) ainda é a do HTML do primeiro 
 
 1. **Ataque nas quatro direções** (seção 2.1): é o que a jogadora mais sente jogando.
 2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).
-3. **Cenas do shopping** com 10 a 12 quadros (seção 2.2) e as peças do shopping com o guia (seção 8.2).
+3. **Cenas do shopping** com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).
 4. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
 5. **Telas** (seção 7), começando pelo título e pela mochila.
 6. **Bell jogável e armaduras vestidas** (seção 3).

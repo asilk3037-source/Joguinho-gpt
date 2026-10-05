@@ -78,18 +78,12 @@ MEDIDAS = {
     "farm_lily_pads": ("l", 1.4), "farm_crate": ("l", 0.6), "farm_rope_coil": ("l", 0.6), "farm_mushroom_cluster": ("l", 0.5),
     "farm_small_bridge": ("l", 3.0),
     # Minas Shopping (peças avulsas)
-    "shop_escada_rolante_frame_01": ("a", 4.6), "shop_escada_rolante_frame_02": ("a", 4.6),
-    "shop_escada_rolante_frame_03": ("a", 4.6), "shop_escada_rolante_frame_04": ("a", 4.6),
-    "shop_mezanino": ("l", 4.5), "shop_pilar": ("a", 4.2),
-    "shop_burger_king": ("a", 2.8), "shop_confeitaria": ("a", 2.8), "shop_cafeteria": ("a", 2.8), "shop_vitrine_bolos": ("l", 1.8),
-    "shop_mesa_redonda": ("l", 0.95), "shop_bandeja_bk": ("l", 0.5), "shop_sofa_rosa": ("l", 2.0), "shop_lixeira": ("a", 0.85),
-    "shop_poltrona_rosa_front": ("a", 0.95), "shop_poltrona_rosa_back": ("a", 0.95),
-    "shop_cadeira_verde_front": ("a", 0.9), "shop_cadeira_verde_back": ("a", 0.9), "shop_cadeira_verde_left": ("a", 0.9), "shop_cadeira_verde_right": ("a", 0.9),
-    "shop_lanterna": ("a", 1.5), "shop_luminaria": ("a", 1.0), "shop_placa": ("a", 1.6),
-    "shop_coracao_neon_on": ("l", 1.2), "shop_coracao_neon_off": ("l", 1.2),
-    "shop_poltrona_rosa_left": ("a", 0.95), "shop_poltrona_rosa_right": ("a", 0.95), "shop_pufe": ("l", 1.2), "shop_sofa_meia_lua": ("l", 2.8),
-    "shop_vaso_mesa": ("a", 0.4), "shop_arvore_canteiro": ("a", 3.0), "shop_canteiro_canto": ("l", 2.2), "shop_canteiro_quadrado": ("l", 1.2),
-    "shop_canteiro_retangular": ("l", 2.6),
+    # Praça de alimentação (modelo em arte/referencias/minas_shopping_praca_modelo.png): as duas lojas
+    # enchem a largura da cena (163 unidades da base cada).
+    "shop_praca_loja_hamburguer": ("l", 4.89), "shop_praca_loja_frango": ("l", 4.89),
+    "shop_praca_mesa_redonda": ("l", 1.1), "shop_praca_canteiro_retangular": ("l", 2.6),
+    "shop_praca_cadeira_madeira_front": ("a", 0.95), "shop_praca_cadeira_madeira_back": ("a", 0.95),
+    "shop_praca_cadeira_madeira_left": ("a", 0.95), "shop_praca_cadeira_madeira_right": ("a", 0.95),
     # Playground do primeiro encontro
     "playground_fliperama_rosa": ("a", 1.8), "playground_fliperama_azul": ("a", 1.8),
     "playground_maquina_soco_000": ("a", 2.2), "playground_maquina_soco_038": ("a", 2.2),

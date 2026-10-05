@@ -18,7 +18,7 @@
 
 > 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
-> 🛍️ **Minas Shopping mobiliado:** chegaram as lojas e os móveis — confeitaria, Burger King, cafeteria, vitrine de bolos, coração neon que pisca, luminárias, lanternas, sofá meia-lua, sofá rosa, pufe, mesas com cadeiras verdes e poltronas rosa (nos 4 lados), bandeja do BK, vaso, lixeira, placa, árvore e três canteiros. O shopping agora tem 36 peças por cima da base; as personagens passam na frente e atrás de cada uma. Falta só o banco de espera e o guia de posicionamento (item 234).
+> 🍔 **Minas Shopping virou a praça de alimentação do modelo:** duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.
 
 > 🎛️ **HUD e controles com a arte nova (componentes 01 a 09):** retrato da heroína na moldura redonda, barras de vida e magia, contador de moedas com o item do atalho, **minimapa** com a névoa no canto de cima, painel de objetivo com a moldura dourada, selo **!** de novidade na mochila, moldura dourada em todos os botões redondos e o joystick novo. Os ícones de dentro dos botões ainda são emoji (pedido no documento de pendências).
 
@@ -956,19 +956,19 @@ O prólogo é a história de como a Line e a Bell se conheceram. Ele vem **antes
 
 ### 5.2 Ambientação de cada lugar
 
-![Os três lugares: Minas Shopping, Playground e Túnel (temporários)](imagens/encontro-fundos.jpg)
-*Os três lugares: Minas Shopping, Playground e Túnel (temporários)*
+![Os três lugares: Minas Shopping (praça de alimentação), Playground e Túnel](imagens/encontro-fundos.jpg)
+*Os três lugares: Minas Shopping (praça de alimentação), Playground e Túnel*
 
 A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma área, centralizado, e em telas largas as laterais mostram o próprio cenário borrado e escurecido. A área onde dá para andar é a mesma do HTML.
 
 **Minas Shopping**
-- **Fundo (em peças):** a base nova do Minas Shopping (item 218), com o teto de luzes embutidas e o piso claro de losangos, montada em pé. Por cima: o guarda-corpo de vidro do mezanino, a escada rolante animada e dois pilares (itens 230 e 231). As lojas, mesas e plantas entram quando as peças chegarem (seção 22.11.1).
-- **Posições:** a Line entra por baixo, à esquerda, de costas. A Bell espera à direita, perto do pilar, olhando para a esquerda. O lanche do BK acontece no centro (a animação traz a mesa delas).
-- **Precisa de arte final:** a ilustração do shopping, feita a partir do **modelo real** abaixo, e uma versão da mesa com o lanche do BK, se o casal comendo não vier com a mesa desenhada.
+- **Fundo (em peças):** a praça de alimentação do modelo (seção 22.11): o piso claro de losangos com o teto de madeira, as luzes embutidas e a coluna branca; por cima, a loja de hambúrguer e a de frango, seis mesas redondas com cadeiras de madeira e dois canteiros.
+- **Posições:** a Line entra por baixo, no corredor do meio, de costas. A Bell espera no mesmo corredor, entre as mesas. O lanche do BK acontece no corredor, entre a segunda e a terceira fila de mesas (a animação traz a mesa delas), e as duas saem por baixo.
+- **Ainda pode melhorar:** o casal comendo sentado numa das mesas da praça (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, no documento de pendências).
 
 #### ⭐ Minas Shopping: modelo real para a arte final
 
-> 💛 **Este é o cenário de verdade do Minas Shopping**: a praça de alimentação onde as duas se encontraram. A ilustração final do shopping deve usar esta foto como **modelo**, no estilo do jogo. A ilustração que está no jogo hoje (vinda do HTML) é **temporária**.
+> 💛 **Este é o cenário de verdade do Minas Shopping**: a praça de alimentação onde as duas se encontraram. A praça que está no jogo segue esta foto e o modelo em pixel art que a dona do jogo mandou (seção 22.11).
 
 ![Praça de alimentação do Minas Shopping: modelo para a arte final](imagens/encontro-modelo-minas-shopping.jpg)
 *Praça de alimentação do Minas Shopping: modelo para a arte final*
@@ -987,7 +987,7 @@ A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma área, 
 
 **Como encaixar no jogo:**
 - A tela é vertical (360×640), vista um pouco de cima. As lojas ficam no alto e as mesas se espalham pela área onde dá para andar.
-- A Line entra por baixo, à esquerda. A Bell espera à direita, perto das mesas. A mesa do BK fica no centro e as duas se sentam nela.
+- A Line entra por baixo, no corredor do meio. A Bell espera no corredor, entre as mesas. O lanche do BK acontece no corredor.
 - As setas, o ícone de hambúrguer e coxinha e o triângulo que aparecem na foto são do app onde ela foi tirada e **não fazem parte do cenário**.
 
 A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.
@@ -3480,88 +3480,46 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 - **Dia e noite:** vaga-lumes (amarelos, verdes e roxos), estrelas no céu, janelas e lampiões acesos à noite, brilho da fonte ao descansar, tons de amanhecer e entardecer.
 - Os efeitos da Parte 1 continuam na seção 13 (`FX_*`).
 
-### 22.11 Cenário do Minas Shopping (item 140) — medidas combinadas
+### 22.11 Minas Shopping: a praça de alimentação
 
-> 🔒 **Trava:** cenário **não** passa pelo recorte de animação (os quadros de 1254×1254 que viram células de 256). O extrator deixa o item 140 de fora de propósito; ele entra à mão, com as medidas abaixo.
+> 🍔 **Decisão (versão atual):** o Minas Shopping é a **praça de alimentação** do modelo que a dona do jogo mandou (`arte/referencias/minas_shopping_praca_modelo.png`): duas lojas de lanche no fundo, embaixo do teto de madeira com as luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas, o corredor livre no meio e os canteiros na direita. A montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás e poltronas) saiu do jogo.
 
-**Como o Minas Shopping funciona no jogo:** é **uma ilustração inteira** (não é feita de tiles), em pé, na proporção **9:16**. Tudo no jogo foi posicionado numa **base de 360×640** (a tela do HTML do primeiro encontro): onde a Line começa, onde a Bell espera, a mesa do BK, a saída e os dois closes. Por isso a nova arte precisa manter **exatamente essa proporção**, só que maior.
+![Modelo da praça de alimentação: é assim que o shopping deve ficar](imagens/encontro-praca-modelo.jpg)
+*Modelo da praça de alimentação: é assim que o shopping deve ficar*
+
+**Como é montado:** a cena continua na base de **360×640** (9:16, em pé). O fundo `shopping_base.webp` tem o teto de madeira e a coluna recortados do modelo e o piso de losangos; por cima o jogo desenha as peças da praça, cada uma na régua de tamanhos (a mesma da fazenda: altura real em relação à Line de 1,60 m), e ordena tudo pela linha do chão, então a Line e a Bell passam na frente e atrás das mesas. As mesas são **sólidas** (não dá para atravessar) e o fundo das lojas fica fora da área andável.
+
+| Peça | Código | Medida na régua | Onde fica |
+|---|---|---|---|
+| loja hamburguer | `SHOP_PRACA_LOJA_HAMBURGUER` | 4,89 m de largura | fundo, metade esquerda |
+| loja frango | `SHOP_PRACA_LOJA_FRANGO` | 4,89 m de largura | fundo, metade direita, até a coluna |
+| mesa redonda | `SHOP_PRACA_MESA_REDONDA` | 1,1 m de diâmetro | 6 mesas: x 84 e 276; y 300, 396 e 492 |
+| cadeira madeira front | `SHOP_PRACA_CADEIRA_MADEIRA_FRONT` | 0,95 m de altura | duas atrás de cada mesa |
+| cadeira madeira right /  left | `SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT` | 0,95 m de altura | na frente de cada mesa, viradas para ela |
+| cadeira madeira back | `SHOP_PRACA_CADEIRA_MADEIRA_BACK` | 0,95 m de altura | guardada (o modelo não usa) |
+| canteiro retangular | `SHOP_PRACA_CANTEIRO_RETANGULAR` | 2,6 m de largura | dois na borda direita |
+
+> 📏 **Regra mantida:** no modelo as mesas e as cadeiras aparecem quase do tamanho da Line. No jogo elas seguem a régua (mesa de 1,1 m, cadeira de 0,95 m), por isso a praça parece mais espaçosa que no desenho. As lojas não têm marca: o letreiro é o hambúrguer e o frango das peças.
 
 | Medida | Valor |
 |---|---|
-| Base de coordenadas | 360×640 (proporção 9:16, em pé) |
-| Tamanho no mundo do jogo | 480×853 unidades (mapa de 15×27 tiles de 32) |
-| **Entrega recomendada** | **2160×3840** (6× a base): nítido em tela cheia 1440p e nos closes em 1080p |
-| Para 4K | 2880×5120 (8× a base) |
-| Mínimo | 1440×2560 (4× a base): nítido em tela cheia 1080p sem close |
-| Grade de referência | 1 tile do jogo = 24 px da base = **144 px** na entrega de 2160×3840 (15 colunas; a altura não fecha em tiles inteiros, não precisa) |
-| Escala das personagens | a Line de pé tem **47 px da base = 281 px** na entrega de 2160×3840; a mesa, as cadeiras e as portas seguem essa medida |
-| Área andável (chão livre) | x 28–332, y 130–545 na base (**x 168–1992, y 780–3270** na entrega de 2160×3840): nada alto no chão dentro dela |
-| Fundo (vitrines, escada rolante, andar de cima) | faixa de cima, y 0–130 da base |
-| Pontos da história (base) | Line começa (48,520) · Bell espera (274,300) · Line na mesa (142,397) · Bell na mesa (218,397) · mesa do BK (180,397) · saída (280,500) |
-| Closes (câmera 1,6×) | o encontro, perto de (251,270), e a mesa do BK, perto de (180,367): os lugares com mais detalhe |
-| Telas largas | o jogo preenche os lados com a própria imagem borrada: as bordas esquerda e direita devem continuar o cenário naturalmente (sem moldura) |
+| Base de coordenadas | 360×640 (9:16, em pé); no mundo, 480×853 unidades |
+| Fundo (teto, coluna e lojas) | y 0–166 da base; ninguém anda acima de y 186 |
+| Área andável | x 28–332, y 186–545, menos o pé de cada mesa |
+| Pontos da história (base) | Line começa (178,528) · Bell espera (182,355) · Line no lanche (142,446) · Bell no lanche (218,446) · lanche do BK (180,446) · saída por baixo (180,610) |
+| Closes (câmera 1,6×) | o encontro, perto de (159,325), e o lanche, perto de (180,416) |
+| Telas largas | o jogo preenche os lados com a própria imagem borrada |
 
-**Formato da entrega (o “recorte”):**
-
-1. **Fundo:** uma imagem única, PNG ou WebP, **sem transparência**, sem grade e sem textos, na perspectiva de cima em 3/4 como o resto do jogo.
-2. **Camada da frente (opcional):** o que deve passar **na frente** das personagens (pilares, vasos, grade do mezanino, encosto das cadeiras) vem num PNG separado, **do mesmo tamanho do fundo**, com transparência em todo o resto. O jogo desenha essa camada por cima das duas.
-3. **Partes animadas (opcional):** luzes piscando, escada rolante e fonte vêm como animação separada, só do pedaço que mexe, com a posição (x, y) no fundo.
-4. **Não** entregar em sequência de quadros de 1254×1254 nem como prancha de tiles.
-
-O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` já está no tamanho certo, com a grade, a área andável, os pontos da história, os closes e a Line e a Bell em escala, por cima da ilustração atual, para desenhar em cima (gerado por `tools/gabarito_cenario.py`).
+O **gabarito** `arte/referencias/gabarito_minas_shopping_2160x3840.png` mostra a área andável, os pontos da história, os closes e a Line e a Bell em escala por cima da base (gerado por `tools/gabarito_cenario.py`).
 
 ![Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala](imagens/gabarito-minas-shopping.jpg)
 *Gabarito do Minas Shopping: área andável (verde), closes (rosa), pontos da história (amarelo) e a Line e a Bell em escala*
-
-#### 22.11.1 Novo pedido: o shopping em peças (chão e teto + cada item separado)
-
-> 🧩 **Decisão:** o Minas Shopping deixa de ser uma ilustração única. A ilustração atual (item 140) continua no jogo até as peças chegarem, mas tem o problema da mesa desenhada no fundo: as personagens não conseguem passar atrás de nada, e a mesa do BK ficava em cima da mesa redonda (seção 23.5). Com as peças separadas, o jogo monta o shopping como monta a casa da fazenda: a Line e a Bell passam na frente e atrás de cada móvel, e cada coisa pode mudar de lugar.
-
-**1. A base: só o chão e o teto.** Mesmo tamanho e mesma proporção de hoje (entrega de **2160×3840**, 144 px por tile), sem nenhuma loja, móvel, planta ou enfeite:
-
-- o **piso** inteiro (o xadrez de losangos rosa e creme, com os reflexos de luz), cobrindo toda a área andável;
-- o **teto** e a estrutura do alto, na faixa de cima (y 0 a 130 da base): vigas, luzes embutidas e o vão do andar de cima, sem as lojas do fundo;
-- sem sombras de objetos no chão (cada peça traz a própria sombra).
-
-**2. Cada item em arte individual.** Um PNG por peça, com transparência, recortado no contorno, na mesma escala da base (1 tile = 144 px; a Line de pé = 281 px) e na mesma perspectiva de cima em 3/4. Pode vir num HTML de item com `data-name="SHOP_NOME.png"`, igual aos itens 154 a 187 (o `tools/extrair_objetos.py` já lê o prefixo `SHOP_`).
-
-A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a peça já está guardada no jogo, ⏳ ainda falta. A base e as peças já chegaram e o shopping já é montado em peças (veja a foto em 22.11.2); só falta o banco de espera e o guia de posicionamento (item 234).
-
-| # | Código | Peça | Tamanho aproximado (tiles) | Observação | Chegou |
-|---|---|---|---|---|---|
-| 1 | `SHOP_BURGER_KING` | Fachada do Burger King: letreiro, toldo, balcão e cardápio luminoso | 3 × 3 | é para onde as duas olham antes do lanche | ✅ |
-| 2 | `SHOP_CONFEITARIA` | Fachada da confeitaria: placa de cupcake, toldo listrado | 3,5 × 4,5 | sem a vitrine (vem separada) | ✅ |
-| 3 | `SHOP_VITRINE_BOLOS` | Vitrine refrigerada de bolos e doces | 2,5 × 1,5 | com luz por dentro | ✅ |
-| 4 | `SHOP_CAFETERIA` | Fachada da cafeteria: placa da xícara, balcão, máquinas de café | 3 × 5 | — | ✅ |
-| 5 | `SHOP_ESCADA_ROLANTE` | Escada rolante dupla (subindo e descendo) | 2 × 4 | de preferência animada: 4 a 6 quadros dos degraus andando | ✅ |
-| 6 | `SHOP_MEZANINO` | Guarda-corpo de vidro do andar de cima, com corações | peça de 4 × 1 que se repete | vem em pedaços que encaixam lado a lado | ✅ |
-| 7 | `SHOP_PILAR` | Pilar rosa com corações | 1 × 6 | fica na frente das personagens quando elas passam atrás | ✅ |
-| 8 | `SHOP_CORACAO_NEON` | Coração de neon | 1,5 × 1,5 | aceso e apagado (dois PNGs) para piscar | ✅ |
-| 9 | `SHOP_ARVORE_CANTEIRO` | Árvore no canteiro grande de madeira | 2,5 × 3,5 | a do centro do shopping | ✅ |
-| 10 | `SHOP_CANTEIRO_RETANGULAR` | Canteiro de madeira comprido com plantas e flores | 3 × 1,5 | — | ✅ |
-| 11 | `SHOP_CANTEIRO_QUADRADO` | Canteiro de madeira pequeno com flores | 1,5 × 1,5 | — | ✅ |
-| 12 | `SHOP_CANTEIRO_CANTO` | Canteiro de canto (em L) com folhagens | 2 × 2 | — | ✅ |
-| 13 | `SHOP_LANTERNA` | Lanterna de madeira no chão (poste de luz) | 0,5 × 1,3 | acesa | ✅ |
-| 14 | `SHOP_LUMINARIA` | Luminária pendente de globo | 0,5 × 1 | pendurada; o jogo põe no alto | ✅ |
-| 15 | `SHOP_MESA_REDONDA` | Mesa redonda de mármore, sem nada em cima | 1,4 × 1,1 | a mesa do encontro | ✅ |
-| 16 | `SHOP_VASO_MESA` | Vasinho de flores para cima da mesa | 0,4 × 0,4 | — | ✅ |
-| 17 | `SHOP_BANDEJA_BK` | Bandeja do BK: dois lanches, batata e dois refris | 0,7 × 0,4 | vai em cima da mesa redonda no lanche | ✅ |
-| 18 | `SHOP_POLTRONA_ROSA` | Poltrona rosa | 1 × 1,3 | 4 lados: de frente, de costas, virada para a esquerda e para a direita | ✅ |
-| 19 | `SHOP_CADEIRA_VERDE` | Cadeira verde-água | 1 × 1,3 | 4 lados | ✅ |
-| 20 | `SHOP_SOFA_MEIA_LUA` | Sofá vermelho em meia-lua (booth) | 3 × 1,5 | — | ✅ |
-| 21 | `SHOP_SOFA_ROSA` | Sofá rosa reto de dois lugares | 2 × 1 | fica onde a Bell espera | ✅ |
-| 22 | `SHOP_PUFE` | Banco/pufe vermelho | 1,5 × 0,8 | — | ✅ |
-| 23 | `SHOP_LIXEIRA` | Lixeira | 0,5 × 0,8 | — | ✅ |
-| 24 | `SHOP_PLACA` | Placa de direção (Saída, Banheiros, Praça de alimentação) | 0,8 × 1,5 | — | ✅ |
-| 25 | `SHOP_BANCO_ESPERA` | Banco de espera | 2 × 1 | — | ⏳ |
-
-**3. O lanche sentadas.** Com a mesa redonda e as poltronas separadas, a cena do BK fica certa com as duas **sentadas nas poltronas**, comendo. Para isso faltam duas animações: `LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT` (sentada de lado numa poltrona, comendo e rindo, sem mesa e sem poltrona no desenho; a Line virada para a direita e a Bell para a esquerda). Até lá o jogo usa `LINE_BELL_BK`, que já traz a mesa delas.
 
 #### 22.11.2 Bases dos cenários (itens 218 a 223): o chão das fases e do shopping
 
 Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **Ruínas Encantadas**, da **Montanha de Brasa** e do **Minas Shopping**; a da **Gruta e Minas** (item 223) ainda não veio. Os originais ficam em `arte/referencias/bases_cenarios/`.
 
-**Como entraram no jogo:** cada base virou a **textura do chão** da sua fase (`game/assets/texturas/`). Do Vilarejo e da Floresta saíram dois recortes, a grama e a terra do caminho; das Ruínas, a laje; da Montanha, a rocha com brasa. A textura cobre o chão inteiro, os caminhos da fase usam a terra da própria base com a borda suave, e a água, as paredes, a lava e os abismos continuam desenhados por cima, tile a tile. A base do shopping foi montada em pé (o teto em cima e o piso de losangos repetido) e virou o fundo da cena, com as peças por cima.
+**Como entraram no jogo:** cada base virou a **textura do chão** da sua fase (`game/assets/texturas/`). Do Vilarejo e da Floresta saíram dois recortes, a grama e a terra do caminho; das Ruínas, a laje; da Montanha, a rocha com brasa. A textura cobre o chão inteiro, os caminhos da fase usam a terra da própria base com a borda suave, e a água, as paredes, a lava e os abismos continuam desenhados por cima, tile a tile. A base do shopping foi montada em pé (o piso de losangos repetido) e ganhou em cima o teto de madeira do modelo da praça de alimentação (seção 22.11).
 
 ![As bases como chão: Vilarejo, Floresta, Ruínas e Montanha](imagens/bases-em-uso.jpg)
 *As bases como chão: Vilarejo, Floresta, Ruínas e Montanha*
@@ -3579,10 +3537,10 @@ Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **
 
 Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da fazenda: o jogo desenha a imagem por baixo e as casas, árvores e objetos por cima.
 
-![Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares](imagens/shopping-em-pecas.jpg)
-*Minas Shopping montado em peças: lojas, mesas, poltronas, sofás, plantas, mezanino, escada rolante e pilares*
+![Minas Shopping: a praça de alimentação montada em peças](imagens/shopping-em-pecas.jpg)
+*Minas Shopping: a praça de alimentação montada em peças*
 
-O **Minas Shopping** agora é montado em peças, como o playground: a base nova (deitada, 1774×887) foi remontada em pé, com o teto em cima e o piso de losangos repetido, e por cima entram o guarda-corpo do mezanino (3 pedaços), a escada rolante animada (4 quadros) e os dois pilares, e as **lojas e móveis** (confeitaria, Burger King, cafeteria, vitrine de bolos, coração neon que pisca, luminárias, lanternas, sofá meia-lua, sofá rosa, pufe, duas mesas com cadeiras verdes e poltronas rosa, bandeja do BK, vaso, lixeira, placa, árvore e três canteiros): 36 peças ao todo. A ilustração antiga saiu. Falta só o banco de espera e o guia de posicionamento (item 234).
+O **Minas Shopping** é montado em peças, como o playground: a base em pé com o teto de madeira e, por cima, as duas lojas, as seis mesas com cadeiras e os canteiros da praça de alimentação (34 peças, seção 22.11).
 
 ### 22.12 Dimensão de cada cenário
 
@@ -3696,7 +3654,6 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Pernas paradas:** `CHICKEN_RUN`, `CHICKEN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_WALK` chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.
 - **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.
 - `LINE_HAPPY` saiu do jogo: é uma corrida que termina com a Line caída para a frente, e não a Line feliz (no lugar, o jogo usa `LINE_VICTORY`). Para reenviar.
-- **Item 140 (Minas Shopping), em peças:** o jogo precisa de uma base **só com o chão e o teto** e de cada móvel, loja e enfeite como **arte individual** (lista completa na seção 22.11.1). Enquanto isso, no lanche do BK o jogo usa uma cópia do fundo sem a mesa redonda do meio.
 - `LINE_BELL_WALK_HANDS_FRONT` (as duas de mãos dadas andando de frente) ainda é a arte pequena do laboratório, ampliada: fica borrada perto das outras. Para reenviar no tamanho e no traço dos itens novos.
 - **Itens que ainda não chegaram:** 153.
 
@@ -3747,7 +3704,7 @@ Revisão do jogo inteiro como designer e engenheira: tamanho de cada arte, organ
 | Ruínas | paredes, pilares, cristais, barreiras de luz, altar, lagos |
 | Montanha e Covil | rocha, lava, brasa, tochas, portão de fogo, jaula |
 | Parte 2 (sete fases) | chão de cada fase (lama, vento, abismo de céu, chuva), cristais de terra, pérolas, faróis, ninho do Grifo; os sete chefes |
-| Minas Shopping | o pedido em peças (seção 22.11.1) |
+| Minas Shopping | o casal sentado comendo numa mesa da praça (seção 22.11) |
 
 ### 23.2 Animações com poucos quadros diferentes
 

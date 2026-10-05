@@ -17,8 +17,10 @@
     tunel: { nome: 'Túnel', lugar: 'Túnel', fundo: 'encontro_tunel' },
   };
   for (const [id, m] of Object.entries(MAPAS)) {
-    const ini = id === 'shopping' ? P(48, 520) : id === 'playground' ? P(42, 520) : P(25, 520);
-    LB.MAPAS[id] = Object.assign({ tema: 'encontro', linhas: LINHAS, saidas: [], placas: {}, limites: LIMITES, semBanner: true, inicio: { x: ini.x / TILE, y: ini.y / TILE, dir: 'BACK' } }, m);
+    const ini = id === 'shopping' ? P(178, 528) : id === 'playground' ? P(42, 520) : P(25, 520);
+    // No shopping o fundo é a fila de lojas: só se anda do balcão para baixo.
+    const lim = id === 'shopping' ? [LIMITES[0], 186 * K, LIMITES[2], LIMITES[3]] : LIMITES;
+    LB.MAPAS[id] = Object.assign({ tema: 'encontro', linhas: LINHAS, saidas: [], placas: {}, limites: lim, semBanner: true, inicio: { x: ini.x / TILE, y: ini.y / TILE, dir: 'BACK' } }, m);
   }
 
   const ehEncontro = (jogo) => jogo.mapa && jogo.mapa.tema === 'encontro';
@@ -63,8 +65,22 @@
   // (LB.LARGURA_OBJETOS), na posição do guia do item 240 (base de 360×640). `base` é onde a peça
   // encosta no chão; a ordem de desenho segue essa linha, então a Line e a Bell passam na frente e atrás.
   // O fliperama rosa é espelhado para a tela olhar para dentro da sala.
-  // O shopping também é montado assim (base do item 218: chão e teto; mezanino, escada rolante animada
-  // e pilares dos itens 230 e 231); as lojas, mesas e plantas entram quando chegarem.
+  // O shopping também é montado assim: a base (piso do item 218 com o teto de madeira e a coluna do
+  // modelo da praça de alimentação) e, por cima, as lojas, as mesas e os canteiros da praça.
+
+  // Mesa redonda da praça com 4 cadeiras como no modelo: duas de frente atrás da mesa e, na frente,
+  // uma virada para a direita (à esquerda) e outra para a esquerda (à direita). `solido` é o pé do
+  // grupo (largura e fundo, a partir da base) onde a Line não entra.
+  function mesaComCadeiras(x, base) {
+    return [
+      { nome: 'shop_praca_cadeira_madeira_front', x: x - 11, base: base - 12 },
+      { nome: 'shop_praca_cadeira_madeira_front', x: x + 11, base: base - 12 },
+      { nome: 'shop_praca_mesa_redonda', x, base, solido: [64, 26] },
+      { nome: 'shop_praca_cadeira_madeira_right', x: x - 17, base: base + 8 },
+      { nome: 'shop_praca_cadeira_madeira_left', x: x + 17, base: base + 8 },
+    ];
+  }
+
   const PECAS = {
     playground: [
       { nome: 'playground_painel_premios', x: 180, base: 122, parede: true },
@@ -73,46 +89,15 @@
       { nome: 'playground_fliperama_azul', x: 66, base: 398 },
       { nome: 'playground_maquina_soco', x: 231, base: 438, frente: 14 },
     ],
-    // Lojas sob o mezanino, cafeteria à esquerda, sofá meia-lua no meio, o sofá rosa onde a Bell espera,
-    // duas mesas na praça de alimentação e plantas embaixo. O lugar da mesa do BK (180, 397) fica livre:
-    // a cena LINE_BELL_BK traz a própria mesa.
+    // Praça de alimentação no modelo da arte/referencias/minas_shopping_praca_modelo.png: as duas lojas
+    // no fundo (o teto de madeira e a coluna estão na base), 6 mesas com 4 cadeiras em duas colunas e
+    // os canteiros na direita. O corredor do meio fica livre para a história.
     shopping: [
-      { nome: 'shop_luminaria', x: 70, base: 56, parede: true },
-      { nome: 'shop_luminaria', x: 200, base: 56, parede: true },
-      { nome: 'shop_mezanino', x: 30, base: 104, parede: true },
-      { nome: 'shop_mezanino', x: 180, base: 104, parede: true },
-      { nome: 'shop_mezanino', x: 330, base: 104, parede: true },
-      { nome: 'shop_coracao_neon', x: 135, base: 100, parede: true, neon: true },
-      { nome: 'shop_escada_rolante', x: 300, base: 196, quadros: 4 },
-      { nome: 'shop_confeitaria', x: 58, base: 200 },
-      { nome: 'shop_burger_king', x: 166, base: 200 },
-      { nome: 'shop_lanterna', x: 112, base: 214 },
-      { nome: 'shop_lanterna', x: 226, base: 214 },
-      { nome: 'shop_vitrine_bolos', x: 58, base: 252 },
-      { nome: 'shop_sofa_rosa', x: 300, base: 262 },
-      { nome: 'shop_sofa_meia_lua', x: 175, base: 300 },
-      { nome: 'shop_pufe', x: 175, base: 330 },
-      { nome: 'shop_cafeteria', x: 45, base: 348 },
-      { nome: 'shop_canteiro_quadrado', x: 106, base: 346 },
-      { nome: 'shop_placa', x: 340, base: 352 },
-      { nome: 'shop_cadeira_verde_front', x: 80, base: 418 },
-      { nome: 'shop_cadeira_verde_right', x: 52, base: 436 },
-      { nome: 'shop_mesa_redonda', x: 80, base: 438 },
-      { nome: 'shop_bandeja_bk', x: 80, base: 420, frente: -20 },
-      { nome: 'shop_cadeira_verde_left', x: 108, base: 436 },
-      { nome: 'shop_cadeira_verde_back', x: 80, base: 458 },
-      { nome: 'shop_poltrona_rosa_front', x: 300, base: 404 },
-      { nome: 'shop_poltrona_rosa_right', x: 268, base: 424 },
-      { nome: 'shop_mesa_redonda', x: 300, base: 426 },
-      { nome: 'shop_vaso_mesa', x: 300, base: 410, frente: -18 },
-      { nome: 'shop_poltrona_rosa_left', x: 332, base: 424 },
-      { nome: 'shop_poltrona_rosa_back', x: 300, base: 450 },
-      { nome: 'shop_lixeira', x: 152, base: 480 },
-      { nome: 'shop_pilar', x: 22, base: 560 },
-      { nome: 'shop_pilar', x: 338, base: 560 },
-      { nome: 'shop_arvore_canteiro', x: 95, base: 638 },
-      { nome: 'shop_canteiro_retangular', x: 210, base: 628 },
-      { nome: 'shop_canteiro_canto', x: 300, base: 636 },
+      { nome: 'shop_praca_loja_hamburguer', x: 81.5, base: 166 },
+      { nome: 'shop_praca_loja_frango', x: 245, base: 166 },
+      ...[[84, 300], [276, 300], [84, 396], [276, 396], [84, 492], [276, 492]].flatMap(([x, b]) => mesaComCadeiras(x, b)),
+      { nome: 'shop_praca_canteiro_retangular', x: 352, base: 262, solido: [70, 16] },
+      { nome: 'shop_praca_canteiro_retangular', x: 352, base: 345, solido: [70, 16] },
     ],
   };
   // Onde a Line fica para socar: o punho do quadro do golpe alcança o saco da máquina.
@@ -123,10 +108,7 @@
     const pecas = PECAS[jogo.mapa.id];
     if (!pecas) return [];
     const placar = jogo.encontro && jogo.encontro.placar === '038' ? '038' : '000';
-    // O coração neon fica aceso e falha de vez em quando (duas piscadas a cada 4 s).
-    const t = jogo.tempo % 4, neon = (t > 3.2 && t < 3.32) || (t > 3.45 && t < 3.6) ? '_off' : '_on';
     const nomeDe = (p) => p.nome === 'playground_maquina_soco' ? p.nome + '_' + placar
-      : p.neon ? p.nome + neon
       : p.quadros ? p.nome + '_frame_0' + (1 + Math.floor(jogo.tempo * 6) % p.quadros) : p.nome;
     return pecas.map((p) => ({
       // A plataforma da máquina fica sob os pés da Line: a peça vai para trás dela (`frente`).
@@ -162,6 +144,9 @@
   function bloqueia(jogo, x, y) {
     const lim = jogo.mapa.def.limites;
     if (lim && (x < lim[0] || x > lim[2] || y < lim[1] || y > lim[3])) return true;
+    for (const p of PECAS[jogo.mapa.id] || []) {
+      if (p.solido && Math.abs(x - p.x * K) < p.solido[0] * K / 2 && y <= p.base * K && y > (p.base - p.solido[1]) * K) return true;
+    }
     const b = jogo.bell;
     if (ehEncontro(jogo) && b && b.visivel !== false && Math.hypot(x - b.x, y - b.y) < 70) return true;
     return false;
@@ -195,7 +180,7 @@
     jogo.line.modoPasseio = true;
     jogo.line.temEspada = false;
     if (id === 'shopping') {
-      const b = P(274, 300);
+      const b = P(182, 355);
       jogo.bell = new LB.Bell(b.x, b.y, 'LEFT'); jogo.bell.lado = -1; jogo.bell.anim.tocar('BELL_WAIT', true);
       jogo.line.dir = 'BACK';
     }
@@ -243,10 +228,10 @@
       c.fimDuo(); j.zoomAlvo = 1;
       document.getElementById('etiquetas').classList.add('oculto');
       // Vão até a mesa.
-      yield andarJuntas(c, line, bell, P(142, 397), P(218, 397));
+      yield andarJuntas(c, line, bell, P(142, 446), P(218, 446));
       yield c.quando(() => !bell.alvoCena);
       line.dir = 'BACK'; bell.dir = 'BACK';
-      const mesa = P(180, 397);
+      const mesa = P(180, 446);
       j.camAlvo = { x: mesa.x, y: mesa.y - 40 }; j.zoomAlvo = 1.6;
       c.duo('LINE_BELL_BK', mesa.x, mesa.y);
       yield c.espera(1.2);
@@ -260,7 +245,7 @@
       // Saem de mãos dadas.
       const par = { x: mesa.x, y: mesa.y };
       c.duo('LINE_BELL_WALK_HANDS', par.x, par.y, 'RIGHT');
-      const duo = j.duo, saida = P(280, 500);
+      const duo = j.duo, saida = P(180, 610);
       j.camAlvo = null;
       c.junto(c.tween(duo, 'x', saida.x, 2.4));
       yield c.tween(duo, 'y', saida.y, 2.4);

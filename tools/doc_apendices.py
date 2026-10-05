@@ -328,7 +328,7 @@ def escrever(w, inv, itens=None):
     subst = sum(1 for g in grupos for i in g["itens"] if not i["existe"] and i["via"])
     numeros = [i["n"] for i in itens]
     # Itens 228 a 237 (peças do shopping e do playground) chegaram como imagens soltas, sem a ficha HTML:
-    # as peças estão na biblioteca (seções 5.2 e 22.11.1), não na lista de fichas.
+    # as peças estão na biblioteca (seções 5.2 e 22.11), não na lista de fichas.
     soltos = set(range(228, 238))
     faltam = [n for n in range(1, max(numeros) + 1) if n not in numeros and n not in soltos] if numeros else []
 
@@ -359,7 +359,6 @@ def escrever(w, inv, itens=None):
         linhas.append("- **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.")
     for codigo, motivo in extrair_sprites.DESCARTADAS.items():
         linhas.append(f"- `{codigo}` saiu do jogo: {motivo}. Para reenviar.")
-    linhas.append("- **Item 140 (Minas Shopping), em peças:** o jogo precisa de uma base **só com o chão e o teto** e de cada móvel, loja e enfeite como **arte individual** (lista completa na seção 22.11.1). Enquanto isso, no lanche do BK o jogo usa uma cópia do fundo sem a mesa redonda do meio.")
     linhas.append("- `LINE_BELL_WALK_HANDS_FRONT` (as duas de mãos dadas andando de frente) ainda é a arte pequena do laboratório, ampliada: fica borrada perto das outras. Para reenviar no tamanho e no traço dos itens novos.")
     if faltam:
         linhas.append(f"- **Itens que ainda não chegaram:** {', '.join(map(str, faltam))}.")
@@ -420,7 +419,7 @@ def escrever(w, inv, itens=None):
         ("Ruínas", "paredes, pilares, cristais, barreiras de luz, altar, lagos"),
         ("Montanha e Covil", "rocha, lava, brasa, tochas, portão de fogo, jaula"),
         ("Parte 2 (sete fases)", "chão de cada fase (lama, vento, abismo de céu, chuva), cristais de terra, pérolas, faróis, ninho do Grifo; os sete chefes"),
-        ("Minas Shopping", "o pedido em peças (seção 22.11.1)"),
+        ("Minas Shopping", "o casal sentado comendo numa mesa da praça (seção 22.11)"),
     ]:
         w(f"| {linha[0]} | {linha[1]} |")
     w()

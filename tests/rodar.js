@@ -420,8 +420,7 @@ teste('objetos: itens 146 a 227 carregam e aparecem na fazenda e na casa; regado
     const faltando = nomes.filter((n) => !LB.personagem(n));
     const usados = new Set();
     for (const id of Object.keys(LB.MAPAS)) for (const [n] of LB.MAPAS[id].moveis || []) usados.add(n);
-    // As peças do shopping (shop_*) chegam aos poucos e só entram quando a base e o guia de posição chegarem;
-    // as do playground (playground_*) são desenhadas pela cena do primeiro encontro, não por um mapa.
+    // As peças do shopping (shop_*) e do playground entram pelo encontro.js (PECAS), não pelos mapas;
     const naoUsados = nomes.filter((n) => !usados.has(n) && !usados.has(n.replace(/_(on|off|day|night|open|closed)$/, '')) && !/^shop_|^playground_|theo_bowl|fence|gate|dog_house|clothesline|picnic|small_flowers|wild_grass|watering_can|hanging_lamp|farmhouse_window|farmhouse_door/.test(n));
     return { total: nomes.length, faltando, naoUsados };
   });
@@ -454,13 +453,16 @@ teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping
   const fundo = await h.ev(() => !!LB.personagem('shopping_base') || new Promise((ok) => setTimeout(() => ok(!!LB.personagem('shopping_base')), 1500)));
   afirmar(fundo, 'base do shopping (chão e teto) carregada');
   const pecas = await h.ev(() => { const j = LB.jogo; j.iniciarArea('shopping', null, true); return LB.encontro.objetos(j).length; });
-  igual(pecas, 36, 'peças do shopping (lojas, mesas, poltronas, plantas, mezanino, escada e pilares)');
+  igual(pecas, 34, 'peças do shopping (2 lojas, 6 mesas com 4 cadeiras e 2 canteiros)');
   const semMedida = await h.ev(() => {
-    const L = LB.LARGURA_OBJETOS, nomes = ['shop_burger_king', 'shop_confeitaria', 'shop_cafeteria', 'shop_vitrine_bolos', 'shop_coracao_neon_on', 'shop_coracao_neon_off',
-      'shop_sofa_meia_lua', 'shop_pufe', 'shop_arvore_canteiro', 'shop_vaso_mesa', 'shop_poltrona_rosa_left', 'shop_cadeira_verde_back', 'shop_canteiro_canto'];
+    const L = LB.LARGURA_OBJETOS, nomes = ['shop_praca_loja_hamburguer', 'shop_praca_loja_frango', 'shop_praca_mesa_redonda', 'shop_praca_canteiro_retangular',
+      'shop_praca_cadeira_madeira_front', 'shop_praca_cadeira_madeira_back', 'shop_praca_cadeira_madeira_left', 'shop_praca_cadeira_madeira_right'];
     return nomes.filter((n) => !L[n] || !LB.OBJETOS[n]);
   });
-  igual(semMedida.join(','), '', 'toda peça do shopping tem arte e medida na régua');
+  igual(semMedida.join(','), '', 'toda peça da praça de alimentação tem arte e medida na régua');
+  // As mesas são sólidas e não dá para entrar nas lojas.
+  const passa = await h.ev(() => { const j = LB.jogo, K = 4 / 3; return [LB.encontro.bloqueia(j, 84 * K, 290 * K), LB.encontro.bloqueia(j, 180 * K, 290 * K), LB.encontro.bloqueia(j, 180 * K, 150 * K)]; });
+  igual(passa.join(','), 'true,false,true', 'mesa bloqueia, corredor livre, lojas fora da área');
 });
 
 teste('casas: bilhete antes de entrar, Rosa e Bento atendem atrás do balcão e a loja fecha à noite', async (h) => {
