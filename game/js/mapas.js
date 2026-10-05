@@ -1034,6 +1034,9 @@
   const CAVERNA = new Set(['covil', 'ruinas', 'montanha', 'gruta', 'fenda', 'picos', 'tempestade', 'coracao']);
   // Temas desenhados com o chão de pedra (paredes '#', lajes, lava e abismos).
   const PEDRA = new Set(['ruinas', 'montanha', 'fenda', 'picos', 'tempestade', 'coracao']);
+  // Fases com textura de chão (game/assets/texturas) e os tiles que continuam desenhados por cima dela.
+  const TEXTURA = { vilarejo: 'vilarejo', floresta: 'floresta', ruinas: 'ruinas', montanha: 'montanha' };
+  const SOBRE_TEXTURA = '#:uhcr=Ew~lLj><Q';
 
   // Gerador pseudoaleatório estável por posição (o cenário não "pisca" entre quadros).
   function ruido(x, y, s) {
@@ -1215,6 +1218,35 @@
     // (ainda carregando), o chão é desenhado tile a tile como antes.
     get imagemBase() { return this.def.base ? LB.personagem(this.def.base) : null; }
 
+    // Textura do chão (bases dos cenários): a grama, a mata, a laje ou a rocha da arte cobrem o chão
+    // inteiro, e os caminhos usam a terra da mesma arte, com a borda suave. Água, paredes, lava e o
+    // resto continuam desenhados por cima, tile a tile.
+    get texturas() {
+      const id = TEXTURA[this.tema];
+      if (!id) return null;
+      const chao = LB.personagem('textura_' + id + '_chao'), caminho = LB.personagem('textura_' + id + '_caminho');
+      return chao ? { chao, caminho } : null;
+    }
+
+    desenharTexturas(g, tx) {
+      const RES = 2;
+      g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
+      g.fillStyle = g.createPattern(tx.chao, 'repeat'); g.fillRect(0, 0, this.larg * RES, this.alt * RES);
+      g.restore();
+      if (!tx.caminho) return;
+      // Máscara dos caminhos: 4 pixels por tile, ampliada com suavização (a terra entra na grama sem degrau).
+      const P = 4, mini = document.createElement('canvas'); mini.width = this.w * P; mini.height = this.h * P;
+      const ng = mini.getContext('2d'); ng.fillStyle = '#000';
+      for (let ty = 0; ty < this.h; ty++) for (let x = 0; x < this.w; x++) if (this.l[ty][x] === ':' || (this.sobO && this.sobO[x + ',' + ty] === ':')) ng.fillRect(x * P, ty * P, P, P);
+      const m = document.createElement('canvas'); m.width = this.larg * RES; m.height = this.alt * RES;
+      const mg = m.getContext('2d');
+      mg.imageSmoothingEnabled = true; mg.imageSmoothingQuality = 'high';
+      mg.drawImage(mini, 0, 0, m.width, m.height);
+      mg.globalCompositeOperation = 'source-in';
+      mg.fillStyle = mg.createPattern(tx.caminho, 'repeat'); mg.fillRect(0, 0, m.width, m.height);
+      g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(m, 0, 0); g.restore();
+    }
+
     renderizarChao() {
       const RES = 2;
       const c = this.chao || document.createElement('canvas');
@@ -1223,9 +1255,13 @@
       g.setTransform(RES, 0, 0, RES, 0, 0);
       this.comBase = !!this.imagemBase;
       const sobre = this.def.sobreBase || '';
+      const tex = !this.comBase ? this.texturas : null;
+      this.comTextura = !!tex;
+      if (tex) this.desenharTexturas(g, tex);
       this.desenhandoChao = true;
       for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) {
-        if (!this.comBase) this.desenharTile(g, tx, ty);
+        if (tex) { const t = this.l[ty][tx] === 'O' && this.sobO ? this.sobO[tx + ',' + ty] || '.' : this.l[ty][tx]; if (SOBRE_TEXTURA.includes(t) && !(t === ':' && tex.caminho)) this.desenharTile(g, tx, ty, true); }
+        else if (!this.comBase) this.desenharTile(g, tx, ty);
         else if (sobre.includes(this.l[ty][tx])) this.desenharTile(g, tx, ty, true);
       }
       this.desenhandoChao = false;
@@ -1409,7 +1445,8 @@
         }
         return;
       }
-      // Laje do chão.
+      // Laje do chão (com a textura da base, a laje já vem da arte).
+      if (!this.comTextura) {
       g.fillStyle = rnd(30) > 0.5 ? cor.chao : cor.chao2; g.fillRect(x, y, TILE, TILE);
       if (ruinas) {
         g.fillStyle = cor.junta; g.fillRect(x, y, TILE, 1.5); g.fillRect(x, y, 1.5, TILE);
@@ -1419,6 +1456,7 @@
         g.fillStyle = cor.junta;
         for (let i = 0; i < 4; i++) g.fillRect(x + rnd(i + 50) * 28, y + rnd(i + 51) * 28, 3, 2);
         if (rnd(35) > 0.7) { g.strokeStyle = cor.junta; g.lineWidth = 1; g.beginPath(); g.moveTo(x + rnd(36) * 10, y + rnd(37) * 32); g.lineTo(x + 16, y + 16); g.lineTo(x + 22 + rnd(38) * 10, y + rnd(39) * 32); g.stroke(); }
+      }
       }
       if (t === ':') {
         g.fillStyle = cor.caminho; g.fillRect(x + 1, y + 1, TILE - 2, TILE - 2);

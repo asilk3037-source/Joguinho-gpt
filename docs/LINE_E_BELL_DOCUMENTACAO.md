@@ -26,7 +26,7 @@
 
 > 🕹️ **Playground pronto em peças (itens 235 a 240):** a sala vazia nova, os dois fliperamas, o painel e o balcão de prêmios e a máquina de soco, cada um no tamanho da régua e na posição do guia do item 240 (seção 5.2). O soco da Line (item 238) e a risada da Bell (item 239) chegaram com seis quadros cada e substituem os antigos, inclusive o soco sem espada. Saíram o playground e a máquina antigos (itens 141 e 142).
 
-> 🛗 **Primeiras peças do shopping guardadas:** escada rolante (4 quadros), guarda-corpo do mezanino e pilar. O shopping só é montado em peças quando chegarem as lojas, os móveis, as plantas e o **guia de posição** (item 234); a tabela da seção 22.11.1 mostra o que já chegou (✅) e o que falta (⏳). As **bases** dos cenários (itens 218 a 223) estão na seção 22.11.2.
+> 🗺️ **Bases novas em uso (itens 218 a 222):** o chão do Vilarejo, da Floresta, das Ruínas e da Montanha agora é a arte das bases (grama, mata, laje e rocha com brasa), e os caminhos usam a terra da própria base. O **Minas Shopping** passou a ser montado em peças sobre a base nova (teto e piso de losangos), com o mezanino, a escada rolante animada e os pilares; a ilustração antiga saiu. Seção 22.11.2.
 
 > 🧭 **Direções e portas certas:** sofá, banco do lago e poltronas virados para onde fazem sentido (a arte da poltrona olha para a esquerda; a da esquerda é espelhada); saíram os lustres que pareciam flutuar, a janela e a porta soltas no corredor da casa e a placa pendurada que estava no chão do vilarejo; o banheiro da casa da fazenda abre pela porta da esquerda e a parede entre o quarto e o banheiro não deixa mais passar. Seção 23.6.
 
@@ -960,8 +960,8 @@ O prólogo é a história de como a Line e a Bell se conheceram. Ele vem **antes
 A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma área, centralizado, e em telas largas as laterais mostram o próprio cenário borrado e escurecido. A área onde dá para andar é a mesma do HTML.
 
 **Minas Shopping**
-- **Fundo:** ilustração vertical do shopping, com piso claro de losangos rosados, mesinhas redondas com flores, cadeiras rosas e verdes, plantas, vitrines de doces e cafés, escada rolante ao fundo e luz quente. É a imagem do próprio HTML (720×1280), com o mesmo sombreado suave por cima.
-- **Posições:** a Line entra por baixo, à esquerda, de costas. A Bell espera à direita, perto do sofá vermelho, olhando para a esquerda. A mesa do BK fica no centro.
+- **Fundo (em peças):** a base nova do Minas Shopping (item 218), com o teto de luzes embutidas e o piso claro de losangos, montada em pé. Por cima: o guarda-corpo de vidro do mezanino, a escada rolante animada e dois pilares (itens 230 e 231). As lojas, mesas e plantas entram quando as peças chegarem (seção 22.11.1).
+- **Posições:** a Line entra por baixo, à esquerda, de costas. A Bell espera à direita, perto do pilar, olhando para a esquerda. O lanche do BK acontece no centro (a animação traz a mesa delas).
 - **Precisa de arte final:** a ilustração do shopping, feita a partir do **modelo real** abaixo, e uma versão da mesa com o lanche do BK, se o casal comendo não vier com a mesa desenhada.
 
 #### ⭐ Minas Shopping: modelo real para a arte final
@@ -3554,9 +3554,16 @@ A coluna **Chegou** lê a biblioteca (`game/assets/cenario/shop_*.webp`): ✅ a 
 
 **3. O lanche sentadas.** Com a mesa redonda e as poltronas separadas, a cena do BK fica certa com as duas **sentadas nas poltronas**, comendo. Para isso faltam duas animações: `LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT` (sentada de lado numa poltrona, comendo e rindo, sem mesa e sem poltrona no desenho; a Line virada para a direita e a Bell para a esquerda). Até lá o jogo usa `LINE_BELL_BK`, que já traz a mesa delas.
 
-#### 22.11.2 Bases dos cenários (itens 218 a 223): guardadas, ainda não entram no jogo
+#### 22.11.2 Bases dos cenários (itens 218 a 223): o chão das fases e do shopping
 
-Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **Ruínas Encantadas**, da **Montanha de Brasa** e do **Minas Shopping**; a da **Gruta e Minas** (item 223) ainda não veio. Elas estão guardadas em `arte/referencias/bases_cenarios/`, mas **não dá para usá-las como chão dos mapas** do jeito que vieram:
+Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **Ruínas Encantadas**, da **Montanha de Brasa** e do **Minas Shopping**; a da **Gruta e Minas** (item 223) ainda não veio. Os originais ficam em `arte/referencias/bases_cenarios/`.
+
+**Como entraram no jogo:** cada base virou a **textura do chão** da sua fase (`game/assets/texturas/`). Do Vilarejo e da Floresta saíram dois recortes, a grama e a terra do caminho; das Ruínas, a laje; da Montanha, a rocha com brasa. A textura cobre o chão inteiro, os caminhos da fase usam a terra da própria base com a borda suave, e a água, as paredes, a lava e os abismos continuam desenhados por cima, tile a tile. A base do shopping foi montada em pé (o teto em cima e o piso de losangos repetido) e virou o fundo da cena, com as peças por cima.
+
+![As bases como chão: Vilarejo, Floresta, Ruínas e Montanha](imagens/bases-em-uso.jpg)
+*As bases como chão: Vilarejo, Floresta, Ruínas e Montanha*
+
+**Para a pintura final de cada fase** (no lugar da textura), a próxima versão da base precisa:
 
 ![Bases recebidas: Vilarejo do Riacho, Floresta Sussurrante, Ruínas Encantadas e Montanha de Brasa](imagens/bases-cenarios.jpg)
 *Bases recebidas: Vilarejo do Riacho, Floresta Sussurrante, Ruínas Encantadas e Montanha de Brasa*
@@ -3569,10 +3576,10 @@ Chegaram as bases do **Vilarejo do Riacho**, da **Floresta Sussurrante**, das **
 
 Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da fazenda: o jogo desenha a imagem por baixo e as casas, árvores e objetos por cima.
 
-![Base do Minas Shopping recebida (1774×887, deitada)](imagens/base-minas-shopping.jpg)
-*Base do Minas Shopping recebida (1774×887, deitada)*
+![Minas Shopping montado em peças: base nova (chão e teto), mezanino, escada rolante e pilares](imagens/shopping-em-pecas.jpg)
+*Minas Shopping montado em peças: base nova (chão e teto), mezanino, escada rolante e pilares*
 
-A **base do Minas Shopping** veio deitada (1774×887), mas a cena do shopping é **em pé** (2160×3840, como o playground); falta também o **guia de posicionamento** (item 234). O piso de mármore com losangos e o teto com luzes embutidas estão ótimos: basta a mesma arte na proporção 9:16.
+O **Minas Shopping** agora é montado em peças, como o playground: a base nova (deitada, 1774×887) foi remontada em pé, com o teto em cima e o piso de losangos repetido, e por cima entram o guarda-corpo do mezanino (3 pedaços), a escada rolante animada (4 quadros) e os dois pilares. A ilustração antiga saiu. As lojas, mesas, poltronas e plantas entram quando chegarem, na posição do guia (item 234).
 
 ### 22.12 Dimensão de cada cenário
 

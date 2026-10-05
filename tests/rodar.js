@@ -434,7 +434,7 @@ teste('objetos: itens 146 a 227 carregam e aparecem na fazenda e na casa; regado
   await h.foto('fazenda-objetos');
 });
 
-teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping sem a mesa no lanche', async (h) => {
+teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping montado em peças', async (h) => {
   await h.area('fazenda', { espada: true });
   // Câmera com o canto esquerdo da casa fora da tela: ela continua na lista de desenho.
   const casa = await h.ev(() => {
@@ -450,8 +450,11 @@ teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping
   });
   afirmar(desenhada, 'a casa é desenhada com o canto esquerdo fora da tela');
   afirmar(!(await h.ev(() => !!(window.SPRITES || {}).LINE_HAPPY)), 'LINE_HAPPY (corrida com queda) fora do jogo');
-  const fundo = await h.ev(() => !!LB.personagem('encontro_shopping_sem_mesa') || new Promise((ok) => setTimeout(() => ok(!!LB.personagem('encontro_shopping_sem_mesa')), 1500)));
-  afirmar(fundo, 'fundo do shopping sem a mesa carregado');
+  // O shopping é montado em peças: a base nova (só chão e teto), sem mesa desenhada no fundo.
+  const fundo = await h.ev(() => !!LB.personagem('shopping_base') || new Promise((ok) => setTimeout(() => ok(!!LB.personagem('shopping_base')), 1500)));
+  afirmar(fundo, 'base do shopping (chão e teto) carregada');
+  const pecas = await h.ev(() => { const j = LB.jogo; j.iniciarArea('shopping', null, true); return LB.encontro.objetos(j).length; });
+  igual(pecas, 6, 'peças do shopping (mezanino, escada rolante e pilares)');
 });
 
 teste('casas: bilhete antes de entrar, Rosa e Bento atendem atrás do balcão e a loja fecha à noite', async (h) => {

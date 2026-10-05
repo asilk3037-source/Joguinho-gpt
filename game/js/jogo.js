@@ -746,6 +746,8 @@
       const x0 = Math.max(0, cx), y0 = Math.max(0, cy);
       const x1 = Math.min(m.larg, cx + this.vw), y1 = Math.min(m.alt, cy + this.vh);
       // Terreno/planta em imagem: quando ela termina de carregar, o chão tile a tile sai de baixo.
+      // Textura do chão que terminou de carregar: refaz o chão com ela.
+      if (!m.def.base && !m.comTextura && m.texturas) m.renderizarChao();
       if (m.def.base) {
         const base = m.imagemBase;
         if (base && !m.comBase) m.renderizarChao();

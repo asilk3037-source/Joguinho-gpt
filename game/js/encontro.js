@@ -12,7 +12,7 @@
   const LINHAS = Array.from({ length: 27 }, () => '.'.repeat(15));
 
   const MAPAS = {
-    shopping: { nome: 'Minas Shopping', lugar: 'Minas Shopping', fundo: 'encontro_shopping' },
+    shopping: { nome: 'Minas Shopping', lugar: 'Minas Shopping', fundo: 'shopping_base' },
     playground: { nome: 'Playground', lugar: 'Playground', fundo: 'playground_fundo' },
     tunel: { nome: 'Túnel', lugar: 'Túnel', fundo: 'encontro_tunel' },
   };
@@ -36,8 +36,7 @@
 
   // Fundo da área (antes do chão): ilustração do HTML + bordas borradas para telas largas.
   function desenharFundo(g, jogo, cx, cy) {
-    // No lanche do BK a mesa redonda do fundo sai: a animação já traz a mesa delas.
-    const m = jogo.mapa, nome = m.def.fundo + (jogo.semMesaShopping && m.def.fundo === 'encontro_shopping' ? '_sem_mesa' : '');
+    const m = jogo.mapa, nome = m.def.fundo;
     g.fillStyle = '#1c1524'; g.fillRect(cx - 2, cy - 2, jogo.vw + 4, jogo.vh + 4);
     const img = LB.personagem(nome), b = borrado(nome);
     const W = 360 * K, H = 640 * K;
@@ -49,7 +48,7 @@
     }
     if (!img) return;
     g.save(); g.imageSmoothingEnabled = false; g.drawImage(img, 0, 0, W, H); g.restore();
-    if (nome === 'encontro_shopping') {
+    if (nome === 'shopping_base') {
       const sh = g.createLinearGradient(0, 0, 0, H);
       sh.addColorStop(0, 'rgba(255,244,235,.05)'); sh.addColorStop(0.72, 'rgba(82,39,57,.04)'); sh.addColorStop(1, 'rgba(48,24,38,.14)');
       g.fillStyle = sh; g.fillRect(0, 0, W, H);
@@ -64,32 +63,48 @@
   // (LB.LARGURA_OBJETOS), na posição do guia do item 240 (base de 360×640). `base` é onde a peça
   // encosta no chão; a ordem de desenho segue essa linha, então a Line e a Bell passam na frente e atrás.
   // O fliperama rosa é espelhado para a tela olhar para dentro da sala.
-  const PECAS = [
-    { nome: 'playground_painel_premios', x: 180, base: 122, parede: true },
-    { nome: 'playground_fliperama_rosa', x: 62, base: 235, flip: true },
-    { nome: 'playground_balcao_premios', x: 268, base: 228 },
-    { nome: 'playground_fliperama_azul', x: 66, base: 398 },
-    { nome: 'playground_maquina_soco', x: 231, base: 438, frente: 14 },
-  ];
+  // O shopping também é montado assim (base do item 218: chão e teto; mezanino, escada rolante animada
+  // e pilares dos itens 230 e 231); as lojas, mesas e plantas entram quando chegarem.
+  const PECAS = {
+    playground: [
+      { nome: 'playground_painel_premios', x: 180, base: 122, parede: true },
+      { nome: 'playground_fliperama_rosa', x: 62, base: 235, flip: true },
+      { nome: 'playground_balcao_premios', x: 268, base: 228 },
+      { nome: 'playground_fliperama_azul', x: 66, base: 398 },
+      { nome: 'playground_maquina_soco', x: 231, base: 438, frente: 14 },
+    ],
+    shopping: [
+      { nome: 'shop_mezanino', x: 30, base: 104, parede: true },
+      { nome: 'shop_mezanino', x: 180, base: 104, parede: true },
+      { nome: 'shop_mezanino', x: 330, base: 104, parede: true },
+      { nome: 'shop_escada_rolante', x: 300, base: 196, quadros: 4 },
+      { nome: 'shop_pilar', x: 22, base: 330 },
+      { nome: 'shop_pilar', x: 338, base: 330 },
+    ],
+  };
   // Onde a Line fica para socar: o punho do quadro do golpe alcança o saco da máquina.
   const SOCO = P(203, 428);
   // Saco de pancada (centro), para a faísca do impacto.
   const SACO = P(226, 396);
   function objetos(jogo) {
-    if (jogo.mapa.id !== 'playground') return [];
+    const pecas = PECAS[jogo.mapa.id];
+    if (!pecas) return [];
     const placar = jogo.encontro && jogo.encontro.placar === '038' ? '038' : '000';
-    return PECAS.map((p) => ({
+    const nomeDe = (p) => p.nome === 'playground_maquina_soco' ? p.nome + '_' + placar
+      : p.quadros ? p.nome + '_frame_0' + (1 + Math.floor(jogo.tempo * 6) % p.quadros) : p.nome;
+    return pecas.map((p) => ({
       // A plataforma da máquina fica sob os pés da Line: a peça vai para trás dela (`frente`).
       y: p.parede ? 0 : (p.base - (p.frente || 0)) * K,
-      desenhar: (g) => desenharPeca(g, p, p.nome === 'playground_maquina_soco' ? p.nome + '_' + placar : p.nome),
+      desenhar: (g) => desenharPeca(g, p, nomeDe(p)),
     }));
   }
 
   function desenharPeca(g, p, nome) {
-    const img = LB.personagem(nome), L = (LB.LARGURA_OBJETOS || {})[nome];
+    const img = LB.personagem(nome), L = (LB.LARGURA_OBJETOS || {})[nome] || (LB.LARGURA_OBJETOS || {})[nome.replace(/_frame_\d+$/, '_frame_01')];
     if (!img || !L) return;
     const w = L, h = w * img.height / img.width, x = p.x * K, y = p.base * K;
     g.save(); g.imageSmoothingEnabled = true;
+    g.beginPath(); g.rect(0, 0, 360 * K, 640 * K); g.clip();
     if (p.flip) { g.translate(x, 0); g.scale(-1, 1); g.drawImage(img, -w / 2, y - h, w, h); }
     else g.drawImage(img, x - w / 2, y - h, w, h);
     g.restore();
@@ -144,7 +159,6 @@
     jogo.line.modoPasseio = true;
     jogo.line.temEspada = false;
     if (id === 'shopping') {
-      jogo.semMesaShopping = false;
       const b = P(274, 300);
       jogo.bell = new LB.Bell(b.x, b.y, 'LEFT'); jogo.bell.lado = -1; jogo.bell.anim.tocar('BELL_WAIT', true);
       jogo.line.dir = 'BACK';
@@ -198,7 +212,6 @@
       line.dir = 'BACK'; bell.dir = 'BACK';
       const mesa = P(180, 397);
       j.camAlvo = { x: mesa.x, y: mesa.y - 40 }; j.zoomAlvo = 1.6;
-      j.semMesaShopping = true;
       c.duo('LINE_BELL_BK', mesa.x, mesa.y);
       yield c.espera(1.2);
       yield c.fala('Bell', 'você parece estar tímida', 'neutro');

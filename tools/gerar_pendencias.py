@@ -241,21 +241,23 @@ w("## 8. Mapas e cenários")
 w()
 w("### 8.1 Fases")
 w()
-w("Cada fase precisa do chão em imagem (seguindo o gabarito) e das peças altas por cima. A fazenda e os interiores das casas já têm arte; o resto ainda é desenhado no código.")
+w("Cada fase precisa do chão em imagem (seguindo o gabarito) e das peças altas por cima. A fazenda e os interiores das casas já têm arte. O Vilarejo, a Floresta, as Ruínas e a Montanha já usam o **chão das bases** (itens 218 a 222) como textura: grama, mata, laje e rocha da arte cobrem o chão inteiro e os caminhos usam a terra da própria base. Falta a pintura inteira de cada fase, com o desenho do gabarito.")
 w()
 filas = []
 for id_, m in M["mapas"].items():
     if id_.startswith("casa_") or m.get("tema") == "encontro":
         continue
     tw, th = m["w"], m["h"]
-    pronto = id_ == "fazenda"
-    filas.append((m["nome"], f"{tw}×{th}", f"**{tw * 128}×{th * 128}**", f"`gabaritos/{id_}.png`", "✅ terreno pronto" if pronto else "✏️ falta"))
+    sit = "✅ terreno pronto" if id_ == "fazenda" else "🔁 chão com a textura da base; falta a pintura da fase" if id_ in ("vilarejo", "floresta", "ruinas", "montanha") else "✏️ falta"
+    filas.append((m["nome"], f"{tw}×{th}", f"**{tw * 128}×{th * 128}**", f"`gabaritos/{id_}.png`", sit))
 tabela(["Fase", "Grade (tiles)", "Pintura (128 px/tile)", "Gabarito", "Situação"], filas)
-w("**Bases recebidas (itens 218 a 223):** Vilarejo do Riacho, Floresta Sussurrante, Ruínas Encantadas, Montanha de Brasa e Minas Shopping estão guardadas em `arte/referencias/bases_cenarios/`, mas **precisam de ajuste** para virar chão: vieram com **1536×1024** (precisam do tamanho da tabela), **em perspectiva com céu e horizonte** (precisam ser vistas de cima) e **sem seguir o gabarito** (o riacho, as matas, os muros e a lava precisam estar onde a fase tem). A da **Gruta e Minas** (item 223) não veio.")
+w("**Bases recebidas (itens 218 a 222):** já estão no jogo como **textura do chão** (seção 22.11.2 da documentação completa). Para virar a pintura final da fase, a próxima versão de cada uma precisa: o **tamanho** da tabela (128 px por tile), a vista **de cima, sem céu nem horizonte**, e o **desenho do gabarito** (o riacho, as matas, os muros e a lava onde a fase tem). A da **Gruta e Minas** (item 223) não veio.")
 w()
 w("### 8.2 Minas Shopping em peças")
 w()
-w("O playground já está pronto em peças. O shopping ainda usa a ilustração inteira até chegarem a **base em pé** (2160×3840: só o chão e o teto; a que veio é deitada, 1774×887), o **guia de posicionamento** (item 234) e as peças abaixo:")
+w("O playground e o **shopping** já são montados em peças. O shopping usa a **base nova** (item 218: o teto e o piso de losangos, montados em pé a partir da base deitada), o guarda-corpo do mezanino, a escada rolante animada e os pilares. As lojas, mesas, poltronas e plantas entram conforme chegarem, na posição do **guia de posicionamento** (item 234, que ainda não veio):")
+w()
+img("shopping-em-pecas", "Minas Shopping montado em peças: base nova (chão e teto), mezanino, escada rolante e pilares")
 w()
 PECAS = ["SHOP_BURGER_KING", "SHOP_CONFEITARIA", "SHOP_VITRINE_BOLOS", "SHOP_CAFETERIA", "SHOP_ESCADA_ROLANTE", "SHOP_MEZANINO", "SHOP_PILAR", "SHOP_CORACAO_NEON",
          "SHOP_ARVORE_CANTEIRO", "SHOP_CANTEIRO_RETANGULAR", "SHOP_CANTEIRO_QUADRADO", "SHOP_CANTEIRO_CANTO", "SHOP_LANTERNA", "SHOP_LUMINARIA", "SHOP_MESA_REDONDA",

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Gera o gabarito do Minas Shopping (item 140): grade, área andável, pontos da história, closes
-e a Line em escala, por cima da ilustração atual. Uso: python3 tools/gabarito_cenario.py"""
+e a Line em escala, por cima da base do shopping (chão e teto). Uso: python3 tools/gabarito_cenario.py"""
 import json
 import os
 
@@ -12,7 +12,7 @@ W, H = 360 * F, 640 * F
 
 
 def main():
-    fundo = Image.open(os.path.join(RAIZ, 'game/assets/cenario/encontro_shopping.webp')).convert('RGB').resize((W, H), Image.LANCZOS)
+    fundo = Image.open(os.path.join(RAIZ, 'game/assets/cenario/shopping_base.webp')).convert('RGB').resize((W, H), Image.LANCZOS)
     img = Image.blend(Image.new('RGB', (W, H), (22, 18, 30)), fundo, 0.35).convert('RGBA')
     ov = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(ov)
