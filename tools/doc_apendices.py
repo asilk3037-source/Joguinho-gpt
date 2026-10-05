@@ -564,6 +564,8 @@ def escrever(w, inv, itens=None):
     w("python3 tools/gabaritos_mapas.py                     # plantas de cada mapa (seção 22.12)")
     w("python3 tools/gerar_documentacao.py inventario.json roteiro.json   # este documento (seções 1 a 26)")
     w("python3 tools/gerar_documentacao_html.py             # a versão HTML")
+    w("python3 tools/gerar_pendencias.py inventario.json    # o documento só com o que falta (LINE_E_BELL_PENDENCIAS.md)")
+    w("python3 tools/gerar_documentacao_html.py LINE_E_BELL_PENDENCIAS   # a versão HTML dele")
     w("```")
     w()
     w("As capturas das partes novas saem de `node tools/fotos_documentacao.js pasta` e são convertidas para JPG em `docs/imagens/`.")

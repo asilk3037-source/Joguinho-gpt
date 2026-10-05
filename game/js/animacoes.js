@@ -20,15 +20,15 @@ window.LB = window.LB || {};
   const QUATRO = ['FRONT', 'BACK', 'LEFT', 'RIGHT'];
 
   grupo('Primeiro encontro (prólogo)', [
-    ['LINE_ADMIRE', 'Line vê a Bell de longe (“puxa ela é tão linda”)', { fps: 12, face: 'F', quadros: 20, alt: 'LINE_HAPPY', nova: true }],
-    ['BELL_WAIT', 'Bell esperando a Line no shopping', { loop: true, quadros: 16, alt: 'BELL_IDLE', nova: true }],
-    ['LINE_BELL_MEET', 'Frente a frente, sorrindo (conversa no shopping)', { loop: true, face: 'F', quadros: 16, alt: 'LINE_BELL_HOLD_HANDS', nova: true }],
-    ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
-    ['LINE_BELL_BK', 'Comendo BK juntas no shopping', { fps: 6, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_EAT', nova: true }],
+    ['LINE_ADMIRE', 'Line vê a Bell de longe (“puxa ela é tão linda”)', { fpsMax: 5, fps: 12, face: 'F', quadros: 20, alt: 'LINE_HAPPY', nova: true }],
+    ['BELL_WAIT', 'Bell esperando a Line no shopping', { fpsMax: 4, loop: true, quadros: 16, alt: 'BELL_IDLE', nova: true }],
+    ['LINE_BELL_MEET', 'Frente a frente, sorrindo (conversa no shopping)', { fpsMax: 4, loop: true, face: 'F', quadros: 16, alt: 'LINE_BELL_HOLD_HANDS', nova: true }],
+    ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { fpsMax: 5, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
+    ['LINE_BELL_BK', 'Comendo BK juntas no shopping', { fpsMax: 4, fps: 6, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_EAT', nova: true }],
     ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16 }],
     ['LINE_PUNCH', 'Soco sem espada (usa a arte do soco na máquina, em 6 quadros)', { fps: 16, face: 'R', quadros: 6 }],
-    ['BELL_LAUGH_AT_LINE', 'Bell gargalhando do soco da Line', { fps: 10, loop: true, face: 'F', quadros: 16, alt: 'BELL_LAUGH', nova: true }],
-    ['LINE_BELL_TUNNEL_KISS', 'O primeiro beijo, no túnel', { fps: 5, face: 'F', quadros: 8, alt: 'LINE_BELL_KISS', nova: true }],
+    ['BELL_LAUGH_AT_LINE', 'Bell gargalhando do soco da Line', { fpsMax: 6, fps: 10, loop: true, face: 'F', quadros: 16, alt: 'BELL_LAUGH', nova: true }],
+    ['LINE_BELL_TUNNEL_KISS', 'O primeiro beijo, no túnel', { fpsMax: 5, fps: 5, face: 'F', quadros: 8, alt: 'LINE_BELL_KISS', nova: true }],
   ]);
 
   grupo('Line — movimento', [
@@ -609,7 +609,14 @@ window.LB = window.LB || {};
   // Golpes, pulos, magias, esquivas, o dragão e os efeitos seguem o tempo do jogo; as outras (cenas,
   // emoções, abraços) não passam de 12 quadros por segundo e, quando a artista deu o fps, usam o dela.
   const NO_TEMPO_DO_JOGO = /ATTACK|DODGE|DASH|BLOCK|HIT|JUMP|LAND|CAST|RUN_START|RUN_STOP|SWORD|THROWN|KNOCKDOWN|STAR|SPREAD|_WALK|_RUN|^DRAGON_|^FX_|^GOLEM|^SHADOW|^WISP/;
+  // `fpsMax` no catálogo: teto de velocidade para as cenas com poucos quadros (o prólogo), que ficavam
+  // corridas no fps da arte; até chegarem mais quadros, elas andam mais devagar.
   function fpsDe(inf, s, n) {
+    const f = fpsBase(inf, s, n);
+    return inf.fpsMax ? Math.min(inf.fpsMax, f) : f;
+  }
+
+  function fpsBase(inf, s, n) {
     // Andar e correr (em loop): sempre o mesmo ciclo do catálogo, tenha a arte quantos quadros tiver.
     if (s && inf.loop && inf.codigo && /_(WALK|RUN)(_|$)/.test(inf.codigo)) return Math.max(4, Math.min(24, n * inf.fps / inf.quadros));
     if (!s || !s.ritmo) return inf.fps;

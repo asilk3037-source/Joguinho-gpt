@@ -451,9 +451,17 @@
       this.anim.tocar(base);
     }
 
+    // Vira para o inimigo mais perto nas 4 direções: acima ou abaixo (mais longe na vertical que na
+    // horizontal) o golpe sai para cima (BACK) ou para baixo (FRONT); senão, para o lado dele.
     mirar(jogo) {
       const alvo = jogo.alvoMaisProximo(this.x, this.y, 110);
-      if (alvo && Math.abs(alvo.x - this.x) > 4) this.lado = alvo.x < this.x ? -1 : 1;
+      if (alvo) {
+        const dx = alvo.x - this.x, dy = alvo.y - this.y;
+        if (Math.abs(dx) > 4) this.lado = dx < 0 ? -1 : 1;
+        if (!alvo.chefe && Math.abs(dy) > Math.abs(dx) * 1.2 && Math.abs(dy) > 14) this.dir = dy < 0 ? 'BACK' : 'FRONT';
+        else if (Math.abs(dx) > 4) this.dir = this.lado < 0 ? 'LEFT' : 'RIGHT';
+        return;
+      }
       if (this.dir === 'LEFT' || this.dir === 'RIGHT') this.dir = this.lado < 0 ? 'LEFT' : 'RIGHT';
     }
 

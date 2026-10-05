@@ -313,6 +313,9 @@
     inimigoPerto(x, y, raio) { return !!this.alvoMaisProximo(x, y, raio) || (this.chefeAtivo && !this.promptFinal); }
 
     acertar(line, golpe, atingidos) {
+      // Golpe para cima (BACK) ou para baixo (FRONT): a área de acerto vai na vertical, um pouco mais curta
+      // (o mundo é visto de cima em 3/4). Para os lados, segue o lado da Line.
+      const vy = line.dir === 'BACK' ? -1 : line.dir === 'FRONT' ? 1 : 0;
       for (const alvo of this.alvos()) {
         if (atingidos.has(alvo)) continue;
         const cy = alvo.chefe ? alvo.y - 10 : alvo.y;
@@ -320,14 +323,17 @@
         let dentro;
         if (alvo.chefe) {
           // O dragão é grande: vale acertar qualquer parte do corpo à frente da Line.
-          const dx = (alvo.x - line.x) * (golpe.raio ? 1 : line.lado);
+          const dx = vy ? (cy - line.y) * vy : (alvo.x - line.x) * (golpe.raio ? 1 : line.lado);
           dentro = Math.hypot(alvo.x - line.x, (cy - line.y) * 0.9) < (golpe.raio || golpe.alcance) + 72 && (golpe.raio || dx > -50);
         } else if (alvo.golem || alvo.grande) {
           // O guardião é grande: vale acertar de frente ou por baixo, dentro do alcance.
-          const dx = (alvo.x - line.x) * line.lado;
-          dentro = Math.hypot(alvo.x - line.x, (alvo.y - line.y) * 0.8) < (golpe.raio || golpe.alcance) + tr && (golpe.raio || dx > -26 || Math.abs(alvo.x - line.x) < 30);
+          const dx = vy ? (alvo.y - line.y) * vy : (alvo.x - line.x) * line.lado;
+          dentro = Math.hypot(alvo.x - line.x, (alvo.y - line.y) * 0.8) < (golpe.raio || golpe.alcance) + tr && (golpe.raio || dx > -26 || (!vy && Math.abs(alvo.x - line.x) < 30));
         } else if (golpe.raio) dentro = Math.hypot(alvo.x - line.x, (cy - line.y) * 1.4) < golpe.raio + tr;
-        else {
+        else if (vy) {
+          const frente = (cy - line.y) * vy, lado = alvo.x - line.x;
+          dentro = frente > -14 && frente < golpe.alcance * 0.85 + tr && Math.abs(lado) < golpe.largura + tr * 0.6;
+        } else {
           const dx = (alvo.x - line.x) * line.lado, dy = cy - line.y;
           dentro = dx > -14 && dx < golpe.alcance + tr && Math.abs(dy) < golpe.largura + tr * 0.6;
         }
@@ -343,11 +349,11 @@
       // Espinheiros: a espada abre caminho.
       const alcance = golpe.raio || golpe.alcance;
       const x0 = Math.floor((line.x - alcance) / TILE), x1 = Math.floor((line.x + alcance) / TILE);
-      const y0 = Math.floor((line.y - alcance) / TILE), y1 = Math.floor((line.y + 20) / TILE);
+      const y0 = Math.floor((line.y - alcance) / TILE), y1 = Math.floor((line.y + (vy > 0 ? alcance : 20)) / TILE);
       for (let ty = y0; ty <= y1; ty++) for (let tx = x0; tx <= x1; tx++) {
         if (this.mapa.tile(tx, ty) !== 'X') continue;
         const cx = T(tx + 0.5), cy = T(ty + 1) - 4;
-        const dx = (cx - line.x) * (golpe.raio ? 1 : line.lado);
+        const dx = vy ? (cy - line.y) * vy : (cx - line.x) * (golpe.raio ? 1 : line.lado);
         if (Math.hypot(cx - line.x, cy - line.y) > alcance + 20 || (!golpe.raio && dx < -10)) continue;
         this.cortarEspinho(tx, ty);
       }
@@ -380,7 +386,8 @@
     }
 
     rastro(line, golpe) {
-      this.efeitos.push({ tipo: 'rastro', x: line.x, y: line.y, lado: line.lado, t: 0, dur: 0.22, alcance: golpe.alcance, anim: line.anim.base });
+      const vy = line.dir === 'BACK' ? -1 : line.dir === 'FRONT' ? 1 : 0;
+      this.efeitos.push({ tipo: 'rastro', x: line.x, y: line.y, lado: line.lado, vy, t: 0, dur: 0.22, alcance: golpe.alcance, anim: line.anim.base });
     }
 
     aoDerrotarInimigo(e) {
@@ -872,7 +879,9 @@
       const a = 1 - k;
       g.save();
       g.translate(this.line.x, this.line.y - 34);
-      g.scale(f.lado, 1);
+      // Golpe para cima ou para baixo: a meia-lua gira 90° e sai na frente da Line.
+      if (f.vy) { g.translate(0, f.vy > 0 ? 22 : -18); g.rotate(f.vy > 0 ? Math.PI / 2 : -Math.PI / 2); g.scale(1, f.lado); }
+      else g.scale(f.lado, 1);
       g.globalCompositeOperation = 'lighter';
       // Meia-lua azul: várias camadas para o brilho, fina nas pontas e grossa no meio.
       const r = vertical ? f.alcance * 0.62 : f.alcance * 0.78, ry = vertical ? r : 22;
@@ -892,6 +901,8 @@
       if (!l || (this.cena && !this.chefeAtivo && this.line.estado === 'cena')) return;
       LB.dicas.desenharHud(g, this, s);
       if (!this.flags.prologo) return;
+      // HUD com as molduras da arte (hud.js); enquanto as imagens carregam, o desenhado no código.
+      if (LB.hud.desenhar(g, this, s)) { LB.relogio.desenharHud(g, this, s); this.desenharBarrasChefe(g, s); return; }
       for (let i = 0; i < l.hpMax / 2; i++) {
         const x = (22 + i * 24) * s, y = 24 * s;
         const valor = Math.max(0, Math.min(2, l.hp - i * 2));
@@ -904,6 +915,11 @@
       LB.mochila.desenharHud(g, this, s);
       LB.relogio.desenharHud(g, this, s);
       LB.herois.desenharHud(g, this, s);
+      this.desenharBarrasChefe(g, s);
+    }
+
+    // Vida do guardião, dos chefes e do dragão, embaixo, no meio da tela.
+    desenharBarrasChefe(g, s) {
       const golem = this.inimigos.find((e) => (e.golem || e.chefeElemental) && !e.dormindo && e.vivo);
       if (golem) {
         const W = this.canvas.width;

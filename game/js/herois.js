@@ -219,5 +219,5 @@
     if (!LB.entrada.usandoToque()) { g.fillStyle = 'rgba(255,233,199,.7)'; g.fillText('T troca', x + (30 + max / 2 * 11) * s, y + 3 * s); }
   }
 
-  LB.herois = { TRADUCAO, traduzir, liberada, ativa, aplicar, guardar, trocar, aoCair, descansar, atualizar, desenharHud, criarCompanheira, Companheira, CUSTO_LEQUE, CUSTO_CANCAO };
+  LB.herois = { TRADUCAO, traduzir, liberada, ativa, estado, outra, aplicar, guardar, trocar, aoCair, descansar, atualizar, desenharHud, criarCompanheira, Companheira, CUSTO_LEQUE, CUSTO_CANCAO };
 })(window.LB);

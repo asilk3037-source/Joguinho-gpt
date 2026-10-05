@@ -16,6 +16,14 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
+> 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
+
+> 🎛️ **HUD e controles com a arte nova (componentes 01 a 09):** retrato da heroína na moldura redonda, barras de vida e magia, contador de moedas com o item do atalho, **minimapa** com a névoa no canto de cima, painel de objetivo com a moldura dourada, selo **!** de novidade na mochila, moldura dourada em todos os botões redondos e o joystick novo. Os ícones de dentro dos botões ainda são emoji (pedido no documento de pendências).
+
+> ⚔️ **Ataque para cima e para baixo:** o golpe (espada ou soco) agora acerta na direção em que a Line está virada, inclusive para cima e para baixo, e a mira vira sozinha para o inimigo mais perto. A arte do golpe de frente e de costas ainda falta (o jogo usa a de lado).
+
+> 🐢 **Cenas do shopping mais calmas:** as animações do prólogo com poucos quadros (a Line admirando, a Bell esperando, a conversa, o abraço, o BK, a risada e o beijo) passaram a tocar mais devagar até chegarem com mais quadros.
+
 > 🕹️ **Playground pronto em peças (itens 235 a 240):** a sala vazia nova, os dois fliperamas, o painel e o balcão de prêmios e a máquina de soco, cada um no tamanho da régua e na posição do guia do item 240 (seção 5.2). O soco da Line (item 238) e a risada da Bell (item 239) chegaram com seis quadros cada e substituem os antigos, inclusive o soco sem espada. Saíram o playground e a máquina antigos (itens 141 e 142).
 
 > 🛗 **Primeiras peças do shopping guardadas:** escada rolante (4 quadros), guarda-corpo do mezanino e pilar. O shopping só é montado em peças quando chegarem as lojas, os móveis, as plantas e o **guia de posição** (item 234); a tabela da seção 22.11.1 mostra o que já chegou (✅) e o que falta (⏳). As **bases** dos cenários (itens 218 a 223) estão na seção 22.11.2.
@@ -2743,6 +2751,8 @@ Os códigos `FX_*` da seção 10.10 são para quando esses efeitos ganharem arte
 | `game/js/relogio.js` | relógio do jogo, dia e noite, descanso na fonte |
 | `game/js/chefes.js` | os sete chefes elementais, ataques, perigos e arenas |
 | `game/js/herois.js` | Bell jogável, troca de heroína, companheira que segue atrás |
+| `game/js/hud.js` | HUD com as molduras da arte: retrato, barras de vida e magia, moedas e item, minimapa |
+| `tools/gerar_pendencias.py` | documento só com o que falta (LINE_E_BELL_PENDENCIAS.md) |
 | `game/js/parte2.js` | história da Parte 2, moradores e documentos novos, objetivos |
 | `game/js/dicas.js` | dicas do modo Fácil: seta guia, dicas de chefe e de derrota |
 | `tools/doc_parte2.py` | seções 16 a 22 deste documento |
@@ -4570,6 +4580,8 @@ python3 tools/extrair_roteiro.py roteiro.json        # falas e cenas
 python3 tools/gabaritos_mapas.py                     # plantas de cada mapa (seção 22.12)
 python3 tools/gerar_documentacao.py inventario.json roteiro.json   # este documento (seções 1 a 26)
 python3 tools/gerar_documentacao_html.py             # a versão HTML
+python3 tools/gerar_pendencias.py inventario.json    # o documento só com o que falta (LINE_E_BELL_PENDENCIAS.md)
+python3 tools/gerar_documentacao_html.py LINE_E_BELL_PENDENCIAS   # a versão HTML dele
 ```
 
 As capturas das partes novas saem de `node tools/fotos_documentacao.js pasta` e são convertidas para JPG em `docs/imagens/`.

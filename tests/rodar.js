@@ -1247,6 +1247,32 @@ teste('sem espada, o ataque é um soco que machuca', async (h) => {
   afirmar(await h.ev(() => !!LB.desenharSprite && !!window.SPRITES.LINE_PUNCH), 'arte do soco carregada');
 });
 
+teste('ataque para baixo acerta o inimigo abaixo e a mira vira para ele', async (h) => {
+  await h.area('floresta', { espada: true });
+  await h.espera(300);
+  const r0 = await h.ev(() => {
+    const j = LB.jogo, l = j.line;
+    j.inimigos = [];
+    const s = new LB.Sombra(l.x, l.y + 40); j.inimigos.push(s); l.lado = 1; l.dir = 'RIGHT';
+    return s.hp;
+  });
+  await h.p.keyboard.press('KeyJ');
+  await h.espera(700);
+  const r = await h.ev(() => ({ dir: LB.jogo.line.dir, hp: LB.jogo.inimigos.length ? LB.jogo.inimigos[0].hp : 0 }));
+  igual(r.dir, 'FRONT', 'virou para baixo');
+  afirmar(r.hp < r0, `o golpe para baixo machuca (hp ${r0} → ${r.hp})`);
+});
+
+teste('HUD com as molduras da arte: retrato, barras, moedas, minimapa e painel', async (h) => {
+  await h.area('vilarejo', { espada: true, magia: true });
+  await h.espera(800);
+  const r = await h.ev(() => ({ pronto: LB.hud.pronto(), fundo: LB.hud.fundo(LB.jogo), painel: getComputedStyle(document.querySelector('#objetivo')).borderImageSource }));
+  afirmar(r.pronto, 'molduras carregadas');
+  afirmar(r.fundo > 60 && r.fundo < 140, `altura do HUD (${r.fundo})`);
+  afirmar(/painel_objetivo/.test(r.painel), 'painel de objetivo com a moldura');
+  await h.foto('hud-molduras');
+});
+
 // ================= Execução =================
 (async () => {
   const filtros = process.argv.slice(2).map((s) => s.toLowerCase());

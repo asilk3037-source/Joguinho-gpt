@@ -49,10 +49,10 @@
     if (l.recargaEscudo >= RECARGA_ESCUDO) { l.recargaEscudo = 0; l.escudos++; j.particulas.emitir('brilho', l.x, l.y - 40, 4, { vel: 30, vida: 0.5, r: 3 }); }
   }
 
-  function desenharEscudos(g, j, s) {
+  function desenharEscudos(g, j, s, xInicio, yMeio) {
     const l = j.line;
     if (!l || !l.escudosMax) return;
-    const x0 = (22 + l.hpMax / 2 * 24 + 6) * s, y = 24 * s;
+    const x0 = xInicio !== undefined ? xInicio : (22 + l.hpMax / 2 * 24 + 6) * s, y = yMeio !== undefined ? yMeio : 24 * s;
     for (let i = 0; i < l.escudosMax; i++) {
       const x = x0 + i * 20 * s, cheio = i < l.escudos;
       g.save(); g.translate(x, y);

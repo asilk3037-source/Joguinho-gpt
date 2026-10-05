@@ -94,10 +94,13 @@ th { color: var(--destaque); }
 #toque { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
 #toque.em-cena .botoes, #toque.em-cena #joystick { visibility: hidden; }
 #joystick { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; pointer-events: auto; }
-#joystick-base { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.08); opacity: 0; pointer-events: none; left: 110px; bottom: 0; }
+/* Joystick com a arte (UI_JOYSTICK_BASE e UI_JOYSTICK_KNOB). */
+#joystick-base { position: absolute; width: 132px; height: 132px; margin: -66px 0 0 -66px; border-radius: 50%; background: url(../assets/interface/joystick_base.webp) center / contain no-repeat; opacity: 0; pointer-events: none; left: 110px; bottom: 0; }
 #joystick-base.visivel { opacity: 1; }
-#joystick-pino { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: rgba(255, 255, 255, 0.45); }
-.redondo { width: 62px; height: 62px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.4); background: rgba(30, 22, 44, 0.55); color: #fff; font-size: 24px; pointer-events: auto; display: flex; align-items: center; justify-content: center; padding: 0; }
+#joystick-pino { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; background: url(../assets/interface/joystick_knob.webp) center / contain no-repeat; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)); }
+/* Botões redondos com a moldura dourada da arte (UI_ACTION_BUTTON_FRAME) por cima. */
+.redondo { position: relative; width: 62px; height: 62px; border-radius: 50%; border: none; background: rgba(30, 22, 44, 0.55); color: #fff; font-size: 24px; pointer-events: auto; display: flex; align-items: center; justify-content: center; padding: 0; }
+.redondo::before { content: ''; position: absolute; inset: -18%; background: url(../assets/interface/action_button_frame.webp) center / contain no-repeat; pointer-events: none; }
 .redondo.grande { width: 80px; height: 80px; font-size: 32px; background: rgba(240, 120, 70, 0.55); }
 .redondo.pequeno { width: 44px; height: 44px; font-size: 18px; }
 .redondo.ativo { background: rgba(255, 184, 107, 0.7); transform: scale(0.94); }
@@ -182,12 +185,13 @@ th { color: var(--destaque); }
   #mapa-canvas { min-height: 260px; }
 }
 
-/* Painel de objetivo (depois do rapto) */
-#objetivo { position: fixed; left: max(14px, env(safe-area-inset-left)); top: 84px; background: rgba(22, 17, 32, 0.82); border: 1px solid var(--borda); border-radius: 12px; padding: 8px 12px; font-size: 13px; z-index: 9; pointer-events: none; max-width: min(300px, 44vw); line-height: 1.3; }
-#objetivo b { color: var(--destaque); display: block; margin-bottom: 3px; }
+/* Painel de objetivo com a moldura da arte (UI_MISSION_PANEL_FRAME, 9 fatias: os cantos não esticam). */
+#objetivo { position: fixed; left: max(10px, env(safe-area-inset-left)); top: 84px; border-style: solid; border-width: 15px 13px 15px 13px; border-image: url(../assets/interface/painel_objetivo.webp) 80 62 80 62 fill stretch; padding: 2px 6px 2px 6px; font-size: 13px; z-index: 9; pointer-events: none; max-width: min(300px, 44vw); line-height: 1.3; }
+#objetivo::before { content: ''; position: absolute; left: 50%; top: -15px; width: 30px; height: 20px; transform: translateX(-50%); background: url(../assets/interface/painel_joia.webp) center / contain no-repeat; }
+#objetivo b { color: var(--destaque); display: block; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #b9853a; }
 #objetivo .mini { color: var(--suave); font-size: 11px; margin-top: 4px; }
 #objetivo kbd { background: #2a2238; border: 1px solid var(--borda); border-radius: 4px; padding: 0 4px; font-family: inherit; font-size: 10px; }
-@media (max-width: 700px), (max-height: 520px) { #objetivo { font-size: 10.5px; padding: 5px 8px; top: 70px; max-width: 42vw; } #objetivo .mini { font-size: 9.5px; } }
+@media (max-width: 700px), (max-height: 520px) { #objetivo { font-size: 10.5px; padding: 1px 4px; border-width: 12px 10px; top: 70px; max-width: 42vw; } #objetivo::before { top: -12px; width: 24px; height: 16px; } #objetivo .mini { font-size: 9.5px; } }
 
 /* Avisos de item novo */
 #avisos { position: fixed; right: max(14px, env(safe-area-inset-right)); top: 60px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; z-index: 17; pointer-events: none; }
@@ -198,7 +202,9 @@ th { color: var(--destaque); }
 
 /* Botões de toque novos */
 #b-mochila { position: absolute; top: max(12px, env(safe-area-inset-top)); right: calc(max(12px, env(safe-area-inset-right)) + 54px); pointer-events: auto; }
-#b-mochila.novo::after { content: attr(data-novos); position: absolute; top: -4px; right: -4px; background: var(--rosa); color: #fff; font-size: 10px; font-weight: 700; border-radius: 10px; min-width: 16px; height: 16px; line-height: 16px; text-align: center; padding: 0 3px; }
+/* Selo de novidade (UI_NOTIFICATION_BADGE) quando entra item ou documento novo na mochila. */
+#b-mochila.novo::after { content: ''; position: absolute; top: -7px; right: -7px; width: 22px; height: 22px; background: url(../assets/interface/notification_badge.webp) center / contain no-repeat; animation: selo 1.2s ease-in-out infinite; }
+@keyframes selo { 50% { transform: scale(1.15); } }
 #toque.em-cena #b-mochila, #toque.passeio #b-mochila { visibility: hidden; }
 .botoes { width: 290px; height: 260px; }
 

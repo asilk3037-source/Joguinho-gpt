@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """Gera docs/LINE_E_BELL_DOCUMENTACAO.html (com as imagens embutidas) a partir do .md.
 
-Uso: python3 tools/gerar_documentacao_html.py   (precisa de: pip install markdown)
+Uso: python3 tools/gerar_documentacao_html.py [NOME]   (precisa de: pip install markdown)
+NOME é o .md em docs/ sem a extensão (padrão LINE_E_BELL_DOCUMENTACAO; ex.: LINE_E_BELL_PENDENCIAS).
 """
 import base64
 import os
 import re
+import sys
 
 import markdown
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS = os.path.join(RAIZ, "docs")
-src = open(os.path.join(DOCS, "LINE_E_BELL_DOCUMENTACAO.md"), encoding="utf-8").read()
+NOME = sys.argv[1] if len(sys.argv) > 1 else "LINE_E_BELL_DOCUMENTACAO"
+src = open(os.path.join(DOCS, NOME + ".md"), encoding="utf-8").read()
 html = markdown.markdown(src, extensions=["tables", "toc", "sane_lists"])
 
 
@@ -34,10 +37,10 @@ th,td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}th{backgro
 code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:.85em}
 em{color:var(--mut)}
 """
-saida = os.path.join(DOCS, "LINE_E_BELL_DOCUMENTACAO.html")
+saida = os.path.join(DOCS, NOME + ".html")
 open(saida, "w", encoding="utf-8").write(
     '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
     '<meta name="viewport" content="width=device-width,initial-scale=1">'
-    f"<title>Line & Bell — Documentação</title><style>{CSS}</style></head>"
+    f"<title>Line & Bell — {'Pendências' if 'PENDENCIAS' in NOME else 'Documentação'}</title><style>{CSS}</style></head>"
     f"<body><main>{html}</main></body></html>")
 print(saida)

@@ -287,7 +287,8 @@
     if (html !== el._html) { el.innerHTML = html; el._html = html; }
     // Fica logo abaixo do HUD (corações, magia, moedas e itens), que muda de altura.
     const i = inv(j), linhaItens = qtd(j, 'pocao') || (i.equipado && qtd(j, i.equipado));
-    const fim = ((j.flags.magia ? 66 : 46) + (linhaItens ? 20 : 0) + 14) * j.escala / Math.min(window.devicePixelRatio || 1, 2);
+    const unidades = LB.hud && LB.hud.pronto() ? LB.hud.fundo(j) + 2 : (j.flags.magia ? 66 : 46) + (linhaItens ? 20 : 0) + 14;
+    const fim = unidades * j.escala / Math.min(window.devicePixelRatio || 1, 2);
     const topo = Math.round(fim + 4) + 'px';
     if (el.style.top !== topo) el.style.top = topo;
   }
@@ -850,6 +851,6 @@
   LB.mochila = {
     ITENS, ORDEM_ITENS, PISTAS, ORDEM_PISTAS, CONCLUSOES, TIPOS_DOC, MUNDO, inv, qtd, tem, moedas, dar, tirar, darMoedas, usar, equipar, usarEquipado, usarCuraRapida,
     temPista, darPista, verificarConclusoes, temConclusao, totalPistas, objetivo, explorar, grade, visto, porcentagem, aviso, atualizarPainel, atualizarBotoes,
-    desenharHud, desenharItemChao, desenharPorta, desenharCogumelo, tela, contagens, desenharMapaArea, desenharMundo,
+    desenharHud, desenharItemChao, desenharPorta, corTile, desenharCogumelo, tela, contagens, desenharMapaArea, desenharMundo,
   };
 })(window.LB);
