@@ -43,10 +43,8 @@
       window.addEventListener('resize', () => this.redimensionar());
     }
 
-    // `qualidade` (0,5 a 1) baixa a resolução de desenho em aparelhos que não dão conta (veja main.js);
-    // nunca abaixo de 1 pixel por pixel da página.
     redimensionar() {
-      const dpr = this.dpr = Math.max(Math.min(1, window.devicePixelRatio || 1), Math.min(window.devicePixelRatio || 1, 2) * (this.qualidade || 1));
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const w = window.innerWidth, h = window.innerHeight;
       this.canvas.width = Math.round(w * dpr); this.canvas.height = Math.round(h * dpr);
       this.canvas.style.width = w + 'px'; this.canvas.style.height = h + 'px';
@@ -748,7 +746,7 @@
       if (this.treme.t > 0) { sx = (Math.random() - 0.5) * this.treme.f * 2; sy = (Math.random() - 0.5) * this.treme.f * 2; }
       const cx = this.cam.x + sx, cy = this.cam.y + sy;
       g.setTransform(this.escala, 0, 0, this.escala, -cx * this.escala, -cy * this.escala);
-      g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'medium';
+      g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
 
       // Chão (só o pedaço visível). No primeiro encontro, o fundo é a ilustração do lugar.
       const m = this.mapa;

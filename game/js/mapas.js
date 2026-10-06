@@ -1271,7 +1271,7 @@
       if (!tx.caminho) return;
       const m = temporario(W, H), mg = m.getContext('2d');
       mg.globalCompositeOperation = 'source-over'; mg.clearRect(0, 0, W, H);
-      mg.imageSmoothingEnabled = true; mg.imageSmoothingQuality = 'low';
+      mg.imageSmoothingEnabled = true; mg.imageSmoothingQuality = 'high';
       const mini = this.mascara(), k = (this.larg * R) / mini.width;
       mg.setTransform(k, 0, 0, k, -ox * R, -oy * R); mg.drawImage(mini, 0, 0);
       mg.setTransform(1, 0, 0, 1, -ox * R, -oy * R);

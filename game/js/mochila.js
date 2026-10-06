@@ -288,7 +288,7 @@
     // Fica logo abaixo do HUD (corações, magia, moedas e itens), que muda de altura.
     const i = inv(j), linhaItens = qtd(j, 'pocao') || (i.equipado && qtd(j, i.equipado));
     const unidades = LB.hud && LB.hud.pronto() ? LB.hud.fundo(j) + 2 : (j.flags.magia ? 66 : 46) + (linhaItens ? 20 : 0) + 14;
-    const fim = unidades * j.escala / j.dpr;
+    const fim = unidades * j.escala / Math.min(window.devicePixelRatio || 1, 2);
     const topo = Math.round(fim + 4) + 'px';
     if (el.style.top !== topo) el.style.top = topo;
   }
