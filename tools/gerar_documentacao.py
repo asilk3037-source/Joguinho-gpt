@@ -3,7 +3,7 @@
 
 É o único documento do projeto: tudo o que antes ficava em arquivos soltos (pendências,
 índice e plano dos itens, lista de arte, layout do Theo, README do jogo) entra aqui
-(seções 22 a 26). Precisa de dois arquivos JSON exportados do jogo rodando (seção 26.7):
+(seções 22 a 26). Precisa de dois arquivos JSON exportados do jogo rodando (seção 26.8):
   - inventario.json: catálogo de animações (LB.inventario() + dados de cada sprite)
   - roteiro.json: falas, títulos, balões e animações de cada cena (tools/extrair_roteiro)
 
@@ -79,6 +79,8 @@ w("> - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 co
 w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).")
 w()
 w("> 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.")
+w()
+w("> ⚡ **Jogo mais leve:** a troca de mapa não trava mais (a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora é instantâneo), porque o chão é desenhado em pedaços, só o que aparece na tela. Sombras das nuvens, vinhetas e o brilho da água e da lava ficam prontos em vez de refeitos a cada quadro, os fundos já saem decodificados do carregamento e, em celulares que não dão conta, a resolução de desenho baixa sozinha (seção 26.7).")
 w()
 w("> 🍔 **Minas Shopping virou a praça de alimentação do modelo:** duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.")
 w()
@@ -1385,7 +1387,7 @@ for l in [
     w("| " + " | ".join(l) + " |")
 w()
 w("### Como atualizar este documento")
-w("As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.7.")
+w("As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.8.")
 w()
 img("25-galeria", "No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma")
 doc_parte2.escrever(w, img, inv, rot, roteiro)

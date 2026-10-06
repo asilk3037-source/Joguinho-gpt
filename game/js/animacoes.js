@@ -702,7 +702,13 @@ window.LB = window.LB || {};
   }
 
   function carregarSprites(aoProgredir) {
-    for (const [nome, src] of Object.entries(PERSONAGENS)) { const img = new Image(); img.src = src; personagens[nome] = img; }
+    // Fundos grandes (bases, texturas e lugares do primeiro encontro) já saem decodificados do carregamento:
+    // sem isso o navegador decodifica na primeira vez que o mapa aparece e o jogo para por um instante.
+    const FUNDO = /^(base_|textura_|shopping_base|playground_fundo|encontro_tunel)/;
+    for (const [nome, src] of Object.entries(PERSONAGENS)) {
+      const img = new Image(); img.decoding = 'async'; img.src = src; personagens[nome] = img;
+      if (FUNDO.test(nome) && img.decode) img.decode().catch(() => {});
+    }
     const lista = Object.entries(window.SPRITES || {});
     let prontos = 0;
     return Promise.all(lista.map(([codigo, s]) => new Promise((ok) => {

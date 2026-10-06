@@ -1064,6 +1064,15 @@
     coracao: { chao: '#4a3a5a', chao2: '#433452', junta: '#2e2240', musgo: '#9a6ad0', parede: '#1a1226', parede2: '#281c38', topo: '#5a4a72', caminho: '#6a5a82', margem: '#7a6a92', ceu: ['#3a2050', '#10081a'], lajes: true },
   };
 
+  // Chão em pedaços (veja renderizarChao): tamanho do pedaço e da borda no mundo, pixels por unidade.
+  const PEDACO = 256, BORDA = 2, RES_CHAO = 2;
+  // Tela de rascunho reaproveitada para a máscara dos caminhos.
+  let rascunho = null;
+  function temporario(w, h) {
+    if (!rascunho || rascunho.width < w || rascunho.height < h) { rascunho = document.createElement('canvas'); rascunho.width = w; rascunho.height = h; }
+    return rascunho;
+  }
+
   class Mapa {
     constructor(id, flags) {
       const def = MAPAS[id];
@@ -1111,7 +1120,7 @@
     trocar(tx, ty, c) {
       this.l[ty][tx] = c;
       this.props = this.props.filter((p) => !(p.tx === tx && p.ty === ty));
-      this.renderizarChao();
+      this.renderizarChao(tx, ty);
     }
 
     // Retângulo formado por tiles vizinhos com as letras dadas (a partir do canto superior esquerdo).
@@ -1228,45 +1237,92 @@
       return chao ? { chao, caminho } : null;
     }
 
-    desenharTexturas(g, tx) {
-      const RES = 2;
-      g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
-      g.fillStyle = g.createPattern(tx.chao, 'repeat'); g.fillRect(0, 0, this.larg * RES, this.alt * RES);
-      g.restore();
-      if (!tx.caminho) return;
-      // Máscara dos caminhos: 4 pixels por tile, ampliada com suavização (a terra entra na grama sem degrau).
+    // O chão é desenhado em pedaços de PEDACO×PEDACO unidades (2 pixels por unidade), só quando
+    // aparecem na tela (e os vizinhos aos poucos, um por quadro). Antes o mapa inteiro virava uma
+    // imagem de até 14 milhões de pixels a cada troca de mapa, o que travava o jogo por segundos.
+    renderizarChao(tx, ty) {
+      this.comBase = !!this.imagemBase;
+      this.comTextura = !this.comBase && !!this.texturas;
+      this.resChao = RES_CHAO;
+      this.mascaraCaminho = null;
+      if (!this.pedacos || tx === undefined) { this.pedacos = new Map(); return; }
+      // Só um tile mudou: refaz os pedaços em volta dele.
+      for (const k of [...this.pedacos.keys()]) {
+        const [px, py] = k.split(',').map(Number);
+        const x0 = px * PEDACO / TILE - 2, y0 = py * PEDACO / TILE - 2, x1 = (px + 1) * PEDACO / TILE + 2, y1 = (py + 1) * PEDACO / TILE + 2;
+        if (tx >= x0 && tx < x1 && ty >= y0 && ty < y1) this.pedacos.delete(k);
+      }
+    }
+
+    // Máscara dos caminhos: 4 pixels por tile, ampliada com suavização (a terra entra na grama sem degrau).
+    mascara() {
+      if (this.mascaraCaminho) return this.mascaraCaminho;
       const P = 4, mini = document.createElement('canvas'); mini.width = this.w * P; mini.height = this.h * P;
       const ng = mini.getContext('2d'); ng.fillStyle = '#000';
       for (let ty = 0; ty < this.h; ty++) for (let x = 0; x < this.w; x++) if (this.l[ty][x] === ':' || (this.sobO && this.sobO[x + ',' + ty] === ':')) ng.fillRect(x * P, ty * P, P, P);
-      const m = document.createElement('canvas'); m.width = this.larg * RES; m.height = this.alt * RES;
-      const mg = m.getContext('2d');
-      mg.imageSmoothingEnabled = true; mg.imageSmoothingQuality = 'high';
-      mg.drawImage(mini, 0, 0, m.width, m.height);
-      mg.globalCompositeOperation = 'source-in';
-      mg.fillStyle = mg.createPattern(tx.caminho, 'repeat'); mg.fillRect(0, 0, m.width, m.height);
-      g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(m, 0, 0); g.restore();
+      return (this.mascaraCaminho = mini);
     }
 
-    renderizarChao() {
-      const RES = 2;
-      const c = this.chao || document.createElement('canvas');
-      c.width = this.larg * RES; c.height = this.alt * RES;
+    desenharTexturas(g, tx, ox, oy, W, H) {
+      const R = RES_CHAO;
+      g.save(); g.setTransform(1, 0, 0, 1, -ox * R, -oy * R);
+      g.fillStyle = g.createPattern(tx.chao, 'repeat'); g.fillRect(ox * R, oy * R, W, H);
+      g.restore();
+      if (!tx.caminho) return;
+      const m = temporario(W, H), mg = m.getContext('2d');
+      mg.globalCompositeOperation = 'source-over'; mg.clearRect(0, 0, W, H);
+      mg.imageSmoothingEnabled = true; mg.imageSmoothingQuality = 'low';
+      const mini = this.mascara(), k = (this.larg * R) / mini.width;
+      mg.setTransform(k, 0, 0, k, -ox * R, -oy * R); mg.drawImage(mini, 0, 0);
+      mg.setTransform(1, 0, 0, 1, -ox * R, -oy * R);
+      mg.globalCompositeOperation = 'source-in';
+      mg.fillStyle = mg.createPattern(tx.caminho, 'repeat'); mg.fillRect(ox * R, oy * R, W, H);
+      mg.setTransform(1, 0, 0, 1, 0, 0); mg.globalCompositeOperation = 'source-over';
+      g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(m, 0, 0, W, H, 0, 0, W, H); g.restore();
+    }
+
+    // Desenha um pedaço do chão (com uma borda de BORDA unidades, para não aparecer emenda).
+    pedaco(px, py) {
+      const k = px + ',' + py;
+      let c = this.pedacos.get(k);
+      if (c) return c;
+      const R = RES_CHAO, ox = px * PEDACO - BORDA, oy = py * PEDACO - BORDA, L = PEDACO + 2 * BORDA, W = L * R;
+      c = document.createElement('canvas'); c.width = W; c.height = W;
       const g = c.getContext('2d');
-      g.setTransform(RES, 0, 0, RES, 0, 0);
-      this.comBase = !!this.imagemBase;
       const sobre = this.def.sobreBase || '';
-      const tex = !this.comBase ? this.texturas : null;
-      this.comTextura = !!tex;
-      if (tex) this.desenharTexturas(g, tex);
+      const tex = this.comTextura ? this.texturas : null;
+      // Nada fora do mapa (a textura cobria só o mapa).
+      g.setTransform(R, 0, 0, R, -ox * R, -oy * R);
+      g.beginPath(); g.rect(Math.max(0, ox), Math.max(0, oy), Math.min(this.larg, ox + L) - Math.max(0, ox), Math.min(this.alt, oy + L) - Math.max(0, oy)); g.clip();
+      if (tex) this.desenharTexturas(g, tex, ox, oy, W, W);
+      g.setTransform(R, 0, 0, R, -ox * R, -oy * R);
+      // Tiles do pedaço e uma margem de 2 (desenhos que passam do próprio tile), na mesma ordem de antes.
+      const tx0 = Math.max(0, Math.floor(ox / TILE) - 2), ty0 = Math.max(0, Math.floor(oy / TILE) - 2);
+      const tx1 = Math.min(this.w - 1, Math.floor((ox + L) / TILE) + 2), ty1 = Math.min(this.h - 1, Math.floor((oy + L) / TILE) + 2);
       this.desenhandoChao = true;
-      for (let ty = 0; ty < this.h; ty++) for (let tx = 0; tx < this.w; tx++) {
+      for (let ty = ty0; ty <= ty1; ty++) for (let tx = tx0; tx <= tx1; tx++) {
         if (tex) { const t = this.l[ty][tx] === 'O' && this.sobO ? this.sobO[tx + ',' + ty] || '.' : this.l[ty][tx]; if (SOBRE_TEXTURA.includes(t) && !(t === ':' && tex.caminho)) this.desenharTile(g, tx, ty, true); }
         else if (!this.comBase) this.desenharTile(g, tx, ty);
         else if (sobre.includes(this.l[ty][tx])) this.desenharTile(g, tx, ty, true);
       }
       this.desenhandoChao = false;
-      this.chao = c;
-      this.resChao = RES;
+      this.pedacos.set(k, c);
+      return c;
+    }
+
+    // Desenha o chão visível (x0..x1, y0..y1 no mundo) e prepara um pedaço vizinho por quadro.
+    desenharChao(g, x0, y0, x1, y1) {
+      const R = RES_CHAO, E = 0.5;
+      const px0 = Math.floor(x0 / PEDACO), py0 = Math.floor(y0 / PEDACO), px1 = Math.floor((x1 - 0.01) / PEDACO), py1 = Math.floor((y1 - 0.01) / PEDACO);
+      for (let py = py0; py <= py1; py++) for (let px = px0; px <= px1; px++) {
+        const c = this.pedaco(px, py);
+        // Cada pedaço passa meia unidade para os vizinhos (os pixels são iguais): sem fresta entre eles.
+        g.drawImage(c, (BORDA - E) * R, (BORDA - E) * R, (PEDACO + 2 * E) * R, (PEDACO + 2 * E) * R, px * PEDACO - E, py * PEDACO - E, PEDACO + 2 * E, PEDACO + 2 * E);
+      }
+      const maxX = Math.ceil(this.larg / PEDACO) - 1, maxY = Math.ceil(this.alt / PEDACO) - 1;
+      for (let py = Math.max(0, py0 - 1); py <= Math.min(maxY, py1 + 1); py++) for (let px = Math.max(0, px0 - 1); px <= Math.min(maxX, px1 + 1); px++) {
+        if (!this.pedacos.has(px + ',' + py)) { this.pedaco(px, py); return; }
+      }
     }
 
     desenharTile(g, tx, ty, soTopo) {
@@ -1515,30 +1571,37 @@
       }
     }
 
-    // Brilho animado da água e da lava, desenhado por cima do chão.
+    // Brilho animado da água e da lava, desenhado por cima do chão. Os retângulos de cada cor vão num
+    // caminho só (um preenchimento por cor em vez de um por tile); o brilho da lava e da brasa usa 8
+    // níveis de transparência.
     desenharAnimado(g, t, vis) {
       const x0 = Math.max(0, Math.floor(vis.x / TILE)), x1 = Math.min(this.w - 1, Math.floor((vis.x + vis.w) / TILE));
       const y0 = Math.max(0, Math.floor(vis.y / TILE)), y1 = Math.min(this.h - 1, Math.floor((vis.y + vis.h) / TILE));
-      for (let ty = y0; ty <= y1; ty++) for (let tx = x0; tx <= x1; tx++) {
-        const c = this.l[ty][tx];
-        if (c === 'w' || c === '~') {
-          const f = (t * 1.3 + tx * 0.7 + ty * 0.4) % 1;
-          g.fillStyle = 'rgba(255,255,255,0.35)';
-          g.fillRect(tx * TILE + 4 + f * 18, ty * TILE + 8 + (tx % 3) * 6, 6, 1.5);
-        } else if (c === 'L') {
-          const a = 0.25 + 0.2 * Math.sin(t * 3 + tx + ty * 2);
-          g.fillStyle = `rgba(255,220,120,${a})`;
-          g.fillRect(tx * TILE, ty * TILE, TILE, TILE);
-        } else if (c === '>' || c === '<') {
-          const f = ((c === '>' ? t : -t) * 1.6 + ty * 0.37) % 1, k = (f + 1) % 1;
-          g.fillStyle = 'rgba(255,255,255,.5)';
-          g.fillRect(tx * TILE + k * 26, ty * TILE + 6 + (tx % 3) * 8, 8, 1.5);
-        } else if (c === 'l') {
-          const a = 0.1 + 0.12 * Math.sin(t * 4 + tx * 1.7 + ty);
-          g.fillStyle = `rgba(255,140,40,${a})`;
-          g.fillRect(tx * TILE, ty * TILE, TILE, TILE);
+      let agua = null, vento = null;
+      const lava = [], brasa = [];
+      for (let ty = y0; ty <= y1; ty++) {
+        const linha = this.l[ty];
+        for (let tx = x0; tx <= x1; tx++) {
+          const c = linha[tx];
+          if (c === 'w' || c === '~') {
+            const f = (t * 1.3 + tx * 0.7 + ty * 0.4) % 1;
+            (agua || (agua = new Path2D())).rect(tx * TILE + 4 + f * 18, ty * TILE + 8 + (tx % 3) * 6, 6, 1.5);
+          } else if (c === 'L') {
+            const n = Math.round((0.2 + 0.2 * Math.sin(t * 3 + tx + ty * 2)) / 0.4 * 7);
+            (lava[n] || (lava[n] = new Path2D())).rect(tx * TILE, ty * TILE, TILE, TILE);
+          } else if (c === '>' || c === '<') {
+            const f = ((c === '>' ? t : -t) * 1.6 + ty * 0.37) % 1, k = (f + 1) % 1;
+            (vento || (vento = new Path2D())).rect(tx * TILE + k * 26, ty * TILE + 6 + (tx % 3) * 8, 8, 1.5);
+          } else if (c === 'l') {
+            const n = Math.round((0.12 + 0.12 * Math.sin(t * 4 + tx * 1.7 + ty)) / 0.24 * 7);
+            (brasa[n] || (brasa[n] = new Path2D())).rect(tx * TILE, ty * TILE, TILE, TILE);
+          }
         }
       }
+      if (agua) { g.fillStyle = 'rgba(255,255,255,0.35)'; g.fill(agua); }
+      if (vento) { g.fillStyle = 'rgba(255,255,255,.5)'; g.fill(vento); }
+      lava.forEach((p, n) => { if (p) { g.fillStyle = `rgba(255,220,120,${(0.05 + n / 7 * 0.4).toFixed(3)})`; g.fill(p); } });
+      brasa.forEach((p, n) => { if (p) { g.fillStyle = `rgba(255,140,40,${(-0.02 + n / 7 * 0.24).toFixed(3)})`; g.fill(p); } });
     }
   }
 

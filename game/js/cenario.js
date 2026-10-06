@@ -343,6 +343,17 @@
   // ---------- Vida ambiente ----------
   // Temas sem céu aberto (sem nuvens nem pássaros).
   const SEM_CEU = ['covil', 'montanha', 'encontro', 'gruta', 'fenda', 'coracao', 'casa'];
+  // Sombra de nuvem pronta: degradê redondo de raio 100 recortado na elipse 100×60.
+  let sombraPronta = null;
+  function sombraNuvem() {
+    if (sombraPronta) return sombraPronta;
+    const c = document.createElement('canvas'); c.width = 200; c.height = 120;
+    const g = c.getContext('2d'), gr = g.createRadialGradient(100, 60, 0, 100, 60, 100);
+    gr.addColorStop(0, 'rgba(20,30,40,.12)'); gr.addColorStop(1, 'rgba(20,30,40,0)');
+    g.fillStyle = gr; g.beginPath(); g.ellipse(100, 60, 100, 60, 0, 0, TAU); g.fill();
+    return (sombraPronta = c);
+  }
+
   class Ambiente {
     constructor(mapa) {
       this.mapa = mapa;
@@ -419,8 +430,8 @@
         if (this.proximoRaio <= 0) { this.proximoRaio = 5 + Math.random() * 6; jogo.flashTela = Math.max(jogo.flashTela, 0.35); jogo.tremer(2, 0.3); }
       }
       if ((this.tema === 'covil' || this.tema === 'montanha' || this.tema === 'fenda') && Math.random() < dt * 8) {
-        const lavas = [];
-        for (let ty = 0; ty < m.h; ty++) for (let tx = 0; tx < m.w; tx++) if (m.l[ty][tx] === 'L') lavas.push([tx, ty]);
+        if (!this.lavas) { this.lavas = []; for (let ty = 0; ty < m.h; ty++) for (let tx = 0; tx < m.w; tx++) if (m.l[ty][tx] === 'L') this.lavas.push([tx, ty]); }
+        const lavas = this.lavas;
         if (lavas.length) { const [tx, ty] = lavas[Math.floor(Math.random() * lavas.length)]; jogo.particulas.emitir('brasa', (tx + Math.random()) * LB.TILE, (ty + Math.random()) * LB.TILE, 1, { vz: 30, vel: 8, vida: 2.4, r: 1.6 }); }
       }
       // Fumaça da chaminé.
@@ -431,12 +442,11 @@
     }
 
     // Sombras das nuvens (por baixo dos personagens).
+    // A sombra é a mesma imagem para todas as nuvens, só em tamanhos diferentes (montar o degradê a cada
+    // quadro custava quase metade do quadro na fazenda).
     desenharChao(g) {
-      for (const n of this.nuvens) {
-        const gr = g.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
-        gr.addColorStop(0, 'rgba(20,30,40,.12)'); gr.addColorStop(1, 'rgba(20,30,40,0)');
-        g.fillStyle = gr; g.beginPath(); g.ellipse(n.x, n.y, n.r, n.r * 0.6, 0, 0, TAU); g.fill();
-      }
+      const s = sombraNuvem();
+      for (const n of this.nuvens) g.drawImage(s, n.x - n.r, n.y - n.r * 0.6, n.r * 2, n.r * 1.2);
       for (const p of this.passaros) E(g, p.x, p.y + 60, 4, 1.5, 'rgba(0,0,0,.12)');
     }
 

@@ -1268,10 +1268,35 @@ teste('ataque para baixo acerta o inimigo abaixo e a mira vira para ele', async 
     return s.hp;
   });
   await h.p.keyboard.press('KeyJ');
-  await h.espera(700);
-  const r = await h.ev(() => ({ dir: LB.jogo.line.dir, hp: LB.jogo.inimigos.length ? LB.jogo.inimigos[0].hp : 0 }));
+  // Antes do primeiro golpe a Line saca a espada: espera o golpe acertar (até 2 s).
+  let r;
+  for (let i = 0; i < 20; i++) {
+    await h.espera(100);
+    r = await h.ev(() => ({ dir: LB.jogo.line.dir, hp: LB.jogo.inimigos.length ? LB.jogo.inimigos[0].hp : 0 }));
+    if (r.hp < r0) break;
+  }
   igual(r.dir, 'FRONT', 'virou para baixo');
   afirmar(r.hp < r0, `o golpe para baixo machuca (hp ${r0} → ${r.hp})`);
+});
+
+teste('desempenho: chão em pedaços, troca de mapa rápida e tile trocado só refaz os pedaços em volta', async (h) => {
+  const r = await h.ev(async () => {
+    const j = LB.jogo; j.flags = Object.assign({}, j.flags, { espada: true, prologo: true });
+    const criadas = []; const orig = document.createElement.bind(document);
+    document.createElement = (t) => { const e = orig(t); if (t === 'canvas') criadas.push(e); return e; };
+    const t0 = performance.now(); j.iniciarArea('floresta', null, true); const troca = performance.now() - t0;
+    document.createElement = orig;
+    await new Promise((ok) => setTimeout(ok, 600));
+    const m = j.mapa, antes = m.pedacos.size;
+    const maior = Math.max(0, ...[...m.pedacos.values(), ...criadas].map((c) => c.width * c.height));
+    const tx = Math.floor(j.line.x / LB.TILE), ty = Math.floor(j.line.y / LB.TILE);
+    m.trocar(tx, ty, m.l[ty][tx]);
+    return { troca, antes, depois: m.pedacos.size, maior };
+  });
+  afirmar(r.troca < 400, `troca de mapa rápida (${Math.round(r.troca)} ms)`);
+  afirmar(r.antes >= 2, `pedaços do chão desenhados (${r.antes})`);
+  afirmar(r.maior <= 600 * 600, `nenhuma imagem gigante do chão (${r.maior} px)`);
+  afirmar(r.depois < r.antes && r.depois > 0, `trocar um tile refaz só os pedaços em volta (${r.antes} → ${r.depois})`);
 });
 
 teste('HUD com as molduras da arte: retrato, barras, moedas, minimapa e painel', async (h) => {

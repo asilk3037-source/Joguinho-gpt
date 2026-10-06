@@ -194,7 +194,7 @@
   function posicionarAvisos(j, yCanvas) {
     const el = document.getElementById('avisos');
     if (!el) return;
-    const topo = Math.round(yCanvas / Math.min(window.devicePixelRatio || 1, 2)) + 'px';
+    const topo = Math.round(yCanvas / j.dpr) + 'px';
     if (el.style.top !== topo) el.style.top = topo;
   }
 

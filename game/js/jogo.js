@@ -9,6 +9,14 @@
   const CHAVE_SAVE = 'lineBell.save.v1';
   const $ = (s) => document.querySelector(s);
 
+  // Vinheta de cada tema: raio de dentro e de fora (em alturas da tela) e a cor da borda.
+  const VINHETAS = {
+    floresta: [0.3, 0.9, 'rgba(0,20,0,.35)'], ruinas: [0.3, 0.9, 'rgba(0,15,30,.4)'], montanha: [0.3, 0.9, 'rgba(30,5,0,.45)'],
+    gruta: [0.25, 0.9, 'rgba(0,10,30,.55)'], fenda: [0.3, 0.9, 'rgba(40,5,0,.5)'], pantano: [0.3, 0.9, 'rgba(0,20,5,.45)'],
+    tempestade: [0.3, 0.9, 'rgba(0,5,25,.5)'], coracao: [0.3, 0.9, 'rgba(20,0,35,.55)'], picos: [0.3, 0.9, 'rgba(255,255,255,.15)'],
+    covil: [0.25, 0.85, 'rgba(0,0,0,.6)'],
+  };
+
   class Jogo {
     constructor(canvas) {
       this.canvas = canvas;
@@ -35,8 +43,10 @@
       window.addEventListener('resize', () => this.redimensionar());
     }
 
+    // `qualidade` (0,5 a 1) baixa a resolução de desenho em aparelhos que não dão conta (veja main.js);
+    // nunca abaixo de 1 pixel por pixel da página.
     redimensionar() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = this.dpr = Math.max(Math.min(1, window.devicePixelRatio || 1), Math.min(window.devicePixelRatio || 1, 2) * (this.qualidade || 1));
       const w = window.innerWidth, h = window.innerHeight;
       this.canvas.width = Math.round(w * dpr); this.canvas.height = Math.round(h * dpr);
       this.canvas.style.width = w + 'px'; this.canvas.style.height = h + 'px';
@@ -738,10 +748,10 @@
       if (this.treme.t > 0) { sx = (Math.random() - 0.5) * this.treme.f * 2; sy = (Math.random() - 0.5) * this.treme.f * 2; }
       const cx = this.cam.x + sx, cy = this.cam.y + sy;
       g.setTransform(this.escala, 0, 0, this.escala, -cx * this.escala, -cy * this.escala);
-      g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+      g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'medium';
 
       // Chão (só o pedaço visível). No primeiro encontro, o fundo é a ilustração do lugar.
-      const m = this.mapa, R = m.resChao;
+      const m = this.mapa;
       if (m.tema === 'encontro') LB.encontro.desenharFundo(g, this, cx, cy);
       const x0 = Math.max(0, cx), y0 = Math.max(0, cy);
       const x1 = Math.min(m.larg, cx + this.vw), y1 = Math.min(m.alt, cy + this.vh);
@@ -757,7 +767,7 @@
           g.drawImage(base, x0 * kx, y0 * ky, (x1 - x0) * kx, (y1 - y0) * ky, x0, y0, x1 - x0, y1 - y0);
         }
       }
-      if (x1 > x0 && y1 > y0) g.drawImage(m.chao, x0 * R, y0 * R, (x1 - x0) * R, (y1 - y0) * R, x0, y0, x1 - x0, y1 - y0);
+      if (x1 > x0 && y1 > y0) m.desenharChao(g, x0, y0, x1, y1);
       const vis = { x: cx - 40, y: cy - 40, w: this.vw + 80, h: this.vh + 120 };
       m.desenharAnimado(g, this.tempo, vis);
       this.ambiente.desenharChao(g);
@@ -825,12 +835,8 @@
       LB.relogio.desenharCeu(g, this);
       LB.mundo.desenharEscuro(g, this);
       if (this.tint && this.tint.a > 0) { g.fillStyle = `rgba(${this.tint.cor},${this.tint.a})`; g.fillRect(0, 0, W, H); }
-      if (m.tema === 'floresta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,20,0,.35)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
-      if (m.tema === 'ruinas' || m.tema === 'montanha') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, m.tema === 'ruinas' ? 'rgba(0,15,30,.4)' : 'rgba(30,5,0,.45)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
-      if (m.tema === 'gruta') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,10,30,.55)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
-      const VINHETA = { fenda: 'rgba(40,5,0,.5)', pantano: 'rgba(0,20,5,.45)', tempestade: 'rgba(0,5,25,.5)', coracao: 'rgba(20,0,35,.55)', picos: 'rgba(255,255,255,.15)' };
-      if (VINHETA[m.tema]) { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.3, W / 2, H / 2, H * 0.9); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, VINHETA[m.tema]); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
-      if (m.tema === 'covil') { const gr = g.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.85); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,.6)'); g.fillStyle = gr; g.fillRect(0, 0, W, H); }
+      const vin = VINHETAS[m.tema];
+      if (vin) g.drawImage(this.vinheta(m.tema, vin, W, H), 0, 0);
       if (this.flashTela > 0) { g.fillStyle = `rgba(255,255,255,${this.flashTela * 1.6})`; g.fillRect(0, 0, W, H); }
 
       if (this.interludio) LB.interludio.desenhar(g, this);
@@ -839,6 +845,17 @@
 
       if (this.fade > 0) { g.fillStyle = `rgba(0,0,0,${this.fade})`; g.fillRect(0, 0, W, H); }
       if (this.olho) this.desenharOlho(g, W, H);
+    }
+
+    // Vinheta escura da fase, pronta numa tela do tamanho da tela (o degradê só é refeito quando o tema
+    // ou o tamanho muda).
+    vinheta(tema, [r0, r1, cor], W, H) {
+      const c = this.vinhetaPronta;
+      if (c && c.tema === tema && c.width === W && c.height === H) return c;
+      const n = c || document.createElement('canvas'); n.width = W; n.height = H; n.tema = tema;
+      const g = n.getContext('2d'), gr = g.createRadialGradient(W / 2, H / 2, H * r0, W / 2, H / 2, H * r1);
+      gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, cor); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+      return (this.vinhetaPronta = n);
     }
 
     desenharProp(g, p) {

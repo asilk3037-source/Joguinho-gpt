@@ -18,6 +18,8 @@
 
 > 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> ⚡ **Jogo mais leve:** a troca de mapa não trava mais (a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora é instantâneo), porque o chão é desenhado em pedaços, só o que aparece na tela. Sombras das nuvens, vinhetas e o brilho da água e da lava ficam prontos em vez de refeitos a cada quadro, os fundos já saem decodificados do carregamento e, em celulares que não dão conta, a resolução de desenho baixa sozinha (seção 26.7).
+
 > 🍔 **Minas Shopping virou a praça de alimentação do modelo:** duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.
 
 > 🎛️ **HUD e controles com a arte nova (componentes 01 a 09):** retrato da heroína na moldura redonda, barras de vida e magia, contador de moedas com o item do atalho, **minimapa** com a névoa no canto de cima, painel de objetivo com a moldura dourada, selo **!** de novidade na mochila, moldura dourada em todos os botões redondos e o joystick novo. Os ícones de dentro dos botões ainda são emoji (pedido no documento de pendências).
@@ -2798,7 +2800,7 @@ A pasta `tests/` tem um conjunto de testes que abre o jogo num navegador de verd
 | Dicas do Fácil | seta para a saída certa, para o cristal apagado e para o chefe; dica de chefe e de derrota |
 
 ### Como atualizar este documento
-As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.7.
+As tabelas de animações, o roteiro, os mapas e o índice dos itens são gerados a partir do jogo e dos arquivos recebidos. Os comandos estão na seção 26.8.
 
 ![No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma](imagens/25-galeria.jpg)
 *No jogo, o menu Animações mostra a mesma lista, com prévia de cada uma*
@@ -4537,7 +4539,16 @@ No menu, a tela **Animações** mostra o que já existe, o que falta e uma prév
 - **Objetos avulsos (itens 146 a 227):** `python3 tools/extrair_objetos.py LINE_BELL_ITEM_NNN.html ...` lê as imagens de cada item (`data-name`), recorta no contorno, mantém a resolução original e grava `game/assets/moveis/farmhouse_*.webp` (casa) ou `game/assets/cenario/farm_*.webp` (fazenda). A lista vai para `game/js/objetos.js`, e qualquer mapa pode usar o objeto pelo nome em `moveis`. Peças com versão de dia e de noite (`_off`/`_on`, `_day`/`_night`) trocam sozinhas: lareira, luminárias, arandelas, janela e fogueira acendem à noite; a porta do corredor abre quando a Line chega perto.
 - **Interiores das outras casas:** `python3 tools/gerar_interiores.py` monta o interior de cada casa com pedaços da planta da casa da fazenda (parede do fundo, janelas, vigas, piso de madeira, terracota, azulejo ou lajota, base de pedra e porta com degraus). Ele grava `game/assets/cenario/base_<casa>.webp` e `game/js/interiores_gerados.js` (colisão e saída). As portas e os móveis de cada casa ficam em `game/js/interiores.js`.
 
-### 26.7 Como regerar esta documentação
+### 26.7 Desempenho
+
+- **Chão em pedaços:** o chão de cada mapa é desenhado em pedaços de 256×256 unidades (8×8 tiles, 2 px por unidade), só os que aparecem na tela, e os vizinhos aos poucos, um por quadro (`renderizarChao`, `pedaco` e `desenharChao` em `mapas.js`). Antes o mapa inteiro virava uma imagem de até 14 milhões de pixels a cada troca de mapa: a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora a troca leva centésimos de segundo. Quebrar uma parede ou abrir uma barreira refaz só os pedaços em volta do tile.
+- **Coisas prontas em vez de refeitas a cada quadro:** a sombra das nuvens é uma imagem só (montar o degradê de cada nuvem custava quase metade do quadro na fazenda); a vinheta escura de cada fase fica pronta no tamanho da tela; o brilho da água, da lava, da brasa e do vento vai num caminho por cor (8 níveis de brilho) em vez de um retângulo por tile.
+- **Fundos decodificados no carregamento:** as bases, as texturas e os lugares do primeiro encontro já saem decodificados da tela de carregamento, sem a parada da primeira vez que o mapa aparece.
+- **Suavização média:** as imagens reduzidas usam a suavização média do navegador (a alta custava até 3× mais no shopping e no playground, sem diferença visível).
+- **Resolução automática:** em celulares e tablets de tela densa, se o quadro passa de 24 ms por 3 s seguidos, a resolução de desenho baixa um degrau (até a metade), sem mudar o tamanho de nada na tela (`main.js`). Em telas comuns (1 pixel por pixel) nada muda.
+- **Como medir:** o teste `desempenho` (em `tests/rodar.js`) confere que a troca de mapa é rápida, que nenhuma imagem gigante do chão é criada e que trocar um tile refaz só os pedaços em volta.
+
+### 26.8 Como regerar esta documentação
 
 Com o jogo servido na porta 8765 (`cd game && python3 -m http.server 8765`), na raiz:
 
