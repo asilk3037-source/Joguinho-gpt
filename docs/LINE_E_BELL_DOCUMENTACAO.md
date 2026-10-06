@@ -3484,7 +3484,7 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 
 ### 22.11 Minas Shopping: a praça de alimentação
 
-> 🍔 **Decisão (versão atual):** o Minas Shopping é a **praça de alimentação** do modelo que a dona do jogo mandou (`arte/referencias/minas_shopping_praca_modelo.png`): duas lojas de lanche no fundo, embaixo do teto de madeira com as luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas, o corredor livre no meio e os canteiros na direita. A montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás e poltronas) saiu do jogo.
+> 🍔 **Decisão (versão atual):** o Minas Shopping é a **praça de alimentação** do modelo que a dona do jogo mandou (`arte/referencias/minas_shopping_praca_modelo.png`): duas lojas de lanche no fundo, embaixo do teto de madeira com as luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira viradas para elas (duas atrás e uma de cada lado) em duas colunas, o corredor livre no meio e os canteiros na direita. A montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás e poltronas) saiu do jogo.
 
 ![Modelo da praça de alimentação: é assim que o shopping deve ficar](imagens/encontro-praca-modelo.jpg)
 *Modelo da praça de alimentação: é assim que o shopping deve ficar*
@@ -3497,7 +3497,7 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 | loja frango | `SHOP_PRACA_LOJA_FRANGO` | 4,89 m de largura | fundo, metade direita, até a coluna |
 | mesa redonda | `SHOP_PRACA_MESA_REDONDA` | 1,1 m de diâmetro | 6 mesas: x 84 e 276; y 300, 396 e 492 |
 | cadeira madeira front | `SHOP_PRACA_CADEIRA_MADEIRA_FRONT` | 0,95 m de altura | duas atrás de cada mesa |
-| cadeira madeira right /  left | `SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT` | 0,95 m de altura | na frente de cada mesa, viradas para ela |
+| cadeira madeira right /  left | `SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT` | 0,95 m de altura | uma de cada lado da mesa, na altura dela, viradas para o tampo |
 | cadeira madeira back | `SHOP_PRACA_CADEIRA_MADEIRA_BACK` | 0,95 m de altura | guardada (o modelo não usa) |
 | canteiro retangular | `SHOP_PRACA_CANTEIRO_RETANGULAR` | 2,6 m de largura | dois na borda direita |
 

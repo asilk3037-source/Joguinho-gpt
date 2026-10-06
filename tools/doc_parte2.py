@@ -498,7 +498,7 @@ def escrever_arte(w, img, inv):
 
     w("### 22.11 Minas Shopping: a praça de alimentação")
     w()
-    w("> 🍔 **Decisão (versão atual):** o Minas Shopping é a **praça de alimentação** do modelo que a dona do jogo mandou (`arte/referencias/minas_shopping_praca_modelo.png`): duas lojas de lanche no fundo, embaixo do teto de madeira com as luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas, o corredor livre no meio e os canteiros na direita. A montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás e poltronas) saiu do jogo.")
+    w("> 🍔 **Decisão (versão atual):** o Minas Shopping é a **praça de alimentação** do modelo que a dona do jogo mandou (`arte/referencias/minas_shopping_praca_modelo.png`): duas lojas de lanche no fundo, embaixo do teto de madeira com as luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira viradas para elas (duas atrás e uma de cada lado) em duas colunas, o corredor livre no meio e os canteiros na direita. A montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás e poltronas) saiu do jogo.")
     w()
     img("encontro-praca-modelo", "Modelo da praça de alimentação: é assim que o shopping deve ficar")
     w("**Como é montado:** a cena continua na base de **360×640** (9:16, em pé). O fundo `shopping_base.webp` tem o teto de madeira e a coluna recortados do modelo e o piso de losangos; por cima o jogo desenha as peças da praça, cada uma na régua de tamanhos (a mesma da fazenda: altura real em relação à Line de 1,60 m), e ordena tudo pela linha do chão, então a Line e a Bell passam na frente e atrás das mesas. As mesas são **sólidas** (não dá para atravessar) e o fundo das lojas fica fora da área andável.")
@@ -510,7 +510,7 @@ def escrever_arte(w, img, inv):
         ("SHOP_PRACA_LOJA_FRANGO", "4,89 m de largura", "fundo, metade direita, até a coluna"),
         ("SHOP_PRACA_MESA_REDONDA", "1,1 m de diâmetro", "6 mesas: x 84 e 276; y 300, 396 e 492"),
         ("SHOP_PRACA_CADEIRA_MADEIRA_FRONT", "0,95 m de altura", "duas atrás de cada mesa"),
-        ("SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT", "0,95 m de altura", "na frente de cada mesa, viradas para ela"),
+        ("SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT", "0,95 m de altura", "uma de cada lado da mesa, na altura dela, viradas para o tampo"),
         ("SHOP_PRACA_CADEIRA_MADEIRA_BACK", "0,95 m de altura", "guardada (o modelo não usa)"),
         ("SHOP_PRACA_CANTEIRO_RETANGULAR", "2,6 m de largura", "dois na borda direita"),
     ]:

@@ -68,16 +68,16 @@
   // O shopping também é montado assim: a base (piso do item 218 com o teto de madeira e a coluna do
   // modelo da praça de alimentação) e, por cima, as lojas, as mesas e os canteiros da praça.
 
-  // Mesa redonda da praça com 4 cadeiras como no modelo: duas de frente atrás da mesa e, na frente,
-  // uma virada para a direita (à esquerda) e outra para a esquerda (à direita). `solido` é o pé do
-  // grupo (largura e fundo, a partir da base) onde a Line não entra.
+  // Mesa redonda da praça com 4 cadeiras viradas para ela: duas de frente atrás da mesa e uma de cada
+  // lado, na altura da mesa (a da esquerda virada para a direita, a da direita virada para a esquerda).
+  // `solido` é o pé do grupo (largura e fundo, a partir da base) onde a Line não entra.
   function mesaComCadeiras(x, base) {
     return [
       { nome: 'shop_praca_cadeira_madeira_front', x: x - 11, base: base - 12 },
       { nome: 'shop_praca_cadeira_madeira_front', x: x + 11, base: base - 12 },
-      { nome: 'shop_praca_mesa_redonda', x, base, solido: [64, 26] },
-      { nome: 'shop_praca_cadeira_madeira_right', x: x - 17, base: base + 8 },
-      { nome: 'shop_praca_cadeira_madeira_left', x: x + 17, base: base + 8 },
+      { nome: 'shop_praca_cadeira_madeira_right', x: x - 23, base: base - 3 },
+      { nome: 'shop_praca_cadeira_madeira_left', x: x + 23, base: base - 3 },
+      { nome: 'shop_praca_mesa_redonda', x, base, solido: [72, 26] },
     ];
   }
 
