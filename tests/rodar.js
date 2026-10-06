@@ -148,10 +148,11 @@ teste('prólogo: playground montado em peças e o soco vira 038', async (h) => {
   for (let i = 0; i < 80 && (await h.ev(() => LB.jogo.encontro.etapa)) !== 'soco'; i++) await h.espera(150);
   const r = await h.ev(() => {
     const pecas = LB.encontro.objetos(LB.jogo);
-    const nomes = ['playground_fundo', 'playground_painel_premios', 'playground_fliperama_rosa', 'playground_fliperama_azul', 'playground_balcao_premios', 'playground_maquina_soco_000', 'playground_maquina_soco_038'];
+    const nomes = ['playground_fundo', 'playground_painel_premios', 'playground_maquina_fliperama_rosa', 'playground_maquina_fliperama_azul', 'playground_balcao_premios_rosa',
+      'playground_maquina_garra_rosa', 'playground_maquina_capsulas_rosa', 'playground_parede_neon_coracao_rosa', 'playground_parede_guirlanda_ingressos', 'playground_maquina_soco_000', 'playground_maquina_soco_038'];
     return { pecas: pecas.length, faltando: nomes.filter((n) => !LB.personagem(n)), quadros: [SPRITES.LINE_PUNCH_MACHINE.count, SPRITES.BELL_LAUGH_AT_LINE.count] };
   });
-  igual(r.pecas, 5, 'peças do playground');
+  igual(r.pecas, 16, 'peças do playground');
   igual(r.faltando, [], 'artes do playground carregadas');
   igual(r.quadros, [6, 6], 'quadros do soco e da risada');
   await h.ev(() => LB.jogo.iniciarCena(LB.HISTORIA.encontroSoco));
@@ -453,10 +454,11 @@ teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping
   const fundo = await h.ev(() => !!LB.personagem('shopping_base') || new Promise((ok) => setTimeout(() => ok(!!LB.personagem('shopping_base')), 1500)));
   afirmar(fundo, 'base do shopping (chão e teto) carregada');
   const pecas = await h.ev(() => { const j = LB.jogo; j.iniciarArea('shopping', null, true); return LB.encontro.objetos(j).length; });
-  igual(pecas, 34, 'peças do shopping (2 lojas, 6 mesas com 4 cadeiras e 2 canteiros)');
+  igual(pecas, 36, 'peças do shopping (2 lojas, pilar, 6 mesas com 4 cadeiras, bandejas e 2 canteiros)');
   const semMedida = await h.ev(() => {
     const L = LB.LARGURA_OBJETOS, nomes = ['shop_praca_loja_hamburguer', 'shop_praca_loja_frango', 'shop_praca_mesa_redonda', 'shop_praca_canteiro_retangular',
-      'shop_praca_cadeira_madeira_front', 'shop_praca_cadeira_madeira_back', 'shop_praca_cadeira_madeira_left', 'shop_praca_cadeira_madeira_right'];
+      'shop_praca_cadeira_madeira_front', 'shop_praca_cadeira_madeira_back', 'shop_praca_cadeira_madeira_left', 'shop_praca_cadeira_madeira_right',
+      'shop_praca_mesa_bk', 'shop_praca_pilar_branco', 'shop_praca_lixeira_bandejas', 'shop_praca_canteiro_curto'];
     return nomes.filter((n) => !L[n] || !LB.OBJETOS[n]);
   });
   igual(semMedida.join(','), '', 'toda peça da praça de alimentação tem arte e medida na régua');

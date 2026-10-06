@@ -19,7 +19,7 @@
   for (const [id, m] of Object.entries(MAPAS)) {
     const ini = id === 'shopping' ? P(178, 528) : id === 'playground' ? P(42, 520) : P(25, 520);
     // No shopping o fundo é a fila de lojas: só se anda do balcão para baixo.
-    const lim = id === 'shopping' ? [LIMITES[0], 186 * K, LIMITES[2], LIMITES[3]] : LIMITES;
+    const lim = id === 'shopping' ? [LIMITES[0], 200 * K, LIMITES[2], LIMITES[3]] : LIMITES;
     LB.MAPAS[id] = Object.assign({ tema: 'encontro', linhas: LINHAS, saidas: [], placas: {}, limites: lim, semBanner: true, inicio: { x: ini.x / TILE, y: ini.y / TILE, dir: 'BACK' } }, m);
   }
 
@@ -71,33 +71,52 @@
   // Mesa redonda da praça com 4 cadeiras viradas para ela: duas de frente atrás da mesa e uma de cada
   // lado, na altura da mesa (a da esquerda virada para a direita, a da direita virada para a esquerda).
   // `solido` é o pé do grupo (largura e fundo, a partir da base) onde a Line não entra.
-  function mesaComCadeiras(x, base) {
+  function mesaComCadeiras(x, base, mesa) {
     return [
       { nome: 'shop_praca_cadeira_madeira_front', x: x - 11, base: base - 12 },
       { nome: 'shop_praca_cadeira_madeira_front', x: x + 11, base: base - 12 },
       { nome: 'shop_praca_cadeira_madeira_right', x: x - 23, base: base - 3 },
       { nome: 'shop_praca_cadeira_madeira_left', x: x + 23, base: base - 3 },
-      { nome: 'shop_praca_mesa_redonda', x, base, solido: [72, 26] },
+      { nome: mesa || 'shop_praca_mesa_redonda', x, base, solido: [72, 26] },
     ];
   }
 
   const PECAS = {
+    // Playground com as peças separadas (zip PLAYGROUND_ITENS_SEPARADOS): neon de coração, guirlanda e
+    // pôster na parede do fundo; neon de raio e de estrela saindo das paredes do lado (o suporte fica na
+    // parede); garra, balcão de prêmios, cápsulas, caixa de som e planta no fundo; fliperamas na esquerda;
+    // lixeira e banco na direita. O caminho da história (entrada, máquina de soco e saída) fica livre.
     playground: [
+      { nome: 'playground_parede_guirlanda_ingressos', x: 180, base: 70, parede: true },
       { nome: 'playground_painel_premios', x: 180, base: 122, parede: true },
-      { nome: 'playground_fliperama_rosa', x: 62, base: 235, flip: true },
-      { nome: 'playground_balcao_premios', x: 268, base: 228 },
-      { nome: 'playground_fliperama_azul', x: 66, base: 398 },
+      { nome: 'playground_parede_neon_coracao_rosa', x: 86, base: 112, parede: true },
+      { nome: 'playground_parede_poster_espacial', x: 274, base: 120, parede: true },
+      { nome: 'playground_parede_neon_raio_bicolor', x: 34, base: 215, parede: true },
+      { nome: 'playground_parede_neon_estrela_azul', x: 326, base: 225, parede: true, flip: true },
+      { nome: 'playground_parede_caixa_som_roxa', x: 52, base: 158 },
+      { nome: 'playground_maquina_garra_rosa', x: 96, base: 170 },
+      { nome: 'playground_balcao_premios_rosa', x: 188, base: 168 },
+      { nome: 'playground_maquina_capsulas_rosa', x: 270, base: 166 },
+      { nome: 'playground_decoracao_planta_vaso_roxo', x: 312, base: 160 },
+      { nome: 'playground_maquina_fliperama_rosa', x: 54, base: 262 },
+      { nome: 'playground_maquina_fliperama_azul', x: 54, base: 345 },
+      { nome: 'playground_decoracao_lixeira_roxa', x: 330, base: 300 },
+      { nome: 'playground_movel_banco_azul', x: 300, base: 385 },
       { nome: 'playground_maquina_soco', x: 231, base: 438, frente: 14 },
     ],
-    // Praça de alimentação no modelo da arte/referencias/minas_shopping_praca_modelo.png: as duas lojas
-    // no fundo (o teto de madeira e a coluna estão na base), 6 mesas com 4 cadeiras em duas colunas e
-    // os canteiros na direita. O corredor do meio fica livre para a história.
+    // Praça de alimentação no modelo da arte/referencias/minas_shopping_praca_modelo.png: a base é a do zip
+    // de essenciais (teto de madeira e parede vazia), as duas lojas apoiadas na parede, o pilar branco na
+    // frente da coluna, 6 mesas com 4 cadeiras (uma com o lanche do BK), a estação de bandejas e os
+    // canteiros na direita. O corredor do meio fica livre para a história.
     shopping: [
-      { nome: 'shop_praca_loja_hamburguer', x: 81.5, base: 166 },
-      { nome: 'shop_praca_loja_frango', x: 245, base: 166 },
-      ...[[84, 300], [276, 300], [84, 396], [276, 396], [84, 492], [276, 492]].flatMap(([x, b]) => mesaComCadeiras(x, b)),
-      { nome: 'shop_praca_canteiro_retangular', x: 352, base: 262, solido: [70, 16] },
-      { nome: 'shop_praca_canteiro_retangular', x: 352, base: 345, solido: [70, 16] },
+      { nome: 'shop_praca_loja_hamburguer', x: 112, base: 186 },
+      { nome: 'shop_praca_loja_frango', x: 270, base: 186 },
+      { nome: 'shop_praca_pilar_branco', x: 346, base: 196 },
+      ...[[84, 300], [276, 300], [84, 396], [84, 492], [276, 492]].flatMap(([x, b]) => mesaComCadeiras(x, b)),
+      ...mesaComCadeiras(276, 396, 'shop_praca_mesa_bk'),
+      { nome: 'shop_praca_lixeira_bandejas', x: 330, base: 236, solido: [44, 14] },
+      { nome: 'shop_praca_canteiro_retangular', x: 352, base: 300, solido: [70, 16] },
+      { nome: 'shop_praca_canteiro_curto', x: 350, base: 445, solido: [56, 14] },
     ],
   };
   // Onde a Line fica para socar: o punho do quadro do golpe alcança o saco da máquina.

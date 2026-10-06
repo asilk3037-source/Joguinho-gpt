@@ -84,10 +84,16 @@ MEDIDAS = {
     "shop_praca_mesa_redonda": ("l", 1.1), "shop_praca_canteiro_retangular": ("l", 2.6),
     "shop_praca_cadeira_madeira_front": ("a", 0.95), "shop_praca_cadeira_madeira_back": ("a", 0.95),
     "shop_praca_cadeira_madeira_left": ("a", 0.95), "shop_praca_cadeira_madeira_right": ("a", 0.95),
+    "shop_praca_mesa_bk": ("l", 1.1), "shop_praca_lixeira_bandejas": ("l", 1.4), "shop_praca_canteiro_curto": ("l", 1.6),
+    "shop_praca_pilar_branco": ("a", 6.5),
     # Playground do primeiro encontro
-    "playground_fliperama_rosa": ("a", 1.8), "playground_fliperama_azul": ("a", 1.8),
-    "playground_maquina_soco_000": ("a", 2.2), "playground_maquina_soco_038": ("a", 2.2),
-    "playground_balcao_premios": ("l", 2.6), "playground_painel_premios": ("l", 4.0),
+    "playground_maquina_soco_000": ("a", 2.2), "playground_maquina_soco_038": ("a", 2.2), "playground_painel_premios": ("l", 4.0),
+    # Peças separadas do playground (zip PLAYGROUND_ITENS_SEPARADOS): no lugar dos fliperamas e do balcão antigos.
+    "playground_maquina_fliperama_rosa": ("a", 1.8), "playground_maquina_fliperama_azul": ("a", 1.8), "playground_maquina_garra_rosa": ("a", 1.9),
+    "playground_maquina_capsulas_rosa": ("a", 1.4), "playground_balcao_premios_rosa": ("l", 2.6), "playground_movel_banco_azul": ("l", 1.8),
+    "playground_decoracao_lixeira_roxa": ("a", 0.9), "playground_decoracao_planta_vaso_roxo": ("a", 1.1), "playground_parede_caixa_som_roxa": ("a", 1.0),
+    "playground_parede_neon_coracao_rosa": ("l", 1.0), "playground_parede_neon_estrela_azul": ("a", 1.1), "playground_parede_neon_raio_bicolor": ("a", 1.2),
+    "playground_parede_poster_espacial": ("a", 1.1), "playground_parede_guirlanda_ingressos": ("l", 4.0),
 }
 
 

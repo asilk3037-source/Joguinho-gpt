@@ -80,6 +80,8 @@ w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, 
 w()
 w("> 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.")
 w()
+w("> 🕹️ **Mais peças no shopping e no playground:** a praça de alimentação ganhou a **base nova** (teto de madeira, parede das lojas e piso), o **pilar branco**, a **mesa com o lanche do BK**, a **estação de bandejas** e o **canteiro curto**; as cadeiras ficam viradas para as mesas. O playground ganhou **14 peças**: máquina de garra, máquina de cápsulas, balcão de prêmios e fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster espacial e guirlanda de ingressos (seção 5.2). O documento de pendências ganhou o **resumo de tudo que falta** e a seção de **efeitos especiais**.")
+w()
 w("> ⚡ **Jogo mais leve:** a troca de mapa não trava mais (a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora é instantâneo), porque o chão é desenhado em pedaços, só o que aparece na tela. Sombras das nuvens, vinhetas e o brilho da água e da lava ficam prontos em vez de refeitos a cada quadro, e os fundos já saem decodificados do carregamento. A qualidade da imagem não muda (seção 26.7).")
 w()
 w("> 🍔 **Minas Shopping virou a praça de alimentação do modelo:** duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.")
@@ -506,25 +508,35 @@ w("A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.")
 w()
 w("**Playground** (pronto, montado em peças)")
 w("- **Fundo:** a sala vazia do item 235 (2160×3840): teto com luzes neon rosa e azul, parede roxa ao fundo, paredes laterais com portas iluminadas, piso xadrez roxo brilhante e a saída por um corredor, embaixo à direita.")
-w("- **Peças:** cada uma é um PNG à parte (itens 236 e 237), no tamanho da **régua** (medida real × a altura da Line, seção 23.6) e na posição do guia do item 240. O jogo desenha cada peça pela linha em que ela encosta no chão, então a Line e a Bell passam na frente e atrás de tudo.")
+w("- **Peças:** cada uma é um PNG à parte (itens 236 e 237 e o zip `PLAYGROUND_ITENS_SEPARADOS`), no tamanho da **régua** (medida real × a altura da Line, seção 23.6). Os fliperamas e o balcão de prêmios novos entraram no lugar dos antigos. O jogo desenha cada peça pela linha em que ela encosta no chão, então a Line e a Bell passam na frente e atrás de tudo.")
 w("- **Máquina de soco:** a do item 237, com o placar **000** antes do soco e **038** no impacto. A arte chegou só com o 038; o 000 foi feito copiando o “0” da própria arte por cima do “3” e do “8”.")
 w("- **Animações:** `LINE_PUNCH_MACHINE` (item 238) e `BELL_LAUGH_AT_LINE` (item 239), seis quadros cada, já sem a máquina desenhada junto.")
 w()
 w("#### Playground: o cenário no jogo")
 w()
-img("encontro-playground", "Playground montado em peças, com cada parte numerada, e o placar antes e depois do soco")
-w("| # | Parte | Arte | Tamanho (régua) | Onde fica (tela de 360×640) |")
-w("|---|---|---|---|---|")
+img("encontro-playground", "Playground montado em peças: neons, guirlanda e pôster na parede, máquinas no fundo, fliperamas à esquerda e o banco à direita")
+w("| Parte | Arte | Tamanho (régua) | Onde fica (tela de 360×640) |")
+w("|---|---|---|---|")
 for l in [
-    ("1", "Painel de prêmios", "`PLAYGROUND_PAINEL_PREMIOS`", "4 m de largura", "na parede do fundo, ao centro (x 180, base 122)"),
-    ("2", "Fliperama rosa", "`PLAYGROUND_FLIPERAMA_ROSA`", "1,80 m de altura", "à esquerda, no alto (x 62, base 235); **espelhado** para a tela olhar para dentro da sala"),
-    ("3", "Balcão de prêmios", "`PLAYGROUND_BALCAO_PREMIOS`", "2,60 m de largura", "à direita, no alto (x 268, base 228)"),
-    ("4", "Fliperama azul", "`PLAYGROUND_FLIPERAMA_AZUL`", "1,80 m de altura", "à esquerda, no meio (x 66, base 398)"),
-    ("5", "Máquina de soco", "`PLAYGROUND_MAQUINA_SOCO_000` / `_038`", "2,20 m de altura", "no meio, à direita (x 231, base 438); a plataforma fica sob os pés da Line"),
-    ("6", "Line", "`LINE_PUNCH_MACHINE`", "—", "em frente ao saco (x 203, y 428): o punho do quadro do golpe alcança o saco"),
-    ("7", "Bell", "`BELL_LAUGH_AT_LINE`", "—", "olhando, à esquerda (x 135, y 442)"),
-    ("8", "Entrada", "—", "—", "embaixo, à esquerda (as duas chegam por aqui)"),
-    ("9", "Saída", "—", "—", "pelo corredor, embaixo à direita"),
+    ("Guirlanda de ingressos", "`PLAYGROUND_PAREDE_GUIRLANDA_INGRESSOS`", "4 m de largura", "no alto da parede do fundo (x 180, base 70)"),
+    ("Painel de prêmios", "`PLAYGROUND_PAINEL_PREMIOS`", "4 m de largura", "na parede do fundo, ao centro (x 180, base 122)"),
+    ("Neon de coração", "`PLAYGROUND_PAREDE_NEON_CORACAO_ROSA`", "1 m de largura", "parede do fundo, à esquerda (x 86, base 112)"),
+    ("Pôster espacial", "`PLAYGROUND_PAREDE_POSTER_ESPACIAL`", "1,10 m de altura", "parede do fundo, à direita (x 274, base 120)"),
+    ("Neon de raio", "`PLAYGROUND_PAREDE_NEON_RAIO_BICOLOR`", "1,20 m de altura", "saindo da parede esquerda (x 34, base 215); o suporte fica na parede"),
+    ("Neon de estrela", "`PLAYGROUND_PAREDE_NEON_ESTRELA_AZUL`", "1,10 m de altura", "saindo da parede direita (x 326, base 225), **espelhado** para o suporte ficar na parede"),
+    ("Caixa de som", "`PLAYGROUND_PAREDE_CAIXA_SOM_ROXA`", "1 m de altura", "canto do fundo, à esquerda (x 52, base 158)"),
+    ("Máquina de garra", "`PLAYGROUND_MAQUINA_GARRA_ROSA`", "1,90 m de altura", "fundo, à esquerda (x 96, base 170)"),
+    ("Balcão de prêmios", "`PLAYGROUND_BALCAO_PREMIOS_ROSA`", "2,60 m de largura", "fundo, ao centro, embaixo do painel (x 188, base 168)"),
+    ("Máquina de cápsulas", "`PLAYGROUND_MAQUINA_CAPSULAS_ROSA`", "1,40 m de altura", "fundo, à direita (x 270, base 166)"),
+    ("Planta no vaso", "`PLAYGROUND_DECORACAO_PLANTA_VASO_ROXO`", "1,10 m de altura", "canto do fundo, à direita (x 312, base 160)"),
+    ("Fliperama rosa", "`PLAYGROUND_MAQUINA_FLIPERAMA_ROSA`", "1,80 m de altura", "à esquerda, no alto (x 54, base 262)"),
+    ("Fliperama azul", "`PLAYGROUND_MAQUINA_FLIPERAMA_AZUL`", "1,80 m de altura", "à esquerda, no meio (x 54, base 345)"),
+    ("Lixeira", "`PLAYGROUND_DECORACAO_LIXEIRA_ROXA`", "0,90 m de altura", "à direita (x 330, base 300)"),
+    ("Banco", "`PLAYGROUND_MOVEL_BANCO_AZUL`", "1,80 m de largura", "à direita, antes da saída (x 300, base 385)"),
+    ("Máquina de soco", "`PLAYGROUND_MAQUINA_SOCO_000` / `_038`", "2,20 m de altura", "no meio, à direita (x 231, base 438); a plataforma fica sob os pés da Line"),
+    ("Line", "`LINE_PUNCH_MACHINE`", "—", "em frente ao saco (x 203, y 428): o punho do quadro do golpe alcança o saco"),
+    ("Bell", "`BELL_LAUGH_AT_LINE`", "—", "olhando, à esquerda (x 135, y 442)"),
+    ("Entrada e saída", "—", "—", "entram embaixo, à esquerda; saem pelo corredor, embaixo à direita"),
 ]:
     w("| " + " | ".join(l) + " |")
 w()
@@ -1251,7 +1263,7 @@ w()
 w("| Área | Já usa arte (temporária) | Ainda desenhado no código (precisa de arte) |")
 w("|---|---|---|")
 w("| Minas Shopping (prólogo) | ilustração do shopping, vinda do HTML do primeiro encontro (temporária; a final segue a foto-modelo da seção 5.2) | — |")
-w("| Playground (prólogo) | tudo: fundo, fliperamas, painel, balcão de prêmios e máquina de soco com placar (itens 235 a 237) | — |")
+w("| Playground (prólogo) | tudo: fundo e 16 peças (máquinas, fliperamas, painel e balcão de prêmios, neons, pôster, guirlanda, banco, planta, lixeira e máquina de soco com placar) | — |")
 w("| Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |")
 w("| Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |")
 w("| Floresta | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras |")

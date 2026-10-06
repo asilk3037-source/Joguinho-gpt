@@ -501,7 +501,7 @@ def escrever_arte(w, img, inv):
     w("> 🍔 **Decisão (versão atual):** o Minas Shopping é a **praça de alimentação** do modelo que a dona do jogo mandou (`arte/referencias/minas_shopping_praca_modelo.png`): duas lojas de lanche no fundo, embaixo do teto de madeira com as luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira viradas para elas (duas atrás e uma de cada lado) em duas colunas, o corredor livre no meio e os canteiros na direita. A montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás e poltronas) saiu do jogo.")
     w()
     img("encontro-praca-modelo", "Modelo da praça de alimentação: é assim que o shopping deve ficar")
-    w("**Como é montado:** a cena continua na base de **360×640** (9:16, em pé). O fundo `shopping_base.webp` tem o teto de madeira e a coluna recortados do modelo e o piso de losangos; por cima o jogo desenha as peças da praça, cada uma na régua de tamanhos (a mesma da fazenda: altura real em relação à Line de 1,60 m), e ordena tudo pela linha do chão, então a Line e a Bell passam na frente e atrás das mesas. As mesas são **sólidas** (não dá para atravessar) e o fundo das lojas fica fora da área andável.")
+    w("**Como é montado:** a cena continua na base de **360×640** (9:16, em pé). O fundo `shopping_base.webp` é a base do zip de essenciais (`SHOP_PRACA_BASE_PISO_PAREDE`: teto de madeira, parede vazia das lojas e piso); por cima o jogo desenha as peças da praça, cada uma na régua de tamanhos (a mesma da fazenda: altura real em relação à Line de 1,60 m), e ordena tudo pela linha do chão, então a Line e a Bell passam na frente e atrás das mesas. As mesas são **sólidas** (não dá para atravessar) e o fundo das lojas fica fora da área andável.")
     w()
     w("| Peça | Código | Medida na régua | Onde fica |")
     w("|---|---|---|---|")
@@ -512,7 +512,11 @@ def escrever_arte(w, img, inv):
         ("SHOP_PRACA_CADEIRA_MADEIRA_FRONT", "0,95 m de altura", "duas atrás de cada mesa"),
         ("SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT", "0,95 m de altura", "uma de cada lado da mesa, na altura dela, viradas para o tampo"),
         ("SHOP_PRACA_CADEIRA_MADEIRA_BACK", "0,95 m de altura", "guardada (o modelo não usa)"),
-        ("SHOP_PRACA_CANTEIRO_RETANGULAR", "2,6 m de largura", "dois na borda direita"),
+        ("SHOP_PRACA_MESA_BK", "1,1 m de diâmetro", "a mesa do meio da coluna direita, com o lanche do BK"),
+        ("SHOP_PRACA_PILAR_BRANCO", "6,5 m de altura", "na frente da coluna da base, à direita das lojas"),
+        ("SHOP_PRACA_LIXEIRA_BANDEJAS", "1,4 m de largura", "à direita, logo abaixo das lojas"),
+        ("SHOP_PRACA_CANTEIRO_RETANGULAR", "2,6 m de largura", "na borda direita"),
+        ("SHOP_PRACA_CANTEIRO_CURTO", "1,6 m de largura", "na borda direita, mais embaixo"),
     ]:
         w(f"| {cod.split('_', 2)[2].replace('_', ' ').lower()} | `{cod}` | {med} | {onde} |")
     w()
@@ -521,8 +525,8 @@ def escrever_arte(w, img, inv):
     w("| Medida | Valor |")
     w("|---|---|")
     w("| Base de coordenadas | 360×640 (9:16, em pé); no mundo, 480×853 unidades |")
-    w("| Fundo (teto, coluna e lojas) | y 0–166 da base; ninguém anda acima de y 186 |")
-    w("| Área andável | x 28–332, y 186–545, menos o pé de cada mesa |")
+    w("| Fundo (teto, parede e lojas) | y 0–186 da base; ninguém anda acima de y 200 |")
+    w("| Área andável | x 28–332, y 200–545, menos o pé de cada mesa |")
     w("| Pontos da história (base) | Line começa (178,528) · Bell espera (182,355) · Line no lanche (142,446) · Bell no lanche (218,446) · lanche do BK (180,446) · saída por baixo (180,610) |")
     w("| Closes (câmera 1,6×) | o encontro, perto de (159,325), e o lanche, perto de (180,416) |")
     w("| Telas largas | o jogo preenche os lados com a própria imagem borrada |")
@@ -549,7 +553,7 @@ def escrever_arte(w, img, inv):
     w("Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da fazenda: o jogo desenha a imagem por baixo e as casas, árvores e objetos por cima.")
     w()
     img("shopping-em-pecas", "Minas Shopping: a praça de alimentação montada em peças")
-    w("O **Minas Shopping** é montado em peças, como o playground: a base em pé com o teto de madeira e, por cima, as duas lojas, as seis mesas com cadeiras e os canteiros da praça de alimentação (34 peças, seção 22.11).")
+    w("O **Minas Shopping** é montado em peças, como o playground: a base da praça (teto de madeira, parede das lojas e piso) e, por cima, as duas lojas, o pilar branco, as seis mesas com cadeiras (uma com o lanche do BK), a estação de bandejas e os canteiros (36 peças, seção 22.11).")
     w()
     escrever_dimensoes_cenarios(w, img, M)
     w("### 22.10 Ordem sugerida para produzir")

@@ -4,6 +4,22 @@
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
+## Resumo: todas as artes que faltam
+
+| Seção | O que é | Quantas faltam |
+|---|---|---|
+| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **23** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os moradores e as **armaduras vestidas**) | **293** |
+| 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
+| 5. Botões e controles | ícones dos botões | **11** |
+| 6. HUD do jogador | peças do HUD | **8** |
+| 7. Telas | telas cheias | **13** |
+| 8. Mapas e cenários | pinturas das fases e peças de cenário | **14** |
+| 9. Efeitos especiais | efeitos especiais (combate, magia, itens, clima, romance, chefes) | **47** |
+
+**Armaduras:** sim, estão no documento. A **Line** tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a **Bell** tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem **vestida** em todas as animações de movimento e luta (seção 3: **69** animações da Line e **63** da Bell com armadura) e do **ícone** (seção 4.1). Os **efeitos especiais** estão na seção 9.
+
+
 ## 1. Regras (valem para toda arte)
 
 ### 1.1 Estilo
@@ -624,15 +640,101 @@ O shopping agora segue o **modelo da praça de alimentação** (`arte/referencia
 *Minas Shopping: a praça de alimentação montada em peças*
 
 
-- **Já no jogo ✅:** `SHOP_PRACA_LOJA_HAMBURGUER`, `SHOP_PRACA_LOJA_FRANGO`, `SHOP_PRACA_MESA_REDONDA`, `SHOP_PRACA_CADEIRA_MADEIRA`, `SHOP_PRACA_CANTEIRO_RETANGULAR` (a cadeira nos 4 lados).
-- **Pode melhorar ✏️:** um **teto/fundo em pixel art** do mesmo tamanho da base (1080×1920 ou 2160×3840), sem lojas nem móveis: hoje o teto de madeira e a coluna foram recortados do modelo. E o casal **sentado numa das mesas** comendo (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, seção 2.2), para o lanche acontecer na mesa da praça e não no corredor.
+- **Já no jogo ✅:** `SHOP_PRACA_LOJA_HAMBURGUER`, `SHOP_PRACA_LOJA_FRANGO`, `SHOP_PRACA_MESA_REDONDA`, `SHOP_PRACA_MESA_BK`, `SHOP_PRACA_CADEIRA_MADEIRA`, `SHOP_PRACA_PILAR_BRANCO`, `SHOP_PRACA_LIXEIRA_BANDEJAS`, `SHOP_PRACA_CANTEIRO_RETANGULAR`, `SHOP_PRACA_CANTEIRO_CURTO` (a cadeira nos 4 lados).
+- A **base** (`SHOP_PRACA_BASE_PISO_PAREDE`: teto de madeira, parede vazia e piso) também já está no jogo ✅.
+- **Pode melhorar ✏️:** o casal **sentado numa das mesas** comendo (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, seção 2.2), para o lanche acontecer na mesa do BK da praça e não no corredor.
 - No modelo as mesas e cadeiras são quase do tamanho da Line; no jogo seguem a **régua** (mesa de 1,1 m, cadeira de 0,95 m).
+
+O **playground** também ganhou as peças separadas (garra, cápsulas, balcão de prêmios, fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster e guirlanda) ✅.
 
 ### 8.3 Túnel
 
 A ilustração do túnel (onde acontece o beijo) ainda é a do HTML do primeiro encontro: falta a **versão final em 2160×3840**, em peças como o playground (base vazia + lampiões, trepadeiras e corações de luz à parte).
 
-## 9. Ordem sugerida
+## 9. Efeitos especiais (FX)
+
+Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_DRAGON_WEAK_POINT`, `FX_DUST`, `FX_EMBERS`, `FX_EXPLOSION`, `FX_FIRE`, `FX_FIRE_LIGHT`, `FX_HEARTS`, `FX_IMPACT`, `FX_SMOKE`, `FX_SPARKS`, `FX_SWORD_TRAIL`, `FX_TEARS`. Os efeitos abaixo ainda são **desenhados no código** (bolinhas, riscos e brilhos simples); cada um entra no lugar do desenho quando a arte chegar com o código.
+
+**Formato:** animação em prancha horizontal, células quadradas de **256 px** (efeitos grandes, como explosão, magia e chefes: **512 px**), fundo transparente, o centro do efeito no meio da célula. **6 a 10 quadros** (os que repetem, marcados com 🔁, precisam fechar o ciclo). Pixel art com contorno e luz no mesmo estilo dos 20 primeiros itens; brilho por cor, sem desfoque.
+
+### Combate (9)
+
+| Código | O que mostra | Hoje no jogo | Quadros |
+|---|---|---|---|
+| `FX_SLASH_RIGHT / _LEFT / _FRONT / _BACK` | Rastro da espada nas quatro direções (o arco branco do golpe) | riscos brancos | 6 |
+| `FX_SPIN_SLASH` | Giro da espada (segurar o ataque): círculo de luz em volta da Line | arco desenhado | 8 🔁 |
+| `FX_PUNCH_HIT` | Soco sem espada acertando: estrelinha de impacto | faíscas | 6 |
+| `FX_HIT_ENEMY` | Inimigo levando golpe: clarão rápido e estilhaços | faíscas e clarão branco | 6 |
+| `FX_BLOCK_SPARK` | Defesa: faísca no escudo quando bloqueia | faíscas | 6 |
+| `FX_DODGE_TRAIL` | Esquiva: rastro da silhueta (rosa para a Line, lilás para a Bell) | nenhum | 6 |
+| `FX_JUMP_DUST / FX_LAND_DUST` | Poeira ao pular e ao cair | poeira desenhada | 6 |
+| `FX_ENEMY_DEFEAT` | Inimigo se desfazendo em fumaça e brilhos | sombra e brilhos | 8 |
+| `FX_PLAYER_HURT` | A heroína levando dano: estrelinhas e pisca vermelho | pisca | 6 |
+
+### Magia (7)
+
+| Código | O que mostra | Hoje no jogo | Quadros |
+|---|---|---|---|
+| `FX_LIGHT_RAY_START / _LOOP / _END` | Raio de Luz da Line: carga, feixe que repete e o fim | feixe desenhado | 6 / 8 🔁 / 6 |
+| `FX_LIGHT_RAY_HIT` | Ponta do raio acertando um inimigo ou um cristal | brilhos | 6 |
+| `FX_SONG_NOTES` | Canção da Bell: notas musicais e ondas saindo dela | notas desenhadas | 8 🔁 |
+| `FX_STAR_SHOT` | Estrela da Bell voando (o tiro) e o estouro no acerto | estrela desenhada | 6 + 6 |
+| `FX_FAN_GUST` | Leque da Bell: rajada de vento em arco | riscos de vento | 8 |
+| `FX_MANA_RESTORE` | Magia voltando: gotas azuis subindo pela personagem | brilhos azuis | 8 |
+| `FX_HEAL` | Cura (poção, fonte): corações e luz verde-rosa subindo | corações | 8 |
+
+### Itens e mundo (10)
+
+| Código | O que mostra | Hoje no jogo | Quadros |
+|---|---|---|---|
+| `FX_ITEM_PICKUP` | Pegar um item ou documento: brilho em estrela | brilhos | 6 |
+| `FX_COIN_COLLECT` | Moeda sendo pega: brilho dourado e +1 | brilhos | 6 |
+| `FX_CHEST_OPEN` | Baú abrindo: luz saindo de dentro | brilhos | 8 |
+| `FX_DOOR_UNLOCK` | Porta trancada abrindo com a chave | brilhos | 6 |
+| `FX_ARMOR_EQUIP` | Vestir uma armadura: anel de luz descendo pela personagem | nenhum | 8 |
+| `FX_BOMB_FUSE` | Pavio da bomba queimando | faíscas | 6 🔁 |
+| `FX_WALL_CRUMBLE` | Parede rachada desmoronando | pedras desenhadas | 8 |
+| `FX_BARRIER_BREAK` | Barreira de luz (Z) se desfazendo | brilhos | 8 |
+| `FX_CHECKPOINT` | Beber na fonte: água brilhando e o círculo de salvar | brilhos | 8 |
+| `FX_MAP_TRANSITION` | Brilho rosa da troca de lugar (cortina de corações) | tela rosa | 8 |
+
+### Ambiente e clima (10)
+
+| Código | O que mostra | Hoje no jogo | Quadros |
+|---|---|---|---|
+| `FX_WATER_SPLASH` | Pé na água rasa e coisa caindo na água | gotas | 6 |
+| `FX_WATER_RIPPLE` | Ondinhas na água parada | riscos brancos | 8 🔁 |
+| `FX_LAVA_BUBBLE` | Bolha de lava estourando | brilho laranja | 8 🔁 |
+| `FX_RAIN_SPLASH` | Respingo da chuva no chão (pântano e tempestade) | nenhum | 6 🔁 |
+| `FX_SNOW` | Neve caindo (Picos) | nenhum | 8 🔁 |
+| `FX_LIGHTNING` | Raio caindo na tempestade (com clarão) | clarão branco | 6 |
+| `FX_WIND_GUST` | Rajada de vento nas correntes (> e <) | riscos | 8 🔁 |
+| `FX_LEAVES_FALL` | Folhas caindo das árvores | folhas desenhadas | 8 🔁 |
+| `FX_FIREFLIES` | Vaga-lumes à noite | pontinhos | 8 🔁 |
+| `FX_PETALS` | Pétalas das cerejeiras | nenhum | 8 🔁 |
+
+### História e romance (7)
+
+| Código | O que mostra | Hoje no jogo | Quadros |
+|---|---|---|---|
+| `FX_BLUSH` | Bochecha corada (aparece no rosto da Line ou da Bell) | nenhum | 6 🔁 |
+| `FX_HEART_BURST` | Explosão de corações (beijo, abraço, pedido) | corações | 8 |
+| `FX_SPARKLE_EYES` | Olhinhos brilhando de apaixonada | nenhum | 6 🔁 |
+| `FX_SWEAT_DROP` | Gotinha de vergonha ou nervoso | nenhum | 6 |
+| `FX_MUSIC_NOTES_LOVE` | Notinhas e corações flutuando (dança, pôr do sol) | notas | 8 🔁 |
+| `FX_CONFETTI` | Confete de vitória (chefe vencido, fim de capítulo) | nenhum | 10 |
+| `FX_SUNSET_GLOW` | Brilho do pôr do sol por cima da cena (luz quente) | tinta laranja na tela | 8 🔁 |
+
+### Chefes (4)
+
+| Código | O que mostra | Hoje no jogo | Quadros |
+|---|---|---|---|
+| `FX_BOSS_AWAKEN` | Aura do chefe acordando (um por chefe, na cor dele) | tremor e clarão | 10 |
+| `FX_BOSS_ROOTS / _WATER_JET / _GUST / _FIRE_RAIN / _MUD / _LIGHTNING` | O golpe de cada chefe da Parte 2 (raízes do Colosso, jato da Serpente, rajada do Grifo, chuva de fogo do Titã, lama da Hidra, raio da Tempestade Viva), separado do corpo do chefe | formas desenhadas | 8 cada |
+| `FX_BOSS_DEFEAT` | Chefe derrotado: explosão de luz e corações | explosão FX_EXPLOSION | 12 |
+| `FX_WEAK_POINT_HIT` | Acertar o ponto fraco (dragão e chefes) | faíscas | 6 |
+
+## 10. Ordem sugerida
 
 1. **Ataque nas quatro direções** (seção 2.1): é o que a jogadora mais sente jogando.
 2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).
@@ -642,4 +744,5 @@ A ilustração do túnel (onde acontece o beijo) ainda é a do HTML do primeiro 
 6. **Bell jogável e armaduras vestidas** (seção 3).
 7. **Mapas das fases** em cima dos gabaritos (seção 8.1).
 8. **Chefes e moradores** da Parte 2 (seção 3).
+9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 

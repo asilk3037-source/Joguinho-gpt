@@ -18,6 +18,8 @@
 
 > 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> 🕹️ **Mais peças no shopping e no playground:** a praça de alimentação ganhou a **base nova** (teto de madeira, parede das lojas e piso), o **pilar branco**, a **mesa com o lanche do BK**, a **estação de bandejas** e o **canteiro curto**; as cadeiras ficam viradas para as mesas. O playground ganhou **14 peças**: máquina de garra, máquina de cápsulas, balcão de prêmios e fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster espacial e guirlanda de ingressos (seção 5.2). O documento de pendências ganhou o **resumo de tudo que falta** e a seção de **efeitos especiais**.
+
 > ⚡ **Jogo mais leve:** a troca de mapa não trava mais (a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora é instantâneo), porque o chão é desenhado em pedaços, só o que aparece na tela. Sombras das nuvens, vinhetas e o brilho da água e da lava ficam prontos em vez de refeitos a cada quadro, e os fundos já saem decodificados do carregamento. A qualidade da imagem não muda (seção 26.7).
 
 > 🍔 **Minas Shopping virou a praça de alimentação do modelo:** duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.
@@ -996,26 +998,36 @@ A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.
 
 **Playground** (pronto, montado em peças)
 - **Fundo:** a sala vazia do item 235 (2160×3840): teto com luzes neon rosa e azul, parede roxa ao fundo, paredes laterais com portas iluminadas, piso xadrez roxo brilhante e a saída por um corredor, embaixo à direita.
-- **Peças:** cada uma é um PNG à parte (itens 236 e 237), no tamanho da **régua** (medida real × a altura da Line, seção 23.6) e na posição do guia do item 240. O jogo desenha cada peça pela linha em que ela encosta no chão, então a Line e a Bell passam na frente e atrás de tudo.
+- **Peças:** cada uma é um PNG à parte (itens 236 e 237 e o zip `PLAYGROUND_ITENS_SEPARADOS`), no tamanho da **régua** (medida real × a altura da Line, seção 23.6). Os fliperamas e o balcão de prêmios novos entraram no lugar dos antigos. O jogo desenha cada peça pela linha em que ela encosta no chão, então a Line e a Bell passam na frente e atrás de tudo.
 - **Máquina de soco:** a do item 237, com o placar **000** antes do soco e **038** no impacto. A arte chegou só com o 038; o 000 foi feito copiando o “0” da própria arte por cima do “3” e do “8”.
 - **Animações:** `LINE_PUNCH_MACHINE` (item 238) e `BELL_LAUGH_AT_LINE` (item 239), seis quadros cada, já sem a máquina desenhada junto.
 
 #### Playground: o cenário no jogo
 
-![Playground montado em peças, com cada parte numerada, e o placar antes e depois do soco](imagens/encontro-playground.jpg)
-*Playground montado em peças, com cada parte numerada, e o placar antes e depois do soco*
+![Playground montado em peças: neons, guirlanda e pôster na parede, máquinas no fundo, fliperamas à esquerda e o banco à direita](imagens/encontro-playground.jpg)
+*Playground montado em peças: neons, guirlanda e pôster na parede, máquinas no fundo, fliperamas à esquerda e o banco à direita*
 
-| # | Parte | Arte | Tamanho (régua) | Onde fica (tela de 360×640) |
-|---|---|---|---|---|
-| 1 | Painel de prêmios | `PLAYGROUND_PAINEL_PREMIOS` | 4 m de largura | na parede do fundo, ao centro (x 180, base 122) |
-| 2 | Fliperama rosa | `PLAYGROUND_FLIPERAMA_ROSA` | 1,80 m de altura | à esquerda, no alto (x 62, base 235); **espelhado** para a tela olhar para dentro da sala |
-| 3 | Balcão de prêmios | `PLAYGROUND_BALCAO_PREMIOS` | 2,60 m de largura | à direita, no alto (x 268, base 228) |
-| 4 | Fliperama azul | `PLAYGROUND_FLIPERAMA_AZUL` | 1,80 m de altura | à esquerda, no meio (x 66, base 398) |
-| 5 | Máquina de soco | `PLAYGROUND_MAQUINA_SOCO_000` / `_038` | 2,20 m de altura | no meio, à direita (x 231, base 438); a plataforma fica sob os pés da Line |
-| 6 | Line | `LINE_PUNCH_MACHINE` | — | em frente ao saco (x 203, y 428): o punho do quadro do golpe alcança o saco |
-| 7 | Bell | `BELL_LAUGH_AT_LINE` | — | olhando, à esquerda (x 135, y 442) |
-| 8 | Entrada | — | — | embaixo, à esquerda (as duas chegam por aqui) |
-| 9 | Saída | — | — | pelo corredor, embaixo à direita |
+| Parte | Arte | Tamanho (régua) | Onde fica (tela de 360×640) |
+|---|---|---|---|
+| Guirlanda de ingressos | `PLAYGROUND_PAREDE_GUIRLANDA_INGRESSOS` | 4 m de largura | no alto da parede do fundo (x 180, base 70) |
+| Painel de prêmios | `PLAYGROUND_PAINEL_PREMIOS` | 4 m de largura | na parede do fundo, ao centro (x 180, base 122) |
+| Neon de coração | `PLAYGROUND_PAREDE_NEON_CORACAO_ROSA` | 1 m de largura | parede do fundo, à esquerda (x 86, base 112) |
+| Pôster espacial | `PLAYGROUND_PAREDE_POSTER_ESPACIAL` | 1,10 m de altura | parede do fundo, à direita (x 274, base 120) |
+| Neon de raio | `PLAYGROUND_PAREDE_NEON_RAIO_BICOLOR` | 1,20 m de altura | saindo da parede esquerda (x 34, base 215); o suporte fica na parede |
+| Neon de estrela | `PLAYGROUND_PAREDE_NEON_ESTRELA_AZUL` | 1,10 m de altura | saindo da parede direita (x 326, base 225), **espelhado** para o suporte ficar na parede |
+| Caixa de som | `PLAYGROUND_PAREDE_CAIXA_SOM_ROXA` | 1 m de altura | canto do fundo, à esquerda (x 52, base 158) |
+| Máquina de garra | `PLAYGROUND_MAQUINA_GARRA_ROSA` | 1,90 m de altura | fundo, à esquerda (x 96, base 170) |
+| Balcão de prêmios | `PLAYGROUND_BALCAO_PREMIOS_ROSA` | 2,60 m de largura | fundo, ao centro, embaixo do painel (x 188, base 168) |
+| Máquina de cápsulas | `PLAYGROUND_MAQUINA_CAPSULAS_ROSA` | 1,40 m de altura | fundo, à direita (x 270, base 166) |
+| Planta no vaso | `PLAYGROUND_DECORACAO_PLANTA_VASO_ROXO` | 1,10 m de altura | canto do fundo, à direita (x 312, base 160) |
+| Fliperama rosa | `PLAYGROUND_MAQUINA_FLIPERAMA_ROSA` | 1,80 m de altura | à esquerda, no alto (x 54, base 262) |
+| Fliperama azul | `PLAYGROUND_MAQUINA_FLIPERAMA_AZUL` | 1,80 m de altura | à esquerda, no meio (x 54, base 345) |
+| Lixeira | `PLAYGROUND_DECORACAO_LIXEIRA_ROXA` | 0,90 m de altura | à direita (x 330, base 300) |
+| Banco | `PLAYGROUND_MOVEL_BANCO_AZUL` | 1,80 m de largura | à direita, antes da saída (x 300, base 385) |
+| Máquina de soco | `PLAYGROUND_MAQUINA_SOCO_000` / `_038` | 2,20 m de altura | no meio, à direita (x 231, base 438); a plataforma fica sob os pés da Line |
+| Line | `LINE_PUNCH_MACHINE` | — | em frente ao saco (x 203, y 428): o punho do quadro do golpe alcança o saco |
+| Bell | `BELL_LAUGH_AT_LINE` | — | olhando, à esquerda (x 135, y 442) |
+| Entrada e saída | — | — | entram embaixo, à esquerda; saem pelo corredor, embaixo à direita |
 
 **Clima:** playground de shopping, com luz baixa roxa e rosa, telas brilhando e um ar divertido. É onde a Bell morre de rir.
 
@@ -2650,7 +2662,7 @@ As fontes são os retratos 3×2 do HTML *Primeiro Encontro* e a prancha “Line 
 | Área | Já usa arte (temporária) | Ainda desenhado no código (precisa de arte) |
 |---|---|---|
 | Minas Shopping (prólogo) | ilustração do shopping, vinda do HTML do primeiro encontro (temporária; a final segue a foto-modelo da seção 5.2) | — |
-| Playground (prólogo) | tudo: fundo, fliperamas, painel, balcão de prêmios e máquina de soco com placar (itens 235 a 237) | — |
+| Playground (prólogo) | tudo: fundo e 16 peças (máquinas, fliperamas, painel e balcão de prêmios, neons, pôster, guirlanda, banco, planta, lixeira e máquina de soco com placar) | — |
 | Túnel (prólogo) | ilustração do túnel, vinda do HTML do primeiro encontro | — |
 | Fazendinha | casa (prancha Farmhouse), celeiro, galinheiro, moinho, poço, árvores e frutíferas, cerejeiras, horta (cenoura e tomate), feno, carroça, lampiões, píer, barco, girassóis, milho, trigo, arbustos, pedras, placa | chão de grama, caminho, água do lago, cercas, flores pequenas, mato, varal, mesa, casinha do Theo, tigela |
 | Floresta | pinheiros e árvores | chão, raízes, riacho, espinheiros, baú, placas, pedras |
@@ -3489,7 +3501,7 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 ![Modelo da praça de alimentação: é assim que o shopping deve ficar](imagens/encontro-praca-modelo.jpg)
 *Modelo da praça de alimentação: é assim que o shopping deve ficar*
 
-**Como é montado:** a cena continua na base de **360×640** (9:16, em pé). O fundo `shopping_base.webp` tem o teto de madeira e a coluna recortados do modelo e o piso de losangos; por cima o jogo desenha as peças da praça, cada uma na régua de tamanhos (a mesma da fazenda: altura real em relação à Line de 1,60 m), e ordena tudo pela linha do chão, então a Line e a Bell passam na frente e atrás das mesas. As mesas são **sólidas** (não dá para atravessar) e o fundo das lojas fica fora da área andável.
+**Como é montado:** a cena continua na base de **360×640** (9:16, em pé). O fundo `shopping_base.webp` é a base do zip de essenciais (`SHOP_PRACA_BASE_PISO_PAREDE`: teto de madeira, parede vazia das lojas e piso); por cima o jogo desenha as peças da praça, cada uma na régua de tamanhos (a mesma da fazenda: altura real em relação à Line de 1,60 m), e ordena tudo pela linha do chão, então a Line e a Bell passam na frente e atrás das mesas. As mesas são **sólidas** (não dá para atravessar) e o fundo das lojas fica fora da área andável.
 
 | Peça | Código | Medida na régua | Onde fica |
 |---|---|---|---|
@@ -3499,15 +3511,19 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 | cadeira madeira front | `SHOP_PRACA_CADEIRA_MADEIRA_FRONT` | 0,95 m de altura | duas atrás de cada mesa |
 | cadeira madeira right /  left | `SHOP_PRACA_CADEIRA_MADEIRA_RIGHT / _LEFT` | 0,95 m de altura | uma de cada lado da mesa, na altura dela, viradas para o tampo |
 | cadeira madeira back | `SHOP_PRACA_CADEIRA_MADEIRA_BACK` | 0,95 m de altura | guardada (o modelo não usa) |
-| canteiro retangular | `SHOP_PRACA_CANTEIRO_RETANGULAR` | 2,6 m de largura | dois na borda direita |
+| mesa bk | `SHOP_PRACA_MESA_BK` | 1,1 m de diâmetro | a mesa do meio da coluna direita, com o lanche do BK |
+| pilar branco | `SHOP_PRACA_PILAR_BRANCO` | 6,5 m de altura | na frente da coluna da base, à direita das lojas |
+| lixeira bandejas | `SHOP_PRACA_LIXEIRA_BANDEJAS` | 1,4 m de largura | à direita, logo abaixo das lojas |
+| canteiro retangular | `SHOP_PRACA_CANTEIRO_RETANGULAR` | 2,6 m de largura | na borda direita |
+| canteiro curto | `SHOP_PRACA_CANTEIRO_CURTO` | 1,6 m de largura | na borda direita, mais embaixo |
 
 > 📏 **Regra mantida:** no modelo as mesas e as cadeiras aparecem quase do tamanho da Line. No jogo elas seguem a régua (mesa de 1,1 m, cadeira de 0,95 m), por isso a praça parece mais espaçosa que no desenho. As lojas não têm marca: o letreiro é o hambúrguer e o frango das peças.
 
 | Medida | Valor |
 |---|---|
 | Base de coordenadas | 360×640 (9:16, em pé); no mundo, 480×853 unidades |
-| Fundo (teto, coluna e lojas) | y 0–166 da base; ninguém anda acima de y 186 |
-| Área andável | x 28–332, y 186–545, menos o pé de cada mesa |
+| Fundo (teto, parede e lojas) | y 0–186 da base; ninguém anda acima de y 200 |
+| Área andável | x 28–332, y 200–545, menos o pé de cada mesa |
 | Pontos da história (base) | Line começa (178,528) · Bell espera (182,355) · Line no lanche (142,446) · Bell no lanche (218,446) · lanche do BK (180,446) · saída por baixo (180,610) |
 | Closes (câmera 1,6×) | o encontro, perto de (159,325), e o lanche, perto de (180,416) |
 | Telas largas | o jogo preenche os lados com a própria imagem borrada |
@@ -3542,7 +3558,7 @@ Com a base certa (tamanho, vista de cima e o gabarito), ela entra como a da faze
 ![Minas Shopping: a praça de alimentação montada em peças](imagens/shopping-em-pecas.jpg)
 *Minas Shopping: a praça de alimentação montada em peças*
 
-O **Minas Shopping** é montado em peças, como o playground: a base em pé com o teto de madeira e, por cima, as duas lojas, as seis mesas com cadeiras e os canteiros da praça de alimentação (34 peças, seção 22.11).
+O **Minas Shopping** é montado em peças, como o playground: a base da praça (teto de madeira, parede das lojas e piso) e, por cima, as duas lojas, o pilar branco, as seis mesas com cadeiras (uma com o lanche do BK), a estação de bandejas e os canteiros (36 peças, seção 22.11).
 
 ### 22.12 Dimensão de cada cenário
 

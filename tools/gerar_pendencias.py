@@ -53,6 +53,8 @@ w(f"*Atualizado em {hoje}. Este documento lista só o que **falta fazer ou refaz
 w()
 w("**Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.")
 w()
+w("@@RESUMO@@")
+w()
 
 # =====================================================================================
 w("## 1. Regras (valem para toda arte)")
@@ -259,11 +261,15 @@ w("O shopping agora segue o **modelo da praça de alimentação** (`arte/referen
 w()
 img("shopping-em-pecas", "Minas Shopping: a praça de alimentação montada em peças")
 w()
-PECAS = ["SHOP_PRACA_LOJA_HAMBURGUER", "SHOP_PRACA_LOJA_FRANGO", "SHOP_PRACA_MESA_REDONDA", "SHOP_PRACA_CADEIRA_MADEIRA", "SHOP_PRACA_CANTEIRO_RETANGULAR"]
+PECAS = ["SHOP_PRACA_LOJA_HAMBURGUER", "SHOP_PRACA_LOJA_FRANGO", "SHOP_PRACA_MESA_REDONDA", "SHOP_PRACA_MESA_BK", "SHOP_PRACA_CADEIRA_MADEIRA", "SHOP_PRACA_PILAR_BRANCO",
+         "SHOP_PRACA_LIXEIRA_BANDEJAS", "SHOP_PRACA_CANTEIRO_RETANGULAR", "SHOP_PRACA_CANTEIRO_CURTO"]
 chegaram = [p for p in PECAS if any(existe(f"assets/cenario/{p.lower()}{suf}.webp") for suf in ("", "_front"))]
 w("- **Já no jogo ✅:** " + (", ".join(f"`{p}`" for p in chegaram) or "nenhuma") + " (a cadeira nos 4 lados).")
-w("- **Pode melhorar ✏️:** um **teto/fundo em pixel art** do mesmo tamanho da base (1080×1920 ou 2160×3840), sem lojas nem móveis: hoje o teto de madeira e a coluna foram recortados do modelo. E o casal **sentado numa das mesas** comendo (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, seção 2.2), para o lanche acontecer na mesa da praça e não no corredor.")
+w("- A **base** (`SHOP_PRACA_BASE_PISO_PAREDE`: teto de madeira, parede vazia e piso) também já está no jogo ✅.")
+w("- **Pode melhorar ✏️:** o casal **sentado numa das mesas** comendo (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, seção 2.2), para o lanche acontecer na mesa do BK da praça e não no corredor.")
 w("- No modelo as mesas e cadeiras são quase do tamanho da Line; no jogo seguem a **régua** (mesa de 1,1 m, cadeira de 0,95 m).")
+w()
+w("O **playground** também ganhou as peças separadas (garra, cápsulas, balcão de prêmios, fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster e guirlanda) ✅.")
 w()
 w("### 8.3 Túnel")
 w()
@@ -271,7 +277,80 @@ w("A ilustração do túnel (onde acontece o beijo) ainda é a do HTML do primei
 w()
 
 # =====================================================================================
-w("## 9. Ordem sugerida")
+w("## 9. Efeitos especiais (FX)")
+w()
+w("Os 13 efeitos que já chegaram estão no jogo ✅: " + ", ".join(f"`{c}`" for c in sorted(k for k in sprites if k.startswith("FX_"))) + ". Os efeitos abaixo ainda são **desenhados no código** (bolinhas, riscos e brilhos simples); cada um entra no lugar do desenho quando a arte chegar com o código.")
+w()
+w("**Formato:** animação em prancha horizontal, células quadradas de **256 px** (efeitos grandes, como explosão, magia e chefes: **512 px**), fundo transparente, o centro do efeito no meio da célula. **6 a 10 quadros** (os que repetem, marcados com 🔁, precisam fechar o ciclo). Pixel art com contorno e luz no mesmo estilo dos 20 primeiros itens; brilho por cor, sem desfoque.")
+w()
+EFEITOS = [
+    ("Combate", [
+        ("FX_SLASH_RIGHT / _LEFT / _FRONT / _BACK", "Rastro da espada nas quatro direções (o arco branco do golpe)", "riscos brancos", "6"),
+        ("FX_SPIN_SLASH", "Giro da espada (segurar o ataque): círculo de luz em volta da Line", "arco desenhado", "8 🔁"),
+        ("FX_PUNCH_HIT", "Soco sem espada acertando: estrelinha de impacto", "faíscas", "6"),
+        ("FX_HIT_ENEMY", "Inimigo levando golpe: clarão rápido e estilhaços", "faíscas e clarão branco", "6"),
+        ("FX_BLOCK_SPARK", "Defesa: faísca no escudo quando bloqueia", "faíscas", "6"),
+        ("FX_DODGE_TRAIL", "Esquiva: rastro da silhueta (rosa para a Line, lilás para a Bell)", "nenhum", "6"),
+        ("FX_JUMP_DUST / FX_LAND_DUST", "Poeira ao pular e ao cair", "poeira desenhada", "6"),
+        ("FX_ENEMY_DEFEAT", "Inimigo se desfazendo em fumaça e brilhos", "sombra e brilhos", "8"),
+        ("FX_PLAYER_HURT", "A heroína levando dano: estrelinhas e pisca vermelho", "pisca", "6"),
+    ]),
+    ("Magia", [
+        ("FX_LIGHT_RAY_START / _LOOP / _END", "Raio de Luz da Line: carga, feixe que repete e o fim", "feixe desenhado", "6 / 8 🔁 / 6"),
+        ("FX_LIGHT_RAY_HIT", "Ponta do raio acertando um inimigo ou um cristal", "brilhos", "6"),
+        ("FX_SONG_NOTES", "Canção da Bell: notas musicais e ondas saindo dela", "notas desenhadas", "8 🔁"),
+        ("FX_STAR_SHOT", "Estrela da Bell voando (o tiro) e o estouro no acerto", "estrela desenhada", "6 + 6"),
+        ("FX_FAN_GUST", "Leque da Bell: rajada de vento em arco", "riscos de vento", "8"),
+        ("FX_MANA_RESTORE", "Magia voltando: gotas azuis subindo pela personagem", "brilhos azuis", "8"),
+        ("FX_HEAL", "Cura (poção, fonte): corações e luz verde-rosa subindo", "corações", "8"),
+    ]),
+    ("Itens e mundo", [
+        ("FX_ITEM_PICKUP", "Pegar um item ou documento: brilho em estrela", "brilhos", "6"),
+        ("FX_COIN_COLLECT", "Moeda sendo pega: brilho dourado e +1", "brilhos", "6"),
+        ("FX_CHEST_OPEN", "Baú abrindo: luz saindo de dentro", "brilhos", "8"),
+        ("FX_DOOR_UNLOCK", "Porta trancada abrindo com a chave", "brilhos", "6"),
+        ("FX_ARMOR_EQUIP", "Vestir uma armadura: anel de luz descendo pela personagem", "nenhum", "8"),
+        ("FX_BOMB_FUSE", "Pavio da bomba queimando", "faíscas", "6 🔁"),
+        ("FX_WALL_CRUMBLE", "Parede rachada desmoronando", "pedras desenhadas", "8"),
+        ("FX_BARRIER_BREAK", "Barreira de luz (Z) se desfazendo", "brilhos", "8"),
+        ("FX_CHECKPOINT", "Beber na fonte: água brilhando e o círculo de salvar", "brilhos", "8"),
+        ("FX_MAP_TRANSITION", "Brilho rosa da troca de lugar (cortina de corações)", "tela rosa", "8"),
+    ]),
+    ("Ambiente e clima", [
+        ("FX_WATER_SPLASH", "Pé na água rasa e coisa caindo na água", "gotas", "6"),
+        ("FX_WATER_RIPPLE", "Ondinhas na água parada", "riscos brancos", "8 🔁"),
+        ("FX_LAVA_BUBBLE", "Bolha de lava estourando", "brilho laranja", "8 🔁"),
+        ("FX_RAIN_SPLASH", "Respingo da chuva no chão (pântano e tempestade)", "nenhum", "6 🔁"),
+        ("FX_SNOW", "Neve caindo (Picos)", "nenhum", "8 🔁"),
+        ("FX_LIGHTNING", "Raio caindo na tempestade (com clarão)", "clarão branco", "6"),
+        ("FX_WIND_GUST", "Rajada de vento nas correntes (> e <)", "riscos", "8 🔁"),
+        ("FX_LEAVES_FALL", "Folhas caindo das árvores", "folhas desenhadas", "8 🔁"),
+        ("FX_FIREFLIES", "Vaga-lumes à noite", "pontinhos", "8 🔁"),
+        ("FX_PETALS", "Pétalas das cerejeiras", "nenhum", "8 🔁"),
+    ]),
+    ("História e romance", [
+        ("FX_BLUSH", "Bochecha corada (aparece no rosto da Line ou da Bell)", "nenhum", "6 🔁"),
+        ("FX_HEART_BURST", "Explosão de corações (beijo, abraço, pedido)", "corações", "8"),
+        ("FX_SPARKLE_EYES", "Olhinhos brilhando de apaixonada", "nenhum", "6 🔁"),
+        ("FX_SWEAT_DROP", "Gotinha de vergonha ou nervoso", "nenhum", "6"),
+        ("FX_MUSIC_NOTES_LOVE", "Notinhas e corações flutuando (dança, pôr do sol)", "notas", "8 🔁"),
+        ("FX_CONFETTI", "Confete de vitória (chefe vencido, fim de capítulo)", "nenhum", "10"),
+        ("FX_SUNSET_GLOW", "Brilho do pôr do sol por cima da cena (luz quente)", "tinta laranja na tela", "8 🔁"),
+    ]),
+    ("Chefes", [
+        ("FX_BOSS_AWAKEN", "Aura do chefe acordando (um por chefe, na cor dele)", "tremor e clarão", "10"),
+        ("FX_BOSS_ROOTS / _WATER_JET / _GUST / _FIRE_RAIN / _MUD / _LIGHTNING", "O golpe de cada chefe da Parte 2 (raízes do Colosso, jato da Serpente, rajada do Grifo, chuva de fogo do Titã, lama da Hidra, raio da Tempestade Viva), separado do corpo do chefe", "formas desenhadas", "8 cada"),
+        ("FX_BOSS_DEFEAT", "Chefe derrotado: explosão de luz e corações", "explosão FX_EXPLOSION", "12"),
+        ("FX_WEAK_POINT_HIT", "Acertar o ponto fraco (dragão e chefes)", "faíscas", "6"),
+    ]),
+]
+for grupo, lista in EFEITOS:
+    w(f"### {grupo} ({len(lista)})")
+    w()
+    tabela(["Código", "O que mostra", "Hoje no jogo", "Quadros"], [(f"`{c}`", o, h, q) for c, o, h, q in lista])
+TOTAL_FX = sum(len(l) for _, l in EFEITOS)
+
+w("## 10. Ordem sugerida")
 w()
 for n, t in enumerate([
     "**Ataque nas quatro direções** (seção 2.1): é o que a jogadora mais sente jogando.",
@@ -282,9 +361,31 @@ for n, t in enumerate([
     "**Bell jogável e armaduras vestidas** (seção 3).",
     "**Mapas das fases** em cima dos gabaritos (seção 8.1).",
     "**Chefes e moradores** da Parte 2 (seção 3).",
+    "**Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.",
 ], 1):
     w(f"{n}. {t}")
 w()
+
+# Resumo no topo: quantas linhas de cada seção ainda faltam (contadas nas tabelas acima).
+contas, atual = {}, None
+for k, l in enumerate(linhas):
+    if l.startswith("## "):
+        atual = l[3:]
+    elif atual and l.startswith("| ") and not (k + 1 < len(linhas) and linhas[k + 1].startswith("|---")):
+        contas[atual] = contas.get(atual, 0) + 1
+arm_line = sum(len([i for i in g if not i["existe"]]) for n, g in grupos.items() if n.startswith("Line com armadura"))
+arm_bell = sum(len([i for i in g if not i["existe"]]) for n, g in grupos.items() if n.startswith("Bell com armadura"))
+resumo = ["## Resumo: todas as artes que faltam", "",
+          "| Seção | O que é | Quantas faltam |", "|---|---|---|"]
+for titulo, texto in [("2. Animações que precisam de ajuste (refazer)", "animações que existem, mas precisam ser refeitas"),
+                      ("3. Animações pendentes (ainda não existem)", "animações novas (inclui a Bell jogável, os chefes, os moradores e as **armaduras vestidas**)"),
+                      ("4. Armaduras e itens (arte nova para o que já existe no jogo)", "ícones das armaduras e dos itens"),
+                      ("5. Botões e controles", "ícones dos botões"), ("6. HUD do jogador", "peças do HUD"), ("7. Telas", "telas cheias"),
+                      ("8. Mapas e cenários", "pinturas das fases e peças de cenário"), ("9. Efeitos especiais (FX)", "efeitos especiais (combate, magia, itens, clima, romance, chefes)")]:
+    n = contas.get(titulo, 0)
+    resumo.append(f"| {titulo.split(' (')[0]} | {texto} | **{n}** |")
+resumo += ["", f"**Armaduras:** sim, estão no documento. A **Line** tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a **Bell** tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem **vestida** em todas as animações de movimento e luta (seção 3: **{arm_line}** animações da Line e **{arm_bell}** da Bell com armadura) e do **ícone** (seção 4.1). Os **efeitos especiais** estão na seção 9.", ""]
+linhas[linhas.index("@@RESUMO@@")] = "\n".join(resumo)
 
 saida = os.path.join(DOCS, "LINE_E_BELL_PENDENCIAS.md")
 open(saida, "w", encoding="utf-8").write("\n".join(linhas) + "\n")
