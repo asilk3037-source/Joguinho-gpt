@@ -19,8 +19,9 @@
       this.el.addEventListener('click', () => { this.clicou = true; });
       this.el.addEventListener('touchstart', (e) => { e.preventDefault(); this.clicou = true; }, { passive: false });
     },
+    // `falante`: quem está falando agora (o mago e os moradores gesticulam só na vez deles).
     mostrar(nome, texto, classe, rosto) {
-      this.completo = texto; this.pos = 0; this.clicou = false;
+      this.completo = texto; this.pos = 0; this.clicou = false; this.falante = nome || null;
       this.nome.textContent = nome || '';
       this.nome.style.display = nome ? '' : 'none';
       const quem = nome === 'Line' ? 'line' : nome === 'Bell' ? 'bell' : null;
@@ -43,7 +44,7 @@
       this.el.className = 'visivel ' + (classe || '') + (r ? ' com-retrato' : '');
       this.texto.textContent = '';
     },
-    esconder() { this.el.className = 'oculto'; },
+    esconder() { this.el.className = 'oculto'; this.falante = null; },
     // Retorna true quando a pessoa confirma depois do texto terminar.
     atualizar(dt) {
       const E = LB.entrada;
@@ -384,6 +385,9 @@
     },
 
     *mago(c, j) {
+      // A Line se vira para o mago (ela costuma chegar andando para cima, de costas para a câmera).
+      const velho = j.npcs.find((n) => n instanceof LB.Mago);
+      if (velho) { j.line.lado = velho.x < j.line.x ? -1 : 1; j.line.dir = j.line.lado < 0 ? 'LEFT' : 'RIGHT'; }
       if (!j.flags.espada && !j.flags.magoVisto) {
         yield c.fala('Mago', 'Ora, ora... uma fazendeira na Floresta Sussurrante?');
         yield c.fala('Line', 'Um dragão levou a Bell! Eu preciso chegar na montanha.', 'surpresa');

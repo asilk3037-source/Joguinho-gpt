@@ -62,10 +62,12 @@
     temSave() { try { return !!localStorage.getItem(CHAVE_SAVE); } catch (e) { return false; } }
 
     salvar() {
+      if (this.teste) return; // modo de teste: nunca grava por cima do save de verdade
       try { localStorage.setItem(CHAVE_SAVE, JSON.stringify({ area: this.mapa ? this.mapa.id : 'fazenda', flags: this.flags })); } catch (e) { /* sem armazenamento */ }
     }
 
     novoJogo() {
+      this.teste = false;
       try { localStorage.removeItem(CHAVE_SAVE); } catch (e) { /* ok */ }
       this.flags = {};
       this.dicasVistas.clear();
@@ -74,6 +76,7 @@
     }
 
     continuar() {
+      this.teste = false;
       let s = null;
       try { s = JSON.parse(localStorage.getItem(CHAVE_SAVE)); } catch (e) { /* ok */ }
       if (!s) return this.novoJogo();
@@ -91,6 +94,35 @@
       }
       this.iniciarArea(area, null, !this.flags.prologo);
       if (!this.flags.prologo) this.iniciarCapitulo();
+    }
+
+    // Botão temporário de teste: entra em qualquer mapa como se o jogo já estivesse zerado
+    // (Parte 1 e Parte 2), com tudo liberado. Nada é salvo enquanto o teste durar.
+    modoTeste(id) {
+      this.teste = true;
+      this.line = null;
+      const M = LB.mochila, vistas = ['florestaVista', 'vilarejoVisto', 'grutaVista', 'covilVisto', 'ruinasVistas', 'montanhaVista', 'minasVistas', 'forjaVista', 'visto_vale', 'visto_lago', 'visto_picos'];
+      const f = this.flags = { versaoMundo: 2, area: id, minutos: 9 * 60, heroina: 'line', herois: { line: null, bell: null }, armadura: 'brasa', armaduraBell: 'aurora', moedas: 9999 };
+      for (const k of ['encontroFeito', 'manhaVista', 'prologo', 'espada', 'magia', 'estrela', 'magoVisto', 'magoRuinas', 'golem', 'dragaoEmPaz', 'alavanca', 'zerado',
+        'parte2', 'bellJogavel', 'chefeTerra', 'chefeAgua', 'chefeAr', 'fusaoMagma', 'fusaoLama', 'fusaoTempestade', 'portalCoracao', 'quimeraVencida', 'zeradoParte2',
+        'tobias', 'tobiasRecompensa', 'receitaMostrada', 'dicaBomba', 'cadernoCompleto', 'falouZeP2', 'falouRosaP2', 'falouBentoP2', ...vistas]) f[k] = true;
+      // Os 7 corações extras: 3 baús de coração (já abertos), o caderno completo e os 3 guardiões.
+      f.coracoes = 7;
+      f.baus = [];
+      for (const [area, def] of Object.entries(LB.MAPAS)) for (const [k, v] of Object.entries(def.baus || {})) if (v === 'coracao') f.baus.push(area + ':' + k);
+      f.estacoes = Object.keys(LB.carrinho.ESTACOES);
+      // Todos os cristais e tochas acesos, todas as barreiras abertas.
+      f.luz = []; f.abertas = [];
+      for (const [area, def] of Object.entries(LB.MAPAS)) for (const b of def.barreiras || []) { f.abertas.push(area + ':' + b.id); for (const k of b.fontes) f.luz.push(area + ':' + k); }
+      const qtd = { pocao: 9, elixir: 9, bomba: 20, pena: 3, chave: 3 };
+      for (const it of M.ORDEM_ITENS) M.dar(this, it, qtd[it] || 1, true);
+      const i = M.inv(this);
+      i.pistas = Object.keys(M.PISTAS);
+      i.conclusoes = M.CONCLUSOES.map((c) => c.id);
+      i.novos = 0;
+      this.iniciarArea(id, null, true);
+      this.line.hp = this.line.hpMax; this.line.mana = this.line.manaMax;
+      M.aviso('🧪 Modo de teste: jogo zerado, nada é salvo.');
     }
 
     // Saves de versões antigas: mapas mudaram de tamanho, itens viraram outros.

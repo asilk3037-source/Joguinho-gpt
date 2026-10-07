@@ -17,6 +17,8 @@
         mostrar(null); jogo.novoJogo();
       };
       $('#btn-continuar').onclick = () => { mostrar(null); jogo.continuar(); };
+      $('#btn-teste').onclick = () => { this.montarTeste(); mostrar('#teste'); };
+      $('#btn-voltar-teste').onclick = () => mostrar('#menu');
       $('#btn-galeria').onclick = () => { mostrar('#galeria'); galeria.abrir(); };
       $('#btn-controles').onclick = () => { this.voltarPara = '#menu'; mostrar('#controles'); };
       $('#btn-voltar-controles').onclick = () => mostrar(this.voltarPara || '#menu');
@@ -47,6 +49,28 @@
       LB.loja.ligar(jogo);
       LB.carrinho.ligar();
       this.mostrarMenu();
+    },
+
+    // Lista de mapas do modo de teste (temporário), separada por parte do jogo.
+    montarTeste() {
+      const el = $('#teste-lista');
+      if (el.childElementCount) return;
+      const grupos = { 'Parte 1': [], 'Parte 2': [], 'Casas e lojas': [] };
+      const parte2 = ['vale', 'fenda', 'lago', 'pantano', 'picos', 'tempestade', 'coracao'];
+      for (const [id, def] of Object.entries(LB.MAPAS)) {
+        if (def.tema === 'encontro') continue; // o Primeiro Encontro é só cena: começa pelo “Novo jogo”
+        grupos[def.interior || def.tema === 'casa' ? 'Casas e lojas' : parte2.includes(id) ? 'Parte 2' : 'Parte 1'].push([id, def.nome || id]);
+      }
+      for (const [titulo, mapas] of Object.entries(grupos)) {
+        if (!mapas.length) continue;
+        const h = document.createElement('h3'); h.textContent = titulo; el.appendChild(h);
+        const grade = document.createElement('div'); grade.className = 'grade'; el.appendChild(grade);
+        for (const [id, nome] of mapas) {
+          const b = document.createElement('button'); b.className = 'sec'; b.textContent = nome; b.dataset.mapa = id;
+          b.onclick = () => { mostrar(null); jogo.modoTeste(id); };
+          grade.appendChild(b);
+        }
+      }
     },
 
     mostrarMenu() {

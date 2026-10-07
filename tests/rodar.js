@@ -131,6 +131,27 @@ teste('menu: botões, dificuldade, controles e galeria', async (h) => {
   afirmar(await h.visivel('#menu'), 'volta ao menu depois da galeria');
 });
 
+teste('menu: botão de teste leva a qualquer mapa com o jogo zerado e não salva', async (h) => {
+  await h.ev(() => localStorage.setItem('lineBell.save.v1', JSON.stringify({ area: 'vilarejo', flags: { prologo: true, marca: 'real' } })));
+  await h.p.click('#btn-teste');
+  afirmar(await h.visivel('#teste'), 'tela de escolha do mapa');
+  const ids = await h.ev(() => [...document.querySelectorAll('#teste-lista button')].map((b) => b.dataset.mapa));
+  afirmar(ids.includes('fazenda') && ids.includes('coracao') && ids.includes('casa_ferraria'), 'lista mapas das duas partes e as casas: ' + ids);
+  afirmar(!(await h.ev((ids) => ids.some((id) => LB.MAPAS[id].tema === 'encontro'), ids)), 'o Primeiro Encontro fica fora (é só cena)');
+  await h.p.click('#teste-lista button[data-mapa="picos"]');
+  await h.espera(300);
+  const r = await h.ev(() => { const j = LB.jogo, f = j.flags; return { mapa: j.mapa.id, zerado: f.zerado && f.zeradoParte2 && f.quimeraVencida, bell: LB.herois.liberada(j), espada: j.line.temEspada, magia: j.line.temMagia, estrela: j.line.temEstrela,
+    gancho: LB.mochila.tem(j, 'gancho'), pistas: LB.mochila.inv(j).pistas.length, total: LB.mochila.totalPistas(), estacoes: f.estacoes.length, aberta: (f.abertas || []).includes('picos:farois'), hp: j.line.hp === j.line.hpMax }; });
+  igual(r.mapa, 'picos', 'entrou no mapa escolhido');
+  afirmar(r.zerado && r.bell && r.espada && r.magia && r.estrela && r.gancho && r.estacoes === 3 && r.aberta && r.hp, 'tudo liberado: ' + JSON.stringify(r));
+  afirmar(r.pistas >= r.total, 'todos os documentos');
+  igual(await h.ev(() => JSON.parse(localStorage.getItem('lineBell.save.v1')).flags.marca), 'real', 'o save de verdade fica intacto');
+  await h.ev(() => LB.jogo.voltarAoMenu());
+  await h.p.click('#btn-continuar');
+  await h.espera(300);
+  igual(await h.ev(() => [LB.jogo.mapa.id, LB.jogo.teste]), ['vilarejo', false], 'Continuar volta para o save de verdade');
+});
+
 // ================= Prólogo e fazenda =================
 teste('prólogo: Novo jogo abre o Primeiro Encontro', async (h) => {
   await h.p.click('#btn-novo');
@@ -828,6 +849,29 @@ teste('arte: as duas sentadas no pôr do sol e o dragão parado (itens 77 a 80)'
   const r = await h.ev(() => LB.jogo.duo && LB.jogo.duo.anim.base);
   afirmar(/SIT/.test(r || ''), 'epílogo com as duas sentadas: ' + r);
   await h.foto('epilogo-sentadas');
+});
+
+teste('mago: na conversa a Line olha para ele e ele só gesticula na vez dele', async (h) => {
+  await h.area('floresta', { espada: true, magoVisto: true });
+  await h.ev(() => { const j = LB.jogo, mg = j.npcs.find((n) => n instanceof LB.Mago); j.inimigos = []; j.line.x = mg.x + 40; j.line.y = mg.y + 10; j.line.lado = 1; j.line.dir = 'RIGHT'; j.line.voltarLivre(); });
+  await h.espera(150);
+  igual(await h.prompt(), 'Conversar', 'prompt do Mago');
+  await h.ev(() => LB.jogo.acoesPossiveis().fazer());
+  const r = await h.ev(async () => {
+    const j = LB.jogo, mg = j.npcs.find((n) => n instanceof LB.Mago), vistos = [];
+    for (let i = 0; i < 200 && j.cena; i++) {
+      await new Promise((ok) => setTimeout(ok, 50));
+      vistos.push([LB.dialogo.falante, mg.anim.base, j.line.lado]);
+      if (i % 12 === 11) LB.dialogo.clicou = true;
+    }
+    return vistos;
+  });
+  afirmar(r.length > 5, 'a conversa acontece');
+  afirmar(r.every(([, , lado]) => lado === -1), 'a Line fica virada para o Mago (à esquerda dela)');
+  afirmar(r.some(([q, a]) => q === 'Mago' && a === 'MAGO_TALK'), 'o Mago gesticula quando fala');
+  // Quando a vez passa para a Line, ele termina o gesto (~0,3 s) e fica ouvindo parado.
+  const ouvindo = r.filter(([q]) => q && q !== 'Mago');
+  afirmar(ouvindo.length && ouvindo.filter(([, a]) => a === 'MAGO_IDLE').length > ouvindo.length / 2, 'e fica parado ouvindo quando a Line fala');
 });
 
 teste('arte: Mago e Espírito das Ruínas animados (itens 124 e 125)', async (h) => {

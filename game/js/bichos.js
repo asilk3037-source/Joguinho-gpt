@@ -400,8 +400,9 @@
       this.t += dt; this.fala = Math.max(0, this.fala - dt); this.magia = Math.max(0, this.magia - dt);
       this.anim.atualizar(dt);
       const l = jogo.line;
-      // Em conversa com a Line, ele fala e gesticula (e a magia tem a vez dela).
-      if (jogo.cena && Math.hypot(l.x - this.x, l.y - this.y) < 140) this.fala = Math.max(this.fala, 0.3);
+      // Ele gesticula só quando é a vez dele no diálogo; enquanto a Line fala, fica ouvindo (e a magia
+      // tem a vez dela).
+      if (jogo.cena && LB.dialogo.falante === 'Mago' && Math.hypot(l.x - this.x, l.y - this.y) < 140) this.fala = Math.max(this.fala, 0.3);
       this.anim.tocar(this.magia > 0 ? 'MAGO_CAST' : this.fala > 0 ? 'MAGO_TALK' : 'MAGO_IDLE');
       if (Math.abs(l.x - this.x) > 8) this.lado = l.x < this.x ? -1 : 1;
       if (Math.random() < dt * 3) jogo.particulas.emitir('brilho', this.x + this.lado * -17 + (Math.random() - 0.5) * 8, this.y - 64, 1, { vel: 12, vz: 10, vida: 0.9, r: 2.5 });

@@ -264,3 +264,10 @@ th { color: var(--destaque); }
 #toque.passeio #b-item { display: none; }
 #b-trocar { right: 63px; bottom: 197px; background: rgba(255, 158, 207, 0.5); font-size: 13px; }
 #toque.passeio #b-trocar { display: none; }
+
+/* Modo de teste (temporário) */
+#menu button.teste { border-style: dashed; color: #ffd27a; }
+.teste-lista { text-align: left; max-height: 60vh; overflow: auto; margin-bottom: 12px; }
+.teste-lista h3 { margin: 12px 0 6px; font-size: 15px; color: var(--destaque); }
+.teste-lista .grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 6px; }
+.caixa .teste-lista button { margin: 0; padding: 8px 10px; font-size: 14px; }

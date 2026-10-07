@@ -291,9 +291,10 @@ window.LB = window.LB || {};
   ]);
 
   grupo('Personagens de apoio (novo)', [
-    ['MAGO_IDLE', 'Mago parado, respirando', { loop: true, nova: true }],
-    ['MAGO_TALK', 'Mago falando / gesticulando', { loop: true, nova: true }],
-    ['MAGO_CAST', 'Mago fazendo um feitiço', { nova: true }],
+    // 12 quadros por gesto: a 12 por segundo o gesto repetia a cada segundo e o mago parecia travado.
+    ['MAGO_IDLE', 'Mago parado, respirando', { fps: 6, loop: true, nova: true }],
+    ['MAGO_TALK', 'Mago falando / gesticulando', { fps: 8, loop: true, nova: true }],
+    ['MAGO_CAST', 'Mago fazendo um feitiço', { fps: 10, nova: true }],
     ['SPIRIT_APPEAR', 'Espírito das Ruínas aparecendo no altar', { nova: true }],
     ['SPIRIT_IDLE', 'Espírito das Ruínas flutuando', { loop: true, nova: true }],
     ['SPIRIT_TALK', 'Espírito das Ruínas falando', { loop: true, nova: true }],

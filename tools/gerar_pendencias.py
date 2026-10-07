@@ -409,6 +409,8 @@ for n, t in enumerate([
 ], 1):
     w(f"{n}. {t}")
 w()
+w("> 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.")
+w()
 
 # Resumo no topo: quantas linhas de cada seção ainda faltam (contadas nas tabelas acima).
 contas, atual = {}, None
