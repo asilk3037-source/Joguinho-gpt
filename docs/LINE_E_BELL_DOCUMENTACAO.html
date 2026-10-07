@@ -27,6 +27,7 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 - <strong>Novos moradores</strong> (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 - <strong>Lista completa de arte necessária</strong> para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).</p>
 <p>📋 <strong>Documento novo só com o que falta:</strong> <code>docs/LINE_E_BELL_PENDENCIAS.md</code> (e <code>.html</code>) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por <code>tools/gerar_pendencias.py</code>.</p>
+<p>⚔️ <strong>Ataque para cima e para baixo com arte própria (itens 241 a 246):</strong> os três golpes da espada (horizontal, vertical e combo) chegaram <strong>de frente</strong> e <strong>de costas</strong>, com 8 quadros cada. Quando a Line ataca um inimigo abaixo ou acima dela, o jogo usa o desenho certo, no mesmo tempo e com o mesmo acerto do golpe de lado. Os de costas e o vertical de frente saíram menores que a Line parada e foram igualados pelo ajuste de tamanho (<code>tools/ajuste_cabeca.json</code>).</p>
 <p>🕹️ <strong>Mais peças no shopping e no playground:</strong> a praça de alimentação ganhou a <strong>base nova</strong> (teto de madeira, parede das lojas e piso), o <strong>pilar branco</strong>, a <strong>mesa com o lanche do BK</strong>, a <strong>estação de bandejas</strong> e o <strong>canteiro curto</strong>; as cadeiras ficam viradas para as mesas. O playground ganhou <strong>14 peças</strong>: máquina de garra, máquina de cápsulas, balcão de prêmios e fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster espacial e guirlanda de ingressos (seção 5.2). O documento de pendências ganhou o <strong>resumo de tudo que falta</strong> e a seção de <strong>efeitos especiais</strong>.</p>
 <p>⚡ <strong>Jogo mais leve:</strong> a troca de mapa não trava mais (a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora é instantâneo), porque o chão é desenhado em pedaços, só o que aparece na tela. Sombras das nuvens, vinhetas e o brilho da água e da lava ficam prontos em vez de refeitos a cada quadro, e os fundos já saem decodificados do carregamento. A qualidade da imagem não muda (seção 26.7).</p>
 <p>🍔 <strong>Minas Shopping virou a praça de alimentação do modelo:</strong> duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.</p>
@@ -197,7 +198,7 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 </tr>
 <tr>
 <td>Animações catalogadas</td>
-<td><strong>554</strong>: 261 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
+<td><strong>560</strong>: 267 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
 </tr>
 </tbody>
 </table>
@@ -3015,7 +3016,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 - ✅ <strong>Tem arte (temporária):</strong> já aparece no jogo, mas ainda será trocada pela final.
 - 🔁 <strong>Substituta:</strong> ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ <strong>Desenho no código:</strong> ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.</p>
-<p><strong>Resumo:</strong> 554 animações. ✅ 261 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
+<p><strong>Resumo:</strong> 560 animações. ✅ 267 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
 <table>
 <thead>
 <tr>
@@ -3043,8 +3044,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td>Line — combate</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">27</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">33</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -3721,6 +3722,54 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td style="text-align: center;"></td>
 <td>✅ temporária</td>
 <td>LINE_BELL_ITEM_28</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_HORIZONTAL_FRONT</code></td>
+<td>Ataque horizontal para baixo</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_241</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_HORIZONTAL_BACK</code></td>
+<td>Ataque horizontal para cima</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_242</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_VERTICAL_FRONT</code></td>
+<td>Ataque vertical para baixo</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_243</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_VERTICAL_BACK</code></td>
+<td>Ataque vertical para cima</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_244</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_COMBO_FRONT</code></td>
+<td>Combo para baixo</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_245</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_COMBO_BACK</code></td>
+<td>Combo para cima</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_246</td>
 </tr>
 <tr>
 <td><code>LINE_ATTACK_SPIN</code></td>
@@ -9706,8 +9755,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td>Line — combate</td>
-<td>27</td>
-<td>27</td>
+<td>33</td>
+<td>33</td>
 <td>0</td>
 <td>0</td>
 </tr>
@@ -9902,8 +9951,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>554</strong></td>
-<td><strong>261</strong></td>
+<td><strong>560</strong></td>
+<td><strong>267</strong></td>
 <td><strong>172</strong></td>
 <td><strong>121</strong></td>
 </tr>
@@ -10774,7 +10823,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <blockquote>
 <p>Esta seção junta o que antes ficava em arquivos soltos (<code>ANIMACOES_PENDENTES.md</code>, <code>LINE_BELL_INDICE_PARTES.md</code>, <code>LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md</code>, <code>docs/ARTES_NECESSARIAS.md</code>, <code>arte/theo/LAYOUT_OFICIAL.md</code> e <code>game/README.md</code>). Agora <strong>tudo fica só neste documento</strong>: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.</p>
 </blockquote>
-<p><strong>Status:</strong> 261 de 554 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
+<p><strong>Status:</strong> 267 de 560 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
 <h3 id="231-reenviar-ou-mandar">23.1 Reenviar ou mandar</h3>
 <ul>
 <li><strong>Item 96</strong>: chegou com 2 imagem(ns) vazia(s) em <code>DRAGON_FALL</code>, <code>DRAGON_DEFEATED</code>. As animações funcionam sem esses quadros, mas ficam incompletas.</li>
@@ -10793,7 +10842,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <li><strong>Item 62</strong>: <code>BELL_DRAGON_CARRIED</code> traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com <code>BELL_ESCAPE_ATTEMPT</code>). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.</li>
 <li><code>LINE_HAPPY</code> saiu do jogo: é uma corrida que termina com a Line caída para a frente, e não a Line feliz (no lugar, o jogo usa <code>LINE_VICTORY</code>). Para reenviar.</li>
 <li><code>LINE_BELL_WALK_HANDS_FRONT</code> (as duas de mãos dadas andando de frente) ainda é a arte pequena do laboratório, ampliada: fica borrada perto das outras. Para reenviar no tamanho e no traço dos itens novos.</li>
-<li><strong>Itens que ainda não chegaram:</strong> 153.</li>
+<li><strong>Itens que ainda não chegaram:</strong> 153, 240.</li>
 </ul>
 <h3 id="235-anotacoes-do-teste-no-celular-1o-de-outubro">23.5 Anotações do teste no celular (1º de outubro)</h3>
 <p>O que apareceu jogando no celular, o que foi feito e o que ainda depende de arte:</p>
@@ -14095,9 +14144,45 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td style="text-align: right;">4,31 MB</td>
 <td><code>BELL_LAUGH_AT_LINE</code></td>
 </tr>
+<tr>
+<td style="text-align: right;">241</td>
+<td><code>LINE_BELL_ITEM_241.html</code></td>
+<td style="text-align: right;">2,36 MB</td>
+<td><code>LINE_ATTACK_HORIZONTAL_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">242</td>
+<td><code>LINE_BELL_ITEM_242.html</code></td>
+<td style="text-align: right;">1,80 MB</td>
+<td><code>LINE_ATTACK_HORIZONTAL_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">243</td>
+<td><code>LINE_BELL_ITEM_243.html</code></td>
+<td style="text-align: right;">2,04 MB</td>
+<td><code>LINE_ATTACK_VERTICAL_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">244</td>
+<td><code>LINE_BELL_ITEM_244.html</code></td>
+<td style="text-align: right;">1,52 MB</td>
+<td><code>LINE_ATTACK_VERTICAL_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">245</td>
+<td><code>LINE_BELL_ITEM_245.html</code></td>
+<td style="text-align: right;">2,40 MB</td>
+<td><code>LINE_ATTACK_COMBO_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">246</td>
+<td><code>LINE_BELL_ITEM_246.html</code></td>
+<td style="text-align: right;">1,67 MB</td>
+<td><code>LINE_ATTACK_COMBO_BACK</code></td>
+</tr>
 </tbody>
 </table>
-<p>Itens que ainda não chegaram: 153.</p>
+<p>Itens que ainda não chegaram: 153, 240.</p>
 <p><strong>Lote do shopping, das bases e do playground (itens 218 a 240 da numeração nova):</strong> chegou como páginas de prévia sem as imagens, e as imagens vieram soltas. Os números 218 a 227 repetem os do lote anterior (objetos da fazenda), então as peças novas são chamadas pelo código (<code>SHOP_*</code>, <code>PLAYGROUND_*</code>, <code>base_*</code>). Só os itens 238 e 239 (o soco e a risada) viraram fichas na raiz, porque as animações são refeitas a partir delas. O que entrou está nas seções 5.2 (playground), 22.11.1 (peças do shopping) e 22.11.2 (bases).</p>
 <p>Os itens 140 a 227 são cenário, móveis e objetos: não passam pelo recorte de animação e entram no jogo pelas ferramentas da seção 26.6. O item 137 reenviado (ovelha) foi recusado e o jogo segue com a ovelha anterior. O item 153 não veio (os lotes foram de 154 a 187, 188 a 202, 203 a 217 e 218 a 227).</p>
 <p><strong>Regra de continuidade das pernas:</strong> nas caminhadas e corridas laterais para a direita e para a esquerda, a perna que está atrás deve iniciar o avanço, passar pela posição intermediária e terminar esticada à frente, enquanto a outra perna dobra para trás. Essa alternância deve permanecer contínua entre os frames, sem travar a perna traseira (ciclo completo na seção 25.2).</p>

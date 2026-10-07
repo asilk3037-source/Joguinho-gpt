@@ -14,6 +14,7 @@ em{color:var(--mut)}
 <p><em>Atualizado em 07/10/2026. Este documento lista só o que </em><em>falta fazer ou refazer</em><em>. O que já está pronto fica na documentação completa (<code>LINE_E_BELL_DOCUMENTACAO.md</code>). As regras da seção 1 valem para tudo e não mudam.</em></p>
 <p><strong>Como usar:</strong> cada linha tem o <strong>código</strong> exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.</p>
 <h2 id="resumo-todas-as-artes-que-faltam">Resumo: todas as artes que faltam</h2>
+<p><em>Contam só as linhas que ainda faltam (as marcadas com ✅ já chegaram).</em></p>
 <table>
 <thead>
 <tr>
@@ -26,7 +27,7 @@ em{color:var(--mut)}
 <tr>
 <td>2. Animações que precisam de ajuste</td>
 <td>animações que existem, mas precisam ser refeitas</td>
-<td><strong>23</strong></td>
+<td><strong>20</strong></td>
 </tr>
 <tr>
 <td>3. Animações pendentes</td>
@@ -56,7 +57,7 @@ em{color:var(--mut)}
 <tr>
 <td>8. Mapas e cenários</td>
 <td>pinturas das fases, peças de cenário e <strong>objetos da vila e do mundo</strong> (baú, fonte, barraca, bigorna, placa...)</td>
-<td><strong>33</strong></td>
+<td><strong>32</strong></td>
 </tr>
 <tr>
 <td>9. Efeitos especiais</td>
@@ -99,7 +100,7 @@ em{color:var(--mut)}
 </ol>
 <h2 id="2-animacoes-que-precisam-de-ajuste-refazer">2. Animações que precisam de ajuste (refazer)</h2>
 <h3 id="21-ataque-nas-quatro-direcoes">2.1 Ataque nas quatro direções ⚔️</h3>
-<p>Hoje toda arte de ataque é <strong>de lado</strong>. O golpe já funciona para cima e para baixo no jogo (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto), mas a Line continua desenhada de lado. Faltam as versões de <strong>frente</strong> e <strong>de costas</strong> de cada golpe (o <code>_RIGHT</code> é o desenho que já existe):</p>
+<p>O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). <strong>Chegaram e estão no jogo</strong> (itens 241 a 246): os três golpes da espada de <strong>frente</strong> e <strong>de costas</strong> ✅. Ainda faltam a investida, o soco, o Raio de Luz e os golpes da Bell; enquanto isso, esses continuam desenhados de lado:</p>
 <table>
 <thead>
 <tr>
@@ -114,19 +115,19 @@ em{color:var(--mut)}
 <td><code>LINE_ATTACK_HORIZONTAL_FRONT</code></td>
 <td><code>LINE_ATTACK_HORIZONTAL_BACK</code></td>
 <td>golpe 1 (horizontal)</td>
-<td>✏️ falta</td>
+<td>✅</td>
 </tr>
 <tr>
 <td><code>LINE_ATTACK_VERTICAL_FRONT</code></td>
 <td><code>LINE_ATTACK_VERTICAL_BACK</code></td>
 <td>golpe 2 (de cima para baixo)</td>
-<td>✏️ falta</td>
+<td>✅</td>
 </tr>
 <tr>
 <td><code>LINE_ATTACK_COMBO_FRONT</code></td>
 <td><code>LINE_ATTACK_COMBO_BACK</code></td>
 <td>golpe 3 (combo)</td>
-<td>✏️ falta</td>
+<td>✅</td>
 </tr>
 <tr>
 <td><code>LINE_ATTACK_DIAGONAL_FRONT</code></td>
@@ -3388,7 +3389,7 @@ em{color:var(--mut)}
 </table>
 <h2 id="10-ordem-sugerida">10. Ordem sugerida</h2>
 <ol>
-<li><strong>Ataque nas quatro direções</strong> (seção 2.1): é o que a jogadora mais sente jogando.</li>
+<li><strong>Ataque nas quatro direções</strong> (seção 2.1): os golpes da espada já chegaram; faltam a investida, o soco, o Raio de Luz e os golpes da Bell.</li>
 <li><strong>Pôr do sol, felizes e a dança</strong> refeitas na proporção certa (seção 2.3).</li>
 <li><strong>Cenas do shopping</strong> com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).</li>
 <li><strong>Ícones dos botões e do HUD</strong> (seções 5 e 6) e os <strong>ícones dos itens e das armaduras</strong> (seção 4).</li>

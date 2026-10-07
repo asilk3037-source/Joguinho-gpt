@@ -94,7 +94,7 @@ w("## 2. Animações que precisam de ajuste (refazer)")
 w()
 w("### 2.1 Ataque nas quatro direções ⚔️")
 w()
-w("Hoje toda arte de ataque é **de lado**. O golpe já funciona para cima e para baixo no jogo (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto), mas a Line continua desenhada de lado. Faltam as versões de **frente** e **de costas** de cada golpe (o `_RIGHT` é o desenho que já existe):")
+w("O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 246): os três golpes da espada de **frente** e **de costas** ✅. Ainda faltam a investida, o soco, o Raio de Luz e os golpes da Bell; enquanto isso, esses continuam desenhados de lado:")
 w()
 golpes = [("LINE_ATTACK_HORIZONTAL", "golpe 1 (horizontal)"), ("LINE_ATTACK_VERTICAL", "golpe 2 (de cima para baixo)"), ("LINE_ATTACK_COMBO", "golpe 3 (combo)"),
           ("LINE_ATTACK_DIAGONAL", "investida"), ("LINE_PUNCH", "soco sem espada (hoje vem do soco na máquina)"), ("LINE_CAST_SPELL", "Raio de Luz"),
@@ -397,7 +397,7 @@ TOTAL_FX = sum(len(l) for _, l in EFEITOS)
 w("## 10. Ordem sugerida")
 w()
 for n, t in enumerate([
-    "**Ataque nas quatro direções** (seção 2.1): é o que a jogadora mais sente jogando.",
+    "**Ataque nas quatro direções** (seção 2.1): os golpes da espada já chegaram; faltam a investida, o soco, o Raio de Luz e os golpes da Bell.",
     "**Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).",
     "**Cenas do shopping** com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).",
     "**Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).",
@@ -415,11 +415,11 @@ contas, atual = {}, None
 for k, l in enumerate(linhas):
     if l.startswith("## "):
         atual = l[3:]
-    elif atual and l.startswith("| ") and not (k + 1 < len(linhas) and linhas[k + 1].startswith("|---")):
+    elif atual and l.startswith("| ") and "✅" not in l and not (k + 1 < len(linhas) and linhas[k + 1].startswith("|---")):
         contas[atual] = contas.get(atual, 0) + 1
 arm_line = sum(len([i for i in g if not i["existe"]]) for n, g in grupos.items() if n.startswith("Line com armadura"))
 arm_bell = sum(len([i for i in g if not i["existe"]]) for n, g in grupos.items() if n.startswith("Bell com armadura"))
-resumo = ["## Resumo: todas as artes que faltam", "",
+resumo = ["## Resumo: todas as artes que faltam", "", "*Contam só as linhas que ainda faltam (as marcadas com ✅ já chegaram).*", "",
           "| Seção | O que é | Quantas faltam |", "|---|---|---|"]
 for titulo, texto in [("2. Animações que precisam de ajuste (refazer)", "animações que existem, mas precisam ser refeitas"),
                       ("3. Animações pendentes (ainda não existem)", "animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**)"),

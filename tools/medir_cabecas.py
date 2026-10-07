@@ -7,6 +7,7 @@ e imprime, para cada animação, o acerto e o tamanho relativo `s` (0,8 = cabeç
 aplicar é 1/s, conferido a olho, em tools/ajuste_cabeca.json. Acertos abaixo de ~0,72 não são confiáveis.
 
 Uso (na raiz): python3 tools/medir_cabecas.py LINE saida.json LINE_WALK_LEFT,LINE_ANGRY
+"""
 import json, sys
 import numpy as np, cv2
 from PIL import Image

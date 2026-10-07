@@ -92,6 +92,17 @@ def ler_animacoes(caminho):
                 saida[codigo] = {"frames": quadros, "label": desc.get(codigo, codigo)}
         if saida:
             return saida
+    if "const frames=[" in html:
+        # Itens 241 em diante: uma animação por item, const frames=["data:...", ...]; o código vem no
+        # título (<code>CODIGO</code>) e o fps no texto ("8 FPS").
+        inicio = html.index("const frames=") + len("const frames=")
+        quadros, _ = json.JSONDecoder().raw_decode(html[inicio:])
+        quadros = [q for q in quadros if len(q.split(",", 1)[-1]) >= 100]
+        codigo = re.search(r"<code>([A-Z0-9_]+)</code>", html)
+        fps = re.search(r"(\d+)\s*FPS", html)
+        if quadros and codigo:
+            c = RENOMEAR.get(codigo.group(1), codigo.group(1))
+            return {c: {"frames": quadros, "label": c, "fps": int(fps.group(1)) if fps else None}}
     print(f"  aviso: nenhuma animação encontrada em {os.path.basename(caminho)}")
     return {}
 

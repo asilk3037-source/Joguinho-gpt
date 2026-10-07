@@ -58,6 +58,14 @@ window.LB = window.LB || {};
     ['LINE_ATTACK_VERTICAL', 'Ataque vertical', { fps: 34, quadros: 18 }],
     ['LINE_ATTACK_DIAGONAL', 'Ataque diagonal', { fps: 38, quadros: 22 }],
     ['LINE_ATTACK_COMBO', 'Combo', { fps: 32, quadros: 22 }],
+    // Golpes para baixo (_FRONT) e para cima (_BACK), itens 241 a 246: o jogo usa quando a Line ataca
+    // um alvo abaixo ou acima dela; o tempo e o acerto são os do golpe de lado.
+    ['LINE_ATTACK_HORIZONTAL_FRONT', 'Ataque horizontal para baixo', { fps: 34, quadros: 16, face: 'F' }],
+    ['LINE_ATTACK_HORIZONTAL_BACK', 'Ataque horizontal para cima', { fps: 34, quadros: 16, face: 'F' }],
+    ['LINE_ATTACK_VERTICAL_FRONT', 'Ataque vertical para baixo', { fps: 34, quadros: 18, face: 'F' }],
+    ['LINE_ATTACK_VERTICAL_BACK', 'Ataque vertical para cima', { fps: 34, quadros: 18, face: 'F' }],
+    ['LINE_ATTACK_COMBO_FRONT', 'Combo para baixo', { fps: 32, quadros: 22, face: 'F' }],
+    ['LINE_ATTACK_COMBO_BACK', 'Combo para cima', { fps: 32, quadros: 22, face: 'F' }],
     ['LINE_ATTACK_SPIN', 'Ataque giratório', { fps: 30, quadros: 18 }],
     ['LINE_ATTACK_AIR', 'Ataque aéreo', { fps: 28, quadros: 20 }],
     ['LINE_BLOCK', 'Bloquear', { fps: 24, quadros: 16 }],

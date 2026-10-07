@@ -6,15 +6,17 @@
 
 ## Resumo: todas as artes que faltam
 
+*Contam só as linhas que ainda faltam (as marcadas com ✅ já chegaram).*
+
 | Seção | O que é | Quantas faltam |
 |---|---|---|
-| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **23** |
+| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **20** |
 | 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **303** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
 | 7. Telas | telas cheias | **13** |
-| 8. Mapas e cenários | pinturas das fases, peças de cenário e **objetos da vila e do mundo** (baú, fonte, barraca, bigorna, placa...) | **33** |
+| 8. Mapas e cenários | pinturas das fases, peças de cenário e **objetos da vila e do mundo** (baú, fonte, barraca, bigorna, placa...) | **32** |
 | 9. Efeitos especiais | efeitos especiais (combate, magia, itens, clima, romance, chefes) | **47** |
 
 **Armaduras:** sim, estão no documento. A **Line** tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a **Bell** tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem **vestida** em todas as animações de movimento e luta (seção 3: **69** animações da Line e **63** da Bell com armadura) e do **ícone** (seção 4.1). Os **efeitos especiais** estão na seção 9.
@@ -57,13 +59,13 @@
 
 ### 2.1 Ataque nas quatro direções ⚔️
 
-Hoje toda arte de ataque é **de lado**. O golpe já funciona para cima e para baixo no jogo (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto), mas a Line continua desenhada de lado. Faltam as versões de **frente** e **de costas** de cada golpe (o `_RIGHT` é o desenho que já existe):
+O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 246): os três golpes da espada de **frente** e **de costas** ✅. Ainda faltam a investida, o soco, o Raio de Luz e os golpes da Bell; enquanto isso, esses continuam desenhados de lado:
 
 | De frente | De costas | Golpe | Situação |
 |---|---|---|---|
-| `LINE_ATTACK_HORIZONTAL_FRONT` | `LINE_ATTACK_HORIZONTAL_BACK` | golpe 1 (horizontal) | ✏️ falta |
-| `LINE_ATTACK_VERTICAL_FRONT` | `LINE_ATTACK_VERTICAL_BACK` | golpe 2 (de cima para baixo) | ✏️ falta |
-| `LINE_ATTACK_COMBO_FRONT` | `LINE_ATTACK_COMBO_BACK` | golpe 3 (combo) | ✏️ falta |
+| `LINE_ATTACK_HORIZONTAL_FRONT` | `LINE_ATTACK_HORIZONTAL_BACK` | golpe 1 (horizontal) | ✅ |
+| `LINE_ATTACK_VERTICAL_FRONT` | `LINE_ATTACK_VERTICAL_BACK` | golpe 2 (de cima para baixo) | ✅ |
+| `LINE_ATTACK_COMBO_FRONT` | `LINE_ATTACK_COMBO_BACK` | golpe 3 (combo) | ✅ |
 | `LINE_ATTACK_DIAGONAL_FRONT` | `LINE_ATTACK_DIAGONAL_BACK` | investida | ✏️ falta |
 | `LINE_PUNCH_FRONT` | `LINE_PUNCH_BACK` | soco sem espada (hoje vem do soco na máquina) | ✏️ falta |
 | `LINE_CAST_SPELL_FRONT` | `LINE_CAST_SPELL_BACK` | Raio de Luz | ✏️ falta |
@@ -783,7 +785,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 
 ## 10. Ordem sugerida
 
-1. **Ataque nas quatro direções** (seção 2.1): é o que a jogadora mais sente jogando.
+1. **Ataque nas quatro direções** (seção 2.1): os golpes da espada já chegaram; faltam a investida, o soco, o Raio de Luz e os golpes da Bell.
 2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).
 3. **Cenas do shopping** com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).
 4. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
