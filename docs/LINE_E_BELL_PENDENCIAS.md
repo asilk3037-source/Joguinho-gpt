@@ -10,7 +10,7 @@
 
 | Seção | O que é | Quantas faltam |
 |---|---|---|
-| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **17** |
+| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **11** |
 | 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **303** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
@@ -59,7 +59,7 @@
 
 ### 2.1 Ataque nas quatro direções ⚔️
 
-O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 252): todos os golpes da **Line** de **frente** e **de costas** (os três da espada, a investida, o soco e o Raio de Luz) ✅. Faltam só os golpes da **Bell**, que continuam desenhados de lado:
+O golpe funciona nas quatro direções (a área de acerto e o rastro seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** todos os golpes de **frente** e **de costas**: os da **Line** (itens 241 a 252) e os da **Bell** (itens 253 a 256: a estrela e o leque) ✅.
 
 | De frente | De costas | Golpe | Situação |
 |---|---|---|---|
@@ -67,23 +67,19 @@ O golpe funciona nas quatro direções (a área de acerto e o rastro da espada s
 | `LINE_ATTACK_VERTICAL_FRONT` | `LINE_ATTACK_VERTICAL_BACK` | golpe 2 (de cima para baixo) | ✅ |
 | `LINE_ATTACK_COMBO_FRONT` | `LINE_ATTACK_COMBO_BACK` | golpe 3 (combo) | ✅ |
 | `LINE_ATTACK_DIAGONAL_FRONT` | `LINE_ATTACK_DIAGONAL_BACK` | investida | ✅ |
-| `LINE_PUNCH_FRONT` | `LINE_PUNCH_BACK` | soco sem espada (hoje vem do soco na máquina) | ✅ |
+| `LINE_PUNCH_FRONT` | `LINE_PUNCH_BACK` | soco sem espada | ✅ |
 | `LINE_CAST_SPELL_FRONT` | `LINE_CAST_SPELL_BACK` | Raio de Luz | ✅ |
-| `BELL_ATTACK_STAR_FRONT` | `BELL_ATTACK_STAR_BACK` | estrela da Bell | ✏️ falta |
-| `BELL_ATTACK_SPREAD_FRONT` | `BELL_ATTACK_SPREAD_BACK` | leque de estrelas da Bell | ✏️ falta |
+| `BELL_ATTACK_STAR_FRONT` | `BELL_ATTACK_STAR_BACK` | estrela da Bell | ✅ |
+| `BELL_ATTACK_SPREAD_FRONT` | `BELL_ATTACK_SPREAD_BACK` | leque de estrelas da Bell | ✅ |
 
-Mesmos quadros e mesmo tempo da versão de lado, para o golpe acertar no mesmo instante. A espada (ou o punho) aponta para baixo da tela no `_FRONT` e para cima no `_BACK`.
+Falta só a **Bell de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.
 
 ### 2.2 Cenas do shopping e do prólogo: poucos quadros ♻️
 
-Estas cenas têm só 3 a 7 quadros diferentes e ficavam corridas. O jogo já toca mais devagar (4 a 6 quadros por segundo), mas o certo é **refazer com 10 a 12 quadros diferentes**, sem mudar o código:
+Estas cenas têm só 3 a 7 quadros diferentes e ficavam corridas. O jogo já toca mais devagar (4 a 6 quadros por segundo), mas o certo é **refazer com 10 a 12 quadros diferentes**, sem mudar o código. A Line admirando, a Bell esperando, a conversa e o abraço de chegada **já chegaram com 12 quadros** (itens 257 a 260) ✅; faltam:
 
 | Código | Cena | Quadros hoje | Pedido |
 |---|---|---|---|
-| `LINE_ADMIRE` | a Line vê a Bell de longe | 5 | 10 a 12 |
-| `BELL_WAIT` | a Bell esperando no shopping | 4 | 10 a 12 |
-| `LINE_BELL_MEET` | conversa frente a frente | 3 | 10 a 12 |
-| `LINE_BELL_GREET_HUG` | abraço de chegada | 4 | 10 a 12 |
 | `LINE_BELL_BK` | comendo BK (sem a mesa: as duas sentadas nas cadeiras de madeira da praça) | 6 | 10 a 12 |
 | `LINE_BELL_TUNNEL_KISS` | o beijo no túnel | 7 | 10 a 12 |
 | `BELL_LAUGH_AT_LINE` | a Bell rindo do soco | 6 | 10 a 12 |
@@ -785,13 +781,15 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 
 ## 10. Ordem sugerida
 
-1. **Ataque nas quatro direções** (seção 2.1): os golpes da Line já chegaram; faltam os da Bell (estrela e leque).
+1. **A Bell atacando de lado** (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.
 2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).
-3. **Cenas do shopping** com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).
+3. **Cenas do shopping que faltam** com 10 a 12 quadros: BK, beijo no túnel, a Bell rindo e a saída de mãos dadas (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).
 4. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
 5. **Telas** (seção 7), começando pelo título e pela mochila.
 6. **Bell jogável e armaduras vestidas** (seção 3).
 7. **Mapas das fases** em cima dos gabaritos (seção 8.1).
 8. **Chefes e moradores** da Parte 2 (seção 3).
 9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
+
+> 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.
 

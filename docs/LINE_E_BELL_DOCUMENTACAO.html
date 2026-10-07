@@ -27,13 +27,16 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 - <strong>Novos moradores</strong> (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 - <strong>Lista completa de arte necessária</strong> para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).</p>
 <p>📋 <strong>Documento novo só com o que falta:</strong> <code>docs/LINE_E_BELL_PENDENCIAS.md</code> (e <code>.html</code>) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por <code>tools/gerar_pendencias.py</code>.</p>
+<p>⭐ <strong>A Bell atira para cima e para baixo com arte própria (itens 253 a 256):</strong> a estrela e o leque de estrelas chegaram <strong>de frente</strong> e <strong>de costas</strong> (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.</p>
+<p>🛍️ <strong>Cenas do shopping com 12 quadros (itens 257 a 260):</strong> a Line admirando a Bell de longe, a Bell esperando, a conversa frente a frente e o abraço de chegada foram refeitos com 12 quadros e tocam no ritmo da artista (8 e 6 quadros por segundo). O abraço perdeu o aumento de 22% que a arte antiga precisava: a nova já vem do tamanho certo.</p>
+<p>🧪 <strong>Botão de teste no menu (temporário):</strong> <strong>🧪 Teste: ir para um mapa</strong> abre a lista de todos os mapas (Parte 1, Parte 2 e as casas e lojas) e entra no escolhido como se o jogo já estivesse zerado: Parte 1 e Parte 2 vencidas, Bell jogável, espada, magia e estrela, todos os itens e documentos, os 7 corações extras, cristais acesos, barreiras abertas, as 3 estações do carrinho, 9.999 moedas e as melhores armaduras. Nada é salvo durante o teste: <strong>Continuar</strong> volta ao progresso de verdade. O Primeiro Encontro fica fora da lista (é só cena: começa pelo <strong>Novo jogo</strong>) e o Covil sempre abre na luta contra o dragão.</p>
+<p>🧙 <strong>Conversa com o Mago corrigida:</strong> ele parecia travado porque o gesto de 12 quadros repetia a cada segundo, sem parar. Agora ele respira devagar quando está parado, gesticula <strong>só na vez dele</strong> de falar e fica ouvindo quando a Line fala; e a Line se vira para ele ao começar a conversa.</p>
 <p>⚔️ <strong>Ataque para cima e para baixo com arte própria (itens 241 a 252):</strong> todos os golpes da Line chegaram <strong>de frente</strong> e <strong>de costas</strong>, com 8 quadros cada: os três da espada (horizontal, vertical e combo), a investida, o soco sem espada e o Raio de Luz. Quando a Line ataca um inimigo abaixo ou acima dela, o jogo usa o desenho certo, no mesmo tempo e com o mesmo acerto do golpe de lado. Os de costas e o vertical de frente saíram menores que a Line parada e foram igualados pelo ajuste de tamanho (<code>tools/ajuste_cabeca.json</code>). Faltam só os golpes da Bell de frente e de costas.</p>
 <p>🕹️ <strong>Mais peças no shopping e no playground:</strong> a praça de alimentação ganhou a <strong>base nova</strong> (teto de madeira, parede das lojas e piso), o <strong>pilar branco</strong>, a <strong>mesa com o lanche do BK</strong>, a <strong>estação de bandejas</strong> e o <strong>canteiro curto</strong>; as cadeiras ficam viradas para as mesas. O playground ganhou <strong>14 peças</strong>: máquina de garra, máquina de cápsulas, balcão de prêmios e fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster espacial e guirlanda de ingressos (seção 5.2). O documento de pendências ganhou o <strong>resumo de tudo que falta</strong> e a seção de <strong>efeitos especiais</strong>.</p>
 <p>⚡ <strong>Jogo mais leve:</strong> a troca de mapa não trava mais (a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora é instantâneo), porque o chão é desenhado em pedaços, só o que aparece na tela. Sombras das nuvens, vinhetas e o brilho da água e da lava ficam prontos em vez de refeitos a cada quadro, e os fundos já saem decodificados do carregamento. A qualidade da imagem não muda (seção 26.7).</p>
 <p>🍔 <strong>Minas Shopping virou a praça de alimentação do modelo:</strong> duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.</p>
 <p>🎛️ <strong>HUD e controles com a arte nova (componentes 01 a 09):</strong> retrato da heroína na moldura redonda, barras de vida e magia, contador de moedas com o item do atalho, <strong>minimapa</strong> com a névoa no canto de cima, painel de objetivo com a moldura dourada, selo <strong>!</strong> de novidade na mochila, moldura dourada em todos os botões redondos e o joystick novo. Os ícones de dentro dos botões ainda são emoji (pedido no documento de pendências).</p>
-<p>⚔️ <strong>Ataque para cima e para baixo:</strong> o golpe (espada ou soco) agora acerta na direção em que a Line está virada, inclusive para cima e para baixo, e a mira vira sozinha para o inimigo mais perto. A arte do golpe de frente e de costas ainda falta (o jogo usa a de lado).</p>
-<p>🐢 <strong>Cenas do shopping mais calmas:</strong> as animações do prólogo com poucos quadros (a Line admirando, a Bell esperando, a conversa, o abraço, o BK, a risada e o beijo) passaram a tocar mais devagar até chegarem com mais quadros.</p>
+<p>🐢 <strong>Cenas do shopping mais calmas:</strong> as animações do prólogo que ainda têm poucos quadros (o BK, a risada e o beijo no túnel) tocam mais devagar até chegarem com mais quadros.</p>
 <p>🕹️ <strong>Playground pronto em peças (itens 235 a 240):</strong> a sala vazia nova, os dois fliperamas, o painel e o balcão de prêmios e a máquina de soco, cada um no tamanho da régua e na posição do guia do item 240 (seção 5.2). O soco da Line (item 238) e a risada da Bell (item 239) chegaram com seis quadros cada e substituem os antigos, inclusive o soco sem espada. Saíram o playground e a máquina antigos (itens 141 e 142).</p>
 <p>🗺️ <strong>Bases novas em uso (itens 218 a 222):</strong> o chão do Vilarejo, da Floresta, das Ruínas e da Montanha agora é a arte das bases (grama, mata, laje e rocha com brasa), e os caminhos usam a terra da própria base. O <strong>Minas Shopping</strong> passou a ser montado em peças sobre a base nova (teto e piso de losangos), com o mezanino, a escada rolante animada e os pilares; a ilustração antiga saiu. Seção 22.11.2.</p>
 <p>🧭 <strong>Direções e portas certas:</strong> sofá, banco do lago e poltronas virados para onde fazem sentido (a arte da poltrona olha para a esquerda; a da esquerda é espelhada); saíram os lustres que pareciam flutuar, a janela e a porta soltas no corredor da casa e a placa pendurada que estava no chão do vilarejo; o banheiro da casa da fazenda abre pela porta da esquerda e a parede entre o quarto e o banheiro não deixa mais passar. Seção 23.6.</p>
@@ -198,7 +201,7 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 </tr>
 <tr>
 <td>Animações catalogadas</td>
-<td><strong>566</strong>: 273 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
+<td><strong>570</strong>: 277 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
 </tr>
 </tbody>
 </table>
@@ -1279,25 +1282,25 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 <tr>
 <td><code>LINE_ADMIRE</code></td>
 <td>Início: a Line vê a Bell de longe. Precisa da Line de costas ou de lado, com a mão no peito, corações e o corpo balançando.</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">12</td>
 <td>✅ temporária</td>
 </tr>
 <tr>
 <td><code>BELL_WAIT</code></td>
 <td>A Bell esperando no shopping: olha para os lados, mexe no cabelo, confere o celular. Virada para a esquerda.</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">12</td>
 <td>✅ temporária</td>
 </tr>
 <tr>
 <td><code>LINE_BELL_MEET</code></td>
 <td>As duas frente a frente, conversando e sorrindo. Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem.</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">12</td>
 <td>✅ temporária</td>
 </tr>
 <tr>
 <td><code>LINE_BELL_GREET_HUG</code></td>
 <td>Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada.</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">12</td>
 <td>✅ temporária</td>
 </tr>
 <tr>
@@ -3016,7 +3019,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 - ✅ <strong>Tem arte (temporária):</strong> já aparece no jogo, mas ainda será trocada pela final.
 - 🔁 <strong>Substituta:</strong> ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ <strong>Desenho no código:</strong> ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.</p>
-<p><strong>Resumo:</strong> 566 animações. ✅ 273 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
+<p><strong>Resumo:</strong> 570 animações. ✅ 277 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
 <table>
 <thead>
 <tr>
@@ -3114,8 +3117,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td>Bell jogável (Parte 2)</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -3256,34 +3259,34 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <tr>
 <td><code>LINE_ADMIRE</code></td>
 <td>Line vê a Bell de longe (“puxa ela é tão linda”) <em>(sugestão nova)</em></td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: center;"></td>
 <td>✅ temporária</td>
-<td>LINE_BELL_ITEM_103</td>
+<td>LINE_BELL_ITEM_257</td>
 </tr>
 <tr>
 <td><code>BELL_WAIT</code></td>
 <td>Bell esperando a Line no shopping <em>(sugestão nova)</em></td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: center;">sim</td>
 <td>✅ temporária</td>
-<td>LINE_BELL_ITEM_103</td>
+<td>LINE_BELL_ITEM_258</td>
 </tr>
 <tr>
 <td><code>LINE_BELL_MEET</code></td>
 <td>Frente a frente, sorrindo (conversa no shopping) <em>(sugestão nova)</em></td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: center;">sim</td>
 <td>✅ temporária</td>
-<td>LINE_BELL_ITEM_104</td>
+<td>LINE_BELL_ITEM_259</td>
 </tr>
 <tr>
 <td><code>LINE_BELL_GREET_HUG</code></td>
 <td>Abraço de chegada (“Você tá atrasada”) <em>(sugestão nova)</em></td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: center;">sim</td>
 <td>✅ temporária</td>
-<td>LINE_BELL_ITEM_104</td>
+<td>LINE_BELL_ITEM_260</td>
 </tr>
 <tr>
 <td><code>LINE_BELL_BK</code></td>
@@ -5720,6 +5723,38 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td style="text-align: center;"></td>
 <td>🔁 usa <code>BELL_DANCE</code></td>
 <td></td>
+</tr>
+<tr>
+<td><code>BELL_ATTACK_STAR_FRONT</code></td>
+<td>Bell atira estrela para baixo</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_253</td>
+</tr>
+<tr>
+<td><code>BELL_ATTACK_STAR_BACK</code></td>
+<td>Bell atira estrela para cima</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_254</td>
+</tr>
+<tr>
+<td><code>BELL_ATTACK_SPREAD_FRONT</code></td>
+<td>Bell solta o leque de estrelas para baixo</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_255</td>
+</tr>
+<tr>
+<td><code>BELL_ATTACK_SPREAD_BACK</code></td>
+<td>Bell solta o leque de estrelas para cima</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_256</td>
 </tr>
 <tr>
 <td><code>BELL_ATTACK_AIR</code></td>
@@ -9873,8 +9908,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td>Bell jogável (Parte 2)</td>
-<td>18</td>
-<td>0</td>
+<td>22</td>
+<td>4</td>
 <td>18</td>
 <td>0</td>
 </tr>
@@ -9999,8 +10034,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>566</strong></td>
-<td><strong>273</strong></td>
+<td><strong>570</strong></td>
+<td><strong>277</strong></td>
 <td><strong>172</strong></td>
 <td><strong>121</strong></td>
 </tr>
@@ -10871,7 +10906,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <blockquote>
 <p>Esta seção junta o que antes ficava em arquivos soltos (<code>ANIMACOES_PENDENTES.md</code>, <code>LINE_BELL_INDICE_PARTES.md</code>, <code>LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md</code>, <code>docs/ARTES_NECESSARIAS.md</code>, <code>arte/theo/LAYOUT_OFICIAL.md</code> e <code>game/README.md</code>). Agora <strong>tudo fica só neste documento</strong>: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.</p>
 </blockquote>
-<p><strong>Status:</strong> 273 de 566 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
+<p><strong>Status:</strong> 277 de 570 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
 <h3 id="231-reenviar-ou-mandar">23.1 Reenviar ou mandar</h3>
 <ul>
 <li><strong>Item 96</strong>: chegou com 2 imagem(ns) vazia(s) em <code>DRAGON_FALL</code>, <code>DRAGON_DEFEATED</code>. As animações funcionam sem esses quadros, mas ficam incompletas.</li>
@@ -11024,11 +11059,11 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td>Bell</td>
-<td><code>BELL_BLINK_FRONT</code> (2), <code>BELL_BREAK_FREE</code> (4), <code>BELL_CALL_LINE</code> (4), <code>BELL_CAPTURED</code> (4), <code>BELL_CRY</code> (3), <code>BELL_CURTSY</code> (4), <code>BELL_DANCE</code> (3), <code>BELL_DRAGON_CARRIED</code> (4), <code>BELL_ESCAPE_ATTEMPT</code> (3), <code>BELL_FALL</code> (4), <code>BELL_FLEE</code> (4), <code>BELL_GROUND_STAND</code> (2), <code>BELL_HAPPY</code> (2), <code>BELL_HEAD_ON_LINE</code> (4), <code>BELL_HELP_LINE</code> (4), <code>BELL_HIGH_FIVE</code> (2), <code>BELL_IDLE_BACK</code> (1), <code>BELL_IDLE_FRONT</code> (3), <code>BELL_IDLE_LEFT</code> (1), <code>BELL_IDLE_RIGHT</code> (1), <code>BELL_JUMP</code> (3), <code>BELL_LAND</code> (2), <code>BELL_LAUGH</code> (2), <code>BELL_LEAN_ON_LINE</code> (4), <code>BELL_LOOK_SIDES_FRONT</code> (3), <code>BELL_RELIEVED</code> (2), <code>BELL_RUN_BACK</code> (4), <code>BELL_RUN_FRONT</code> (4), <code>BELL_SCARED</code> (3), <code>BELL_TRAPPED</code> (3), <code>BELL_WAIT</code> (4), <code>BELL_WALK_BACK</code> (4), <code>BELL_WALK_FRONT</code> (4)</td>
+<td><code>BELL_BLINK_FRONT</code> (2), <code>BELL_BREAK_FREE</code> (4), <code>BELL_CALL_LINE</code> (4), <code>BELL_CAPTURED</code> (4), <code>BELL_CRY</code> (3), <code>BELL_CURTSY</code> (4), <code>BELL_DANCE</code> (3), <code>BELL_DRAGON_CARRIED</code> (4), <code>BELL_ESCAPE_ATTEMPT</code> (3), <code>BELL_FALL</code> (4), <code>BELL_FLEE</code> (4), <code>BELL_GROUND_STAND</code> (2), <code>BELL_HAPPY</code> (2), <code>BELL_HEAD_ON_LINE</code> (4), <code>BELL_HELP_LINE</code> (4), <code>BELL_HIGH_FIVE</code> (2), <code>BELL_IDLE_BACK</code> (1), <code>BELL_IDLE_FRONT</code> (3), <code>BELL_IDLE_LEFT</code> (1), <code>BELL_IDLE_RIGHT</code> (1), <code>BELL_JUMP</code> (3), <code>BELL_LAND</code> (2), <code>BELL_LAUGH</code> (2), <code>BELL_LEAN_ON_LINE</code> (4), <code>BELL_LOOK_SIDES_FRONT</code> (3), <code>BELL_RELIEVED</code> (2), <code>BELL_RUN_BACK</code> (4), <code>BELL_RUN_FRONT</code> (4), <code>BELL_SCARED</code> (3), <code>BELL_TRAPPED</code> (3), <code>BELL_WALK_BACK</code> (4), <code>BELL_WALK_FRONT</code> (4)</td>
 </tr>
 <tr>
 <td>Line e Bell juntas</td>
-<td><code>LINE_BELL_CELEBRATE</code> (4), <code>LINE_BELL_GREET_HUG</code> (4), <code>LINE_BELL_HIGH_FIVE</code> (3), <code>LINE_BELL_HOLD_HANDS</code> (3), <code>LINE_BELL_HUG_RELEASE</code> (4), <code>LINE_BELL_LAUGH</code> (3), <code>LINE_BELL_MEET</code> (3), <code>LINE_BELL_RESCUE_HUG</code> (4), <code>LINE_BELL_RUN_TOGETHER_BACK</code> (4), <code>LINE_BELL_SIT_DOWN</code> (4), <code>LINE_BELL_SIT_IDLE</code> (4), <code>LINE_BELL_TALK</code> (3), <code>LINE_BELL_WALK_HANDS</code> (4), <code>LINE_BELL_WALK_HANDS_BACK</code> (4), <code>LINE_BELL_WALK_TOGETHER</code> (4), <code>LINE_BELL_WALK_TOGETHER_BACK</code> (4)</td>
+<td><code>LINE_BELL_CELEBRATE</code> (4), <code>LINE_BELL_HIGH_FIVE</code> (3), <code>LINE_BELL_HOLD_HANDS</code> (3), <code>LINE_BELL_HUG_RELEASE</code> (4), <code>LINE_BELL_LAUGH</code> (3), <code>LINE_BELL_RESCUE_HUG</code> (4), <code>LINE_BELL_RUN_TOGETHER_BACK</code> (4), <code>LINE_BELL_SIT_DOWN</code> (4), <code>LINE_BELL_SIT_IDLE</code> (4), <code>LINE_BELL_TALK</code> (3), <code>LINE_BELL_WALK_HANDS</code> (4), <code>LINE_BELL_WALK_HANDS_BACK</code> (4), <code>LINE_BELL_WALK_TOGETHER</code> (4), <code>LINE_BELL_WALK_TOGETHER_BACK</code> (4)</td>
 </tr>
 </tbody>
 </table>
@@ -14263,6 +14298,54 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td><code>LINE_BELL_ITEM_252.html</code></td>
 <td style="text-align: right;">1,96 MB</td>
 <td><code>LINE_CAST_SPELL_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">253</td>
+<td><code>LINE_BELL_ITEM_253.html</code></td>
+<td style="text-align: right;">2,49 MB</td>
+<td><code>BELL_ATTACK_STAR_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">254</td>
+<td><code>LINE_BELL_ITEM_254.html</code></td>
+<td style="text-align: right;">1,86 MB</td>
+<td><code>BELL_ATTACK_STAR_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">255</td>
+<td><code>LINE_BELL_ITEM_255.html</code></td>
+<td style="text-align: right;">3,21 MB</td>
+<td><code>BELL_ATTACK_SPREAD_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">256</td>
+<td><code>LINE_BELL_ITEM_256.html</code></td>
+<td style="text-align: right;">2,40 MB</td>
+<td><code>BELL_ATTACK_SPREAD_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">257</td>
+<td><code>LINE_BELL_ITEM_257.html</code></td>
+<td style="text-align: right;">2,42 MB</td>
+<td><code>LINE_ADMIRE</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">258</td>
+<td><code>LINE_BELL_ITEM_258.html</code></td>
+<td style="text-align: right;">2,76 MB</td>
+<td><code>BELL_WAIT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">259</td>
+<td><code>LINE_BELL_ITEM_259.html</code></td>
+<td style="text-align: right;">3,67 MB</td>
+<td><code>LINE_BELL_MEET</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">260</td>
+<td><code>LINE_BELL_ITEM_260.html</code></td>
+<td style="text-align: right;">3,67 MB</td>
+<td><code>LINE_BELL_GREET_HUG</code></td>
 </tr>
 </tbody>
 </table>

@@ -94,29 +94,28 @@ w("## 2. Animações que precisam de ajuste (refazer)")
 w()
 w("### 2.1 Ataque nas quatro direções ⚔️")
 w()
-w("O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 252): todos os golpes da **Line** de **frente** e **de costas** (os três da espada, a investida, o soco e o Raio de Luz) ✅. Faltam só os golpes da **Bell**, que continuam desenhados de lado:")
+w("O golpe funciona nas quatro direções (a área de acerto e o rastro seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** todos os golpes de **frente** e **de costas**: os da **Line** (itens 241 a 252) e os da **Bell** (itens 253 a 256: a estrela e o leque) ✅.")
 w()
 golpes = [("LINE_ATTACK_HORIZONTAL", "golpe 1 (horizontal)"), ("LINE_ATTACK_VERTICAL", "golpe 2 (de cima para baixo)"), ("LINE_ATTACK_COMBO", "golpe 3 (combo)"),
-          ("LINE_ATTACK_DIAGONAL", "investida"), ("LINE_PUNCH", "soco sem espada (hoje vem do soco na máquina)"), ("LINE_CAST_SPELL", "Raio de Luz"),
+          ("LINE_ATTACK_DIAGONAL", "investida"), ("LINE_PUNCH", "soco sem espada"), ("LINE_CAST_SPELL", "Raio de Luz"),
           ("BELL_ATTACK_STAR", "estrela da Bell"), ("BELL_ATTACK_SPREAD", "leque de estrelas da Bell")]
 filas = []
 for cod, o in golpes:
     tem = [d for d in ("FRONT", "BACK") if (cod + "_" + d) in sprites]
     filas.append((f"`{cod}_FRONT`", f"`{cod}_BACK`", o, "✅" if len(tem) == 2 else "✏️ falta"))
 tabela(["De frente", "De costas", "Golpe", "Situação"], filas)
-w("Mesmos quadros e mesmo tempo da versão de lado, para o golpe acertar no mesmo instante. A espada (ou o punho) aponta para baixo da tela no `_FRONT` e para cima no `_BACK`.")
+w("Falta só a **Bell de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.")
 w()
 
 w("### 2.2 Cenas do shopping e do prólogo: poucos quadros ♻️")
 w()
-w("Estas cenas têm só 3 a 7 quadros diferentes e ficavam corridas. O jogo já toca mais devagar (4 a 6 quadros por segundo), mas o certo é **refazer com 10 a 12 quadros diferentes**, sem mudar o código:")
+w("Estas cenas têm só 3 a 7 quadros diferentes e ficavam corridas. O jogo já toca mais devagar (4 a 6 quadros por segundo), mas o certo é **refazer com 10 a 12 quadros diferentes**, sem mudar o código. A Line admirando, a Bell esperando, a conversa e o abraço de chegada **já chegaram com 12 quadros** (itens 257 a 260) ✅; faltam:")
 w()
 filas = []
-for cod, o in [("LINE_ADMIRE", "a Line vê a Bell de longe"), ("BELL_WAIT", "a Bell esperando no shopping"), ("LINE_BELL_MEET", "conversa frente a frente"),
-               ("LINE_BELL_GREET_HUG", "abraço de chegada"), ("LINE_BELL_BK", "comendo BK (sem a mesa: as duas sentadas nas cadeiras de madeira da praça)"),
+for cod, o in [("LINE_BELL_BK", "comendo BK (sem a mesa: as duas sentadas nas cadeiras de madeira da praça)"),
                ("LINE_BELL_TUNNEL_KISS", "o beijo no túnel"), ("BELL_LAUGH_AT_LINE", "a Bell rindo do soco"), ("LINE_BELL_WALK_HANDS", "saindo de mãos dadas")]:
-    s = sprites.get(cod)
-    filas.append((f"`{cod}`", o, s["count"] if s else "—", "10 a 12"))
+    s_ = sprites.get(cod)
+    filas.append((f"`{cod}`", o, s_["count"] if s_ else "—", "10 a 12"))
 tabela(["Código", "Cena", "Quadros hoje", "Pedido"], filas)
 w("Também faltam as duas sentadas comendo: `LINE_SIT_CHAIR_EAT` (Line virada para a direita) e `BELL_SIT_CHAIR_EAT` (Bell virada para a esquerda), sem mesa e sem poltrona no desenho.")
 w()
@@ -397,9 +396,9 @@ TOTAL_FX = sum(len(l) for _, l in EFEITOS)
 w("## 10. Ordem sugerida")
 w()
 for n, t in enumerate([
-    "**Ataque nas quatro direções** (seção 2.1): os golpes da Line já chegaram; faltam os da Bell (estrela e leque).",
+    "**A Bell atacando de lado** (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.",
     "**Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).",
-    "**Cenas do shopping** com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).",
+    "**Cenas do shopping que faltam** com 10 a 12 quadros: BK, beijo no túnel, a Bell rindo e a saída de mãos dadas (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).",
     "**Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).",
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Bell jogável e armaduras vestidas** (seção 3).",

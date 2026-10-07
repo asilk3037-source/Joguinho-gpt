@@ -20,10 +20,11 @@ window.LB = window.LB || {};
   const QUATRO = ['FRONT', 'BACK', 'LEFT', 'RIGHT'];
 
   grupo('Primeiro encontro (prólogo)', [
-    ['LINE_ADMIRE', 'Line vê a Bell de longe (“puxa ela é tão linda”)', { fpsMax: 5, fps: 12, face: 'F', quadros: 20, alt: 'LINE_HAPPY', nova: true }],
-    ['BELL_WAIT', 'Bell esperando a Line no shopping', { fpsMax: 4, loop: true, quadros: 16, alt: 'BELL_IDLE', nova: true }],
-    ['LINE_BELL_MEET', 'Frente a frente, sorrindo (conversa no shopping)', { fpsMax: 4, loop: true, face: 'F', quadros: 16, alt: 'LINE_BELL_HOLD_HANDS', nova: true }],
-    ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { fpsMax: 5, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
+    // Itens 257 a 260: 12 quadros cada, no ritmo da artista (8 e 6 quadros por segundo).
+    ['LINE_ADMIRE', 'Line vê a Bell de longe (“puxa ela é tão linda”)', { fpsMax: 8, fps: 8, face: 'F', quadros: 12, alt: 'LINE_HAPPY', nova: true }],
+    ['BELL_WAIT', 'Bell esperando a Line no shopping', { fpsMax: 8, fps: 8, loop: true, quadros: 12, alt: 'BELL_IDLE', nova: true }],
+    ['LINE_BELL_MEET', 'Frente a frente, sorrindo (conversa no shopping)', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_HOLD_HANDS', nova: true }],
+    ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
     ['LINE_BELL_BK', 'Comendo BK juntas no shopping', { fpsMax: 4, fps: 6, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_EAT', nova: true }],
     ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16 }],
     ['LINE_PUNCH', 'Soco sem espada (usa a arte do soco na máquina, em 6 quadros)', { fps: 16, face: 'R', quadros: 6 }],
@@ -304,6 +305,11 @@ window.LB = window.LB || {};
     ['BELL_COMBAT_IDLE', 'Bell em guarda, estrelas girando na mão', { dir: QUATRO, loop: true, fps: 8, quadros: 8, alt: 'BELL_IDLE', parte2: true }],
     ['BELL_ATTACK_STAR', 'Bell atira uma estrela (braço à frente)', { fps: 14, quadros: 8, alt: 'BELL_HIGH_FIVE', parte2: true }],
     ['BELL_ATTACK_SPREAD', 'Bell gira e solta o leque de 3 estrelas de luz', { fps: 14, quadros: 10, alt: 'BELL_DANCE', parte2: true }],
+    // Itens 253 a 256: a estrela e o leque de frente e de costas (a mira escolhe sozinha).
+    ['BELL_ATTACK_STAR_FRONT', 'Bell atira estrela para baixo', { fps: 14, quadros: 8, face: 'F', parte2: true }],
+    ['BELL_ATTACK_STAR_BACK', 'Bell atira estrela para cima', { fps: 14, quadros: 8, face: 'F', parte2: true }],
+    ['BELL_ATTACK_SPREAD_FRONT', 'Bell solta o leque de estrelas para baixo', { fps: 14, quadros: 10, face: 'F', parte2: true }],
+    ['BELL_ATTACK_SPREAD_BACK', 'Bell solta o leque de estrelas para cima', { fps: 14, quadros: 10, face: 'F', parte2: true }],
     ['BELL_ATTACK_AIR', 'Bell atira estrela no ar (pulando)', { fps: 12, quadros: 6, alt: 'BELL_JUMP', parte2: true }],
     ['BELL_SING', 'Bell canta a Canção (notas coloridas saindo)', { fps: 10, loop: true, face: 'F', quadros: 12, alt: 'BELL_HAPPY', parte2: true }],
     ['BELL_BLOCK', 'Bell se protege com um escudo de luz rosa', { fps: 12, quadros: 6, alt: 'BELL_IDLE', parte2: true }],
