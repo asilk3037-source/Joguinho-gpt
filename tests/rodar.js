@@ -164,6 +164,26 @@ teste('prólogo: Novo jogo abre o Primeiro Encontro', async (h) => {
   await h.foto('prologo');
 });
 
+teste('prólogo: o BK acontece sentadas na mesa do BK e a saída vai pelo corredor', async (h) => {
+  await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = {}; j.encontro = { etapa: 'conversa', placar: '000' }; j.iniciarArea('shopping', null, true); j.fade = 0; j.iniciarCena(LB.HISTORIA.encontroConversa); });
+  const r = await h.ev(async () => {
+    const j = LB.jogo, n = () => LB.encontro.objetos(j).length, total = n();
+    let bk = null, saida = [];
+    for (let i = 0; i < 600 && j.mapa.id === 'shopping' && j.cena; i++) {
+      if (j.duo && j.duo.anim.base === 'LINE_BELL_BK' && !bk) bk = { pecas: n(), x: j.duo.x, y: j.duo.y };
+      if (j.duo && j.duo.anim.base === 'LINE_BELL_WALK_HANDS') saida.push([j.duo.x, j.duo.y]);
+      LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 40));
+    }
+    return { total, bk, saida, depois: j.encontro.sentadas };
+  });
+  afirmar(r.bk, 'a cena do BK aconteceu');
+  igual(r.total - r.bk.pecas, 2, 'as duas cadeiras de trás da mesa do BK saem de cena');
+  igual([Math.round(r.bk.x / (4 / 3)), Math.round(r.bk.y / (4 / 3))], [276, 384], 'as duas sentam atrás da mesa do BK');
+  afirmar(r.saida.length > 3 && r.saida.every(([x, y]) => y / (4 / 3) <= 437 || Math.abs(x / (4 / 3) - 180) < 2), 'descem pelo corredor do meio: ' + JSON.stringify(r.saida.slice(-3)));
+  afirmar(!r.depois, 'as cadeiras voltam depois do lanche');
+});
+
 teste('prólogo: playground montado em peças e o soco vira 038', async (h) => {
   await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = {}; j.encontro = { etapa: 'intro', placar: '000' }; j.iniciarArea('playground', null, true); j.fade = 0; j.iniciarCena(LB.HISTORIA.encontroPlayground); });
   for (let i = 0; i < 80 && (await h.ev(() => LB.jogo.encontro.etapa)) !== 'soco'; i++) await h.espera(150);
@@ -175,7 +195,7 @@ teste('prólogo: playground montado em peças e o soco vira 038', async (h) => {
   });
   igual(r.pecas, 16, 'peças do playground');
   igual(r.faltando, [], 'artes do playground carregadas');
-  igual(r.quadros, [6, 6], 'quadros do soco e da risada');
+  igual(r.quadros, [6, 12], 'quadros do soco e da risada (item 263, com 12)');
   await h.ev(() => LB.jogo.iniciarCena(LB.HISTORIA.encontroSoco));
   for (let i = 0; i < 60 && (await h.ev(() => LB.jogo.encontro.placar)) !== '038'; i++) await h.espera(50);
   igual(await h.ev(() => LB.jogo.encontro.placar), '038', 'placar depois do soco');
@@ -908,8 +928,8 @@ teste('animações: mesmo ritmo de passo para a Line e a Bell e nada de cena ace
 });
 
 teste('animações: Line e Bell do mesmo tamanho (ajuste pela cabeça) e um dragão só no rapto', async (h) => {
-  const aj = await h.ev(() => ['LINE_ANGRY', 'LINE_RUN_BACK', 'LINE_BELL_TUNNEL_KISS', 'LINE_BELL_SIT_IDLE', 'BELL_RUN_LEFT'].map((c) => LB.sprite(c) && LB.sprite(c).ajuste));
-  afirmar(aj[0] < 1 && aj[1] > 1 && aj[2] > 1 && aj[3] > 1 && aj[4] < 1, 'ajustes de tamanho carregados: ' + aj);
+  const aj = await h.ev(() => ['LINE_ANGRY', 'LINE_RUN_BACK', 'LINE_BELL_BK', 'LINE_BELL_SIT_IDLE', 'BELL_RUN_LEFT'].map((c) => LB.sprite(c) && LB.sprite(c).ajuste));
+  afirmar(aj[0] < 1 && aj[1] > 1 && aj[2] < 1 && aj[3] > 1 && aj[4] < 1, 'ajustes de tamanho carregados: ' + aj);
   await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = { encontroFeito: true, manhaVista: true, etapa: 'tarde' }; j.iniciarArea('fazenda', null, true); j.iniciarCapitulo(); });
   await h.espera(500);
   const r = await h.ev(async () => {

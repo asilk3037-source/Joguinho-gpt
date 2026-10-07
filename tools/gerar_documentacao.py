@@ -82,7 +82,7 @@ w("> 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.m
 w()
 w("> ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.")
 w()
-w("> 🛍️ **Cenas do shopping com 12 quadros (itens 257 a 260):** a Line admirando a Bell de longe, a Bell esperando, a conversa frente a frente e o abraço de chegada foram refeitos com 12 quadros e tocam no ritmo da artista (8 e 6 quadros por segundo). O abraço perdeu o aumento de 22% que a arte antiga precisava: a nova já vem do tamanho certo.")
+w("> 🛍️ **Todas as cenas do shopping com 12 quadros (itens 257 a 264):** a Line admirando a Bell de longe, a Bell esperando, a conversa, o abraço de chegada, o **BK**, o **beijo no túnel**, a **Bell rindo** do soco e as duas **saindo de mãos dadas**, no ritmo da artista (8 e 6 quadros por segundo). O lanche agora acontece **na mesa do BK** da praça: as cadeiras de trás saem de cena e as duas sentam ali, com a mesa na frente; depois saem pelo corredor do meio, sem atravessar as mesas. O abraço e o beijo perderam o aumento que a arte antiga precisava, e o BK sentado ficou 9% menor para as cabeças baterem com as das duas em pé.")
 w()
 w("> 🧪 **Botão de teste no menu (temporário):** **🧪 Teste: ir para um mapa** abre a lista de todos os mapas (Parte 1, Parte 2 e as casas e lojas) e entra no escolhido como se o jogo já estivesse zerado: Parte 1 e Parte 2 vencidas, Bell jogável, espada, magia e estrela, todos os itens e documentos, os 7 corações extras, cristais acesos, barreiras abertas, as 3 estações do carrinho, 9.999 moedas e as melhores armaduras. Nada é salvo durante o teste: **Continuar** volta ao progresso de verdade. O Primeiro Encontro fica fora da lista (é só cena: começa pelo **Novo jogo**) e o Covil sempre abre na luta contra o dragão.")
 w()
@@ -97,8 +97,6 @@ w()
 w("> 🍔 **Minas Shopping virou a praça de alimentação do modelo:** duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.")
 w()
 w("> 🎛️ **HUD e controles com a arte nova (componentes 01 a 09):** retrato da heroína na moldura redonda, barras de vida e magia, contador de moedas com o item do atalho, **minimapa** com a névoa no canto de cima, painel de objetivo com a moldura dourada, selo **!** de novidade na mochila, moldura dourada em todos os botões redondos e o joystick novo. Os ícones de dentro dos botões ainda são emoji (pedido no documento de pendências).")
-w()
-w("> 🐢 **Cenas do shopping mais calmas:** as animações do prólogo que ainda têm poucos quadros (o BK, a risada e o beijo no túnel) tocam mais devagar até chegarem com mais quadros.")
 w()
 w("> 🕹️ **Playground pronto em peças (itens 235 a 240):** a sala vazia nova, os dois fliperamas, o painel e o balcão de prêmios e a máquina de soco, cada um no tamanho da régua e na posição do guia do item 240 (seção 5.2). O soco da Line (item 238) e a risada da Bell (item 239) chegaram com seis quadros cada e substituem os antigos, inclusive o soco sem espada. Saíram o playground e a máquina antigos (itens 141 e 142).")
 w()
@@ -487,8 +485,7 @@ w("A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma áre
 w()
 w("**Minas Shopping**")
 w("- **Fundo (em peças):** a praça de alimentação do modelo (seção 22.11): o piso claro de losangos com o teto de madeira, as luzes embutidas e a coluna branca; por cima, a loja de hambúrguer e a de frango, seis mesas redondas com cadeiras de madeira e dois canteiros.")
-w("- **Posições:** a Line entra por baixo, no corredor do meio, de costas. A Bell espera no mesmo corredor, entre as mesas. O lanche do BK acontece no corredor, entre a segunda e a terceira fila de mesas (a animação traz a mesa delas), e as duas saem por baixo.")
-w("- **Ainda pode melhorar:** o casal comendo sentado numa das mesas da praça (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, no documento de pendências).")
+w("- **Posições:** a Line entra por baixo, no corredor do meio, de costas. A Bell espera no mesmo corredor, entre as mesas. O lanche acontece **na mesa do BK** (a do meio da coluna da direita): as duas cadeiras de trás saem de cena e as duas sentam ali, com a mesa na frente. Depois saem de mãos dadas pelo corredor do meio, por baixo.")
 w()
 w("#### ⭐ Minas Shopping: modelo real para a arte final")
 w()
@@ -509,7 +506,7 @@ w("- **Luz quente e aconchegante**, com tons de madeira, bege, caramelo e o verm
 w()
 w("**Como encaixar no jogo:**")
 w("- A tela é vertical (360×640), vista um pouco de cima. As lojas ficam no alto e as mesas se espalham pela área onde dá para andar.")
-w("- A Line entra por baixo, no corredor do meio. A Bell espera no corredor, entre as mesas. O lanche do BK acontece no corredor.")
+w("- A Line entra por baixo, no corredor do meio. A Bell espera no corredor, entre as mesas. O lanche acontece na mesa do BK.")
 w("- As setas, o ícone de hambúrguer e coxinha e o triângulo que aparecem na foto são do app onde ela foi tirada e **não fazem parte do cenário**.")
 w()
 w("A foto também fica salva em `arte/referencias/minas_shopping_modelo.jpg`.")
@@ -576,14 +573,14 @@ w()
 w("Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (prólogo)** da seção 10. As que ainda não têm arte usam uma substituta parecida.")
 w()
 USO = {
-    "LINE_ADMIRE": "Início: a Line vê a Bell de longe. Precisa da Line de costas ou de lado, com a mão no peito, corações e o corpo balançando.",
-    "BELL_WAIT": "A Bell esperando no shopping: olha para os lados, mexe no cabelo, confere o celular. Virada para a esquerda.",
-    "LINE_BELL_MEET": "As duas frente a frente, conversando e sorrindo. Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem.",
-    "LINE_BELL_GREET_HUG": "Abraço de chegada no “Você tá atrasada”. O HTML mostra a Bell pulando no abraço com uma perna levantada.",
-    "LINE_BELL_BK": "As duas sentadas à mesa comendo BK (hambúrguer, batata e refri), com a mesa desenhada. O HTML tem 3 quadros.",
+    "LINE_ADMIRE": "Início: a Line vê a Bell de longe e fica encantada (item 257).",
+    "BELL_WAIT": "A Bell esperando no shopping: olha para os lados, mexe no cabelo, ajeita os óculos (item 258).",
+    "LINE_BELL_MEET": "As duas lado a lado, conversando e sorrindo (item 259). Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem.",
+    "LINE_BELL_GREET_HUG": "Abraço de chegada no “Você tá atrasada” (item 260).",
+    "LINE_BELL_BK": "As duas sentadas nas cadeiras de madeira comendo BK, hambúrguer, batata e refri (item 261). A arte não traz mesa: elas sentam atrás da mesa do BK da praça.",
     "LINE_PUNCH_MACHINE": "A Line na máquina de soco (item 238): guarda, preparo, avanço, soco e volta. A máquina é uma peça à parte; o placar vira 038 no quadro do soco. Os mesmos quadros fazem o soco sem espada.",
-    "BELL_LAUGH_AT_LINE": "A Bell gargalhando da Line (item 239): tapa a boca, se curva de rir, chora de rir e enxuga a lágrima.",
-    "LINE_BELL_TUNNEL_KISS": "O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo. O HTML tem 8 quadros.",
+    "BELL_LAUGH_AT_LINE": "A Bell gargalhando da Line (item 263): tapa a boca, se curva de rir, chora de rir e enxuga a lágrima.",
+    "LINE_BELL_TUNNEL_KISS": "O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo (item 262).",
 }
 w("| Código | Quando aparece e o que precisa mostrar | Quadros | Status hoje |")
 w("|---|---|---:|---|")
@@ -606,15 +603,10 @@ w("| Bell | `maroto`, `sorriso`, `neutro`, `apaixonada` | “Você tá atrasada�
 w("| Narradora | sem retrato | três falas: saída do shopping, saída do playground e o fim no túnel |")
 w("| Bell & Line | sem retrato | o “♥” depois do beijo |")
 w()
-w("### 5.7 Arte que já existe no HTML")
+w("### 5.7 O que falta para a versão final do prólogo")
 w()
-w("O HTML do primeiro encontro já traz ilustrações das duas juntas: o abraço, o BK na mesa, as duas de mãos dadas, o beijo (tira de 8 quadros), a caminhada e o BK animado. Hoje o jogo usa as animações que já tinha no lugar delas, mas essas ilustrações são a melhor referência (ou até a base) para a arte final de `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_MEET`, `LINE_BELL_TUNNEL_KISS` e `LINE_BELL_WALK_HANDS`.")
-w()
-img("encontro-referencia-html", "Ilustrações do HTML do primeiro encontro (referência para a arte final)")
-w("### 5.8 O que falta para a versão final do prólogo")
-w()
-w("- [ ] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK` e `LINE_BELL_TUNNEL_KISS` com arte própria.")
-w("- [x] `LINE_PUNCH_MACHINE` e `BELL_LAUGH_AT_LINE` finais (itens 238 e 239) e a máquina de soco à parte (item 237).")
+w("- [x] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_TUNNEL_KISS`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_WALK_HANDS` com 12 quadros (itens 257 a 264).")
+w("- [x] `LINE_PUNCH_MACHINE` final (item 238) e a máquina de soco à parte (item 237).")
 w("- [x] Playground em peças (itens 235 a 237 e 240).")
 w("- [ ] Máquina de soco com o placar **000** desenhado pela artista (hoje o 000 é feito a partir do 038).")
 w("- [ ] Ilustração final do Minas Shopping seguindo a foto-modelo da praça de alimentação (seção 5.2), com o Burger King.")
@@ -622,7 +614,7 @@ w("- [ ] Versão final da ilustração do Túnel.")
 w("- [ ] Line parada de costas (`LINE_IDLE_BACK`) caprichada para a entrada no shopping.")
 w("- [ ] Opcional: música e sons (passos no shopping, fliperamas, o soco, o beijo).")
 w()
-w("### 5.9 Progresso e salvamento")
+w("### 5.8 Progresso e salvamento")
 w()
 w("- **Novo jogo** sempre começa pelo prólogo.")
 w("- Se o jogador fechar o jogo **no meio do prólogo**, **Continuar** recomeça o prólogo do início (ele é curto).")

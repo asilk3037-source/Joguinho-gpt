@@ -10,7 +10,7 @@
 
 | Seção | O que é | Quantas faltam |
 |---|---|---|
-| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **11** |
+| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **7** |
 | 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **303** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
@@ -74,20 +74,7 @@ O golpe funciona nas quatro direções (a área de acerto e o rastro seguem a di
 
 Falta só a **Bell de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.
 
-### 2.2 Cenas do shopping e do prólogo: poucos quadros ♻️
-
-Estas cenas têm só 3 a 7 quadros diferentes e ficavam corridas. O jogo já toca mais devagar (4 a 6 quadros por segundo), mas o certo é **refazer com 10 a 12 quadros diferentes**, sem mudar o código. A Line admirando, a Bell esperando, a conversa e o abraço de chegada **já chegaram com 12 quadros** (itens 257 a 260) ✅; faltam:
-
-| Código | Cena | Quadros hoje | Pedido |
-|---|---|---|---|
-| `LINE_BELL_BK` | comendo BK (sem a mesa: as duas sentadas nas cadeiras de madeira da praça) | 6 | 10 a 12 |
-| `LINE_BELL_TUNNEL_KISS` | o beijo no túnel | 7 | 10 a 12 |
-| `BELL_LAUGH_AT_LINE` | a Bell rindo do soco | 6 | 10 a 12 |
-| `LINE_BELL_WALK_HANDS` | saindo de mãos dadas | 4 | 10 a 12 |
-
-Também faltam as duas sentadas comendo: `LINE_SIT_CHAIR_EAT` (Line virada para a direita) e `BELL_SIT_CHAIR_EAT` (Bell virada para a esquerda), sem mesa e sem poltrona no desenho.
-
-### 2.3 Pôr do sol, felizes e a Line girando a Bell: desproporcionais ♻️
+### 2.2 Pôr do sol, felizes e a Line girando a Bell: desproporcionais ♻️
 
 Estas cenas saíram com a cabeça e o corpo **maiores** que a Line e a Bell das 20 primeiras, e a dança (a Line girando a Bell) está **borrada** (é uma arte antiga pequena, ampliada). Precisam ser **refeitas do zero**, em pixel art, com a Line e a Bell exatamente do tamanho da referência (linha tracejada da imagem):
 
@@ -104,7 +91,7 @@ Estas cenas saíram com a cabeça e o corpo **maiores** que a Line e a Bell das 
 | `LINE_HAPPY` | a Line feliz (a atual foi descartada: era uma corrida que terminava caída) | 8 a 10 |
 | `BELL_HAPPY` | a Bell feliz | 8 a 10 |
 
-### 2.4 Outras para refazer
+### 2.3 Outras para refazer
 
 - `LINE_BELL_WALK_HANDS_FRONT`: as duas de mãos dadas andando de frente ainda é a arte pequena do laboratório, ampliada (fica borrada).
 - `BELL_DRAGON_CARRIED`: veio com o dragão antigo desenhado junto. Reenviar só a Bell pendurada, de braços para cima, sem dragão.
@@ -659,7 +646,7 @@ O shopping agora segue o **modelo da praça de alimentação** (`arte/referencia
 
 - **Já no jogo ✅:** `SHOP_PRACA_LOJA_HAMBURGUER`, `SHOP_PRACA_LOJA_FRANGO`, `SHOP_PRACA_MESA_REDONDA`, `SHOP_PRACA_MESA_BK`, `SHOP_PRACA_CADEIRA_MADEIRA`, `SHOP_PRACA_PILAR_BRANCO`, `SHOP_PRACA_LIXEIRA_BANDEJAS`, `SHOP_PRACA_CANTEIRO_RETANGULAR`, `SHOP_PRACA_CANTEIRO_CURTO` (a cadeira nos 4 lados).
 - A **base** (`SHOP_PRACA_BASE_PISO_PAREDE`: teto de madeira, parede vazia e piso) também já está no jogo ✅.
-- **Pode melhorar ✏️:** o casal **sentado numa das mesas** comendo (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, seção 2.2), para o lanche acontecer na mesa do BK da praça e não no corredor.
+- O lanche já acontece **na mesa do BK** ✅: as duas sentam nas cadeiras de trás (item 261) e a mesa fica na frente delas.
 - No modelo as mesas e cadeiras são quase do tamanho da Line; no jogo seguem a **régua** (mesa de 1,1 m, cadeira de 0,95 m).
 
 O **playground** também ganhou as peças separadas (garra, cápsulas, balcão de prêmios, fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster e guirlanda) ✅.
@@ -782,14 +769,13 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 ## 10. Ordem sugerida
 
 1. **A Bell atacando de lado** (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.
-2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).
-3. **Cenas do shopping que faltam** com 10 a 12 quadros: BK, beijo no túnel, a Bell rindo e a saída de mãos dadas (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).
-4. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
-5. **Telas** (seção 7), começando pelo título e pela mochila.
-6. **Bell jogável e armaduras vestidas** (seção 3).
-7. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-8. **Chefes e moradores** da Parte 2 (seção 3).
-9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
+2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.2).
+3. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
+4. **Telas** (seção 7), começando pelo título e pela mochila.
+5. **Bell jogável e armaduras vestidas** (seção 3).
+6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
+7. **Chefes e moradores** da Parte 2 (seção 3).
+8. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
 > 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.
 

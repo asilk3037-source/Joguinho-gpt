@@ -107,20 +107,7 @@ tabela(["De frente", "De costas", "Golpe", "Situação"], filas)
 w("Falta só a **Bell de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.")
 w()
 
-w("### 2.2 Cenas do shopping e do prólogo: poucos quadros ♻️")
-w()
-w("Estas cenas têm só 3 a 7 quadros diferentes e ficavam corridas. O jogo já toca mais devagar (4 a 6 quadros por segundo), mas o certo é **refazer com 10 a 12 quadros diferentes**, sem mudar o código. A Line admirando, a Bell esperando, a conversa e o abraço de chegada **já chegaram com 12 quadros** (itens 257 a 260) ✅; faltam:")
-w()
-filas = []
-for cod, o in [("LINE_BELL_BK", "comendo BK (sem a mesa: as duas sentadas nas cadeiras de madeira da praça)"),
-               ("LINE_BELL_TUNNEL_KISS", "o beijo no túnel"), ("BELL_LAUGH_AT_LINE", "a Bell rindo do soco"), ("LINE_BELL_WALK_HANDS", "saindo de mãos dadas")]:
-    s_ = sprites.get(cod)
-    filas.append((f"`{cod}`", o, s_["count"] if s_ else "—", "10 a 12"))
-tabela(["Código", "Cena", "Quadros hoje", "Pedido"], filas)
-w("Também faltam as duas sentadas comendo: `LINE_SIT_CHAIR_EAT` (Line virada para a direita) e `BELL_SIT_CHAIR_EAT` (Bell virada para a esquerda), sem mesa e sem poltrona no desenho.")
-w()
-
-w("### 2.3 Pôr do sol, felizes e a Line girando a Bell: desproporcionais ♻️")
+w("### 2.2 Pôr do sol, felizes e a Line girando a Bell: desproporcionais ♻️")
 w()
 w("Estas cenas saíram com a cabeça e o corpo **maiores** que a Line e a Bell das 20 primeiras, e a dança (a Line girando a Bell) está **borrada** (é uma arte antiga pequena, ampliada). Precisam ser **refeitas do zero**, em pixel art, com a Line e a Bell exatamente do tamanho da referência (linha tracejada da imagem):")
 w()
@@ -134,7 +121,7 @@ filas = [("`LINE_BELL_HOLD_HANDS`", "de mãos dadas olhando o pôr do sol (de la
          ("`BELL_HAPPY`", "a Bell feliz", "8 a 10")]
 tabela(["Código", "Cena", "Quadros"], filas)
 
-w("### 2.4 Outras para refazer")
+w("### 2.3 Outras para refazer")
 w()
 w("- `LINE_BELL_WALK_HANDS_FRONT`: as duas de mãos dadas andando de frente ainda é a arte pequena do laboratório, ampliada (fica borrada).")
 w("- `BELL_DRAGON_CARRIED`: veio com o dragão antigo desenhado junto. Reenviar só a Bell pendurada, de braços para cima, sem dragão.")
@@ -282,7 +269,7 @@ PECAS = ["SHOP_PRACA_LOJA_HAMBURGUER", "SHOP_PRACA_LOJA_FRANGO", "SHOP_PRACA_MES
 chegaram = [p for p in PECAS if any(existe(f"assets/cenario/{p.lower()}{suf}.webp") for suf in ("", "_front"))]
 w("- **Já no jogo ✅:** " + (", ".join(f"`{p}`" for p in chegaram) or "nenhuma") + " (a cadeira nos 4 lados).")
 w("- A **base** (`SHOP_PRACA_BASE_PISO_PAREDE`: teto de madeira, parede vazia e piso) também já está no jogo ✅.")
-w("- **Pode melhorar ✏️:** o casal **sentado numa das mesas** comendo (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, seção 2.2), para o lanche acontecer na mesa do BK da praça e não no corredor.")
+w("- O lanche já acontece **na mesa do BK** ✅: as duas sentam nas cadeiras de trás (item 261) e a mesa fica na frente delas.")
 w("- No modelo as mesas e cadeiras são quase do tamanho da Line; no jogo seguem a **régua** (mesa de 1,1 m, cadeira de 0,95 m).")
 w()
 w("O **playground** também ganhou as peças separadas (garra, cápsulas, balcão de prêmios, fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster e guirlanda) ✅.")
@@ -397,8 +384,7 @@ w("## 10. Ordem sugerida")
 w()
 for n, t in enumerate([
     "**A Bell atacando de lado** (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.",
-    "**Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).",
-    "**Cenas do shopping que faltam** com 10 a 12 quadros: BK, beijo no túnel, a Bell rindo e a saída de mãos dadas (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).",
+    "**Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.2).",
     "**Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).",
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Bell jogável e armaduras vestidas** (seção 3).",

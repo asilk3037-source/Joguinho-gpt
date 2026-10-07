@@ -20,16 +20,16 @@ window.LB = window.LB || {};
   const QUATRO = ['FRONT', 'BACK', 'LEFT', 'RIGHT'];
 
   grupo('Primeiro encontro (prólogo)', [
-    // Itens 257 a 260: 12 quadros cada, no ritmo da artista (8 e 6 quadros por segundo).
+    // Itens 257 a 264: 12 quadros cada, no ritmo da artista (8 e 6 quadros por segundo).
     ['LINE_ADMIRE', 'Line vê a Bell de longe (“puxa ela é tão linda”)', { fpsMax: 8, fps: 8, face: 'F', quadros: 12, alt: 'LINE_HAPPY', nova: true }],
     ['BELL_WAIT', 'Bell esperando a Line no shopping', { fpsMax: 8, fps: 8, loop: true, quadros: 12, alt: 'BELL_IDLE', nova: true }],
     ['LINE_BELL_MEET', 'Frente a frente, sorrindo (conversa no shopping)', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_HOLD_HANDS', nova: true }],
     ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
-    ['LINE_BELL_BK', 'Comendo BK juntas no shopping', { fpsMax: 4, fps: 6, loop: true, face: 'F', quadros: 24, alt: 'LINE_BELL_EAT', nova: true }],
+    ['LINE_BELL_BK', 'Comendo BK juntas, sentadas na mesa da praça', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_EAT', nova: true }],
     ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16 }],
     ['LINE_PUNCH', 'Soco sem espada (usa a arte do soco na máquina, em 6 quadros)', { fps: 16, face: 'R', quadros: 6 }],
-    ['BELL_LAUGH_AT_LINE', 'Bell gargalhando do soco da Line', { fpsMax: 6, fps: 10, loop: true, face: 'F', quadros: 16, alt: 'BELL_LAUGH', nova: true }],
-    ['LINE_BELL_TUNNEL_KISS', 'O primeiro beijo, no túnel', { fpsMax: 5, fps: 5, face: 'F', quadros: 8, alt: 'LINE_BELL_KISS', nova: true }],
+    ['BELL_LAUGH_AT_LINE', 'Bell gargalhando do soco da Line', { fpsMax: 8, fps: 8, loop: true, face: 'F', quadros: 12, alt: 'BELL_LAUGH', nova: true }],
+    ['LINE_BELL_TUNNEL_KISS', 'O primeiro beijo, no túnel', { fpsMax: 6, fps: 6, face: 'F', quadros: 12, alt: 'LINE_BELL_KISS', nova: true }],
   ]);
 
   grupo('Line — movimento', [

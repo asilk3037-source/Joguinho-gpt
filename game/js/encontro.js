@@ -71,10 +71,11 @@
   // Mesa redonda da praça com 4 cadeiras viradas para ela: duas de frente atrás da mesa e uma de cada
   // lado, na altura da mesa (a da esquerda virada para a direita, a da direita virada para a esquerda).
   // `solido` é o pé do grupo (largura e fundo, a partir da base) onde a Line não entra.
-  function mesaComCadeiras(x, base, mesa) {
+  // `grupo` marca as duas cadeiras de trás: na cena do BK elas somem e a Line e a Bell sentam ali.
+  function mesaComCadeiras(x, base, mesa, grupo) {
     return [
-      { nome: 'shop_praca_cadeira_madeira_front', x: x - 11, base: base - 12 },
-      { nome: 'shop_praca_cadeira_madeira_front', x: x + 11, base: base - 12 },
+      { nome: 'shop_praca_cadeira_madeira_front', x: x - 11, base: base - 12, grupo },
+      { nome: 'shop_praca_cadeira_madeira_front', x: x + 11, base: base - 12, grupo },
       { nome: 'shop_praca_cadeira_madeira_right', x: x - 23, base: base - 3 },
       { nome: 'shop_praca_cadeira_madeira_left', x: x + 23, base: base - 3 },
       { nome: mesa || 'shop_praca_mesa_redonda', x, base, solido: [72, 26] },
@@ -113,7 +114,7 @@
       { nome: 'shop_praca_loja_frango', x: 270, base: 186 },
       { nome: 'shop_praca_pilar_branco', x: 346, base: 196 },
       ...[[84, 300], [276, 300], [84, 396], [84, 492], [276, 492]].flatMap(([x, b]) => mesaComCadeiras(x, b)),
-      ...mesaComCadeiras(276, 396, 'shop_praca_mesa_bk'),
+      ...mesaComCadeiras(276, 396, 'shop_praca_mesa_bk', 'bk'),
       { nome: 'shop_praca_lixeira_bandejas', x: 330, base: 236, solido: [44, 14] },
       { nome: 'shop_praca_canteiro_retangular', x: 352, base: 300, solido: [70, 16] },
       { nome: 'shop_praca_canteiro_curto', x: 350, base: 445, solido: [56, 14] },
@@ -129,7 +130,8 @@
     const placar = jogo.encontro && jogo.encontro.placar === '038' ? '038' : '000';
     const nomeDe = (p) => p.nome === 'playground_maquina_soco' ? p.nome + '_' + placar
       : p.quadros ? p.nome + '_frame_0' + (1 + Math.floor(jogo.tempo * 6) % p.quadros) : p.nome;
-    return pecas.map((p) => ({
+    const sentadas = jogo.encontro && jogo.encontro.sentadas;
+    return pecas.filter((p) => !p.grupo || p.grupo !== sentadas).map((p) => ({
       // A plataforma da máquina fica sob os pés da Line: a peça vai para trás dela (`frente`).
       y: p.parede ? 0 : (p.base - (p.frente || 0)) * K,
       desenhar: (g) => desenharPeca(g, p, nomeDe(p)),
@@ -203,7 +205,7 @@
       jogo.bell = new LB.Bell(b.x, b.y, 'LEFT'); jogo.bell.lado = -1; jogo.bell.anim.tocar('BELL_WAIT', true);
       jogo.line.dir = 'BACK';
     }
-    e.placar = '000'; e.socando = false;
+    e.placar = '000'; e.socando = false; e.sentadas = null;
     mostrarEtiquetas(jogo);
   }
 
@@ -246,28 +248,33 @@
       yield c.fala('Bell', 'BK.', 'sorriso');
       c.fimDuo(); j.zoomAlvo = 1;
       document.getElementById('etiquetas').classList.add('oculto');
-      // Vão até a mesa.
-      yield andarJuntas(c, line, bell, P(142, 446), P(218, 446));
+      // Vão até a mesa do BK e sentam nas duas cadeiras de trás (a arte já traz as cadeiras).
+      yield andarJuntas(c, line, bell, P(256, 420), P(296, 420));
       yield c.quando(() => !bell.alvoCena);
       line.dir = 'BACK'; bell.dir = 'BACK';
-      const mesa = P(180, 446);
-      j.camAlvo = { x: mesa.x, y: mesa.y - 40 }; j.zoomAlvo = 1.6;
-      c.duo('LINE_BELL_BK', mesa.x, mesa.y);
+      const assento = P(276, 384), mesa = P(276, 420);
+      j.camAlvo = { x: assento.x, y: assento.y - 20 }; j.zoomAlvo = 1.6;
+      j.encontro.sentadas = 'bk';
+      c.duo('LINE_BELL_BK', assento.x, assento.y);
       yield c.espera(1.2);
       yield c.fala('Bell', 'você parece estar tímida', 'neutro');
       yield c.fala('Line', 'é que você é muito linda', 'apaixonada');
       yield c.fala('Bell', '', 'apaixonada');
-      c.fimDuo(); c.duo('LINE_BELL_MEET', mesa.x, mesa.y);
+      c.fimDuo(); j.encontro.sentadas = null; c.duo('LINE_BELL_MEET', mesa.x, mesa.y);
       yield c.fala('Narradora', 'As duas sorriem. Bell segura a mão da Line e elas saem juntas do shopping.');
       c.fimDuo(); j.zoomAlvo = 1;
       document.getElementById('etiquetas').classList.add('oculto');
       // Saem de mãos dadas.
-      const par = { x: mesa.x, y: mesa.y };
-      c.duo('LINE_BELL_WALK_HANDS', par.x, par.y, 'RIGHT');
-      const duo = j.duo, saida = P(180, 610);
+      // Pela frente da mesa até o corredor do meio e depois descendo até a saída (sem atravessar mesas).
+      c.duo('LINE_BELL_WALK_HANDS', mesa.x, mesa.y, 'LEFT');
+      const duo = j.duo, corredor = P(180, 436), saida = P(180, 610);
       j.camAlvo = null;
-      c.junto(c.tween(duo, 'x', saida.x, 2.4));
-      yield c.tween(duo, 'y', saida.y, 2.4);
+      if (duo) {
+        c.junto(c.tween(duo, 'y', corredor.y, 1.1));
+        yield c.tween(duo, 'x', corredor.x, 1.1);
+        duo.dir = 'RIGHT';
+        yield c.tween(duo, 'y', saida.y, 2);
+      }
       yield transicao(c, j);
       irPara(j, 'playground', LB.HISTORIA.encontroPlayground);
     },
