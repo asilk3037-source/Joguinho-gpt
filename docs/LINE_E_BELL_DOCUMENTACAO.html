@@ -27,7 +27,7 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 - <strong>Novos moradores</strong> (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 - <strong>Lista completa de arte necessária</strong> para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).</p>
 <p>📋 <strong>Documento novo só com o que falta:</strong> <code>docs/LINE_E_BELL_PENDENCIAS.md</code> (e <code>.html</code>) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por <code>tools/gerar_pendencias.py</code>.</p>
-<p>⚔️ <strong>Ataque para cima e para baixo com arte própria (itens 241 a 246):</strong> os três golpes da espada (horizontal, vertical e combo) chegaram <strong>de frente</strong> e <strong>de costas</strong>, com 8 quadros cada. Quando a Line ataca um inimigo abaixo ou acima dela, o jogo usa o desenho certo, no mesmo tempo e com o mesmo acerto do golpe de lado. Os de costas e o vertical de frente saíram menores que a Line parada e foram igualados pelo ajuste de tamanho (<code>tools/ajuste_cabeca.json</code>).</p>
+<p>⚔️ <strong>Ataque para cima e para baixo com arte própria (itens 241 a 252):</strong> todos os golpes da Line chegaram <strong>de frente</strong> e <strong>de costas</strong>, com 8 quadros cada: os três da espada (horizontal, vertical e combo), a investida, o soco sem espada e o Raio de Luz. Quando a Line ataca um inimigo abaixo ou acima dela, o jogo usa o desenho certo, no mesmo tempo e com o mesmo acerto do golpe de lado. Os de costas e o vertical de frente saíram menores que a Line parada e foram igualados pelo ajuste de tamanho (<code>tools/ajuste_cabeca.json</code>). Faltam só os golpes da Bell de frente e de costas.</p>
 <p>🕹️ <strong>Mais peças no shopping e no playground:</strong> a praça de alimentação ganhou a <strong>base nova</strong> (teto de madeira, parede das lojas e piso), o <strong>pilar branco</strong>, a <strong>mesa com o lanche do BK</strong>, a <strong>estação de bandejas</strong> e o <strong>canteiro curto</strong>; as cadeiras ficam viradas para as mesas. O playground ganhou <strong>14 peças</strong>: máquina de garra, máquina de cápsulas, balcão de prêmios e fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster espacial e guirlanda de ingressos (seção 5.2). O documento de pendências ganhou o <strong>resumo de tudo que falta</strong> e a seção de <strong>efeitos especiais</strong>.</p>
 <p>⚡ <strong>Jogo mais leve:</strong> a troca de mapa não trava mais (a Floresta levava 7 s e o Vilarejo 5 s num celular médio; agora é instantâneo), porque o chão é desenhado em pedaços, só o que aparece na tela. Sombras das nuvens, vinhetas e o brilho da água e da lava ficam prontos em vez de refeitos a cada quadro, e os fundos já saem decodificados do carregamento. A qualidade da imagem não muda (seção 26.7).</p>
 <p>🍔 <strong>Minas Shopping virou a praça de alimentação do modelo:</strong> duas lojas de lanche (hambúrguer e frango) no fundo, sob o teto de madeira com luzes embutidas e a coluna branca, seis mesas redondas com quatro cadeiras de madeira em duas colunas e canteiros na direita (seção 22.11). As mesas são sólidas, a Bell espera no corredor do meio e a Line entra por baixo. As peças da montagem anterior (confeitaria, cafeteria, mezanino, escada rolante, sofás, poltronas) saíram do jogo.</p>
@@ -198,7 +198,7 @@ Isso vale para os sprites, os retratos, o cenário e os desenhos feitos no códi
 </tr>
 <tr>
 <td>Animações catalogadas</td>
-<td><strong>560</strong>: 267 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
+<td><strong>566</strong>: 273 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem</td>
 </tr>
 </tbody>
 </table>
@@ -3016,7 +3016,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 - ✅ <strong>Tem arte (temporária):</strong> já aparece no jogo, mas ainda será trocada pela final.
 - 🔁 <strong>Substituta:</strong> ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ <strong>Desenho no código:</strong> ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.</p>
-<p><strong>Resumo:</strong> 560 animações. ✅ 267 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
+<p><strong>Resumo:</strong> 566 animações. ✅ 273 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.</p>
 <table>
 <thead>
 <tr>
@@ -3044,8 +3044,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td>Line — combate</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">33</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">39</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -3770,6 +3770,54 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td style="text-align: center;"></td>
 <td>✅ temporária</td>
 <td>LINE_BELL_ITEM_246</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_DIAGONAL_FRONT</code></td>
+<td>Investida para baixo</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_247</td>
+</tr>
+<tr>
+<td><code>LINE_ATTACK_DIAGONAL_BACK</code></td>
+<td>Investida para cima</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_248</td>
+</tr>
+<tr>
+<td><code>LINE_PUNCH_FRONT</code></td>
+<td>Soco sem espada para baixo</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_249</td>
+</tr>
+<tr>
+<td><code>LINE_PUNCH_BACK</code></td>
+<td>Soco sem espada para cima</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_250</td>
+</tr>
+<tr>
+<td><code>LINE_CAST_SPELL_FRONT</code></td>
+<td>Raio de Luz para baixo</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_251</td>
+</tr>
+<tr>
+<td><code>LINE_CAST_SPELL_BACK</code></td>
+<td>Raio de Luz para cima</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: center;"></td>
+<td>✅ temporária</td>
+<td>LINE_BELL_ITEM_252</td>
 </tr>
 <tr>
 <td><code>LINE_ATTACK_SPIN</code></td>
@@ -9755,8 +9803,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td>Line — combate</td>
-<td>33</td>
-<td>33</td>
+<td>39</td>
+<td>39</td>
 <td>0</td>
 <td>0</td>
 </tr>
@@ -9951,8 +9999,8 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>560</strong></td>
-<td><strong>267</strong></td>
+<td><strong>566</strong></td>
+<td><strong>273</strong></td>
 <td><strong>172</strong></td>
 <td><strong>121</strong></td>
 </tr>
@@ -10823,7 +10871,7 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <blockquote>
 <p>Esta seção junta o que antes ficava em arquivos soltos (<code>ANIMACOES_PENDENTES.md</code>, <code>LINE_BELL_INDICE_PARTES.md</code>, <code>LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md</code>, <code>docs/ARTES_NECESSARIAS.md</code>, <code>arte/theo/LAYOUT_OFICIAL.md</code> e <code>game/README.md</code>). Agora <strong>tudo fica só neste documento</strong>: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.</p>
 </blockquote>
-<p><strong>Status:</strong> 267 de 560 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
+<p><strong>Status:</strong> 273 de 566 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em <strong>Menu → Animações</strong>. Toda a arte atual é temporária até a criação completa.</p>
 <h3 id="231-reenviar-ou-mandar">23.1 Reenviar ou mandar</h3>
 <ul>
 <li><strong>Item 96</strong>: chegou com 2 imagem(ns) vazia(s) em <code>DRAGON_FALL</code>, <code>DRAGON_DEFEATED</code>. As animações funcionam sem esses quadros, mas ficam incompletas.</li>
@@ -14179,6 +14227,42 @@ Uma pena enorme, cinza por cima e branca por baixo. Dá choquinho quando encosta
 <td><code>LINE_BELL_ITEM_246.html</code></td>
 <td style="text-align: right;">1,67 MB</td>
 <td><code>LINE_ATTACK_COMBO_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">247</td>
+<td><code>LINE_BELL_ITEM_247.html</code></td>
+<td style="text-align: right;">2,20 MB</td>
+<td><code>LINE_ATTACK_DIAGONAL_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">248</td>
+<td><code>LINE_BELL_ITEM_248.html</code></td>
+<td style="text-align: right;">1,50 MB</td>
+<td><code>LINE_ATTACK_DIAGONAL_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">249</td>
+<td><code>LINE_BELL_ITEM_249.html</code></td>
+<td style="text-align: right;">2,32 MB</td>
+<td><code>LINE_PUNCH_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">250</td>
+<td><code>LINE_BELL_ITEM_250.html</code></td>
+<td style="text-align: right;">1,59 MB</td>
+<td><code>LINE_PUNCH_BACK</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">251</td>
+<td><code>LINE_BELL_ITEM_251.html</code></td>
+<td style="text-align: right;">2,35 MB</td>
+<td><code>LINE_CAST_SPELL_FRONT</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">252</td>
+<td><code>LINE_BELL_ITEM_252.html</code></td>
+<td style="text-align: right;">1,96 MB</td>
+<td><code>LINE_CAST_SPELL_BACK</code></td>
 </tr>
 </tbody>
 </table>

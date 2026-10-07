@@ -18,7 +18,7 @@
 
 > 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
-> ⚔️ **Ataque para cima e para baixo com arte própria (itens 241 a 246):** os três golpes da espada (horizontal, vertical e combo) chegaram **de frente** e **de costas**, com 8 quadros cada. Quando a Line ataca um inimigo abaixo ou acima dela, o jogo usa o desenho certo, no mesmo tempo e com o mesmo acerto do golpe de lado. Os de costas e o vertical de frente saíram menores que a Line parada e foram igualados pelo ajuste de tamanho (`tools/ajuste_cabeca.json`).
+> ⚔️ **Ataque para cima e para baixo com arte própria (itens 241 a 252):** todos os golpes da Line chegaram **de frente** e **de costas**, com 8 quadros cada: os três da espada (horizontal, vertical e combo), a investida, o soco sem espada e o Raio de Luz. Quando a Line ataca um inimigo abaixo ou acima dela, o jogo usa o desenho certo, no mesmo tempo e com o mesmo acerto do golpe de lado. Os de costas e o vertical de frente saíram menores que a Line parada e foram igualados pelo ajuste de tamanho (`tools/ajuste_cabeca.json`). Faltam só os golpes da Bell de frente e de costas.
 
 > 🕹️ **Mais peças no shopping e no playground:** a praça de alimentação ganhou a **base nova** (teto de madeira, parede das lojas e piso), o **pilar branco**, a **mesa com o lanche do BK**, a **estação de bandejas** e o **canteiro curto**; as cadeiras ficam viradas para as mesas. O playground ganhou **14 peças**: máquina de garra, máquina de cápsulas, balcão de prêmios e fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster espacial e guirlanda de ingressos (seção 5.2). O documento de pendências ganhou o **resumo de tudo que falta** e a seção de **efeitos especiais**.
 
@@ -169,7 +169,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **560**: 267 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem |
+| Animações catalogadas | **566**: 273 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1867,13 +1867,13 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 560 animações. ✅ 267 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.
+**Resumo:** 566 animações. ✅ 273 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
 | Primeiro encontro (prólogo) | 9 | 9 | 0 | 0 |
 | Line — movimento | 31 | 31 | 0 | 0 |
-| Line — combate | 33 | 33 | 0 | 0 |
+| Line — combate | 39 | 39 | 0 | 0 |
 | Line — emoções | 10 | 9 | 1 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
 | Line e Bell juntas | 26 | 18 | 8 | 0 |
@@ -1977,6 +1977,12 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_ATTACK_VERTICAL_BACK` | Ataque vertical para cima | 8 |  | ✅ temporária | LINE_BELL_ITEM_244 |
 | `LINE_ATTACK_COMBO_FRONT` | Combo para baixo | 8 |  | ✅ temporária | LINE_BELL_ITEM_245 |
 | `LINE_ATTACK_COMBO_BACK` | Combo para cima | 8 |  | ✅ temporária | LINE_BELL_ITEM_246 |
+| `LINE_ATTACK_DIAGONAL_FRONT` | Investida para baixo | 8 |  | ✅ temporária | LINE_BELL_ITEM_247 |
+| `LINE_ATTACK_DIAGONAL_BACK` | Investida para cima | 8 |  | ✅ temporária | LINE_BELL_ITEM_248 |
+| `LINE_PUNCH_FRONT` | Soco sem espada para baixo | 8 |  | ✅ temporária | LINE_BELL_ITEM_249 |
+| `LINE_PUNCH_BACK` | Soco sem espada para cima | 8 |  | ✅ temporária | LINE_BELL_ITEM_250 |
+| `LINE_CAST_SPELL_FRONT` | Raio de Luz para baixo | 8 |  | ✅ temporária | LINE_BELL_ITEM_251 |
+| `LINE_CAST_SPELL_BACK` | Raio de Luz para cima | 8 |  | ✅ temporária | LINE_BELL_ITEM_252 |
 | `LINE_ATTACK_SPIN` | Ataque giratório | 8 |  | ✅ temporária | LINE_BELL_ITEM_29 |
 | `LINE_ATTACK_AIR` | Ataque aéreo | 10 |  | ✅ temporária | LINE_BELL_ITEM_30 |
 | `LINE_BLOCK` | Bloquear | 6 |  | ✅ temporária | LINE_BELL_ITEM_31 |
@@ -3333,7 +3339,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 |---|---|---|---|---|
 | Primeiro encontro (prólogo) | 9 | 9 | 0 | 0 |
 | Line — movimento | 31 | 31 | 0 | 0 |
-| Line — combate | 33 | 33 | 0 | 0 |
+| Line — combate | 39 | 39 | 0 | 0 |
 | Line — emoções | 10 | 9 | 1 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
 | Line e Bell juntas | 26 | 18 | 8 | 0 |
@@ -3361,7 +3367,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **560** | **267** | **172** | **121** |
+| **Total** | **566** | **273** | **172** | **121** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3661,7 +3667,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 267 de 560 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 273 de 566 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -4292,6 +4298,12 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 244 | `LINE_BELL_ITEM_244.html` | 1,52 MB | `LINE_ATTACK_VERTICAL_BACK` |
 | 245 | `LINE_BELL_ITEM_245.html` | 2,40 MB | `LINE_ATTACK_COMBO_FRONT` |
 | 246 | `LINE_BELL_ITEM_246.html` | 1,67 MB | `LINE_ATTACK_COMBO_BACK` |
+| 247 | `LINE_BELL_ITEM_247.html` | 2,20 MB | `LINE_ATTACK_DIAGONAL_FRONT` |
+| 248 | `LINE_BELL_ITEM_248.html` | 1,50 MB | `LINE_ATTACK_DIAGONAL_BACK` |
+| 249 | `LINE_BELL_ITEM_249.html` | 2,32 MB | `LINE_PUNCH_FRONT` |
+| 250 | `LINE_BELL_ITEM_250.html` | 1,59 MB | `LINE_PUNCH_BACK` |
+| 251 | `LINE_BELL_ITEM_251.html` | 2,35 MB | `LINE_CAST_SPELL_FRONT` |
+| 252 | `LINE_BELL_ITEM_252.html` | 1,96 MB | `LINE_CAST_SPELL_BACK` |
 
 Itens que ainda não chegaram: 153, 240.
 

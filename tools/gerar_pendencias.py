@@ -94,7 +94,7 @@ w("## 2. Animações que precisam de ajuste (refazer)")
 w()
 w("### 2.1 Ataque nas quatro direções ⚔️")
 w()
-w("O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 246): os três golpes da espada de **frente** e **de costas** ✅. Ainda faltam a investida, o soco, o Raio de Luz e os golpes da Bell; enquanto isso, esses continuam desenhados de lado:")
+w("O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 252): todos os golpes da **Line** de **frente** e **de costas** (os três da espada, a investida, o soco e o Raio de Luz) ✅. Faltam só os golpes da **Bell**, que continuam desenhados de lado:")
 w()
 golpes = [("LINE_ATTACK_HORIZONTAL", "golpe 1 (horizontal)"), ("LINE_ATTACK_VERTICAL", "golpe 2 (de cima para baixo)"), ("LINE_ATTACK_COMBO", "golpe 3 (combo)"),
           ("LINE_ATTACK_DIAGONAL", "investida"), ("LINE_PUNCH", "soco sem espada (hoje vem do soco na máquina)"), ("LINE_CAST_SPELL", "Raio de Luz"),
@@ -397,7 +397,7 @@ TOTAL_FX = sum(len(l) for _, l in EFEITOS)
 w("## 10. Ordem sugerida")
 w()
 for n, t in enumerate([
-    "**Ataque nas quatro direções** (seção 2.1): os golpes da espada já chegaram; faltam a investida, o soco, o Raio de Luz e os golpes da Bell.",
+    "**Ataque nas quatro direções** (seção 2.1): os golpes da Line já chegaram; faltam os da Bell (estrela e leque).",
     "**Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).",
     "**Cenas do shopping** com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).",
     "**Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).",

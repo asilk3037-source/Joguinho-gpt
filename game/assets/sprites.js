@@ -9603,6 +9603,201 @@ window.SPRITES = {
   "item": "LINE_BELL_ITEM_246.html",
   "escala": 1.1127,
   "ajuste": 1.27
+ },
+ "LINE_ATTACK_DIAGONAL_FRONT": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_ATTACK_DIAGONAL_FRONT.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 237,
+  "groundEnd": 237,
+  "bases": [
+   237,
+   236,
+   236,
+   236,
+   237,
+   237,
+   237,
+   237
+  ],
+  "label": "LINE_ATTACK_DIAGONAL_FRONT",
+  "item": "LINE_BELL_ITEM_247.html",
+  "escala": 0.9994
+ },
+ "LINE_ATTACK_DIAGONAL_BACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_ATTACK_DIAGONAL_BACK.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 236,
+  "groundEnd": 237,
+  "bases": [
+   236,
+   236,
+   236,
+   237,
+   236,
+   236,
+   237,
+   237
+  ],
+  "label": "LINE_ATTACK_DIAGONAL_BACK",
+  "item": "LINE_BELL_ITEM_248.html",
+  "escala": 1.0183,
+  "ajuste": 1.25
+ },
+ "LINE_PUNCH_FRONT": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_PUNCH_FRONT.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 237,
+  "groundEnd": 237,
+  "bases": [
+   237,
+   237,
+   236,
+   237,
+   237,
+   236,
+   237,
+   237
+  ],
+  "label": "LINE_PUNCH_FRONT",
+  "item": "LINE_BELL_ITEM_249.html",
+  "escala": 0.9994
+ },
+ "LINE_PUNCH_BACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_PUNCH_BACK.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 236,
+  "groundEnd": 236,
+  "bases": [
+   236,
+   236,
+   236,
+   236,
+   237,
+   236,
+   236,
+   236
+  ],
+  "label": "LINE_PUNCH_BACK",
+  "item": "LINE_BELL_ITEM_250.html",
+  "escala": 0.9994,
+  "ajuste": 1.12
+ },
+ "LINE_CAST_SPELL_FRONT": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_CAST_SPELL_FRONT.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 236,
+  "groundEnd": 237,
+  "bases": [
+   236,
+   236,
+   236,
+   236,
+   237,
+   237,
+   237,
+   237
+  ],
+  "label": "LINE_CAST_SPELL_FRONT",
+  "item": "LINE_BELL_ITEM_251.html",
+  "escala": 0.9994
+ },
+ "LINE_CAST_SPELL_BACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/LINE_CAST_SPELL_BACK.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 237,
+  "groundEnd": 236,
+  "bases": [
+   237,
+   237,
+   237,
+   237,
+   236,
+   236,
+   236,
+   236
+  ],
+  "label": "LINE_CAST_SPELL_BACK",
+  "item": "LINE_BELL_ITEM_252.html",
+  "escala": 1.0378,
+  "ajuste": 1.37
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

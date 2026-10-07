@@ -66,6 +66,13 @@ window.LB = window.LB || {};
     ['LINE_ATTACK_VERTICAL_BACK', 'Ataque vertical para cima', { fps: 34, quadros: 18, face: 'F' }],
     ['LINE_ATTACK_COMBO_FRONT', 'Combo para baixo', { fps: 32, quadros: 22, face: 'F' }],
     ['LINE_ATTACK_COMBO_BACK', 'Combo para cima', { fps: 32, quadros: 22, face: 'F' }],
+    // Itens 247 a 252: investida, soco e Raio de Luz para baixo e para cima.
+    ['LINE_ATTACK_DIAGONAL_FRONT', 'Investida para baixo', { fps: 38, quadros: 22, face: 'F' }],
+    ['LINE_ATTACK_DIAGONAL_BACK', 'Investida para cima', { fps: 38, quadros: 22, face: 'F' }],
+    ['LINE_PUNCH_FRONT', 'Soco sem espada para baixo', { fps: 16, quadros: 6, face: 'F' }],
+    ['LINE_PUNCH_BACK', 'Soco sem espada para cima', { fps: 16, quadros: 6, face: 'F' }],
+    ['LINE_CAST_SPELL_FRONT', 'Raio de Luz para baixo', { fps: 34, quadros: 18, face: 'F' }],
+    ['LINE_CAST_SPELL_BACK', 'Raio de Luz para cima', { fps: 34, quadros: 18, face: 'F' }],
     ['LINE_ATTACK_SPIN', 'Ataque giratório', { fps: 30, quadros: 18 }],
     ['LINE_ATTACK_AIR', 'Ataque aéreo', { fps: 28, quadros: 20 }],
     ['LINE_BLOCK', 'Bloquear', { fps: 24, quadros: 16 }],

@@ -10,7 +10,7 @@
 
 | Seção | O que é | Quantas faltam |
 |---|---|---|
-| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **20** |
+| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **17** |
 | 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **303** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
@@ -59,16 +59,16 @@
 
 ### 2.1 Ataque nas quatro direções ⚔️
 
-O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 246): os três golpes da espada de **frente** e **de costas** ✅. Ainda faltam a investida, o soco, o Raio de Luz e os golpes da Bell; enquanto isso, esses continuam desenhados de lado:
+O golpe funciona nas quatro direções (a área de acerto e o rastro da espada seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** (itens 241 a 252): todos os golpes da **Line** de **frente** e **de costas** (os três da espada, a investida, o soco e o Raio de Luz) ✅. Faltam só os golpes da **Bell**, que continuam desenhados de lado:
 
 | De frente | De costas | Golpe | Situação |
 |---|---|---|---|
 | `LINE_ATTACK_HORIZONTAL_FRONT` | `LINE_ATTACK_HORIZONTAL_BACK` | golpe 1 (horizontal) | ✅ |
 | `LINE_ATTACK_VERTICAL_FRONT` | `LINE_ATTACK_VERTICAL_BACK` | golpe 2 (de cima para baixo) | ✅ |
 | `LINE_ATTACK_COMBO_FRONT` | `LINE_ATTACK_COMBO_BACK` | golpe 3 (combo) | ✅ |
-| `LINE_ATTACK_DIAGONAL_FRONT` | `LINE_ATTACK_DIAGONAL_BACK` | investida | ✏️ falta |
-| `LINE_PUNCH_FRONT` | `LINE_PUNCH_BACK` | soco sem espada (hoje vem do soco na máquina) | ✏️ falta |
-| `LINE_CAST_SPELL_FRONT` | `LINE_CAST_SPELL_BACK` | Raio de Luz | ✏️ falta |
+| `LINE_ATTACK_DIAGONAL_FRONT` | `LINE_ATTACK_DIAGONAL_BACK` | investida | ✅ |
+| `LINE_PUNCH_FRONT` | `LINE_PUNCH_BACK` | soco sem espada (hoje vem do soco na máquina) | ✅ |
+| `LINE_CAST_SPELL_FRONT` | `LINE_CAST_SPELL_BACK` | Raio de Luz | ✅ |
 | `BELL_ATTACK_STAR_FRONT` | `BELL_ATTACK_STAR_BACK` | estrela da Bell | ✏️ falta |
 | `BELL_ATTACK_SPREAD_FRONT` | `BELL_ATTACK_SPREAD_BACK` | leque de estrelas da Bell | ✏️ falta |
 
@@ -785,7 +785,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 
 ## 10. Ordem sugerida
 
-1. **Ataque nas quatro direções** (seção 2.1): os golpes da espada já chegaram; faltam a investida, o soco, o Raio de Luz e os golpes da Bell.
+1. **Ataque nas quatro direções** (seção 2.1): os golpes da Line já chegaram; faltam os da Bell (estrela e leque).
 2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.3).
 3. **Cenas do shopping** com 10 a 12 quadros (seção 2.2) e o casal sentado numa mesa da praça (seção 8.2).
 4. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
