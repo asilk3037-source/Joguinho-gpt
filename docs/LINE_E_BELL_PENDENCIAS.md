@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 06/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 07/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -9,15 +9,17 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **23** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os moradores e as **armaduras vestidas**) | **293** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **303** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
 | 7. Telas | telas cheias | **13** |
-| 8. Mapas e cenários | pinturas das fases e peças de cenário | **14** |
+| 8. Mapas e cenários | pinturas das fases, peças de cenário e **objetos da vila e do mundo** (baú, fonte, barraca, bigorna, placa...) | **33** |
 | 9. Efeitos especiais | efeitos especiais (combate, magia, itens, clima, romance, chefes) | **47** |
 
 **Armaduras:** sim, estão no documento. A **Line** tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a **Bell** tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem **vestida** em todas as animações de movimento e luta (seção 3: **69** animações da Line e **63** da Bell com armadura) e do **ícone** (seção 4.1). Os **efeitos especiais** estão na seção 9.
+
+**Moradores e vila:** os 10 moradores (Dona Rosa, Seu Bento, Seu Zé, Dona Lurdes, Pedrinho, Tobias, Dona Cora, Seu Tião, Vó Brisa e o dragão amigo) estão na seção 3, com as animações e os **retratos do diálogo**; os **objetos da vila e do mundo** que ainda são desenhados no código estão na seção 8.4, e os **ícones dos itens** na seção 4.2.
 
 
 ## 1. Regras (valem para toda arte)
@@ -507,6 +509,23 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | 12 | 🔁 usa `BELL_SCARED` |
 | `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | 12 | 🔁 usa `BELL_FALL` |
 
+### Retratos dos moradores (caixa de diálogo)
+
+Hoje os moradores aparecem como **bonequinhos desenhados no código** (corpo, avental, chapéu e barba simples) e falam **sem retrato**; só a Line e a Bell têm rosto na caixa de diálogo. Quando as animações da tabela acima chegarem, elas entram no lugar dos bonequinhos. Para o diálogo, cada morador precisa do retrato em **512×512**, transparente, no mesmo estilo dos retratos da Line e da Bell, com 2 expressões (normal e sorrindo):
+
+| Código | Morador | Onde mora | Como é no jogo |
+|---|---|---|---|
+| `PORTRAIT_ROSA` | Dona Rosa | Vilarejo, loja | mercadora, roupa rosa, avental creme, cabelo grisalho em coque |
+| `PORTRAIT_BENTO` | Seu Bento | Vilarejo, ferraria | ferreiro, roupa cinza-azulada, avental de couro, barba escura, martelo |
+| `PORTRAIT_ZE` | Seu Zé | Vilarejo | senhor de cabelo branco, chapéu de palha e bengala, roupa verde |
+| `PORTRAIT_LURDES` | Dona Lurdes | Vilarejo | moradora, roupa lilás, avental creme, cabelo castanho |
+| `PORTRAIT_PEDRO` | Pedrinho | Vilarejo | menino agitado, camiseta amarela, cabelo escuro |
+| `PORTRAIT_TOBIAS` | Tobias | Montanha (ferido) | caçador, roupa verde-oliva, colete de couro, barba e chapéu |
+| `PORTRAIT_CORA` | Dona Cora | Vale | jardineira |
+| `PORTRAIT_TIAO` | Seu Tião | Lago | pescador |
+| `PORTRAIT_BRISA` | Vó Brisa | Picos | pastora |
+| `PORTRAIT_DRAGAO` | Dragão amigo | Parte 2 | o dragão chibi, de frente, sorrindo |
+
 ## 4. Armaduras e itens (arte nova para o que já existe no jogo)
 
 As armaduras e os itens já funcionam no jogo, mas aparecem com **emoji** no lugar da arte, e a Line e a Bell continuam com a roupa normal quando vestem uma armadura. A seção 3 lista todas as animações de cada armadura; aqui fica o que falta de **ícone** e de **visual**:
@@ -650,6 +669,34 @@ O **playground** também ganhou as peças separadas (garra, cápsulas, balcão d
 ### 8.3 Túnel
 
 A ilustração do túnel (onde acontece o beijo) ainda é a do HTML do primeiro encontro: falta a **versão final em 2160×3840**, em peças como o playground (base vazia + lampiões, trepadeiras e corações de luz à parte).
+
+### 8.4 Objetos da vila e do mundo ainda desenhados no código
+
+Os móveis e enfeites da fazenda e do vilarejo (bancos, postes de luz, floreiras, cestos, caixas, barris, carroça, casas) **já têm arte** ✅. Os objetos abaixo, quase todos os que a Line **usa** (abre, lê, bebe, quebra, acende), ainda são desenhados no código com formas simples. Cada um em PNG transparente, recortado no contorno, na **régua** de tamanho real (seção 1.3), com os estados pedidos:
+
+| Código | Objeto | Onde aparece | Tamanho real | Estados |
+|---|---|---|---|---|
+| `OBJ_CHEST` | Baú de madeira com ferragens | todas as fases (itens, chaves, documentos) | 0,8 m de largura | fechado e aberto (`_CLOSED`, `_OPEN`); de preferência a tampa abrindo em 4 quadros |
+| `OBJ_SIGN` | Placa de madeira para ler | vilarejo, floresta, entradas das fases | 1,2 m de altura | uma só |
+| `OBJ_FOUNTAIN` | Fonte de pedra (beber, salvar, descansar à noite) | vilarejo e as fases | 1,6 m de largura | com água animada (4 quadros) e acesa ao salvar |
+| `OBJ_MARKET_STALL` | Barraca da feira da Dona Rosa (toldo, frutas, potes) | vilarejo | 2,4 m de largura | duas cores de toldo |
+| `OBJ_ANVIL` | Bigorna da ferraria do Seu Bento, com brasa | vilarejo | 0,8 m de largura | com a brasa acesa (4 quadros) |
+| `OBJ_SHOP_ICON_ROSA` / `OBJ_SHOP_ICON_BENTO` | Plaquinha que flutua em cima de quem vende (hoje 🧪 e ⚒️) | vilarejo | 128×128 (ícone) | uma de cada |
+| `OBJ_CART_STATION` | Estação do carrinho de mina (trilho, placa e alavanca) | vilarejo e as minas | 3 m de largura | carrinho parado e saindo |
+| `OBJ_HOOK_POST` | Poste do gancho (para atravessar rios e abismos) | floresta, picos | 2,2 m de altura | normal e brilhando quando dá para usar |
+| `OBJ_ROCK` | Pedra de levantar e arremessar | floresta, ruínas, montanha | 0,6 m de largura | 2 variações |
+| `OBJ_THORN_BUSH` | Espinheiro (corta com a espada) | floresta | 1 m de largura | inteiro e cortado |
+| `OBJ_CRACKED_WALL` | Parede rachada (quebra com a bomba) | gruta, ruínas, montanha | 1 tile (32) | por tema: gruta, ruínas, montanha; inteira e quebrada |
+| `OBJ_LOCKED_DOOR` | Porta trancada (abre com a chave) | ruínas, gruta | 1 tile × 2 | fechada e aberta |
+| `OBJ_PILLAR` | Pilar das ruínas | ruínas | 3 m de altura | inteiro e quebrado |
+| `OBJ_CRYSTAL` | Cristal de luz (acende com o Raio de Luz) | ruínas, gruta | 1,2 m de altura | apagado e aceso (brilho em 4 quadros) |
+| `OBJ_TORCH` | Tocha (acende com fogo) | montanha, covil | 1,4 m de altura | apagada (com fumaça) e acesa (fogo em 6 quadros) |
+| `OBJ_ALTAR` | Altar da magia (onde a Line ganha o Raio de Luz) | ruínas | 1,6 m de largura | apagado e aceso |
+| `OBJ_LIGHT_BARRIER` | Barreira de luz (some quando todas as fontes acendem) | ruínas, montanha | 1 tile (32) | ligada (animada, 6 quadros) e se desfazendo |
+| `OBJ_MUSHROOM` | Cogumelo brilhante | gruta | 0,4 m de altura | 2 variações, com brilho |
+| `OBJ_STALAGMITE` | Estalagmite | gruta, minas | 1,5 m de altura | 2 variações |
+
+Os **itens que a Line pega e usa** (poção, bomba, chave, lanterna, gancho, bússola, escamas e o resto) estão na seção 4.2, com o ícone de cada um.
 
 ## 9. Efeitos especiais (FX)
 

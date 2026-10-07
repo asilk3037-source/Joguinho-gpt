@@ -159,6 +159,23 @@ for nome in ORDEM:
         filas.append((f"`{i['codigo']}`", (i.get("desc") or "").replace("|", "/"), q, st))
     tabela(["Código", "O que mostra", "Quadros", "Situação"], filas)
 
+w("### Retratos dos moradores (caixa de diálogo)")
+w()
+w("Hoje os moradores aparecem como **bonequinhos desenhados no código** (corpo, avental, chapéu e barba simples) e falam **sem retrato**; só a Line e a Bell têm rosto na caixa de diálogo. Quando as animações da tabela acima chegarem, elas entram no lugar dos bonequinhos. Para o diálogo, cada morador precisa do retrato em **512×512**, transparente, no mesmo estilo dos retratos da Line e da Bell, com 2 expressões (normal e sorrindo):")
+w()
+tabela(["Código", "Morador", "Onde mora", "Como é no jogo"], [
+    ("`PORTRAIT_ROSA`", "Dona Rosa", "Vilarejo, loja", "mercadora, roupa rosa, avental creme, cabelo grisalho em coque"),
+    ("`PORTRAIT_BENTO`", "Seu Bento", "Vilarejo, ferraria", "ferreiro, roupa cinza-azulada, avental de couro, barba escura, martelo"),
+    ("`PORTRAIT_ZE`", "Seu Zé", "Vilarejo", "senhor de cabelo branco, chapéu de palha e bengala, roupa verde"),
+    ("`PORTRAIT_LURDES`", "Dona Lurdes", "Vilarejo", "moradora, roupa lilás, avental creme, cabelo castanho"),
+    ("`PORTRAIT_PEDRO`", "Pedrinho", "Vilarejo", "menino agitado, camiseta amarela, cabelo escuro"),
+    ("`PORTRAIT_TOBIAS`", "Tobias", "Montanha (ferido)", "caçador, roupa verde-oliva, colete de couro, barba e chapéu"),
+    ("`PORTRAIT_CORA`", "Dona Cora", "Vale", "jardineira"),
+    ("`PORTRAIT_TIAO`", "Seu Tião", "Lago", "pescador"),
+    ("`PORTRAIT_BRISA`", "Vó Brisa", "Picos", "pastora"),
+    ("`PORTRAIT_DRAGAO`", "Dragão amigo", "Parte 2", "o dragão chibi, de frente, sorrindo"),
+])
+
 # =====================================================================================
 w("## 4. Armaduras e itens (arte nova para o que já existe no jogo)")
 w()
@@ -275,6 +292,33 @@ w("### 8.3 Túnel")
 w()
 w("A ilustração do túnel (onde acontece o beijo) ainda é a do HTML do primeiro encontro: falta a **versão final em 2160×3840**, em peças como o playground (base vazia + lampiões, trepadeiras e corações de luz à parte).")
 w()
+w("### 8.4 Objetos da vila e do mundo ainda desenhados no código")
+w()
+w("Os móveis e enfeites da fazenda e do vilarejo (bancos, postes de luz, floreiras, cestos, caixas, barris, carroça, casas) **já têm arte** ✅. Os objetos abaixo, quase todos os que a Line **usa** (abre, lê, bebe, quebra, acende), ainda são desenhados no código com formas simples. Cada um em PNG transparente, recortado no contorno, na **régua** de tamanho real (seção 1.3), com os estados pedidos:")
+w()
+tabela(["Código", "Objeto", "Onde aparece", "Tamanho real", "Estados"], [
+    ("`OBJ_CHEST`", "Baú de madeira com ferragens", "todas as fases (itens, chaves, documentos)", "0,8 m de largura", "fechado e aberto (`_CLOSED`, `_OPEN`); de preferência a tampa abrindo em 4 quadros"),
+    ("`OBJ_SIGN`", "Placa de madeira para ler", "vilarejo, floresta, entradas das fases", "1,2 m de altura", "uma só"),
+    ("`OBJ_FOUNTAIN`", "Fonte de pedra (beber, salvar, descansar à noite)", "vilarejo e as fases", "1,6 m de largura", "com água animada (4 quadros) e acesa ao salvar"),
+    ("`OBJ_MARKET_STALL`", "Barraca da feira da Dona Rosa (toldo, frutas, potes)", "vilarejo", "2,4 m de largura", "duas cores de toldo"),
+    ("`OBJ_ANVIL`", "Bigorna da ferraria do Seu Bento, com brasa", "vilarejo", "0,8 m de largura", "com a brasa acesa (4 quadros)"),
+    ("`OBJ_SHOP_ICON_ROSA` / `OBJ_SHOP_ICON_BENTO`", "Plaquinha que flutua em cima de quem vende (hoje 🧪 e ⚒️)", "vilarejo", "128×128 (ícone)", "uma de cada"),
+    ("`OBJ_CART_STATION`", "Estação do carrinho de mina (trilho, placa e alavanca)", "vilarejo e as minas", "3 m de largura", "carrinho parado e saindo"),
+    ("`OBJ_HOOK_POST`", "Poste do gancho (para atravessar rios e abismos)", "floresta, picos", "2,2 m de altura", "normal e brilhando quando dá para usar"),
+    ("`OBJ_ROCK`", "Pedra de levantar e arremessar", "floresta, ruínas, montanha", "0,6 m de largura", "2 variações"),
+    ("`OBJ_THORN_BUSH`", "Espinheiro (corta com a espada)", "floresta", "1 m de largura", "inteiro e cortado"),
+    ("`OBJ_CRACKED_WALL`", "Parede rachada (quebra com a bomba)", "gruta, ruínas, montanha", "1 tile (32)", "por tema: gruta, ruínas, montanha; inteira e quebrada"),
+    ("`OBJ_LOCKED_DOOR`", "Porta trancada (abre com a chave)", "ruínas, gruta", "1 tile × 2", "fechada e aberta"),
+    ("`OBJ_PILLAR`", "Pilar das ruínas", "ruínas", "3 m de altura", "inteiro e quebrado"),
+    ("`OBJ_CRYSTAL`", "Cristal de luz (acende com o Raio de Luz)", "ruínas, gruta", "1,2 m de altura", "apagado e aceso (brilho em 4 quadros)"),
+    ("`OBJ_TORCH`", "Tocha (acende com fogo)", "montanha, covil", "1,4 m de altura", "apagada (com fumaça) e acesa (fogo em 6 quadros)"),
+    ("`OBJ_ALTAR`", "Altar da magia (onde a Line ganha o Raio de Luz)", "ruínas", "1,6 m de largura", "apagado e aceso"),
+    ("`OBJ_LIGHT_BARRIER`", "Barreira de luz (some quando todas as fontes acendem)", "ruínas, montanha", "1 tile (32)", "ligada (animada, 6 quadros) e se desfazendo"),
+    ("`OBJ_MUSHROOM`", "Cogumelo brilhante", "gruta", "0,4 m de altura", "2 variações, com brilho"),
+    ("`OBJ_STALAGMITE`", "Estalagmite", "gruta, minas", "1,5 m de altura", "2 variações"),
+])
+w("Os **itens que a Line pega e usa** (poção, bomba, chave, lanterna, gancho, bússola, escamas e o resto) estão na seção 4.2, com o ícone de cada um.")
+w()
 
 # =====================================================================================
 w("## 9. Efeitos especiais (FX)")
@@ -378,13 +422,14 @@ arm_bell = sum(len([i for i in g if not i["existe"]]) for n, g in grupos.items()
 resumo = ["## Resumo: todas as artes que faltam", "",
           "| Seção | O que é | Quantas faltam |", "|---|---|---|"]
 for titulo, texto in [("2. Animações que precisam de ajuste (refazer)", "animações que existem, mas precisam ser refeitas"),
-                      ("3. Animações pendentes (ainda não existem)", "animações novas (inclui a Bell jogável, os chefes, os moradores e as **armaduras vestidas**)"),
+                      ("3. Animações pendentes (ainda não existem)", "animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**)"),
                       ("4. Armaduras e itens (arte nova para o que já existe no jogo)", "ícones das armaduras e dos itens"),
                       ("5. Botões e controles", "ícones dos botões"), ("6. HUD do jogador", "peças do HUD"), ("7. Telas", "telas cheias"),
-                      ("8. Mapas e cenários", "pinturas das fases e peças de cenário"), ("9. Efeitos especiais (FX)", "efeitos especiais (combate, magia, itens, clima, romance, chefes)")]:
+                      ("8. Mapas e cenários", "pinturas das fases, peças de cenário e **objetos da vila e do mundo** (baú, fonte, barraca, bigorna, placa...)"), ("9. Efeitos especiais (FX)", "efeitos especiais (combate, magia, itens, clima, romance, chefes)")]:
     n = contas.get(titulo, 0)
     resumo.append(f"| {titulo.split(' (')[0]} | {texto} | **{n}** |")
-resumo += ["", f"**Armaduras:** sim, estão no documento. A **Line** tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a **Bell** tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem **vestida** em todas as animações de movimento e luta (seção 3: **{arm_line}** animações da Line e **{arm_bell}** da Bell com armadura) e do **ícone** (seção 4.1). Os **efeitos especiais** estão na seção 9.", ""]
+resumo += ["", f"**Armaduras:** sim, estão no documento. A **Line** tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a **Bell** tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem **vestida** em todas as animações de movimento e luta (seção 3: **{arm_line}** animações da Line e **{arm_bell}** da Bell com armadura) e do **ícone** (seção 4.1). Os **efeitos especiais** estão na seção 9.", "",
+           "**Moradores e vila:** os 10 moradores (Dona Rosa, Seu Bento, Seu Zé, Dona Lurdes, Pedrinho, Tobias, Dona Cora, Seu Tião, Vó Brisa e o dragão amigo) estão na seção 3, com as animações e os **retratos do diálogo**; os **objetos da vila e do mundo** que ainda são desenhados no código estão na seção 8.4, e os **ícones dos itens** na seção 4.2.", ""]
 linhas[linhas.index("@@RESUMO@@")] = "\n".join(resumo)
 
 saida = os.path.join(DOCS, "LINE_E_BELL_PENDENCIAS.md")

@@ -11,7 +11,7 @@ th,td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}th{backgro
 code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:.85em}
 em{color:var(--mut)}
 </style></head><body><main><h1 id="line-bell-o-que-falta-pendencias-de-arte">Line &amp; Bell — o que falta (pendências de arte)</h1>
-<p><em>Atualizado em 06/10/2026. Este documento lista só o que </em><em>falta fazer ou refazer</em><em>. O que já está pronto fica na documentação completa (<code>LINE_E_BELL_DOCUMENTACAO.md</code>). As regras da seção 1 valem para tudo e não mudam.</em></p>
+<p><em>Atualizado em 07/10/2026. Este documento lista só o que </em><em>falta fazer ou refazer</em><em>. O que já está pronto fica na documentação completa (<code>LINE_E_BELL_DOCUMENTACAO.md</code>). As regras da seção 1 valem para tudo e não mudam.</em></p>
 <p><strong>Como usar:</strong> cada linha tem o <strong>código</strong> exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.</p>
 <h2 id="resumo-todas-as-artes-que-faltam">Resumo: todas as artes que faltam</h2>
 <table>
@@ -30,8 +30,8 @@ em{color:var(--mut)}
 </tr>
 <tr>
 <td>3. Animações pendentes</td>
-<td>animações novas (inclui a Bell jogável, os chefes, os moradores e as <strong>armaduras vestidas</strong>)</td>
-<td><strong>293</strong></td>
+<td>animações novas (inclui a Bell jogável, os chefes, os <strong>moradores</strong> com os retratos do diálogo e as <strong>armaduras vestidas</strong>)</td>
+<td><strong>303</strong></td>
 </tr>
 <tr>
 <td>4. Armaduras e itens</td>
@@ -55,8 +55,8 @@ em{color:var(--mut)}
 </tr>
 <tr>
 <td>8. Mapas e cenários</td>
-<td>pinturas das fases e peças de cenário</td>
-<td><strong>14</strong></td>
+<td>pinturas das fases, peças de cenário e <strong>objetos da vila e do mundo</strong> (baú, fonte, barraca, bigorna, placa...)</td>
+<td><strong>33</strong></td>
 </tr>
 <tr>
 <td>9. Efeitos especiais</td>
@@ -66,6 +66,7 @@ em{color:var(--mut)}
 </tbody>
 </table>
 <p><strong>Armaduras:</strong> sim, estão no documento. A <strong>Line</strong> tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a <strong>Bell</strong> tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem <strong>vestida</strong> em todas as animações de movimento e luta (seção 3: <strong>69</strong> animações da Line e <strong>63</strong> da Bell com armadura) e do <strong>ícone</strong> (seção 4.1). Os <strong>efeitos especiais</strong> estão na seção 9.</p>
+<p><strong>Moradores e vila:</strong> os 10 moradores (Dona Rosa, Seu Bento, Seu Zé, Dona Lurdes, Pedrinho, Tobias, Dona Cora, Seu Tião, Vó Brisa e o dragão amigo) estão na seção 3, com as animações e os <strong>retratos do diálogo</strong>; os <strong>objetos da vila e do mundo</strong> que ainda são desenhados no código estão na seção 8.4, e os <strong>ícones dos itens</strong> na seção 4.2.</p>
 <h2 id="1-regras-valem-para-toda-arte">1. Regras (valem para toda arte)</h2>
 <h3 id="11-estilo">1.1 Estilo</h3>
 <ol>
@@ -2299,6 +2300,80 @@ em{color:var(--mut)}
 </tr>
 </tbody>
 </table>
+<h3 id="retratos-dos-moradores-caixa-de-dialogo">Retratos dos moradores (caixa de diálogo)</h3>
+<p>Hoje os moradores aparecem como <strong>bonequinhos desenhados no código</strong> (corpo, avental, chapéu e barba simples) e falam <strong>sem retrato</strong>; só a Line e a Bell têm rosto na caixa de diálogo. Quando as animações da tabela acima chegarem, elas entram no lugar dos bonequinhos. Para o diálogo, cada morador precisa do retrato em <strong>512×512</strong>, transparente, no mesmo estilo dos retratos da Line e da Bell, com 2 expressões (normal e sorrindo):</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Morador</th>
+<th>Onde mora</th>
+<th>Como é no jogo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PORTRAIT_ROSA</code></td>
+<td>Dona Rosa</td>
+<td>Vilarejo, loja</td>
+<td>mercadora, roupa rosa, avental creme, cabelo grisalho em coque</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_BENTO</code></td>
+<td>Seu Bento</td>
+<td>Vilarejo, ferraria</td>
+<td>ferreiro, roupa cinza-azulada, avental de couro, barba escura, martelo</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_ZE</code></td>
+<td>Seu Zé</td>
+<td>Vilarejo</td>
+<td>senhor de cabelo branco, chapéu de palha e bengala, roupa verde</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_LURDES</code></td>
+<td>Dona Lurdes</td>
+<td>Vilarejo</td>
+<td>moradora, roupa lilás, avental creme, cabelo castanho</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_PEDRO</code></td>
+<td>Pedrinho</td>
+<td>Vilarejo</td>
+<td>menino agitado, camiseta amarela, cabelo escuro</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_TOBIAS</code></td>
+<td>Tobias</td>
+<td>Montanha (ferido)</td>
+<td>caçador, roupa verde-oliva, colete de couro, barba e chapéu</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_CORA</code></td>
+<td>Dona Cora</td>
+<td>Vale</td>
+<td>jardineira</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_TIAO</code></td>
+<td>Seu Tião</td>
+<td>Lago</td>
+<td>pescador</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_BRISA</code></td>
+<td>Vó Brisa</td>
+<td>Picos</td>
+<td>pastora</td>
+</tr>
+<tr>
+<td><code>PORTRAIT_DRAGAO</code></td>
+<td>Dragão amigo</td>
+<td>Parte 2</td>
+<td>o dragão chibi, de frente, sorrindo</td>
+</tr>
+</tbody>
+</table>
 <h2 id="4-armaduras-e-itens-arte-nova-para-o-que-ja-existe-no-jogo">4. Armaduras e itens (arte nova para o que já existe no jogo)</h2>
 <p>As armaduras e os itens já funcionam no jogo, mas aparecem com <strong>emoji</strong> no lugar da arte, e a Line e a Bell continuam com a roupa normal quando vestem uma armadura. A seção 3 lista todas as animações de cada armadura; aqui fica o que falta de <strong>ícone</strong> e de <strong>visual</strong>:</p>
 <h3 id="41-armaduras">4.1 Armaduras</h3>
@@ -2799,6 +2874,155 @@ em{color:var(--mut)}
 <p>O <strong>playground</strong> também ganhou as peças separadas (garra, cápsulas, balcão de prêmios, fliperamas novos, banco, caixa de som, planta, lixeira, neons de coração, estrela e raio, pôster e guirlanda) ✅.</p>
 <h3 id="83-tunel">8.3 Túnel</h3>
 <p>A ilustração do túnel (onde acontece o beijo) ainda é a do HTML do primeiro encontro: falta a <strong>versão final em 2160×3840</strong>, em peças como o playground (base vazia + lampiões, trepadeiras e corações de luz à parte).</p>
+<h3 id="84-objetos-da-vila-e-do-mundo-ainda-desenhados-no-codigo">8.4 Objetos da vila e do mundo ainda desenhados no código</h3>
+<p>Os móveis e enfeites da fazenda e do vilarejo (bancos, postes de luz, floreiras, cestos, caixas, barris, carroça, casas) <strong>já têm arte</strong> ✅. Os objetos abaixo, quase todos os que a Line <strong>usa</strong> (abre, lê, bebe, quebra, acende), ainda são desenhados no código com formas simples. Cada um em PNG transparente, recortado no contorno, na <strong>régua</strong> de tamanho real (seção 1.3), com os estados pedidos:</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Objeto</th>
+<th>Onde aparece</th>
+<th>Tamanho real</th>
+<th>Estados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OBJ_CHEST</code></td>
+<td>Baú de madeira com ferragens</td>
+<td>todas as fases (itens, chaves, documentos)</td>
+<td>0,8 m de largura</td>
+<td>fechado e aberto (<code>_CLOSED</code>, <code>_OPEN</code>); de preferência a tampa abrindo em 4 quadros</td>
+</tr>
+<tr>
+<td><code>OBJ_SIGN</code></td>
+<td>Placa de madeira para ler</td>
+<td>vilarejo, floresta, entradas das fases</td>
+<td>1,2 m de altura</td>
+<td>uma só</td>
+</tr>
+<tr>
+<td><code>OBJ_FOUNTAIN</code></td>
+<td>Fonte de pedra (beber, salvar, descansar à noite)</td>
+<td>vilarejo e as fases</td>
+<td>1,6 m de largura</td>
+<td>com água animada (4 quadros) e acesa ao salvar</td>
+</tr>
+<tr>
+<td><code>OBJ_MARKET_STALL</code></td>
+<td>Barraca da feira da Dona Rosa (toldo, frutas, potes)</td>
+<td>vilarejo</td>
+<td>2,4 m de largura</td>
+<td>duas cores de toldo</td>
+</tr>
+<tr>
+<td><code>OBJ_ANVIL</code></td>
+<td>Bigorna da ferraria do Seu Bento, com brasa</td>
+<td>vilarejo</td>
+<td>0,8 m de largura</td>
+<td>com a brasa acesa (4 quadros)</td>
+</tr>
+<tr>
+<td><code>OBJ_SHOP_ICON_ROSA</code> / <code>OBJ_SHOP_ICON_BENTO</code></td>
+<td>Plaquinha que flutua em cima de quem vende (hoje 🧪 e ⚒️)</td>
+<td>vilarejo</td>
+<td>128×128 (ícone)</td>
+<td>uma de cada</td>
+</tr>
+<tr>
+<td><code>OBJ_CART_STATION</code></td>
+<td>Estação do carrinho de mina (trilho, placa e alavanca)</td>
+<td>vilarejo e as minas</td>
+<td>3 m de largura</td>
+<td>carrinho parado e saindo</td>
+</tr>
+<tr>
+<td><code>OBJ_HOOK_POST</code></td>
+<td>Poste do gancho (para atravessar rios e abismos)</td>
+<td>floresta, picos</td>
+<td>2,2 m de altura</td>
+<td>normal e brilhando quando dá para usar</td>
+</tr>
+<tr>
+<td><code>OBJ_ROCK</code></td>
+<td>Pedra de levantar e arremessar</td>
+<td>floresta, ruínas, montanha</td>
+<td>0,6 m de largura</td>
+<td>2 variações</td>
+</tr>
+<tr>
+<td><code>OBJ_THORN_BUSH</code></td>
+<td>Espinheiro (corta com a espada)</td>
+<td>floresta</td>
+<td>1 m de largura</td>
+<td>inteiro e cortado</td>
+</tr>
+<tr>
+<td><code>OBJ_CRACKED_WALL</code></td>
+<td>Parede rachada (quebra com a bomba)</td>
+<td>gruta, ruínas, montanha</td>
+<td>1 tile (32)</td>
+<td>por tema: gruta, ruínas, montanha; inteira e quebrada</td>
+</tr>
+<tr>
+<td><code>OBJ_LOCKED_DOOR</code></td>
+<td>Porta trancada (abre com a chave)</td>
+<td>ruínas, gruta</td>
+<td>1 tile × 2</td>
+<td>fechada e aberta</td>
+</tr>
+<tr>
+<td><code>OBJ_PILLAR</code></td>
+<td>Pilar das ruínas</td>
+<td>ruínas</td>
+<td>3 m de altura</td>
+<td>inteiro e quebrado</td>
+</tr>
+<tr>
+<td><code>OBJ_CRYSTAL</code></td>
+<td>Cristal de luz (acende com o Raio de Luz)</td>
+<td>ruínas, gruta</td>
+<td>1,2 m de altura</td>
+<td>apagado e aceso (brilho em 4 quadros)</td>
+</tr>
+<tr>
+<td><code>OBJ_TORCH</code></td>
+<td>Tocha (acende com fogo)</td>
+<td>montanha, covil</td>
+<td>1,4 m de altura</td>
+<td>apagada (com fumaça) e acesa (fogo em 6 quadros)</td>
+</tr>
+<tr>
+<td><code>OBJ_ALTAR</code></td>
+<td>Altar da magia (onde a Line ganha o Raio de Luz)</td>
+<td>ruínas</td>
+<td>1,6 m de largura</td>
+<td>apagado e aceso</td>
+</tr>
+<tr>
+<td><code>OBJ_LIGHT_BARRIER</code></td>
+<td>Barreira de luz (some quando todas as fontes acendem)</td>
+<td>ruínas, montanha</td>
+<td>1 tile (32)</td>
+<td>ligada (animada, 6 quadros) e se desfazendo</td>
+</tr>
+<tr>
+<td><code>OBJ_MUSHROOM</code></td>
+<td>Cogumelo brilhante</td>
+<td>gruta</td>
+<td>0,4 m de altura</td>
+<td>2 variações, com brilho</td>
+</tr>
+<tr>
+<td><code>OBJ_STALAGMITE</code></td>
+<td>Estalagmite</td>
+<td>gruta, minas</td>
+<td>1,5 m de altura</td>
+<td>2 variações</td>
+</tr>
+</tbody>
+</table>
+<p>Os <strong>itens que a Line pega e usa</strong> (poção, bomba, chave, lanterna, gancho, bússola, escamas e o resto) estão na seção 4.2, com o ícone de cada um.</p>
 <h2 id="9-efeitos-especiais-fx">9. Efeitos especiais (FX)</h2>
 <p>Os 13 efeitos que já chegaram estão no jogo ✅: <code>FX_AMBIENT_PARTICLES</code>, <code>FX_DRAGON_WEAK_POINT</code>, <code>FX_DUST</code>, <code>FX_EMBERS</code>, <code>FX_EXPLOSION</code>, <code>FX_FIRE</code>, <code>FX_FIRE_LIGHT</code>, <code>FX_HEARTS</code>, <code>FX_IMPACT</code>, <code>FX_SMOKE</code>, <code>FX_SPARKS</code>, <code>FX_SWORD_TRAIL</code>, <code>FX_TEARS</code>. Os efeitos abaixo ainda são <strong>desenhados no código</strong> (bolinhas, riscos e brilhos simples); cada um entra no lugar do desenho quando a arte chegar com o código.</p>
 <p><strong>Formato:</strong> animação em prancha horizontal, células quadradas de <strong>256 px</strong> (efeitos grandes, como explosão, magia e chefes: <strong>512 px</strong>), fundo transparente, o centro do efeito no meio da célula. <strong>6 a 10 quadros</strong> (os que repetem, marcados com 🔁, precisam fechar o ciclo). Pixel art com contorno e luz no mesmo estilo dos 20 primeiros itens; brilho por cor, sem desfoque.</p>
