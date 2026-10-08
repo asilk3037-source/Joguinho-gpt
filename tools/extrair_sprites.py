@@ -134,9 +134,7 @@ RECUSADAS = {
 }
 
 # Arte que saiu do jogo de vez (o jogo usa a substituta do catálogo, o `alt`).
-DESCARTADAS = {
-    "LINE_HAPPY": "é uma corrida que termina com a Line caída para a frente, e não a Line feliz (no lugar, o jogo usa `LINE_VICTORY`)",
-}
+DESCARTADAS = {}
 
 
 def recusada(nome, codigo):

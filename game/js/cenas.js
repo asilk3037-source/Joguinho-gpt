@@ -306,8 +306,9 @@
       yield c.fala('Bell', 'O pôr do sol daqui é o meu favorito. Promete que amanhã a gente volta?', 'apaixonada');
       yield c.fala('Line', 'Prometo. Amanhã, depois de amanhã... todo dia que você quiser.', 'apaixonada');
       c.fimDuo();
+      // Dois giros inteiros (12 quadros a 6 por segundo = 2 s cada): o corte cai no começo de um giro.
       if (c.duo('LINE_BELL_DANCE', cx, lago.y)) {
-        yield c.espera(3);
+        yield c.espera(4);
         c.fimDuo();
       }
       if (c.duo('LINE_BELL_KISS', cx, lago.y)) yield c.animacaoDuo();
@@ -876,7 +877,7 @@
       yield c.fala('Line', 'Prometo. Amanhã, depois de amanhã...', 'apaixonada');
       yield c.fala('Bell', '...todo dia que a gente quiser.', 'riso');
       const par = j.duo;
-      if (c.duo('LINE_BELL_DANCE', par.x, par.y)) { yield c.espera(3.2); j.duo = par; }
+      if (c.duo('LINE_BELL_DANCE', par.x, par.y)) { yield c.espera(4); j.duo = par; }
       j.particulas.emitir('coracao', (j.line.x + j.bell.x) / 2, j.line.y - 60, 5, { vel: 25, vida: 2 });
       LB.fx.emitir(j, 'FX_HEARTS', (j.line.x + j.bell.x) / 2, j.line.y - 74, { sobe: 12, dur: 2 });
       yield c.espera(2.2);

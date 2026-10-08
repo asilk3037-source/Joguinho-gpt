@@ -164,20 +164,26 @@ teste('prólogo: Novo jogo abre o Primeiro Encontro', async (h) => {
   await h.foto('prologo');
 });
 
-teste('prólogo: o BK acontece sentadas na mesa do BK e a saída vai pelo corredor', async (h) => {
+teste('prólogo: o BK acontece na mesa do BK (frente a frente, depois juntinhas) e a saída vai pelo corredor', async (h) => {
   await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = {}; j.encontro = { etapa: 'conversa', placar: '000' }; j.iniciarArea('shopping', null, true); j.fade = 0; j.iniciarCena(LB.HISTORIA.encontroConversa); });
   const r = await h.ev(async () => {
     const j = LB.jogo, n = () => LB.encontro.objetos(j).length, total = n();
-    let bk = null, saida = [];
+    let bk = null, frente = null, saida = [];
     for (let i = 0; i < 600 && j.mapa.id === 'shopping' && j.cena; i++) {
+      const l = j.line, b = j.bell;
+      if (!frente && l.anim.base === 'LINE_SIT_CHAIR_EAT') frente = { pecas: n(), line: [l.anim.base, l.lado, l.x], bell: [b.anim.base, b.lado, b.x], duo: !!j.duo };
       if (j.duo && j.duo.anim.base === 'LINE_BELL_BK' && !bk) bk = { pecas: n(), x: j.duo.x, y: j.duo.y };
       if (j.duo && j.duo.anim.base === 'LINE_BELL_WALK_HANDS') saida.push([j.duo.x, j.duo.y]);
       LB.dialogo.clicou = true;
       await new Promise((ok) => setTimeout(ok, 40));
     }
-    return { total, bk, saida, depois: j.encontro.sentadas };
+    return { total, bk, frente, saida, depois: j.encontro.sentadas };
   });
-  afirmar(r.bk, 'a cena do BK aconteceu');
+  afirmar(r.frente, 'primeiro sentam frente a frente, cada uma na sua cadeira (itens 265 e 266)');
+  igual(r.total - r.frente.pecas, 2, 'as duas cadeiras dos lados da mesa do BK saem de cena');
+  igual([r.frente.line.slice(0, 2), r.frente.bell.slice(0, 2), r.frente.duo], [['LINE_SIT_CHAIR_EAT', 1], ['BELL_SIT_CHAIR_EAT', -1], false], 'a Line virada para a direita e a Bell para a esquerda');
+  afirmar(r.frente.line[2] < r.frente.bell[2], 'a Line à esquerda da mesa e a Bell à direita');
+  afirmar(r.bk, 'depois aparecem juntinhas comendo BK');
   igual(r.total - r.bk.pecas, 2, 'as duas cadeiras de trás da mesa do BK saem de cena');
   igual([Math.round(r.bk.x / (4 / 3)), Math.round(r.bk.y / (4 / 3))], [276, 384], 'as duas sentam atrás da mesa do BK');
   afirmar(r.saida.length > 3 && r.saida.every(([x, y]) => y / (4 / 3) <= 437 || Math.abs(x / (4 / 3) - 180) < 2), 'descem pelo corredor do meio: ' + JSON.stringify(r.saida.slice(-3)));
@@ -490,7 +496,7 @@ teste('ajustes do celular: casa larga não some, Feliz que caía saiu e shopping
     j.desenhar(); j.desenharProp = orig; return viu;
   });
   afirmar(desenhada, 'a casa é desenhada com o canto esquerdo fora da tela');
-  afirmar(!(await h.ev(() => !!(window.SPRITES || {}).LINE_HAPPY)), 'LINE_HAPPY (corrida com queda) fora do jogo');
+  igual(await h.ev(() => { const s = (window.SPRITES || {}).LINE_HAPPY; return s && [s.item, s.count]; }), ['LINE_BELL_ITEM_272.html', 12], 'LINE_HAPPY é a arte nova (item 272), não a corrida com queda');
   // O shopping é montado em peças: a base nova (só chão e teto), sem mesa desenhada no fundo.
   const fundo = await h.ev(() => !!LB.personagem('shopping_base') || new Promise((ok) => setTimeout(() => ok(!!LB.personagem('shopping_base')), 1500)));
   afirmar(fundo, 'base do shopping (chão e teto) carregada');
@@ -1190,6 +1196,24 @@ for (const [id, area, antes] of CHEFES_P2) {
     if (id === 'quimera') afirmar(f.fim, 'final da Parte 2');
   });
 }
+
+teste('parte 2: junção desfeita termina com o toca aqui das duas (item 271)', async (h) => {
+  await h.area('fenda', Object.assign({ visto_fenda: true, chefeTerra: true }, P2));
+  const r = await h.ev(async () => {
+    const j = LB.jogo;
+    j.inimigos = []; j.flags.fusaoMagma = true;
+    j.iniciarCena(LB.HISTORIA.chefeVencido, { semPular: true }, { id: 'magma', x: j.line.x + 120, y: j.line.y - 20 });
+    let toca = false, companheira = null;
+    for (let i = 0; i < 400 && j.cena; i++) {
+      if (j.duo && j.duo.anim.base === 'LINE_BELL_HIGH_FIVE') { toca = true; companheira = j.companheira ? j.companheira.visivel : null; } else if (!j.duo) LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 40));
+    }
+    return { toca, companheira, fim: !j.cena, line: j.line.visivel };
+  });
+  afirmar(r.toca, 'as duas batem as mãos depois de desfazer a junção');
+  afirmar(r.companheira !== true, 'a companheira some enquanto o duo aparece');
+  afirmar(r.fim && r.line, 'a cena termina e a heroína volta');
+});
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {
   await h.ev(() => LB.dificuldade.definir('facil'));

@@ -82,7 +82,9 @@ w("> 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.m
 w()
 w("> ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.")
 w()
-w("> 🛍️ **Todas as cenas do shopping com 12 quadros (itens 257 a 264):** a Line admirando a Bell de longe, a Bell esperando, a conversa, o abraço de chegada, o **BK**, o **beijo no túnel**, a **Bell rindo** do soco e as duas **saindo de mãos dadas**, no ritmo da artista (8 e 6 quadros por segundo). O lanche agora acontece **na mesa do BK** da praça: as cadeiras de trás saem de cena e as duas sentam ali, com a mesa na frente; depois saem pelo corredor do meio, sem atravessar as mesas. O abraço e o beijo perderam o aumento que a arte antiga precisava, e o BK sentado ficou 9% menor para as cabeças baterem com as das duas em pé.")
+w("> 💞 **Cenas do casal refeitas e as duas frente a frente no BK (itens 265 a 272):** de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração do almoço, o toca aqui com brilho e a **Line feliz** chegaram com 12 quadros, do tamanho da Line e da Bell paradas (a dança e a bitoquinha perderam os aumentos que a arte antiga precisava, e a Line feliz voltou para o jogo nos títulos de espada, magia, coração extra e baú). No shopping, o lanche começa com as duas **frente a frente** na mesa do BK, cada uma na sua cadeira (itens 265 e 266); depois da declaração, elas aparecem **juntinhas** do mesmo lado (item 261). Na Parte 2, cada **junção desfeita** termina com o **toca aqui** das duas. A dança do pôr do sol e do final passou a durar dois giros inteiros.")
+w()
+w("> 🛍️ **Todas as cenas do shopping com 12 quadros (itens 257 a 264):** a Line admirando a Bell de longe, a Bell esperando, a conversa, o abraço de chegada, o **BK**, o **beijo no túnel**, a **Bell rindo** do soco e as duas **saindo de mãos dadas**, no ritmo da artista (8 e 6 quadros por segundo). O lanche acontece **na mesa do BK** da praça e depois as duas saem pelo corredor do meio, sem atravessar as mesas. O abraço e o beijo perderam o aumento que a arte antiga precisava, e o BK sentado ficou 9% menor para as cabeças baterem com as das duas em pé.")
 w()
 w("> 🧪 **Botão de teste no menu (temporário):** **🧪 Teste: ir para um mapa** abre a lista de todos os mapas (Parte 1, Parte 2 e as casas e lojas) e entra no escolhido como se o jogo já estivesse zerado: Parte 1 e Parte 2 vencidas, Bell jogável, espada, magia e estrela, todos os itens e documentos, os 7 corações extras, cristais acesos, barreiras abertas, as 3 estações do carrinho, 9.999 moedas e as melhores armaduras. Nada é salvo durante o teste: **Continuar** volta ao progresso de verdade. O Primeiro Encontro fica fora da lista (é só cena: começa pelo **Novo jogo**) e o Covil sempre abre na luta contra o dragão.")
 w()
@@ -466,7 +468,7 @@ for l in [
     ("1", "Minas Shopping", "Título *O primeiro encontro* e *Minas Shopping · 09/05/2024*. A Line admira a Bell de longe: “puxa ela é tão linda”.", "não", "`LINE_IDLE` (de costas), `LINE_ADMIRE`, `BELL_WAIT`", "normal"),
     ("2", "Minas Shopping", "A Line anda até a Bell. Perto dela aparece o botão **Falar com a Bell**.", "sim, só andar", "`LINE_WALK_*`, `BELL_WAIT`", "segue a Line"),
     ("3", "Minas Shopping", "A Line se aproxima e as duas conversam: shopping grande, “Você tá atrasada”, “oq vamos comer?”, “BK.”.", "não", "`LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`", "zoom 1,6×"),
-    ("4", "Minas Shopping (mesa)", "As duas andam até a mesa e comem BK. “você parece estar tímida” / “é que você é muito linda”.", "não", "`LINE_WALK_*`, `BELL_WALK_*`, `LINE_BELL_BK`", "zoom na mesa"),
+    ("4", "Minas Shopping (mesa)", "As duas andam até a mesa do BK e sentam frente a frente, comendo. “você parece estar tímida” / “é que você é muito linda”. Depois aparecem juntinhas, do mesmo lado da mesa.", "não", "`LINE_WALK_*`, `BELL_WALK_*`, `LINE_SIT_CHAIR_EAT`, `BELL_SIT_CHAIR_EAT`, `LINE_BELL_BK`", "zoom na mesa"),
     ("5", "Minas Shopping", "A Bell segura a mão da Line e as duas saem juntas do shopping.", "não", "`LINE_BELL_MEET`, `LINE_BELL_WALK_HANDS`", "volta ao normal"),
     ("—", "transição", "Brilho rosa e a tela escurece.", "—", "—", "—"),
     ("6", "Playground", "As duas chegam. A Line para na máquina de soco, a Bell fica ao lado. Aparece o botão **Tentar!**.", "só o botão", "`LINE_WALK_*`, `BELL_WALK_*`, `LINE_IDLE`, `BELL_IDLE`", "normal"),
@@ -485,7 +487,7 @@ w("A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma áre
 w()
 w("**Minas Shopping**")
 w("- **Fundo (em peças):** a praça de alimentação do modelo (seção 22.11): o piso claro de losangos com o teto de madeira, as luzes embutidas e a coluna branca; por cima, a loja de hambúrguer e a de frango, seis mesas redondas com cadeiras de madeira e dois canteiros.")
-w("- **Posições:** a Line entra por baixo, no corredor do meio, de costas. A Bell espera no mesmo corredor, entre as mesas. O lanche acontece **na mesa do BK** (a do meio da coluna da direita): as duas cadeiras de trás saem de cena e as duas sentam ali, com a mesa na frente. Depois saem de mãos dadas pelo corredor do meio, por baixo.")
+w("- **Posições:** a Line entra por baixo, no corredor do meio, de costas. A Bell espera no mesmo corredor, entre as mesas. O lanche acontece **na mesa do BK** (a do meio da coluna da direita): primeiro as duas sentam **frente a frente**, nas cadeiras dos lados (a Line à esquerda, virada para a direita; a Bell à direita, virada para a esquerda), e as cadeiras da mesa que a arte já traz desenhadas saem de cena; depois da declaração, aparecem **juntinhas** nas cadeiras de trás, com a mesa na frente. Depois saem de mãos dadas pelo corredor do meio, por baixo.")
 w()
 w("#### ⭐ Minas Shopping: modelo real para a arte final")
 w()
@@ -577,7 +579,9 @@ USO = {
     "BELL_WAIT": "A Bell esperando no shopping: olha para os lados, mexe no cabelo, ajeita os óculos (item 258).",
     "LINE_BELL_MEET": "As duas lado a lado, conversando e sorrindo (item 259). Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem.",
     "LINE_BELL_GREET_HUG": "Abraço de chegada no “Você tá atrasada” (item 260).",
-    "LINE_BELL_BK": "As duas sentadas nas cadeiras de madeira comendo BK, hambúrguer, batata e refri (item 261). A arte não traz mesa: elas sentam atrás da mesa do BK da praça.",
+    "LINE_BELL_BK": "As duas juntinhas nas cadeiras de madeira comendo BK, hambúrguer, batata e refri (item 261). A arte não traz mesa: depois da conversa frente a frente, elas aparecem atrás da mesa do BK da praça.",
+    "LINE_SIT_CHAIR_EAT": "A Line sentada na cadeira de madeira comendo hambúrguer, virada para a direita (item 265): na mesa do BK, frente a frente com a Bell.",
+    "BELL_SIT_CHAIR_EAT": "A Bell sentada na cadeira de madeira comendo hambúrguer, virada para a esquerda (item 266): na mesa do BK, frente a frente com a Line.",
     "LINE_PUNCH_MACHINE": "A Line na máquina de soco (item 238): guarda, preparo, avanço, soco e volta. A máquina é uma peça à parte; o placar vira 038 no quadro do soco. Os mesmos quadros fazem o soco sem espada.",
     "BELL_LAUGH_AT_LINE": "A Bell gargalhando da Line (item 263): tapa a boca, se curva de rir, chora de rir e enxuga a lágrima.",
     "LINE_BELL_TUNNEL_KISS": "O primeiro beijo: as duas se aproximam de mãos dadas, se beijam e se afastam sorrindo (item 262).",
@@ -605,7 +609,7 @@ w("| Bell & Line | sem retrato | o “♥” depois do beijo |")
 w()
 w("### 5.7 O que falta para a versão final do prólogo")
 w()
-w("- [x] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_TUNNEL_KISS`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_WALK_HANDS` com 12 quadros (itens 257 a 264).")
+w("- [x] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_TUNNEL_KISS`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_WALK_HANDS` com 12 quadros (itens 257 a 264), e as duas sentadas frente a frente (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, itens 265 e 266).")
 w("- [x] `LINE_PUNCH_MACHINE` final (item 238) e a máquina de soco à parte (item 237).")
 w("- [x] Playground em peças (itens 235 a 237 e 240).")
 w("- [ ] Máquina de soco com o placar **000** desenhado pela artista (hoje o 000 é feito a partir do 038).")
@@ -1212,7 +1216,7 @@ w()
 w(f"### 10.{len(inv['grupos']) + 1} O que ainda falta ter arte própria, por prioridade")
 w()
 w("**Aparecem na história (prioridade 1):**")
-w("- **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).")
+w("- **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_SIT_CHAIR_EAT`, `BELL_SIT_CHAIR_EAT`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).")
 w("- **Bell:**")
 w("  - `BELL_SCARED`, `BELL_CAPTURED` e `BELL_DRAGON_CARRIED`: assustada, capturada e carregada pelo dragão.")
 w("  - `BELL_TRAPPED`, `BELL_CALL_LINE` e `BELL_ESCAPE_ATTEMPT`: presa na jaula, chamando a Line e tentando escapar.")

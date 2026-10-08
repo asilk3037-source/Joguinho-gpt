@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 07/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 08/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -10,8 +10,8 @@
 
 | Seção | O que é | Quantas faltam |
 |---|---|---|
-| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **7** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **303** |
+| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **4** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **302** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -74,38 +74,25 @@ O golpe funciona nas quatro direções (a área de acerto e o rastro seguem a di
 
 Falta só a **Bell de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.
 
-### 2.2 Pôr do sol, felizes e a Line girando a Bell: desproporcionais ♻️
+### 2.2 A Bell feliz: desproporcional ♻️
 
-Estas cenas saíram com a cabeça e o corpo **maiores** que a Line e a Bell das 20 primeiras, e a dança (a Line girando a Bell) está **borrada** (é uma arte antiga pequena, ampliada). Precisam ser **refeitas do zero**, em pixel art, com a Line e a Bell exatamente do tamanho da referência (linha tracejada da imagem):
+As cenas do casal que tinham saído maiores que a Line e a Bell **já foram refeitas e estão no jogo** ✅ (itens 267 a 272: de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração, o toca aqui com brilho e a Line feliz). Falta só a **Bell feliz**, do tamanho da Bell parada:
 
-![Comparação com a referência: a Line e a Bell dos 20 primeiros itens à esquerda; as cenas desproporcionais à direita](imagens/pendencias-proporcao.jpg)
-*Comparação com a referência: a Line e a Bell dos 20 primeiros itens à esquerda; as cenas desproporcionais à direita*
-
-| Código | Cena | Quadros |
-|---|---|---|
-| `LINE_BELL_HOLD_HANDS` | de mãos dadas olhando o pôr do sol (de lado, as duas viradas para a esquerda) | 10 a 12 |
-| `LINE_BELL_DANCE` | a Line girando a Bell pela mão (giro completo, a Bell rodando e o cabelo acompanhando) | 12 a 16 |
-| `LINE_BELL_KISS` | a bitoquinha no lago | 10 a 12 |
-| `LINE_BELL_CELEBRATE` | as duas felizes comemorando (toca aqui) | 10 a 12 |
-| `LINE_BELL_HIGH_FIVE` | toca aqui com brilho | 8 a 10 |
-| `LINE_HAPPY` | a Line feliz (a atual foi descartada: era uma corrida que terminava caída) | 8 a 10 |
-| `BELL_HAPPY` | a Bell feliz | 8 a 10 |
+| Código | Cena | Quadros hoje | Pedido |
+|---|---|---|---|
+| `BELL_HAPPY` | a Bell feliz, parada, sorrindo, sem sair do lugar | 2 | 10 a 12 |
 
 ### 2.3 Outras para refazer
 
-- `LINE_BELL_WALK_HANDS_FRONT`: as duas de mãos dadas andando de frente ainda é a arte pequena do laboratório, ampliada (fica borrada).
-- `BELL_DRAGON_CARRIED`: veio com o dragão antigo desenhado junto. Reenviar só a Bell pendurada, de braços para cima, sem dragão.
-- **Máquina de soco com o placar 000:** só chegou a de 038; o 000 é feito no jogo a partir dela. Mandar `PLAYGROUND_MAQUINA_SOCO_000` desenhado.
+| Código | O que está errado | Pedido |
+|---|---|---|
+| `LINE_BELL_WALK_HANDS_FRONT` | as duas de mãos dadas andando de frente ainda é a arte pequena do laboratório, ampliada (fica borrada) | refazer no traço dos itens novos, com 10 a 12 quadros |
+| `BELL_DRAGON_CARRIED` | veio com o dragão antigo desenhado junto | só a Bell pendurada, de braços para cima, sem dragão |
+| `PLAYGROUND_MAQUINA_SOCO_000` | só chegou a máquina de soco com o placar 038; o 000 é feito no jogo a partir dela | a máquina com o placar 000 desenhado |
 
 ## 3. Animações pendentes (ainda não existem)
 
 Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte chegar.
-
-### Line — emoções (1)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `LINE_HAPPY` | Feliz | 20 | 🔁 usa `LINE_VICTORY` |
 
 ### Line e Bell juntas (8)
 
@@ -769,7 +756,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 ## 10. Ordem sugerida
 
 1. **A Bell atacando de lado** (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.
-2. **Pôr do sol, felizes e a dança** refeitas na proporção certa (seção 2.2).
+2. **A Bell feliz** (`BELL_HAPPY`) com 10 a 12 quadros, na proporção certa (seção 2.2).
 3. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
 4. **Telas** (seção 7), começando pelo título e pela mochila.
 5. **Bell jogável e armaduras vestidas** (seção 3).

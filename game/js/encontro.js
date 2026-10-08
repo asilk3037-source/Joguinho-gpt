@@ -71,13 +71,15 @@
   // Mesa redonda da praça com 4 cadeiras viradas para ela: duas de frente atrás da mesa e uma de cada
   // lado, na altura da mesa (a da esquerda virada para a direita, a da direita virada para a esquerda).
   // `solido` é o pé do grupo (largura e fundo, a partir da base) onde a Line não entra.
-  // `grupo` marca as duas cadeiras de trás: na cena do BK elas somem e a Line e a Bell sentam ali.
+  // `grupo` marca as cadeiras da mesa do BK: na cena do lanche, as cadeiras que a arte das duas já
+  // traz desenhadas saem de cena (primeiro as dos lados, frente a frente; depois as de trás, juntinhas).
   function mesaComCadeiras(x, base, mesa, grupo) {
+    const tras = grupo && grupo + '_tras', lados = grupo && grupo + '_lados';
     return [
-      { nome: 'shop_praca_cadeira_madeira_front', x: x - 11, base: base - 12, grupo },
-      { nome: 'shop_praca_cadeira_madeira_front', x: x + 11, base: base - 12, grupo },
-      { nome: 'shop_praca_cadeira_madeira_right', x: x - 23, base: base - 3 },
-      { nome: 'shop_praca_cadeira_madeira_left', x: x + 23, base: base - 3 },
+      { nome: 'shop_praca_cadeira_madeira_front', x: x - 11, base: base - 12, grupo: tras },
+      { nome: 'shop_praca_cadeira_madeira_front', x: x + 11, base: base - 12, grupo: tras },
+      { nome: 'shop_praca_cadeira_madeira_right', x: x - 23, base: base - 3, grupo: lados },
+      { nome: 'shop_praca_cadeira_madeira_left', x: x + 23, base: base - 3, grupo: lados },
       { nome: mesa || 'shop_praca_mesa_redonda', x, base, solido: [72, 26] },
     ];
   }
@@ -209,6 +211,14 @@
     mostrarEtiquetas(jogo);
   }
 
+  // Lugar de cada uma nas cadeiras dos lados da mesa do BK (o desenho é centrado na célula da arte,
+  // então o ponto fica onde a cadeira desenhada cai em cima da cadeira da mesa).
+  const LUGAR_BK = { line: P(253, 393), bell: P(299, 393) };
+  function sentar(quem, lugar, anim, lado) {
+    quem.x = lugar.x; quem.y = lugar.y; quem.lado = lado; quem.dir = lado < 0 ? 'LEFT' : 'RIGHT';
+    quem.anim.tocar(anim, true);
+  }
+
   // Duas personagens andando juntas até (x, y) de cada uma (em unidades do mundo).
   function andarJuntas(c, line, bell, pl, pb, vel) {
     c.junto(c.andar(bell, pb.x / TILE, pb.y / TILE, { vel: vel || 82, parar: 'BELL_IDLE' }));
@@ -248,18 +258,26 @@
       yield c.fala('Bell', 'BK.', 'sorriso');
       c.fimDuo(); j.zoomAlvo = 1;
       document.getElementById('etiquetas').classList.add('oculto');
-      // Vão até a mesa do BK e sentam nas duas cadeiras de trás (a arte já traz as cadeiras).
-      yield andarJuntas(c, line, bell, P(256, 420), P(296, 420));
+      // Vão até a mesa do BK e sentam frente a frente, nas cadeiras dos lados (cada arte já traz a
+      // cadeira): a Line à esquerda, virada para a direita, e a Bell à direita, virada para a esquerda.
+      yield andarJuntas(c, line, bell, P(250, 420), P(302, 420));
       yield c.quando(() => !bell.alvoCena);
-      line.dir = 'BACK'; bell.dir = 'BACK';
       const assento = P(276, 384), mesa = P(276, 420);
-      j.camAlvo = { x: assento.x, y: assento.y - 20 }; j.zoomAlvo = 1.6;
-      j.encontro.sentadas = 'bk';
-      c.duo('LINE_BELL_BK', assento.x, assento.y);
-      yield c.espera(1.2);
+      j.encontro.sentadas = 'bk_lados';
+      sentar(line, LUGAR_BK.line, 'LINE_SIT_CHAIR_EAT', 1);
+      sentar(bell, LUGAR_BK.bell, 'BELL_SIT_CHAIR_EAT', -1);
+      j.camAlvo = { x: mesa.x, y: assento.y - 10 }; j.zoomAlvo = 1.6;
+      yield c.espera(1.6);
       yield c.fala('Bell', 'você parece estar tímida', 'neutro');
       yield c.fala('Line', 'é que você é muito linda', 'apaixonada');
       yield c.fala('Bell', '', 'apaixonada');
+      // Depois da declaração, as duas aparecem juntinhas, do mesmo lado da mesa (nas cadeiras de trás).
+      yield c.escurecer(1, 0.45);
+      j.encontro.sentadas = 'bk_tras';
+      c.duo('LINE_BELL_BK', assento.x, assento.y);
+      yield c.escurecer(0, 0.45);
+      j.particulas.emitir('coracao', assento.x, assento.y - 70, 5, { vel: 25, vida: 1.6 });
+      yield c.espera(2);
       c.fimDuo(); j.encontro.sentadas = null; c.duo('LINE_BELL_MEET', mesa.x, mesa.y);
       yield c.fala('Narradora', 'As duas sorriem. Bell segura a mão da Line e elas saem juntas do shopping.');
       c.fimDuo(); j.zoomAlvo = 1;

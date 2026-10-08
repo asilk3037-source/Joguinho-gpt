@@ -203,6 +203,9 @@
       j.flashTela = 0.4;
       for (let i = 0; i < 12; i++) { j.particulas.emitir('brilho', e.x, e.y - 60, 4, { vel: 160, vida: 0.9, r: 5 }); yield c.espera(0.08); }
       yield c.fala('Bell', 'Os pedaços estão voltando pra casa... olha as luzes indo embora!', 'riso');
+      // As duas batem as mãos: toca aqui com brilho (item 271). A companheira some durante o duo.
+      yield c.camera(line.x + 11, line.y - 30, 0.6);
+      if (c.duo('LINE_BELL_HIGH_FIVE', line.x + 11, line.y)) { yield c.animacaoDuo(); c.fimDuo(); }
       f.portalCoracao = vencidos(f) >= 3;
       if (f.portalCoracao) {
         yield c.fala('Line', 'Foi a última junção. Agora só sobrou ela.', 'bravo');
@@ -243,7 +246,7 @@
     yield c.fala('Bell', 'Da próxima vez, sou eu que salvo você.', 'maroto');
     yield c.fala('Line', 'Combinado. Mas só se for de mãos dadas.', 'riso');
     const par = j.duo;
-    if (c.duo('LINE_BELL_DANCE', par.x, par.y)) { yield c.espera(3.2); j.duo = par; }
+    if (c.duo('LINE_BELL_DANCE', par.x, par.y)) { yield c.espera(4); j.duo = par; }
     j.particulas.emitir('coracao', par.x, par.y - 60, 6, { vel: 25, vida: 2 });
     LB.fx.emitir(j, 'FX_HEARTS', par.x, par.y - 74, { sobe: 12, dur: 2 });
     yield c.espera(2);

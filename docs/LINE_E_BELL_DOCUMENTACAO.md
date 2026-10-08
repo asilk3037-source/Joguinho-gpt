@@ -20,7 +20,9 @@
 
 > ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.
 
-> 🛍️ **Todas as cenas do shopping com 12 quadros (itens 257 a 264):** a Line admirando a Bell de longe, a Bell esperando, a conversa, o abraço de chegada, o **BK**, o **beijo no túnel**, a **Bell rindo** do soco e as duas **saindo de mãos dadas**, no ritmo da artista (8 e 6 quadros por segundo). O lanche agora acontece **na mesa do BK** da praça: as cadeiras de trás saem de cena e as duas sentam ali, com a mesa na frente; depois saem pelo corredor do meio, sem atravessar as mesas. O abraço e o beijo perderam o aumento que a arte antiga precisava, e o BK sentado ficou 9% menor para as cabeças baterem com as das duas em pé.
+> 💞 **Cenas do casal refeitas e as duas frente a frente no BK (itens 265 a 272):** de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração do almoço, o toca aqui com brilho e a **Line feliz** chegaram com 12 quadros, do tamanho da Line e da Bell paradas (a dança e a bitoquinha perderam os aumentos que a arte antiga precisava, e a Line feliz voltou para o jogo nos títulos de espada, magia, coração extra e baú). No shopping, o lanche começa com as duas **frente a frente** na mesa do BK, cada uma na sua cadeira (itens 265 e 266); depois da declaração, elas aparecem **juntinhas** do mesmo lado (item 261). Na Parte 2, cada **junção desfeita** termina com o **toca aqui** das duas. A dança do pôr do sol e do final passou a durar dois giros inteiros.
+
+> 🛍️ **Todas as cenas do shopping com 12 quadros (itens 257 a 264):** a Line admirando a Bell de longe, a Bell esperando, a conversa, o abraço de chegada, o **BK**, o **beijo no túnel**, a **Bell rindo** do soco e as duas **saindo de mãos dadas**, no ritmo da artista (8 e 6 quadros por segundo). O lanche acontece **na mesa do BK** da praça e depois as duas saem pelo corredor do meio, sem atravessar as mesas. O abraço e o beijo perderam o aumento que a arte antiga precisava, e o BK sentado ficou 9% menor para as cabeças baterem com as das duas em pé.
 
 > 🧪 **Botão de teste no menu (temporário):** **🧪 Teste: ir para um mapa** abre a lista de todos os mapas (Parte 1, Parte 2 e as casas e lojas) e entra no escolhido como se o jogo já estivesse zerado: Parte 1 e Parte 2 vencidas, Bell jogável, espada, magia e estrela, todos os itens e documentos, os 7 corações extras, cristais acesos, barreiras abertas, as 3 estações do carrinho, 9.999 moedas e as melhores armaduras. Nada é salvo durante o teste: **Continuar** volta ao progresso de verdade. O Primeiro Encontro fica fora da lista (é só cena: começa pelo **Novo jogo**) e o Covil sempre abre na luta contra o dragão.
 
@@ -173,7 +175,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **570**: 277 com arte (temporária), 172 usando uma substituta, 121 desenhadas no código ou sem imagem |
+| Animações catalogadas | **572**: 280 com arte (temporária), 171 usando uma substituta, 121 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -954,7 +956,7 @@ O prólogo é a história de como a Line e a Bell se conheceram. Ele vem **antes
 | 1 | Minas Shopping | Título *O primeiro encontro* e *Minas Shopping · 09/05/2024*. A Line admira a Bell de longe: “puxa ela é tão linda”. | não | `LINE_IDLE` (de costas), `LINE_ADMIRE`, `BELL_WAIT` | normal |
 | 2 | Minas Shopping | A Line anda até a Bell. Perto dela aparece o botão **Falar com a Bell**. | sim, só andar | `LINE_WALK_*`, `BELL_WAIT` | segue a Line |
 | 3 | Minas Shopping | A Line se aproxima e as duas conversam: shopping grande, “Você tá atrasada”, “oq vamos comer?”, “BK.”. | não | `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG` | zoom 1,6× |
-| 4 | Minas Shopping (mesa) | As duas andam até a mesa e comem BK. “você parece estar tímida” / “é que você é muito linda”. | não | `LINE_WALK_*`, `BELL_WALK_*`, `LINE_BELL_BK` | zoom na mesa |
+| 4 | Minas Shopping (mesa) | As duas andam até a mesa do BK e sentam frente a frente, comendo. “você parece estar tímida” / “é que você é muito linda”. Depois aparecem juntinhas, do mesmo lado da mesa. | não | `LINE_WALK_*`, `BELL_WALK_*`, `LINE_SIT_CHAIR_EAT`, `BELL_SIT_CHAIR_EAT`, `LINE_BELL_BK` | zoom na mesa |
 | 5 | Minas Shopping | A Bell segura a mão da Line e as duas saem juntas do shopping. | não | `LINE_BELL_MEET`, `LINE_BELL_WALK_HANDS` | volta ao normal |
 | — | transição | Brilho rosa e a tela escurece. | — | — | — |
 | 6 | Playground | As duas chegam. A Line para na máquina de soco, a Bell fica ao lado. Aparece o botão **Tentar!**. | só o botão | `LINE_WALK_*`, `BELL_WALK_*`, `LINE_IDLE`, `BELL_IDLE` | normal |
@@ -973,7 +975,7 @@ A tela do HTML é vertical (360×640). No jogo, o lugar ocupa essa mesma área, 
 
 **Minas Shopping**
 - **Fundo (em peças):** a praça de alimentação do modelo (seção 22.11): o piso claro de losangos com o teto de madeira, as luzes embutidas e a coluna branca; por cima, a loja de hambúrguer e a de frango, seis mesas redondas com cadeiras de madeira e dois canteiros.
-- **Posições:** a Line entra por baixo, no corredor do meio, de costas. A Bell espera no mesmo corredor, entre as mesas. O lanche acontece **na mesa do BK** (a do meio da coluna da direita): as duas cadeiras de trás saem de cena e as duas sentam ali, com a mesa na frente. Depois saem de mãos dadas pelo corredor do meio, por baixo.
+- **Posições:** a Line entra por baixo, no corredor do meio, de costas. A Bell espera no mesmo corredor, entre as mesas. O lanche acontece **na mesa do BK** (a do meio da coluna da direita): primeiro as duas sentam **frente a frente**, nas cadeiras dos lados (a Line à esquerda, virada para a direita; a Bell à direita, virada para a esquerda), e as cadeiras da mesa que a arte já traz desenhadas saem de cena; depois da declaração, aparecem **juntinhas** nas cadeiras de trás, com a mesa na frente. Depois saem de mãos dadas pelo corredor do meio, por baixo.
 
 #### ⭐ Minas Shopping: modelo real para a arte final
 
@@ -1067,7 +1069,9 @@ Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (p
 | `BELL_WAIT` | A Bell esperando no shopping: olha para os lados, mexe no cabelo, ajeita os óculos (item 258). | 12 | ✅ temporária |
 | `LINE_BELL_MEET` | As duas lado a lado, conversando e sorrindo (item 259). Usada no “esse shopping é muito grande”, no “oq vamos comer?” e antes de saírem. | 12 | ✅ temporária |
 | `LINE_BELL_GREET_HUG` | Abraço de chegada no “Você tá atrasada” (item 260). | 12 | ✅ temporária |
-| `LINE_BELL_BK` | As duas sentadas nas cadeiras de madeira comendo BK, hambúrguer, batata e refri (item 261). A arte não traz mesa: elas sentam atrás da mesa do BK da praça. | 12 | ✅ temporária |
+| `LINE_BELL_BK` | As duas juntinhas nas cadeiras de madeira comendo BK, hambúrguer, batata e refri (item 261). A arte não traz mesa: depois da conversa frente a frente, elas aparecem atrás da mesa do BK da praça. | 12 | ✅ temporária |
+| `LINE_SIT_CHAIR_EAT` | A Line sentada na cadeira de madeira comendo hambúrguer, virada para a direita (item 265): na mesa do BK, frente a frente com a Bell. | 12 | ✅ temporária |
+| `BELL_SIT_CHAIR_EAT` | A Bell sentada na cadeira de madeira comendo hambúrguer, virada para a esquerda (item 266): na mesa do BK, frente a frente com a Line. | 12 | ✅ temporária |
 | `LINE_PUNCH_MACHINE` | A Line na máquina de soco (item 238): guarda, preparo, avanço, soco e volta. A máquina é uma peça à parte; o placar vira 038 no quadro do soco. Os mesmos quadros fazem o soco sem espada. | 6 | ✅ temporária |
 | `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 6 | ✅ temporária |
 | `BELL_LAUGH_AT_LINE` | A Bell gargalhando da Line (item 263): tapa a boca, se curva de rir, chora de rir e enxuga a lágrima. | 12 | ✅ temporária |
@@ -1088,7 +1092,7 @@ Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (p
 
 ### 5.7 O que falta para a versão final do prólogo
 
-- [x] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_TUNNEL_KISS`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_WALK_HANDS` com 12 quadros (itens 257 a 264).
+- [x] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_TUNNEL_KISS`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_WALK_HANDS` com 12 quadros (itens 257 a 264), e as duas sentadas frente a frente (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, itens 265 e 266).
 - [x] `LINE_PUNCH_MACHINE` final (item 238) e a máquina de soco à parte (item 237).
 - [x] Playground em peças (itens 235 a 237 e 240).
 - [ ] Máquina de soco com o placar **000** desenhado pela artista (hoje o 000 é feito a partir do 038).
@@ -1863,14 +1867,14 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 570 animações. ✅ 277 com arte temporária, 🔁 172 com substituta e ✏️ 121 desenhadas no código.
+**Resumo:** 572 animações. ✅ 280 com arte temporária, 🔁 171 com substituta e ✏️ 121 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
-| Primeiro encontro (prólogo) | 9 | 9 | 0 | 0 |
+| Primeiro encontro (prólogo) | 11 | 11 | 0 | 0 |
 | Line — movimento | 31 | 31 | 0 | 0 |
 | Line — combate | 39 | 39 | 0 | 0 |
-| Line — emoções | 10 | 9 | 1 | 0 |
+| Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
 | Line e Bell juntas | 26 | 18 | 8 | 0 |
 | Dragão | 27 | 26 | 1 | 0 |
@@ -1907,6 +1911,8 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_BELL_MEET` | Frente a frente, sorrindo (conversa no shopping) *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_259 |
 | `LINE_BELL_GREET_HUG` | Abraço de chegada (“Você tá atrasada”) *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_260 |
 | `LINE_BELL_BK` | Comendo BK juntas, sentadas na mesa da praça *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_261 |
+| `LINE_SIT_CHAIR_EAT` | Line sentada comendo, virada para a direita *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_265 |
+| `BELL_SIT_CHAIR_EAT` | Bell sentada comendo, virada para a esquerda *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_266 |
 | `LINE_PUNCH_MACHINE` | Soco na máquina (primeiro encontro) | 6 |  | ✅ temporária | LINE_BELL_ITEM_238 |
 | `LINE_PUNCH` | Soco sem espada (usa a arte do soco na máquina, em 6 quadros) | 6 |  | ✅ temporária | LINE_BELL_ITEM_238 |
 | `BELL_LAUGH_AT_LINE` | Bell gargalhando do soco da Line *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_263 |
@@ -1996,7 +2002,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `LINE_HAPPY` | Feliz | 20 |  | 🔁 usa `LINE_VICTORY` |  |
+| `LINE_HAPPY` | Feliz (item 272) | 12 |  | ✅ temporária | LINE_BELL_ITEM_272 |
 | `LINE_LAUGH` | Rindo | 6 |  | ✅ temporária | LINE_BELL_ITEM_42 |
 | `LINE_DETERMINED` | Determinada | 6 | sim | ✅ temporária | LINE_BELL_ITEM_43 |
 | `LINE_ANGRY` | Brava | 6 | sim | ✅ temporária | LINE_BELL_ITEM_44 |
@@ -2065,14 +2071,14 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_BELL_TALK` | Conversando | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
 | `LINE_BELL_LAUGH` | Rindo juntas | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
 | `LINE_BELL_EAT` | Almoçando juntas *(sugestão nova)* | 6 | sim | ✅ temporária | LINE_BELL_ITEM_113 |
-| `LINE_BELL_KISS` | Bitoquinha *(sugestão nova)* | 7 |  | ✅ temporária | LINE_BELL_ITEM_113 |
+| `LINE_BELL_KISS` | Bitoquinha (item 269) *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_269 |
 | `BELL_LEAN_ON_LINE` | Bell encostando na Line | 4 |  | ✅ temporária | LINE_BELL_ITEM_72 |
-| `LINE_BELL_HOLD_HANDS` | Segurando as mãos | 3 | sim | ✅ temporária | LINE_BELL_ITEM_73 |
+| `LINE_BELL_HOLD_HANDS` | De mãos dadas no pôr do sol (item 267) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_267 |
 | `LINE_BELL_RESCUE_HUG` | Abraço do resgate | 4 | sim | ✅ temporária | LINE_BELL_ITEM_74 |
 | `LINE_BELL_HUG_RELEASE` | Separação do abraço | 4 |  | ✅ temporária | LINE_BELL_ITEM_75 |
-| `LINE_BELL_CELEBRATE` | Comemorando (toca aqui) | 4 |  | ✅ temporária | LINE_BELL_ITEM_76 |
-| `LINE_BELL_HIGH_FIVE` | Toca aqui com brilho *(sugestão nova)* | 3 |  | ✅ temporária | LINE_BELL_ITEM_113 |
-| `LINE_BELL_DANCE` | Dançando juntas *(sugestão nova)* | 4 | sim | ✅ temporária | arte/linebell/LINE_BELL_DANCE |
+| `LINE_BELL_CELEBRATE` | Comemorando (item 270) | 12 |  | ✅ temporária | LINE_BELL_ITEM_270 |
+| `LINE_BELL_HIGH_FIVE` | Toca aqui com brilho (item 271) *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_271 |
+| `LINE_BELL_DANCE` | A Line girando a Bell pela mão (item 268) *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_268 |
 | `LINE_BELL_SIT_DOWN` | Sentando juntas | 4 |  | ✅ temporária | LINE_BELL_ITEM_77 |
 | `BELL_HEAD_ON_LINE` | Bell apoiando a cabeça na Line | 4 |  | ✅ temporária | LINE_BELL_ITEM_78 |
 | `LINE_BELL_SIT_IDLE` | Idle das duas sentadas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_79 |
@@ -2623,7 +2629,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 ### 10.31 O que ainda falta ter arte própria, por prioridade
 
 **Aparecem na história (prioridade 1):**
-- **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).
+- **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_SIT_CHAIR_EAT`, `BELL_SIT_CHAIR_EAT`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).
 - **Bell:**
   - `BELL_SCARED`, `BELL_CAPTURED` e `BELL_DRAGON_CARRIED`: assustada, capturada e carregada pelo dragão.
   - `BELL_TRAPPED`, `BELL_CALL_LINE` e `BELL_ESCAPE_ATTEMPT`: presa na jaula, chamando a Line e tentando escapar.
@@ -3337,10 +3343,10 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 
 | Grupo | Animações | Com arte | Usando substituta | Faltando |
 |---|---|---|---|---|
-| Primeiro encontro (prólogo) | 9 | 9 | 0 | 0 |
+| Primeiro encontro (prólogo) | 11 | 11 | 0 | 0 |
 | Line — movimento | 31 | 31 | 0 | 0 |
 | Line — combate | 39 | 39 | 0 | 0 |
-| Line — emoções | 10 | 9 | 1 | 0 |
+| Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
 | Line e Bell juntas | 26 | 18 | 8 | 0 |
 | Dragão | 27 | 26 | 1 | 0 |
@@ -3367,7 +3373,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **570** | **277** | **172** | **121** |
+| **Total** | **572** | **280** | **171** | **121** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3667,7 +3673,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 277 de 570 animações com arte · 172 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 280 de 572 animações com arte · 171 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3685,7 +3691,6 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Item 137**: `SHEEP_IDLE` foi recusado: reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior. O jogo segue com a versão anterior.
 - **Pernas paradas:** `CHICKEN_RUN`, `CHICKEN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_WALK` chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.
 - **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.
-- `LINE_HAPPY` saiu do jogo: é uma corrida que termina com a Line caída para a frente, e não a Line feliz (no lugar, o jogo usa `LINE_VICTORY`). Para reenviar.
 - `LINE_BELL_WALK_HANDS_FRONT` (as duas de mãos dadas andando de frente) ainda é a arte pequena do laboratório, ampliada: fica borrada perto das outras. Para reenviar no tamanho e no traço dos itens novos.
 - **Itens que ainda não chegaram:** 153, 240.
 
@@ -3695,8 +3700,8 @@ O que apareceu jogando no celular, o que foi feito e o que ainda depende de arte
 
 | # | O que aconteceu | O que foi feito | Falta |
 |---|---|---|---|
-| 1 | Perto do Mago, ao pegar a espada, a Line fazia um movimento estranho e parecia cair. | A arte de “Feliz” (`LINE_HAPPY`, item 41) é, na verdade, uma corrida que termina com a Line caída para a frente. Ela saiu do jogo; no lugar entra a comemoração (`LINE_VICTORY`). | Reenviar `LINE_HAPPY`: a Line parada, feliz, sorrindo, sem sair do lugar. |
-| 2 | Andando de mãos dadas até o lago, Line e Bell ficavam minúsculas. | De frente, o par usa a arte antiga do laboratório (`LINE_BELL_WALK_HANDS_FRONT`), muito pequena dentro do quadro: ela foi ampliada para a Line do par ficar da altura da Line sozinha. A dança do pôr do sol (`LINE_BELL_DANCE`) também estava pequena e foi igualada. | Reenviar `LINE_BELL_WALK_HANDS_FRONT` no traço dos itens novos (a ampliada fica borrada). |
+| 1 | Perto do Mago, ao pegar a espada, a Line fazia um movimento estranho e parecia cair. | A arte de “Feliz” (`LINE_HAPPY`, item 41) é, na verdade, uma corrida que termina com a Line caída para a frente. Ela saiu do jogo e, no lugar, entrou a comemoração (`LINE_VICTORY`). Depois chegou a Line feliz nova (item 272), que voltou para o jogo. | — |
+| 2 | Andando de mãos dadas até o lago, Line e Bell ficavam minúsculas. | De frente, o par usa a arte antiga do laboratório (`LINE_BELL_WALK_HANDS_FRONT`), muito pequena dentro do quadro: ela foi ampliada para a Line do par ficar da altura da Line sozinha. A dança do pôr do sol (`LINE_BELL_DANCE`) também estava pequena; depois chegou a dança nova (item 268), já do tamanho certo. | Reenviar `LINE_BELL_WALK_HANDS_FRONT` no traço dos itens novos (a ampliada fica borrada). |
 | 3 | Andando até a casinha do Theo, a casa da fazenda sumia do terreno. | O jogo deixava de desenhar objetos cujo canto esquerdo saía da tela, e a casa é larga. Agora a folga leva em conta a largura e a altura de cada objeto (casa, celeiro). | — |
 | 4 | No shopping, as duas apareciam sentadas numa mesa gigante em cima da mesa. | A animação do BK já traz a mesa delas, e o fundo do shopping (item 140) tem uma mesa redonda desenhada no mesmo lugar. No lanche, o jogo troca para uma cópia do fundo sem a mesa redonda e as cadeiras (`tools/shopping_sem_mesa.py`). | Shopping em peças: base só com chão e teto e cada item em arte individual (seção 22.11.1). |
 
@@ -3746,13 +3751,12 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 |---|---|
 | Line | `LINE_ATTACK_HORIZONTAL` (4), `LINE_CAST_CHARGE` (4), `LINE_CAST_SPELL` (4), `LINE_CAST_STARS` (4), `LINE_COMBAT_IDLE` (3), `LINE_COMBAT_RUN_BACK` (2), `LINE_COMBAT_RUN_FRONT` (4), `LINE_COMBAT_RUN_LEFT` (4), `LINE_COMBAT_RUN_RIGHT` (4), `LINE_COMBAT_WALK_BACK` (2), `LINE_COMBAT_WALK_FRONT` (2), `LINE_COMBAT_WALK_LEFT` (4), `LINE_COMBAT_WALK_RIGHT` (4), `LINE_CROUCH` (3), `LINE_CROUCH_STAND` (3), `LINE_FALL` (4), `LINE_HIT_HEAVY` (4), `LINE_IDLE_BACK` (2), `LINE_IDLE_LEFT` (3), `LINE_RUN_BACK` (4), `LINE_RUN_STOP_RIGHT` (4), `LINE_SAD` (4), `LINE_SCARED` (4), `LINE_STUMBLE` (4), `LINE_SWORD_DRAW` (4), `LINE_THROWN` (4), `LINE_VICTORY` (4), `LINE_WALK_BACK` (4), `LINE_WALK_FRONT` (4) |
 | Bell | `BELL_BLINK_FRONT` (2), `BELL_BREAK_FREE` (4), `BELL_CALL_LINE` (4), `BELL_CAPTURED` (4), `BELL_CRY` (3), `BELL_CURTSY` (4), `BELL_DANCE` (3), `BELL_DRAGON_CARRIED` (4), `BELL_ESCAPE_ATTEMPT` (3), `BELL_FALL` (4), `BELL_FLEE` (4), `BELL_GROUND_STAND` (2), `BELL_HAPPY` (2), `BELL_HEAD_ON_LINE` (4), `BELL_HELP_LINE` (4), `BELL_HIGH_FIVE` (2), `BELL_IDLE_BACK` (1), `BELL_IDLE_FRONT` (3), `BELL_IDLE_LEFT` (1), `BELL_IDLE_RIGHT` (1), `BELL_JUMP` (3), `BELL_LAND` (2), `BELL_LAUGH` (2), `BELL_LEAN_ON_LINE` (4), `BELL_LOOK_SIDES_FRONT` (3), `BELL_RELIEVED` (2), `BELL_RUN_BACK` (4), `BELL_RUN_FRONT` (4), `BELL_SCARED` (3), `BELL_TRAPPED` (3), `BELL_WALK_BACK` (4), `BELL_WALK_FRONT` (4) |
-| Line e Bell juntas | `LINE_BELL_CELEBRATE` (4), `LINE_BELL_HIGH_FIVE` (3), `LINE_BELL_HOLD_HANDS` (3), `LINE_BELL_HUG_RELEASE` (4), `LINE_BELL_LAUGH` (3), `LINE_BELL_RESCUE_HUG` (4), `LINE_BELL_RUN_TOGETHER_BACK` (4), `LINE_BELL_SIT_DOWN` (4), `LINE_BELL_SIT_IDLE` (4), `LINE_BELL_TALK` (3), `LINE_BELL_WALK_HANDS_BACK` (4), `LINE_BELL_WALK_TOGETHER` (4), `LINE_BELL_WALK_TOGETHER_BACK` (4) |
+| Line e Bell juntas | `LINE_BELL_HUG_RELEASE` (4), `LINE_BELL_LAUGH` (3), `LINE_BELL_RESCUE_HUG` (4), `LINE_BELL_RUN_TOGETHER_BACK` (4), `LINE_BELL_SIT_DOWN` (4), `LINE_BELL_SIT_IDLE` (4), `LINE_BELL_TALK` (3), `LINE_BELL_WALK_HANDS_BACK` (4), `LINE_BELL_WALK_TOGETHER` (4), `LINE_BELL_WALK_TOGETHER_BACK` (4) |
 
 ### 23.3 Animações ainda sem arte
 
 | Grupo | Código | O que é | Hoje usa |
 |---|---|---|---|
-| Line — emoções | `LINE_HAPPY` | Feliz | `LINE_VICTORY` |
 | Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
 | Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
@@ -4316,6 +4320,14 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 262 | `LINE_BELL_ITEM_262.html` | 3,42 MB | `LINE_BELL_TUNNEL_KISS` |
 | 263 | `LINE_BELL_ITEM_263.html` | 2,97 MB | `BELL_LAUGH_AT_LINE` |
 | 264 | `LINE_BELL_ITEM_264.html` | 3,93 MB | `LINE_BELL_WALK_HANDS` |
+| 265 | `LINE_BELL_ITEM_265.html` | 1,94 MB | `LINE_SIT_CHAIR_EAT` |
+| 266 | `LINE_BELL_ITEM_266.html` | 2,60 MB | `BELL_SIT_CHAIR_EAT` |
+| 267 | `LINE_BELL_ITEM_267.html` | 3,62 MB | `LINE_BELL_HOLD_HANDS` |
+| 268 | `LINE_BELL_ITEM_268.html` | 3,39 MB | `LINE_BELL_DANCE` |
+| 269 | `LINE_BELL_ITEM_269.html` | 3,19 MB | `LINE_BELL_KISS` |
+| 270 | `LINE_BELL_ITEM_270.html` | 3,35 MB | `LINE_BELL_CELEBRATE` |
+| 271 | `LINE_BELL_ITEM_271.html` | 3,81 MB | `LINE_BELL_HIGH_FIVE` |
+| 272 | `LINE_BELL_ITEM_272.html` | 2,55 MB | `LINE_HAPPY` |
 
 Itens que ainda não chegaram: 153, 240.
 

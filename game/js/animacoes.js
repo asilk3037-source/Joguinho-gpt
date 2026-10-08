@@ -26,6 +26,9 @@ window.LB = window.LB || {};
     ['LINE_BELL_MEET', 'Frente a frente, sorrindo (conversa no shopping)', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_HOLD_HANDS', nova: true }],
     ['LINE_BELL_GREET_HUG', 'Abraço de chegada (“Você tá atrasada”)', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_RESCUE_HUG', nova: true }],
     ['LINE_BELL_BK', 'Comendo BK juntas, sentadas na mesa da praça', { fpsMax: 6, fps: 6, loop: true, face: 'F', quadros: 12, alt: 'LINE_BELL_EAT', nova: true }],
+    // Itens 265 e 266: cada uma na sua cadeira (a arte traz a cadeira), frente a frente na mesa do BK.
+    ['LINE_SIT_CHAIR_EAT', 'Line sentada comendo, virada para a direita', { fps: 6, loop: true, face: 'R', quadros: 12, nova: true }],
+    ['BELL_SIT_CHAIR_EAT', 'Bell sentada comendo, virada para a esquerda', { fps: 6, loop: true, face: 'F', quadros: 12, nova: true }],
     ['LINE_PUNCH_MACHINE', 'Soco na máquina (primeiro encontro)', { fps: 10, face: 'F', quadros: 16 }],
     ['LINE_PUNCH', 'Soco sem espada (usa a arte do soco na máquina, em 6 quadros)', { fps: 16, face: 'R', quadros: 6 }],
     ['BELL_LAUGH_AT_LINE', 'Bell gargalhando do soco da Line', { fpsMax: 8, fps: 8, loop: true, face: 'F', quadros: 12, alt: 'BELL_LAUGH', nova: true }],
@@ -89,7 +92,7 @@ window.LB = window.LB || {};
   ]);
 
   grupo('Line — emoções', [
-    ['LINE_HAPPY', 'Feliz', { fps: 12, face: 'F', quadros: 20, alt: 'LINE_VICTORY' }],
+    ['LINE_HAPPY', 'Feliz (item 272)', { fps: 6, face: 'F', quadros: 12, alt: 'LINE_VICTORY' }],
     ['LINE_LAUGH', 'Rindo', { fps: 12, face: 'F', quadros: 24 }],
     ['LINE_DETERMINED', 'Determinada', { fps: 10, loop: true, quadros: 20, alt: 'LINE_COMBAT_IDLE' }],
     ['LINE_ANGRY', 'Brava', { fps: 10, loop: true, quadros: 20, alt: 'LINE_COMBAT_IDLE' }],
@@ -138,14 +141,14 @@ window.LB = window.LB || {};
     ['LINE_BELL_TALK', 'Conversando', { fps: 6, loop: true, face: 'F', quadros: 12 }],
     ['LINE_BELL_LAUGH', 'Rindo juntas', { loop: true }],
     ['LINE_BELL_EAT', 'Almoçando juntas', { fps: 6, loop: true, face: 'F', quadros: 24, nova: true }],
-    ['LINE_BELL_KISS', 'Bitoquinha', { fps: 5, face: 'F', quadros: 8, nova: true }],
+    ['LINE_BELL_KISS', 'Bitoquinha (item 269)', { fps: 6, face: 'F', quadros: 12, nova: true }],
     ['BELL_LEAN_ON_LINE', 'Bell encostando na Line'],
-    ['LINE_BELL_HOLD_HANDS', 'Segurando as mãos', { loop: true, face: 'F' }],
+    ['LINE_BELL_HOLD_HANDS', 'De mãos dadas no pôr do sol (item 267)', { fps: 6, loop: true, face: 'F', quadros: 12 }],
     ['LINE_BELL_RESCUE_HUG', 'Abraço do resgate', { quadros: 24, loop: true, face: 'F' }],
     ['LINE_BELL_HUG_RELEASE', 'Separação do abraço'],
-    ['LINE_BELL_CELEBRATE', 'Comemorando (toca aqui)', { fps: 8, face: 'F', quadros: 16 }],
-    ['LINE_BELL_HIGH_FIVE', 'Toca aqui com brilho', { fps: 9, face: 'F', quadros: 12, nova: true }],
-    ['LINE_BELL_DANCE', 'Dançando juntas', { fps: 4, loop: true, face: 'F', quadros: 4, nova: true }],
+    ['LINE_BELL_CELEBRATE', 'Comemorando (item 270)', { fps: 6, face: 'F', quadros: 12 }],
+    ['LINE_BELL_HIGH_FIVE', 'Toca aqui com brilho (item 271)', { fps: 6, face: 'F', quadros: 12, nova: true }],
+    ['LINE_BELL_DANCE', 'A Line girando a Bell pela mão (item 268)', { fps: 6, loop: true, face: 'F', quadros: 12, nova: true }],
     ['LINE_BELL_SIT_DOWN', 'Sentando juntas'],
     ['BELL_HEAD_ON_LINE', 'Bell apoiando a cabeça na Line'],
     ['LINE_BELL_SIT_IDLE', 'Idle das duas sentadas', { loop: true }],
