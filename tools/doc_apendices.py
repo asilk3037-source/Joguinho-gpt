@@ -355,11 +355,8 @@ def escrever(w, inv, itens=None):
     refeitas = sorted(extrair_sprites.PERNAS_ALTERNADAS)
     if refeitas:
         linhas.append("- **Pernas paradas:** " + ", ".join(f"`{c}`" for c in refeitas) + " chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.")
-    if "BELL_DRAGON_CARRIED" in manifesto():
-        linhas.append("- **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.")
     for codigo, motivo in extrair_sprites.DESCARTADAS.items():
         linhas.append(f"- `{codigo}` saiu do jogo: {motivo}. Para reenviar.")
-    linhas.append("- `LINE_BELL_WALK_HANDS_FRONT` (as duas de mãos dadas andando de frente) ainda é a arte pequena do laboratório, ampliada: fica borrada perto das outras. Para reenviar no tamanho e no traço dos itens novos.")
     if faltam:
         linhas.append(f"- **Itens que ainda não chegaram:** {', '.join(map(str, faltam))}.")
     for l in linhas or ["Nada para reenviar agora."]:
@@ -373,7 +370,7 @@ def escrever(w, inv, itens=None):
     w("|---|---|---|---|")
     for linha in [
         ("1", "Perto do Mago, ao pegar a espada, a Line fazia um movimento estranho e parecia cair.", "A arte de “Feliz” (`LINE_HAPPY`, item 41) é, na verdade, uma corrida que termina com a Line caída para a frente. Ela saiu do jogo e, no lugar, entrou a comemoração (`LINE_VICTORY`). Depois chegou a Line feliz nova (item 272), que voltou para o jogo.", "—"),
-        ("2", "Andando de mãos dadas até o lago, Line e Bell ficavam minúsculas.", "De frente, o par usa a arte antiga do laboratório (`LINE_BELL_WALK_HANDS_FRONT`), muito pequena dentro do quadro: ela foi ampliada para a Line do par ficar da altura da Line sozinha. A dança do pôr do sol (`LINE_BELL_DANCE`) também estava pequena; depois chegou a dança nova (item 268), já do tamanho certo.", "Reenviar `LINE_BELL_WALK_HANDS_FRONT` no traço dos itens novos (a ampliada fica borrada)."),
+        ("2", "Andando de mãos dadas até o lago, Line e Bell ficavam minúsculas.", "De frente, o par usa a arte antiga do laboratório (`LINE_BELL_WALK_HANDS_FRONT`), muito pequena dentro do quadro: ela foi ampliada para a Line do par ficar da altura da Line sozinha. A dança do pôr do sol (`LINE_BELL_DANCE`) também estava pequena; depois chegou a dança nova (item 268), já do tamanho certo.", "— (chegou a arte nova de frente, item 274)"),
         ("3", "Andando até a casinha do Theo, a casa da fazenda sumia do terreno.", "O jogo deixava de desenhar objetos cujo canto esquerdo saía da tela, e a casa é larga. Agora a folga leva em conta a largura e a altura de cada objeto (casa, celeiro).", "—"),
         ("4", "No shopping, as duas apareciam sentadas numa mesa gigante em cima da mesa.", "A animação do BK já traz a mesa delas, e o fundo do shopping (item 140) tem uma mesa redonda desenhada no mesmo lugar. No lanche, o jogo troca para uma cópia do fundo sem a mesa redonda e as cadeiras (`tools/shopping_sem_mesa.py`).", "Shopping em peças: base só com chão e teto e cada item em arte individual (seção 22.11.1)."),
     ]:

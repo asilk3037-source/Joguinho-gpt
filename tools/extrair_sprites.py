@@ -118,6 +118,8 @@ ITENS_CENARIO = {140: "Minas Shopping", 141: "Playground", 142: "máquina de soc
                  157: "arandela e luminária pendente"}
 # Itens 158 a 227: um objeto da fazenda cada (tools/extrair_objetos.py).
 ITENS_CENARIO.update({n: "objeto da fazenda" for n in range(158, 228)})
+# Item 276: a máquina de soco com o placar 000 (objeto do playground, tools/extrair_objetos.py).
+ITENS_CENARIO[276] = "máquina de soco com o placar 000"
 
 
 # Andar e correr precisam se mexer: com menos quadros diferentes que isso a animação do item é

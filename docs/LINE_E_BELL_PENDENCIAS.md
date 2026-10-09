@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 08/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 09/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -10,7 +10,7 @@
 
 | Seção | O que é | Quantas faltam |
 |---|---|---|
-| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **4** |
+| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **0** |
 | 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **302** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
@@ -57,38 +57,9 @@
 
 ## 2. Animações que precisam de ajuste (refazer)
 
-### 2.1 Ataque nas quatro direções ⚔️
+Todas as animações que precisavam ser refeitas **já chegaram e estão no jogo** ✅: os golpes de frente e de costas da Line e da Bell (itens 241 a 256), as cenas do shopping (257 a 266), as cenas do casal na proporção certa (267 a 272) e os ajustes finais (273 a 276: a Bell feliz, as duas de mãos dadas andando de frente, a Bell pendurada no dragão sem outro dragão desenhado junto e a máquina de soco com o placar 000).
 
-O golpe funciona nas quatro direções (a área de acerto e o rastro seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** todos os golpes de **frente** e **de costas**: os da **Line** (itens 241 a 252) e os da **Bell** (itens 253 a 256: a estrela e o leque) ✅.
-
-| De frente | De costas | Golpe | Situação |
-|---|---|---|---|
-| `LINE_ATTACK_HORIZONTAL_FRONT` | `LINE_ATTACK_HORIZONTAL_BACK` | golpe 1 (horizontal) | ✅ |
-| `LINE_ATTACK_VERTICAL_FRONT` | `LINE_ATTACK_VERTICAL_BACK` | golpe 2 (de cima para baixo) | ✅ |
-| `LINE_ATTACK_COMBO_FRONT` | `LINE_ATTACK_COMBO_BACK` | golpe 3 (combo) | ✅ |
-| `LINE_ATTACK_DIAGONAL_FRONT` | `LINE_ATTACK_DIAGONAL_BACK` | investida | ✅ |
-| `LINE_PUNCH_FRONT` | `LINE_PUNCH_BACK` | soco sem espada | ✅ |
-| `LINE_CAST_SPELL_FRONT` | `LINE_CAST_SPELL_BACK` | Raio de Luz | ✅ |
-| `BELL_ATTACK_STAR_FRONT` | `BELL_ATTACK_STAR_BACK` | estrela da Bell | ✅ |
-| `BELL_ATTACK_SPREAD_FRONT` | `BELL_ATTACK_SPREAD_BACK` | leque de estrelas da Bell | ✅ |
-
-Falta só a **Bell de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.
-
-### 2.2 A Bell feliz: desproporcional ♻️
-
-As cenas do casal que tinham saído maiores que a Line e a Bell **já foram refeitas e estão no jogo** ✅ (itens 267 a 272: de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração, o toca aqui com brilho e a Line feliz). Falta só a **Bell feliz**, do tamanho da Bell parada:
-
-| Código | Cena | Quadros hoje | Pedido |
-|---|---|---|---|
-| `BELL_HAPPY` | a Bell feliz, parada, sorrindo, sem sair do lugar | 2 | 10 a 12 |
-
-### 2.3 Outras para refazer
-
-| Código | O que está errado | Pedido |
-|---|---|---|
-| `LINE_BELL_WALK_HANDS_FRONT` | as duas de mãos dadas andando de frente ainda é a arte pequena do laboratório, ampliada (fica borrada) | refazer no traço dos itens novos, com 10 a 12 quadros |
-| `BELL_DRAGON_CARRIED` | veio com o dragão antigo desenhado junto | só a Bell pendurada, de braços para cima, sem dragão |
-| `PLAYGROUND_MAQUINA_SOCO_000` | só chegou a máquina de soco com o placar 038; o 000 é feito no jogo a partir dela | a máquina com o placar 000 desenhado |
+Falta só a **Bell atacando de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`), com os mesmos quadros e o mesmo tempo das de frente e de costas. Hoje, de lado, ela usa o “toca aqui” e a dança no lugar. Como ainda não existem, estão na seção 3, no grupo da Bell jogável.
 
 ## 3. Animações pendentes (ainda não existem)
 
@@ -755,14 +726,13 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 
 ## 10. Ordem sugerida
 
-1. **A Bell atacando de lado** (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.
-2. **A Bell feliz** (`BELL_HAPPY`) com 10 a 12 quadros, na proporção certa (seção 2.2).
-3. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
-4. **Telas** (seção 7), começando pelo título e pela mochila.
-5. **Bell jogável e armaduras vestidas** (seção 3).
-6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes e moradores** da Parte 2 (seção 3).
-8. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
+1. **A Bell atacando de lado** (seção 3, Bell jogável): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.
+2. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
+3. **Telas** (seção 7), começando pelo título e pela mochila.
+4. **Bell jogável e armaduras vestidas** (seção 3).
+5. **Mapas das fases** em cima dos gabaritos (seção 8.1).
+6. **Chefes e moradores** da Parte 2 (seção 3).
+7. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
 > 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.
 

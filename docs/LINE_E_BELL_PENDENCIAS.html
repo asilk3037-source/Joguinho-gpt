@@ -11,7 +11,7 @@ th,td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}th{backgro
 code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:.85em}
 em{color:var(--mut)}
 </style></head><body><main><h1 id="line-bell-o-que-falta-pendencias-de-arte">Line &amp; Bell — o que falta (pendências de arte)</h1>
-<p><em>Atualizado em 08/10/2026. Este documento lista só o que </em><em>falta fazer ou refazer</em><em>. O que já está pronto fica na documentação completa (<code>LINE_E_BELL_DOCUMENTACAO.md</code>). As regras da seção 1 valem para tudo e não mudam.</em></p>
+<p><em>Atualizado em 09/10/2026. Este documento lista só o que </em><em>falta fazer ou refazer</em><em>. O que já está pronto fica na documentação completa (<code>LINE_E_BELL_DOCUMENTACAO.md</code>). As regras da seção 1 valem para tudo e não mudam.</em></p>
 <p><strong>Como usar:</strong> cada linha tem o <strong>código</strong> exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.</p>
 <h2 id="resumo-todas-as-artes-que-faltam">Resumo: todas as artes que faltam</h2>
 <p><em>Contam só as linhas que ainda faltam (as marcadas com ✅ já chegaram).</em></p>
@@ -27,7 +27,7 @@ em{color:var(--mut)}
 <tr>
 <td>2. Animações que precisam de ajuste</td>
 <td>animações que existem, mas precisam ser refeitas</td>
-<td><strong>4</strong></td>
+<td><strong>0</strong></td>
 </tr>
 <tr>
 <td>3. Animações pendentes</td>
@@ -99,116 +99,8 @@ em{color:var(--mut)}
 <li><strong>Telas cheias:</strong> 3840×2160 (16:9), nada importante a menos de 10% da borda.</li>
 </ol>
 <h2 id="2-animacoes-que-precisam-de-ajuste-refazer">2. Animações que precisam de ajuste (refazer)</h2>
-<h3 id="21-ataque-nas-quatro-direcoes">2.1 Ataque nas quatro direções ⚔️</h3>
-<p>O golpe funciona nas quatro direções (a área de acerto e o rastro seguem a direção, e a mira vira para o inimigo mais perto). <strong>Chegaram e estão no jogo</strong> todos os golpes de <strong>frente</strong> e <strong>de costas</strong>: os da <strong>Line</strong> (itens 241 a 252) e os da <strong>Bell</strong> (itens 253 a 256: a estrela e o leque) ✅.</p>
-<table>
-<thead>
-<tr>
-<th>De frente</th>
-<th>De costas</th>
-<th>Golpe</th>
-<th>Situação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>LINE_ATTACK_HORIZONTAL_FRONT</code></td>
-<td><code>LINE_ATTACK_HORIZONTAL_BACK</code></td>
-<td>golpe 1 (horizontal)</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>LINE_ATTACK_VERTICAL_FRONT</code></td>
-<td><code>LINE_ATTACK_VERTICAL_BACK</code></td>
-<td>golpe 2 (de cima para baixo)</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>LINE_ATTACK_COMBO_FRONT</code></td>
-<td><code>LINE_ATTACK_COMBO_BACK</code></td>
-<td>golpe 3 (combo)</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>LINE_ATTACK_DIAGONAL_FRONT</code></td>
-<td><code>LINE_ATTACK_DIAGONAL_BACK</code></td>
-<td>investida</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>LINE_PUNCH_FRONT</code></td>
-<td><code>LINE_PUNCH_BACK</code></td>
-<td>soco sem espada</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>LINE_CAST_SPELL_FRONT</code></td>
-<td><code>LINE_CAST_SPELL_BACK</code></td>
-<td>Raio de Luz</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>BELL_ATTACK_STAR_FRONT</code></td>
-<td><code>BELL_ATTACK_STAR_BACK</code></td>
-<td>estrela da Bell</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>BELL_ATTACK_SPREAD_FRONT</code></td>
-<td><code>BELL_ATTACK_SPREAD_BACK</code></td>
-<td>leque de estrelas da Bell</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<p>Falta só a <strong>Bell de lado</strong>: a estrela (<code>BELL_ATTACK_STAR</code>), o leque (<code>BELL_ATTACK_SPREAD</code>) e a estrela no pulo (<code>BELL_ATTACK_AIR</code>). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.</p>
-<h3 id="22-a-bell-feliz-desproporcional">2.2 A Bell feliz: desproporcional ♻️</h3>
-<p>As cenas do casal que tinham saído maiores que a Line e a Bell <strong>já foram refeitas e estão no jogo</strong> ✅ (itens 267 a 272: de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração, o toca aqui com brilho e a Line feliz). Falta só a <strong>Bell feliz</strong>, do tamanho da Bell parada:</p>
-<table>
-<thead>
-<tr>
-<th>Código</th>
-<th>Cena</th>
-<th>Quadros hoje</th>
-<th>Pedido</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>BELL_HAPPY</code></td>
-<td>a Bell feliz, parada, sorrindo, sem sair do lugar</td>
-<td>2</td>
-<td>10 a 12</td>
-</tr>
-</tbody>
-</table>
-<h3 id="23-outras-para-refazer">2.3 Outras para refazer</h3>
-<table>
-<thead>
-<tr>
-<th>Código</th>
-<th>O que está errado</th>
-<th>Pedido</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>LINE_BELL_WALK_HANDS_FRONT</code></td>
-<td>as duas de mãos dadas andando de frente ainda é a arte pequena do laboratório, ampliada (fica borrada)</td>
-<td>refazer no traço dos itens novos, com 10 a 12 quadros</td>
-</tr>
-<tr>
-<td><code>BELL_DRAGON_CARRIED</code></td>
-<td>veio com o dragão antigo desenhado junto</td>
-<td>só a Bell pendurada, de braços para cima, sem dragão</td>
-</tr>
-<tr>
-<td><code>PLAYGROUND_MAQUINA_SOCO_000</code></td>
-<td>só chegou a máquina de soco com o placar 038; o 000 é feito no jogo a partir dela</td>
-<td>a máquina com o placar 000 desenhado</td>
-</tr>
-</tbody>
-</table>
+<p>Todas as animações que precisavam ser refeitas <strong>já chegaram e estão no jogo</strong> ✅: os golpes de frente e de costas da Line e da Bell (itens 241 a 256), as cenas do shopping (257 a 266), as cenas do casal na proporção certa (267 a 272) e os ajustes finais (273 a 276: a Bell feliz, as duas de mãos dadas andando de frente, a Bell pendurada no dragão sem outro dragão desenhado junto e a máquina de soco com o placar 000).</p>
+<p>Falta só a <strong>Bell atacando de lado</strong>: a estrela (<code>BELL_ATTACK_STAR</code>), o leque (<code>BELL_ATTACK_SPREAD</code>) e a estrela no pulo (<code>BELL_ATTACK_AIR</code>), com os mesmos quadros e o mesmo tempo das de frente e de costas. Hoje, de lado, ela usa o “toca aqui” e a dança no lugar. Como ainda não existem, estão na seção 3, no grupo da Bell jogável.</p>
 <h2 id="3-animacoes-pendentes-ainda-nao-existem">3. Animações pendentes (ainda não existem)</h2>
 <p>Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte chegar.</p>
 <h3 id="line-e-bell-juntas-8">Line e Bell juntas (8)</h3>
@@ -3298,8 +3190,7 @@ em{color:var(--mut)}
 </table>
 <h2 id="10-ordem-sugerida">10. Ordem sugerida</h2>
 <ol>
-<li><strong>A Bell atacando de lado</strong> (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.</li>
-<li><strong>A Bell feliz</strong> (<code>BELL_HAPPY</code>) com 10 a 12 quadros, na proporção certa (seção 2.2).</li>
+<li><strong>A Bell atacando de lado</strong> (seção 3, Bell jogável): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.</li>
 <li><strong>Ícones dos botões e do HUD</strong> (seções 5 e 6) e os <strong>ícones dos itens e das armaduras</strong> (seção 4).</li>
 <li><strong>Telas</strong> (seção 7), começando pelo título e pela mochila.</li>
 <li><strong>Bell jogável e armaduras vestidas</strong> (seção 3).</li>

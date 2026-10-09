@@ -946,9 +946,9 @@ teste('animações: Line e Bell do mesmo tamanho (ajuste pela cabeça) e um drag
       if (j.presa) { vistos.add(j.presa.bell.anim.base); dragoes = Math.max(dragoes, j.presa.bell.visivel ? 1 : 0); if (j.presa.dragao.alturaVoo > 100) break; }
       LB.dialogo.clicou = true; await new Promise((ok) => setTimeout(ok, 30));
     }
-    return { vistos: [...vistos], pendurada: j.presa ? j.presa.dragao.alturaVoo - j.presa.bell.z : null };
+    return { vistos: [...vistos], pendurada: j.presa ? j.presa.dragao.alturaVoo - j.presa.bell.z : null, item: (window.SPRITES.BELL_DRAGON_CARRIED || {}).item };
   });
-  afirmar(r.vistos.length && !r.vistos.includes('BELL_DRAGON_CARRIED'), 'a Bell levada não usa a arte que já traz outro dragão: ' + r.vistos);
+  afirmar(r.vistos.includes('BELL_DRAGON_CARRIED') && r.item === 'LINE_BELL_ITEM_275.html', 'a Bell levada usa a arte nova, só ela pendurada, sem outro dragão desenhado junto (item 275): ' + r.vistos + ' ' + r.item);
   afirmar(r.pendurada > 20, 'a Bell fica pendurada embaixo do dragão: ' + r.pendurada);
 });
 

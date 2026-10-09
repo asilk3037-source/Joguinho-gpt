@@ -92,35 +92,10 @@ w()
 # =====================================================================================
 w("## 2. Animações que precisam de ajuste (refazer)")
 w()
-w("### 2.1 Ataque nas quatro direções ⚔️")
+w("Todas as animações que precisavam ser refeitas **já chegaram e estão no jogo** ✅: os golpes de frente e de costas da Line e da Bell (itens 241 a 256), as cenas do shopping (257 a 266), as cenas do casal na proporção certa (267 a 272) e os ajustes finais (273 a 276: a Bell feliz, as duas de mãos dadas andando de frente, a Bell pendurada no dragão sem outro dragão desenhado junto e a máquina de soco com o placar 000).")
 w()
-w("O golpe funciona nas quatro direções (a área de acerto e o rastro seguem a direção, e a mira vira para o inimigo mais perto). **Chegaram e estão no jogo** todos os golpes de **frente** e **de costas**: os da **Line** (itens 241 a 252) e os da **Bell** (itens 253 a 256: a estrela e o leque) ✅.")
+w("Falta só a **Bell atacando de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`), com os mesmos quadros e o mesmo tempo das de frente e de costas. Hoje, de lado, ela usa o “toca aqui” e a dança no lugar. Como ainda não existem, estão na seção 3, no grupo da Bell jogável.")
 w()
-golpes = [("LINE_ATTACK_HORIZONTAL", "golpe 1 (horizontal)"), ("LINE_ATTACK_VERTICAL", "golpe 2 (de cima para baixo)"), ("LINE_ATTACK_COMBO", "golpe 3 (combo)"),
-          ("LINE_ATTACK_DIAGONAL", "investida"), ("LINE_PUNCH", "soco sem espada"), ("LINE_CAST_SPELL", "Raio de Luz"),
-          ("BELL_ATTACK_STAR", "estrela da Bell"), ("BELL_ATTACK_SPREAD", "leque de estrelas da Bell")]
-filas = []
-for cod, o in golpes:
-    tem = [d for d in ("FRONT", "BACK") if (cod + "_" + d) in sprites]
-    filas.append((f"`{cod}_FRONT`", f"`{cod}_BACK`", o, "✅" if len(tem) == 2 else "✏️ falta"))
-tabela(["De frente", "De costas", "Golpe", "Situação"], filas)
-w("Falta só a **Bell de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`). Hoje, de lado, ela usa o “toca aqui” e a dança no lugar (seção 3, grupo da Bell jogável). Mesmos quadros e mesmo tempo das de frente e de costas.")
-w()
-
-w("### 2.2 A Bell feliz: desproporcional ♻️")
-w()
-w("As cenas do casal que tinham saído maiores que a Line e a Bell **já foram refeitas e estão no jogo** ✅ (itens 267 a 272: de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração, o toca aqui com brilho e a Line feliz). Falta só a **Bell feliz**, do tamanho da Bell parada:")
-w()
-s_ = sprites.get("BELL_HAPPY")
-tabela(["Código", "Cena", "Quadros hoje", "Pedido"], [("`BELL_HAPPY`", "a Bell feliz, parada, sorrindo, sem sair do lugar", s_["count"] if s_ else "—", "10 a 12")])
-
-w("### 2.3 Outras para refazer")
-w()
-tabela(["Código", "O que está errado", "Pedido"], [
-    ("`LINE_BELL_WALK_HANDS_FRONT`", "as duas de mãos dadas andando de frente ainda é a arte pequena do laboratório, ampliada (fica borrada)", "refazer no traço dos itens novos, com 10 a 12 quadros"),
-    ("`BELL_DRAGON_CARRIED`", "veio com o dragão antigo desenhado junto", "só a Bell pendurada, de braços para cima, sem dragão"),
-    ("`PLAYGROUND_MAQUINA_SOCO_000`", "só chegou a máquina de soco com o placar 038; o 000 é feito no jogo a partir dela", "a máquina com o placar 000 desenhado"),
-])
 
 # =====================================================================================
 w("## 3. Animações pendentes (ainda não existem)")
@@ -377,8 +352,7 @@ TOTAL_FX = sum(len(l) for _, l in EFEITOS)
 w("## 10. Ordem sugerida")
 w()
 for n, t in enumerate([
-    "**A Bell atacando de lado** (seção 2.1): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.",
-    "**A Bell feliz** (`BELL_HAPPY`) com 10 a 12 quadros, na proporção certa (seção 2.2).",
+    "**A Bell atacando de lado** (seção 3, Bell jogável): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.",
     "**Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).",
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Bell jogável e armaduras vestidas** (seção 3).",

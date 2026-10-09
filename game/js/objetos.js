@@ -266,7 +266,7 @@ LB.LARGURA_OBJETOS = {
  "playground_maquina_fliperama_azul": 45.9,
  "playground_maquina_fliperama_rosa": 48.4,
  "playground_maquina_garra_rosa": 55.5,
- "playground_maquina_soco_000": 51.5,
+ "playground_maquina_soco_000": 51.4,
  "playground_maquina_soco_038": 51.5,
  "playground_movel_banco_azul": 80.2,
  "playground_painel_premios": 178.2,

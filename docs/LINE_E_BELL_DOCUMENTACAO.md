@@ -16,9 +16,11 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
-> 📋 **Documento novo só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações que precisam ser refeitas (ataque nas quatro direções, cenas do shopping com mais quadros, pôr do sol, felizes e a Line girando a Bell na proporção dos 20 primeiros itens), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
+> 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações pendentes (entre elas a Bell atacando de lado; as que precisavam ser refeitas já chegaram), as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
 > ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.
+
+> ✅ **Ajustes finais (itens 273 a 276):** a **Bell feliz** (12 quadros, pulando de alegria), as duas **de mãos dadas andando de frente** no traço novo (a arte pequena do laboratório saiu), a **Bell pendurada no dragão** de braços para cima, sem outro dragão desenhado junto (agora o rapto usa essa arte, com as mãos dela nas garras do dragão do jogo) e a **máquina de soco com o placar 000** desenhada, igual à de 038. Com isso, todas as animações que precisavam ser refeitas chegaram; falta só a Bell atacando de lado (pendências, seção 3).
 
 > 💞 **Cenas do casal refeitas e as duas frente a frente no BK (itens 265 a 272):** de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração do almoço, o toca aqui com brilho e a **Line feliz** chegaram com 12 quadros, do tamanho da Line e da Bell paradas (a dança e a bitoquinha perderam os aumentos que a arte antiga precisava, e a Line feliz voltou para o jogo nos títulos de espada, magia, coração extra e baú). No shopping, o lanche começa com as duas **frente a frente** na mesa do BK, cada uma na sua cadeira (itens 265 e 266); depois da declaração, elas aparecem **juntinhas** do mesmo lado (item 261). Na Parte 2, cada **junção desfeita** termina com o **toca aqui** das duas. A dança do pôr do sol e do final passou a durar dois giros inteiros.
 
@@ -1095,7 +1097,7 @@ Estas são as animações próprias do prólogo, no grupo **Primeiro encontro (p
 - [x] `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_BELL_BK`, `LINE_BELL_TUNNEL_KISS`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_WALK_HANDS` com 12 quadros (itens 257 a 264), e as duas sentadas frente a frente (`LINE_SIT_CHAIR_EAT` e `BELL_SIT_CHAIR_EAT`, itens 265 e 266).
 - [x] `LINE_PUNCH_MACHINE` final (item 238) e a máquina de soco à parte (item 237).
 - [x] Playground em peças (itens 235 a 237 e 240).
-- [ ] Máquina de soco com o placar **000** desenhado pela artista (hoje o 000 é feito a partir do 038).
+- [x] Máquina de soco com o placar **000** desenhado pela artista (item 276), igual à de 038: na hora do soco, a troca de uma para a outra não mexe a máquina.
 - [ ] Ilustração final do Minas Shopping seguindo a foto-modelo da praça de alimentação (seção 5.2), com o Burger King.
 - [ ] Versão final da ilustração do Túnel.
 - [ ] Line parada de costas (`LINE_IDLE_BACK`) caprichada para a entrada no shopping.
@@ -2039,13 +2041,13 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_FLEE` | Fugir | 4 | sim | ✅ temporária | LINE_BELL_ITEM_59 |
 | `BELL_FALL` | Cair | 4 |  | ✅ temporária | LINE_BELL_ITEM_60 |
 | `BELL_CAPTURED` | Ser capturada | 4 |  | ✅ temporária | LINE_BELL_ITEM_61 |
-| `BELL_DRAGON_CARRIED` | Ser carregada pelo dragão | 4 | sim | ✅ temporária | LINE_BELL_ITEM_62 |
+| `BELL_DRAGON_CARRIED` | Pendurada nas garras do dragão, de braços para cima (item 275) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_275 |
 | `BELL_TRAPPED` | Presa | 3 | sim | ✅ temporária | LINE_BELL_ITEM_63 |
 | `BELL_ESCAPE_ATTEMPT` | Tentar escapar | 3 | sim | ✅ temporária | LINE_BELL_ITEM_63 |
 | `BELL_BREAK_FREE` | Conseguir se libertar | 4 |  | ✅ temporária | LINE_BELL_ITEM_64 |
 | `BELL_CALL_LINE` | Chamar Line | 4 | sim | ✅ temporária | LINE_BELL_ITEM_65 |
 | `BELL_HELP_LINE` | Ajudar Line | 4 |  | ✅ temporária | LINE_BELL_ITEM_66 |
-| `BELL_HAPPY` | Feliz | 2 | sim | ✅ temporária | LINE_BELL_ITEM_67 |
+| `BELL_HAPPY` | Feliz (item 273) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_273 |
 | `BELL_RELIEVED` | Aliviada | 2 |  | ✅ temporária | LINE_BELL_ITEM_67 |
 | `BELL_CRY` | Chorando | 3 | sim | ✅ temporária | LINE_BELL_ITEM_67 |
 | `BELL_CURTSY` | Reverência *(sugestão nova)* | 4 |  | ✅ temporária | LINE_BELL_ITEM_108 |
@@ -2060,7 +2062,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | 4 | sim | ✅ temporária | LINE_BELL_ITEM_110 |
 | `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
 | `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
-| `LINE_BELL_WALK_HANDS_FRONT` | Andando de mãos dadas | 6 | sim | ✅ temporária | Laboratório v7 |
+| `LINE_BELL_WALK_HANDS_FRONT` | Andando de mãos dadas | 12 | sim | ✅ temporária | LINE_BELL_ITEM_274 |
 | `LINE_BELL_WALK_HANDS_BACK` | Andando de mãos dadas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_111 |
 | `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 16 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
 | `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 16 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
@@ -3690,8 +3692,6 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Item 119**: `GOLEM_WALK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
 - **Item 137**: `SHEEP_IDLE` foi recusado: reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior. O jogo segue com a versão anterior.
 - **Pernas paradas:** `CHICKEN_RUN`, `CHICKEN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_WALK` chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.
-- **Item 62**: `BELL_DRAGON_CARRIED` traz o dragão vermelho antigo desenhado junto com a Bell; no rapto, com o dragão do jogo, apareciam dois dragões. O jogo não usa mais essa arte (a Bell fica pendurada nas garras com `BELL_ESCAPE_ATTEMPT`). Para reenviar: só a Bell pendurada, de braços para cima, sem dragão.
-- `LINE_BELL_WALK_HANDS_FRONT` (as duas de mãos dadas andando de frente) ainda é a arte pequena do laboratório, ampliada: fica borrada perto das outras. Para reenviar no tamanho e no traço dos itens novos.
 - **Itens que ainda não chegaram:** 153, 240.
 
 ### 23.5 Anotações do teste no celular (1º de outubro)
@@ -3701,7 +3701,7 @@ O que apareceu jogando no celular, o que foi feito e o que ainda depende de arte
 | # | O que aconteceu | O que foi feito | Falta |
 |---|---|---|---|
 | 1 | Perto do Mago, ao pegar a espada, a Line fazia um movimento estranho e parecia cair. | A arte de “Feliz” (`LINE_HAPPY`, item 41) é, na verdade, uma corrida que termina com a Line caída para a frente. Ela saiu do jogo e, no lugar, entrou a comemoração (`LINE_VICTORY`). Depois chegou a Line feliz nova (item 272), que voltou para o jogo. | — |
-| 2 | Andando de mãos dadas até o lago, Line e Bell ficavam minúsculas. | De frente, o par usa a arte antiga do laboratório (`LINE_BELL_WALK_HANDS_FRONT`), muito pequena dentro do quadro: ela foi ampliada para a Line do par ficar da altura da Line sozinha. A dança do pôr do sol (`LINE_BELL_DANCE`) também estava pequena; depois chegou a dança nova (item 268), já do tamanho certo. | Reenviar `LINE_BELL_WALK_HANDS_FRONT` no traço dos itens novos (a ampliada fica borrada). |
+| 2 | Andando de mãos dadas até o lago, Line e Bell ficavam minúsculas. | De frente, o par usa a arte antiga do laboratório (`LINE_BELL_WALK_HANDS_FRONT`), muito pequena dentro do quadro: ela foi ampliada para a Line do par ficar da altura da Line sozinha. A dança do pôr do sol (`LINE_BELL_DANCE`) também estava pequena; depois chegou a dança nova (item 268), já do tamanho certo. | — (chegou a arte nova de frente, item 274) |
 | 3 | Andando até a casinha do Theo, a casa da fazenda sumia do terreno. | O jogo deixava de desenhar objetos cujo canto esquerdo saía da tela, e a casa é larga. Agora a folga leva em conta a largura e a altura de cada objeto (casa, celeiro). | — |
 | 4 | No shopping, as duas apareciam sentadas numa mesa gigante em cima da mesa. | A animação do BK já traz a mesa delas, e o fundo do shopping (item 140) tem uma mesa redonda desenhada no mesmo lugar. No lanche, o jogo troca para uma cópia do fundo sem a mesa redonda e as cadeiras (`tools/shopping_sem_mesa.py`). | Shopping em peças: base só com chão e teto e cada item em arte individual (seção 22.11.1). |
 
@@ -3750,7 +3750,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Personagem | Animações (desenhos diferentes) |
 |---|---|
 | Line | `LINE_ATTACK_HORIZONTAL` (4), `LINE_CAST_CHARGE` (4), `LINE_CAST_SPELL` (4), `LINE_CAST_STARS` (4), `LINE_COMBAT_IDLE` (3), `LINE_COMBAT_RUN_BACK` (2), `LINE_COMBAT_RUN_FRONT` (4), `LINE_COMBAT_RUN_LEFT` (4), `LINE_COMBAT_RUN_RIGHT` (4), `LINE_COMBAT_WALK_BACK` (2), `LINE_COMBAT_WALK_FRONT` (2), `LINE_COMBAT_WALK_LEFT` (4), `LINE_COMBAT_WALK_RIGHT` (4), `LINE_CROUCH` (3), `LINE_CROUCH_STAND` (3), `LINE_FALL` (4), `LINE_HIT_HEAVY` (4), `LINE_IDLE_BACK` (2), `LINE_IDLE_LEFT` (3), `LINE_RUN_BACK` (4), `LINE_RUN_STOP_RIGHT` (4), `LINE_SAD` (4), `LINE_SCARED` (4), `LINE_STUMBLE` (4), `LINE_SWORD_DRAW` (4), `LINE_THROWN` (4), `LINE_VICTORY` (4), `LINE_WALK_BACK` (4), `LINE_WALK_FRONT` (4) |
-| Bell | `BELL_BLINK_FRONT` (2), `BELL_BREAK_FREE` (4), `BELL_CALL_LINE` (4), `BELL_CAPTURED` (4), `BELL_CRY` (3), `BELL_CURTSY` (4), `BELL_DANCE` (3), `BELL_DRAGON_CARRIED` (4), `BELL_ESCAPE_ATTEMPT` (3), `BELL_FALL` (4), `BELL_FLEE` (4), `BELL_GROUND_STAND` (2), `BELL_HAPPY` (2), `BELL_HEAD_ON_LINE` (4), `BELL_HELP_LINE` (4), `BELL_HIGH_FIVE` (2), `BELL_IDLE_BACK` (1), `BELL_IDLE_FRONT` (3), `BELL_IDLE_LEFT` (1), `BELL_IDLE_RIGHT` (1), `BELL_JUMP` (3), `BELL_LAND` (2), `BELL_LAUGH` (2), `BELL_LEAN_ON_LINE` (4), `BELL_LOOK_SIDES_FRONT` (3), `BELL_RELIEVED` (2), `BELL_RUN_BACK` (4), `BELL_RUN_FRONT` (4), `BELL_SCARED` (3), `BELL_TRAPPED` (3), `BELL_WALK_BACK` (4), `BELL_WALK_FRONT` (4) |
+| Bell | `BELL_BLINK_FRONT` (2), `BELL_BREAK_FREE` (4), `BELL_CALL_LINE` (4), `BELL_CAPTURED` (4), `BELL_CRY` (3), `BELL_CURTSY` (4), `BELL_DANCE` (3), `BELL_ESCAPE_ATTEMPT` (3), `BELL_FALL` (4), `BELL_FLEE` (4), `BELL_GROUND_STAND` (2), `BELL_HEAD_ON_LINE` (4), `BELL_HELP_LINE` (4), `BELL_HIGH_FIVE` (2), `BELL_IDLE_BACK` (1), `BELL_IDLE_FRONT` (3), `BELL_IDLE_LEFT` (1), `BELL_IDLE_RIGHT` (1), `BELL_JUMP` (3), `BELL_LAND` (2), `BELL_LAUGH` (2), `BELL_LEAN_ON_LINE` (4), `BELL_LOOK_SIDES_FRONT` (3), `BELL_RELIEVED` (2), `BELL_RUN_BACK` (4), `BELL_RUN_FRONT` (4), `BELL_SCARED` (3), `BELL_TRAPPED` (3), `BELL_WALK_BACK` (4), `BELL_WALK_FRONT` (4) |
 | Line e Bell juntas | `LINE_BELL_HUG_RELEASE` (4), `LINE_BELL_LAUGH` (3), `LINE_BELL_RESCUE_HUG` (4), `LINE_BELL_RUN_TOGETHER_BACK` (4), `LINE_BELL_SIT_DOWN` (4), `LINE_BELL_SIT_IDLE` (4), `LINE_BELL_TALK` (3), `LINE_BELL_WALK_HANDS_BACK` (4), `LINE_BELL_WALK_TOGETHER` (4), `LINE_BELL_WALK_TOGETHER_BACK` (4) |
 
 ### 23.3 Animações ainda sem arte
@@ -4328,6 +4328,10 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 270 | `LINE_BELL_ITEM_270.html` | 3,35 MB | `LINE_BELL_CELEBRATE` |
 | 271 | `LINE_BELL_ITEM_271.html` | 3,81 MB | `LINE_BELL_HIGH_FIVE` |
 | 272 | `LINE_BELL_ITEM_272.html` | 2,55 MB | `LINE_HAPPY` |
+| 273 | `LINE_BELL_ITEM_273.html` | 2,74 MB | `BELL_HAPPY` |
+| 274 | `LINE_BELL_ITEM_274.html` | 3,51 MB | `LINE_BELL_WALK_HANDS_FRONT` |
+| 275 | `LINE_BELL_ITEM_275.html` | 2,60 MB | `BELL_DRAGON_CARRIED` |
+| 276 | `LINE_BELL_ITEM_276.html` | 0,88 MB | `PLAYGROUND_MAQUINA_SOCO_000` 🏙️ cenário (máquina de soco com o placar 000), fora do recorte de animação |
 
 Itens que ainda não chegaram: 153, 240.
 

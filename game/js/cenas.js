@@ -341,9 +341,9 @@
       j.particulas.emitir('poeira', bell.x, bell.y, 16, { vel: 120, vida: 0.7, r: 5 });
       yield c.espera(0.5);
       j.prender(bell, dr);
-      // A arte BELL_DRAGON_CARRIED já traz um dragão (o antigo) segurando a Bell: com o dragão da
-      // cena ficavam dois. Pendurada nas garras, ela se debate (sem dragão desenhado junto).
-      bell.anim.tocar('BELL_ESCAPE_ATTEMPT', true);
+      // Pendurada nas garras, de braços para cima e balançando as pernas (item 275: só a Bell, sem
+      // dragão desenhado junto; o dragão é o da cena).
+      bell.anim.tocar('BELL_DRAGON_CARRIED', true);
       dr.anim.tocar('DRAGON_TAKEOFF', true);
       yield c.voar(dr, bell.x, bell.y - 30, 190, 0.9);
       yield c.fala('Bell', 'LIIINE!', 'surpresa');
