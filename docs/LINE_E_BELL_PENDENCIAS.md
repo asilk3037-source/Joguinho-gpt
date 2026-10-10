@@ -266,7 +266,7 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 |---|---|---|---|
 | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | 6 | 🔁 usa `DRAGON_IDLE` |
 | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | 8 | 🔁 usa `DRAGON_IDLE` |
-| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | 4 | 🔁 usa `DRAGON_SLEEP` |
+| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda), com chifres e espinhos pretos | 4 | 🔁 usa `DRAGON_SLEEP` |
 
 ### Line com armadura: Túnica Acolchoada (23)
 

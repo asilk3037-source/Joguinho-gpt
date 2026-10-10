@@ -20,6 +20,8 @@
 
 > ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.
 
+> 🎨 **Dragão dormindo com chifres e espinhos pretos:** a arte do item 285 veio com os chifres, os espinhos e as garras creme, mas em todas as outras animações o dragão tem chifres e espinhos pretos. Agora a extração pinta esses pedaços com o mesmo cinza-escuro dos chifres do dragão em pé, mantendo os gomos e o brilho; a barriga e o queixo, que são creme mesmo, ficam como vieram.
+
 > 🚶‍♀️ **Caminhadas, corridas e combate (itens 277 a 288):** as duas **andando lado a lado** (de frente e para os dois lados), **de mãos dadas** para a esquerda e para a direita e **correndo juntas** com a Line puxando a Bell, mais a **Bell em guarda** (de frente, de costas e de lado) e o **dragão dormindo** enrolado. No shopping, a ida até a mesa do BK agora é das duas lado a lado (as mãos dadas só vêm na saída), e no túnel elas entram de mãos dadas. No passeio até o lago, segurar a corrida faz as duas **correrem de mãos dadas** (antes de mãos dadas só dava para andar). A Bell jogável entra em guarda com a arte própria, e o dragão dormindo (no covil, na abertura da Parte 2, no epílogo e nos interlúdios) respira devagar.
 
 > ✅ **Ajustes finais (itens 273 a 276):** a **Bell feliz** (12 quadros, pulando de alegria), as duas **de mãos dadas andando de frente** no traço novo (a arte pequena do laboratório saiu), a **Bell pendurada no dragão** de braços para cima, sem outro dragão desenhado junto (agora o rapto usa essa arte, com as mãos dela nas garras do dragão do jogo) e a **máquina de soco com o placar 000** desenhada, igual à de 038. Com isso, todas as animações que precisavam ser refeitas chegaram; falta só a Bell atacando de lado (pendências, seção 3).
@@ -2456,7 +2458,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 |---|---|---:|:---:|---|---|
 | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | 6 | sim | 🔁 usa `DRAGON_IDLE` |  |
 | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | 8 |  | 🔁 usa `DRAGON_IDLE` |  |
-| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | 4 | sim | 🔁 usa `DRAGON_SLEEP` |  |
+| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda), com chifres e espinhos pretos | 4 | sim | 🔁 usa `DRAGON_SLEEP` |  |
 
 ### 10.24 Line com armadura: Túnica Acolchoada
 
@@ -3689,6 +3691,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Item 119**: `GOLEM_WALK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
 - **Item 137**: `SHEEP_IDLE` foi recusado: reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior. O jogo segue com a versão anterior.
 - **Pernas paradas:** `CHICKEN_RUN`, `CHICKEN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_WALK` chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.
+- **Cor do dragão:** `DRAGON_SLEEP` (item 285) chegou com chifres, espinhos e garras creme; nas outras animações eles são pretos. O jogo já pinta esses pedaços de cinza-escuro (a barriga e o queixo continuam creme), então não precisa reenviar. Se for refeito, que venha com chifres e espinhos pretos.
 - **Itens que ainda não chegaram:** 153, 240.
 
 ### 23.5 Anotações do teste no celular (1º de outubro)
@@ -3901,7 +3904,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Moradores (todos, incluindo os da Parte 2) | `PEDRO_RUN` | Pedrinho — correndo pra lá e pra cá | desenho no código |
 | Dragão amigo (Parte 2) | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | `DRAGON_IDLE` |
 | Dragão amigo (Parte 2) | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | `DRAGON_IDLE` |
-| Dragão amigo (Parte 2) | `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | `DRAGON_SLEEP` |
+| Dragão amigo (Parte 2) | `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda), com chifres e espinhos pretos | `DRAGON_SLEEP` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_FRONT` | Line com Túnica Acolchoada — parada | `LINE_IDLE_FRONT` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_BACK` | Line com Túnica Acolchoada — parada | `LINE_IDLE_BACK` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_LEFT` | Line com Túnica Acolchoada — parada | `LINE_IDLE_LEFT` |
