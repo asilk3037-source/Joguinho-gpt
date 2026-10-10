@@ -10615,6 +10615,497 @@ window.SPRITES = {
   "label": "BELL_COMBAT_IDLE_LEFT",
   "item": "LINE_BELL_ITEM_288.html",
   "escala": 1.1387
+ },
+ "BELL_COMBAT_IDLE_RIGHT": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_COMBAT_IDLE_RIGHT.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 234,
+  "groundEnd": 231,
+  "bases": [
+   234,
+   231,
+   231,
+   233,
+   229,
+   231,
+   219,
+   231
+  ],
+  "label": "BELL_COMBAT_IDLE_RIGHT",
+  "item": "LINE_BELL_ITEM_289.html",
+  "escala": 1.0965
+ },
+ "BELL_ATTACK_STAR": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_ATTACK_STAR.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 223,
+  "groundEnd": 216,
+  "bases": [
+   223,
+   223,
+   223,
+   223,
+   206,
+   206,
+   217,
+   216
+  ],
+  "label": "BELL_ATTACK_STAR",
+  "item": "LINE_BELL_ITEM_290.html",
+  "escala": 1.219
+ },
+ "BELL_ATTACK_SPREAD": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_ATTACK_SPREAD.webp",
+  "cell": 256,
+  "count": 10,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "ground": 236,
+  "groundEnd": 237,
+  "bases": [
+   236,
+   237,
+   237,
+   236,
+   237,
+   236,
+   237,
+   237,
+   237,
+   237
+  ],
+  "label": "BELL_ATTACK_SPREAD",
+  "item": "LINE_BELL_ITEM_291.html",
+  "escala": 1.1708
+ },
+ "BELL_ATTACK_AIR": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_ATTACK_AIR.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 237,
+  "groundEnd": 231,
+  "bases": [
+   237,
+   237,
+   215,
+   217,
+   213,
+   231
+  ],
+  "label": "BELL_ATTACK_AIR",
+  "item": "LINE_BELL_ITEM_292.html",
+  "escala": 1.35
+ },
+ "BELL_SING": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_SING.webp",
+  "cell": 256,
+  "count": 12,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "ground": 231,
+  "groundEnd": 214,
+  "bases": [
+   231,
+   231,
+   231,
+   231,
+   223,
+   222,
+   224,
+   222,
+   220,
+   218,
+   209,
+   214
+  ],
+  "label": "BELL_SING",
+  "item": "LINE_BELL_ITEM_293.html",
+  "escala": 1.1324
+ },
+ "BELL_BLOCK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_BLOCK.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 227,
+  "groundEnd": 213,
+  "bases": [
+   227,
+   227,
+   227,
+   213,
+   213,
+   213
+  ],
+  "label": "BELL_BLOCK",
+  "item": "LINE_BELL_ITEM_294.html",
+  "escala": 1.1387,
+  "ajuste": 0.88
+ },
+ "BELL_DODGE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_DODGE.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 225,
+  "groundEnd": 226,
+  "bases": [
+   225,
+   225,
+   205,
+   203,
+   225,
+   226
+  ],
+  "label": "BELL_DODGE",
+  "item": "LINE_BELL_ITEM_295.html",
+  "escala": 1.1775,
+  "ajuste": 0.82
+ },
+ "BELL_DASH": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_DASH.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 227,
+  "groundEnd": 222,
+  "bases": [
+   227,
+   227,
+   225,
+   195,
+   219,
+   222
+  ],
+  "label": "BELL_DASH",
+  "item": "LINE_BELL_ITEM_296.html",
+  "escala": 1.3034,
+  "ajuste": 0.8
+ },
+ "BELL_HIT": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_HIT.webp",
+  "cell": 256,
+  "count": 4,
+  "seq": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "ground": 237,
+  "groundEnd": 237,
+  "bases": [
+   237,
+   237,
+   237,
+   237
+  ],
+  "label": "BELL_HIT",
+  "item": "LINE_BELL_ITEM_297.html",
+  "escala": 0.9775
+ },
+ "BELL_KNOCKDOWN": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_KNOCKDOWN.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 237,
+  "groundEnd": 237,
+  "bases": [
+   237,
+   237,
+   237,
+   237,
+   236,
+   237
+  ],
+  "label": "BELL_KNOCKDOWN",
+  "item": "LINE_BELL_ITEM_298.html",
+  "escala": 1.0682
+ },
+ "BELL_EXHAUSTED_IDLE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_EXHAUSTED_IDLE.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 236,
+  "groundEnd": 237,
+  "bases": [
+   236,
+   237,
+   236,
+   237,
+   236,
+   236,
+   236,
+   237
+  ],
+  "label": "BELL_EXHAUSTED_IDLE",
+  "item": "LINE_BELL_ITEM_299.html",
+  "escala": 0.9729
+ },
+ "BELL_CROUCH": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_CROUCH.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 237,
+  "groundEnd": 237,
+  "bases": [
+   237,
+   237,
+   237,
+   237,
+   236,
+   237
+  ],
+  "label": "BELL_CROUCH",
+  "item": "LINE_BELL_ITEM_300.html",
+  "escala": 0.955
+ },
+ "BELL_DETERMINED": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_DETERMINED.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "ground": 236,
+  "groundEnd": 237,
+  "bases": [
+   236,
+   236,
+   236,
+   237,
+   237,
+   237
+  ],
+  "label": "BELL_DETERMINED",
+  "item": "LINE_BELL_ITEM_301.html",
+  "escala": 0.9639
+ },
+ "BELL_CELEBRATE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_CELEBRATE.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 236,
+  "groundEnd": 236,
+  "bases": [
+   236,
+   236,
+   236,
+   236,
+   236,
+   236,
+   236,
+   236
+  ],
+  "label": "BELL_CELEBRATE",
+  "item": "LINE_BELL_ITEM_302.html",
+  "escala": 0.9594
+ },
+ "BELL_TALK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/BELL_TALK.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 236,
+  "groundEnd": 237,
+  "bases": [
+   236,
+   236,
+   237,
+   237,
+   237,
+   237,
+   237,
+   237
+  ],
+  "label": "BELL_TALK",
+  "item": "LINE_BELL_ITEM_303.html",
+  "escala": 0.9639
+ },
+ "COLOSSO_SLEEP": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/COLOSSO_SLEEP.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 236,
+  "groundEnd": 236,
+  "bases": [
+   236,
+   236,
+   236,
+   236,
+   236,
+   236,
+   236,
+   236
+  ],
+  "label": "COLOSSO_SLEEP",
+  "item": "LINE_BELL_ITEM_304.html",
+  "ajuste": 0.8
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

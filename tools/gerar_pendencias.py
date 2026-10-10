@@ -90,12 +90,50 @@ w("8. **Telas cheias:** 3840×2160 (16:9), nada importante a menos de 10% da bor
 w()
 
 # =====================================================================================
-w("## 2. Animações que precisam de ajuste (refazer)")
+w("## 2. Artes que precisam ser refeitas (refazer)")
 w()
-w("Todas as animações que precisavam ser refeitas **já chegaram e estão no jogo** ✅: os golpes de frente e de costas da Line e da Bell (itens 241 a 256), as cenas do shopping (257 a 266), as cenas do casal na proporção certa (267 a 272) e os ajustes finais (273 a 276: a Bell feliz, as duas de mãos dadas andando de frente, a Bell pendurada no dragão sem outro dragão desenhado junto e a máquina de soco com o placar 000).")
+w("### 2.1 Animações")
 w()
-w("Falta só a **Bell atacando de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`), com os mesmos quadros e o mesmo tempo das de frente e de costas. Hoje, de lado, ela usa o “toca aqui” e a dança no lugar. Como ainda não existem, estão na seção 3, no grupo da Bell jogável.")
+w("As animações que precisavam ser refeitas **já chegaram e estão no jogo** ✅: os golpes de frente e de costas da Line e da Bell (itens 241 a 256), as cenas do shopping (257 a 266), as cenas do casal na proporção certa (267 a 272), os ajustes finais (273 a 276) e a **Bell atacando de lado** (itens 290 a 292). Faltam só estas:")
 w()
+tabela(["Código", "Item", "O que refazer"], [
+    ["`BELL_CELEBRATE`", "302", "♻️ Os quadros 9 a 12 vieram **maiores** que os outros e com o **topo da cabeça cortado** reto. O jogo usa só os 8 primeiros; mandar os 12 quadros no mesmo tamanho, sem corte."],
+    ["`BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`", "108", "♻️ Vieram com quadros vazios. Mandar de novo com todos os quadros."],
+])
+w("### 2.2 Cenário antigo mal recortado (comece pelas árvores)")
+w()
+w("Estas artes são do **pacote antigo de cenário**: pequenas (de 30 a 350 px), tiradas de uma folha com fundo branco e **mal recortadas**, então ficam **pontinhos e uma borda branca** em volta (na grama aparece um contorno branco quebrado). Precisam ser refeitas no padrão dos objetos novos da fazenda (itens 154 a 227): recorte limpo no contorno, fundo transparente de verdade, contorno escuro, **nenhum ponto branco**, uns **400 px** de altura e **o mesmo nome** do arquivo (o jogo troca sozinho). **As árvores primeiro:** elas aparecem em todos os mapas abertos (na floresta, os pinheiros).")
+w()
+img("pendencias-cenario-antigo", "O cenário antigo em fundo escuro: repare nos pontinhos e na borda branca em volta de cada peça")
+CENARIO_ANTIGO = [
+    ("arvore_a, arvore_b, arvore_c, arvore_d", "Árvores comuns (4 variações)", "todos os mapas abertos (fazenda, vila, vale, lago...) e a floresta"),
+    ("macieira_a, macieira_b, macieira_c", "Macieiras com maçãs", "fazenda e mapas abertos, entre as árvores"),
+    ("cerejeira_a, cerejeira_b", "Cerejeiras floridas (rosa)", "fazenda e mapas abertos"),
+    ("florida", "Árvore com flores brancas e rosa", "fazenda e mapas abertos"),
+    ("pinheiro_a, pinheiro_b, pinheiro_c", "Pinheiros", "floresta"),
+    ("arbusto_b, arbusto_c, arbusto_d", "Arbustos (verde e com flores)", "fazenda e outros mapas, como decoração"),
+    ("moita", "Moita baixa", "fazenda"),
+    ("girassol_0, girassol_1, girassol_2", "Girassóis", "fazenda"),
+    ("milho_1", "Pé de milho", "fazenda"),
+    ("trigo_1", "Feixe de trigo", "fazenda"),
+    ("cenoura_0, cenoura_1, cenoura_2, cenoura_3", "Cenoura na horta, um desenho por estágio (brotando até pronta)", "horta da fazenda"),
+    ("tomate_0, tomate_1, tomate_2, tomate_3, tomate_4, tomate_5", "Tomateiro na horta, um desenho por estágio (brotando até com tomates)", "horta da fazenda"),
+    ("celeiro", "Celeiro vermelho", "fazenda"),
+    ("moinho", "Moinho de vento", "fazenda"),
+    ("poco", "Poço de pedra com telhado", "fazenda e vila"),
+    ("galinheiro", "Galinheiro", "fazenda"),
+    ("feno, feno_pilha", "Fardo e pilha de feno", "fazenda e vila"),
+    ("carroca", "Carroça com feno", "fazenda e vila"),
+    ("lago", "Enfeite do lago (pedras e plantas na água)", "lago da fazenda"),
+    ("barco", "Barquinho de madeira", "lago da fazenda"),
+    ("pier", "Píer de madeira", "lago da fazenda"),
+    ("lampiao", "Poste com lampião", "postes de luz dos mapas abertos"),
+    ("cerca, porteira", "Cerca e porteira de madeira", "fazenda e vila"),
+    ("placa, placa2", "Placas de direção", "fazenda, vila e caminhos"),
+    ("caixa, barril", "Caixote e barril", "dentro das casas e lojas"),
+    ("pedra1", "Pedras (a arte atual traz pedaços de outras pedras juntos)", "fazenda"),
+]
+tabela(["Arte (nome do arquivo)", "O que é", "Onde aparece"], [[" ".join(f"`{n.strip()}`" for n in nomes.split(",")), "♻️ " + oque, onde] for nomes, oque, onde in CENARIO_ANTIGO])
 
 # =====================================================================================
 w("## 3. Animações pendentes (ainda não existem)")
@@ -352,7 +390,8 @@ TOTAL_FX = sum(len(l) for _, l in EFEITOS)
 w("## 10. Ordem sugerida")
 w()
 for n, t in enumerate([
-    "**A Bell atacando de lado** (seção 3, Bell jogável): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.",
+    "**As árvores e o resto do cenário antigo mal recortado** (seção 2.2): primeiro as árvores, depois plantas, horta, construções e objetos.",
+    "**A comemoração da Bell** com os 12 quadros no mesmo tamanho (seção 2.1).",
     "**Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).",
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Bell jogável e armaduras vestidas** (seção 3).",
@@ -376,7 +415,7 @@ arm_line = sum(len([i for i in g if not i["existe"]]) for n, g in grupos.items()
 arm_bell = sum(len([i for i in g if not i["existe"]]) for n, g in grupos.items() if n.startswith("Bell com armadura"))
 resumo = ["## Resumo: todas as artes que faltam", "", "*Contam só as linhas que ainda faltam (as marcadas com ✅ já chegaram).*", "",
           "| Seção | O que é | Quantas faltam |", "|---|---|---|"]
-for titulo, texto in [("2. Animações que precisam de ajuste (refazer)", "animações que existem, mas precisam ser refeitas"),
+for titulo, texto in [("2. Artes que precisam ser refeitas (refazer)", "animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos"),
                       ("3. Animações pendentes (ainda não existem)", "animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**)"),
                       ("4. Armaduras e itens (arte nova para o que já existe no jogo)", "ícones das armaduras e dos itens"),
                       ("5. Botões e controles", "ícones dos botões"), ("6. HUD do jogador", "peças do HUD"), ("7. Telas", "telas cheias"),

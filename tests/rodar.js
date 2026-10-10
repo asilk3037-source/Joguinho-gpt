@@ -1247,7 +1247,7 @@ teste('parte 2: junção desfeita termina com o toca aqui das duas (item 271)', 
   afirmar(r.fim && r.line, 'a cena termina e a heroína volta');
 });
 
-teste('parte 2: a Bell em guarda nas quatro direções (itens 286 a 288) e o dragão dormindo (item 285)', async (h) => {
+teste('parte 2: a Bell em guarda nas quatro direções (itens 286 a 289) e o dragão dormindo (item 285)', async (h) => {
   await h.area('vale', Object.assign({ visto_vale: true }, P2));
   const r = await h.ev(() => {
     const j = LB.jogo; j.inimigos = []; LB.herois.trocar(j);
@@ -1260,7 +1260,7 @@ teste('parte 2: a Bell em guarda nas quatro direções (itens 286 a 288) e o dra
     return { heroina: LB.herois.ativa(j), vistos, dragao: s && [s.item, s.mundo, LB.info('DRAGON_SLEEP').respira] };
   });
   igual(r.heroina, 'bell', 'a Bell é a heroína');
-  igual(r.vistos, { FRONT: 'BELL_COMBAT_IDLE_FRONT', BACK: 'BELL_COMBAT_IDLE_BACK', LEFT: 'BELL_COMBAT_IDLE_LEFT', RIGHT: 'BELL_COMBAT_IDLE_LEFT*' }, 'guarda nas quatro direções (a da direita é a da esquerda espelhada)');
+  igual(r.vistos, { FRONT: 'BELL_COMBAT_IDLE_FRONT', BACK: 'BELL_COMBAT_IDLE_BACK', LEFT: 'BELL_COMBAT_IDLE_LEFT', RIGHT: 'BELL_COMBAT_IDLE_RIGHT' }, 'guarda nas quatro direções, cada uma com a arte própria');
   igual(r.dragao, ['LINE_BELL_ITEM_285.html', 215, true], 'dragão dormindo do item 285, no tamanho dos outros e respirando');
   // A arte veio com chifres, espinhos e garras creme; no jogo eles são pretos, como nas outras animações.
   const cores = await h.ev(async () => {
@@ -1280,6 +1280,108 @@ teste('parte 2: a Bell em guarda nas quatro direções (itens 286 a 288) e o dra
     return { creme: +(creme / op).toFixed(3), cinza: +(cinza / op).toFixed(3) };
   });
   afirmar(cores.creme < 0.1 && cores.cinza > 0.06, 'dragão dormindo com chifres e espinhos pretos (creme só na barriga e no queixo): ' + JSON.stringify(cores));
+});
+
+teste('parte 2: a Bell luta com a arte nova (itens 290 a 300), sem a estrela voltando por trás', async (h) => {
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  const r = await h.ev(() => {
+    const j = LB.jogo; j.inimigos = []; LB.herois.trocar(j);
+    const l = j.line, vistos = {};
+    for (const [base, dir, lado] of [['LINE_ATTACK_HORIZONTAL', 'RIGHT', 1], ['LINE_ATTACK_HORIZONTAL', 'LEFT', -1], ['LINE_ATTACK_SPIN', 'RIGHT', 1], ['LINE_ATTACK_AIR', 'RIGHT', 1],
+      ['LINE_CAST_SPELL', 'FRONT', 1], ['LINE_BLOCK', 'RIGHT', 1], ['LINE_DODGE', 'LEFT', -1], ['LINE_DASH', 'RIGHT', 1], ['LINE_HIT_LIGHT', 'RIGHT', 1],
+      ['LINE_KNOCKDOWN', 'RIGHT', 1], ['LINE_EXHAUSTED_IDLE', 'LEFT', -1], ['LINE_CROUCH', 'FRONT', 1]]) {
+      l.anim.tocar(base, true);
+      const st = l.anim.estado(dir, lado);
+      vistos[base + '/' + dir] = st.r.codigo + (st.r.flip ? '*' : '') + ' ' + (st.r.sprite ? st.r.sprite.item.replace(/\D/g, '') : '-');
+    }
+    l.voltarLivre();
+    const aj = ['BELL_BLOCK', 'BELL_DODGE', 'BELL_DASH'].map((c) => window.SPRITES[c].ajuste);
+    return { heroina: LB.herois.ativa(j), vistos, aj };
+  });
+  igual(r.heroina, 'bell', 'a Bell é a heroína');
+  igual(r.vistos, {
+    'LINE_ATTACK_HORIZONTAL/RIGHT': 'BELL_ATTACK_STAR 290', 'LINE_ATTACK_HORIZONTAL/LEFT': 'BELL_ATTACK_STAR* 290', 'LINE_ATTACK_SPIN/RIGHT': 'BELL_ATTACK_SPREAD 291',
+    'LINE_ATTACK_AIR/RIGHT': 'BELL_ATTACK_AIR 292', 'LINE_CAST_SPELL/FRONT': 'BELL_SING 293', 'LINE_BLOCK/RIGHT': 'BELL_BLOCK 294', 'LINE_DODGE/LEFT': 'BELL_DODGE* 295',
+    'LINE_DASH/RIGHT': 'BELL_DASH 296', 'LINE_HIT_LIGHT/RIGHT': 'BELL_HIT 297', 'LINE_KNOCKDOWN/RIGHT': 'BELL_KNOCKDOWN 298', 'LINE_EXHAUSTED_IDLE/LEFT': 'BELL_EXHAUSTED_IDLE 299',
+    'LINE_CROUCH/FRONT': 'BELL_CROUCH 300',
+  }, 'cada ação da Bell usa a arte nova (para a esquerda, espelhada; cansada e agachada, de frente)');
+  igual(r.aj, [0.88, 0.82, 0.8], 'escudo, esquiva e arrancada do tamanho da Bell em guarda (começam agachadas)');
+  // A estrela que sai pela direita voltava pela esquerda, atrás da Bell: esses quadros saem limpos.
+  const estrelas = await h.ev(async () => {
+    const conta = async (cod, q, x0, x1, y0, y1) => {
+      const s = window.SPRITES[cod], img = new Image(); img.src = s.src; await img.decode();
+      const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+      const ctx = cv.getContext('2d'); ctx.drawImage(img, 0, 0);
+      const d = ctx.getImageData(Math.round((q + x0) * s.cell), Math.round(y0 * s.cell), Math.round((x1 - x0) * s.cell), Math.round((y1 - y0) * s.cell)).data;
+      let n = 0;
+      for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 100 && ((d[i] > 235 && d[i + 1] > 235 && d[i + 2] > 235) || (d[i] > 200 && d[i + 1] < 110 && d[i + 2] > 140))) n++;
+      return n;
+    };
+    return {
+      atras: [await conta('BELL_ATTACK_STAR', 5, 0, 0.3, 0.25, 0.5), await conta('BELL_ATTACK_STAR', 6, 0, 0.3, 0.25, 0.5), await conta('BELL_ATTACK_AIR', 4, 0, 0.28, 0.3, 0.6), await conta('BELL_ATTACK_SPREAD', 8, 0, 0.38, 0.25, 0.75)],
+      frente: [await conta('BELL_ATTACK_STAR', 3, 0.6, 1, 0.25, 0.5), await conta('BELL_ATTACK_SPREAD', 5, 0.55, 1, 0.2, 0.8)],
+    };
+  });
+  igual(estrelas.atras, [0, 0, 0, 0], 'nenhuma estrela atrás da Bell depois do arremesso');
+  afirmar(estrelas.frente.every((n) => n > 100), 'a estrela e o leque continuam saindo pela frente: ' + estrelas.frente);
+});
+
+teste('parte 2: a Bell fala mexendo as mãos e comemora o guardião libertado (itens 302 e 303)', async (h) => {
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  // Uma conversa curta: a Bell fala e depois a Line. Vale para a Bell companheira e para a Bell heroína.
+  const conversa = () => h.ev(async () => {
+    const j = LB.jogo; j.inimigos = [];
+    const b = LB.herois.bellEmCena(j), antes = b.anim.base, viu = { Bell: new Set(), Line: new Set() };
+    j.iniciarCena(function* (c) { yield c.fala('Bell', 'Vamos juntas?', 'sorriso'); yield c.fala('Line', 'Sempre.', 'apaixonada'); }, { semPular: true });
+    for (let i = 0; i < 200 && j.cena; i++) {
+      const quem = LB.dialogo.nome && LB.dialogo.nome.textContent;
+      if (viu[quem]) viu[quem].add(b.anim.base);
+      if (i % 6 === 5) LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 40));
+    }
+    await new Promise((ok) => setTimeout(ok, 120));
+    return { quem: b === j.line ? 'heroina' : 'companheira', antes, bell: [...viu.Bell], line: [...viu.Line], depois: b.anim.base, fim: !j.cena };
+  });
+  let r = await conversa();
+  igual(r.quem, 'companheira', 'com a Line jogando, a Bell é a companheira');
+  afirmar(r.fim && r.bell.includes('BELL_TALK'), 'a Bell fala mexendo as mãos: ' + JSON.stringify(r));
+  afirmar(!r.line.includes('BELL_TALK') && r.depois === r.antes, 'e volta a ficar parada quando a Line fala: ' + JSON.stringify(r));
+  await h.ev(() => LB.herois.trocar(LB.jogo));
+  r = await conversa();
+  igual(r.quem, 'heroina', 'trocou: a Bell é a heroína');
+  afirmar(r.bell.includes('BELL_TALK') && !r.line.includes('BELL_TALK') && r.depois === r.antes, 'a Bell heroína também fala mexendo as mãos: ' + JSON.stringify(r));
+  await h.ev(() => LB.herois.trocar(LB.jogo));
+  // Guardião libertado: a Bell comemora e depois volta a ficar parada.
+  const c = await h.ev(async () => {
+    const j = LB.jogo; j.inimigos = [];
+    j.iniciarCena(LB.HISTORIA.chefeVencido, { semPular: true }, { id: 'colosso', x: j.line.x + 120, y: j.line.y - 20 });
+    let comemorou = false;
+    for (let i = 0; i < 500 && j.cena; i++) {
+      const b = LB.herois.bellEmCena(j);
+      if (b && b.anim.base === 'BELL_CELEBRATE') comemorou = true;
+      else LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 40));
+    }
+    const b = LB.herois.bellEmCena(j);
+    return { comemorou, fim: !j.cena, depois: b && b.anim.base, cena: b && b.animCena };
+  });
+  afirmar(c.comemorou && c.fim, 'a Bell comemora quando o guardião é libertado: ' + JSON.stringify(c));
+  afirmar(c.depois !== 'BELL_CELEBRATE' && !c.cena, 'e volta ao normal no fim da cena: ' + JSON.stringify(c));
+});
+
+teste('parte 2: o Colosso dorme com a arte nova (item 304), do tamanho do Colosso acordado', async (h) => {
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  const r = await h.ev(() => {
+    const ch = LB.jogo.chefeArena, s = window.SPRITES.COLOSSO_SLEEP;
+    const dormindo = LB.resolver(ch.anim.base, null, ch.lado);
+    ch.dormindo = false; ch.estado = 'observar'; ch.atualizar(0.016, LB.jogo);
+    const acordado = LB.resolver(ch.anim.base, null, ch.lado);
+    ch.dormindo = true; ch.estado = 'dormindo';
+    return { dormindo: [dormindo.codigo, !!dormindo.sprite], item: s.item, ajuste: s.ajuste, acordado: [acordado.codigo, !!acordado.sprite] };
+  });
+  igual(r.dormindo, ['COLOSSO_SLEEP', true], 'o Colosso dorme com a arte do item 304');
+  igual([r.item, r.ajuste], ['LINE_BELL_ITEM_304.html', 0.8], 'reduzido para ter a altura do Colosso acordado (que ainda é desenhado no código)');
+  igual(r.acordado[1], false, 'acordado, ele ainda é desenhado no código até chegar a arte');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {

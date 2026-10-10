@@ -245,6 +245,38 @@ def chifres_pretos(im, fica_creme):
     return Image.fromarray(a.round().astype(np.uint8), "RGBA")
 
 
+# Sobras na arte: a estrela que sai pela direita "volta" pela esquerda, atrás da Bell (o desenho foi
+# girado dentro do quadro), e no ataque no ar sobram traços escuros no topo. Por item, os quadros e os
+# retângulos (x0, y0, x1, y1 na arte original) a limpar; com "estrela", sai só a cor da estrela (rosa,
+# branco e o brilho), sem tocar no cabelo encostado nela.
+SOBRAS = {
+    "BELL_ATTACK_STAR": (290, {1: [(995, 520, 1030, 625)], 2: [(978, 585, 1030, 820)],
+                               5: [(222, 355, 316, 535, "estrela")], 6: [(222, 388, 415, 585, "estrela")]}),
+    "BELL_ATTACK_SPREAD": (291, {7: [(200, 748, 252, 797)], 8: [(95, 300, 490, 960)]}),
+    "BELL_ATTACK_AIR": (292, {3: [(375, 88, 905, 142)], 4: [(88, 418, 353, 732), (372, 128, 508, 178)]}),
+}
+
+
+def limpar_sobras(im, retangulos):
+    import numpy as np
+    a = np.asarray(im.convert("RGBA")).copy()
+    r, g, b, al = (a[..., k].astype(int) for k in range(4))
+    estrela = (al < 170) | ((r > 170) & (b > 110) & (r - g > 50)) | ((r > 215) & (g > 190) & (b > 205))
+    for ret in retangulos:
+        x0, y0, x1, y1 = ret[:4]
+        area = np.zeros(al.shape, bool)
+        area[y0:y1, x0:x1] = True
+        if len(ret) > 4:
+            area &= estrela
+        a[area] = 0
+    return Image.fromarray(a, "RGBA")
+
+
+# Quadros que ficam de fora: na comemoração da Bell (item 302), os 4 últimos vieram maiores que os
+# outros e com o topo da cabeça cortado reto. A animação fica com os 8 primeiros até a arte voltar.
+QUADROS_FORA = {"BELL_CELEBRATE": (302, {8, 9, 10, 11})}
+
+
 def processar(codigo, dados, origem):
     frames = dados["frames"]
     unicos, sequencia, indice = [], [], {}
@@ -253,6 +285,12 @@ def processar(codigo, dados, origem):
             indice[fr] = len(unicos)
             unicos.append(fr)
         sequencia.append(indice[fr])
+    item_fora, fora = QUADROS_FORA.get(codigo, (None, ()))
+    if item_fora == numero_item(origem):
+        manter = [i for i in range(len(unicos)) if i not in fora]
+        unicos = [unicos[i] for i in manter]
+        sequencia = [manter.index(s) for s in sequencia if s in manter]
+        print(f"  quadros {sorted(fora)} de fora (outro tamanho, cabeça cortada no topo): ficam {len(unicos)}")
 
     dragao = codigo.startswith("DRAGON_")
     lado = CELULA_DRAGAO if dragao else CELULA
@@ -263,6 +301,10 @@ def processar(codigo, dados, origem):
     item_chifres, fica_creme = CHIFRES_PRETOS.get(codigo, (None, None))
     if item_chifres == numero_item(origem):
         celulas = [chifres_pretos(decodificar(u), fica_creme).resize((lado, lado), Image.LANCZOS) for u in unicos]
+    item_sobras, sobras = SOBRAS.get(codigo, (None, None))
+    if item_sobras == numero_item(origem):
+        celulas = [limpar_sobras(decodificar(u), sobras.get(i, [])).resize((lado, lado), Image.LANCZOS) for i, u in enumerate(unicos)]
+        print(f"  sobras tiradas dos quadros {sorted(sobras)} (estrela que volta pelo outro lado, traços no topo)")
     if codigo in PERNAS_ALTERNADAS:
         import pernas_alternadas
         fonte = decodificar(unicos[0])

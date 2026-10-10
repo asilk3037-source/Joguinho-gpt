@@ -1,7 +1,10 @@
 {
  "_leia": "Ajuste de tamanho por animação, medido pela cabeça (tools/medir_cabecas.py) e conferido a olho: o jogo multiplica a escala do desenho por este fator, para a Line e a Bell terem o mesmo tamanho em todas as animações. 1,2 = 20% maior.",
  "fatores": {
+  "BELL_BLOCK": 0.88,
   "BELL_COMBAT_IDLE_BACK": 1.08,
+  "BELL_DASH": 0.8,
+  "BELL_DODGE": 0.82,
   "BELL_DRAGON_CARRIED": 1.12,
   "BELL_ESCAPE_ATTEMPT": 0.91,
   "BELL_FALL": 0.87,
@@ -15,6 +18,7 @@
   "BELL_RUN_LEFT": 0.88,
   "BELL_RUN_RIGHT": 0.88,
   "BELL_SIT_CHAIR_EAT": 0.909,
+  "COLOSSO_SLEEP": 0.8,
   "DRAGON_SLEEP": 0.68,
   "LINE_ANGRY": 0.833,
   "LINE_ATTACK_COMBO_BACK": 1.27,

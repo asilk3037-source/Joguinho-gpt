@@ -290,6 +290,7 @@
       LB.dialogo.esconder();
       this.esconderTitulo();
       if (this.line && this.line.estado === 'cena') this.line.voltarLivre();
+      if (LB.herois) LB.herois.limparCena(this);
     }
 
     // ---------------- Ajudantes usados pelos roteiros ----------------

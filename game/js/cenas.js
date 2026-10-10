@@ -103,11 +103,13 @@
       fala(nome, texto, rosto) {
         let ok = false;
         dialogo.mostrar(nome, texto, nome === 'Bell' ? 'bell' : nome === 'Line' ? 'line' : 'sistema', rosto || 'sorriso');
+        // Parte 2: a Bell parada fala mexendo as mãos.
+        const falando = nome === 'Bell' && LB.herois ? LB.herois.falarBell(jogo) : null;
         return {
           atualizar: (dt) => { if (dialogo.atualizar(dt)) ok = true; },
           pronto: () => ok,
           pular: () => { ok = true; },
-          depois: () => dialogo.esconder(),
+          depois: () => { dialogo.esconder(); if (falando) LB.herois.fimFalaBell(jogo, falando); },
         };
       },
 

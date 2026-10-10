@@ -196,6 +196,10 @@
       line.hpMax = j.hpMaxLine(); line.hp = line.hpMax;
       M().dar(j, lib.escama, 1);
       M().aviso('❤️ +1 coração para as duas! Escama de guardião guardada na mochila.');
+      // A Bell comemora o guardião libertado (item 302).
+      yield c.camera(line.x, line.y - 30, 0.6);
+      const bell = LB.herois.animarBell(j, 'BELL_CELEBRATE');
+      if (bell) { yield c.animacao(bell); LB.herois.fimAnimBell(j, bell); }
       yield c.fala('Line', 'Obrigada! A gente vai atrás dela.', 'sorriso');
       if (lib.proxima) j.dica('proxima_' + e.id, lib.proxima);
     } else {

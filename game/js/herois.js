@@ -183,7 +183,7 @@
         this.x += dx / d * vel * dt; this.y += dy / d * vel * dt;
         this.dir = LB.dirDe(dx, dy, this.dir); if (Math.abs(dx) > 2) this.lado = dx < 0 ? -1 : 1;
         this.anim.tocar(pref + (vel > 100 ? '_RUN' : '_WALK'));
-      } else { this.anim.tocar(pref + '_IDLE'); if (Math.abs(l.x - this.x) > 4) this.lado = l.x < this.x ? -1 : 1; }
+      } else { this.anim.tocar(this.animCena || pref + '_IDLE'); if (Math.abs(l.x - this.x) > 4) this.lado = l.x < this.x ? -1 : 1; }
       this.visivel = l.visivel !== false && !j.duo && !j.viagem;
       this.caida = vidaDaOutra(j) <= 0;
     }
@@ -219,5 +219,54 @@
     if (!LB.entrada.usandoToque()) { g.fillStyle = 'rgba(255,233,199,.7)'; g.fillText('T troca', x + (30 + max / 2 * 11) * s, y + 3 * s); }
   }
 
-  LB.herois = { TRADUCAO, traduzir, liberada, ativa, estado, outra, aplicar, guardar, trocar, aoCair, descansar, atualizar, desenharHud, criarCompanheira, Companheira, CUSTO_LEQUE, CUSTO_CANCAO };
+  // ---------------- A Bell nas cenas da Parte 2 ----------------
+  // A Bell agora: o corpo de jogo (se ela é a heroína) ou a companheira que segue a Line.
+  function bellEmCena(j) {
+    if (!liberada(j)) return null;
+    if (ativa(j) === 'bell') return j.line;
+    const c = j.companheira;
+    return c && c.quem === 'bell' && c.visivel ? c : null;
+  }
+
+  // Animação de cena da Bell (ex.: comemorar). A companheira parada fica nela até `fimAnimBell`.
+  function animarBell(j, base) {
+    const b = bellEmCena(j);
+    if (!b || !LB.sprite(base)) return null;
+    if (b === j.companheira) b.animCena = base;
+    b.anim.tocar(base, true);
+    return b;
+  }
+
+  function fimAnimBell(j, b) {
+    if (!b) return;
+    if (b === j.companheira) b.animCena = null;
+    b.anim.tocar(b === j.line ? b.animParada() : 'BELL_IDLE', true);
+  }
+
+  // Fala da Bell numa cena da Parte 2: parada, ela fala mexendo as mãos (item 303) e, no fim da fala,
+  // volta a ficar como estava. Em outra pose (comemorando, andando...) a pose continua.
+  const PARADAS = /^(LINE|BELL)_(COMBAT_)?IDLE$/;
+  function falarBell(j) {
+    if (!j.flags || !j.flags.parte2 || !LB.sprite('BELL_TALK')) return null;
+    const b = bellEmCena(j);
+    if (!b || !PARADAS.test(b.anim.base || '')) return null;
+    const antes = b.anim.base;
+    if (b === j.companheira) b.animCena = 'BELL_TALK';
+    b.anim.tocar('BELL_TALK', true);
+    return { b, antes };
+  }
+
+  function fimFalaBell(j, f) {
+    if (!f) return;
+    if (f.b === j.companheira) f.b.animCena = null;
+    if (f.b.anim.base === 'BELL_TALK') f.b.anim.tocar(f.antes, true);
+  }
+
+  // Cena encerrada no meio (troca de área): a companheira solta a animação de cena.
+  function limparCena(j) {
+    if (j.companheira) j.companheira.animCena = null;
+  }
+
+  LB.herois = { TRADUCAO, traduzir, liberada, ativa, estado, outra, aplicar, guardar, trocar, aoCair, descansar, atualizar, desenharHud, criarCompanheira, Companheira, CUSTO_LEQUE, CUSTO_CANCAO,
+    bellEmCena, animarBell, fimAnimBell, falarBell, fimFalaBell, limparCena };
 })(window.LB);

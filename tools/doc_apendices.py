@@ -366,6 +366,13 @@ def escrever(w, inv, itens=None):
         linhas.append("- **Pernas paradas:** " + ", ".join(f"`{c}`" for c in refeitas) + " chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.")
     for codigo, (item, _) in extrair_sprites.CHIFRES_PRETOS.items():
         linhas.append(f"- **Cor do dragão:** `{codigo}` (item {item}) chegou com chifres, espinhos e garras creme; nas outras animações eles são pretos. O jogo já pinta esses pedaços de cinza-escuro (a barriga e o queixo continuam creme), então não precisa reenviar. Se for refeito, que venha com chifres e espinhos pretos.")
+    if extrair_sprites.SOBRAS:
+        nums_sobras = sorted({n for n, _ in extrair_sprites.SOBRAS.values()})
+        cods_sobras = ", ".join(f"`{c}`" for c in extrair_sprites.SOBRAS)
+        linhas.append(f"- **Itens {', '.join(map(str, nums_sobras[:-1]))} e {nums_sobras[-1]}** ({cods_sobras}): em alguns quadros, a estrela que sai pela direita **volta pela esquerda**, atrás da Bell, e no pulo sobram traços escuros no topo. O jogo tira esses restos sozinho; não precisa reenviar.")
+    for cod_fora, (num_fora, fora) in extrair_sprites.QUADROS_FORA.items():
+        q_fora = sorted(k + 1 for k in fora)
+        linhas.append(f"- **Item {num_fora}**: `{cod_fora}`: os quadros {q_fora[0]} a {q_fora[-1]} vieram maiores que os outros e com o topo da cabeça cortado; o jogo usa só os {min(fora)} primeiros. Reenviar com todos no mesmo tamanho, sem corte.")
     for codigo, motivo in extrair_sprites.DESCARTADAS.items():
         linhas.append(f"- `{codigo}` saiu do jogo: {motivo}. Para reenviar.")
     if faltam:
