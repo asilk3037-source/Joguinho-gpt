@@ -16,9 +16,13 @@
 > - **Novos moradores** (Dona Cora, Seu Tião, Vó Brisa), 3 documentos, 1 conclusão e 3 escamas de guardião.
 > - **Lista completa de arte necessária** para o jogo inteiro: personagens, armaduras, moradores, inimigos, chefes, cenário de cada fase, itens, interface, efeitos e dia/noite (seção 22).
 
-> 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, as animações pendentes (entre elas a Bell atacando de lado; as que precisavam ser refeitas já chegaram), as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
+> 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
 > ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.
+
+> ✨ **A Bell completa na luta e o Colosso dormindo (itens 289 a 304):** a Bell jogável ganhou arte própria para **atirar a estrela de lado**, o **leque de estrelas**, a **estrela no pulo**, a **canção**, o **escudo de luz**, a **esquiva**, a **arrancada**, **receber dano**, **cair no chão**, **ficar cansada** com pouca vida e **agachar**, além da **guarda virada para a direita**. Nas cenas da Parte 2 ela **fala mexendo as mãos** quando está parada e **comemora** quando um guardião é libertado; na abertura da Parte 2 ela fica **decidida**. O **Colosso de Raízes** dorme com a arte nova antes da luta, do tamanho do Colosso acordado. Na estrela, no leque e no pulo, a estrela que saía pela direita **voltava pela esquerda**, atrás da Bell: esses restos foram tirados. Na comemoração, os 4 últimos quadros vieram maiores e com a cabeça cortada, e ficaram de fora (seção 23.1).
+
+> 🌳 **Cenário antigo mal recortado nas pendências:** as **árvores** e outras 40 e poucas peças do pacote antigo de cenário (arbustos, girassóis, horta, celeiro, moinho, poço, feno, lago, cercas, placas...) são pequenas e foram mal recortadas de um fundo branco, com **pontinhos e borda branca** em volta. Estão todas na seção 2.2 das pendências para serem refeitas, começando pelas árvores. As fotos do **playground** foram refeitas: numa delas a Bell aparecia com a roupa de uma arte antiga, e hoje ela está com a mesma roupa (blusa branca e short jeans) em todo o playground.
 
 > 🎨 **Dragão dormindo com chifres e espinhos pretos:** a arte do item 285 veio com os chifres, os espinhos e as garras creme, mas em todas as outras animações o dragão tem chifres e espinhos pretos. Agora a extração pinta esses pedaços com o mesmo cinza-escuro dos chifres do dragão em pé, mantendo os gomos e o brilho; a barriga e o queixo, que são creme mesmo, ficam como vieram.
 
@@ -181,7 +185,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **572**: 292 com arte (temporária), 159 usando uma substituta, 121 desenhadas no código ou sem imagem |
+| Animações catalogadas | **572**: 308 com arte (temporária), 144 usando uma substituta, 120 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1873,7 +1877,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 572 animações. ✅ 292 com arte temporária, 🔁 159 com substituta e ✏️ 121 desenhadas no código.
+**Resumo:** 572 animações. ✅ 308 com arte temporária, 🔁 144 com substituta e ✏️ 120 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1889,8 +1893,8 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
-| Bell jogável (Parte 2) | 22 | 7 | 15 | 0 |
-| Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
+| Bell jogável (Parte 2) | 22 | 22 | 0 | 0 |
+| Chefe: Colosso de Raízes (Parte 2) | 12 | 1 | 0 | 11 |
 | Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 0 | 0 | 11 |
@@ -2254,34 +2258,34 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_286 |
-| `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_287 |
-| `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_288 |
-| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
-| `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | 8 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
-| `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | 10 |  | 🔁 usa `BELL_DANCE` |  |
+| `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão (itens 286 a 289) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_286 |
+| `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão (itens 286 a 289) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_287 |
+| `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão (itens 286 a 289) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_288 |
+| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão (itens 286 a 289) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_289 |
+| `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) (item 290) | 8 |  | ✅ temporária | LINE_BELL_ITEM_290 |
+| `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz (item 291) | 10 |  | ✅ temporária | LINE_BELL_ITEM_291 |
 | `BELL_ATTACK_STAR_FRONT` | Bell atira estrela para baixo | 8 |  | ✅ temporária | LINE_BELL_ITEM_253 |
 | `BELL_ATTACK_STAR_BACK` | Bell atira estrela para cima | 8 |  | ✅ temporária | LINE_BELL_ITEM_254 |
 | `BELL_ATTACK_SPREAD_FRONT` | Bell solta o leque de estrelas para baixo | 10 |  | ✅ temporária | LINE_BELL_ITEM_255 |
 | `BELL_ATTACK_SPREAD_BACK` | Bell solta o leque de estrelas para cima | 10 |  | ✅ temporária | LINE_BELL_ITEM_256 |
-| `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) | 6 |  | 🔁 usa `BELL_JUMP` |  |
-| `BELL_SING` | Bell canta a Canção (notas coloridas saindo) | 12 | sim | 🔁 usa `BELL_HAPPY` |  |
-| `BELL_BLOCK` | Bell se protege com um escudo de luz rosa | 6 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_DODGE` | Bell esquiva (pulinho de lado) | 6 |  | 🔁 usa `BELL_JUMP` |  |
-| `BELL_DASH` | Bell arrancada | 6 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_HIT` | Bell recebe dano | 4 |  | 🔁 usa `BELL_SCARED` |  |
-| `BELL_KNOCKDOWN` | Bell cai no chão (golpe forte) | 6 |  | 🔁 usa `BELL_FALL` |  |
-| `BELL_EXHAUSTED_IDLE` | Bell cansada, ofegante (pouca vida) | 8 | sim | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_CROUCH` | Bell agachada (beber na fonte / pegar item) | 6 |  | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_DETERMINED` | Bell decidida (punhos fechados) | 6 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_CELEBRATE` | Bell comemora vitória | 12 |  | 🔁 usa `BELL_HAPPY` |  |
-| `BELL_TALK` | Bell falando (cenas) | 8 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
+| `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) (item 292) | 6 |  | ✅ temporária | LINE_BELL_ITEM_292 |
+| `BELL_SING` | Bell canta a Canção (notas coloridas saindo) (item 293) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_293 |
+| `BELL_BLOCK` | Bell se protege com um escudo de luz rosa (item 294) | 6 |  | ✅ temporária | LINE_BELL_ITEM_294 |
+| `BELL_DODGE` | Bell esquiva (pulinho de lado) (item 295) | 6 |  | ✅ temporária | LINE_BELL_ITEM_295 |
+| `BELL_DASH` | Bell arrancada (item 296) | 6 |  | ✅ temporária | LINE_BELL_ITEM_296 |
+| `BELL_HIT` | Bell recebe dano (item 297) | 4 |  | ✅ temporária | LINE_BELL_ITEM_297 |
+| `BELL_KNOCKDOWN` | Bell cai no chão (golpe forte) (item 298) | 6 |  | ✅ temporária | LINE_BELL_ITEM_298 |
+| `BELL_EXHAUSTED_IDLE` | Bell cansada, ofegante (pouca vida) (item 299) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_299 |
+| `BELL_CROUCH` | Bell agachada (beber na fonte / pegar item) (item 300) | 6 |  | ✅ temporária | LINE_BELL_ITEM_300 |
+| `BELL_DETERMINED` | Bell decidida (punhos fechados) (item 301) | 6 | sim | ✅ temporária | LINE_BELL_ITEM_301 |
+| `BELL_CELEBRATE` | Bell comemora (guardião libertado, item 302) | 8 |  | ✅ temporária | LINE_BELL_ITEM_302 |
+| `BELL_TALK` | Bell falando nas cenas da Parte 2 (item 303) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_303 |
 
 ### 10.14 Chefe: Colosso de Raízes (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `COLOSSO_SLEEP` | Colosso de Raízes — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
+| `COLOSSO_SLEEP` | Colosso de Raízes — dormindo (antes da luta) (item 304) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_304 |
 | `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | 8 | sim | ✏️ código / falta |  |
 | `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
 | `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
@@ -2560,15 +2564,15 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
 | `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
 | `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
-| `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
-| `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
-| `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
-| `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_RIGHT` |  |
+| `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | 12 |  | 🔁 usa `BELL_ATTACK_STAR` |  |
+| `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | 12 |  | 🔁 usa `BELL_ATTACK_SPREAD` |  |
+| `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | 12 |  | 🔁 usa `BELL_SING` |  |
+| `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | 12 |  | 🔁 usa `BELL_BLOCK` |  |
+| `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | 12 |  | 🔁 usa `BELL_DODGE` |  |
 | `BELL_VESTIDO_JUMP` | Bell com Vestido Reforçado — pulo | 12 |  | 🔁 usa `BELL_JUMP` |  |
-| `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | 12 |  | 🔁 usa `BELL_SCARED` |  |
-| `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | 12 |  | 🔁 usa `BELL_FALL` |  |
+| `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | 12 |  | 🔁 usa `BELL_HIT` |  |
+| `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | 12 |  | 🔁 usa `BELL_KNOCKDOWN` |  |
 
 ### 10.28 Bell com armadura: Manto Estelar
 
@@ -2586,15 +2590,15 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
 | `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
 | `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
-| `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
-| `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
-| `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
-| `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_RIGHT` |  |
+| `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | 12 |  | 🔁 usa `BELL_ATTACK_STAR` |  |
+| `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | 12 |  | 🔁 usa `BELL_ATTACK_SPREAD` |  |
+| `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | 12 |  | 🔁 usa `BELL_SING` |  |
+| `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | 12 |  | 🔁 usa `BELL_BLOCK` |  |
+| `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | 12 |  | 🔁 usa `BELL_DODGE` |  |
 | `BELL_ESTELAR_JUMP` | Bell com Manto Estelar — pulo | 12 |  | 🔁 usa `BELL_JUMP` |  |
-| `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | 12 |  | 🔁 usa `BELL_SCARED` |  |
-| `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | 12 |  | 🔁 usa `BELL_FALL` |  |
+| `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | 12 |  | 🔁 usa `BELL_HIT` |  |
+| `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | 12 |  | 🔁 usa `BELL_KNOCKDOWN` |  |
 
 ### 10.29 Bell com armadura: Armadura da Aurora
 
@@ -2612,15 +2616,15 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
 | `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
 | `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
-| `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
-| `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
-| `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
-| `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
-| `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | 12 |  | 🔁 usa `BELL_JUMP` |  |
+| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_RIGHT` |  |
+| `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | 12 |  | 🔁 usa `BELL_ATTACK_STAR` |  |
+| `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | 12 |  | 🔁 usa `BELL_ATTACK_SPREAD` |  |
+| `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | 12 |  | 🔁 usa `BELL_SING` |  |
+| `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | 12 |  | 🔁 usa `BELL_BLOCK` |  |
+| `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | 12 |  | 🔁 usa `BELL_DODGE` |  |
 | `BELL_AURORA_JUMP` | Bell com Armadura da Aurora — pulo | 12 |  | 🔁 usa `BELL_JUMP` |  |
-| `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | 12 |  | 🔁 usa `BELL_SCARED` |  |
-| `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | 12 |  | 🔁 usa `BELL_FALL` |  |
+| `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | 12 |  | 🔁 usa `BELL_HIT` |  |
+| `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | 12 |  | 🔁 usa `BELL_KNOCKDOWN` |  |
 
 ### 10.30 Outras animações recebidas
 
@@ -3361,8 +3365,8 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
-| Bell jogável (Parte 2) | 22 | 7 | 15 | 0 |
-| Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
+| Bell jogável (Parte 2) | 22 | 22 | 0 | 0 |
+| Chefe: Colosso de Raízes (Parte 2) | 12 | 1 | 0 | 11 |
 | Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 0 | 0 | 11 |
@@ -3379,7 +3383,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **572** | **292** | **159** | **121** |
+| **Total** | **572** | **308** | **144** | **120** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3679,7 +3683,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 292 de 572 animações com arte · 159 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 308 de 572 animações com arte · 144 usando uma substituta · 120 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3692,6 +3696,8 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Item 137**: `SHEEP_IDLE` foi recusado: reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior. O jogo segue com a versão anterior.
 - **Pernas paradas:** `CHICKEN_RUN`, `CHICKEN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_WALK` chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.
 - **Cor do dragão:** `DRAGON_SLEEP` (item 285) chegou com chifres, espinhos e garras creme; nas outras animações eles são pretos. O jogo já pinta esses pedaços de cinza-escuro (a barriga e o queixo continuam creme), então não precisa reenviar. Se for refeito, que venha com chifres e espinhos pretos.
+- **Itens 290, 291 e 292** (`BELL_ATTACK_STAR`, `BELL_ATTACK_SPREAD`, `BELL_ATTACK_AIR`): em alguns quadros, a estrela que sai pela direita **volta pela esquerda**, atrás da Bell, e no pulo sobram traços escuros no topo. O jogo tira esses restos sozinho; não precisa reenviar.
+- **Item 302**: `BELL_CELEBRATE`: os quadros 9 a 12 vieram maiores que os outros e com o topo da cabeça cortado; o jogo usa só os 8 primeiros. Reenviar com todos no mesmo tamanho, sem corte.
 - **Itens que ainda não chegaram:** 153, 240.
 
 ### 23.5 Anotações do teste no celular (1º de outubro)
@@ -3750,29 +3756,13 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Personagem | Animações (desenhos diferentes) |
 |---|---|
 | Line | `LINE_ATTACK_HORIZONTAL` (4), `LINE_CAST_CHARGE` (4), `LINE_CAST_SPELL` (4), `LINE_CAST_STARS` (4), `LINE_COMBAT_IDLE` (3), `LINE_COMBAT_RUN_BACK` (2), `LINE_COMBAT_RUN_FRONT` (4), `LINE_COMBAT_RUN_LEFT` (4), `LINE_COMBAT_RUN_RIGHT` (4), `LINE_COMBAT_WALK_BACK` (2), `LINE_COMBAT_WALK_FRONT` (2), `LINE_COMBAT_WALK_LEFT` (4), `LINE_COMBAT_WALK_RIGHT` (4), `LINE_CROUCH` (3), `LINE_CROUCH_STAND` (3), `LINE_FALL` (4), `LINE_HIT_HEAVY` (4), `LINE_IDLE_BACK` (2), `LINE_IDLE_LEFT` (3), `LINE_RUN_BACK` (4), `LINE_RUN_STOP_RIGHT` (4), `LINE_SAD` (4), `LINE_SCARED` (4), `LINE_STUMBLE` (4), `LINE_SWORD_DRAW` (4), `LINE_THROWN` (4), `LINE_VICTORY` (4), `LINE_WALK_BACK` (4), `LINE_WALK_FRONT` (4) |
-| Bell | `BELL_BLINK_FRONT` (2), `BELL_BREAK_FREE` (4), `BELL_CALL_LINE` (4), `BELL_CAPTURED` (4), `BELL_CRY` (3), `BELL_CURTSY` (4), `BELL_DANCE` (3), `BELL_ESCAPE_ATTEMPT` (3), `BELL_FALL` (4), `BELL_FLEE` (4), `BELL_GROUND_STAND` (2), `BELL_HEAD_ON_LINE` (4), `BELL_HELP_LINE` (4), `BELL_HIGH_FIVE` (2), `BELL_IDLE_BACK` (1), `BELL_IDLE_FRONT` (3), `BELL_IDLE_LEFT` (1), `BELL_IDLE_RIGHT` (1), `BELL_JUMP` (3), `BELL_LAND` (2), `BELL_LAUGH` (2), `BELL_LEAN_ON_LINE` (4), `BELL_LOOK_SIDES_FRONT` (3), `BELL_RELIEVED` (2), `BELL_RUN_BACK` (4), `BELL_RUN_FRONT` (4), `BELL_SCARED` (3), `BELL_TRAPPED` (3), `BELL_WALK_BACK` (4), `BELL_WALK_FRONT` (4) |
+| Bell | `BELL_BLINK_FRONT` (2), `BELL_BREAK_FREE` (4), `BELL_CALL_LINE` (4), `BELL_CAPTURED` (4), `BELL_CRY` (3), `BELL_CURTSY` (4), `BELL_DANCE` (3), `BELL_ESCAPE_ATTEMPT` (3), `BELL_FALL` (4), `BELL_FLEE` (4), `BELL_GROUND_STAND` (2), `BELL_HEAD_ON_LINE` (4), `BELL_HELP_LINE` (4), `BELL_HIGH_FIVE` (2), `BELL_HIT` (4), `BELL_IDLE_BACK` (1), `BELL_IDLE_FRONT` (3), `BELL_IDLE_LEFT` (1), `BELL_IDLE_RIGHT` (1), `BELL_JUMP` (3), `BELL_LAND` (2), `BELL_LAUGH` (2), `BELL_LEAN_ON_LINE` (4), `BELL_LOOK_SIDES_FRONT` (3), `BELL_RELIEVED` (2), `BELL_RUN_BACK` (4), `BELL_RUN_FRONT` (4), `BELL_SCARED` (3), `BELL_TRAPPED` (3), `BELL_WALK_BACK` (4), `BELL_WALK_FRONT` (4) |
 | Line e Bell juntas | `LINE_BELL_HUG_RELEASE` (4), `LINE_BELL_LAUGH` (3), `LINE_BELL_RESCUE_HUG` (4), `LINE_BELL_RUN_TOGETHER_BACK` (4), `LINE_BELL_SIT_DOWN` (4), `LINE_BELL_SIT_IDLE` (4), `LINE_BELL_TALK` (3), `LINE_BELL_WALK_HANDS_BACK` (4), `LINE_BELL_WALK_TOGETHER` (4), `LINE_BELL_WALK_TOGETHER_BACK` (4) |
 
 ### 23.3 Animações ainda sem arte
 
 | Grupo | Código | O que é | Hoje usa |
 |---|---|---|---|
-| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | `BELL_COMBAT_IDLE_LEFT` |
-| Bell jogável (Parte 2) | `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | `BELL_HIGH_FIVE` |
-| Bell jogável (Parte 2) | `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | `BELL_DANCE` |
-| Bell jogável (Parte 2) | `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) | `BELL_JUMP` |
-| Bell jogável (Parte 2) | `BELL_SING` | Bell canta a Canção (notas coloridas saindo) | `BELL_HAPPY` |
-| Bell jogável (Parte 2) | `BELL_BLOCK` | Bell se protege com um escudo de luz rosa | `BELL_IDLE_RIGHT` |
-| Bell jogável (Parte 2) | `BELL_DODGE` | Bell esquiva (pulinho de lado) | `BELL_JUMP` |
-| Bell jogável (Parte 2) | `BELL_DASH` | Bell arrancada | `BELL_RUN_RIGHT` |
-| Bell jogável (Parte 2) | `BELL_HIT` | Bell recebe dano | `BELL_SCARED` |
-| Bell jogável (Parte 2) | `BELL_KNOCKDOWN` | Bell cai no chão (golpe forte) | `BELL_FALL` |
-| Bell jogável (Parte 2) | `BELL_EXHAUSTED_IDLE` | Bell cansada, ofegante (pouca vida) | `BELL_IDLE_RIGHT` |
-| Bell jogável (Parte 2) | `BELL_CROUCH` | Bell agachada (beber na fonte / pegar item) | `BELL_IDLE_FRONT` |
-| Bell jogável (Parte 2) | `BELL_DETERMINED` | Bell decidida (punhos fechados) | `BELL_IDLE_FRONT` |
-| Bell jogável (Parte 2) | `BELL_CELEBRATE` | Bell comemora vitória | `BELL_HAPPY` |
-| Bell jogável (Parte 2) | `BELL_TALK` | Bell falando (cenas) | `BELL_IDLE_FRONT` |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_SLEEP` | Colosso de Raízes — dormindo (antes da luta) | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
@@ -3986,15 +3976,15 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | `BELL_RUN_BACK` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | `BELL_RUN_LEFT` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | `BELL_RUN_RIGHT` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | `BELL_COMBAT_IDLE_LEFT` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | `BELL_HIGH_FIVE` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | `BELL_DANCE` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | `BELL_HAPPY` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | `BELL_IDLE_RIGHT` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | `BELL_JUMP` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | `BELL_COMBAT_IDLE_RIGHT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | `BELL_ATTACK_STAR` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | `BELL_ATTACK_SPREAD` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | `BELL_SING` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | `BELL_BLOCK` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | `BELL_DODGE` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_JUMP` | Bell com Vestido Reforçado — pulo | `BELL_JUMP` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | `BELL_SCARED` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | `BELL_FALL` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | `BELL_HIT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | `BELL_KNOCKDOWN` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_IDLE_FRONT` | Bell com Manto Estelar — parada | `BELL_IDLE_FRONT` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_IDLE_BACK` | Bell com Manto Estelar — parada | `BELL_IDLE_BACK` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_IDLE_LEFT` | Bell com Manto Estelar — parada | `BELL_IDLE_LEFT` |
@@ -4007,15 +3997,15 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | `BELL_RUN_BACK` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | `BELL_RUN_LEFT` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | `BELL_RUN_RIGHT` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | `BELL_COMBAT_IDLE_LEFT` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | `BELL_HIGH_FIVE` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | `BELL_DANCE` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | `BELL_HAPPY` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | `BELL_IDLE_RIGHT` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | `BELL_JUMP` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | `BELL_COMBAT_IDLE_RIGHT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | `BELL_ATTACK_STAR` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | `BELL_ATTACK_SPREAD` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | `BELL_SING` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | `BELL_BLOCK` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | `BELL_DODGE` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_JUMP` | Bell com Manto Estelar — pulo | `BELL_JUMP` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | `BELL_SCARED` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | `BELL_FALL` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | `BELL_HIT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | `BELL_KNOCKDOWN` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_IDLE_FRONT` | Bell com Armadura da Aurora — parada | `BELL_IDLE_FRONT` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_IDLE_BACK` | Bell com Armadura da Aurora — parada | `BELL_IDLE_BACK` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_IDLE_LEFT` | Bell com Armadura da Aurora — parada | `BELL_IDLE_LEFT` |
@@ -4028,15 +4018,15 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | `BELL_RUN_BACK` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | `BELL_RUN_LEFT` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | `BELL_RUN_RIGHT` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | `BELL_COMBAT_IDLE_LEFT` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | `BELL_HIGH_FIVE` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | `BELL_DANCE` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | `BELL_HAPPY` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | `BELL_IDLE_RIGHT` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | `BELL_JUMP` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | `BELL_COMBAT_IDLE_RIGHT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | `BELL_ATTACK_STAR` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | `BELL_ATTACK_SPREAD` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | `BELL_SING` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | `BELL_BLOCK` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | `BELL_DODGE` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_JUMP` | Bell com Armadura da Aurora — pulo | `BELL_JUMP` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | `BELL_SCARED` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | `BELL_FALL` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | `BELL_HIT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | `BELL_KNOCKDOWN` |
 
 ### 23.4 Como mandar arte nova
 
@@ -4332,6 +4322,22 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 286 | `LINE_BELL_ITEM_286.html` | 2,78 MB | `BELL_COMBAT_IDLE_FRONT` |
 | 287 | `LINE_BELL_ITEM_287.html` | 2,58 MB | `BELL_COMBAT_IDLE_BACK` |
 | 288 | `LINE_BELL_ITEM_288.html` | 2,54 MB | `BELL_COMBAT_IDLE_LEFT` |
+| 289 | `LINE_BELL_ITEM_289.html` | 2,83 MB | `BELL_COMBAT_IDLE_RIGHT` |
+| 290 | `LINE_BELL_ITEM_290.html` | 2,48 MB | `BELL_ATTACK_STAR` |
+| 291 | `LINE_BELL_ITEM_291.html` | 2,75 MB | `BELL_ATTACK_SPREAD` |
+| 292 | `LINE_BELL_ITEM_292.html` | 1,99 MB | `BELL_ATTACK_AIR` |
+| 293 | `LINE_BELL_ITEM_293.html` | 3,15 MB | `BELL_SING` |
+| 294 | `LINE_BELL_ITEM_294.html` | 2,67 MB | `BELL_BLOCK` |
+| 295 | `LINE_BELL_ITEM_295.html` | 2,11 MB | `BELL_DODGE` |
+| 296 | `LINE_BELL_ITEM_296.html` | 2,25 MB | `BELL_DASH` |
+| 297 | `LINE_BELL_ITEM_297.html` | 1,62 MB | `BELL_HIT` |
+| 298 | `LINE_BELL_ITEM_298.html` | 1,67 MB | `BELL_KNOCKDOWN` |
+| 299 | `LINE_BELL_ITEM_299.html` | 2,26 MB | `BELL_EXHAUSTED_IDLE` |
+| 300 | `LINE_BELL_ITEM_300.html` | 1,94 MB | `BELL_CROUCH` |
+| 301 | `LINE_BELL_ITEM_301.html` | 2,07 MB | `BELL_DETERMINED` |
+| 302 | `LINE_BELL_ITEM_302.html` | 2,58 MB | `BELL_CELEBRATE` |
+| 303 | `LINE_BELL_ITEM_303.html` | 2,62 MB | `BELL_TALK` |
+| 304 | `LINE_BELL_ITEM_304.html` | 4,22 MB | `COLOSSO_SLEEP` |
 
 Itens que ainda não chegaram: 153, 240.
 

@@ -10,8 +10,8 @@
 
 | Seção | O que é | Quantas faltam |
 |---|---|---|
-| 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **0** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **290** |
+| 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **274** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -55,41 +55,61 @@
 7. **Cenas em pé (prólogo):** base 360×640 (9:16), entrega **2160×3840**; chão e teto numa base vazia e cada móvel/loja à parte, mais um **modelo** de como a cena fica (como o da praça de alimentação).
 8. **Telas cheias:** 3840×2160 (16:9), nada importante a menos de 10% da borda.
 
-## 2. Animações que precisam de ajuste (refazer)
+## 2. Artes que precisam ser refeitas (refazer)
 
-Todas as animações que precisavam ser refeitas **já chegaram e estão no jogo** ✅: os golpes de frente e de costas da Line e da Bell (itens 241 a 256), as cenas do shopping (257 a 266), as cenas do casal na proporção certa (267 a 272) e os ajustes finais (273 a 276: a Bell feliz, as duas de mãos dadas andando de frente, a Bell pendurada no dragão sem outro dragão desenhado junto e a máquina de soco com o placar 000).
+### 2.1 Animações
 
-Falta só a **Bell atacando de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (`BELL_ATTACK_SPREAD`) e a estrela no pulo (`BELL_ATTACK_AIR`), com os mesmos quadros e o mesmo tempo das de frente e de costas. Hoje, de lado, ela usa o “toca aqui” e a dança no lugar. Como ainda não existem, estão na seção 3, no grupo da Bell jogável.
+As animações que precisavam ser refeitas **já chegaram e estão no jogo** ✅: os golpes de frente e de costas da Line e da Bell (itens 241 a 256), as cenas do shopping (257 a 266), as cenas do casal na proporção certa (267 a 272), os ajustes finais (273 a 276) e a **Bell atacando de lado** (itens 290 a 292). Faltam só estas:
+
+| Código | Item | O que refazer |
+|---|---|---|
+| `BELL_CELEBRATE` | 302 | ♻️ Os quadros 9 a 12 vieram **maiores** que os outros e com o **topo da cabeça cortado** reto. O jogo usa só os 8 primeiros; mandar os 12 quadros no mesmo tamanho, sem corte. |
+| `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE` | 108 | ♻️ Vieram com quadros vazios. Mandar de novo com todos os quadros. |
+
+### 2.2 Cenário antigo mal recortado (comece pelas árvores)
+
+Estas artes são do **pacote antigo de cenário**: pequenas (de 30 a 350 px), tiradas de uma folha com fundo branco e **mal recortadas**, então ficam **pontinhos e uma borda branca** em volta (na grama aparece um contorno branco quebrado). Precisam ser refeitas no padrão dos objetos novos da fazenda (itens 154 a 227): recorte limpo no contorno, fundo transparente de verdade, contorno escuro, **nenhum ponto branco**, uns **400 px** de altura e **o mesmo nome** do arquivo (o jogo troca sozinho). **As árvores primeiro:** elas aparecem em todos os mapas abertos (na floresta, os pinheiros).
+
+![O cenário antigo em fundo escuro: repare nos pontinhos e na borda branca em volta de cada peça](imagens/pendencias-cenario-antigo.jpg)
+*O cenário antigo em fundo escuro: repare nos pontinhos e na borda branca em volta de cada peça*
+
+| Arte (nome do arquivo) | O que é | Onde aparece |
+|---|---|---|
+| `arvore_a` `arvore_b` `arvore_c` `arvore_d` | ♻️ Árvores comuns (4 variações) | todos os mapas abertos (fazenda, vila, vale, lago...) e a floresta |
+| `macieira_a` `macieira_b` `macieira_c` | ♻️ Macieiras com maçãs | fazenda e mapas abertos, entre as árvores |
+| `cerejeira_a` `cerejeira_b` | ♻️ Cerejeiras floridas (rosa) | fazenda e mapas abertos |
+| `florida` | ♻️ Árvore com flores brancas e rosa | fazenda e mapas abertos |
+| `pinheiro_a` `pinheiro_b` `pinheiro_c` | ♻️ Pinheiros | floresta |
+| `arbusto_b` `arbusto_c` `arbusto_d` | ♻️ Arbustos (verde e com flores) | fazenda e outros mapas, como decoração |
+| `moita` | ♻️ Moita baixa | fazenda |
+| `girassol_0` `girassol_1` `girassol_2` | ♻️ Girassóis | fazenda |
+| `milho_1` | ♻️ Pé de milho | fazenda |
+| `trigo_1` | ♻️ Feixe de trigo | fazenda |
+| `cenoura_0` `cenoura_1` `cenoura_2` `cenoura_3` | ♻️ Cenoura na horta, um desenho por estágio (brotando até pronta) | horta da fazenda |
+| `tomate_0` `tomate_1` `tomate_2` `tomate_3` `tomate_4` `tomate_5` | ♻️ Tomateiro na horta, um desenho por estágio (brotando até com tomates) | horta da fazenda |
+| `celeiro` | ♻️ Celeiro vermelho | fazenda |
+| `moinho` | ♻️ Moinho de vento | fazenda |
+| `poco` | ♻️ Poço de pedra com telhado | fazenda e vila |
+| `galinheiro` | ♻️ Galinheiro | fazenda |
+| `feno` `feno_pilha` | ♻️ Fardo e pilha de feno | fazenda e vila |
+| `carroca` | ♻️ Carroça com feno | fazenda e vila |
+| `lago` | ♻️ Enfeite do lago (pedras e plantas na água) | lago da fazenda |
+| `barco` | ♻️ Barquinho de madeira | lago da fazenda |
+| `pier` | ♻️ Píer de madeira | lago da fazenda |
+| `lampiao` | ♻️ Poste com lampião | postes de luz dos mapas abertos |
+| `cerca` `porteira` | ♻️ Cerca e porteira de madeira | fazenda e vila |
+| `placa` `placa2` | ♻️ Placas de direção | fazenda, vila e caminhos |
+| `caixa` `barril` | ♻️ Caixote e barril | dentro das casas e lojas |
+| `pedra1` | ♻️ Pedras (a arte atual traz pedaços de outras pedras juntos) | fazenda |
 
 ## 3. Animações pendentes (ainda não existem)
 
 Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte chegar.
 
-### Bell jogável (Parte 2) (15)
+### Chefe: Colosso de Raízes (Parte 2) (11)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
-| `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | 8 | 🔁 usa `BELL_HIGH_FIVE` |
-| `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | 10 | 🔁 usa `BELL_DANCE` |
-| `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) | 6 | 🔁 usa `BELL_JUMP` |
-| `BELL_SING` | Bell canta a Canção (notas coloridas saindo) | 12 | 🔁 usa `BELL_HAPPY` |
-| `BELL_BLOCK` | Bell se protege com um escudo de luz rosa | 6 | 🔁 usa `BELL_IDLE_RIGHT` |
-| `BELL_DODGE` | Bell esquiva (pulinho de lado) | 6 | 🔁 usa `BELL_JUMP` |
-| `BELL_DASH` | Bell arrancada | 6 | 🔁 usa `BELL_RUN_RIGHT` |
-| `BELL_HIT` | Bell recebe dano | 4 | 🔁 usa `BELL_SCARED` |
-| `BELL_KNOCKDOWN` | Bell cai no chão (golpe forte) | 6 | 🔁 usa `BELL_FALL` |
-| `BELL_EXHAUSTED_IDLE` | Bell cansada, ofegante (pouca vida) | 8 | 🔁 usa `BELL_IDLE_RIGHT` |
-| `BELL_CROUCH` | Bell agachada (beber na fonte / pegar item) | 6 | 🔁 usa `BELL_IDLE_FRONT` |
-| `BELL_DETERMINED` | Bell decidida (punhos fechados) | 6 | 🔁 usa `BELL_IDLE_FRONT` |
-| `BELL_CELEBRATE` | Bell comemora vitória | 12 | 🔁 usa `BELL_HAPPY` |
-| `BELL_TALK` | Bell falando (cenas) | 8 | 🔁 usa `BELL_IDLE_FRONT` |
-
-### Chefe: Colosso de Raízes (Parte 2) (12)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `COLOSSO_SLEEP` | Colosso de Raízes — dormindo (antes da luta) | 8 | ✏️ falta |
 | `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | 8 | ✏️ falta |
 | `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | 12 | ✏️ falta |
 | `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | 10 | ✏️ falta |
@@ -368,15 +388,15 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | 12 | 🔁 usa `BELL_RUN_BACK` |
 | `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | 12 | 🔁 usa `BELL_RUN_LEFT` |
 | `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | 12 | 🔁 usa `BELL_RUN_RIGHT` |
-| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
-| `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | 12 | 🔁 usa `BELL_HIGH_FIVE` |
-| `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | 12 | 🔁 usa `BELL_DANCE` |
-| `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | 12 | 🔁 usa `BELL_HAPPY` |
-| `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | 12 | 🔁 usa `BELL_IDLE_RIGHT` |
-| `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | 12 | 🔁 usa `BELL_JUMP` |
+| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_RIGHT` |
+| `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | 12 | 🔁 usa `BELL_ATTACK_STAR` |
+| `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | 12 | 🔁 usa `BELL_ATTACK_SPREAD` |
+| `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | 12 | 🔁 usa `BELL_SING` |
+| `BELL_VESTIDO_BLOCK` | Bell com Vestido Reforçado — escudo de luz | 12 | 🔁 usa `BELL_BLOCK` |
+| `BELL_VESTIDO_DODGE` | Bell com Vestido Reforçado — esquiva | 12 | 🔁 usa `BELL_DODGE` |
 | `BELL_VESTIDO_JUMP` | Bell com Vestido Reforçado — pulo | 12 | 🔁 usa `BELL_JUMP` |
-| `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | 12 | 🔁 usa `BELL_SCARED` |
-| `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | 12 | 🔁 usa `BELL_FALL` |
+| `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | 12 | 🔁 usa `BELL_HIT` |
+| `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | 12 | 🔁 usa `BELL_KNOCKDOWN` |
 
 ### Bell com armadura: Manto Estelar (21)
 
@@ -394,15 +414,15 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | 12 | 🔁 usa `BELL_RUN_BACK` |
 | `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | 12 | 🔁 usa `BELL_RUN_LEFT` |
 | `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | 12 | 🔁 usa `BELL_RUN_RIGHT` |
-| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
-| `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | 12 | 🔁 usa `BELL_HIGH_FIVE` |
-| `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | 12 | 🔁 usa `BELL_DANCE` |
-| `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | 12 | 🔁 usa `BELL_HAPPY` |
-| `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | 12 | 🔁 usa `BELL_IDLE_RIGHT` |
-| `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | 12 | 🔁 usa `BELL_JUMP` |
+| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_RIGHT` |
+| `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | 12 | 🔁 usa `BELL_ATTACK_STAR` |
+| `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | 12 | 🔁 usa `BELL_ATTACK_SPREAD` |
+| `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | 12 | 🔁 usa `BELL_SING` |
+| `BELL_ESTELAR_BLOCK` | Bell com Manto Estelar — escudo de luz | 12 | 🔁 usa `BELL_BLOCK` |
+| `BELL_ESTELAR_DODGE` | Bell com Manto Estelar — esquiva | 12 | 🔁 usa `BELL_DODGE` |
 | `BELL_ESTELAR_JUMP` | Bell com Manto Estelar — pulo | 12 | 🔁 usa `BELL_JUMP` |
-| `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | 12 | 🔁 usa `BELL_SCARED` |
-| `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | 12 | 🔁 usa `BELL_FALL` |
+| `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | 12 | 🔁 usa `BELL_HIT` |
+| `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | 12 | 🔁 usa `BELL_KNOCKDOWN` |
 
 ### Bell com armadura: Armadura da Aurora (21)
 
@@ -420,15 +440,15 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | 12 | 🔁 usa `BELL_RUN_BACK` |
 | `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | 12 | 🔁 usa `BELL_RUN_LEFT` |
 | `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | 12 | 🔁 usa `BELL_RUN_RIGHT` |
-| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
-| `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | 12 | 🔁 usa `BELL_HIGH_FIVE` |
-| `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | 12 | 🔁 usa `BELL_DANCE` |
-| `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | 12 | 🔁 usa `BELL_HAPPY` |
-| `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | 12 | 🔁 usa `BELL_IDLE_RIGHT` |
-| `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | 12 | 🔁 usa `BELL_JUMP` |
+| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_RIGHT` |
+| `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | 12 | 🔁 usa `BELL_ATTACK_STAR` |
+| `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | 12 | 🔁 usa `BELL_ATTACK_SPREAD` |
+| `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | 12 | 🔁 usa `BELL_SING` |
+| `BELL_AURORA_BLOCK` | Bell com Armadura da Aurora — escudo de luz | 12 | 🔁 usa `BELL_BLOCK` |
+| `BELL_AURORA_DODGE` | Bell com Armadura da Aurora — esquiva | 12 | 🔁 usa `BELL_DODGE` |
 | `BELL_AURORA_JUMP` | Bell com Armadura da Aurora — pulo | 12 | 🔁 usa `BELL_JUMP` |
-| `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | 12 | 🔁 usa `BELL_SCARED` |
-| `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | 12 | 🔁 usa `BELL_FALL` |
+| `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | 12 | 🔁 usa `BELL_HIT` |
+| `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | 12 | 🔁 usa `BELL_KNOCKDOWN` |
 
 ### Retratos dos moradores (caixa de diálogo)
 
@@ -704,13 +724,14 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 
 ## 10. Ordem sugerida
 
-1. **A Bell atacando de lado** (seção 3, Bell jogável): a estrela, o leque e a estrela no pulo; de frente e de costas já chegaram.
-2. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
-3. **Telas** (seção 7), começando pelo título e pela mochila.
-4. **Bell jogável e armaduras vestidas** (seção 3).
-5. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-6. **Chefes e moradores** da Parte 2 (seção 3).
-7. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
+1. **As árvores e o resto do cenário antigo mal recortado** (seção 2.2): primeiro as árvores, depois plantas, horta, construções e objetos.
+2. **A comemoração da Bell** com os 12 quadros no mesmo tamanho (seção 2.1).
+3. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
+4. **Telas** (seção 7), começando pelo título e pela mochila.
+5. **Bell jogável e armaduras vestidas** (seção 3).
+6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
+7. **Chefes e moradores** da Parte 2 (seção 3).
+8. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
 > 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.
 
