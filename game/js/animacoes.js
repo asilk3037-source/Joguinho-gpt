@@ -135,9 +135,9 @@ window.LB = window.LB || {};
   ]);
 
   grupo('Line e Bell juntas', [
-    ['LINE_BELL_WALK_TOGETHER', 'Andando lado a lado', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
-    ['LINE_BELL_WALK_HANDS', 'Andando de mãos dadas', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
-    ['LINE_BELL_RUN_TOGETHER', 'Correndo juntas', { dir: QUATRO, loop: true }],
+    ['LINE_BELL_WALK_TOGETHER', 'Andando lado a lado (itens 277 a 279)', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
+    ['LINE_BELL_WALK_HANDS', 'Andando de mãos dadas (itens 274, 280 e 281)', { dir: QUATRO, fps: 14, loop: true, quadros: 16 }],
+    ['LINE_BELL_RUN_TOGETHER', 'Correndo juntas de mãos dadas, a Line puxando (itens 282 a 284)', { dir: QUATRO, fps: 20, loop: true, quadros: 16 }],
     ['LINE_BELL_TALK', 'Conversando', { fps: 6, loop: true, face: 'F', quadros: 12 }],
     ['LINE_BELL_LAUGH', 'Rindo juntas', { loop: true }],
     ['LINE_BELL_EAT', 'Almoçando juntas', { fps: 6, loop: true, face: 'F', quadros: 24, nova: true }],
@@ -180,7 +180,7 @@ window.LB = window.LB || {};
     ['DRAGON_FINAL_HIT', 'Receber golpe final', { alt: 'DRAGON_HIT' }],
     ['DRAGON_FALL', 'Cair', { fps: 5, quadros: 3 }],
     ['DRAGON_DEFEATED', 'Derrotado', { loop: true, quadros: 1 }],
-    ['DRAGON_SLEEP', 'Dormir', { loop: true, fps: 1, quadros: 1, nova: true, alt: 'DRAGON_DEFEATED' }],
+    ['DRAGON_SLEEP', 'Dormindo enrolado (item 285, um quadro que respira)', { loop: true, fps: 1, quadros: 1, nova: true, respira: true, alt: 'DRAGON_DEFEATED' }],
     ['DRAGON_EYE_OPEN_END', 'Ressurgir no final', { fps: 2, quadros: 2 }],
   ]);
 
@@ -305,7 +305,7 @@ window.LB = window.LB || {};
   ]);
 
   grupo('Bell jogável (Parte 2)', [
-    ['BELL_COMBAT_IDLE', 'Bell em guarda, estrelas girando na mão', { dir: QUATRO, loop: true, fps: 8, quadros: 8, alt: 'BELL_IDLE', parte2: true }],
+    ['BELL_COMBAT_IDLE', 'Bell em guarda, estrelas girando na mão (itens 286 a 288)', { dir: QUATRO, loop: true, fps: 8, quadros: 8, alt: 'BELL_IDLE', parte2: true }],
     ['BELL_ATTACK_STAR', 'Bell atira uma estrela (braço à frente)', { fps: 14, quadros: 8, alt: 'BELL_HIGH_FIVE', parte2: true }],
     ['BELL_ATTACK_SPREAD', 'Bell gira e solta o leque de 3 estrelas de luz', { fps: 14, quadros: 10, alt: 'BELL_DANCE', parte2: true }],
     // Itens 253 a 256: a estrela e o leque de frente e de costas (a mira escolhe sozinha).
@@ -757,6 +757,8 @@ window.LB = window.LB || {};
     ctx.save();
     ctx.translate(x, y);
     if (r.flip) ctx.scale(-1, 1);
+    // `respira`: arte de um quadro só (o dragão dormindo) sobe e desce de leve, a partir dos pés.
+    if (inf.respira) { const t = LB.jogo ? LB.jogo.tempo : performance.now() / 1000; ctx.scale(1, 1 + 0.025 * Math.sin(t * 1.8)); }
     ctx.drawImage(img, quadro * s.cell, 0, s.cell, s.cell, -s.cell / 2 * esc, -chao * esc, s.cell * esc, s.cell * esc);
     ctx.restore();
     return true;

@@ -190,6 +190,38 @@ teste('prólogo: o BK acontece na mesa do BK (frente a frente, depois juntinhas)
   afirmar(!r.depois, 'as cadeiras voltam depois do lanche');
 });
 
+teste('duas juntas: lado a lado no shopping, de mãos dadas no túnel e correndo de mãos dadas na fazenda', async (h) => {
+  const andou = async (prep, base) => h.ev(async ([prep, base]) => {
+    const j = LB.jogo; document.querySelector('#menu').classList.add('oculto');
+    j.flags = {}; j.encontro = { etapa: prep === 'shopping' ? 'conversa' : 'intro', placar: '038' }; j.iniciarArea(prep, null, true); j.fade = 0;
+    j.iniciarCena(prep === 'shopping' ? LB.HISTORIA.encontroConversa : LB.HISTORIA.encontroTunel);
+    const xs = [];
+    for (let i = 0; i < 400 && j.cena; i++) {
+      if (j.duo && j.duo.anim.base === base) xs.push([j.duo.x, j.duo.anim.estado(j.duo.dir, 1).r.codigo]);
+      else if (xs.length) break;
+      if (!j.duo || j.duo.anim.base !== base) LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 40));
+    }
+    return xs;
+  }, [prep, base]);
+  const shop = await andou('shopping', 'LINE_BELL_WALK_TOGETHER');
+  afirmar(shop.length > 5 && shop[shop.length - 1][0] > shop[0][0], 'no shopping as duas vão lado a lado até a mesa do BK: ' + JSON.stringify(shop.slice(-1)));
+  igual(shop[0][1], 'LINE_BELL_WALK_TOGETHER_RIGHT', 'arte nova de lado (item 279)');
+  const tunel = await andou('tunel', 'LINE_BELL_WALK_HANDS');
+  afirmar(tunel.length > 5 && tunel[tunel.length - 1][0] > tunel[0][0], 'no túnel elas entram de mãos dadas');
+  igual(tunel[0][1], 'LINE_BELL_WALK_HANDS_RIGHT', 'arte nova de mãos dadas para a direita (item 281)');
+  // Fazenda à tarde: de mãos dadas dá para correr (a Line puxando a Bell).
+  await h.ev(() => { const j = LB.jogo; j.flags = { encontroFeito: true, manhaVista: true, etapa: 'tarde' }; j.iniciarArea('fazenda', null, true); j.iniciarCapitulo(); for (let k = 0; k < 5 && j.cena; k++) j.terminarCena(); j.comecarTarde(); });
+  await h.espera(300);
+  await h.p.keyboard.down('ArrowLeft'); await h.espera(400);
+  const andando = await h.ev(() => { const l = LB.jogo.line; return [l.modoDuo, l.correndo, l.animDuo && l.animDuo.base]; });
+  await h.p.keyboard.down('ShiftLeft'); await h.espera(400);
+  const correndo = await h.ev(() => { const l = LB.jogo.line; return [l.correndo, l.animDuo && l.animDuo.base, l.animDuo && l.animDuo.estado(l.dir, l.lado).r.codigo]; });
+  await h.p.keyboard.up('ShiftLeft'); await h.p.keyboard.up('ArrowLeft');
+  igual(andando, [true, false, 'LINE_BELL_WALK_HANDS'], 'andando de mãos dadas');
+  igual(correndo, [true, 'LINE_BELL_RUN_TOGETHER', 'LINE_BELL_RUN_TOGETHER_LEFT'], 'correndo juntas (item 283)');
+});
+
 teste('prólogo: playground montado em peças e o soco vira 038', async (h) => {
   await h.ev(() => { const j = LB.jogo; document.querySelector('#menu').classList.add('oculto'); j.flags = {}; j.encontro = { etapa: 'intro', placar: '000' }; j.iniciarArea('playground', null, true); j.fade = 0; j.iniciarCena(LB.HISTORIA.encontroPlayground); });
   for (let i = 0; i < 80 && (await h.ev(() => LB.jogo.encontro.etapa)) !== 'soco'; i++) await h.espera(150);
@@ -1213,6 +1245,23 @@ teste('parte 2: junção desfeita termina com o toca aqui das duas (item 271)', 
   afirmar(r.toca, 'as duas batem as mãos depois de desfazer a junção');
   afirmar(r.companheira !== true, 'a companheira some enquanto o duo aparece');
   afirmar(r.fim && r.line, 'a cena termina e a heroína volta');
+});
+
+teste('parte 2: a Bell em guarda nas quatro direções (itens 286 a 288) e o dragão dormindo (item 285)', async (h) => {
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  const r = await h.ev(() => {
+    const j = LB.jogo; j.inimigos = []; LB.herois.trocar(j);
+    const l = j.line, vistos = {};
+    for (const dir of ['FRONT', 'BACK', 'LEFT', 'RIGHT']) {
+      l.voltarLivre(); l.armada = true; l.semCombate = 0; l.dir = dir; l.lado = dir === 'LEFT' ? -1 : 1;
+      const st = l.estadoAnim(); vistos[dir] = st.r.codigo + (st.r.flip ? '*' : '');
+    }
+    const s = window.SPRITES.DRAGON_SLEEP;
+    return { heroina: LB.herois.ativa(j), vistos, dragao: s && [s.item, s.mundo, LB.info('DRAGON_SLEEP').respira] };
+  });
+  igual(r.heroina, 'bell', 'a Bell é a heroína');
+  igual(r.vistos, { FRONT: 'BELL_COMBAT_IDLE_FRONT', BACK: 'BELL_COMBAT_IDLE_BACK', LEFT: 'BELL_COMBAT_IDLE_LEFT', RIGHT: 'BELL_COMBAT_IDLE_LEFT*' }, 'guarda nas quatro direções (a da direita é a da esquerda espelhada)');
+  igual(r.dragao, ['LINE_BELL_ITEM_285.html', 215, true], 'dragão dormindo do item 285, no tamanho dos outros e respirando');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {

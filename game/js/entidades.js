@@ -344,8 +344,9 @@
       const movendo = eixo.x !== 0 || eixo.y !== 0;
 
       if (this.modoDuo || this.modoPasseio) {
-        // De mãos dadas ou no primeiro encontro: só anda (sem correr) e interage.
-        eixo.correr = false;
+        // De mãos dadas dá para andar ou correr juntas (a Line puxando a Bell); no primeiro encontro
+        // a Line só anda. Nos dois casos ela só interage (sem golpes nem pulo).
+        if (this.modoPasseio) eixo.correr = false;
         if (this.travada) { eixo.x = 0; eixo.y = 0; }
         if (controlavel && (E.apertou('interagir') || E.apertou('atacar'))) jogo.interagir(this);
       } else if (controlavel) {
@@ -661,7 +662,9 @@
       if (!this.visivel) return;
       if (this.invul > 0 && this.estado === 'livre' && Math.floor(jogo.tempo * 20) % 2) g.globalAlpha = 0.45;
       if (this.modoDuo) {
-        if (!this.animDuo) this.animDuo = new LB.Animador('LINE_BELL_WALK_HANDS');
+        const duo = this.correndo ? 'LINE_BELL_RUN_TOGETHER' : 'LINE_BELL_WALK_HANDS';
+        if (!this.animDuo) this.animDuo = new LB.Animador(duo);
+        this.animDuo.tocar(duo);
         this.animDuo.t = this.moviaAntes ? this.animDuo.t + (jogo.tempo - (this.tDuo || jogo.tempo)) : 0;
         this.tDuo = jogo.tempo;
         const sd = this.animDuo.estado(this.dir, this.lado);

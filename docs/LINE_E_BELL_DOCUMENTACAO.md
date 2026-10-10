@@ -20,6 +20,8 @@
 
 > ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.
 
+> 🚶‍♀️ **Caminhadas, corridas e combate (itens 277 a 288):** as duas **andando lado a lado** (de frente e para os dois lados), **de mãos dadas** para a esquerda e para a direita e **correndo juntas** com a Line puxando a Bell, mais a **Bell em guarda** (de frente, de costas e de lado) e o **dragão dormindo** enrolado. No shopping, a ida até a mesa do BK agora é das duas lado a lado (as mãos dadas só vêm na saída), e no túnel elas entram de mãos dadas. No passeio até o lago, segurar a corrida faz as duas **correrem de mãos dadas** (antes de mãos dadas só dava para andar). A Bell jogável entra em guarda com a arte própria, e o dragão dormindo (no covil, na abertura da Parte 2, no epílogo e nos interlúdios) respira devagar.
+
 > ✅ **Ajustes finais (itens 273 a 276):** a **Bell feliz** (12 quadros, pulando de alegria), as duas **de mãos dadas andando de frente** no traço novo (a arte pequena do laboratório saiu), a **Bell pendurada no dragão** de braços para cima, sem outro dragão desenhado junto (agora o rapto usa essa arte, com as mãos dela nas garras do dragão do jogo) e a **máquina de soco com o placar 000** desenhada, igual à de 038. Com isso, todas as animações que precisavam ser refeitas chegaram; falta só a Bell atacando de lado (pendências, seção 3).
 
 > 💞 **Cenas do casal refeitas e as duas frente a frente no BK (itens 265 a 272):** de mãos dadas no pôr do sol, a Line girando a Bell, a bitoquinha, a comemoração do almoço, o toca aqui com brilho e a **Line feliz** chegaram com 12 quadros, do tamanho da Line e da Bell paradas (a dança e a bitoquinha perderam os aumentos que a arte antiga precisava, e a Line feliz voltou para o jogo nos títulos de espada, magia, coração extra e baú). No shopping, o lanche começa com as duas **frente a frente** na mesa do BK, cada uma na sua cadeira (itens 265 e 266); depois da declaração, elas aparecem **juntinhas** do mesmo lado (item 261). Na Parte 2, cada **junção desfeita** termina com o **toca aqui** das duas. A dança do pôr do sol e do final passou a durar dois giros inteiros.
@@ -75,7 +77,7 @@
 > 🧙 **Itens 124 a 127 chegaram:** o **Mago** animado (parado, falando e fazendo magia), o **Espírito das Ruínas**, que agora aparece de verdade no altar (surgindo, flutuando e falando), e o **Theo** parado e andando nas 4 direções, alerta e curioso. O Theo está todo com arte nova.
 > 📐 **Dimensão de cada cenário:** tabela e gabarito (planta) de cada fase na seção 22.12.
 > 🎨 **Itens 108 a 137 chegaram:** vitória, magias, andar e correr em combate e pulo para a esquerda da Line; as duas comendo, beijo, toca aqui e costas das andanças; o dragão correndo; o **Guardião de Pedra completo**; o **fogo-fátuo** (a mesma arte colorida por elemento: azul, laranja, verde e branco) e a **sombra**; o **Theo**, a **galinha branca**, o **porco**, o **cavalo** e a **ovelha** com 12 quadros por animação, no mesmo tamanho dos bichos antigos.
-> 🔁 **Para reenviar:** `LINE_BELL_WALK_TOGETHER`, `LINE_BELL_WALK_HANDS` e `LINE_BELL_RUN_TOGETHER` de frente e de lado (itens 110 a 112) vieram com todos os quadros iguais, parados, e o jogo segue com as versões que se mexem; `DRAGON_SLEEP` (item 118) não mostra o dragão dormindo; `LINE_BELL_DANCE` (item 113) perde a Line em alguns quadros; o item 108 veio de novo com 3 quadros vazios.
+> 🔁 **Para reenviar:** o item 108 veio de novo com 3 quadros vazios. (As caminhadas e corridas das duas, o dragão dormindo e a dança, que tinham chegado erradas nos itens 110 a 113 e 118, já chegaram certas nos itens 268 e 277 a 285.)
 > 🎬 **Itens 77 a 80 chegaram:** as duas sentando juntas, sentadas paradas e a Bell com a cabeça no ombro da Line (no pôr do sol do epílogo, na proporção certa: sentadas, com uns 75% da altura de pé), e o **dragão parado e piscando** de verdade (saiu o quadro provisório do rugido).
 > 🐔 **Arte nova (itens 132 a 134):** galinha marrom completa (9 animações), pintinho (parado, andando e correndo) e vaca (parada, andando, correndo e comendo), com 12 quadros cada, no mesmo tamanho dos bichos antigos.
 > 📐 **Tamanho de cada imagem** pensando na tela cheia: tabela na seção 22.0.
@@ -177,7 +179,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **572**: 280 com arte (temporária), 171 usando uma substituta, 121 desenhadas no código ou sem imagem |
+| Animações catalogadas | **572**: 292 com arte (temporária), 159 usando uma substituta, 121 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -958,14 +960,14 @@ O prólogo é a história de como a Line e a Bell se conheceram. Ele vem **antes
 | 1 | Minas Shopping | Título *O primeiro encontro* e *Minas Shopping · 09/05/2024*. A Line admira a Bell de longe: “puxa ela é tão linda”. | não | `LINE_IDLE` (de costas), `LINE_ADMIRE`, `BELL_WAIT` | normal |
 | 2 | Minas Shopping | A Line anda até a Bell. Perto dela aparece o botão **Falar com a Bell**. | sim, só andar | `LINE_WALK_*`, `BELL_WAIT` | segue a Line |
 | 3 | Minas Shopping | A Line se aproxima e as duas conversam: shopping grande, “Você tá atrasada”, “oq vamos comer?”, “BK.”. | não | `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG` | zoom 1,6× |
-| 4 | Minas Shopping (mesa) | As duas andam até a mesa do BK e sentam frente a frente, comendo. “você parece estar tímida” / “é que você é muito linda”. Depois aparecem juntinhas, do mesmo lado da mesa. | não | `LINE_WALK_*`, `BELL_WALK_*`, `LINE_SIT_CHAIR_EAT`, `BELL_SIT_CHAIR_EAT`, `LINE_BELL_BK` | zoom na mesa |
+| 4 | Minas Shopping (mesa) | As duas andam lado a lado até a mesa do BK e sentam frente a frente, comendo. “você parece estar tímida” / “é que você é muito linda”. Depois aparecem juntinhas, do mesmo lado da mesa. | não | `LINE_BELL_WALK_TOGETHER`, `LINE_SIT_CHAIR_EAT`, `BELL_SIT_CHAIR_EAT`, `LINE_BELL_BK` | zoom na mesa |
 | 5 | Minas Shopping | A Bell segura a mão da Line e as duas saem juntas do shopping. | não | `LINE_BELL_MEET`, `LINE_BELL_WALK_HANDS` | volta ao normal |
 | — | transição | Brilho rosa e a tela escurece. | — | — | — |
 | 6 | Playground | As duas chegam. A Line para na máquina de soco, a Bell fica ao lado. Aparece o botão **Tentar!**. | só o botão | `LINE_WALK_*`, `BELL_WALK_*`, `LINE_IDLE`, `BELL_IDLE` | normal |
 | 7 | Playground | A Line soca: o placar vai de 000 para **038**, a tela treme e a Bell gargalha. “HAHAHAHA! Você viu isso?” / “Eu não consegui bater direito… aquela coisa estava estragada.” | não | `LINE_PUNCH_MACHINE`, `BELL_LAUGH_AT_LINE` | tremor no impacto |
 | 8 | Playground | Narradora: elas saem com a barriga doendo de tanto rir. | não | `LINE_WALK_*`, `BELL_WALK_*` | normal |
 | — | transição | Brilho rosa e a tela escurece. | — | — | — |
-| 9 | Túnel | As duas atravessam o túnel e se beijam, com corações subindo. “Bell & Line ♥”. | não | `LINE_WALK_RIGHT`, `BELL_WALK_RIGHT`, `LINE_BELL_TUNNEL_KISS` | zoom 1,6× |
+| 9 | Túnel | As duas atravessam o túnel de mãos dadas e se beijam, com corações subindo. “Bell & Line ♥”. | não | `LINE_BELL_WALK_HANDS`, `LINE_BELL_TUNNEL_KISS` | zoom 1,6× |
 | 10 | Túnel → fazenda | Narradora fecha a história. A tela escurece: “O tempo passou... e o sonho das duas virou uma fazendinha…”. Começa a manhã na fazenda. | não | — | escurece |
 
 ### 5.2 Ambientação de cada lugar
@@ -1869,7 +1871,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 572 animações. ✅ 280 com arte temporária, 🔁 171 com substituta e ✏️ 121 desenhadas no código.
+**Resumo:** 572 animações. ✅ 292 com arte temporária, 🔁 159 com substituta e ✏️ 121 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1878,14 +1880,14 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Line — combate | 39 | 39 | 0 | 0 |
 | Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
-| Line e Bell juntas | 26 | 18 | 8 | 0 |
-| Dragão | 27 | 26 | 1 | 0 |
+| Line e Bell juntas | 26 | 26 | 0 | 0 |
+| Dragão | 27 | 27 | 0 | 0 |
 | Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
-| Bell jogável (Parte 2) | 22 | 4 | 18 | 0 |
+| Bell jogável (Parte 2) | 22 | 7 | 15 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
@@ -2058,18 +2060,18 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
-| `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado | 4 | sim | ✅ temporária | LINE_BELL_ITEM_110 |
-| `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
-| `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 16 | sim | 🔁 usa `LINE_BELL_WALK_TOGETHER` |  |
-| `LINE_BELL_WALK_HANDS_FRONT` | Andando de mãos dadas | 12 | sim | ✅ temporária | LINE_BELL_ITEM_274 |
-| `LINE_BELL_WALK_HANDS_BACK` | Andando de mãos dadas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_111 |
-| `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 16 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
-| `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 16 | sim | 🔁 usa `LINE_BELL_WALK_HANDS` |  |
-| `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
-| `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas | 4 | sim | ✅ temporária | LINE_BELL_ITEM_112 |
-| `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
-| `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | 12 | sim | 🔁 usa `LINE_BELL_RUN_TOGETHER` |  |
+| `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado (itens 277 a 279) | 16 | sim | ✅ temporária | LINE_BELL_ITEM_277 |
+| `LINE_BELL_WALK_TOGETHER_BACK` | Andando lado a lado (itens 277 a 279) | 4 | sim | ✅ temporária | LINE_BELL_ITEM_110 |
+| `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado (itens 277 a 279) | 16 | sim | ✅ temporária | LINE_BELL_ITEM_278 |
+| `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado (itens 277 a 279) | 16 | sim | ✅ temporária | LINE_BELL_ITEM_279 |
+| `LINE_BELL_WALK_HANDS_FRONT` | Andando de mãos dadas (itens 274, 280 e 281) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_274 |
+| `LINE_BELL_WALK_HANDS_BACK` | Andando de mãos dadas (itens 274, 280 e 281) | 4 | sim | ✅ temporária | LINE_BELL_ITEM_111 |
+| `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas (itens 274, 280 e 281) | 16 | sim | ✅ temporária | LINE_BELL_ITEM_280 |
+| `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas (itens 274, 280 e 281) | 16 | sim | ✅ temporária | LINE_BELL_ITEM_281 |
+| `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas de mãos dadas, a Line puxando (itens 282 a 284) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_282 |
+| `LINE_BELL_RUN_TOGETHER_BACK` | Correndo juntas de mãos dadas, a Line puxando (itens 282 a 284) | 4 | sim | ✅ temporária | LINE_BELL_ITEM_112 |
+| `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas de mãos dadas, a Line puxando (itens 282 a 284) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_283 |
+| `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas de mãos dadas, a Line puxando (itens 282 a 284) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_284 |
 | `LINE_BELL_TALK` | Conversando | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
 | `LINE_BELL_LAUGH` | Rindo juntas | 3 | sim | ✅ temporária | LINE_BELL_ITEM_71 |
 | `LINE_BELL_EAT` | Almoçando juntas *(sugestão nova)* | 6 | sim | ✅ temporária | LINE_BELL_ITEM_113 |
@@ -2114,7 +2116,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `DRAGON_FINAL_HIT` | Receber golpe final | 6 |  | ✅ temporária | LINE_BELL_ITEM_95 |
 | `DRAGON_FALL` | Cair | 5 |  | ✅ temporária | LINE_BELL_ITEM_96 |
 | `DRAGON_DEFEATED` | Derrotado | 2 | sim | ✅ temporária | LINE_BELL_ITEM_96 |
-| `DRAGON_SLEEP` | Dormir *(sugestão nova)* | 1 | sim | 🔁 usa `DRAGON_DEFEATED` |  |
+| `DRAGON_SLEEP` | Dormindo enrolado (item 285, um quadro que respira) *(sugestão nova)* | 1 | sim | ✅ temporária | LINE_BELL_ITEM_285 |
 | `DRAGON_EYE_OPEN_END` | Ressurgir no final | 6 |  | ✅ temporária | LINE_BELL_ITEM_97 |
 
 ### 10.8 Magia e criaturas (novo)
@@ -2250,10 +2252,10 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_FRONT` |  |
-| `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_BACK` |  |
-| `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_LEFT` |  |
-| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão | 8 | sim | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_286 |
+| `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_287 |
+| `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_288 |
+| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | sim | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
 | `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | 8 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
 | `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | 10 |  | 🔁 usa `BELL_DANCE` |  |
 | `BELL_ATTACK_STAR_FRONT` | Bell atira estrela para baixo | 8 |  | ✅ temporária | LINE_BELL_ITEM_253 |
@@ -2454,7 +2456,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 |---|---|---:|:---:|---|---|
 | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | 6 | sim | 🔁 usa `DRAGON_IDLE` |  |
 | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | 8 |  | 🔁 usa `DRAGON_IDLE` |  |
-| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | 4 | sim | 🔁 usa `DRAGON_DEFEATED` |  |
+| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | 4 | sim | 🔁 usa `DRAGON_SLEEP` |  |
 
 ### 10.24 Line com armadura: Túnica Acolchoada
 
@@ -2556,7 +2558,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
 | `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
 | `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
 | `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
 | `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
 | `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
@@ -2582,7 +2584,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
 | `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
 | `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
 | `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
 | `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
 | `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
@@ -2608,7 +2610,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_BACK` |  |
 | `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_LEFT` |  |
 | `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | 12 |  | 🔁 usa `BELL_RUN_RIGHT` |  |
-| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 |  | 🔁 usa `BELL_IDLE_RIGHT` |  |
+| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 |  | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |  |
 | `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | 12 |  | 🔁 usa `BELL_HIGH_FIVE` |  |
 | `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | 12 |  | 🔁 usa `BELL_DANCE` |  |
 | `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | 12 |  | 🔁 usa `BELL_HAPPY` |  |
@@ -3350,14 +3352,14 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Line — combate | 39 | 39 | 0 | 0 |
 | Line — emoções | 10 | 10 | 0 | 0 |
 | Bell | 34 | 34 | 0 | 0 |
-| Line e Bell juntas | 26 | 18 | 8 | 0 |
-| Dragão | 27 | 26 | 1 | 0 |
+| Line e Bell juntas | 26 | 26 | 0 | 0 |
+| Dragão | 27 | 27 | 0 | 0 |
 | Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
-| Bell jogável (Parte 2) | 22 | 4 | 18 | 0 |
+| Bell jogável (Parte 2) | 22 | 7 | 15 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
@@ -3375,7 +3377,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **572** | **280** | **171** | **121** |
+| **Total** | **572** | **292** | **159** | **121** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3675,18 +3677,15 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 280 de 572 animações com arte · 171 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 292 de 572 animações com arte · 159 usando uma substituta · 121 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
 - **Item 96**: chegou com 2 imagem(ns) vazia(s) em `DRAGON_FALL`, `DRAGON_DEFEATED`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 106**: chegou com 1 imagem(ns) vazia(s) em `BELL_LAUGH_AT_LINE`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 108**: chegou com 3 imagem(ns) vazia(s) em `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`. As animações funcionam sem esses quadros, mas ficam incompletas.
-- **Item 110**: `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.3) até chegar a arte certa.
-- **Item 112**: `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.3) até chegar a arte certa.
 - **Item 114**: `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK` estão no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
 - **Item 115**: `LINE_COMBAT_RUN_BACK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
-- **Item 118**: `DRAGON_SLEEP` foi recusado: não é o dragão dormindo (poses de voo). O jogo usa a substituta (seção 23.3) até chegar a arte certa.
 - **Item 119**: `GOLEM_WALK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
 - **Item 137**: `SHEEP_IDLE` foi recusado: reenvio com rascunho simples (bolinhas e patas de palito); fica a ovelha anterior. O jogo segue com a versão anterior.
 - **Pernas paradas:** `CHICKEN_RUN`, `CHICKEN_WALK`, `HEN_BROWN_RUN`, `HEN_BROWN_WALK` chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.
@@ -3755,19 +3754,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 
 | Grupo | Código | O que é | Hoje usa |
 |---|---|---|---|
-| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | `LINE_BELL_WALK_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
-| Line e Bell juntas | `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | `LINE_BELL_WALK_HANDS` |
-| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
-| Line e Bell juntas | `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | `LINE_BELL_RUN_TOGETHER` |
-| Dragão | `DRAGON_SLEEP` | Dormir | `DRAGON_DEFEATED` |
-| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_FRONT` |
-| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_BACK` |
-| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_LEFT` |
-| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão | `BELL_IDLE_RIGHT` |
+| Bell jogável (Parte 2) | `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | `BELL_COMBAT_IDLE_LEFT` |
 | Bell jogável (Parte 2) | `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | `BELL_HIGH_FIVE` |
 | Bell jogável (Parte 2) | `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | `BELL_DANCE` |
 | Bell jogável (Parte 2) | `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) | `BELL_JUMP` |
@@ -3914,7 +3901,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Moradores (todos, incluindo os da Parte 2) | `PEDRO_RUN` | Pedrinho — correndo pra lá e pra cá | desenho no código |
 | Dragão amigo (Parte 2) | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | `DRAGON_IDLE` |
 | Dragão amigo (Parte 2) | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | `DRAGON_IDLE` |
-| Dragão amigo (Parte 2) | `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | `DRAGON_DEFEATED` |
+| Dragão amigo (Parte 2) | `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | `DRAGON_SLEEP` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_FRONT` | Line com Túnica Acolchoada — parada | `LINE_IDLE_FRONT` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_BACK` | Line com Túnica Acolchoada — parada | `LINE_IDLE_BACK` |
 | Line com armadura: Túnica Acolchoada | `LINE_TUNICA_IDLE_LEFT` | Line com Túnica Acolchoada — parada | `LINE_IDLE_LEFT` |
@@ -3996,7 +3983,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | `BELL_RUN_BACK` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | `BELL_RUN_LEFT` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | `BELL_RUN_RIGHT` |
-| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | `BELL_COMBAT_IDLE_LEFT` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | `BELL_HIGH_FIVE` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | `BELL_DANCE` |
 | Bell com armadura: Vestido Reforçado | `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | `BELL_HAPPY` |
@@ -4017,7 +4004,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | `BELL_RUN_BACK` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | `BELL_RUN_LEFT` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | `BELL_RUN_RIGHT` |
-| Bell com armadura: Manto Estelar | `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Manto Estelar | `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | `BELL_COMBAT_IDLE_LEFT` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | `BELL_HIGH_FIVE` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | `BELL_DANCE` |
 | Bell com armadura: Manto Estelar | `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | `BELL_HAPPY` |
@@ -4038,7 +4025,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | `BELL_RUN_BACK` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | `BELL_RUN_LEFT` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | `BELL_RUN_RIGHT` |
-| Bell com armadura: Armadura da Aurora | `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | `BELL_IDLE_RIGHT` |
+| Bell com armadura: Armadura da Aurora | `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | `BELL_COMBAT_IDLE_LEFT` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | `BELL_HIGH_FIVE` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | `BELL_DANCE` |
 | Bell com armadura: Armadura da Aurora | `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | `BELL_HAPPY` |
@@ -4175,15 +4162,15 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 107 | `LINE_BELL_ITEM_107.html` | 4,28 MB | `LINE_BELL_TUNNEL_KISS` |
 | 108 | `LINE_BELL_ITEM_108.html` | 5,07 MB | `BELL_LAUGH`, `BELL_CURTSY`, `BELL_HIGH_FIVE`, `BELL_DANCE` ⚠️ 3 imagem(ns) vazia(s): reenviar |
 | 109 | `LINE_BELL_ITEM_109.html` | 0,34 MB | `LINE_VICTORY` |
-| 110 | `LINE_BELL_ITEM_110.html` | 7,50 MB | `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_BACK`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` ⚠️ `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` parado(s): reenviar |
+| 110 | `LINE_BELL_ITEM_110.html` | 7,50 MB | `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_BACK`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` |
 | 111 | `LINE_BELL_ITEM_111.html` | 7,31 MB | `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_BACK`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` |
-| 112 | `LINE_BELL_ITEM_112.html` | 7,30 MB | `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_BACK`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` ⚠️ `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` parado(s): reenviar |
+| 112 | `LINE_BELL_ITEM_112.html` | 7,30 MB | `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_BACK`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` |
 | 113 | `LINE_BELL_ITEM_113.html` | 10,71 MB | `LINE_BELL_EAT`, `LINE_BELL_KISS`, `LINE_BELL_HIGH_FIVE`, `LINE_BELL_DANCE` |
 | 114 | `LINE_BELL_ITEM_114.html` | 6,35 MB | `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK`, `LINE_COMBAT_WALK_LEFT`, `LINE_COMBAT_WALK_RIGHT` ↻ `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK` com pouco movimento |
 | 115 | `LINE_BELL_ITEM_115.html` | 7,87 MB | `LINE_COMBAT_RUN_FRONT`, `LINE_COMBAT_RUN_BACK`, `LINE_COMBAT_RUN_LEFT`, `LINE_COMBAT_RUN_RIGHT` ↻ `LINE_COMBAT_RUN_BACK` com pouco movimento |
 | 116 | `LINE_BELL_ITEM_116.html` | 1,36 MB | `LINE_CAST_CHARGE`, `LINE_CAST_SPELL`, `LINE_CAST_STARS` |
 | 117 | `LINE_BELL_ITEM_117.html` | 7,02 MB | `LINE_JUMP_LEFT`, `LINE_LAND_LEFT` |
-| 118 | `LINE_BELL_ITEM_118.html` | 2,76 MB | `DRAGON_RUN`, `DRAGON_SLEEP` ⚠️ `DRAGON_SLEEP` recusado: reenviar |
+| 118 | `LINE_BELL_ITEM_118.html` | 2,76 MB | `DRAGON_RUN`, `DRAGON_SLEEP` |
 | 119 | `LINE_BELL_ITEM_119.html` | 5,38 MB | `GOLEM_SLEEP`, `GOLEM_IDLE`, `GOLEM_WALK` ↻ `GOLEM_WALK` com pouco movimento |
 | 120 | `LINE_BELL_ITEM_120.html` | 5,51 MB | `GOLEM_SLAM`, `GOLEM_THROW` |
 | 121 | `LINE_BELL_ITEM_121.html` | 3,97 MB | `GOLEM_STUNNED`, `GOLEM_DEATH` |
@@ -4330,6 +4317,18 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 274 | `LINE_BELL_ITEM_274.html` | 3,51 MB | `LINE_BELL_WALK_HANDS_FRONT` |
 | 275 | `LINE_BELL_ITEM_275.html` | 2,60 MB | `BELL_DRAGON_CARRIED` |
 | 276 | `LINE_BELL_ITEM_276.html` | 0,88 MB | `PLAYGROUND_MAQUINA_SOCO_000` 🏙️ cenário (máquina de soco com o placar 000), fora do recorte de animação |
+| 277 | `LINE_BELL_ITEM_277.html` | 4,34 MB | `LINE_BELL_WALK_TOGETHER_FRONT` |
+| 278 | `LINE_BELL_ITEM_278.html` | 3,46 MB | `LINE_BELL_WALK_TOGETHER_LEFT` |
+| 279 | `LINE_BELL_ITEM_279.html` | 3,42 MB | `LINE_BELL_WALK_TOGETHER_RIGHT` |
+| 280 | `LINE_BELL_ITEM_280.html` | 3,79 MB | `LINE_BELL_WALK_HANDS_LEFT` |
+| 281 | `LINE_BELL_ITEM_281.html` | 3,28 MB | `LINE_BELL_WALK_HANDS_RIGHT` |
+| 282 | `LINE_BELL_ITEM_282.html` | 3,69 MB | `LINE_BELL_RUN_TOGETHER_FRONT` |
+| 283 | `LINE_BELL_ITEM_283.html` | 2,97 MB | `LINE_BELL_RUN_TOGETHER_LEFT` |
+| 284 | `LINE_BELL_ITEM_284.html` | 2,98 MB | `LINE_BELL_RUN_TOGETHER_RIGHT` |
+| 285 | `LINE_BELL_ITEM_285.html` | 1,27 MB | `DRAGON_SLEEP` |
+| 286 | `LINE_BELL_ITEM_286.html` | 2,78 MB | `BELL_COMBAT_IDLE_FRONT` |
+| 287 | `LINE_BELL_ITEM_287.html` | 2,58 MB | `BELL_COMBAT_IDLE_BACK` |
+| 288 | `LINE_BELL_ITEM_288.html` | 2,54 MB | `BELL_COMBAT_IDLE_LEFT` |
 
 Itens que ainda não chegaram: 153, 240.
 

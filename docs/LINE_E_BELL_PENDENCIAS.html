@@ -11,7 +11,7 @@ th,td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}th{backgro
 code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:.85em}
 em{color:var(--mut)}
 </style></head><body><main><h1 id="line-bell-o-que-falta-pendencias-de-arte">Line &amp; Bell — o que falta (pendências de arte)</h1>
-<p><em>Atualizado em 09/10/2026. Este documento lista só o que </em><em>falta fazer ou refazer</em><em>. O que já está pronto fica na documentação completa (<code>LINE_E_BELL_DOCUMENTACAO.md</code>). As regras da seção 1 valem para tudo e não mudam.</em></p>
+<p><em>Atualizado em 10/10/2026. Este documento lista só o que </em><em>falta fazer ou refazer</em><em>. O que já está pronto fica na documentação completa (<code>LINE_E_BELL_DOCUMENTACAO.md</code>). As regras da seção 1 valem para tudo e não mudam.</em></p>
 <p><strong>Como usar:</strong> cada linha tem o <strong>código</strong> exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.</p>
 <h2 id="resumo-todas-as-artes-que-faltam">Resumo: todas as artes que faltam</h2>
 <p><em>Contam só as linhas que ainda faltam (as marcadas com ✅ já chegaram).</em></p>
@@ -32,7 +32,7 @@ em{color:var(--mut)}
 <tr>
 <td>3. Animações pendentes</td>
 <td>animações novas (inclui a Bell jogável, os chefes, os <strong>moradores</strong> com os retratos do diálogo e as <strong>armaduras vestidas</strong>)</td>
-<td><strong>302</strong></td>
+<td><strong>290</strong></td>
 </tr>
 <tr>
 <td>4. Armaduras e itens</td>
@@ -103,7 +103,7 @@ em{color:var(--mut)}
 <p>Falta só a <strong>Bell atacando de lado</strong>: a estrela (<code>BELL_ATTACK_STAR</code>), o leque (<code>BELL_ATTACK_SPREAD</code>) e a estrela no pulo (<code>BELL_ATTACK_AIR</code>), com os mesmos quadros e o mesmo tempo das de frente e de costas. Hoje, de lado, ela usa o “toca aqui” e a dança no lugar. Como ainda não existem, estão na seção 3, no grupo da Bell jogável.</p>
 <h2 id="3-animacoes-pendentes-ainda-nao-existem">3. Animações pendentes (ainda não existem)</h2>
 <p>Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte chegar.</p>
-<h3 id="line-e-bell-juntas-8">Line e Bell juntas (8)</h3>
+<h3 id="bell-jogavel-parte-2-15">Bell jogável (Parte 2) (15)</h3>
 <table>
 <thead>
 <tr>
@@ -114,109 +114,11 @@ em{color:var(--mut)}
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>LINE_BELL_WALK_TOGETHER_FRONT</code></td>
-<td>Andando lado a lado</td>
-<td>16</td>
-<td>🔁 usa <code>LINE_BELL_WALK_TOGETHER</code></td>
-</tr>
-<tr>
-<td><code>LINE_BELL_WALK_TOGETHER_LEFT</code></td>
-<td>Andando lado a lado</td>
-<td>16</td>
-<td>🔁 usa <code>LINE_BELL_WALK_TOGETHER</code></td>
-</tr>
-<tr>
-<td><code>LINE_BELL_WALK_TOGETHER_RIGHT</code></td>
-<td>Andando lado a lado</td>
-<td>16</td>
-<td>🔁 usa <code>LINE_BELL_WALK_TOGETHER</code></td>
-</tr>
-<tr>
-<td><code>LINE_BELL_WALK_HANDS_LEFT</code></td>
-<td>Andando de mãos dadas</td>
-<td>16</td>
-<td>🔁 usa <code>LINE_BELL_WALK_HANDS</code></td>
-</tr>
-<tr>
-<td><code>LINE_BELL_WALK_HANDS_RIGHT</code></td>
-<td>Andando de mãos dadas</td>
-<td>16</td>
-<td>🔁 usa <code>LINE_BELL_WALK_HANDS</code></td>
-</tr>
-<tr>
-<td><code>LINE_BELL_RUN_TOGETHER_FRONT</code></td>
-<td>Correndo juntas</td>
-<td>12</td>
-<td>🔁 usa <code>LINE_BELL_RUN_TOGETHER</code></td>
-</tr>
-<tr>
-<td><code>LINE_BELL_RUN_TOGETHER_LEFT</code></td>
-<td>Correndo juntas</td>
-<td>12</td>
-<td>🔁 usa <code>LINE_BELL_RUN_TOGETHER</code></td>
-</tr>
-<tr>
-<td><code>LINE_BELL_RUN_TOGETHER_RIGHT</code></td>
-<td>Correndo juntas</td>
-<td>12</td>
-<td>🔁 usa <code>LINE_BELL_RUN_TOGETHER</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="dragao-1">Dragão (1)</h3>
-<table>
-<thead>
-<tr>
-<th>Código</th>
-<th>O que mostra</th>
-<th>Quadros</th>
-<th>Situação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DRAGON_SLEEP</code></td>
-<td>Dormir</td>
-<td>1</td>
-<td>🔁 usa <code>DRAGON_DEFEATED</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="bell-jogavel-parte-2-18">Bell jogável (Parte 2) (18)</h3>
-<table>
-<thead>
-<tr>
-<th>Código</th>
-<th>O que mostra</th>
-<th>Quadros</th>
-<th>Situação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>BELL_COMBAT_IDLE_FRONT</code></td>
-<td>Bell em guarda, estrelas girando na mão</td>
-<td>8</td>
-<td>🔁 usa <code>BELL_IDLE_FRONT</code></td>
-</tr>
-<tr>
-<td><code>BELL_COMBAT_IDLE_BACK</code></td>
-<td>Bell em guarda, estrelas girando na mão</td>
-<td>8</td>
-<td>🔁 usa <code>BELL_IDLE_BACK</code></td>
-</tr>
-<tr>
-<td><code>BELL_COMBAT_IDLE_LEFT</code></td>
-<td>Bell em guarda, estrelas girando na mão</td>
-<td>8</td>
-<td>🔁 usa <code>BELL_IDLE_LEFT</code></td>
-</tr>
 <tr>
 <td><code>BELL_COMBAT_IDLE_RIGHT</code></td>
-<td>Bell em guarda, estrelas girando na mão</td>
+<td>Bell em guarda, estrelas girando na mão (itens 286 a 288)</td>
 <td>8</td>
-<td>🔁 usa <code>BELL_IDLE_RIGHT</code></td>
+<td>🔁 usa <code>BELL_COMBAT_IDLE_LEFT</code></td>
 </tr>
 <tr>
 <td><code>BELL_ATTACK_STAR</code></td>
@@ -1228,7 +1130,7 @@ em{color:var(--mut)}
 <td><code>DRAGON_CURL_SLEEP</code></td>
 <td>Dragão dormindo enrolado perto da casa (fazenda)</td>
 <td>4</td>
-<td>🔁 usa <code>DRAGON_DEFEATED</code></td>
+<td>🔁 usa <code>DRAGON_SLEEP</code></td>
 </tr>
 </tbody>
 </table>
@@ -1772,7 +1674,7 @@ em{color:var(--mut)}
 <td><code>BELL_VESTIDO_COMBAT_IDLE</code></td>
 <td>Bell com Vestido Reforçado — em guarda</td>
 <td>12</td>
-<td>🔁 usa <code>BELL_IDLE_RIGHT</code></td>
+<td>🔁 usa <code>BELL_COMBAT_IDLE_LEFT</code></td>
 </tr>
 <tr>
 <td><code>BELL_VESTIDO_ATTACK_STAR</code></td>
@@ -1911,7 +1813,7 @@ em{color:var(--mut)}
 <td><code>BELL_ESTELAR_COMBAT_IDLE</code></td>
 <td>Bell com Manto Estelar — em guarda</td>
 <td>12</td>
-<td>🔁 usa <code>BELL_IDLE_RIGHT</code></td>
+<td>🔁 usa <code>BELL_COMBAT_IDLE_LEFT</code></td>
 </tr>
 <tr>
 <td><code>BELL_ESTELAR_ATTACK_STAR</code></td>
@@ -2050,7 +1952,7 @@ em{color:var(--mut)}
 <td><code>BELL_AURORA_COMBAT_IDLE</code></td>
 <td>Bell com Armadura da Aurora — em guarda</td>
 <td>12</td>
-<td>🔁 usa <code>BELL_IDLE_RIGHT</code></td>
+<td>🔁 usa <code>BELL_COMBAT_IDLE_LEFT</code></td>
 </tr>
 <tr>
 <td><code>BELL_AURORA_ATTACK_STAR</code></td>

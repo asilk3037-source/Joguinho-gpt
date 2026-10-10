@@ -225,6 +225,24 @@
     return c.andar(line, pl.x / TILE, pl.y / TILE, { vel: vel || 82, parar: 'LINE_IDLE' });
   }
 
+  // As duas andando como uma arte só (lado a lado ou de mãos dadas): o par sai do meio de onde elas
+  // estão, vai até o meio dos pontos de chegada (a câmera vai junto) e, no fim, cada uma fica no seu
+  // ponto. Sem a arte, cada uma anda sozinha.
+  function* andarDuo(c, j, base, pl, pb, vel) {
+    const line = j.line, bell = j.bell;
+    const ini = { x: (line.x + bell.x) / 2, y: (line.y + bell.y) / 2 }, fim = { x: (pl.x + pb.x) / 2, y: (pl.y + pb.y) / 2 };
+    const dx = fim.x - ini.x, dy = fim.y - ini.y;
+    const dir = Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'LEFT' : 'RIGHT') : (dy < 0 ? 'BACK' : 'FRONT');
+    if (!c.duo(base, ini.x, ini.y, dir)) { yield andarJuntas(c, line, bell, pl, pb, vel); return; }
+    const duo = j.duo, dur = Math.hypot(dx, dy) / (vel || 82);
+    j.camAlvo = duo;
+    c.junto(c.tween(duo, 'x', fim.x, dur));
+    yield c.tween(duo, 'y', fim.y, dur);
+    c.fimDuo(); j.camAlvo = null;
+    line.x = pl.x; line.y = pl.y; line.anim.tocar('LINE_IDLE', true);
+    bell.x = pb.x; bell.y = pb.y; bell.anim.tocar('BELL_IDLE', true);
+  }
+
   const T = (n) => n / TILE;
 
   const HISTORIA = {
@@ -260,8 +278,8 @@
       document.getElementById('etiquetas').classList.add('oculto');
       // Vão até a mesa do BK e sentam frente a frente, nas cadeiras dos lados (cada arte já traz a
       // cadeira): a Line à esquerda, virada para a direita, e a Bell à direita, virada para a esquerda.
-      yield andarJuntas(c, line, bell, P(250, 420), P(302, 420));
-      yield c.quando(() => !bell.alvoCena);
+      // Lado a lado (itens 277 a 279): as mãos dadas só vêm na saída.
+      yield* andarDuo(c, j, 'LINE_BELL_WALK_TOGETHER', P(250, 420), P(302, 420));
       const assento = P(276, 384), mesa = P(276, 420);
       j.encontro.sentadas = 'bk_lados';
       sentar(line, LUGAR_BK.line, 'LINE_SIT_CHAIR_EAT', 1);
@@ -342,14 +360,14 @@
     *encontroTunel(c, j) {
       const line = j.line;
       const ib = P(65, 520);
-      const bell = j.bell = new LB.Bell(ib.x, ib.y, 'RIGHT');
+      j.bell = new LB.Bell(ib.x, ib.y, 'RIGHT');
       line.dir = 'RIGHT'; line.lado = 1;
       j.cameraEm(line.x + 60, line.y - 80);
       j.tint = { cor: '247,178,200', a: 0.35 };
       c.junto(c.escurecer(0, 0.6));
       c.junto(c.tingir('247,178,200', 0, 0.9));
-      yield andarJuntas(c, line, bell, P(173, 520), P(213, 520));
-      yield c.quando(() => !bell.alvoCena);
+      // Entram de mãos dadas (itens 280 e 281), como saíram do shopping.
+      yield* andarDuo(c, j, 'LINE_BELL_WALK_HANDS', P(173, 520), P(213, 520));
       const meio = P(193, 520);
       j.camAlvo = { x: meio.x, y: meio.y - 50 }; j.zoomAlvo = 1.6;
       c.duo('LINE_BELL_TUNNEL_KISS', meio.x, meio.y);

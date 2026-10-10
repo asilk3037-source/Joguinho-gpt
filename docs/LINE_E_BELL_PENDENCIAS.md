@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 09/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 10/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Animações que precisam de ajuste | animações que existem, mas precisam ser refeitas | **0** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **302** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **290** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -65,33 +65,11 @@ Falta só a **Bell atacando de lado**: a estrela (`BELL_ATTACK_STAR`), o leque (
 
 Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte chegar.
 
-### Line e Bell juntas (8)
+### Bell jogável (Parte 2) (15)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `LINE_BELL_WALK_TOGETHER_FRONT` | Andando lado a lado | 16 | 🔁 usa `LINE_BELL_WALK_TOGETHER` |
-| `LINE_BELL_WALK_TOGETHER_LEFT` | Andando lado a lado | 16 | 🔁 usa `LINE_BELL_WALK_TOGETHER` |
-| `LINE_BELL_WALK_TOGETHER_RIGHT` | Andando lado a lado | 16 | 🔁 usa `LINE_BELL_WALK_TOGETHER` |
-| `LINE_BELL_WALK_HANDS_LEFT` | Andando de mãos dadas | 16 | 🔁 usa `LINE_BELL_WALK_HANDS` |
-| `LINE_BELL_WALK_HANDS_RIGHT` | Andando de mãos dadas | 16 | 🔁 usa `LINE_BELL_WALK_HANDS` |
-| `LINE_BELL_RUN_TOGETHER_FRONT` | Correndo juntas | 12 | 🔁 usa `LINE_BELL_RUN_TOGETHER` |
-| `LINE_BELL_RUN_TOGETHER_LEFT` | Correndo juntas | 12 | 🔁 usa `LINE_BELL_RUN_TOGETHER` |
-| `LINE_BELL_RUN_TOGETHER_RIGHT` | Correndo juntas | 12 | 🔁 usa `LINE_BELL_RUN_TOGETHER` |
-
-### Dragão (1)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `DRAGON_SLEEP` | Dormir | 1 | 🔁 usa `DRAGON_DEFEATED` |
-
-### Bell jogável (Parte 2) (18)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `BELL_COMBAT_IDLE_FRONT` | Bell em guarda, estrelas girando na mão | 8 | 🔁 usa `BELL_IDLE_FRONT` |
-| `BELL_COMBAT_IDLE_BACK` | Bell em guarda, estrelas girando na mão | 8 | 🔁 usa `BELL_IDLE_BACK` |
-| `BELL_COMBAT_IDLE_LEFT` | Bell em guarda, estrelas girando na mão | 8 | 🔁 usa `BELL_IDLE_LEFT` |
-| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão | 8 | 🔁 usa `BELL_IDLE_RIGHT` |
+| `BELL_COMBAT_IDLE_RIGHT` | Bell em guarda, estrelas girando na mão (itens 286 a 288) | 8 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
 | `BELL_ATTACK_STAR` | Bell atira uma estrela (braço à frente) | 8 | 🔁 usa `BELL_HIGH_FIVE` |
 | `BELL_ATTACK_SPREAD` | Bell gira e solta o leque de 3 estrelas de luz | 10 | 🔁 usa `BELL_DANCE` |
 | `BELL_ATTACK_AIR` | Bell atira estrela no ar (pulando) | 6 | 🔁 usa `BELL_JUMP` |
@@ -288,7 +266,7 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 |---|---|---|---|
 | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | 6 | 🔁 usa `DRAGON_IDLE` |
 | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | 8 | 🔁 usa `DRAGON_IDLE` |
-| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | 4 | 🔁 usa `DRAGON_DEFEATED` |
+| `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda) | 4 | 🔁 usa `DRAGON_SLEEP` |
 
 ### Line com armadura: Túnica Acolchoada (23)
 
@@ -390,7 +368,7 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `BELL_VESTIDO_RUN_BACK` | Bell com Vestido Reforçado — correndo | 12 | 🔁 usa `BELL_RUN_BACK` |
 | `BELL_VESTIDO_RUN_LEFT` | Bell com Vestido Reforçado — correndo | 12 | 🔁 usa `BELL_RUN_LEFT` |
 | `BELL_VESTIDO_RUN_RIGHT` | Bell com Vestido Reforçado — correndo | 12 | 🔁 usa `BELL_RUN_RIGHT` |
-| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 | 🔁 usa `BELL_IDLE_RIGHT` |
+| `BELL_VESTIDO_COMBAT_IDLE` | Bell com Vestido Reforçado — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
 | `BELL_VESTIDO_ATTACK_STAR` | Bell com Vestido Reforçado — atira estrela | 12 | 🔁 usa `BELL_HIGH_FIVE` |
 | `BELL_VESTIDO_ATTACK_SPREAD` | Bell com Vestido Reforçado — leque de estrelas | 12 | 🔁 usa `BELL_DANCE` |
 | `BELL_VESTIDO_SING` | Bell com Vestido Reforçado — canção | 12 | 🔁 usa `BELL_HAPPY` |
@@ -416,7 +394,7 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `BELL_ESTELAR_RUN_BACK` | Bell com Manto Estelar — correndo | 12 | 🔁 usa `BELL_RUN_BACK` |
 | `BELL_ESTELAR_RUN_LEFT` | Bell com Manto Estelar — correndo | 12 | 🔁 usa `BELL_RUN_LEFT` |
 | `BELL_ESTELAR_RUN_RIGHT` | Bell com Manto Estelar — correndo | 12 | 🔁 usa `BELL_RUN_RIGHT` |
-| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 | 🔁 usa `BELL_IDLE_RIGHT` |
+| `BELL_ESTELAR_COMBAT_IDLE` | Bell com Manto Estelar — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
 | `BELL_ESTELAR_ATTACK_STAR` | Bell com Manto Estelar — atira estrela | 12 | 🔁 usa `BELL_HIGH_FIVE` |
 | `BELL_ESTELAR_ATTACK_SPREAD` | Bell com Manto Estelar — leque de estrelas | 12 | 🔁 usa `BELL_DANCE` |
 | `BELL_ESTELAR_SING` | Bell com Manto Estelar — canção | 12 | 🔁 usa `BELL_HAPPY` |
@@ -442,7 +420,7 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `BELL_AURORA_RUN_BACK` | Bell com Armadura da Aurora — correndo | 12 | 🔁 usa `BELL_RUN_BACK` |
 | `BELL_AURORA_RUN_LEFT` | Bell com Armadura da Aurora — correndo | 12 | 🔁 usa `BELL_RUN_LEFT` |
 | `BELL_AURORA_RUN_RIGHT` | Bell com Armadura da Aurora — correndo | 12 | 🔁 usa `BELL_RUN_RIGHT` |
-| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 | 🔁 usa `BELL_IDLE_RIGHT` |
+| `BELL_AURORA_COMBAT_IDLE` | Bell com Armadura da Aurora — em guarda | 12 | 🔁 usa `BELL_COMBAT_IDLE_LEFT` |
 | `BELL_AURORA_ATTACK_STAR` | Bell com Armadura da Aurora — atira estrela | 12 | 🔁 usa `BELL_HIGH_FIVE` |
 | `BELL_AURORA_ATTACK_SPREAD` | Bell com Armadura da Aurora — leque de estrelas | 12 | 🔁 usa `BELL_DANCE` |
 | `BELL_AURORA_SING` | Bell com Armadura da Aurora — canção | 12 | 🔁 usa `BELL_HAPPY` |
