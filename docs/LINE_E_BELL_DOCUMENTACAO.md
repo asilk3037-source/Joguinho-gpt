@@ -3683,9 +3683,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Item 106**: chegou com 1 imagem(ns) vazia(s) em `BELL_LAUGH_AT_LINE`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 108**: chegou com 3 imagem(ns) vazia(s) em `BELL_LAUGH`, `BELL_HIGH_FIVE`, `BELL_DANCE`. As animações funcionam sem esses quadros, mas ficam incompletas.
 - **Item 110**: `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.3) até chegar a arte certa.
-- **Item 111**: `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.3) até chegar a arte certa.
 - **Item 112**: `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` vieram com todos os quadros iguais (parados) e ficaram de fora. O jogo usa a substituta (seção 23.3) até chegar a arte certa.
-- **Item 113**: `LINE_BELL_DANCE` foi recusado: a Line some em alguns quadros. O jogo segue com a versão anterior.
 - **Item 114**: `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK` estão no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
 - **Item 115**: `LINE_COMBAT_RUN_BACK` está no jogo, mas com só 2 quadros diferentes (quase sem movimento). Vale reenviar com o ciclo completo.
 - **Item 118**: `DRAGON_SLEEP` foi recusado: não é o dragão dormindo (poses de voo). O jogo usa a substituta (seção 23.3) até chegar a arte certa.
@@ -4178,9 +4176,9 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 108 | `LINE_BELL_ITEM_108.html` | 5,07 MB | `BELL_LAUGH`, `BELL_CURTSY`, `BELL_HIGH_FIVE`, `BELL_DANCE` ⚠️ 3 imagem(ns) vazia(s): reenviar |
 | 109 | `LINE_BELL_ITEM_109.html` | 0,34 MB | `LINE_VICTORY` |
 | 110 | `LINE_BELL_ITEM_110.html` | 7,50 MB | `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_BACK`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` ⚠️ `LINE_BELL_WALK_TOGETHER_FRONT`, `LINE_BELL_WALK_TOGETHER_LEFT`, `LINE_BELL_WALK_TOGETHER_RIGHT` parado(s): reenviar |
-| 111 | `LINE_BELL_ITEM_111.html` | 7,31 MB | `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_BACK`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` ⚠️ `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` parado(s): reenviar |
+| 111 | `LINE_BELL_ITEM_111.html` | 7,31 MB | `LINE_BELL_WALK_HANDS_FRONT`, `LINE_BELL_WALK_HANDS_BACK`, `LINE_BELL_WALK_HANDS_LEFT`, `LINE_BELL_WALK_HANDS_RIGHT` |
 | 112 | `LINE_BELL_ITEM_112.html` | 7,30 MB | `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_BACK`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` ⚠️ `LINE_BELL_RUN_TOGETHER_FRONT`, `LINE_BELL_RUN_TOGETHER_LEFT`, `LINE_BELL_RUN_TOGETHER_RIGHT` parado(s): reenviar |
-| 113 | `LINE_BELL_ITEM_113.html` | 10,71 MB | `LINE_BELL_EAT`, `LINE_BELL_KISS`, `LINE_BELL_HIGH_FIVE`, `LINE_BELL_DANCE` ⚠️ `LINE_BELL_DANCE` recusado: reenviar |
+| 113 | `LINE_BELL_ITEM_113.html` | 10,71 MB | `LINE_BELL_EAT`, `LINE_BELL_KISS`, `LINE_BELL_HIGH_FIVE`, `LINE_BELL_DANCE` |
 | 114 | `LINE_BELL_ITEM_114.html` | 6,35 MB | `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK`, `LINE_COMBAT_WALK_LEFT`, `LINE_COMBAT_WALK_RIGHT` ↻ `LINE_COMBAT_WALK_FRONT`, `LINE_COMBAT_WALK_BACK` com pouco movimento |
 | 115 | `LINE_BELL_ITEM_115.html` | 7,87 MB | `LINE_COMBAT_RUN_FRONT`, `LINE_COMBAT_RUN_BACK`, `LINE_COMBAT_RUN_LEFT`, `LINE_COMBAT_RUN_RIGHT` ↻ `LINE_COMBAT_RUN_BACK` com pouco movimento |
 | 116 | `LINE_BELL_ITEM_116.html` | 1,36 MB | `LINE_CAST_CHARGE`, `LINE_CAST_SPELL`, `LINE_CAST_STARS` |

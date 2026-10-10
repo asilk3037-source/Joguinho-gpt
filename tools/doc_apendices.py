@@ -69,6 +69,15 @@ def manifesto():
     return json.loads(t.split("window.SPRITES = ", 1)[1].split(";\nwindow.RETRATOS", 1)[0])
 
 
+def resolvido(cod, n, jogo):
+    """Aviso já resolvido: a animação (ou a versão sem lado, que vale para os dois lados) veio certa
+    num item mais novo e é ela que está no jogo."""
+    base = re.sub(r"_(LEFT|RIGHT)$", "", cod)
+    origem = (jogo.get(cod) or jogo.get(base) or {}).get("item", "")
+    m = re.search(r"ITEM_(\d+)", origem)
+    return bool(m) and int(m.group(1)) > n
+
+
 def itens_recebidos():
     """Lê todos os LINE_BELL_ITEM_*.html da raiz (demora uns segundos: são arquivos grandes)."""
     itens, jogo = [], manifesto()
@@ -82,8 +91,8 @@ def itens_recebidos():
             parados = [cod for cod, d in anims.items() if extrair_sprites.movimento_parado(cod, d)]
         # Parados que entraram antes da regra dos 3 quadros: estão no jogo, com pouco movimento.
         poucos = [cod for cod in parados if jogo.get(cod, {}).get("item") == nome]
-        parados = [cod for cod in parados if cod not in poucos]
-        recusados = [(cod, mot) for (arq, cod), mot in extrair_sprites.RECUSADAS.items() if arq == nome]
+        parados = [cod for cod in parados if cod not in poucos and not resolvido(cod, n, jogo)]
+        recusados = [(cod, mot) for (arq, cod), mot in extrair_sprites.RECUSADAS.items() if arq == nome and not resolvido(cod, n, jogo)]
         itens.append({"n": n, "arquivo": nome, "mb": os.path.getsize(c) / 1048576, "codigos": codigos,
                       "vazias": vazias, "afetadas": afetadas, "parados": parados, "poucos": poucos,
                       "recusados": recusados, "no_jogo": jogo})
