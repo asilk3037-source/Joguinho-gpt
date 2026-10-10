@@ -209,6 +209,42 @@ def tirar_maquina(fontes, lado):
     return saida
 
 
+# Arte com uma parte na cor errada. Em todas as animações o dragão tem chifres, espinhos e garras
+# pretos; no dragão dormindo do item 285 eles vieram creme. Os pedaços creme viram o cinza-escuro dos
+# chifres do dragão, menos a barriga e o queixo, que são creme mesmo: os pontos (x, y) na arte
+# original marcam esses dois pedaços.
+CHIFRES_PRETOS = {"DRAGON_SLEEP": (285, [(620, 680), (430, 880)])}
+# Cinza dos chifres do dragão parado (item 80): sombra, meio-tom e luz.
+CINZA_CHIFRE = ((24, 22, 27), (54, 54, 63), (100, 103, 112))
+
+
+def chifres_pretos(im, fica_creme):
+    import numpy as np
+    from scipy import ndimage
+    a = np.asarray(im.convert("RGBA")).astype(float)
+    rgb = a[..., :3] / 255
+    mx, mn = rgb.max(-1), rgb.min(-1)
+    d = np.maximum(mx - mn, 1e-6)
+    r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
+    matiz = np.where(mx == r, ((g - b) / d) % 6, np.where(mx == g, (b - r) / d + 2, (r - g) / d + 4)) * 60
+    satur = (mx - mn) / np.maximum(mx, 1e-6)
+    # Creme = amarelado claro e pouco saturado. O vermelho das escamas e o brilho amarelo da narina ficam de fora.
+    creme = (a[..., 3] > 0) & (matiz >= 15) & (matiz <= 48) & (satur < 0.7) & (mx > 0.3)
+    # Pedaços ligados só pelos lados (não pela diagonal): o contorno preto separa cada espinho da barriga.
+    rot, _ = ndimage.label(creme)
+    manter = [rot[y, x] for x, y in fica_creme]
+    if not all(manter):
+        sys.exit(f"chifres_pretos: algum ponto de {fica_creme} não cai num pedaço creme")
+    pinta = creme & ~np.isin(rot, manter)
+    # A luz do creme vira a luz do cinza: os gomos e o brilho dos chifres continuam aparecendo.
+    t = np.clip((rgb @ [0.299, 0.587, 0.114] * 255 - 60) / 165, 0, 1)[..., None]
+    sombra, meio, luz = (np.array(c, float) for c in CINZA_CHIFRE)
+    cor = np.where(t < 0.5, sombra + (meio - sombra) * t * 2, meio + (luz - meio) * (t * 2 - 1))
+    a[pinta, :3] = cor[pinta]
+    print(f"  chifres, espinhos e garras pintados de cinza-escuro ({int(pinta.sum())} px); barriga e queixo continuam creme")
+    return Image.fromarray(a.round().astype(np.uint8), "RGBA")
+
+
 def processar(codigo, dados, origem):
     frames = dados["frames"]
     unicos, sequencia, indice = [], [], {}
@@ -224,6 +260,9 @@ def processar(codigo, dados, origem):
     passo = None
     if SEM_MAQUINA.get(codigo) == numero_item(origem):
         celulas = tirar_maquina([decodificar(u) for u in unicos], lado)
+    item_chifres, fica_creme = CHIFRES_PRETOS.get(codigo, (None, None))
+    if item_chifres == numero_item(origem):
+        celulas = [chifres_pretos(decodificar(u), fica_creme).resize((lado, lado), Image.LANCZOS) for u in unicos]
     if codigo in PERNAS_ALTERNADAS:
         import pernas_alternadas
         fonte = decodificar(unicos[0])

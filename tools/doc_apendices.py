@@ -364,6 +364,8 @@ def escrever(w, inv, itens=None):
     refeitas = sorted(extrair_sprites.PERNAS_ALTERNADAS)
     if refeitas:
         linhas.append("- **Pernas paradas:** " + ", ".join(f"`{c}`" for c in refeitas) + " chegaram com as duas pernas quase na mesma posição em todos os quadros (só o corpo balança), e a galinha parecia deslizar. O jogo refaz as pernas girando no quadril, uma depois da outra, e casa o passo com o chão percorrido. Vale reenviar com o ciclo de passos desenhado.")
+    for codigo, (item, _) in extrair_sprites.CHIFRES_PRETOS.items():
+        linhas.append(f"- **Cor do dragão:** `{codigo}` (item {item}) chegou com chifres, espinhos e garras creme; nas outras animações eles são pretos. O jogo já pinta esses pedaços de cinza-escuro (a barriga e o queixo continuam creme), então não precisa reenviar. Se for refeito, que venha com chifres e espinhos pretos.")
     for codigo, motivo in extrair_sprites.DESCARTADAS.items():
         linhas.append(f"- `{codigo}` saiu do jogo: {motivo}. Para reenviar.")
     if faltam:

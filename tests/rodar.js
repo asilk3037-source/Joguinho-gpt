@@ -1262,6 +1262,24 @@ teste('parte 2: a Bell em guarda nas quatro direções (itens 286 a 288) e o dra
   igual(r.heroina, 'bell', 'a Bell é a heroína');
   igual(r.vistos, { FRONT: 'BELL_COMBAT_IDLE_FRONT', BACK: 'BELL_COMBAT_IDLE_BACK', LEFT: 'BELL_COMBAT_IDLE_LEFT', RIGHT: 'BELL_COMBAT_IDLE_LEFT*' }, 'guarda nas quatro direções (a da direita é a da esquerda espelhada)');
   igual(r.dragao, ['LINE_BELL_ITEM_285.html', 215, true], 'dragão dormindo do item 285, no tamanho dos outros e respirando');
+  // A arte veio com chifres, espinhos e garras creme; no jogo eles são pretos, como nas outras animações.
+  const cores = await h.ev(async () => {
+    const img = new Image(); img.src = window.SPRITES.DRAGON_SLEEP.src; await img.decode();
+    const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+    const ctx = cv.getContext('2d'); ctx.drawImage(img, 0, 0);
+    const d = ctx.getImageData(0, 0, cv.width, cv.height).data;
+    let op = 0, creme = 0, cinza = 0;
+    for (let i = 0; i < d.length; i += 4) {
+      if (d[i + 3] <= 128) continue;
+      op++;
+      const r = d[i] / 255, g = d[i + 1] / 255, b = d[i + 2] / 255, mx = Math.max(r, g, b), c = mx - Math.min(r, g, b), s = mx ? c / mx : 0;
+      const h = !c ? 0 : 60 * (mx === r ? ((g - b) / c + 6) % 6 : mx === g ? (b - r) / c + 2 : (r - g) / c + 4);
+      if (h >= 15 && h <= 48 && s < 0.7 && mx > 0.3) creme++;
+      if (s < 0.25 && mx > 0.08 && mx < 0.5) cinza++;
+    }
+    return { creme: +(creme / op).toFixed(3), cinza: +(cinza / op).toFixed(3) };
+  });
+  afirmar(cores.creme < 0.1 && cores.cinza > 0.06, 'dragão dormindo com chifres e espinhos pretos (creme só na barriga e no queixo): ' + JSON.stringify(cores));
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {

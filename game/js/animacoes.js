@@ -487,7 +487,7 @@ window.LB = window.LB || {};
   grupo('Dragão amigo (Parte 2)', [
     ['DRAGON_TALK', 'Dragão falando calmo (abertura da Parte 2)', { loop: true, fps: 4, quadros: 6, alt: 'DRAGON_IDLE', parte2: true }],
     ['DRAGON_BOW', 'Dragão abaixa a cabeça (pede ajuda / agradece)', { fps: 6, quadros: 8, alt: 'DRAGON_IDLE', parte2: true }],
-    ['DRAGON_CURL_SLEEP', 'Dragão dormindo enrolado perto da casa (fazenda)', { loop: true, fps: 2, quadros: 4, alt: 'DRAGON_SLEEP', parte2: true }],
+    ['DRAGON_CURL_SLEEP', 'Dragão dormindo enrolado perto da casa (fazenda), com chifres e espinhos pretos', { loop: true, fps: 2, quadros: 4, alt: 'DRAGON_SLEEP', parte2: true }],
   ]);
 
   grupo('Line com armadura: Túnica Acolchoada', [
