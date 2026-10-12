@@ -67,8 +67,12 @@ ARTE_CHEFES = {
               "**chama raios** nos golpes (os raios de verdade caem na heroína, com o círculo de aviso lá; na arte ficou só o Grifo chamando os raios); "
               "**cansado** pousa e mostra o núcleo; pisca ao **receber dano**; na **derrota** desce ao chão e vira luz; **libertado**, aparece branco "
               "agradecendo e depois brilha e some."),
-    "magma": ("itens 338 a 341", "**dorme** antes da luta, **acorda** com o rugido e fica **parado** respirando; os quatro golpes (pisão, chuva de fogo, rocha e "
-              "leque de fogo) usam o **ataque genérico** até chegar a arte de cada um. Cansado, recebendo dano e na derrota ainda usa a pose parada."),
+    "magma": ("itens 338 a 348", "**dorme** antes da luta, **acorda** com o rugido e fica **parado** respirando; cada golpe tem a sua arte: **pisão** (a onda "
+              "e o tremor saem na hora em que o pé bate no chão na arte), **chuva de fogo** (o fogo que cai em volta dele faz parte da magia; o de verdade "
+              "cai na heroína, com o círculo de aviso lá), **arremesso de rocha** e **leque de fogo**; **cansado** mostra o núcleo; pisca ao **receber dano**; "
+              "e na **derrota** se desfaz em pedras e brasas. Ficou completo."),
+    "hidra": ("itens 349 e 350", "**dorme** no charco antes da luta e, acordada, fica **parada** respirando, com as três cabeças. Acordando, os golpes, "
+              "cansada, dano e derrota ainda usam a pose parada até chegar a arte de cada um (a fila continua no item 351, a Hidra acordando)."),
 }
 
 NPCS_VISUAL = [
@@ -340,7 +344,7 @@ def escrever(w, img, inv, rot, roteiro):
             w(f"**Arte no jogo ({itens}):** {como}")
             w()
             img(f"p2-arte-{ch}", f"{c['nome']} com a arte nova, ao lado da Line para ver o tamanho")
-    img("p2-chefes", "Os sete chefes nas arenas: a Serpente, o Grifo e o Titã de Magma já com a arte nova; os outros ainda desenhados no código até a arte chegar")
+    img("p2-chefes", "Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma e a Hidra já com a arte nova; os outros ainda desenhados no código até a arte chegar")
 
     # ============================ 21 ============================
     w("## 21. Dicas do modo Fácil")

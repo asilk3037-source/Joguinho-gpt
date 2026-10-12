@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **249** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **240** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -30,8 +30,9 @@
 
 1. **Pixel art.** Tudo em pixel art, no mesmo traço, nas mesmas cores e na mesma proporção dos **20 primeiros itens** (`LINE_BELL_ITEM_01` a `20`: a Line e a Bell paradas, andando e correndo). Eles são a **referência oficial** de proporção: cabeça, corpo, pernas e altura.
 2. **A Line** usa boné preto, moletom e calça pretos, tênis pretos de sola branca e o colar laranja; cabelo comprido escuro. **A Bell** usa óculos redondos, cropped azul-claro ou blusa branca, short jeans e tênis brancos; cabelo comprido castanho. A identidade nunca muda entre animações.
-3. **Theo:** a arte atual do jogo é o layout oficial; só melhorar, sem perder os traços.
-4. **Mesma altura sempre:** a Line tem **1,60 m**, que no jogo são **62 unidades** (≈ 85% do quadro de 74). A Bell fica com 96% da altura da Line. Uma animação nova não pode deixar a personagem maior ou menor do que nas 20 primeiras.
+3. **Paleta-base fixa (regra permanente):** cada personagem, criatura, equipamento e objeto conserva as cores-base de sua referência aprovada em todos os quadros e animações. Um dragão vermelho com preto permanece vermelho com preto: não trocar o preto por branco, não deixá-lo inteiramente preto e não inventar outra combinação. Golpes, dano, cansaço, brilho e novas gerações não mudam as cores da pele, cabelo, olhos, roupa, acessórios ou materiais. Luz, sombra e pulsação usam os tons da paleta aprovada, preservando as áreas das cores-base. Os efeitos de ataque não recolorem o corpo. Quando a documentação já definir uma forma com paleta própria, manter a paleta prevista para aquela forma em todas as suas artes, sem variações arbitrárias. Comparar com o mesmo PNG de referência antes, durante e após a produção; corrigir qualquer desvio das cores-base antes de entregar.
+4. **Theo:** a arte atual do jogo é o layout oficial; só melhorar, sem perder os traços.
+5. **Mesma altura sempre:** a Line tem **1,60 m**, que no jogo são **62 unidades** (≈ 85% do quadro de 74). A Bell fica com 96% da altura da Line. Uma animação nova não pode deixar a personagem maior ou menor do que nas 20 primeiras.
 
 ### 1.2 Quadros e entrega
 
@@ -128,34 +129,20 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 |---|---|---|---|
 | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | 🔁 usa `SERPENTE_IDLE` |
 
-### Chefe: Titã de Magma (Parte 2) (7)
+### Chefe: Hidra de Lama (Parte 2) (10)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | 10 | 🔁 usa `MAGMA_ATTACK` |
-| `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | 10 | 🔁 usa `MAGMA_ATTACK` |
-| `MAGMA_THROW` | Titã de Magma — arremesso de rocha | 10 | 🔁 usa `MAGMA_ATTACK` |
-| `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | 10 | 🔁 usa `MAGMA_ATTACK` |
-| `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `MAGMA_IDLE` |
-| `MAGMA_HIT` | Titã de Magma — recebe dano | 4 | 🔁 usa `MAGMA_IDLE` |
-| `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | 14 | 🔁 usa `MAGMA_IDLE` |
-
-### Chefe: Hidra de Lama (Parte 2) (12)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `HIDRA_SLEEP` | Hidra de Lama — dormindo (antes da luta) | 8 | ✏️ falta |
-| `HIDRA_IDLE` | Hidra de Lama — parado, respirando | 8 | ✏️ falta |
-| `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | 12 | ✏️ falta |
-| `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) | 10 | ✏️ falta |
-| `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha | 10 | ✏️ falta |
-| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 | ✏️ falta |
-| `HIDRA_WAVE` | Hidra de Lama — onda | 10 | ✏️ falta |
-| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 | ✏️ falta |
-| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 | ✏️ falta |
-| `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | 8 | ✏️ falta |
-| `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 | ✏️ falta |
-| `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 | ✏️ falta |
+| `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | 12 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) | 10 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha | 10 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_WAVE` | Hidra de Lama — onda | 10 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 | 🔁 usa `HIDRA_IDLE` |
 
 ### Chefe: Tempestade Viva (Parte 2) (12)
 
@@ -700,7 +687,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 4. **Telas** (seção 7), começando pelo título e pela mochila.
 5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); depois, o resto do Titã de Magma (a partir do item 342), a Hidra, a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.
+7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 351, a Hidra acordando), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.
 8. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
 > 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.

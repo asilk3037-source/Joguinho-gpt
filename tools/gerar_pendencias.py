@@ -63,8 +63,9 @@ w("### 1.1 Estilo")
 w()
 w("1. **Pixel art.** Tudo em pixel art, no mesmo traço, nas mesmas cores e na mesma proporção dos **20 primeiros itens** (`LINE_BELL_ITEM_01` a `20`: a Line e a Bell paradas, andando e correndo). Eles são a **referência oficial** de proporção: cabeça, corpo, pernas e altura.")
 w("2. **A Line** usa boné preto, moletom e calça pretos, tênis pretos de sola branca e o colar laranja; cabelo comprido escuro. **A Bell** usa óculos redondos, cropped azul-claro ou blusa branca, short jeans e tênis brancos; cabelo comprido castanho. A identidade nunca muda entre animações.")
-w("3. **Theo:** a arte atual do jogo é o layout oficial; só melhorar, sem perder os traços.")
-w("4. **Mesma altura sempre:** a Line tem **1,60 m**, que no jogo são **62 unidades** (≈ 85% do quadro de 74). A Bell fica com 96% da altura da Line. Uma animação nova não pode deixar a personagem maior ou menor do que nas 20 primeiras.")
+w("3. **Paleta-base fixa (regra permanente):** cada personagem, criatura, equipamento e objeto conserva as cores-base de sua referência aprovada em todos os quadros e animações. Um dragão vermelho com preto permanece vermelho com preto: não trocar o preto por branco, não deixá-lo inteiramente preto e não inventar outra combinação. Golpes, dano, cansaço, brilho e novas gerações não mudam as cores da pele, cabelo, olhos, roupa, acessórios ou materiais. Luz, sombra e pulsação usam os tons da paleta aprovada, preservando as áreas das cores-base. Os efeitos de ataque não recolorem o corpo. Quando a documentação já definir uma forma com paleta própria, manter a paleta prevista para aquela forma em todas as suas artes, sem variações arbitrárias. Comparar com o mesmo PNG de referência antes, durante e após a produção; corrigir qualquer desvio das cores-base antes de entregar.")
+w("4. **Theo:** a arte atual do jogo é o layout oficial; só melhorar, sem perder os traços.")
+w("5. **Mesma altura sempre:** a Line tem **1,60 m**, que no jogo são **62 unidades** (≈ 85% do quadro de 74). A Bell fica com 96% da altura da Line. Uma animação nova não pode deixar a personagem maior ou menor do que nas 20 primeiras.")
 w()
 w("### 1.2 Quadros e entrega")
 w()
@@ -396,7 +397,7 @@ for n, t in enumerate([
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.",
     "**Mapas das fases** em cima dos gabaritos (seção 8.1).",
-    "**Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); depois, o resto do Titã de Magma (a partir do item 342), a Hidra, a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.",
+    "**Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 351, a Hidra acordando), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.",
     "**Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.",
 ], 1):
     w(f"{n}. {t}")
