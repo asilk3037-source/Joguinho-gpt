@@ -175,7 +175,7 @@
       this.inimigos = [];
       this.itens = [];
       this.projeteis = [];
-      this.bell = null; this.dragao = null; this.duo = null; this.olho = null;
+      this.bell = null; this.dragao = null; this.duo = null; this.olho = null; this.guardiao = null;
       this.chefeAtivo = false; this.promptFinal = false; this.presa = null; this.jaulaAberta = false;
       this.fade = 0; this.flashTela = 0; this.congelado = 0;
       this.zoom = this.zoomAlvo = 1; this.aplicarZoom();
@@ -668,6 +668,7 @@
       if (!this.cena) LB.ia.separar(this, dt);
       for (const m of this.moradores) m.atualizar(dt, this);
       if (this.dragao) this.dragao.atualizar(dt, this);
+      if (this.guardiao) this.guardiao.anim.atualizar(dt);
       LB.mundo.atualizar(this, dt);
       LB.loja.atualizarEscudos(this, dt);
       LB.carrinho.atualizar(this);
@@ -813,6 +814,8 @@
       if (this.bell) atores.push(this.bell);
       if (this.companheira) atores.push(this.companheira);
       if (this.dragao) atores.push(this.dragao);
+      // Guardião libertado, na cena da vitória (já saiu da lista de inimigos).
+      if (this.guardiao) atores.push(this.guardiao);
       for (const a of atores) if (a.visivel !== false && a.desenharSombra) a.desenharSombra(g);
       if (this.dragao && this.dragao.noAlto && this.dragao.visivel && !this.chefeAtivo) LB.desenho.sombraChao(g, this.dragao.x, this.dragao.y, 70 - Math.min(40, this.dragao.alturaVoo / 8), 0.25);
 

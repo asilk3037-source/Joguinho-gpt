@@ -163,10 +163,14 @@
   HISTORIA.chefeIntro = function* (c, j, ch) {
     const line = j.line;
     line.anim.tocar(line.animParada(), true);
+    ch.lado = line.x < ch.x ? -1 : 1;
     yield c.camera(ch.x, ch.y - 70, 1.1);
     ch.flash = 0.3;
     j.tremer(ch.def.final ? 8 : 5, 0.6);
     j.particulas.emitir('brilho', ch.x, ch.y - 70, 20, { vel: 120, vida: 0.8, r: 5, cor: ch.cor.cor });
+    // Acorda com o rugido de apresentação (arte WAKE) e fica de pé durante a conversa.
+    if (ch.animar('WAKE')) yield c.animacao(ch);
+    ch.animar('IDLE');
     yield c.titulo(ch.nome, ch.def.titulo, 2.2);
     for (const [quem, txt, expr] of INTRO[ch.id] || []) yield c.fala(quem, txt, expr);
     yield c.camera(line.x, line.y - 30, 0.7);
@@ -191,6 +195,9 @@
     if (lib) {
       // O guardião volta a ser ele mesmo: luz da cor do elemento.
       for (let i = 0; i < 10; i++) { j.particulas.emitir('brilho', e.x + (Math.random() - 0.5) * 80, e.y - 30 - Math.random() * 80, 3, { vel: 40, vz: 40, vida: 1, r: 5 }); yield c.espera(0.1); }
+      // Com a arte do guardião libertado (Serpente e Grifo, itens 326 e 337), ele aparece nas cores
+      // verdadeiras e agradece enquanto fala.
+      const guardiao = LB.chefes.libertar(j, e);
       for (const [quem, txt, expr] of lib.falas) yield c.fala(quem, txt, expr);
       f.coracoes = (f.coracoes || 0) + 1;
       line.hpMax = j.hpMaxLine(); line.hp = line.hpMax;
@@ -201,6 +208,16 @@
       const bell = LB.herois.animarBell(j, 'BELL_CELEBRATE');
       if (bell) { yield c.animacao(bell); LB.herois.fimAnimBell(j, bell); }
       yield c.fala('Line', 'Obrigada! A gente vai atrás dela.', 'sorriso');
+      if (guardiao) {
+        // O guardião volta para casa: brilha e some.
+        yield c.camera(e.x, e.y - 60, 0.6);
+        for (let i = 10; i >= 0; i--) {
+          guardiao.alfa = i / 10;
+          if (i % 2 === 0) j.particulas.emitir('brilho', e.x + (Math.random() - 0.5) * 70, e.y - 20 - Math.random() * 70, 3, { vel: 40, vz: 50, vida: 1, r: 5 });
+          yield c.espera(0.07);
+        }
+        j.guardiao = null;
+      }
       if (lib.proxima) j.dica('proxima_' + e.id, lib.proxima);
     } else {
       // Uma junção desfeita: os dois elementos voltam para casa.

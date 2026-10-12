@@ -29,6 +29,9 @@ PADRAO_ANIMACOES = re.compile(r"const animations=(\{.*?\});\s*\n", re.S)
 # Dragão dos itens (81 em diante): célula maior (é grande na tela) e tamanho fixo no mundo.
 CELULA_DRAGAO = 448
 MUNDO_DRAGAO = 215
+# Chefes elementais da Parte 2: também são grandes na tela (célula de 200 no mundo), então usam a
+# célula do dragão, para a arte não ficar borrada quando aparece grande.
+CHEFE_ELEMENTAL = re.compile(r"^(COLOSSO|SERPENTE|GRIFO|MAGMA|HIDRA|TEMPESTADE|QUIMERA)_")
 # Itens a partir deste número trazem mais quadros que a arte antiga: o jogo mantém a duração
 # de cada animação (que está sincronizada com os golpes) em vez da velocidade do catálogo.
 ITEM_RITMO = 50
@@ -92,6 +95,18 @@ def ler_animacoes(caminho):
                 saida[codigo] = {"frames": quadros, "label": desc.get(codigo, codigo)}
         if saida:
             return saida
+    if "const animations=[" in html:
+        # Itens 317 em diante: uma lista, const animations=[{"item", "code", "title", "fps", "loop",
+        # "frames": ["data:...", ...]}]. Os quadros vazios de propósito (o fim da morte) continuam.
+        inicio = html.index("const animations=") + len("const animations=")
+        lista, _ = json.JSONDecoder().raw_decode(html[inicio:])
+        saida = {}
+        for a in lista:
+            quadros = [q for q in a["frames"] if len(q.split(",", 1)[-1]) >= 100]
+            if quadros:
+                c = RENOMEAR.get(a["code"], a["code"])
+                saida[c] = {"frames": quadros, "label": a.get("title", c), "fps": a.get("fps")}
+        return saida
     if "const frames=[" in html:
         # Itens 241 em diante: uma animação por item, const frames=["data:...", ...]; o código vem no
         # título (<code>CODIGO</code>) e o fps no texto ("8 FPS").
@@ -272,6 +287,28 @@ def limpar_sobras(im, retangulos):
     return Image.fromarray(a, "RGBA")
 
 
+# Efeito que o jogo desenha no lugar certo: no Grifo chamando raios (item 333), a arte traz os
+# círculos de aviso e os raios caindo do lado dele, mas no jogo os raios caem onde a heroína está,
+# com o círculo de aviso lá. Sai tudo o que fica abaixo dos pés do Grifo (só tem raio e círculo ali)
+# e o raio vai sumindo aos poucos até essa linha: fica o Grifo chamando os raios.
+RAIOS_SOLTOS = {"GRIFO_LIGHTNING": (333, 1046)}
+
+
+def tirar_raios(im, chao, faixa=110, x0=780):
+    import numpy as np
+    a = np.asarray(im.convert("RGBA")).copy()
+    r, g, b = (a[..., k].astype(int) for k in range(3))
+    # Cor do raio: violeta e o miolo branco. O roxo das pontas das asas fica acima da faixa.
+    raio = ((b > 150) & (r > 90) & (g < 170)) | ((r > 200) & (g > 200) & (b > 200))
+    a[chao:, :, 3] = 0
+    ys = np.arange(a.shape[0])[:, None]
+    xs = np.arange(a.shape[1])[None, :]
+    zona = (ys >= chao - faixa) & (ys < chao) & (xs > x0) & raio
+    k = np.clip((chao - ys) / faixa, 0, 1) * np.ones(xs.shape)
+    a[..., 3] = np.where(zona, (a[..., 3] * k).astype(np.uint8), a[..., 3])
+    return Image.fromarray(a, "RGBA")
+
+
 # Quadros que ficam de fora: na comemoração da Bell (item 302), os 4 últimos vieram maiores que os
 # outros e com o topo da cabeça cortado reto. A animação fica com os 8 primeiros até a arte voltar.
 QUADROS_FORA = {"BELL_CELEBRATE": (302, {8, 9, 10, 11})}
@@ -293,7 +330,7 @@ def processar(codigo, dados, origem):
         print(f"  quadros {sorted(fora)} de fora (outro tamanho, cabeça cortada no topo): ficam {len(unicos)}")
 
     dragao = codigo.startswith("DRAGON_")
-    lado = CELULA_DRAGAO if dragao else CELULA
+    lado = CELULA_DRAGAO if dragao or CHEFE_ELEMENTAL.match(codigo) else CELULA
     celulas = [decodificar(u).resize((lado, lado), Image.LANCZOS) for u in unicos]
     passo = None
     if SEM_MAQUINA.get(codigo) == numero_item(origem):
@@ -305,6 +342,10 @@ def processar(codigo, dados, origem):
     if item_sobras == numero_item(origem):
         celulas = [limpar_sobras(decodificar(u), sobras.get(i, [])).resize((lado, lado), Image.LANCZOS) for i, u in enumerate(unicos)]
         print(f"  sobras tiradas dos quadros {sorted(sobras)} (estrela que volta pelo outro lado, traços no topo)")
+    item_raios, chao_raios = RAIOS_SOLTOS.get(codigo, (None, None))
+    if item_raios == numero_item(origem):
+        celulas = [tirar_raios(decodificar(u), chao_raios).resize((lado, lado), Image.LANCZOS) for u in unicos]
+        print(f"  círculos e raios do lado do Grifo tirados (abaixo da linha {chao_raios}): os raios do jogo caem na heroína")
     if codigo in PERNAS_ALTERNADAS:
         import pernas_alternadas
         fonte = decodificar(unicos[0])

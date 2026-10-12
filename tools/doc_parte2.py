@@ -57,6 +57,20 @@ CHEFES_VISUAL = {
     "quimera": "A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo.",
 }
 
+# Chefes que já têm arte (itens) e como cada animação entra na luta.
+ARTE_CHEFES = {
+    "serpente": ("itens 317 a 326", "parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, "
+                 "só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; "
+                 "na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. "
+                 "A Serpente dormindo (antes da luta) ainda não chegou: até lá ela fica parada respirando."),
+    "grifo": ("itens 327 a 337", "**dorme no chão** antes da luta e **acorda** com o rugido; depois levanta voo; **rajada de vento**, **leque de penas** e "
+              "**chama raios** nos golpes (os raios de verdade caem na heroína, com o círculo de aviso lá; na arte ficou só o Grifo chamando os raios); "
+              "**cansado** pousa e mostra o núcleo; pisca ao **receber dano**; na **derrota** desce ao chão e vira luz; **libertado**, aparece branco "
+              "agradecendo e depois brilha e some."),
+    "magma": ("itens 338 a 341", "**dorme** antes da luta, **acorda** com o rugido e fica **parado** respirando; os quatro golpes (pisão, chuva de fogo, rocha e "
+              "leque de fogo) usam o **ataque genérico** até chegar a arte de cada um. Cansado, recebendo dano e na derrota ainda usa a pose parada."),
+}
+
 NPCS_VISUAL = [
     ("Dona Cora", "cora", "Parte 2 · Vale das Raízes", "Jardineira idosa, irmã do Seu Zé. Coque branco, chapéu de palha, vestido marrom com avental cor de trigo sujo de terra, pele morena, sorriso largo. Segura uma pá pequena."),
     ("Seu Tião", "tiao", "Parte 2 · Lago Espelhado", "Pescador de barba grisalha, chapéu de palha claro, camisa azul arregaçada, vara de pescar no ombro, balde ao lado. Fala alto e ri fácil."),
@@ -321,7 +335,12 @@ def escrever(w, img, inv, rot, roteiro):
         w("- **Dicas do Fácil:** " + " / ".join(c["dicas"]))
         w(f"- **Aparência:** {CHEFES_VISUAL[ch]}")
         w()
-    img("p2-chefes", "Os sete chefes na versão provisória (desenhados no código até a arte chegar)")
+        if ch in ARTE_CHEFES:
+            itens, como = ARTE_CHEFES[ch]
+            w(f"**Arte no jogo ({itens}):** {como}")
+            w()
+            img(f"p2-arte-{ch}", f"{c['nome']} com a arte nova, ao lado da Line para ver o tamanho")
+    img("p2-chefes", "Os sete chefes nas arenas: a Serpente, o Grifo e o Titã de Magma já com a arte nova; os outros ainda desenhados no código até a arte chegar")
 
     # ============================ 21 ============================
     w("## 21. Dicas do modo Fácil")

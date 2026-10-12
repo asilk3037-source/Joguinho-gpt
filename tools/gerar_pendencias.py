@@ -394,9 +394,9 @@ for n, t in enumerate([
     "**A comemoração da Bell** com os 12 quadros no mesmo tamanho (seção 2.1).",
     "**Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).",
     "**Telas** (seção 7), começando pelo título e pela mochila.",
-    "**Bell jogável e armaduras vestidas** (seção 3).",
+    "**Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.",
     "**Mapas das fases** em cima dos gabaritos (seção 8.1).",
-    "**Chefes e moradores** da Parte 2 (seção 3).",
+    "**Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); depois, o resto do Titã de Magma (a partir do item 342), a Hidra, a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.",
     "**Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.",
 ], 1):
     w(f"{n}. {t}")

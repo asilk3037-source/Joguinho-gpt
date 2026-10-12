@@ -1384,6 +1384,110 @@ teste('parte 2: o Colosso dorme com a arte nova (item 304), do tamanho do Coloss
   igual(r.acordado[1], false, 'acordado, ele ainda é desenhado no código até chegar a arte');
 });
 
+teste('parte 2: Serpente, Grifo e Titã de Magma com a arte nova (itens 317 a 341), do mesmo tamanho em todas as animações', async (h) => {
+  await h.area('picos', Object.assign({ visto_picos: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true }, P2));
+  const ITENS = { SERPENTE_IDLE: 317, SERPENTE_WAKE: 318, SERPENTE_ATTACK: 319, SERPENTE_DIVE: 320, SERPENTE_WATER_JET: 321, SERPENTE_WAVE: 322, SERPENTE_STUNNED: 323, SERPENTE_HIT: 324, SERPENTE_DEATH: 325, SERPENTE_FREED: 326,
+    GRIFO_SLEEP: 327, GRIFO_IDLE: 328, GRIFO_WAKE: 329, GRIFO_ATTACK: 330, GRIFO_GUST: 331, GRIFO_FEATHERS: 332, GRIFO_LIGHTNING: 333, GRIFO_STUNNED: 334, GRIFO_HIT: 335, GRIFO_DEATH: 336, GRIFO_FREED: 337,
+    MAGMA_SLEEP: 338, MAGMA_IDLE: 339, MAGMA_WAKE: 340, MAGMA_ATTACK: 341 };
+  const r = await h.ev((ITENS) => {
+    // Caixa do 1º quadro, em unidades do mundo (como o jogo desenha o chefe: célula de 200 × ajuste).
+    const medir = (cod) => {
+      const s = window.SPRITES[cod], img = LB.imagens[cod], c = s.cell;
+      const cv = document.createElement('canvas'); cv.width = c; cv.height = c;
+      const g = cv.getContext('2d'); g.drawImage(img, s.seq[0] * c, 0, c, c, 0, 0, c, c);
+      const d = g.getImageData(0, 0, c, c).data;
+      let x0 = c, x1 = -1, y0 = c, y1 = -1, abaixo = 0;
+      for (let y = 0; y < c; y++) for (let x = 0; x < c; x++) if (d[(y * c + x) * 4 + 3] > 100) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      const k = 200 * (s.escala || 1) * (s.ajuste || 1) / c;
+      return { larg: (x1 - x0 + 1) * k, alt: (y1 - y0 + 1) * k };
+    };
+    // Raios do Grifo: nenhum quadro passa da linha dos pés (os círculos e o pé dos raios saíram; sobra só
+    // a garra do Grifo, que desce 1 ou 2 pixels abaixo do pé do 1º quadro em alguns quadros).
+    const s = window.SPRITES.GRIFO_LIGHTNING, img = LB.imagens.GRIFO_LIGHTNING, c = s.cell;
+    const cv = document.createElement('canvas'); cv.width = img.naturalWidth; cv.height = c;
+    const g = cv.getContext('2d'); g.drawImage(img, 0, 0);
+    const d = g.getImageData(0, s.ground + 3, cv.width, c - s.ground - 3).data;
+    let abaixo = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 40) abaixo++;
+    const fontes = Object.fromEntries(Object.keys(ITENS).map((k) => [k, [window.SPRITES[k] && window.SPRITES[k].item, window.SPRITES[k] && window.SPRITES[k].cell]]));
+    const tam = {};
+    for (const k of Object.keys(ITENS)) tam[k] = medir(k);
+    return { fontes, tam, abaixo };
+  }, ITENS);
+  for (const [cod, n] of Object.entries(ITENS)) igual(r.fontes[cod], [`LINE_BELL_ITEM_${n}.html`, 448], `${cod} vem do item ${n}, em célula grande`);
+  // Mesma pose, mesmo tamanho: a Serpente enrolada (altura), o Grifo de asas abertas (largura) e o Titã (altura).
+  const perto = (a, b, tol) => Math.abs(a / b - 1) <= tol;
+  for (const c of ['WAKE', 'STUNNED', 'HIT', 'DEATH', 'FREED']) afirmar(perto(r.tam['SERPENTE_' + c].alt, r.tam.SERPENTE_IDLE.alt, 0.12), `Serpente ${c} da altura da parada: ${JSON.stringify([r.tam['SERPENTE_' + c], r.tam.SERPENTE_IDLE])}`);
+  for (const c of ['ATTACK', 'GUST', 'FEATHERS', 'LIGHTNING', 'HIT', 'DEATH']) afirmar(perto(r.tam['GRIFO_' + c].larg, r.tam.GRIFO_IDLE.larg, 0.12), `Grifo ${c} com as asas do tamanho das do parado: ${JSON.stringify([r.tam['GRIFO_' + c], r.tam.GRIFO_IDLE])}`);
+  for (const c of ['SLEEP', 'WAKE', 'ATTACK']) afirmar(perto(r.tam['MAGMA_' + c].alt, r.tam.MAGMA_IDLE.alt, 0.12), `Titã ${c} da altura do parado: ${JSON.stringify([r.tam['MAGMA_' + c], r.tam.MAGMA_IDLE])}`);
+  afirmar(r.tam.GRIFO_IDLE.larg > 150 && r.tam.SERPENTE_IDLE.larg > 130 && r.tam.MAGMA_IDLE.alt > 100, 'chefes bem maiores que a Line: ' + JSON.stringify([r.tam.GRIFO_IDLE, r.tam.SERPENTE_IDLE, r.tam.MAGMA_IDLE]));
+  igual(r.abaixo, 0, 'Grifo chamando raios sem círculos nem raios abaixo dos pés (os raios do jogo caem na heroína)');
+
+  // Grifo: dorme no chão, acorda com o rugido na apresentação e fica de pé na conversa; depois levanta voo.
+  const a = await h.ev(async () => {
+    const j = LB.jogo, ch = j.chefeArena, vistos = [];
+    const antes = { anim: ch.anim.base, voo: ch.alturaVoo };
+    j.iniciarCena(LB.HISTORIA.chefeIntro, { semPular: false }, ch);
+    for (let i = 0; i < 600 && j.cena; i++) {
+      if (vistos[vistos.length - 1] !== ch.anim.base) vistos.push(ch.anim.base);
+      if (LB.dialogo.nome && LB.dialogo.nome.textContent) LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 30));
+    }
+    const acordado = { dormindo: ch.dormindo, cena: ch.animCena };
+    for (let i = 0; i < 20; i++) { ch.t = 0; await new Promise((ok) => setTimeout(ok, 50)); }
+    return { antes, vistos, acordado, voo: ch.alturaVoo };
+  });
+  igual(a.antes, { anim: 'GRIFO_SLEEP', voo: 0 }, 'antes da luta o Grifo dorme no chão');
+  afirmar(a.vistos.indexOf('GRIFO_WAKE') >= 0 && a.vistos.indexOf('GRIFO_IDLE') > a.vistos.indexOf('GRIFO_WAKE'), 'acorda com o rugido e fica parado na conversa: ' + JSON.stringify(a.vistos));
+  igual(a.acordado, { dormindo: false, cena: null }, 'no fim da apresentação ele acorda de verdade');
+  afirmar(a.voo > 20, 'depois de acordar ele levanta voo: ' + a.voo);
+
+  // Golpe: a arte do golpe toca uma vez e, se o ataque dura mais, ele volta para a pose parada.
+  const g = await h.ev(async () => {
+    const j = LB.jogo, ch = j.chefeArena, l = j.line;
+    ch.escolherAtaque(j); ch.ataque = 'penas'; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false;
+    const vistos = [];
+    for (let i = 0; i < 70; i++) { l.hp = l.hpMax; ch.atualizar(0.05, j); if (vistos[vistos.length - 1] !== ch.anim.base) vistos.push(ch.anim.base); }
+    // Dano de verdade (cansado): pisca com a arte do golpe recebido e volta a ficar cansado.
+    ch.estado = 'exausto'; ch.t = 0; ch.exposto = 9; ch.hp = ch.hpMax;
+    ch.receberGolpe(j, 1, ch.x - 30, ch.y, 50);
+    const dano = ch.anim.base;
+    for (let i = 0; i < 20; i++) ch.atualizar(0.05, j);
+    return { vistos, dano, depois: ch.anim.base, estado: ch.estado };
+  });
+  igual(g.vistos, ['GRIFO_FEATHERS', 'GRIFO_IDLE'], 'leque de penas e depois parado até o ataque acabar');
+  igual([g.dano, g.depois, g.estado], ['GRIFO_HIT', 'GRIFO_STUNNED', 'exausto'], 'recebe dano com a arte própria e volta a ficar cansado');
+
+  // Serpente: no mergulho afunda (começo da arte), só as bolhas seguem por baixo e volta à tona (fim da arte).
+  await h.area('lago', Object.assign({ visto_lago: true, chefeTerra: true, fusaoMagma: true }, P2));
+  const m = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, s = window.SPRITES.SERPENTE_DIVE;
+    ch.dormindo = false; ch.estado = 'observar';
+    ch.escolherAtaque(j); ch.ataque = 'mergulho'; ch.estado = 'submerso'; ch.intocavel = true; ch.alvoMergulho = { x: j.line.x, y: j.line.y };
+    const q = (t, intocavel) => { ch.t = t; ch.intocavel = intocavel; return LB.chefes.quadroMergulho(ch, s); };
+    return { afunda: [q(0.05, true), q(0.4, true)], bolhas: [q(0.8, true), q(1.6, true)], volta: [q(2.15, false), q(2.55, false)], saida: LB.chefes.SAI_DO_MERGULHO };
+  });
+  afirmar(m.afunda.every((i) => i <= 3), 'começo do mergulho: ela afunda (quadros 1 a 4): ' + JSON.stringify(m));
+  afirmar(m.bolhas.every((i) => i === 4 || i === 5), 'debaixo da água: só as bolhas (quadros 5 e 6): ' + JSON.stringify(m));
+  afirmar(m.volta[0] >= 6 && m.volta[1] === 9, 'volta à tona no fim da arte, na hora em que sai: ' + JSON.stringify(m));
+
+  // Serpente libertada: aparece nas cores verdadeiras na cena da vitória e some no fim.
+  const f = await h.ev(async () => {
+    const j = LB.jogo, ch = j.chefeArena;
+    ch.estado = 'exausto'; ch.hp = 1; ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50);
+    for (let i = 0; i < 200 && !j.cena; i++) await new Promise((ok) => setTimeout(ok, 30));
+    let livre = null;
+    for (let i = 0; i < 800 && j.cena; i++) {
+      if (j.guardiao && !livre) livre = { anim: j.guardiao.anim.base, lado: j.guardiao.lado };
+      LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 30));
+    }
+    return { livre, depois: j.guardiao, flag: !!j.flags.chefeAgua };
+  });
+  afirmar(f.flag, 'Serpente vencida');
+  igual(f.livre && f.livre.anim, 'SERPENTE_FREED', 'a Serpente libertada aparece na cena da vitória: ' + JSON.stringify(f));
+  igual(f.depois, null, 'e brilha e some no fim da cena');
+});
+
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {
   await h.ev(() => LB.dificuldade.definir('facil'));
   try {

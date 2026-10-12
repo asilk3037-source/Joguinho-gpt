@@ -65,6 +65,16 @@
   // Sufixo da animação de cada golpe (ex.: COLOSSO_ROOTS). Sem arte, usa o <CODIGO>_ATTACK.
   const ANIM_ATAQUE = { pisao: 'SLAM', rocha: 'THROW', chuvaFogo: 'FIRE_RAIN', lequeFogo: 'FIRE_FAN', raizes: 'ROOTS', espinhosAnel: 'THORNS', lama: 'MUD', invocar: 'SUMMON', mergulho: 'DIVE', jatos: 'WATER_JET', onda: 'WAVE', rajada: 'GUST', penas: 'FEATHERS', raios: 'LIGHTNING' };
   const ELEM_ATAQUE = { pisao: 'pedra', rocha: 'pedra', chuvaFogo: 'fogo', lequeFogo: 'fogo', raizes: 'terra', espinhosAnel: 'terra', lama: 'terra', invocar: 'terra', mergulho: 'agua', jatos: 'agua', onda: 'agua', rajada: 'ar', penas: 'ar', raios: 'ar' };
+  // No mergulho, a hora em que o chefe volta à tona embaixo da heroína (segundos desde o começo).
+  const SAI_DO_MERGULHO = 2.1;
+  // Estado do chefe → animação (sufixo do código).
+  const ANIM_ESTADO = { dormindo: 'SLEEP', exausto: 'STUNNED', morrendo: 'DEATH', submerso: 'DIVE', libertado: 'FREED' };
+
+  // O chefe tem arte própria para esta animação (não só a substituta do catálogo)?
+  function temArte(ch, nome) {
+    const r = LB.resolver(ch.def.codigo + '_' + nome, null, ch.lado);
+    return !!r.sprite && !r.via;
+  }
 
   class Chefe {
     constructor(id, x, y, arena) {
@@ -75,7 +85,9 @@
       this.hpMax = Math.round(d.hp * LB.dif().vidaChefe); this.hp = this.hpMax;
       this.raio = d.forma === 'quimera' ? 44 : 34; this.vivo = true; this.inimigo = true; this.grande = true; this.chefeElemental = true;
       this.estado = 'dormindo'; this.dormindo = true; this.t = 0; this.flash = 0; this.lado = -1;
-      this.perigos = []; this.cansaco = 0; this.recarga = 0; this.fase = 0; this.alturaVoo = d.voa ? 36 : 0;
+      // Quem voa dorme no chão e só levanta voo depois de acordar.
+      this.perigos = []; this.cansaco = 0; this.recarga = 0; this.fase = 0; this.alturaVoo = 0;
+      this.dor = 0; this.animCena = null; this.golpeAcabou = false;
       this.anim = new LB.Animador(d.codigo + '_IDLE');
       this.cor = ELEM[d.elementos[0]];
       this.lacaios = [];
@@ -91,8 +103,30 @@
     }
 
     acordar(j) {
-      this.dormindo = false; this.estado = 'observar'; this.t = 0;
+      this.dormindo = false; this.estado = 'observar'; this.t = 0; this.animCena = null;
       if (LB.dicas) LB.dicas.chefe(j, this, 0);
+    }
+
+    // Animação de agora: a cena manda (acordando, libertado); o golpe recebido (HIT) passa por cima
+    // por um instante; no ataque, quando a arte do golpe acaba antes do ataque, volta para a pose parada.
+    animAtual() {
+      if (this.animCena) return this.animCena;
+      if (this.dor > 0 && this.estado !== 'morrendo') return 'HIT';
+      if (this.estado === 'atacar') return this.golpeAcabou ? 'IDLE' : ANIM_ATAQUE[this.ataque] || 'IDLE';
+      return ANIM_ESTADO[this.estado] || 'IDLE';
+    }
+
+    // A cena mostra uma animação do chefe (ex.: WAKE ao acordar). Devolve se há arte própria para ela.
+    animar(nome) {
+      this.animCena = nome;
+      this.anim.tocar(this.def.codigo + '_' + nome, true);
+      return temArte(this, nome);
+    }
+
+    // Levou dano de verdade: a arte do golpe recebido (HIT) aparece por um instante.
+    sentir() {
+      this.anim.tocar(this.def.codigo + '_HIT', true);
+      this.dor = this.anim.duracao(null, this.lado);
     }
 
     mover(dx, dy, j) {
@@ -105,15 +139,17 @@
     atualizar(dt, j) {
       this.t += dt; this.flash = Math.max(0, this.flash - dt); this.recarga = Math.max(0, this.recarga - dt);
       this.encantado = Math.max(0, (this.encantado || 0) - dt);
+      this.dor = Math.max(0, this.dor - dt);
       this.anim.atualizar(dt);
-      const golpe = this.estado === 'atacar' && ANIM_ATAQUE[this.ataque];
-      this.anim.tocar(this.def.codigo + '_' + (golpe || { dormindo: 'SLEEP', exausto: 'STUNNED', morrendo: 'DEATH', submerso: 'DIVE' }[this.estado] || 'IDLE'));
+      if (this.estado === 'atacar' && !this.animCena && this.anim.base === this.def.codigo + '_' + ANIM_ATAQUE[this.ataque] && this.anim.estado(null, this.lado).acabou) this.golpeAcabou = true;
+      this.anim.tocar(this.def.codigo + '_' + this.animAtual());
       atualizarPerigos(this, j, dt);
       if (this.dormindo || (j.cena && this.estado !== 'morrendo')) return;
       const l = j.line;
       const dx = l.x - this.x, dy = l.y - this.y, d = Math.hypot(dx, dy) || 1;
       if (Math.abs(dx) > 8 && this.estado !== 'atacar') this.lado = dx < 0 ? -1 : 1;
-      if (this.def.voa) this.alturaVoo += ((this.estado === 'exausto' ? 0 : 36) - this.alturaVoo) * Math.min(1, dt * 3);
+      // Cansado ou derrotado, quem voa desce para o chão (a arte dessas poses é no chão).
+      if (this.def.voa) this.alturaVoo += ((this.estado === 'exausto' || this.estado === 'morrendo' ? 0 : 36) - this.alturaVoo) * Math.min(1, dt * 3);
       if (this.encantado > 0 && this.estado !== 'exausto' && this.estado !== 'morrendo') {
         if (Math.random() < dt * 4) j.particulas.emitir('brilho', this.x + (Math.random() - 0.5) * 40, this.y - 80, 1, { vel: 20, vida: 0.6, r: 3, cor: '#ffc4e4' });
         return;
@@ -164,7 +200,7 @@
       if (nome === this.ultimo && lista.length > 1) nome = lista[(lista.indexOf(nome) + 1) % lista.length];
       if (nome === 'invocar' && this.lacaios.filter((e) => e.vivo).length >= 2) nome = 'raizes';
       this.ultimo = nome;
-      this.ataque = nome; this.feito = {}; this.t = 0;
+      this.ataque = nome; this.feito = {}; this.t = 0; this.golpeAcabou = false;
       this.duracaoAtaque = DURACAO[nome] * (this.def.final && this.fase >= 2 ? 0.85 : 1);
       this.estado = nome === 'mergulho' ? 'submerso' : 'atacar';
       if (nome === 'mergulho') { this.intocavel = true; this.alvoMergulho = { x: j.line.x, y: j.line.y }; }
@@ -218,7 +254,7 @@
           if (this.t < 1.4) { a.x += (l.x - a.x) * Math.min(1, dt * 2); a.y += (l.y - a.y) * Math.min(1, dt * 2); this.x += (a.x - this.x) * Math.min(1, dt * 1.6); this.y += (a.y - this.y) * Math.min(1, dt * 1.6); }
           if (Math.random() < dt * 20) j.particulas.emitir(this.def.pocas === 'lama' ? 'poeira' : 'agua', this.x + (Math.random() - 0.5) * 30, this.y, 1, { vz: 60, vel: 20, vida: 0.5, r: 2 });
           if (this.uma('m', 1.4)) this.perigos.push({ tipo: 'circulo', x: this.x, y: this.y, r: 50, aviso: 0.7, t: 0, el: 'agua', dano, estilo: 'bolha' });
-          if (this.uma('m2', 2.1)) { this.intocavel = false; j.tremer(5, 0.3); j.particulas.emitir('agua', this.x, this.y - 20, 20, { vel: 140, vz: 160, vida: 0.8 }); }
+          if (this.uma('m2', SAI_DO_MERGULHO)) { this.intocavel = false; j.tremer(5, 0.3); j.particulas.emitir('agua', this.x, this.y - 20, 20, { vel: 140, vz: 160, vida: 0.8 }); }
           break;
         }
         case 'jatos':
@@ -260,6 +296,7 @@
       }
       this.hp -= dano; this.flash = 0.15;
       if (this.hp <= 0) return this.morrer(j);
+      this.sentir();
       this.checarFase(j);
       return true;
     }
@@ -267,7 +304,7 @@
     receberMagia(j, dano) {
       if (this.dormindo || this.estado === 'morrendo' || this.intocavel) return false;
       this.flash = 0.2;
-      if (this.estado === 'exausto') { this.hp -= dano; if (this.hp <= 0) return this.morrer(j); this.checarFase(j); return true; }
+      if (this.estado === 'exausto') { this.hp -= dano; if (this.hp <= 0) return this.morrer(j); this.sentir(); this.checarFase(j); return true; }
       if (this.recarga > 0) { j.particulas.emitir('faisca', this.x, this.y - 56, 6, { vel: 90, vz: 60, vida: 0.3 }); return true; }
       if (dano >= 3) this.hp = Math.max(1, this.hp - 1);
       this.perigos = this.perigos.filter((p) => p.tipo === 'poca');
@@ -387,21 +424,35 @@
   }
 
   // ---------------- Desenho provisório (até chegar a arte) ----------------
+  // Mergulho com arte (Serpente, item 320): os primeiros 40% dos quadros são ela afundando, o meio só
+  // as bolhas (enquanto nada por baixo, seguindo a heroína) e o fim ela voltando à tona, na hora em que sai.
+  function quadroMergulho(ch, s) {
+    const n = s.seq.length, fps = s.fpsArte || 8, a = Math.round(n * 0.4), b = Math.round(n * 0.6);
+    let i;
+    if (ch.t < a / fps) i = Math.floor(ch.t * fps);
+    else if (ch.intocavel) i = a + Math.floor(ch.t * fps) % Math.max(1, b - a);
+    else i = b + Math.floor(Math.max(0, ch.t - SAI_DO_MERGULHO) * fps);
+    return s.seq[Math.min(n - 1, i)];
+  }
+
   function desenharChefe(g, ch, j) {
-    if (ch.intocavel && ch.estado === 'submerso') {
+    const mergulho = ch.estado === 'submerso' && temArte(ch, 'DIVE');
+    if (ch.intocavel && ch.estado === 'submerso' && !mergulho) {
       // Só as bolhas e uma sombra escura se movendo.
       g.fillStyle = 'rgba(20,40,60,.35)'; g.beginPath(); g.ellipse(ch.x, ch.y, 34, 14, 0, 0, TAU); g.fill();
       return;
     }
     const r = LB.resolver(ch.anim.base, null, ch.lado);
     const t = j.tempo, y = ch.y - ch.alturaVoo;
-    const morrendo = ch.estado === 'morrendo' ? Math.min(1, ch.t / 1.8) : 0;
+    // A arte da derrota já se desfaz em luz; sem ela, o chefe desbota.
+    const morrendo = ch.estado === 'morrendo' && !temArte(ch, 'DEATH') ? Math.min(1, ch.t / 1.8) : 0;
     g.save();
-    if (morrendo) g.globalAlpha = 1 - morrendo * 0.8;
+    g.globalAlpha = (ch.alfa == null ? 1 : ch.alfa) * (1 - morrendo * 0.8);
     if (ch.flash > 0) g.filter = 'brightness(2)';
     if (r.sprite) {
       const st = ch.anim.estado(null, ch.lado);
-      LB.desenharSprite(g, st.r, st.quadro, ch.x, y, 200);
+      if (mergulho && ch.intocavel) { g.fillStyle = 'rgba(20,40,60,.35)'; g.beginPath(); g.ellipse(ch.x, ch.y, 34, 14, 0, 0, TAU); g.fill(); }
+      LB.desenharSprite(g, st.r, mergulho ? quadroMergulho(ch, st.r.sprite) : st.quadro, ch.x, y, 200);
     } else {
       const f = ch.def.forma, cs = ch.def.fases ? ch.elementosAtuais().map((e) => ELEM[e]) : ch.def.elementos.map((e) => ELEM[e]);
       const c1 = cs[0], c2 = cs[1] || cs[0];
@@ -414,7 +465,8 @@
       else quimera(g, ch, resp, cansado, t);
     }
     g.restore();
-    if (ch.estado === 'exausto') LB.fx.desenharLoop(g, 'FX_DRAGON_WEAK_POINT', ch.x + ch.lado * 6, ch.y - ch.alturaVoo - 56, t, { tam: 200 });
+    // Núcleo exposto: a arte do chefe cansado já mostra o núcleo brilhando; sem ela, o brilho vem por cima.
+    if (ch.estado === 'exausto' && !temArte(ch, 'STUNNED')) LB.fx.desenharLoop(g, 'FX_DRAGON_WEAK_POINT', ch.x + ch.lado * 6, ch.y - ch.alturaVoo - 56, t, { tam: 200 });
     if (ch.encantado > 0) { g.fillStyle = '#ffb3d9'; g.font = '16px system-ui'; g.textAlign = 'center'; g.fillText('♪', ch.x + Math.sin(t * 4) * 14, y - 110 - (t * 20) % 20); }
   }
 
@@ -495,6 +547,17 @@
     todos.forEach((c, i) => { const ativo = ch.elementosAtuais().includes(['pedra', 'fogo', 'terra', 'agua', 'ar'][i]); g.globalAlpha = ativo ? 1 : 0.4; nucleo(g, -32 + i * 16, -62 + resp, 6, c, cansado && ativo, t); g.globalAlpha = 1; });
   }
 
+  // Guardião libertado (cena da vitória): volta com as cores verdadeiras e agradece (arte _FREED), virado
+  // para a heroína. Só quando há essa arte; sem ela, a cena segue só com as luzes.
+  function libertar(j, e) {
+    if (!e || !e.def || !e.anim || !temArte(e, 'FREED')) return null;
+    e.estado = 'libertado'; e.alfa = 1; e.flash = 0; e.dor = 0; e.alturaVoo = 0; e.perigos = []; e.intocavel = false;
+    e.lado = j.line && j.line.x < e.x ? -1 : 1;
+    e.animar('FREED');
+    j.guardiao = e;
+    return e;
+  }
+
   // ---------------- Colocar o chefe da área ----------------
   function prepararArea(j) {
     const d = j.mapa.def.chefe;
@@ -527,5 +590,5 @@
     g.strokeRect(T(x0), T(y0), T(x1 - x0 + 1), T(y1 - y0 + 1)); g.setLineDash([]);
   }
 
-  LB.chefes = { ELEM, CHEFES, POR_ELEMENTO, ANIM_ATAQUE, Chefe, prepararArea, atualizarArena, desenharArena };
+  LB.chefes = { ELEM, CHEFES, POR_ELEMENTO, ANIM_ATAQUE, SAI_DO_MERGULHO, Chefe, temArte, quadroMergulho, libertar, prepararArea, atualizarArena, desenharArena };
 })(window.LB);
