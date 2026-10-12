@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 10/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 12/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **274** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **249** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -122,53 +122,23 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | 14 | ✏️ falta |
 | `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | 12 | ✏️ falta |
 
-### Chefe: Serpente das Marés (Parte 2) (11)
+### Chefe: Serpente das Marés (Parte 2) (1)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | ✏️ falta |
-| `SERPENTE_IDLE` | Serpente das Marés — parado, respirando | 8 | ✏️ falta |
-| `SERPENTE_WAKE` | Serpente das Marés — acordando / rugido de apresentação | 12 | ✏️ falta |
-| `SERPENTE_ATTACK` | Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) | 10 | ✏️ falta |
-| `SERPENTE_DIVE` | Serpente das Marés — mergulho (some e reaparece) | 10 | ✏️ falta |
-| `SERPENTE_WATER_JET` | Serpente das Marés — jatos de água | 10 | ✏️ falta |
-| `SERPENTE_WAVE` | Serpente das Marés — onda | 10 | ✏️ falta |
-| `SERPENTE_STUNNED` | Serpente das Marés — cansado, núcleo exposto (hora de atacar) | 8 | ✏️ falta |
-| `SERPENTE_HIT` | Serpente das Marés — recebe dano | 4 | ✏️ falta |
-| `SERPENTE_DEATH` | Serpente das Marés — derrotado (se desfaz em luz) | 14 | ✏️ falta |
-| `SERPENTE_FREED` | Serpente das Marés — libertado, volta às cores verdadeiras e agradece | 12 | ✏️ falta |
+| `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | 🔁 usa `SERPENTE_IDLE` |
 
-### Chefe: Grifo da Tempestade (Parte 2) (11)
+### Chefe: Titã de Magma (Parte 2) (7)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `GRIFO_SLEEP` | Grifo da Tempestade — dormindo (antes da luta) | 8 | ✏️ falta |
-| `GRIFO_IDLE` | Grifo da Tempestade — parado, respirando | 8 | ✏️ falta |
-| `GRIFO_WAKE` | Grifo da Tempestade — acordando / rugido de apresentação | 12 | ✏️ falta |
-| `GRIFO_ATTACK` | Grifo da Tempestade — ataque genérico (usado quando o golpe não tem arte própria) | 10 | ✏️ falta |
-| `GRIFO_GUST` | Grifo da Tempestade — rajada de vento | 10 | ✏️ falta |
-| `GRIFO_FEATHERS` | Grifo da Tempestade — leque de penas | 10 | ✏️ falta |
-| `GRIFO_LIGHTNING` | Grifo da Tempestade — chama raios | 10 | ✏️ falta |
-| `GRIFO_STUNNED` | Grifo da Tempestade — cansado, núcleo exposto (hora de atacar) | 8 | ✏️ falta |
-| `GRIFO_HIT` | Grifo da Tempestade — recebe dano | 4 | ✏️ falta |
-| `GRIFO_DEATH` | Grifo da Tempestade — derrotado (se desfaz em luz) | 14 | ✏️ falta |
-| `GRIFO_FREED` | Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece | 12 | ✏️ falta |
-
-### Chefe: Titã de Magma (Parte 2) (11)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `MAGMA_SLEEP` | Titã de Magma — dormindo (antes da luta) | 8 | ✏️ falta |
-| `MAGMA_IDLE` | Titã de Magma — parado, respirando | 8 | ✏️ falta |
-| `MAGMA_WAKE` | Titã de Magma — acordando / rugido de apresentação | 12 | ✏️ falta |
-| `MAGMA_ATTACK` | Titã de Magma — ataque genérico (usado quando o golpe não tem arte própria) | 10 | ✏️ falta |
-| `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | 10 | ✏️ falta |
-| `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | 10 | ✏️ falta |
-| `MAGMA_THROW` | Titã de Magma — arremesso de rocha | 10 | ✏️ falta |
-| `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | 10 | ✏️ falta |
-| `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | 8 | ✏️ falta |
-| `MAGMA_HIT` | Titã de Magma — recebe dano | 4 | ✏️ falta |
-| `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | 14 | ✏️ falta |
+| `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | 10 | 🔁 usa `MAGMA_ATTACK` |
+| `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | 10 | 🔁 usa `MAGMA_ATTACK` |
+| `MAGMA_THROW` | Titã de Magma — arremesso de rocha | 10 | 🔁 usa `MAGMA_ATTACK` |
+| `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | 10 | 🔁 usa `MAGMA_ATTACK` |
+| `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `MAGMA_IDLE` |
+| `MAGMA_HIT` | Titã de Magma — recebe dano | 4 | 🔁 usa `MAGMA_IDLE` |
+| `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | 14 | 🔁 usa `MAGMA_IDLE` |
 
 ### Chefe: Hidra de Lama (Parte 2) (12)
 
@@ -728,9 +698,9 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 2. **A comemoração da Bell** com os 12 quadros no mesmo tamanho (seção 2.1).
 3. **Ícones dos botões e do HUD** (seções 5 e 6) e os **ícones dos itens e das armaduras** (seção 4).
 4. **Telas** (seção 7), começando pelo título e pela mochila.
-5. **Bell jogável e armaduras vestidas** (seção 3).
+5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes e moradores** da Parte 2 (seção 3).
+7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); depois, o resto do Titã de Magma (a partir do item 342), a Hidra, a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.
 8. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
 > 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.

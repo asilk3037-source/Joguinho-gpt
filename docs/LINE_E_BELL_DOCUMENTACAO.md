@@ -18,6 +18,8 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> 🐲 **Serpente, Grifo e Titã de Magma com a arte nova (itens 317 a 341):** a **Serpente das Marés** e o **Grifo da Tempestade** chegaram completos, e o **Titã de Magma** chegou dormindo, acordando, parado e com o ataque. Cada animação veio desenhada numa escala diferente (o Grifo dormindo e o cansado vieram quase com o dobro do tamanho do Grifo parado): todas foram medidas e acertadas para cada chefe ficar **do mesmo tamanho em todas as animações**. Os chefes **acordam com o rugido** na apresentação, **piscam ao receber dano** e, na derrota, **se desfazem em luz**. A Serpente **afunda e volta à tona** no mergulho (só as bolhas seguem a heroína por baixo). O Grifo **dorme no chão** e só levanta voo depois de acordar. O guardião **libertado aparece nas cores verdadeiras** agradecendo enquanto fala, e depois brilha e some. No Grifo chamando raios, a arte trazia círculos de aviso e raios caindo do lado dele: como no jogo o raio cai na heroína, com o aviso lá, ficou só o Grifo chamando os raios. O Grifo recebendo dano (item 335) chegou só em imagens soltas e entrou do mesmo jeito. Os chefes passaram a usar uma célula maior, para não ficarem borrados quando aparecem grandes na tela (seção 20).
+
 > ⭐ **A Bell atira para cima e para baixo com arte própria (itens 253 a 256):** a estrela e o leque de estrelas chegaram **de frente** e **de costas** (8 e 10 quadros) e entram sozinhos quando a mira vira para cima ou para baixo, do mesmo tamanho da Bell parada. De lado ela ainda usa a substituta.
 
 > ✨ **A Bell completa na luta e o Colosso dormindo (itens 289 a 304):** a Bell jogável ganhou arte própria para **atirar a estrela de lado**, o **leque de estrelas**, a **estrela no pulo**, a **canção**, o **escudo de luz**, a **esquiva**, a **arrancada**, **receber dano**, **cair no chão**, **ficar cansada** com pouca vida e **agachar**, além da **guarda virada para a direita**. Nas cenas da Parte 2 ela **fala mexendo as mãos** quando está parada e **comemora** quando um guardião é libertado; na abertura da Parte 2 ela fica **decidida**. O **Colosso de Raízes** dorme com a arte nova antes da luta, do tamanho do Colosso acordado. Na estrela, no leque e no pulo, a estrela que saía pela direita **voltava pela esquerda**, atrás da Bell: esses restos foram tirados. Na comemoração, os 4 últimos quadros vieram maiores e com a cabeça cortada, e ficaram de fora (seção 23.1).
@@ -185,7 +187,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **572**: 308 com arte (temporária), 144 usando uma substituta, 120 desenhadas no código ou sem imagem |
+| Animações catalogadas | **572**: 333 com arte (temporária), 152 usando uma substituta, 87 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1877,7 +1879,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 572 animações. ✅ 308 com arte temporária, 🔁 144 com substituta e ✏️ 120 desenhadas no código.
+**Resumo:** 572 animações. ✅ 333 com arte temporária, 🔁 152 com substituta e ✏️ 87 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1895,9 +1897,9 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 22 | 22 | 0 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 1 | 0 | 11 |
-| Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
-| Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
-| Chefe: Titã de Magma (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
+| Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
+| Chefe: Titã de Magma (Parte 2) | 11 | 4 | 7 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
@@ -2302,49 +2304,49 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
-| `SERPENTE_IDLE` | Serpente das Marés — parado, respirando | 8 | sim | ✏️ código / falta |  |
-| `SERPENTE_WAKE` | Serpente das Marés — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
-| `SERPENTE_ATTACK` | Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
-| `SERPENTE_DIVE` | Serpente das Marés — mergulho (some e reaparece) | 10 |  | ✏️ código / falta |  |
-| `SERPENTE_WATER_JET` | Serpente das Marés — jatos de água | 10 |  | ✏️ código / falta |  |
-| `SERPENTE_WAVE` | Serpente das Marés — onda | 10 |  | ✏️ código / falta |  |
-| `SERPENTE_STUNNED` | Serpente das Marés — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
-| `SERPENTE_HIT` | Serpente das Marés — recebe dano | 4 |  | ✏️ código / falta |  |
-| `SERPENTE_DEATH` | Serpente das Marés — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
-| `SERPENTE_FREED` | Serpente das Marés — libertado, volta às cores verdadeiras e agradece | 12 | sim | ✏️ código / falta |  |
+| `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | sim | 🔁 usa `SERPENTE_IDLE` |  |
+| `SERPENTE_IDLE` | Serpente das Marés — parado, respirando (item 317) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_317 |
+| `SERPENTE_WAKE` | Serpente das Marés — acordando / rugido de apresentação (item 318) | 12 |  | ✅ temporária | LINE_BELL_ITEM_318 |
+| `SERPENTE_ATTACK` | Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) (item 319) | 10 |  | ✅ temporária | LINE_BELL_ITEM_319 |
+| `SERPENTE_DIVE` | Serpente das Marés — mergulho (some e reaparece) (item 320) | 10 |  | ✅ temporária | LINE_BELL_ITEM_320 |
+| `SERPENTE_WATER_JET` | Serpente das Marés — jatos de água (item 321) | 10 |  | ✅ temporária | LINE_BELL_ITEM_321 |
+| `SERPENTE_WAVE` | Serpente das Marés — onda (item 322) | 10 |  | ✅ temporária | LINE_BELL_ITEM_322 |
+| `SERPENTE_STUNNED` | Serpente das Marés — cansado, núcleo exposto (hora de atacar) (item 323) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_323 |
+| `SERPENTE_HIT` | Serpente das Marés — recebe dano (item 324) | 4 |  | ✅ temporária | LINE_BELL_ITEM_324 |
+| `SERPENTE_DEATH` | Serpente das Marés — derrotado (se desfaz em luz) (item 325) | 14 |  | ✅ temporária | LINE_BELL_ITEM_325 |
+| `SERPENTE_FREED` | Serpente das Marés — libertado, volta às cores verdadeiras e agradece (item 326) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_326 |
 
 ### 10.16 Chefe: Grifo da Tempestade (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `GRIFO_SLEEP` | Grifo da Tempestade — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
-| `GRIFO_IDLE` | Grifo da Tempestade — parado, respirando | 8 | sim | ✏️ código / falta |  |
-| `GRIFO_WAKE` | Grifo da Tempestade — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
-| `GRIFO_ATTACK` | Grifo da Tempestade — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
-| `GRIFO_GUST` | Grifo da Tempestade — rajada de vento | 10 |  | ✏️ código / falta |  |
-| `GRIFO_FEATHERS` | Grifo da Tempestade — leque de penas | 10 |  | ✏️ código / falta |  |
-| `GRIFO_LIGHTNING` | Grifo da Tempestade — chama raios | 10 |  | ✏️ código / falta |  |
-| `GRIFO_STUNNED` | Grifo da Tempestade — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
-| `GRIFO_HIT` | Grifo da Tempestade — recebe dano | 4 |  | ✏️ código / falta |  |
-| `GRIFO_DEATH` | Grifo da Tempestade — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
-| `GRIFO_FREED` | Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece | 12 | sim | ✏️ código / falta |  |
+| `GRIFO_SLEEP` | Grifo da Tempestade — dormindo (antes da luta) (item 327) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_327 |
+| `GRIFO_IDLE` | Grifo da Tempestade — parado, respirando (item 328) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_328 |
+| `GRIFO_WAKE` | Grifo da Tempestade — acordando / rugido de apresentação (item 329) | 12 |  | ✅ temporária | LINE_BELL_ITEM_329 |
+| `GRIFO_ATTACK` | Grifo da Tempestade — ataque genérico (usado quando o golpe não tem arte própria) (item 330) | 10 |  | ✅ temporária | LINE_BELL_ITEM_330 |
+| `GRIFO_GUST` | Grifo da Tempestade — rajada de vento (item 331) | 10 |  | ✅ temporária | LINE_BELL_ITEM_331 |
+| `GRIFO_FEATHERS` | Grifo da Tempestade — leque de penas (item 332) | 10 |  | ✅ temporária | LINE_BELL_ITEM_332 |
+| `GRIFO_LIGHTNING` | Grifo da Tempestade — chama raios (item 333) | 10 |  | ✅ temporária | LINE_BELL_ITEM_333 |
+| `GRIFO_STUNNED` | Grifo da Tempestade — cansado, núcleo exposto (hora de atacar) (item 334) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_334 |
+| `GRIFO_HIT` | Grifo da Tempestade — recebe dano (item 335) | 4 |  | ✅ temporária | LINE_BELL_ITEM_335 |
+| `GRIFO_DEATH` | Grifo da Tempestade — derrotado (se desfaz em luz) (item 336) | 14 |  | ✅ temporária | LINE_BELL_ITEM_336 |
+| `GRIFO_FREED` | Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece (item 337) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_337 |
 
 ### 10.17 Chefe: Titã de Magma (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `MAGMA_SLEEP` | Titã de Magma — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
-| `MAGMA_IDLE` | Titã de Magma — parado, respirando | 8 | sim | ✏️ código / falta |  |
-| `MAGMA_WAKE` | Titã de Magma — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
-| `MAGMA_ATTACK` | Titã de Magma — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
-| `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | 10 |  | ✏️ código / falta |  |
-| `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | 10 |  | ✏️ código / falta |  |
-| `MAGMA_THROW` | Titã de Magma — arremesso de rocha | 10 |  | ✏️ código / falta |  |
-| `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | 10 |  | ✏️ código / falta |  |
-| `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
-| `MAGMA_HIT` | Titã de Magma — recebe dano | 4 |  | ✏️ código / falta |  |
-| `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+| `MAGMA_SLEEP` | Titã de Magma — dormindo (antes da luta) (item 338) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_338 |
+| `MAGMA_IDLE` | Titã de Magma — parado, respirando (item 339) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_339 |
+| `MAGMA_WAKE` | Titã de Magma — acordando / rugido de apresentação (item 340) | 12 |  | ✅ temporária | LINE_BELL_ITEM_340 |
+| `MAGMA_ATTACK` | Titã de Magma — ataque genérico (usado quando o golpe não tem arte própria) (item 341) | 10 |  | ✅ temporária | LINE_BELL_ITEM_341 |
+| `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | 10 |  | 🔁 usa `MAGMA_ATTACK` |  |
+| `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | 10 |  | 🔁 usa `MAGMA_ATTACK` |  |
+| `MAGMA_THROW` | Titã de Magma — arremesso de rocha | 10 |  | 🔁 usa `MAGMA_ATTACK` |  |
+| `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | 10 |  | 🔁 usa `MAGMA_ATTACK` |  |
+| `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | 8 | sim | 🔁 usa `MAGMA_IDLE` |  |
+| `MAGMA_HIT` | Titã de Magma — recebe dano | 4 |  | 🔁 usa `MAGMA_IDLE` |  |
+| `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `MAGMA_IDLE` |  |
 
 ### 10.18 Chefe: Hidra de Lama (Parte 2)
 
@@ -3230,11 +3232,21 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** Quando ela mergulha, fique de olho nas bolhas: ela sai embaixo delas. / Pule a onda na hora que ela chegar em você. / Depois de três ataques ela boia cansada: ataque a cabeça!
 - **Aparência:** Serpente-marinha longa, azul com barriga turquesa, barbatanas translúcidas nas costas e uma crista de coral. Mergulha e só a cabeça e parte do corpo aparecem. **Corrompida:** água turva marrom escorrendo, manchas escuras nas escamas, olhos brancos sem pupila. **Libertada:** escamas brilhando como espelho, olhos azul-claro.
 
+**Arte no jogo (itens 317 a 326):** parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. A Serpente dormindo (antes da luta) ainda não chegou: até lá ela fica parada respirando.
+
+![Serpente das Marés com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-serpente.jpg)
+*Serpente das Marés com a arte nova, ao lado da Line para ver o tamanho*
+
 ### Grifo da Tempestade — Guardião do Ar
 - **Elementos:** 🌪️ Ar · **Vida:** 16 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Picos do Vento
 - **Ataques:** rajada de vento que empurra para longe; leque de penas afiadas; raios caindo em círculos brancos.
 - **Dicas do Fácil:** A rajada empurra para longe dele: ande contra o vento (ou defenda) para não cair. / Os raios caem onde aparece o círculo branco: saia de dentro. / Cansado, ele pousa no chão. Aproveite!
 - **Aparência:** Águia-leão cinza e branca com asas enormes (abertas ocupam 2× o corpo), penas das asas com faíscas elétricas nas pontas, garras douradas. Voa a maior parte da luta e pousa quando cansa. **Corrompido:** penas eriçadas cinza-chumbo, olhos vermelhos, raios roxos. **Libertado:** penas brancas, olhos dourados, brisa suave em volta.
+
+**Arte no jogo (itens 327 a 337):** **dorme no chão** antes da luta e **acorda** com o rugido; depois levanta voo; **rajada de vento**, **leque de penas** e **chama raios** nos golpes (os raios de verdade caem na heroína, com o círculo de aviso lá; na arte ficou só o Grifo chamando os raios); **cansado** pousa e mostra o núcleo; pisca ao **receber dano**; na **derrota** desce ao chão e vira luz; **libertado**, aparece branco agradecendo e depois brilha e some.
+
+![Grifo da Tempestade com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-grifo.jpg)
+*Grifo da Tempestade com a arte nova, ao lado da Line para ver o tamanho*
 
 ### Titã de Magma — Junção de Pedra e Fogo
 - **Elementos:** 🪨 Pedra + 🔥 Fogo · **Vida:** 24 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Fenda de Magma
@@ -3242,6 +3254,11 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Poças:** deixa poças de lava pelo chão por alguns segundos.
 - **Dicas do Fácil:** A chuva de fogo deixa poças de lava por alguns segundos: não pise nelas. / Pule a onda do pisão. / A luz racha a casca de pedra e deixa o coração de fogo exposto.
 - **Aparência:** Titã de pedra do Guardião (mesmo estilo das ruínas) todo rachado, com **lava escorrendo pelas rachaduras** e um **coração de fogo** no peito (o núcleo). Braços de rocha que batem no chão, pedaços de pedra flutuando nos ombros. Cheio de brasas subindo. Quando cansa, a casca se abre e o coração fica exposto, pulsando.
+
+**Arte no jogo (itens 338 a 341):** **dorme** antes da luta, **acorda** com o rugido e fica **parado** respirando; os quatro golpes (pisão, chuva de fogo, rocha e leque de fogo) usam o **ataque genérico** até chegar a arte de cada um. Cansado, recebendo dano e na derrota ainda usa a pose parada.
+
+![Titã de Magma com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-magma.jpg)
+*Titã de Magma com a arte nova, ao lado da Line para ver o tamanho*
 
 ### Hidra de Lama — Junção de Terra e Água
 - **Elementos:** 🌱 Terra + 💧 Água · **Vida:** 24 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Pântano Sombrio
@@ -3263,8 +3280,8 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** A Quimera muda de elemento a cada fase: veja a cor do núcleo para saber o que vem. / Na última fase ela usa todos os ataques e bate mais forte. Troque de heroína quando a vida baixar. / A luz sempre abre a guarda. Guarde magia para isso.
 - **Aparência:** A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo.
 
-![Os sete chefes na versão provisória (desenhados no código até a arte chegar)](imagens/p2-chefes.jpg)
-*Os sete chefes na versão provisória (desenhados no código até a arte chegar)*
+![Os sete chefes nas arenas: a Serpente, o Grifo e o Titã de Magma já com a arte nova; os outros ainda desenhados no código até a arte chegar](imagens/p2-chefes.jpg)
+*Os sete chefes nas arenas: a Serpente, o Grifo e o Titã de Magma já com a arte nova; os outros ainda desenhados no código até a arte chegar*
 
 ## 21. Dicas do modo Fácil
 
@@ -3367,9 +3384,9 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 22 | 22 | 0 | 0 |
 | Chefe: Colosso de Raízes (Parte 2) | 12 | 1 | 0 | 11 |
-| Chefe: Serpente das Marés (Parte 2) | 11 | 0 | 0 | 11 |
-| Chefe: Grifo da Tempestade (Parte 2) | 11 | 0 | 0 | 11 |
-| Chefe: Titã de Magma (Parte 2) | 11 | 0 | 0 | 11 |
+| Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
+| Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
+| Chefe: Titã de Magma (Parte 2) | 11 | 4 | 7 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
@@ -3383,7 +3400,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **572** | **308** | **144** | **120** |
+| **Total** | **572** | **333** | **152** | **87** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3683,7 +3700,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 308 de 572 animações com arte · 144 usando uma substituta · 120 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 333 de 572 animações com arte · 152 usando uma substituta · 87 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3698,7 +3715,8 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Cor do dragão:** `DRAGON_SLEEP` (item 285) chegou com chifres, espinhos e garras creme; nas outras animações eles são pretos. O jogo já pinta esses pedaços de cinza-escuro (a barriga e o queixo continuam creme), então não precisa reenviar. Se for refeito, que venha com chifres e espinhos pretos.
 - **Itens 290, 291 e 292** (`BELL_ATTACK_STAR`, `BELL_ATTACK_SPREAD`, `BELL_ATTACK_AIR`): em alguns quadros, a estrela que sai pela direita **volta pela esquerda**, atrás da Bell, e no pulo sobram traços escuros no topo. O jogo tira esses restos sozinho; não precisa reenviar.
 - **Item 302**: `BELL_CELEBRATE`: os quadros 9 a 12 vieram maiores que os outros e com o topo da cabeça cortado; o jogo usa só os 8 primeiros. Reenviar com todos no mesmo tamanho, sem corte.
-- **Itens que ainda não chegaram:** 153, 240.
+- **Item 333**: `GRIFO_LIGHTNING` trazia os círculos de aviso e os raios caindo do lado do Grifo; no jogo os raios caem onde a heroína está, com o círculo de aviso lá. O jogo tira o que fica abaixo dos pés do Grifo e deixa o raio sumindo aos poucos (fica o Grifo chamando os raios); não precisa reenviar.
+- **Itens que ainda não chegaram:** 153, 240, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316.
 
 ### 23.5 Anotações do teste no celular (1º de outubro)
 
@@ -3774,39 +3792,14 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_HIT` | Colosso de Raízes — recebe dano | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_IDLE` | Serpente das Marés — parado, respirando | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_WAKE` | Serpente das Marés — acordando / rugido de apresentação | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_ATTACK` | Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_DIVE` | Serpente das Marés — mergulho (some e reaparece) | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_WATER_JET` | Serpente das Marés — jatos de água | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_WAVE` | Serpente das Marés — onda | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_STUNNED` | Serpente das Marés — cansado, núcleo exposto (hora de atacar) | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_HIT` | Serpente das Marés — recebe dano | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_DEATH` | Serpente das Marés — derrotado (se desfaz em luz) | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_FREED` | Serpente das Marés — libertado, volta às cores verdadeiras e agradece | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_SLEEP` | Grifo da Tempestade — dormindo (antes da luta) | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_IDLE` | Grifo da Tempestade — parado, respirando | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_WAKE` | Grifo da Tempestade — acordando / rugido de apresentação | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_ATTACK` | Grifo da Tempestade — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_GUST` | Grifo da Tempestade — rajada de vento | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_FEATHERS` | Grifo da Tempestade — leque de penas | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_LIGHTNING` | Grifo da Tempestade — chama raios | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_STUNNED` | Grifo da Tempestade — cansado, núcleo exposto (hora de atacar) | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_HIT` | Grifo da Tempestade — recebe dano | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_DEATH` | Grifo da Tempestade — derrotado (se desfaz em luz) | desenho no código |
-| Chefe: Grifo da Tempestade (Parte 2) | `GRIFO_FREED` | Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_SLEEP` | Titã de Magma — dormindo (antes da luta) | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_IDLE` | Titã de Magma — parado, respirando | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_WAKE` | Titã de Magma — acordando / rugido de apresentação | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_ATTACK` | Titã de Magma — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_THROW` | Titã de Magma — arremesso de rocha | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_HIT` | Titã de Magma — recebe dano | desenho no código |
-| Chefe: Titã de Magma (Parte 2) | `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | `SERPENTE_IDLE` |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_SLAM` | Titã de Magma — pisão (onda no chão) | `MAGMA_ATTACK` |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_FIRE_RAIN` | Titã de Magma — chuva de fogo | `MAGMA_ATTACK` |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_THROW` | Titã de Magma — arremesso de rocha | `MAGMA_ATTACK` |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_FIRE_FAN` | Titã de Magma — leque de fogo | `MAGMA_ATTACK` |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_STUNNED` | Titã de Magma — cansado, núcleo exposto (hora de atacar) | `MAGMA_IDLE` |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_HIT` | Titã de Magma — recebe dano | `MAGMA_IDLE` |
+| Chefe: Titã de Magma (Parte 2) | `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) | `MAGMA_IDLE` |
 | Chefe: Hidra de Lama (Parte 2) | `HIDRA_SLEEP` | Hidra de Lama — dormindo (antes da luta) | desenho no código |
 | Chefe: Hidra de Lama (Parte 2) | `HIDRA_IDLE` | Hidra de Lama — parado, respirando | desenho no código |
 | Chefe: Hidra de Lama (Parte 2) | `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | desenho no código |
@@ -4338,8 +4331,33 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 302 | `LINE_BELL_ITEM_302.html` | 2,58 MB | `BELL_CELEBRATE` |
 | 303 | `LINE_BELL_ITEM_303.html` | 2,62 MB | `BELL_TALK` |
 | 304 | `LINE_BELL_ITEM_304.html` | 4,22 MB | `COLOSSO_SLEEP` |
+| 317 | `LINE_BELL_ITEM_317.html` | 1,72 MB |  |
+| 318 | `LINE_BELL_ITEM_318.html` | 2,94 MB |  |
+| 319 | `LINE_BELL_ITEM_319.html` | 1,37 MB |  |
+| 320 | `LINE_BELL_ITEM_320.html` | 1,57 MB |  |
+| 321 | `LINE_BELL_ITEM_321.html` | 2,01 MB |  |
+| 322 | `LINE_BELL_ITEM_322.html` | 2,53 MB |  |
+| 323 | `LINE_BELL_ITEM_323.html` | 2,55 MB |  |
+| 324 | `LINE_BELL_ITEM_324.html` | 1,75 MB |  |
+| 325 | `LINE_BELL_ITEM_325.html` | 1,87 MB |  |
+| 326 | `LINE_BELL_ITEM_326.html` | 2,98 MB |  |
+| 327 | `LINE_BELL_ITEM_327.html` | 1,72 MB |  |
+| 328 | `LINE_BELL_ITEM_328.html` | 1,76 MB |  |
+| 329 | `LINE_BELL_ITEM_329.html` | 2,43 MB |  |
+| 330 | `LINE_BELL_ITEM_330.html` | 1,89 MB |  |
+| 331 | `LINE_BELL_ITEM_331.html` | 1,77 MB |  |
+| 332 | `LINE_BELL_ITEM_332.html` | 1,70 MB |  |
+| 333 | `LINE_BELL_ITEM_333.html` | 1,68 MB |  |
+| 334 | `LINE_BELL_ITEM_334.html` | 1,95 MB |  |
+| 335 | `LINE_BELL_ITEM_335.html` | 1,14 MB |  |
+| 336 | `LINE_BELL_ITEM_336.html` | 1,46 MB |  |
+| 337 | `LINE_BELL_ITEM_337.html` | 2,43 MB |  |
+| 338 | `LINE_BELL_ITEM_338.html` | 2,40 MB |  |
+| 339 | `LINE_BELL_ITEM_339.html` | 2,04 MB |  |
+| 340 | `LINE_BELL_ITEM_340.html` | 2,22 MB |  |
+| 341 | `LINE_BELL_ITEM_341.html` | 1,77 MB |  |
 
-Itens que ainda não chegaram: 153, 240.
+Itens que ainda não chegaram: 153, 240, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316.
 
 **Lote do shopping, das bases e do playground (itens 218 a 240 da numeração nova):** chegou como páginas de prévia sem as imagens, e as imagens vieram soltas. Os números 218 a 227 repetem os do lote anterior (objetos da fazenda), então as peças novas são chamadas pelo código (`SHOP_*`, `PLAYGROUND_*`, `base_*`). Só os itens 238 e 239 (o soco e a risada) viraram fichas na raiz, porque as animações são refeitas a partir delas. O que entrou está nas seções 5.2 (playground), 22.11.1 (peças do shopping) e 22.11.2 (bases).
 
