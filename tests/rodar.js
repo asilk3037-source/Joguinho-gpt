@@ -1488,6 +1488,84 @@ teste('parte 2: Serpente, Grifo e Titã de Magma com a arte nova (itens 317 a 34
   igual(f.depois, null, 'e brilha e some no fim da cena');
 });
 
+teste('parte 2: Titã de Magma completo e Hidra dormindo e parada (itens 342 a 350), do mesmo tamanho em todas as animações', async (h) => {
+  await h.area('fenda', Object.assign({ visto_fenda: true, chefeTerra: true }, P2));
+  const ITENS = { MAGMA_SLAM: 342, MAGMA_FIRE_RAIN: 343, MAGMA_THROW: 344, MAGMA_FIRE_FAN: 345, MAGMA_STUNNED: 346, MAGMA_HIT: 347, MAGMA_DEATH: 348, HIDRA_SLEEP: 349, HIDRA_IDLE: 350 };
+  const r = await h.ev((ITENS) => {
+    // Caixa do 1º quadro, em unidades do mundo (como o jogo desenha o chefe: célula de 200 × ajuste).
+    const medir = (cod) => {
+      const s = window.SPRITES[cod], img = LB.imagens[cod], c = s.cell;
+      const cv = document.createElement('canvas'); cv.width = c; cv.height = c;
+      const g = cv.getContext('2d'); g.drawImage(img, s.seq[0] * c, 0, c, c, 0, 0, c, c);
+      const d = g.getImageData(0, 0, c, c).data;
+      let x0 = c, x1 = -1, y0 = c, y1 = -1;
+      for (let y = 0; y < c; y++) for (let x = 0; x < c; x++) if (d[(y * c + x) * 4 + 3] > 100) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      const k = 200 * (s.escala || 1) * (s.ajuste || 1) / c;
+      return { larg: (x1 - x0 + 1) * k, alt: (y1 - y0 + 1) * k };
+    };
+    const fontes = Object.fromEntries(Object.keys(ITENS).map((k) => [k, [window.SPRITES[k] && window.SPRITES[k].item, window.SPRITES[k] && window.SPRITES[k].cell]]));
+    const tam = {};
+    for (const k of Object.keys(ITENS).concat(['MAGMA_IDLE', 'SERPENTE_IDLE'])) tam[k] = medir(k);
+    return { fontes, tam };
+  }, ITENS);
+  for (const [cod, n] of Object.entries(ITENS)) igual(r.fontes[cod], [`LINE_BELL_ITEM_${n}.html`, 448], `${cod} vem do item ${n}, em célula grande`);
+  const perto = (a, b, tol) => Math.abs(a / b - 1) <= tol;
+  // O 1º quadro de cada uma é o Titã de pé (a derrota veio desenhada maior e o jogo reduz).
+  for (const c of ['SLAM', 'FIRE_RAIN', 'THROW', 'FIRE_FAN', 'STUNNED', 'HIT', 'DEATH']) afirmar(perto(r.tam['MAGMA_' + c].alt, r.tam.MAGMA_IDLE.alt, 0.12), `Titã ${c} da altura do parado: ${JSON.stringify([r.tam['MAGMA_' + c], r.tam.MAGMA_IDLE])}`);
+  afirmar(perto(r.tam.HIDRA_SLEEP.alt, r.tam.HIDRA_IDLE.alt, 0.12), 'Hidra dormindo da altura da parada: ' + JSON.stringify([r.tam.HIDRA_SLEEP, r.tam.HIDRA_IDLE]));
+  // Chefe de junção como o Titã: maior que a Serpente (guardiã de um elemento só).
+  afirmar(r.tam.HIDRA_IDLE.alt > 100 && r.tam.HIDRA_IDLE.larg > r.tam.SERPENTE_IDLE.larg, 'Hidra bem maior que a Line e do porte de chefe de junção: ' + JSON.stringify([r.tam.HIDRA_IDLE, r.tam.SERPENTE_IDLE]));
+
+  // Cada golpe toca a arte própria uma vez e volta para a pose parada; o pisão bate no chão junto com a arte.
+  const g = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, l = j.line, vistos = {};
+    ch.dormindo = false; ch.estado = 'observar'; ch.t = 0;
+    let pisao = null;
+    for (const atq of ['pisao', 'chuvaFogo', 'rocha', 'lequeFogo']) {
+      ch.escolherAtaque(j); ch.ataque = atq; ch.estado = 'atacar'; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false; ch.feito = {}; ch.perigos = [];
+      vistos[atq] = [];
+      for (let i = 0; i < 60; i++) {
+        l.hp = l.hpMax; ch.atualizar(0.05, j);
+        if (vistos[atq][vistos[atq].length - 1] !== ch.anim.base) vistos[atq].push(ch.anim.base);
+        if (atq === 'pisao' && pisao === null && ch.perigos.some((p) => p.tipo === 'anel')) pisao = ch.t;
+      }
+    }
+    // Cansado: a arte própria (núcleo exposto); recebendo dano, pisca com a arte do golpe e volta.
+    ch.estado = 'exausto'; ch.t = 0; ch.exposto = 9; ch.hp = ch.hpMax; ch.perigos = [];
+    ch.atualizar(0.05, j);
+    const cansado = ch.anim.base;
+    ch.receberGolpe(j, 1, ch.x - 30, ch.y, 50);
+    const dano = ch.anim.base;
+    for (let i = 0; i < 20; i++) ch.atualizar(0.05, j);
+    const depois = ch.anim.base;
+    // Derrota: a arte que se desfaz em luz.
+    ch.hp = 1; ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50); ch.atualizar(0.05, j);
+    return { vistos, pisao, cansado, dano, depois, morte: [ch.estado, ch.anim.base], arte: ['STUNNED', 'HIT', 'DEATH'].map((n) => LB.chefes.temArte(ch, n)) };
+  });
+  const golpe = { pisao: 'SLAM', chuvaFogo: 'FIRE_RAIN', rocha: 'THROW', lequeFogo: 'FIRE_FAN' };
+  for (const [atq, arte] of Object.entries(golpe)) igual(g.vistos[atq], ['MAGMA_' + arte, 'MAGMA_IDLE'], `${atq}: arte própria e depois parado até o ataque acabar`);
+  afirmar(g.pisao > 0.55 && g.pisao < 0.75, 'a onda do pisão sai quando o pé bate no chão na arte (6º quadro, 0,625 s): ' + g.pisao);
+  igual([g.cansado, g.dano, g.depois], ['MAGMA_STUNNED', 'MAGMA_HIT', 'MAGMA_STUNNED'], 'cansado com núcleo exposto, pisca com o dano e volta a ficar cansado');
+  igual(g.morte, ['morrendo', 'MAGMA_DEATH'], 'derrotado: a arte da derrota');
+  igual(g.arte, [true, true, true], 'arte própria para cansado, dano e derrota (sem o brilho por cima nem o desbotado)');
+
+  // Hidra: dorme no pântano com a arte nova e, acordada, fica parada com a arte nova (golpes ainda sem arte própria).
+  await h.area('pantano', Object.assign({ visto_pantano: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true }, P2));
+  const hd = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, desenho = () => LB.resolver(ch.anim.base, null, ch.lado).codigo;
+    const dormindo = [ch.anim.base, desenho()];
+    ch.acordar(j); ch.atualizar(0.05, j);
+    const parada = [ch.anim.base, desenho()];
+    ch.escolherAtaque(j); ch.ataque = 'raizes'; ch.estado = 'atacar'; ch.intocavel = false; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false;
+    ch.atualizar(0.05, j);
+    return { id: ch.id, dormindo, parada, golpe: desenho() };
+  });
+  igual(hd.id, 'hidra', 'o chefe do pântano é a Hidra');
+  igual(hd.dormindo, ['HIDRA_SLEEP', 'HIDRA_SLEEP'], 'antes da luta a Hidra dorme (item 349)');
+  igual(hd.parada, ['HIDRA_IDLE', 'HIDRA_IDLE'], 'acordada, fica parada (item 350)');
+  igual(hd.golpe, 'HIDRA_IDLE', 'golpe sem arte própria ainda: usa a pose parada');
+});
+
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {
   await h.ev(() => LB.dificuldade.definir('facil'));
   try {

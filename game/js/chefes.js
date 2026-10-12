@@ -76,6 +76,15 @@
     return !!r.sprite && !r.via;
   }
 
+  // Segundos até a arte do golpe chegar ao quadro `q` (contando do 0); sem arte própria, `padrao`.
+  function momentoDaArte(ch, nome, q, padrao) {
+    if (!temArte(ch, nome)) return padrao;
+    const est = new LB.Animador(ch.def.codigo + '_' + nome).estado(null, ch.lado);
+    return est.duracao * q / est.n;
+  }
+  // Pisão com arte (Titã de Magma, item 342): o pé bate no chão no 6º quadro; a onda e o tremor saem ali.
+  const PE_NO_CHAO = 5;
+
   class Chefe {
     constructor(id, x, y, arena) {
       const d = CHEFES[id];
@@ -215,7 +224,7 @@
       const angL = Math.atan2(l.y - this.y, l.x - this.x);
       switch (this.ataque) {
         case 'pisao':
-          if (this.uma('p', 1.0)) { this.perigos.push({ tipo: 'anel', x: this.x, y: this.y, r: 26, vel: 150, max: 240, el, dano }); j.tremer(6, 0.3); j.particulas.emitir('poeira', this.x, this.y, 16, { vel: 120, vida: 0.6, r: 5 }); }
+          if (this.uma('p', momentoDaArte(this, 'SLAM', PE_NO_CHAO, 1.0))) { this.perigos.push({ tipo: 'anel', x: this.x, y: this.y, r: 26, vel: 150, max: 240, el, dano }); j.tremer(6, 0.3); j.particulas.emitir('poeira', this.x, this.y, 16, { vel: 120, vida: 0.6, r: 5 }); }
           break;
         case 'rocha':
           for (const [k, q] of [[0, 0.5], [1, 0.9]]) if (this.uma('r' + k, q)) LB.magia.lancar(j, { dono: 'inimigo', tipo: 'pedra', x: this.x + this.lado * 24, y: this.y - 4, vx: Math.cos(angL + k * 0.2) * 170, vy: Math.sin(angL + k * 0.2) * 170, z: 60, r: 8, max: Math.min(1.8, Math.hypot(l.x - this.x, l.y - this.y) / 170 + 0.2), dano });
