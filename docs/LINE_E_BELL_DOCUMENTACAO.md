@@ -18,6 +18,8 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> 🐍 **Hidra acordando, mordendo e soltando raízes (itens 351 a 353):** a **Hidra de Lama** agora **acorda** na apresentação (abre os olhos, as três cabeças erguem e rugem), tem o **ataque genérico** (a mordida da cabeça do meio, usado nos golpes que ainda não têm arte) e as **raízes**, que brotam e crescem em linha ao lado dela. As raízes vieram desenhadas uns 11% menores e o acordar uns 4% maior: o jogo acerta, e ela fica do mesmo tamanho em tudo. Cores conferidas com a referência (lama marrom, olhos dourados).
+
 > 🌋 **Titã de Magma completo e a Hidra chegando (itens 342 a 350):** o **Titã de Magma** ganhou a arte de cada golpe (**pisão**, **chuva de fogo**, **arremesso de rocha** e **leque de fogo**), do **cansado** com o núcleo exposto, do **dano** e da **derrota**, em que se desfaz em pedras e brasas. Tudo foi medido e ficou do tamanho do Titã parado (a derrota veio desenhada uns 23% maior e o jogo reduz). No pisão, a onda e o tremor agora saem na hora em que o pé bate no chão na arte. A **Hidra de Lama** chegou **dormindo** e **parada**, do porte do Titã (os dois são chefes de junção); o resto dela usa a pose parada até a arte chegar. As cores de todas foram conferidas com a referência aprovada (pedra cinza com lava; lama marrom com olhos dourados). Entrou também a regra da **paleta-base fixa** e a do **reaproveitamento máximo** (seção 14.0; a da paleta também nas pendências, 1.1).
 
 > 🐲 **Serpente, Grifo e Titã de Magma com a arte nova (itens 317 a 341):** a **Serpente das Marés** e o **Grifo da Tempestade** chegaram completos, e o **Titã de Magma** chegou dormindo, acordando, parado e com o ataque. Cada animação veio desenhada numa escala diferente (o Grifo dormindo e o cansado vieram quase com o dobro do tamanho do Grifo parado): todas foram medidas e acertadas para cada chefe ficar **do mesmo tamanho em todas as animações**. Os chefes **acordam com o rugido** na apresentação, **piscam ao receber dano** e, na derrota, **se desfazem em luz**. A Serpente **afunda e volta à tona** no mergulho (só as bolhas seguem a heroína por baixo). O Grifo **dorme no chão** e só levanta voo depois de acordar. O guardião **libertado aparece nas cores verdadeiras** agradecendo enquanto fala, e depois brilha e some. No Grifo chamando raios, a arte trazia círculos de aviso e raios caindo do lado dele: como no jogo o raio cai na heroína, com o aviso lá, ficou só o Grifo chamando os raios. O Grifo recebendo dano (item 335) chegou só em imagens soltas e entrou do mesmo jeito. Os chefes passaram a usar uma célula maior, para não ficarem borrados quando aparecem grandes na tela (seção 20).
@@ -189,7 +191,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **572**: 342 com arte (temporária), 155 usando uma substituta, 75 desenhadas no código ou sem imagem |
+| Animações catalogadas | **572**: 345 com arte (temporária), 152 usando uma substituta, 75 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1881,7 +1883,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 572 animações. ✅ 342 com arte temporária, 🔁 155 com substituta e ✏️ 75 desenhadas no código.
+**Resumo:** 572 animações. ✅ 345 com arte temporária, 🔁 152 com substituta e ✏️ 75 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1902,7 +1904,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
-| Chefe: Hidra de Lama (Parte 2) | 12 | 2 | 10 | 0 |
+| Chefe: Hidra de Lama (Parte 2) | 12 | 5 | 7 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
@@ -2356,13 +2358,13 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 |---|---|---:|:---:|---|---|
 | `HIDRA_SLEEP` | Hidra de Lama — dormindo (antes da luta) (item 349) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_349 |
 | `HIDRA_IDLE` | Hidra de Lama — parado, respirando (item 350) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_350 |
-| `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | 12 |  | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha | 10 |  | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 |  | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_WAVE` | Hidra de Lama — onda | 10 |  | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 |  | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 |  | 🔁 usa `HIDRA_IDLE` |  |
+| `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação (item 351) | 12 |  | ✅ temporária | LINE_BELL_ITEM_351 |
+| `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) (item 352) | 10 |  | ✅ temporária | LINE_BELL_ITEM_352 |
+| `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha (item 353) | 10 |  | ✅ temporária | LINE_BELL_ITEM_353 |
+| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
+| `HIDRA_WAVE` | Hidra de Lama — onda | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
+| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
+| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
 | `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | 8 | sim | 🔁 usa `HIDRA_IDLE` |  |
 | `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 |  | 🔁 usa `HIDRA_IDLE` |  |
 | `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `HIDRA_IDLE` |  |
@@ -3281,7 +3283,7 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** As poças de lama deixam você lenta: fuja delas. / Ela mergulha na lama e sai embaixo das bolhas. / Cansada, ela afunda a cabeça no chão: ataque!
 - **Aparência:** Três cabeças de serpente feitas de lama e raízes saindo de um charco. O corpo fica afundado; as cabeças se mexem separadas (uma cospe lama, outra água, a do meio morde). Olhos amarelos, bocas escorrendo lama. Quando cansa, as três cabeças afundam e só o núcleo (uma bolha de lama brilhante) aparece.
 
-**Arte no jogo (itens 349 e 350):** **dorme** no charco antes da luta e, acordada, fica **parada** respirando, com as três cabeças. Acordando, os golpes, cansada, dano e derrota ainda usam a pose parada até chegar a arte de cada um (a fila continua no item 351, a Hidra acordando).
+**Arte no jogo (itens 349 a 353):** **dorme** no charco antes da luta, **acorda** abrindo os olhos e rugindo com as três cabeças na apresentação e fica **parada** respirando; nas **raízes**, os brotos avisam e as raízes crescem em linha ao lado dela (as de verdade saem em linha na direção da heroína, com o aviso no chão); os outros golpes (jatos, onda, mergulho e cuspe de lama) usam o **ataque genérico**, a mordida da cabeça do meio, até chegar a arte de cada um. Cansada, dano e derrota ainda usam a pose parada (a fila continua no item 354, os jatos de água).
 
 ![Hidra de Lama com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-hidra.jpg)
 *Hidra de Lama com a arte nova, ao lado da Line para ver o tamanho*
@@ -3406,7 +3408,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
-| Chefe: Hidra de Lama (Parte 2) | 12 | 2 | 10 | 0 |
+| Chefe: Hidra de Lama (Parte 2) | 12 | 5 | 7 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
@@ -3419,7 +3421,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **572** | **342** | **155** | **75** |
+| **Total** | **572** | **345** | **152** | **75** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3719,7 +3721,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 342 de 572 animações com arte · 155 usando uma substituta · 75 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 345 de 572 animações com arte · 152 usando uma substituta · 75 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3812,13 +3814,10 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | desenho no código |
 | Chefe: Serpente das Marés (Parte 2) | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | `SERPENTE_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WAVE` | Hidra de Lama — onda | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_MUD` | Hidra de Lama — cuspe de lama | `HIDRA_IDLE` |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | `HIDRA_ATTACK` |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WAVE` | Hidra de Lama — onda | `HIDRA_ATTACK` |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | `HIDRA_ATTACK` |
+| Chefe: Hidra de Lama (Parte 2) | `HIDRA_MUD` | Hidra de Lama — cuspe de lama | `HIDRA_ATTACK` |
 | Chefe: Hidra de Lama (Parte 2) | `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | `HIDRA_IDLE` |
 | Chefe: Hidra de Lama (Parte 2) | `HIDRA_HIT` | Hidra de Lama — recebe dano | `HIDRA_IDLE` |
 | Chefe: Hidra de Lama (Parte 2) | `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | `HIDRA_IDLE` |
@@ -4375,6 +4374,9 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 348 | `LINE_BELL_ITEM_348.html` | 1,62 MB |  |
 | 349 | `LINE_BELL_ITEM_349.html` | 2,06 MB |  |
 | 350 | `LINE_BELL_ITEM_350.html` | 2,06 MB |  |
+| 351 | `LINE_BELL_ITEM_351.html` | 2,58 MB |  |
+| 352 | `LINE_BELL_ITEM_352.html` | 2,75 MB |  |
+| 353 | `LINE_BELL_ITEM_353.html` | 2,13 MB |  |
 
 Itens que ainda não chegaram: 153, 240, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316.
 

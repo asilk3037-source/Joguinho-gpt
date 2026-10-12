@@ -397,7 +397,7 @@ for n, t in enumerate([
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.",
     "**Mapas das fases** em cima dos gabaritos (seção 8.1).",
-    "**Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 351, a Hidra acordando), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.",
+    "**Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 354, os jatos de água), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.",
     "**Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.",
 ], 1):
     w(f"{n}. {t}")

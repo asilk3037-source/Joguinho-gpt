@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **240** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **237** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -129,17 +129,14 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 |---|---|---|---|
 | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | 🔁 usa `SERPENTE_IDLE` |
 
-### Chefe: Hidra de Lama (Parte 2) (10)
+### Chefe: Hidra de Lama (Parte 2) (7)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação | 12 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) | 10 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha | 10 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_WAVE` | Hidra de Lama — onda | 10 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 | 🔁 usa `HIDRA_IDLE` |
+| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 | 🔁 usa `HIDRA_ATTACK` |
+| `HIDRA_WAVE` | Hidra de Lama — onda | 10 | 🔁 usa `HIDRA_ATTACK` |
+| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 | 🔁 usa `HIDRA_ATTACK` |
+| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 | 🔁 usa `HIDRA_ATTACK` |
 | `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `HIDRA_IDLE` |
 | `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 | 🔁 usa `HIDRA_IDLE` |
 | `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 | 🔁 usa `HIDRA_IDLE` |
@@ -687,7 +684,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 4. **Telas** (seção 7), começando pelo título e pela mochila.
 5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 351, a Hidra acordando), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.
+7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 354, os jatos de água), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.
 8. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
 > 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.

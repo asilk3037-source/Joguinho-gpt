@@ -71,8 +71,10 @@ ARTE_CHEFES = {
               "e o tremor saem na hora em que o pé bate no chão na arte), **chuva de fogo** (o fogo que cai em volta dele faz parte da magia; o de verdade "
               "cai na heroína, com o círculo de aviso lá), **arremesso de rocha** e **leque de fogo**; **cansado** mostra o núcleo; pisca ao **receber dano**; "
               "e na **derrota** se desfaz em pedras e brasas. Ficou completo."),
-    "hidra": ("itens 349 e 350", "**dorme** no charco antes da luta e, acordada, fica **parada** respirando, com as três cabeças. Acordando, os golpes, "
-              "cansada, dano e derrota ainda usam a pose parada até chegar a arte de cada um (a fila continua no item 351, a Hidra acordando)."),
+    "hidra": ("itens 349 a 353", "**dorme** no charco antes da luta, **acorda** abrindo os olhos e rugindo com as três cabeças na apresentação e fica "
+              "**parada** respirando; nas **raízes**, os brotos avisam e as raízes crescem em linha ao lado dela (as de verdade saem em linha na direção "
+              "da heroína, com o aviso no chão); os outros golpes (jatos, onda, mergulho e cuspe de lama) usam o **ataque genérico**, a mordida da cabeça "
+              "do meio, até chegar a arte de cada um. Cansada, dano e derrota ainda usam a pose parada (a fila continua no item 354, os jatos de água)."),
 }
 
 NPCS_VISUAL = [
