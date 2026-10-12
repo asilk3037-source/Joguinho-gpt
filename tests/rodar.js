@@ -1549,21 +1549,72 @@ teste('parte 2: Titã de Magma completo e Hidra dormindo e parada (itens 342 a 3
   igual(g.morte, ['morrendo', 'MAGMA_DEATH'], 'derrotado: a arte da derrota');
   igual(g.arte, [true, true, true], 'arte própria para cansado, dano e derrota (sem o brilho por cima nem o desbotado)');
 
-  // Hidra: dorme no pântano com a arte nova e, acordada, fica parada com a arte nova (golpes ainda sem arte própria).
+  // Hidra: dorme no pântano com a arte nova e, acordada, fica parada com a arte nova.
   await h.area('pantano', Object.assign({ visto_pantano: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true }, P2));
   const hd = await h.ev(() => {
     const j = LB.jogo, ch = j.chefeArena, desenho = () => LB.resolver(ch.anim.base, null, ch.lado).codigo;
     const dormindo = [ch.anim.base, desenho()];
     ch.acordar(j); ch.atualizar(0.05, j);
     const parada = [ch.anim.base, desenho()];
-    ch.escolherAtaque(j); ch.ataque = 'raizes'; ch.estado = 'atacar'; ch.intocavel = false; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false;
+    ch.escolherAtaque(j); ch.ataque = 'lama'; ch.estado = 'atacar'; ch.intocavel = false; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false;
     ch.atualizar(0.05, j);
     return { id: ch.id, dormindo, parada, golpe: desenho() };
   });
   igual(hd.id, 'hidra', 'o chefe do pântano é a Hidra');
   igual(hd.dormindo, ['HIDRA_SLEEP', 'HIDRA_SLEEP'], 'antes da luta a Hidra dorme (item 349)');
   igual(hd.parada, ['HIDRA_IDLE', 'HIDRA_IDLE'], 'acordada, fica parada (item 350)');
-  igual(hd.golpe, 'HIDRA_IDLE', 'golpe sem arte própria ainda: usa a pose parada');
+  igual(hd.golpe, 'HIDRA_ATTACK', 'golpe sem arte própria ainda (cuspe de lama): usa o ataque genérico (item 352)');
+});
+
+teste('parte 2: Hidra acordando, ataque genérico e raízes (itens 351 a 353), do mesmo tamanho da parada', async (h) => {
+  await h.area('pantano', Object.assign({ visto_pantano: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true }, P2));
+  const ITENS = { HIDRA_WAKE: 351, HIDRA_ATTACK: 352, HIDRA_ROOTS: 353 };
+  const r = await h.ev((ITENS) => {
+    // Caixa do último quadro (a Hidra acordada, de volta à postura alerta), em unidades do mundo.
+    const medir = (cod) => {
+      const s = window.SPRITES[cod], img = LB.imagens[cod], c = s.cell, q = s.seq[s.seq.length - 1];
+      const cv = document.createElement('canvas'); cv.width = c; cv.height = c;
+      const g = cv.getContext('2d'); g.drawImage(img, q * c, 0, c, c, 0, 0, c, c);
+      const d = g.getImageData(0, 0, c, c).data;
+      let x0 = c, x1 = -1, y0 = c, y1 = -1;
+      for (let y = 0; y < c; y++) for (let x = 0; x < c; x++) if (d[(y * c + x) * 4 + 3] > 100) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      const k = 200 * (s.escala || 1) * (s.ajuste || 1) / c;
+      return { larg: (x1 - x0 + 1) * k, alt: (y1 - y0 + 1) * k };
+    };
+    const fontes = Object.fromEntries(Object.keys(ITENS).map((k) => [k, [window.SPRITES[k] && window.SPRITES[k].item, window.SPRITES[k] && window.SPRITES[k].cell]]));
+    const tam = {};
+    for (const k of Object.keys(ITENS).concat(['HIDRA_IDLE'])) tam[k] = medir(k);
+    return { fontes, tam };
+  }, ITENS);
+  for (const [cod, n] of Object.entries(ITENS)) igual(r.fontes[cod], [`LINE_BELL_ITEM_${n}.html`, 448], `${cod} vem do item ${n}, em célula grande`);
+  // As raízes vieram desenhadas uns 11% menores e o acordar uns 4% maior: o jogo acerta.
+  for (const c of ['WAKE', 'ATTACK', 'ROOTS']) afirmar(Math.abs(r.tam['HIDRA_' + c].larg / r.tam.HIDRA_IDLE.larg - 1) <= 0.12, `Hidra ${c} da largura da parada: ${JSON.stringify([r.tam['HIDRA_' + c], r.tam.HIDRA_IDLE])}`);
+
+  // Apresentação: dorme, acorda com a arte própria e fica parada na conversa.
+  const a = await h.ev(async () => {
+    const j = LB.jogo, ch = j.chefeArena, vistos = [];
+    j.iniciarCena(LB.HISTORIA.chefeIntro, { semPular: false }, ch);
+    for (let i = 0; i < 600 && j.cena; i++) {
+      if (vistos[vistos.length - 1] !== ch.anim.base) vistos.push(ch.anim.base);
+      if (LB.dialogo.nome && LB.dialogo.nome.textContent) LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 30));
+    }
+    return { vistos, dormindo: ch.dormindo };
+  });
+  afirmar(a.vistos.indexOf('HIDRA_WAKE') >= 0 && a.vistos.indexOf('HIDRA_IDLE') > a.vistos.indexOf('HIDRA_WAKE'), 'acorda com a arte própria e fica parada na conversa: ' + JSON.stringify(a.vistos));
+  igual(a.dormindo, false, 'no fim da apresentação ela acorda de verdade');
+
+  // Raízes: a arte própria toca uma vez e volta à pose parada.
+  const g = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, l = j.line, vistos = [];
+    ch.anim.tocar('HIDRA_IDLE', true);
+    ch.escolherAtaque(j); ch.ataque = 'raizes'; ch.estado = 'atacar'; ch.intocavel = false; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false; ch.feito = {};
+    let raizes = 0;
+    for (let i = 0; i < 60; i++) { l.hp = l.hpMax; ch.atualizar(0.05, j); if (vistos[vistos.length - 1] !== ch.anim.base) vistos.push(ch.anim.base); raizes = Math.max(raizes, ch.perigos.filter((p) => p.estilo === 'raiz').length); }
+    return { vistos, raizes };
+  });
+  igual(g.vistos, ['HIDRA_ROOTS', 'HIDRA_IDLE'], 'raízes com a arte própria e depois parada');
+  afirmar(g.raizes > 0, 'as raízes de verdade saem em linha na direção da heroína');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {

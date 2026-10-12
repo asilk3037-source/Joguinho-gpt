@@ -12296,6 +12296,118 @@ window.SPRITES = {
   "label": "Hidra de Lama — parado, respirando",
   "item": "LINE_BELL_ITEM_350.html",
   "ajuste": 1.15
+ },
+ "HIDRA_WAKE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/HIDRA_WAKE.webp",
+  "cell": 448,
+  "count": 12,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "ground": 414,
+  "groundEnd": 414,
+  "bases": [
+   414,
+   414,
+   413,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414
+  ],
+  "label": "Hidra de Lama — acordando e rugido de apresentação",
+  "item": "LINE_BELL_ITEM_351.html",
+  "ajuste": 1.106
+ },
+ "HIDRA_ATTACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/HIDRA_ATTACK.webp",
+  "cell": 448,
+  "count": 10,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "ground": 414,
+  "groundEnd": 414,
+  "bases": [
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414
+  ],
+  "label": "Hidra de Lama — ataque genérico",
+  "item": "LINE_BELL_ITEM_352.html",
+  "ajuste": 1.15
+ },
+ "HIDRA_ROOTS": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/HIDRA_ROOTS.webp",
+  "cell": 448,
+  "count": 10,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "ground": 414,
+  "groundEnd": 414,
+  "bases": [
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414,
+   414
+  ],
+  "label": "Hidra de Lama — raízes saindo do chão em linha",
+  "item": "LINE_BELL_ITEM_353.html",
+  "ajuste": 1.292
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

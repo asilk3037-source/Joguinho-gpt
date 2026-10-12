@@ -387,9 +387,9 @@ window.LB = window.LB || {};
   grupo('Chefe: Hidra de Lama (Parte 2)', [
     ['HIDRA_SLEEP', 'Hidra de Lama — dormindo (antes da luta) (item 349)', { loop: true, fps: 4, quadros: 8, alt: 'HIDRA_IDLE', parte2: true }],
     ['HIDRA_IDLE', 'Hidra de Lama — parado, respirando (item 350)', { loop: true, fps: 8, quadros: 8, parte2: true }],
-    ['HIDRA_WAKE', 'Hidra de Lama — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'HIDRA_IDLE', parte2: true }],
-    ['HIDRA_ATTACK', 'Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'HIDRA_IDLE', parte2: true }],
-    ['HIDRA_ROOTS', 'Hidra de Lama — raízes saindo do chão em linha', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
+    ['HIDRA_WAKE', 'Hidra de Lama — acordando / rugido de apresentação (item 351)', { fps: 10, quadros: 12, alt: 'HIDRA_IDLE', parte2: true }],
+    ['HIDRA_ATTACK', 'Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) (item 352)', { fps: 10, quadros: 10, alt: 'HIDRA_IDLE', parte2: true }],
+    ['HIDRA_ROOTS', 'Hidra de Lama — raízes saindo do chão em linha (item 353)', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
     ['HIDRA_WATER_JET', 'Hidra de Lama — jatos de água', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
     ['HIDRA_WAVE', 'Hidra de Lama — onda', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
     ['HIDRA_DIVE', 'Hidra de Lama — mergulho (some e reaparece)', { fps: 10, quadros: 10, alt: 'HIDRA_ATTACK', parte2: true }],
