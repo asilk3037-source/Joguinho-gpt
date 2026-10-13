@@ -13559,6 +13559,118 @@ window.SPRITES = {
   "label": "COLOSSO_STUNNED",
   "item": "LINE_BELL_ITEM_312.html",
   "ajuste": 0.825
+ },
+ "QUIMERA_WAKE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/QUIMERA_WAKE.webp",
+  "cell": 448,
+  "count": 12,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "ground": 422,
+  "groundEnd": 425,
+  "bases": [
+   422,
+   421,
+   422,
+   422,
+   422,
+   421,
+   423,
+   423,
+   423,
+   422,
+   422,
+   425
+  ],
+  "label": "Quimera Primordial — acordando e rugido de apresentação",
+  "item": "LINE_BELL_ITEM_375.html",
+  "ajuste": 1.3
+ },
+ "QUIMERA_ATTACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/QUIMERA_ATTACK.webp",
+  "cell": 448,
+  "count": 10,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "ground": 425,
+  "groundEnd": 425,
+  "bases": [
+   425,
+   420,
+   419,
+   419,
+   420,
+   419,
+   419,
+   419,
+   418,
+   425
+  ],
+  "label": "Quimera Primordial — ataque genérico",
+  "item": "LINE_BELL_ITEM_376.html",
+  "ajuste": 1.3
+ },
+ "QUIMERA_SLAM": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/QUIMERA_SLAM.webp",
+  "cell": 448,
+  "count": 10,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "ground": 425,
+  "groundEnd": 425,
+  "bases": [
+   425,
+   418,
+   419,
+   419,
+   418,
+   423,
+   425,
+   419,
+   420,
+   425
+  ],
+  "label": "Quimera Primordial — pisão com onda no chão",
+  "item": "LINE_BELL_ITEM_377.html",
+  "ajuste": 1.3
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

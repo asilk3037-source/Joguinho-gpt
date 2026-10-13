@@ -1744,10 +1744,10 @@ teste('pedidos do teste no celular: Serpente na água, monstros novos, missão m
   igual(vm.moradores, ['abilio', 'davi', 'graca', 'iolanda', 'lia', 'teo'], 'moradores novos da vila');
 });
 
-teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tempestade (363 a 372) e Quimera dormindo e parada (373 e 374), do mesmo tamanho em todas as animações', async (h) => {
+teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tempestade (363 a 372) e Quimera (373 a 377), do mesmo tamanho em todas as animações', async (h) => {
   await h.area('vale', Object.assign({ visto_vale: true }, P2));
   const ITENS = { COLOSSO_IDLE: 305, COLOSSO_WAKE: 306, COLOSSO_ATTACK: 307, COLOSSO_ROOTS: 308, COLOSSO_THORNS: 309, COLOSSO_MUD: 310, COLOSSO_SUMMON: 311, COLOSSO_STUNNED: 312, COLOSSO_HIT: 313, COLOSSO_DEATH: 314, COLOSSO_FREED: 315, SERPENTE_SLEEP: 316,
-    TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371, TEMPESTADE_DEATH: 372, QUIMERA_SLEEP: 373, QUIMERA_IDLE: 374 };
+    TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371, TEMPESTADE_DEATH: 372, QUIMERA_SLEEP: 373, QUIMERA_IDLE: 374, QUIMERA_WAKE: 375, QUIMERA_ATTACK: 376, QUIMERA_SLAM: 377 };
   const r = await h.ev((ITENS) => {
     // Caixa de um quadro (o primeiro ou o último), em unidades do mundo (célula de 200 × ajuste); `claros` conta os
     // pixels de raio/anel (brancos ou ciano) da parte de baixo da célula.
@@ -1786,6 +1786,11 @@ teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tem
   afirmar(r.tam.COLOSSO_IDLE.alt > 110 && r.tam.COLOSSO_IDLE.alt < 160, 'Colosso bem maior que a Line, na altura do que era desenhado no código: ' + r.tam.COLOSSO_IDLE.alt);
   afirmar(perto(r.tam.SERPENTE_SLEEP.larg, r.tam.SERPENTE_IDLE.larg, 0.15), 'Serpente dormindo da largura da parada: ' + JSON.stringify([r.tam.SERPENTE_SLEEP, r.tam.SERPENTE_IDLE]));
   afirmar(perto(r.tam.QUIMERA_SLEEP.larg, r.tam.QUIMERA_IDLE.larg, 0.08) && r.tam.QUIMERA_IDLE.larg > 200, 'Quimera dormindo e parada do mesmo tamanho, a maior de todos os chefes: ' + JSON.stringify([r.tam.QUIMERA_SLEEP, r.tam.QUIMERA_IDLE]));
+  // Quimera: acordando (último quadro), ataque e pisão (1º quadro) saem do mesmo tamanho da parada, e o chão é o mesmo.
+  for (const [c, ult] of [['WAKE', true], ['ATTACK', false], ['SLAM', false]]) {
+    const m = (ult ? r.fim : r.tam)['QUIMERA_' + c];
+    afirmar(perto(m.larg, r.tam.QUIMERA_IDLE.larg, 0.05) && perto(m.alt, r.tam.QUIMERA_IDLE.alt, 0.05), `Quimera ${c} do tamanho da parada: ${JSON.stringify([m, r.tam.QUIMERA_IDLE])}`);
+  }
   // Tempestade: a largura da nuvem (com os braços) igual à da parada, em todas.
   for (const c of ['WAKE', 'ATTACK', 'LIGHTNING', 'GUST', 'WATER_JET', 'WAVE', 'FEATHERS', 'HIT', 'STUNNED', 'DEATH']) {
     const m = (c === 'WAKE' ? r.fim : r.tam)['TEMPESTADE_' + c];
@@ -1875,6 +1880,11 @@ teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tem
     return { dorme, parada: [ch.anim.base, d()] };
   });
   igual([q.dorme, q.parada], [['quimera', 'QUIMERA_SLEEP', 'QUIMERA_SLEEP'], ['QUIMERA_IDLE', 'QUIMERA_IDLE']], 'a Quimera dorme (item 373) e fica parada (item 374)');
+  const gl = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, r = (n) => LB.resolver('QUIMERA_' + n, null, 1).codigo;
+    return { wake: r('WAKE'), ataque: r('ATTACK'), pisao: r('SLAM'), proprias: ['WAKE', 'ATTACK', 'SLAM'].map((n) => LB.chefes.temArte(ch, n)), sem: LB.chefes.temArte(ch, 'THROW'), pisaoMs: Math.round(new LB.Animador('QUIMERA_SLAM').estado(null, 1).duracao * 5 / 10 * 100) };
+  });
+  igual([gl.wake, gl.ataque, gl.pisao, gl.proprias, gl.sem], ['QUIMERA_WAKE', 'QUIMERA_ATTACK', 'QUIMERA_SLAM', [true, true, true], false], 'a Quimera acorda (375), ataca (376) e pisa (377) com a arte própria; os outros golpes ainda não têm');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {

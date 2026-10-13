@@ -430,9 +430,9 @@ window.LB = window.LB || {};
   grupo('Chefe: Quimera Primordial (Parte 2)', [
     ['QUIMERA_SLEEP', 'Quimera Primordial — dormindo (antes da luta) (item 373)', { loop: true, fps: 4, quadros: 8, alt: 'QUIMERA_IDLE', parte2: true }],
     ['QUIMERA_IDLE', 'Quimera Primordial — parado, respirando (item 374)', { loop: true, fps: 8, quadros: 8, parte2: true }],
-    ['QUIMERA_WAKE', 'Quimera Primordial — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'QUIMERA_IDLE', parte2: true }],
-    ['QUIMERA_ATTACK', 'Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'QUIMERA_IDLE', parte2: true }],
-    ['QUIMERA_SLAM', 'Quimera Primordial — pisão (onda no chão)', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
+    ['QUIMERA_WAKE', 'Quimera Primordial — acordando / rugido de apresentação (item 375)', { chao: 425, fps: 10, quadros: 12, alt: 'QUIMERA_IDLE', parte2: true }],
+    ['QUIMERA_ATTACK', 'Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) (item 376)', { chao: 425, fps: 10, quadros: 10, alt: 'QUIMERA_IDLE', parte2: true }],
+    ['QUIMERA_SLAM', 'Quimera Primordial — pisão (onda no chão) (item 377)', { chao: 425, fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
     ['QUIMERA_THROW', 'Quimera Primordial — arremesso de rocha', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
     ['QUIMERA_FIRE_RAIN', 'Quimera Primordial — chuva de fogo', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
     ['QUIMERA_FIRE_FAN', 'Quimera Primordial — leque de fogo', { fps: 10, quadros: 10, alt: 'QUIMERA_ATTACK', parte2: true }],
