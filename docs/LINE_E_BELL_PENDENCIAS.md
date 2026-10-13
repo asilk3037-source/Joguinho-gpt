@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **247** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **240** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -121,47 +121,30 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | 8 | ✏️ falta |
 | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | 8 | ✏️ falta |
 
-### Chefe: Colosso de Raízes (Parte 2) (4)
+### Chefe: Quimera Primordial (Parte 2) (20)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `COLOSSO_THORNS` | Colosso de Raízes — anel de espinhos | 10 | 🔁 usa `COLOSSO_ATTACK` |
-| `COLOSSO_MUD` | Colosso de Raízes — cuspe de lama | 10 | 🔁 usa `COLOSSO_ATTACK` |
-| `COLOSSO_SUMMON` | Colosso de Raízes — chama sombras | 10 | 🔁 usa `COLOSSO_ATTACK` |
-| `COLOSSO_STUNNED` | Colosso de Raízes — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `COLOSSO_IDLE` |
-
-### Chefe: Tempestade Viva (Parte 2) (1)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 | 🔁 usa `TEMPESTADE_STUNNED` |
-
-### Chefe: Quimera Primordial (Parte 2) (22)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `QUIMERA_SLEEP` | Quimera Primordial — dormindo (antes da luta) | 8 | ✏️ falta |
-| `QUIMERA_IDLE` | Quimera Primordial — parado, respirando | 8 | ✏️ falta |
-| `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | 12 | ✏️ falta |
-| `QUIMERA_ATTACK` | Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) | 10 | ✏️ falta |
-| `QUIMERA_SLAM` | Quimera Primordial — pisão (onda no chão) | 10 | ✏️ falta |
-| `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | 10 | ✏️ falta |
-| `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | 10 | ✏️ falta |
-| `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | 10 | ✏️ falta |
-| `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | 10 | ✏️ falta |
-| `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | 10 | ✏️ falta |
-| `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | 10 | ✏️ falta |
-| `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | 10 | ✏️ falta |
-| `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | 10 | ✏️ falta |
-| `QUIMERA_WAVE` | Quimera Primordial — onda | 10 | ✏️ falta |
-| `QUIMERA_GUST` | Quimera Primordial — rajada de vento | 10 | ✏️ falta |
-| `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | 10 | ✏️ falta |
-| `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | 10 | ✏️ falta |
-| `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) | 8 | ✏️ falta |
-| `QUIMERA_HIT` | Quimera Primordial — recebe dano | 4 | ✏️ falta |
-| `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | 14 | ✏️ falta |
-| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 | ✏️ falta |
-| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | ✏️ falta |
+| `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | 12 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_ATTACK` | Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_SLAM` | Quimera Primordial — pisão (onda no chão) | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_WAVE` | Quimera Primordial — onda | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_GUST` | Quimera Primordial — rajada de vento | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | 10 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_HIT` | Quimera Primordial — recebe dano | 4 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | 14 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | 🔁 usa `QUIMERA_IDLE` |
 
 ### Fogos-fátuos dos elementos (Parte 2) (9)
 
@@ -690,7 +673,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 4. **Telas** (seção 7), começando pelo título e pela mochila.
 5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes** da Parte 2 (seção 3): os itens **309 a 312 não chegaram** (pela numeração, o resto do Colosso: anel de espinhos, cuspe de lama, chamar sombras e cansado); o Titã de Magma e a Hidra ficaram completos; agora o resto da **Tempestade Viva** (a partir do item 372, a derrota) e a Quimera. E os **moradores** da Parte 2.
+7. **Chefes** da Parte 2 (seção 3): o Colosso, o Titã de Magma, a Hidra e a Tempestade Viva ficaram completos; agora o resto da **Quimera Primordial** (a partir do item 375, a Quimera acordando). E os **moradores** da Parte 2.
 8. **Monstros novos** (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os **moradores novos** (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.
 9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
