@@ -375,6 +375,8 @@ def escrever(w, inv, itens=None):
         linhas.append(f"- **Item {num_fora}**: `{cod_fora}`: os quadros {q_fora[0]} a {q_fora[-1]} vieram maiores que os outros e com o topo da cabeça cortado; o jogo usa só os {min(fora)} primeiros. Reenviar com todos no mesmo tamanho, sem corte.")
     for cod_raio, (num_raio, _) in extrair_sprites.RAIOS_SOLTOS.items():
         linhas.append(f"- **Item {num_raio}**: `{cod_raio}` trazia os círculos de aviso e os raios caindo do lado do Grifo; no jogo os raios caem onde a heroína está, com o círculo de aviso lá. O jogo tira o que fica abaixo dos pés do Grifo e deixa o raio sumindo aos poucos (fica o Grifo chamando os raios); não precisa reenviar.")
+    for cod_raio, (num_raio, _) in extrair_sprites.RAIOS_DA_NUVEM.items():
+        linhas.append(f"- **Item {num_raio}**: `{cod_raio}` trazia o raio e o círculo de aviso embaixo da nuvem; no jogo os raios caem onde a heroína está, com o círculo de aviso lá. O jogo tira o raio, o anel e as faíscas de baixo da nuvem (a chuva fica) e deixa o raio sumindo aos poucos (fica a Tempestade chamando os raios); não precisa reenviar.")
     for codigo, motivo in extrair_sprites.DESCARTADAS.items():
         linhas.append(f"- `{codigo}` saiu do jogo: {motivo}. Para reenviar.")
     if faltam:

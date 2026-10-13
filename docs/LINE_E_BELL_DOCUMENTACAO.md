@@ -18,6 +18,8 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> 🌳 **Colosso de Raízes, Serpente dormindo e Tempestade Viva (itens 305 a 308, 313 a 316 e 363 a 371):** o **Colosso de Raízes** agora **acorda e fica parado** com a arte nova (antes era desenhado no código), tem o **ataque genérico** (garras em arco) e as **raízes** (espinhos rosados brotando), **pisca ao apanhar**, **se desfaz em luz dourada** na derrota e, **libertado**, aparece com o coração verde agradecendo. A **Serpente** ganhou a arte dela **dormindo** enrolada. A **Tempestade Viva** ganhou **acordando**, **ataque genérico**, **raios**, **rajada**, **jatos de água**, **onda**, **leque de penas**, **cansada** e **dano**. Tamanhos medidos pelo espaço entre os olhos e pela silhueta: o Colosso fica na altura do que já era desenhado (0,8), e a nuvem da Tempestade fica do mesmo tamanho em todos os golpes e **ancorada pelo centro** (não pula de altura de uma animação para outra). Na Tempestade chamando raios, a arte trazia o raio e o círculo de aviso embaixo da nuvem: como no jogo o raio cai na heroína, ficou só a nuvem chamando. **Ainda faltam** os itens 309 a 312 (as outras artes do Colosso).
+
 > ⛈️ **Hidra completa e a Tempestade chegando (itens 354 a 362):** a **Hidra de Lama** ganhou a arte dos **jatos de água**, da **onda**, do **mergulho** (afunda no monte de lama e volta embaixo da heroína), do **cuspe de lama**, de **cansada** (só a bolha do núcleo aparece), do **dano** e da **derrota**: ficou completa. A **Tempestade Viva** chegou **dormindo** e **parada**, pairando com braços de vento e chuva. Tamanhos medidos e acertados (os jatos e a onda vieram uns 8% menores; a Tempestade dormindo, uns 14% menor que a parada); cores conferidas com a referência.
 
 > 🎮 **Ajustes do teste jogando (13 de outubro):**
@@ -201,7 +203,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **608**: 354 com arte (temporária), 155 usando uma substituta, 99 desenhadas no código ou sem imagem |
+| Animações catalogadas | **608**: 371 com arte (temporária), 149 usando uma substituta, 88 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1893,7 +1895,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 608 animações. ✅ 354 com arte temporária, 🔁 155 com substituta e ✏️ 99 desenhadas no código.
+**Resumo:** 608 animações. ✅ 371 com arte temporária, 🔁 149 com substituta e ✏️ 88 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1911,12 +1913,12 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 22 | 22 | 0 | 0 |
-| Chefe: Colosso de Raízes (Parte 2) | 12 | 1 | 0 | 11 |
-| Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
+| Chefe: Colosso de Raízes (Parte 2) | 12 | 8 | 4 | 0 |
+| Chefe: Serpente das Marés (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
-| Chefe: Tempestade Viva (Parte 2) | 12 | 2 | 10 | 0 |
+| Chefe: Tempestade Viva (Parte 2) | 12 | 11 | 1 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
@@ -2317,23 +2319,23 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
 | `COLOSSO_SLEEP` | Colosso de Raízes — dormindo (antes da luta) (item 304) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_304 |
-| `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | 8 | sim | ✏️ código / falta |  |
-| `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
-| `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
-| `COLOSSO_ROOTS` | Colosso de Raízes — raízes saindo do chão em linha | 10 |  | ✏️ código / falta |  |
-| `COLOSSO_THORNS` | Colosso de Raízes — anel de espinhos | 10 |  | ✏️ código / falta |  |
-| `COLOSSO_MUD` | Colosso de Raízes — cuspe de lama | 10 |  | ✏️ código / falta |  |
-| `COLOSSO_SUMMON` | Colosso de Raízes — chama sombras | 10 |  | ✏️ código / falta |  |
-| `COLOSSO_STUNNED` | Colosso de Raízes — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
-| `COLOSSO_HIT` | Colosso de Raízes — recebe dano | 4 |  | ✏️ código / falta |  |
-| `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
-| `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | 12 | sim | ✏️ código / falta |  |
+| `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando (item 305) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_305 |
+| `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação (item 306) | 12 |  | ✅ temporária | LINE_BELL_ITEM_306 |
+| `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) (item 307) | 10 |  | ✅ temporária | LINE_BELL_ITEM_307 |
+| `COLOSSO_ROOTS` | Colosso de Raízes — raízes saindo do chão em linha (item 308) | 10 |  | ✅ temporária | LINE_BELL_ITEM_308 |
+| `COLOSSO_THORNS` | Colosso de Raízes — anel de espinhos | 10 |  | 🔁 usa `COLOSSO_ATTACK` |  |
+| `COLOSSO_MUD` | Colosso de Raízes — cuspe de lama | 10 |  | 🔁 usa `COLOSSO_ATTACK` |  |
+| `COLOSSO_SUMMON` | Colosso de Raízes — chama sombras | 10 |  | 🔁 usa `COLOSSO_ATTACK` |  |
+| `COLOSSO_STUNNED` | Colosso de Raízes — cansado, núcleo exposto (hora de atacar) | 8 | sim | 🔁 usa `COLOSSO_IDLE` |  |
+| `COLOSSO_HIT` | Colosso de Raízes — recebe dano (item 313) | 4 |  | ✅ temporária | LINE_BELL_ITEM_313 |
+| `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) (item 314) | 14 |  | ✅ temporária | LINE_BELL_ITEM_314 |
+| `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece (item 315) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_315 |
 
 ### 10.16 Chefe: Serpente das Marés (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | sim | 🔁 usa `SERPENTE_IDLE` |  |
+| `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) (item 316) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_316 |
 | `SERPENTE_IDLE` | Serpente das Marés — parado, respirando (item 317) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_317 |
 | `SERPENTE_WAKE` | Serpente das Marés — acordando / rugido de apresentação (item 318) | 12 |  | ✅ temporária | LINE_BELL_ITEM_318 |
 | `SERPENTE_ATTACK` | Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) (item 319) | 10 |  | ✅ temporária | LINE_BELL_ITEM_319 |
@@ -2400,16 +2402,16 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 |---|---|---:|:---:|---|---|
 | `TEMPESTADE_SLEEP` | Tempestade Viva — dormindo (antes da luta) (item 361) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_361 |
 | `TEMPESTADE_IDLE` | Tempestade Viva — parado, respirando (item 362) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_362 |
-| `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | 12 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_WAVE` | Tempestade Viva — onda | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | 8 | sim | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | 4 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
-| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação (item 363) | 12 |  | ✅ temporária | LINE_BELL_ITEM_363 |
+| `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) (item 364) | 10 |  | ✅ temporária | LINE_BELL_ITEM_364 |
+| `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios (item 365) | 10 |  | ✅ temporária | LINE_BELL_ITEM_365 |
+| `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento (item 366) | 10 |  | ✅ temporária | LINE_BELL_ITEM_366 |
+| `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água (item 367) | 10 |  | ✅ temporária | LINE_BELL_ITEM_367 |
+| `TEMPESTADE_WAVE` | Tempestade Viva — onda (item 368) | 10 |  | ✅ temporária | LINE_BELL_ITEM_368 |
+| `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas (item 369) | 10 |  | ✅ temporária | LINE_BELL_ITEM_369 |
+| `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) (item 370) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_370 |
+| `TEMPESTADE_HIT` | Tempestade Viva — recebe dano (item 371) | 4 |  | ✅ temporária | LINE_BELL_ITEM_371 |
+| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `TEMPESTADE_STUNNED` |  |
 
 ### 10.21 Chefe: Quimera Primordial (Parte 2)
 
@@ -3294,13 +3296,18 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** As raízes saem do chão em linha, na sua direção: ande para o lado, não para trás. / Depois de três ataques ele se cansa e a flor do peito abre. É a hora de atacar! / A magia de luz abre a guarda dele na hora.
 - **Aparência:** Gigante de terra e madeira do tamanho de uma casa: tronco de árvore como corpo, braços de raízes grossas, musgo nos ombros e uma **flor no peito** (o núcleo) que se abre quando ele cansa. **Corrompido:** folhas pretas nas costas, olhos roxos e fumaça colorida saindo das rachaduras. **Libertado (`COLOSSO_FREED`):** folhas verdes, flores brancas brotando, olhos âmbar, sorriso tranquilo.
 
+**Arte no jogo (itens 304 a 308 e 313 a 315):** **dorme** antes da luta, **acorda** com o rugido (a flor do peito brilha) e fica **parado** respirando; o **ataque genérico** (garras em arco) e as **raízes** (espinhos rosados brotando do chão) têm arte própria; pisca ao **receber dano**; na **derrota** se desfaz em luz dourada; e, **libertado**, aparece com o coração verde agradecendo, e depois brilha e some. Faltam o anel de espinhos, o cuspe de lama, chamar sombras e o cansado (itens 309 a 312): até lá usam o ataque genérico e a pose parada.
+
+![Colosso de Raízes com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-colosso.jpg)
+*Colosso de Raízes com a arte nova, ao lado da Line para ver o tamanho*
+
 ### Serpente das Marés — Guardiã da Água
 - **Elementos:** 💧 Água · **Vida:** 16 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Lago Espelhado
 - **Ataques:** mergulha (fica intocável) e sai embaixo das bolhas; jatos de água em leque; onda que precisa ser pulada.
 - **Dicas do Fácil:** Quando ela mergulha, fique de olho nas bolhas: ela sai embaixo delas. / Pule a onda na hora que ela chegar em você. / Ela vive na água em volta da ilha. Depois de três ataques, cansada, ela se arrasta até a margem: ataque!
 - **Aparência:** Serpente-marinha longa, azul com barriga turquesa, barbatanas translúcidas nas costas e uma crista de coral. Mergulha e só a cabeça e parte do corpo aparecem. **Corrompida:** água turva marrom escorrendo, manchas escuras nas escamas, olhos brancos sem pupila. **Libertada:** escamas brilhando como espelho, olhos azul-claro.
 
-**Arte no jogo (itens 317 a 326):** vive **na água** em volta da ilha, meio submersa, com ondinhas (só sobe na terra ao sair do mergulho e quando cansa, arrastando-se até a margem para apanhar; depois volta); parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. A Serpente dormindo (antes da luta) ainda não chegou: até lá ela fica parada respirando.
+**Arte no jogo (itens 316 a 326):** vive **na água** em volta da ilha, meio submersa, com ondinhas (só sobe na terra ao sair do mergulho e quando cansa, arrastando-se até a margem para apanhar; depois volta); parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. **Dorme** (item 316) enrolada na água antes da luta.
 
 ![Serpente das Marés com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-serpente.jpg)
 *Serpente das Marés com a arte nova, ao lado da Line para ver o tamanho*
@@ -3346,7 +3353,7 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** Os raios agora caem em sequência: continue andando. / Quando ela chove forte, a rajada vem logo depois: prepare-se para andar contra o vento. / Cansada, ela desce e o olho da tempestade fica exposto.
 - **Aparência:** Uma nuvem escura com rosto (olhos brancos brilhantes e boca de trovão), braços de vento em espiral, chuva caindo por baixo e raios entre as nuvens. Paira no ar. No centro fica o **olho da tempestade**, um redemoinho claro que é o núcleo. Quando cansa, desce ao chão e o olho abre.
 
-**Arte no jogo (itens 361 e 362):** **dorme** de olhos fechados antes da luta e, acordada, fica **parada** pairando, com olhos brancos brilhantes, braços de vento e chuva. Acordando, os golpes, cansada, dano e derrota ainda usam a pose parada até chegar a arte de cada um (a fila continua no item 363, a Tempestade acordando).
+**Arte no jogo (itens 361 a 371):** **dorme** de olhos fechados no chão antes da luta, **acorda** abrindo os olhos e rugindo, e paira **parada** com olhos brancos brilhantes, braços de vento e chuva; cada golpe tem a sua arte: **chama raios** (o raio e o círculo de aviso de verdade caem na heroína; na arte ficou só a nuvem chamando), **rajada de vento**, **jatos de água**, **onda** e **leque de penas**; **cansada** desce e fica de olhos pesados com o núcleo exposto; pisca ao **receber dano**. A derrota ainda usa a pose cansada (a fila continua no item 372).
 
 ![Tempestade Viva com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-tempestade.jpg)
 *Tempestade Viva com a arte nova, ao lado da Line para ver o tamanho*
@@ -3358,8 +3365,8 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** A Quimera muda de elemento a cada fase: veja a cor do núcleo para saber o que vem. / Na última fase ela usa todos os ataques e bate mais forte. Troque de heroína quando a vida baixar. / A luz sempre abre a guarda. Guarde magia para isso.
 - **Aparência:** A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo.
 
-![Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; o Colosso acordado e a Quimera ainda desenhados no código até a arte chegar](imagens/p2-chefes.jpg)
-*Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; o Colosso acordado e a Quimera ainda desenhados no código até a arte chegar*
+![Os sete chefes nas arenas: o Colosso, a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; a Quimera ainda é desenhada no código até a arte chegar](imagens/p2-chefes.jpg)
+*Os sete chefes nas arenas: o Colosso, a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; a Quimera ainda é desenhada no código até a arte chegar*
 
 ## 21. Dicas do modo Fácil
 
@@ -3462,12 +3469,12 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
 | Bell jogável (Parte 2) | 22 | 22 | 0 | 0 |
-| Chefe: Colosso de Raízes (Parte 2) | 12 | 1 | 0 | 11 |
-| Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
+| Chefe: Colosso de Raízes (Parte 2) | 12 | 8 | 4 | 0 |
+| Chefe: Serpente das Marés (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
-| Chefe: Tempestade Viva (Parte 2) | 12 | 2 | 10 | 0 |
+| Chefe: Tempestade Viva (Parte 2) | 12 | 11 | 1 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
@@ -3479,7 +3486,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **608** | **354** | **155** | **99** |
+| **Total** | **608** | **371** | **149** | **88** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3779,7 +3786,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 354 de 608 animações com arte · 155 usando uma substituta · 99 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 371 de 608 animações com arte · 149 usando uma substituta · 88 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3795,7 +3802,8 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 - **Itens 290, 291 e 292** (`BELL_ATTACK_STAR`, `BELL_ATTACK_SPREAD`, `BELL_ATTACK_AIR`): em alguns quadros, a estrela que sai pela direita **volta pela esquerda**, atrás da Bell, e no pulo sobram traços escuros no topo. O jogo tira esses restos sozinho; não precisa reenviar.
 - **Item 302**: `BELL_CELEBRATE`: os quadros 9 a 12 vieram maiores que os outros e com o topo da cabeça cortado; o jogo usa só os 8 primeiros. Reenviar com todos no mesmo tamanho, sem corte.
 - **Item 333**: `GRIFO_LIGHTNING` trazia os círculos de aviso e os raios caindo do lado do Grifo; no jogo os raios caem onde a heroína está, com o círculo de aviso lá. O jogo tira o que fica abaixo dos pés do Grifo e deixa o raio sumindo aos poucos (fica o Grifo chamando os raios); não precisa reenviar.
-- **Itens que ainda não chegaram:** 153, 240, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316.
+- **Item 365**: `TEMPESTADE_LIGHTNING` trazia o raio e o círculo de aviso embaixo da nuvem; no jogo os raios caem onde a heroína está, com o círculo de aviso lá. O jogo tira o raio, o anel e as faíscas de baixo da nuvem (a chuva fica) e deixa o raio sumindo aos poucos (fica a Tempestade chamando os raios); não precisa reenviar.
+- **Itens que ainda não chegaram:** 153, 240, 309, 310, 311, 312.
 
 ### 23.5 Anotações do teste no celular (1º de outubro)
 
@@ -3869,28 +3877,11 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_ROOTS` | Colosso de Raízes — raízes saindo do chão em linha | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_THORNS` | Colosso de Raízes — anel de espinhos | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_MUD` | Colosso de Raízes — cuspe de lama | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_SUMMON` | Colosso de Raízes — chama sombras | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_STUNNED` | Colosso de Raízes — cansado, núcleo exposto (hora de atacar) | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_HIT` | Colosso de Raízes — recebe dano | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | desenho no código |
-| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | desenho no código |
-| Chefe: Serpente das Marés (Parte 2) | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | `SERPENTE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAVE` | Tempestade Viva — onda | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | `TEMPESTADE_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | `TEMPESTADE_IDLE` |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_THORNS` | Colosso de Raízes — anel de espinhos | `COLOSSO_ATTACK` |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_MUD` | Colosso de Raízes — cuspe de lama | `COLOSSO_ATTACK` |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_SUMMON` | Colosso de Raízes — chama sombras | `COLOSSO_ATTACK` |
+| Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_STUNNED` | Colosso de Raízes — cansado, núcleo exposto (hora de atacar) | `COLOSSO_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | `TEMPESTADE_STUNNED` |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_SLEEP` | Quimera Primordial — dormindo (antes da luta) | desenho no código |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_IDLE` | Quimera Primordial — parado, respirando | desenho no código |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | desenho no código |
@@ -4425,6 +4416,14 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 302 | `LINE_BELL_ITEM_302.html` | 2,58 MB | `BELL_CELEBRATE` |
 | 303 | `LINE_BELL_ITEM_303.html` | 2,62 MB | `BELL_TALK` |
 | 304 | `LINE_BELL_ITEM_304.html` | 4,22 MB | `COLOSSO_SLEEP` |
+| 305 | `LINE_BELL_ITEM_305.html` | 4,59 MB | `COLOSSO_IDLE` |
+| 306 | `LINE_BELL_ITEM_306.html` | 4,56 MB | `COLOSSO_WAKE` |
+| 307 | `LINE_BELL_ITEM_307.html` | 3,72 MB | `COLOSSO_ATTACK` |
+| 308 | `LINE_BELL_ITEM_308.html` | 3,80 MB | `COLOSSO_ROOTS` |
+| 313 | `LINE_BELL_ITEM_313.html` | 2,75 MB |  |
+| 314 | `LINE_BELL_ITEM_314.html` | 2,14 MB |  |
+| 315 | `LINE_BELL_ITEM_315.html` | 3,33 MB |  |
+| 316 | `LINE_BELL_ITEM_316.html` | 2,75 MB |  |
 | 317 | `LINE_BELL_ITEM_317.html` | 1,72 MB |  |
 | 318 | `LINE_BELL_ITEM_318.html` | 2,94 MB |  |
 | 319 | `LINE_BELL_ITEM_319.html` | 1,37 MB |  |
@@ -4471,8 +4470,17 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 360 | `LINE_BELL_ITEM_360.html` | 1,33 MB |  |
 | 361 | `LINE_BELL_ITEM_361.html` | 1,53 MB |  |
 | 362 | `LINE_BELL_ITEM_362.html` | 1,86 MB |  |
+| 363 | `LINE_BELL_ITEM_363.html` | 2,20 MB |  |
+| 364 | `LINE_BELL_ITEM_364.html` | 1,97 MB |  |
+| 365 | `LINE_BELL_ITEM_365.html` | 1,69 MB |  |
+| 366 | `LINE_BELL_ITEM_366.html` | 1,91 MB |  |
+| 367 | `LINE_BELL_ITEM_367.html` | 2,14 MB |  |
+| 368 | `LINE_BELL_ITEM_368.html` | 1,95 MB |  |
+| 369 | `LINE_BELL_ITEM_369.html` | 1,96 MB |  |
+| 370 | `LINE_BELL_ITEM_370.html` | 1,93 MB |  |
+| 371 | `LINE_BELL_ITEM_371.html` | 1,25 MB |  |
 
-Itens que ainda não chegaram: 153, 240, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316.
+Itens que ainda não chegaram: 153, 240, 309, 310, 311, 312.
 
 **Lote do shopping, das bases e do playground (itens 218 a 240 da numeração nova):** chegou como páginas de prévia sem as imagens, e as imagens vieram soltas. Os números 218 a 227 repetem os do lote anterior (objetos da fazenda), então as peças novas são chamadas pelo código (`SHOP_*`, `PLAYGROUND_*`, `base_*`). Só os itens 238 e 239 (o soco e a risada) viraram fichas na raiz, porque as animações são refeitas a partir delas. O que entrou está nas seções 5.2 (playground), 22.11.1 (peças do shopping) e 22.11.2 (bases).
 

@@ -59,10 +59,14 @@ CHEFES_VISUAL = {
 
 # Chefes que já têm arte (itens) e como cada animação entra na luta.
 ARTE_CHEFES = {
-    "serpente": ("itens 317 a 326", "vive **na água** em volta da ilha, meio submersa, com ondinhas (só sobe na terra ao sair do mergulho e quando cansa, arrastando-se até a margem para apanhar; depois volta); parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, "
+    "colosso": ("itens 304 a 308 e 313 a 315", "**dorme** antes da luta, **acorda** com o rugido (a flor do peito brilha) e fica **parado** respirando; o **ataque genérico** "
+                "(garras em arco) e as **raízes** (espinhos rosados brotando do chão) têm arte própria; pisca ao **receber dano**; na **derrota** se desfaz em "
+                "luz dourada; e, **libertado**, aparece com o coração verde agradecendo, e depois brilha e some. Faltam o anel de espinhos, o cuspe de lama, "
+                "chamar sombras e o cansado (itens 309 a 312): até lá usam o ataque genérico e a pose parada."),
+    "serpente": ("itens 316 a 326", "vive **na água** em volta da ilha, meio submersa, com ondinhas (só sobe na terra ao sair do mergulho e quando cansa, arrastando-se até a margem para apanhar; depois volta); parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, "
                  "só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; "
                  "na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. "
-                 "A Serpente dormindo (antes da luta) ainda não chegou: até lá ela fica parada respirando."),
+                 "**Dorme** (item 316) enrolada na água antes da luta."),
     "grifo": ("itens 327 a 337", "**dorme no chão** antes da luta e **acorda** com o rugido; depois levanta voo; **rajada de vento**, **leque de penas** e "
               "**chama raios** nos golpes (os raios de verdade caem na heroína, com o círculo de aviso lá; na arte ficou só o Grifo chamando os raios); "
               "**cansado** pousa e mostra o núcleo; pisca ao **receber dano**; na **derrota** desce ao chão e vira luz; **libertado**, aparece branco "
@@ -76,9 +80,10 @@ ARTE_CHEFES = {
               "linha na direção da heroína), **jatos de água**, **onda**, **cuspe de lama** e o **mergulho** (afunda no monte de lama, só o monte "
               "segue a heroína e ela volta à tona embaixo dela); **cansada**, as três cabeças afundam e só a bolha de lama do núcleo aparece; pisca ao "
               "**receber dano**; e na **derrota** se desfaz em lama e brilhos dourados. Ficou completa."),
-    "tempestade": ("itens 361 e 362", "**dorme** de olhos fechados antes da luta e, acordada, fica **parada** pairando, com olhos brancos brilhantes, "
-                   "braços de vento e chuva. Acordando, os golpes, cansada, dano e derrota ainda usam a pose parada até chegar a arte de cada um "
-                   "(a fila continua no item 363, a Tempestade acordando)."),
+    "tempestade": ("itens 361 a 371", "**dorme** de olhos fechados no chão antes da luta, **acorda** abrindo os olhos e rugindo, e paira **parada** com olhos brancos "
+                   "brilhantes, braços de vento e chuva; cada golpe tem a sua arte: **chama raios** (o raio e o círculo de aviso de verdade caem na heroína; "
+                   "na arte ficou só a nuvem chamando), **rajada de vento**, **jatos de água**, **onda** e **leque de penas**; **cansada** desce e fica de olhos "
+                   "pesados com o núcleo exposto; pisca ao **receber dano**. A derrota ainda usa a pose cansada (a fila continua no item 372)."),
 }
 
 NPCS_VISUAL = [
@@ -350,7 +355,7 @@ def escrever(w, img, inv, rot, roteiro):
             w(f"**Arte no jogo ({itens}):** {como}")
             w()
             img(f"p2-arte-{ch}", f"{c['nome']} com a arte nova, ao lado da Line para ver o tamanho")
-    img("p2-chefes", "Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; o Colosso acordado e a Quimera ainda desenhados no código até a arte chegar")
+    img("p2-chefes", "Os sete chefes nas arenas: o Colosso, a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; a Quimera ainda é desenhada no código até a arte chegar")
 
     # ============================ 21 ============================
     w("## 21. Dicas do modo Fácil")
