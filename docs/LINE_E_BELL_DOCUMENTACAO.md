@@ -18,6 +18,14 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> 🎮 **Ajustes do teste jogando (13 de outubro):**
+> - **Seta e trilha do chão mais fortes:** douradas e com contorno escuro, aparecem em qualquer chão (grama clara, areia, neve).
+> - **A Serpente nada no lago:** ela dorme e luta na água em volta da ilha, meio submersa, com ondinhas. Só sobe na terra quando sai do mergulho embaixo da heroína e quando cansa: aí se arrasta até a margem, que é a hora de bater nela. Depois volta para a água.
+> - **Quatro monstros novos na Parte 1** (floresta, gruta, ruínas e montanha): o **javali-de-espinhos** (raspa a pata e investe em linha reta; batendo na parede fica tonto e apanha em dobro), o **cogumelo saltador** (finge ser cogumelo, pula em cima e solta esporos que deixam lenta), a **aranha da gruta** (desce do teto no fio e cospe teia que deixa lenta) e a **geleia** (se divide em duas pequenas quando apanha). Desenhados no código até a arte chegar (pendências, seção 3).
+> - **Missão minimizável:** toque no título “Objetivo” (ou tecla **O**) para recolher o painel; o jogo lembra a escolha. **Avisos mais discretos:** menores, somem mais rápido, no máximo três na tela, o mesmo aviso não repete e moedas seguidas somam num aviso só. A **dica** do topo ficou menor e fecha com um toque.
+> - **Gente andando no vilarejo:** Seu Joca (carteiro), Dona Marta (lavadeira), Nina e Caio (lenhador) passeiam pelas ruas de dia, cada um com as suas frases, e vão para casa à noite.
+> - **Vila do Moinho, a segunda vila:** ao sul do Vale das Raízes, pela estrada que abre depois que o Colosso é libertado. Praça com fonte, feira, campo de flores, o moinho e quatro casas para entrar; moradores novos (Seu Abílio, o moleiro; Dona Iolanda, a florista; a Lia) e passantes (Teodoro, Dona Graça e o Davi). Cada morador com nome dá um presentinho na primeira conversa, e tem um baú escondido perto das flores amarelas.
+
 > 🐍 **Hidra acordando, mordendo e soltando raízes (itens 351 a 353):** a **Hidra de Lama** agora **acorda** na apresentação (abre os olhos, as três cabeças erguem e rugem), tem o **ataque genérico** (a mordida da cabeça do meio, usado nos golpes que ainda não têm arte) e as **raízes**, que brotam e crescem em linha ao lado dela. As raízes vieram desenhadas uns 11% menores e o acordar uns 4% maior: o jogo acerta, e ela fica do mesmo tamanho em tudo. Cores conferidas com a referência (lama marrom, olhos dourados).
 
 > 🌋 **Titã de Magma completo e a Hidra chegando (itens 342 a 350):** o **Titã de Magma** ganhou a arte de cada golpe (**pisão**, **chuva de fogo**, **arremesso de rocha** e **leque de fogo**), do **cansado** com o núcleo exposto, do **dano** e da **derrota**, em que se desfaz em pedras e brasas. Tudo foi medido e ficou do tamanho do Titã parado (a derrota veio desenhada uns 23% maior e o jogo reduz). No pisão, a onda e o tremor agora saem na hora em que o pé bate no chão na arte. A **Hidra de Lama** chegou **dormindo** e **parada**, do porte do Titã (os dois são chefes de junção); o resto dela usa a pose parada até a arte chegar. As cores de todas foram conferidas com a referência aprovada (pedra cinza com lava; lama marrom com olhos dourados). Entrou também a regra da **paleta-base fixa** e a do **reaproveitamento máximo** (seção 14.0; a da paleta também nas pendências, 1.1).
@@ -181,17 +189,17 @@
 | Plataformas | Navegador no PC (teclado ou controle) e no celular (toque) |
 | Duração | Parte 1: cerca de 1h30 a 2h explorando tudo (o prólogo leva uns 3 minutos). Parte 2: mais 2h a 2h30 |
 | Prólogo | *O primeiro encontro* (09/05/2024): Minas Shopping, Playground e Túnel |
-| Áreas | 3 do prólogo, 7 da Parte 1 (Fazendinha, Vilarejo do Riacho, Floresta Sussurrante, Gruta dos Ecos e Minas de Cristal, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão) e 7 da Parte 2 (Vale das Raízes, Fenda de Magma, Lago Espelhado, Pântano Sombrio, Picos do Vento, Olho da Tempestade e Coração dos Elementos), todas interligadas |
+| Áreas | 3 do prólogo, 7 da Parte 1 (Fazendinha, Vilarejo do Riacho, Floresta Sussurrante, Gruta dos Ecos e Minas de Cristal, Ruínas Encantadas, Montanha de Brasa e Covil do Dragão) e 8 da Parte 2 (Vale das Raízes, Vila do Moinho, Fenda de Magma, Lago Espelhado, Pântano Sombrio, Picos do Vento, Olho da Tempestade e Coração dos Elementos), todas interligadas |
 | Chefes | Parte 1: Guardião de Pedra e o Dragão Vermelho. Parte 2: Colosso de Raízes, Serpente das Marés, Grifo da Tempestade, Titã de Magma, Hidra de Lama, Tempestade Viva e Quimera Primordial |
 | Heroínas | Line (Parte 1) e Line + Bell, trocando a qualquer momento (Parte 2) |
 | Relógio | Dia e noite: 1 minuto real = 1 hora no jogo |
-| Exploração | 35 baús, 3 portas trancadas, paredes rachadas, postes do gancho, chão em brasa, galerias escuras, carrinho de mina entre 3 estações |
+| Exploração | 36 baús, 3 portas trancadas, paredes rachadas, postes do gancho, chão em brasa, galerias escuras, carrinho de mina entre 3 estações |
 | Investigação | 15 documentos (com tipo, autor e data) e 9 conclusões |
 | Vilarejo | 5 moradores, loja de itens e ferraria com 3 armaduras da Line e 3 da Bell; moedas caem dos inimigos e saem dos baús |
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **572**: 345 com arte (temporária), 152 usando uma substituta, 75 desenhadas no código ou sem imagem |
+| Animações catalogadas | **608**: 345 com arte (temporária), 152 usando uma substituta, 111 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1131,10 +1139,10 @@ Os três lugares do prólogo (Minas Shopping, Playground e Túnel) estão na se�
 |---|---|---|---|---|
 | Fazendinha | 46 × 34 | 1 | — | estrada nova para o vilarejo, a leste |
 | Vilarejo do Riacho | 60 × 40 | 1 | — | área nova: moradores, loja, ferraria, fonte e estação do carrinho |
-| Floresta Sussurrante | 76 × 44 | 5 | 10 sombras | cabana do caçador, lago com ilha (gancho), pedra rachada (bomba), saída para o vilarejo |
-| Gruta dos Ecos | 64 × 44 | 7 | 5 sombras, 2 fogos-fátuos azuis, 5 morcegos | metade nova: as **Minas de Cristal**, escuras, com morcegos, trilhos, estação e abismo (gancho) |
-| Ruínas Encantadas | 70 × 36 | 5 | 8 sombras, 6 fogos-fátuos azuis | torre nordeste (gancho), sala leste, atalho para as Minas |
-| Montanha de Brasa | 72 × 40 | 5 | 8 fogos-fátuos de fogo, 9 sombras | Forja Antiga, estação, chão em brasa, atalho para as Minas |
+| Floresta Sussurrante | 76 × 44 | 5 | 5 sombras, 3 cogumelo, 2 javali | cabana do caçador, lago com ilha (gancho), pedra rachada (bomba), saída para o vilarejo |
+| Gruta dos Ecos | 64 × 44 | 7 | 1 sombras, 2 geleia, 2 aranha, 2 fogos-fátuos azuis, 5 morcegos | metade nova: as **Minas de Cristal**, escuras, com morcegos, trilhos, estação e abismo (gancho) |
+| Ruínas Encantadas | 70 × 36 | 5 | 4 sombras, 2 geleia, 6 fogos-fátuos azuis, 1 aranha, 1 javali | torre nordeste (gancho), sala leste, atalho para as Minas |
+| Montanha de Brasa | 72 × 40 | 5 | 8 fogos-fátuos de fogo, 3 javali, 4 sombras, 1 aranha, 1 geleia | Forja Antiga, estação, chão em brasa, atalho para as Minas |
 | Covil do Dragão | 26 × 20 | 0 | — | — |
 
 ### 6.1 Fazendinha
@@ -1883,7 +1891,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 572 animações. ✅ 345 com arte temporária, 🔁 152 com substituta e ✏️ 75 desenhadas no código.
+**Resumo:** 608 animações. ✅ 345 com arte temporária, 🔁 152 com substituta e ✏️ 111 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1896,6 +1904,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Dragão | 27 | 27 | 0 | 0 |
 | Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | 9 | 0 | 0 | 9 |
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
@@ -1908,7 +1917,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
-| Moradores (todos, incluindo os da Parte 2) | 30 | 0 | 0 | 30 |
+| Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
 | Line com armadura: Cota de Malha | 23 | 0 | 23 | 0 |
@@ -2159,7 +2168,21 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SHADOW_HIT` | Sombra — receber dano *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_123 |
 | `SHADOW_DEATH` | Sombra — desaparecer *(sugestão nova)* | 12 |  | ✅ temporária | LINE_BELL_ITEM_123 |
 
-### 10.10 Efeitos
+### 10.10 Monstros da floresta, gruta, ruínas e montanha (novo)
+
+| Código | O que é | Quadros | Loop | Status | Origem da arte atual |
+|---|---|---:|:---:|---|---|
+| `BOAR_IDLE` | Javali-de-espinhos — parado / andando (marrom, espinhos creme nas costas, presas brancas) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `BOAR_CHARGE` | Javali-de-espinhos — investida em linha reta (raspa a pata antes) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `BOAR_DIZZY` | Javali-de-espinhos — tonto depois de bater na parede (estrelinhas) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `SHROOM_HIDDEN` | Cogumelo saltador — disfarçado de cogumelo (chapéu roxo com pintas, olhos fechados) *(sugestão nova)* | 4 | sim | ✏️ código / falta |  |
+| `SHROOM_HOP` | Cogumelo saltador — acordado, pulando e soltando esporos lilás *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `SPIDER_HANG` | Aranha da gruta — pendurada no fio, descendo do teto *(sugestão nova)* | 6 | sim | ✏️ código / falta |  |
+| `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+
+### 10.11 Efeitos
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2177,7 +2200,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `FX_HEARTS` | Corações | 5 |  | ✅ temporária | LINE_BELL_ITEM_102 |
 | `FX_AMBIENT_PARTICLES` | Partículas ambientais | 6 | sim | ✅ temporária | LINE_BELL_ITEM_102 |
 
-### 10.11 Bichos da fazenda
+### 10.12 Bichos da fazenda
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2249,7 +2272,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `CAT_SLEEP` | Gato — Dormindo *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_139 |
 | `CAT_PURR` | Gato — Carinho (ronronando) *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_139 |
 
-### 10.12 Personagens de apoio (novo)
+### 10.13 Personagens de apoio (novo)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2260,7 +2283,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SPIRIT_IDLE` | Espírito das Ruínas flutuando *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_125 |
 | `SPIRIT_TALK` | Espírito das Ruínas falando *(sugestão nova)* | 12 | sim | ✅ temporária | LINE_BELL_ITEM_125 |
 
-### 10.13 Bell jogável (Parte 2)
+### 10.14 Bell jogável (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2287,7 +2310,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_CELEBRATE` | Bell comemora (guardião libertado, item 302) | 8 |  | ✅ temporária | LINE_BELL_ITEM_302 |
 | `BELL_TALK` | Bell falando nas cenas da Parte 2 (item 303) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_303 |
 
-### 10.14 Chefe: Colosso de Raízes (Parte 2)
+### 10.15 Chefe: Colosso de Raízes (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2304,7 +2327,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
 | `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | 12 | sim | ✏️ código / falta |  |
 
-### 10.15 Chefe: Serpente das Marés (Parte 2)
+### 10.16 Chefe: Serpente das Marés (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2320,7 +2343,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `SERPENTE_DEATH` | Serpente das Marés — derrotado (se desfaz em luz) (item 325) | 14 |  | ✅ temporária | LINE_BELL_ITEM_325 |
 | `SERPENTE_FREED` | Serpente das Marés — libertado, volta às cores verdadeiras e agradece (item 326) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_326 |
 
-### 10.16 Chefe: Grifo da Tempestade (Parte 2)
+### 10.17 Chefe: Grifo da Tempestade (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2336,7 +2359,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `GRIFO_DEATH` | Grifo da Tempestade — derrotado (se desfaz em luz) (item 336) | 14 |  | ✅ temporária | LINE_BELL_ITEM_336 |
 | `GRIFO_FREED` | Grifo da Tempestade — libertado, volta às cores verdadeiras e agradece (item 337) | 12 | sim | ✅ temporária | LINE_BELL_ITEM_337 |
 
-### 10.17 Chefe: Titã de Magma (Parte 2)
+### 10.18 Chefe: Titã de Magma (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2352,7 +2375,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `MAGMA_HIT` | Titã de Magma — recebe dano (item 347) | 4 |  | ✅ temporária | LINE_BELL_ITEM_347 |
 | `MAGMA_DEATH` | Titã de Magma — derrotado (se desfaz em luz) (item 348) | 14 |  | ✅ temporária | LINE_BELL_ITEM_348 |
 
-### 10.18 Chefe: Hidra de Lama (Parte 2)
+### 10.19 Chefe: Hidra de Lama (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2369,7 +2392,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 |  | 🔁 usa `HIDRA_IDLE` |  |
 | `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `HIDRA_IDLE` |  |
 
-### 10.19 Chefe: Tempestade Viva (Parte 2)
+### 10.20 Chefe: Tempestade Viva (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2386,7 +2409,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | 4 |  | ✏️ código / falta |  |
 | `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
 
-### 10.20 Chefe: Quimera Primordial (Parte 2)
+### 10.21 Chefe: Quimera Primordial (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2413,7 +2436,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 |  | ✏️ código / falta |  |
 | `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | sim | ✏️ código / falta |  |
 
-### 10.21 Fogos-fátuos dos elementos (Parte 2)
+### 10.22 Fogos-fátuos dos elementos (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2427,7 +2450,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
 | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
 
-### 10.22 Moradores (todos, incluindo os da Parte 2)
+### 10.23 Moradores (todos, incluindo os da Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2461,8 +2484,35 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `TIAO_FISH` | Seu Tião — pescando no píer | 12 | sim | ✏️ código / falta |  |
 | `BENTO_FORGE` | Seu Bento — martelando na bigorna | 8 | sim | ✏️ código / falta |  |
 | `PEDRO_RUN` | Pedrinho — correndo pra lá e pra cá | 8 | sim | ✏️ código / falta |  |
+| `JOCA_IDLE` | Seu Joca (carteiro do vilarejo, bolsa de couro) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `JOCA_TALK` | Seu Joca (carteiro do vilarejo, bolsa de couro) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `JOCA_WALK` | Seu Joca (carteiro do vilarejo, bolsa de couro) — andando pela rua (de lado) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `MARTA_IDLE` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `MARTA_TALK` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `MARTA_WALK` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — andando pela rua (de lado) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `NINA_IDLE` | Nina (menina do vilarejo) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `NINA_TALK` | Nina (menina do vilarejo) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `NINA_WALK` | Nina (menina do vilarejo) — andando pela rua (de lado) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `CAIO_IDLE` | Caio (lenhador do vilarejo, feixe de lenha) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `CAIO_TALK` | Caio (lenhador do vilarejo, feixe de lenha) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `CAIO_WALK` | Caio (lenhador do vilarejo, feixe de lenha) — andando pela rua (de lado) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `ABILIO_IDLE` | Seu Abílio (moleiro da Vila do Moinho) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `ABILIO_TALK` | Seu Abílio (moleiro da Vila do Moinho) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `IOLANDA_IDLE` | Dona Iolanda (florista da Vila do Moinho) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `IOLANDA_TALK` | Dona Iolanda (florista da Vila do Moinho) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `LIA_IDLE` | Lia (menina da Vila do Moinho) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `LIA_TALK` | Lia (menina da Vila do Moinho) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `TEO_IDLE` | Teodoro (pastor de cabras da Vila do Moinho) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `TEO_TALK` | Teodoro (pastor de cabras da Vila do Moinho) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `TEO_WALK` | Teodoro (pastor de cabras da Vila do Moinho) — andando pela rua (de lado) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `GRACA_IDLE` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `GRACA_TALK` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `GRACA_WALK` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — andando pela rua (de lado) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `DAVI_IDLE` | Davi (menino da Vila do Moinho) — parado *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `DAVI_TALK` | Davi (menino da Vila do Moinho) — falando *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
+| `DAVI_WALK` | Davi (menino da Vila do Moinho) — andando pela rua (de lado) *(sugestão nova)* | 8 | sim | ✏️ código / falta |  |
 
-### 10.23 Dragão amigo (Parte 2)
+### 10.24 Dragão amigo (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2470,7 +2520,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | 8 |  | 🔁 usa `DRAGON_IDLE` |  |
 | `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda), com chifres e espinhos pretos | 4 | sim | 🔁 usa `DRAGON_SLEEP` |  |
 
-### 10.24 Line com armadura: Túnica Acolchoada
+### 10.25 Line com armadura: Túnica Acolchoada
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2498,7 +2548,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_TUNICA_HIT_LIGHT` | Line com Túnica Acolchoada — recebe dano | 12 |  | 🔁 usa `LINE_HIT_LIGHT` |  |
 | `LINE_TUNICA_KNOCKDOWN` | Line com Túnica Acolchoada — cai no chão | 12 |  | 🔁 usa `LINE_KNOCKDOWN` |  |
 
-### 10.25 Line com armadura: Cota de Malha
+### 10.26 Line com armadura: Cota de Malha
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2526,7 +2576,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_MALHA_HIT_LIGHT` | Line com Cota de Malha — recebe dano | 12 |  | 🔁 usa `LINE_HIT_LIGHT` |  |
 | `LINE_MALHA_KNOCKDOWN` | Line com Cota de Malha — cai no chão | 12 |  | 🔁 usa `LINE_KNOCKDOWN` |  |
 
-### 10.26 Line com armadura: Armadura de Brasa
+### 10.27 Line com armadura: Armadura de Brasa
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2554,7 +2604,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `LINE_BRASA_HIT_LIGHT` | Line com Armadura de Brasa — recebe dano | 12 |  | 🔁 usa `LINE_HIT_LIGHT` |  |
 | `LINE_BRASA_KNOCKDOWN` | Line com Armadura de Brasa — cai no chão | 12 |  | 🔁 usa `LINE_KNOCKDOWN` |  |
 
-### 10.27 Bell com armadura: Vestido Reforçado
+### 10.28 Bell com armadura: Vestido Reforçado
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2580,7 +2630,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_VESTIDO_HIT` | Bell com Vestido Reforçado — recebe dano | 12 |  | 🔁 usa `BELL_HIT` |  |
 | `BELL_VESTIDO_KNOCKDOWN` | Bell com Vestido Reforçado — cai no chão | 12 |  | 🔁 usa `BELL_KNOCKDOWN` |  |
 
-### 10.28 Bell com armadura: Manto Estelar
+### 10.29 Bell com armadura: Manto Estelar
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2606,7 +2656,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_ESTELAR_HIT` | Bell com Manto Estelar — recebe dano | 12 |  | 🔁 usa `BELL_HIT` |  |
 | `BELL_ESTELAR_KNOCKDOWN` | Bell com Manto Estelar — cai no chão | 12 |  | 🔁 usa `BELL_KNOCKDOWN` |  |
 
-### 10.29 Bell com armadura: Armadura da Aurora
+### 10.30 Bell com armadura: Armadura da Aurora
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2632,7 +2682,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `BELL_AURORA_HIT` | Bell com Armadura da Aurora — recebe dano | 12 |  | 🔁 usa `BELL_HIT` |  |
 | `BELL_AURORA_KNOCKDOWN` | Bell com Armadura da Aurora — cai no chão | 12 |  | 🔁 usa `BELL_KNOCKDOWN` |  |
 
-### 10.30 Outras animações recebidas
+### 10.31 Outras animações recebidas
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
@@ -2642,7 +2692,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 
 *Na coluna Quadros, as animações ✅ mostram quantos quadros diferentes a arte atual tem. As que faltam mostram quantos quadros o jogo espera (é uma sugestão, pode vir com mais ou menos).*
 
-### 10.31 O que ainda falta ter arte própria, por prioridade
+### 10.32 O que ainda falta ter arte própria, por prioridade
 
 **Aparecem na história (prioridade 1):**
 - **Prólogo (primeiro encontro):** `LINE_ADMIRE`, `BELL_WAIT`, `LINE_BELL_MEET`, `LINE_BELL_GREET_HUG`, `LINE_SIT_CHAIR_EAT`, `BELL_SIT_CHAIR_EAT`, `LINE_BELL_BK`, `BELL_LAUGH_AT_LINE` e `LINE_BELL_TUNNEL_KISS` (detalhes na seção 5.5).
@@ -2756,7 +2806,7 @@ Estes continuam temporários, feitos no código:
   - Tons de cor por horário e área.
   - O olho do dragão no final.
 
-Os códigos `FX_*` da seção 10.10 são para quando esses efeitos ganharem arte própria.
+Os códigos `FX_*` da seção 10.11 são para quando esses efeitos ganharem arte própria.
 
 ## 14. Como mandar arte nova
 
@@ -3100,7 +3150,7 @@ Os moradores do vilarejo também ganham uma fala nova na Parte 2 (a Dona Rosa v�
 
 | Fase | Tamanho | Baús | Inimigos | Chefe | Saídas |
 |---|---|---|---|---|---|
-| Vale das Raízes | 64 × 42 | 4 | 7 sombras, 4 fogos-fátuos de terra | Colosso de Raízes | Vilarejo do Riacho, Lago Espelhado (depois de `fusaoMagma`), Fenda de Magma (depois de `chefeTerra`) |
+| Vale das Raízes | 64 × 42 | 4 | 7 sombras, 4 fogos-fátuos de terra | Colosso de Raízes | Vilarejo do Riacho, Lago Espelhado (depois de `fusaoMagma`), Fenda de Magma (depois de `chefeTerra`), Vila do Moinho (depois de `chefeTerra`) |
 | Fenda de Magma | 36 × 28 | 0 | só o chefe | Titã de Magma | Vale das Raízes |
 | Lago Espelhado | 64 × 42 | 3 | 5 fogos-fátuos de água, 5 sombras | Serpente das Marés | Vale das Raízes, Pântano Sombrio (depois de `chefeAgua`), Picos do Vento (depois de `fusaoLama`) |
 | Pântano Sombrio | 38 × 28 | 1 | só o chefe | Hidra de Lama | Lago Espelhado |
@@ -3245,10 +3295,10 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 ### Serpente das Marés — Guardiã da Água
 - **Elementos:** 💧 Água · **Vida:** 16 no Normal · **Cansa depois de:** 3 ataques · **Onde:** Lago Espelhado
 - **Ataques:** mergulha (fica intocável) e sai embaixo das bolhas; jatos de água em leque; onda que precisa ser pulada.
-- **Dicas do Fácil:** Quando ela mergulha, fique de olho nas bolhas: ela sai embaixo delas. / Pule a onda na hora que ela chegar em você. / Depois de três ataques ela boia cansada: ataque a cabeça!
+- **Dicas do Fácil:** Quando ela mergulha, fique de olho nas bolhas: ela sai embaixo delas. / Pule a onda na hora que ela chegar em você. / Ela vive na água em volta da ilha. Depois de três ataques, cansada, ela se arrasta até a margem: ataque!
 - **Aparência:** Serpente-marinha longa, azul com barriga turquesa, barbatanas translúcidas nas costas e uma crista de coral. Mergulha e só a cabeça e parte do corpo aparecem. **Corrompida:** água turva marrom escorrendo, manchas escuras nas escamas, olhos brancos sem pupila. **Libertada:** escamas brilhando como espelho, olhos azul-claro.
 
-**Arte no jogo (itens 317 a 326):** parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. A Serpente dormindo (antes da luta) ainda não chegou: até lá ela fica parada respirando.
+**Arte no jogo (itens 317 a 326):** vive **na água** em volta da ilha, meio submersa, com ondinhas (só sobe na terra ao sair do mergulho e quando cansa, arrastando-se até a margem para apanhar; depois volta); parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. A Serpente dormindo (antes da luta) ainda não chegou: até lá ela fica parada respirando.
 
 ![Serpente das Marés com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-serpente.jpg)
 *Serpente das Marés com a arte nova, ao lado da Line para ver o tamanho*
@@ -3400,6 +3450,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Dragão | 27 | 27 | 0 | 0 |
 | Magia e criaturas (novo) | 13 | 13 | 0 | 0 |
 | Inimigos (novo) | 5 | 5 | 0 | 0 |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | 9 | 0 | 0 | 9 |
 | Efeitos | 13 | 13 | 0 | 0 |
 | Bichos da fazenda | 67 | 67 | 0 | 0 |
 | Personagens de apoio (novo) | 6 | 6 | 0 | 0 |
@@ -3412,7 +3463,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
-| Moradores (todos, incluindo os da Parte 2) | 30 | 0 | 0 | 30 |
+| Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
 | Line com armadura: Cota de Malha | 23 | 0 | 23 | 0 |
@@ -3421,7 +3472,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **572** | **345** | **152** | **75** |
+| **Total** | **608** | **345** | **152** | **111** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3550,7 +3601,7 @@ Chão, paredes e objetos. Cada tile é de 32×32 no jogo (pode vir em 64×64). O
 - **Botões de toque:** atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, item do atalho (bomba, poção…), mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).
 - **Seta guia do Fácil** (dourada) e o balão de dica 💡.
 - **Barra de chefe** com moldura e o ícone do elemento (pedra, fogo, terra, água, ar e o da Quimera), e a versão “núcleo exposto”.
-- **Mapa do mundo:** ilustração em pergaminho com as 14 regiões (7 da Parte 1 e 7 da Parte 2), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌋 🌊 🐸 🏔️ ⛈️ 💠.
+- **Mapa do mundo:** ilustração em pergaminho com as 15 regiões (7 da Parte 1 e 8 da Parte 2, contando a Vila do Moinho), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌻 🌋 🌊 🐸 🏔️ ⛈️ 💠.
 - **Mapa da área:** cores/ícones de baú, fonte, placa, altar, cristal, tocha, farol, pérola, porta, estação, morador e alfinete.
 - **Telas:** título do jogo, título “Parte 2 — O Coração dos Elementos”, títulos de capítulo, tela de derrota (“As duas caíram…”), loja e ferraria (fundo de balcão), leitor de documentos, “Fim da Parte 2”.
 
@@ -3721,7 +3772,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 345 de 572 animações com arte · 152 usando uma substituta · 75 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 345 de 608 animações com arte · 152 usando uma substituta · 111 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3802,6 +3853,15 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 
 | Grupo | Código | O que é | Hoje usa |
 |---|---|---|---|
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `BOAR_IDLE` | Javali-de-espinhos — parado / andando (marrom, espinhos creme nas costas, presas brancas) | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `BOAR_CHARGE` | Javali-de-espinhos — investida em linha reta (raspa a pata antes) | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `BOAR_DIZZY` | Javali-de-espinhos — tonto depois de bater na parede (estrelinhas) | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `SHROOM_HIDDEN` | Cogumelo saltador — disfarçado de cogumelo (chapéu roxo com pintas, olhos fechados) | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `SHROOM_HOP` | Cogumelo saltador — acordado, pulando e soltando esporos lilás | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `SPIDER_HANG` | Aranha da gruta — pendurada no fio, descendo do teto | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | desenho no código |
+| Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_IDLE` | Colosso de Raízes — parado, respirando | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_WAKE` | Colosso de Raízes — acordando / rugido de apresentação | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_ATTACK` | Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
@@ -3894,6 +3954,33 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Moradores (todos, incluindo os da Parte 2) | `TIAO_FISH` | Seu Tião — pescando no píer | desenho no código |
 | Moradores (todos, incluindo os da Parte 2) | `BENTO_FORGE` | Seu Bento — martelando na bigorna | desenho no código |
 | Moradores (todos, incluindo os da Parte 2) | `PEDRO_RUN` | Pedrinho — correndo pra lá e pra cá | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `JOCA_IDLE` | Seu Joca (carteiro do vilarejo, bolsa de couro) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `JOCA_TALK` | Seu Joca (carteiro do vilarejo, bolsa de couro) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `JOCA_WALK` | Seu Joca (carteiro do vilarejo, bolsa de couro) — andando pela rua (de lado) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `MARTA_IDLE` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `MARTA_TALK` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `MARTA_WALK` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — andando pela rua (de lado) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `NINA_IDLE` | Nina (menina do vilarejo) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `NINA_TALK` | Nina (menina do vilarejo) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `NINA_WALK` | Nina (menina do vilarejo) — andando pela rua (de lado) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `CAIO_IDLE` | Caio (lenhador do vilarejo, feixe de lenha) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `CAIO_TALK` | Caio (lenhador do vilarejo, feixe de lenha) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `CAIO_WALK` | Caio (lenhador do vilarejo, feixe de lenha) — andando pela rua (de lado) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ABILIO_IDLE` | Seu Abílio (moleiro da Vila do Moinho) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `ABILIO_TALK` | Seu Abílio (moleiro da Vila do Moinho) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `IOLANDA_IDLE` | Dona Iolanda (florista da Vila do Moinho) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `IOLANDA_TALK` | Dona Iolanda (florista da Vila do Moinho) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `LIA_IDLE` | Lia (menina da Vila do Moinho) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `LIA_TALK` | Lia (menina da Vila do Moinho) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TEO_IDLE` | Teodoro (pastor de cabras da Vila do Moinho) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TEO_TALK` | Teodoro (pastor de cabras da Vila do Moinho) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `TEO_WALK` | Teodoro (pastor de cabras da Vila do Moinho) — andando pela rua (de lado) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `GRACA_IDLE` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `GRACA_TALK` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `GRACA_WALK` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — andando pela rua (de lado) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `DAVI_IDLE` | Davi (menino da Vila do Moinho) — parado | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `DAVI_TALK` | Davi (menino da Vila do Moinho) — falando | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `DAVI_WALK` | Davi (menino da Vila do Moinho) — andando pela rua (de lado) | desenho no código |
 | Dragão amigo (Parte 2) | `DRAGON_TALK` | Dragão falando calmo (abertura da Parte 2) | `DRAGON_IDLE` |
 | Dragão amigo (Parte 2) | `DRAGON_BOW` | Dragão abaixa a cabeça (pede ajuda / agradece) | `DRAGON_IDLE` |
 | Dragão amigo (Parte 2) | `DRAGON_CURL_SLEEP` | Dragão dormindo enrolado perto da casa (fazenda), com chifres e espinhos pretos | `DRAGON_SLEEP` |

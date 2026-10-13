@@ -59,7 +59,7 @@ CHEFES_VISUAL = {
 
 # Chefes que já têm arte (itens) e como cada animação entra na luta.
 ARTE_CHEFES = {
-    "serpente": ("itens 317 a 326", "parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, "
+    "serpente": ("itens 317 a 326", "vive **na água** em volta da ilha, meio submersa, com ondinhas (só sobe na terra ao sair do mergulho e quando cansa, arrastando-se até a margem para apanhar; depois volta); parada respirando; **acorda** com o rugido na apresentação; **jatos de água** e **onda** nos golpes; no **mergulho** afunda, "
                  "só as bolhas seguem a heroína por baixo e ela volta à tona na hora em que sai; **cansada** mostra o núcleo; pisca ao **receber dano**; "
                  "na **derrota** se desfaz em luz; e, **libertada**, aparece nas cores verdadeiras agradecendo enquanto fala, e depois brilha e some. "
                  "A Serpente dormindo (antes da luta) ainda não chegou: até lá ela fica parada respirando."),
@@ -502,7 +502,7 @@ def escrever_arte(w, img, inv):
         "**Botões de toque:** atacar (segurar = giro/leque), esquivar, pular, defender, magia/canção, item do atalho (bomba, poção…), mochila, pausa e **🔄 trocar heroína** (com a cara de quem entra).",
         "**Seta guia do Fácil** (dourada) e o balão de dica 💡.",
         "**Barra de chefe** com moldura e o ícone do elemento (pedra, fogo, terra, água, ar e o da Quimera), e a versão “núcleo exposto”.",
-        "**Mapa do mundo:** ilustração em pergaminho com as 14 regiões (7 da Parte 1 e 7 da Parte 2), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌋 🌊 🐸 🏔️ ⛈️ 💠.",
+        "**Mapa do mundo:** ilustração em pergaminho com as 15 regiões (7 da Parte 1 e 8 da Parte 2, contando a Vila do Moinho), cada uma com um brasão: 🏡 🏘️ 🌲 🕳️ 🏛️ 🌋 🐉 🌾 🌻 🌋 🌊 🐸 🏔️ ⛈️ 💠.",
         "**Mapa da área:** cores/ícones de baú, fonte, placa, altar, cristal, tocha, farol, pérola, porta, estação, morador e alfinete.",
         "**Telas:** título do jogo, título “Parte 2 — O Coração dos Elementos”, títulos de capítulo, tela de derrota (“As duas caíram…”), loja e ferraria (fundo de balcão), leitor de documentos, “Fim da Parte 2”.",
     ]:

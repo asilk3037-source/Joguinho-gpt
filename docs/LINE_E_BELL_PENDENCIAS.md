@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 12/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 13/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -11,12 +11,12 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **237** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **273** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
 | 7. Telas | telas cheias | **13** |
-| 8. Mapas e cenários | pinturas das fases, peças de cenário e **objetos da vila e do mundo** (baú, fonte, barraca, bigorna, placa...) | **32** |
+| 8. Mapas e cenários | pinturas das fases, peças de cenário e **objetos da vila e do mundo** (baú, fonte, barraca, bigorna, placa...) | **33** |
 | 9. Efeitos especiais | efeitos especiais (combate, magia, itens, clima, romance, chefes) | **47** |
 
 **Armaduras:** sim, estão no documento. A **Line** tem 3 armaduras (Túnica Acolchoada, Cota de Malha, Armadura de Brasa) e a **Bell** tem 3 (Vestido Reforçado, Manto Estelar, Armadura da Aurora). Cada uma precisa da personagem **vestida** em todas as animações de movimento e luta (seção 3: **69** animações da Line e **63** da Bell com armadura) e do **ícone** (seção 4.1). Os **efeitos especiais** estão na seção 9.
@@ -106,6 +106,20 @@ Estas artes são do **pacote antigo de cenário**: pequenas (de 30 a 350 px), ti
 ## 3. Animações pendentes (ainda não existem)
 
 Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte chegar.
+
+### Monstros da floresta, gruta, ruínas e montanha (novo) (9)
+
+| Código | O que mostra | Quadros | Situação |
+|---|---|---|---|
+| `BOAR_IDLE` | Javali-de-espinhos — parado / andando (marrom, espinhos creme nas costas, presas brancas) | 8 | ✏️ falta |
+| `BOAR_CHARGE` | Javali-de-espinhos — investida em linha reta (raspa a pata antes) | 8 | ✏️ falta |
+| `BOAR_DIZZY` | Javali-de-espinhos — tonto depois de bater na parede (estrelinhas) | 8 | ✏️ falta |
+| `SHROOM_HIDDEN` | Cogumelo saltador — disfarçado de cogumelo (chapéu roxo com pintas, olhos fechados) | 4 | ✏️ falta |
+| `SHROOM_HOP` | Cogumelo saltador — acordado, pulando e soltando esporos lilás | 8 | ✏️ falta |
+| `SPIDER_HANG` | Aranha da gruta — pendurada no fio, descendo do teto | 6 | ✏️ falta |
+| `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia | 8 | ✏️ falta |
+| `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | 8 | ✏️ falta |
+| `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | 8 | ✏️ falta |
 
 ### Chefe: Colosso de Raízes (Parte 2) (11)
 
@@ -199,7 +213,7 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 | 🔁 usa `WISP_ATTACK` |
 | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 | 🔁 usa `WISP_DEATH` |
 
-### Moradores (todos, incluindo os da Parte 2) (30)
+### Moradores (todos, incluindo os da Parte 2) (57)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
@@ -233,6 +247,33 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `TIAO_FISH` | Seu Tião — pescando no píer | 12 | ✏️ falta |
 | `BENTO_FORGE` | Seu Bento — martelando na bigorna | 8 | ✏️ falta |
 | `PEDRO_RUN` | Pedrinho — correndo pra lá e pra cá | 8 | ✏️ falta |
+| `JOCA_IDLE` | Seu Joca (carteiro do vilarejo, bolsa de couro) — parado | 8 | ✏️ falta |
+| `JOCA_TALK` | Seu Joca (carteiro do vilarejo, bolsa de couro) — falando | 8 | ✏️ falta |
+| `JOCA_WALK` | Seu Joca (carteiro do vilarejo, bolsa de couro) — andando pela rua (de lado) | 8 | ✏️ falta |
+| `MARTA_IDLE` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — parado | 8 | ✏️ falta |
+| `MARTA_TALK` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — falando | 8 | ✏️ falta |
+| `MARTA_WALK` | Dona Marta (lavadeira do vilarejo, cesto de roupa) — andando pela rua (de lado) | 8 | ✏️ falta |
+| `NINA_IDLE` | Nina (menina do vilarejo) — parado | 8 | ✏️ falta |
+| `NINA_TALK` | Nina (menina do vilarejo) — falando | 8 | ✏️ falta |
+| `NINA_WALK` | Nina (menina do vilarejo) — andando pela rua (de lado) | 8 | ✏️ falta |
+| `CAIO_IDLE` | Caio (lenhador do vilarejo, feixe de lenha) — parado | 8 | ✏️ falta |
+| `CAIO_TALK` | Caio (lenhador do vilarejo, feixe de lenha) — falando | 8 | ✏️ falta |
+| `CAIO_WALK` | Caio (lenhador do vilarejo, feixe de lenha) — andando pela rua (de lado) | 8 | ✏️ falta |
+| `ABILIO_IDLE` | Seu Abílio (moleiro da Vila do Moinho) — parado | 8 | ✏️ falta |
+| `ABILIO_TALK` | Seu Abílio (moleiro da Vila do Moinho) — falando | 8 | ✏️ falta |
+| `IOLANDA_IDLE` | Dona Iolanda (florista da Vila do Moinho) — parado | 8 | ✏️ falta |
+| `IOLANDA_TALK` | Dona Iolanda (florista da Vila do Moinho) — falando | 8 | ✏️ falta |
+| `LIA_IDLE` | Lia (menina da Vila do Moinho) — parado | 8 | ✏️ falta |
+| `LIA_TALK` | Lia (menina da Vila do Moinho) — falando | 8 | ✏️ falta |
+| `TEO_IDLE` | Teodoro (pastor de cabras da Vila do Moinho) — parado | 8 | ✏️ falta |
+| `TEO_TALK` | Teodoro (pastor de cabras da Vila do Moinho) — falando | 8 | ✏️ falta |
+| `TEO_WALK` | Teodoro (pastor de cabras da Vila do Moinho) — andando pela rua (de lado) | 8 | ✏️ falta |
+| `GRACA_IDLE` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — parado | 8 | ✏️ falta |
+| `GRACA_TALK` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — falando | 8 | ✏️ falta |
+| `GRACA_WALK` | Dona Graça (padeira da Vila do Moinho, cesto de pão) — andando pela rua (de lado) | 8 | ✏️ falta |
+| `DAVI_IDLE` | Davi (menino da Vila do Moinho) — parado | 8 | ✏️ falta |
+| `DAVI_TALK` | Davi (menino da Vila do Moinho) — falando | 8 | ✏️ falta |
+| `DAVI_WALK` | Davi (menino da Vila do Moinho) — andando pela rua (de lado) | 8 | ✏️ falta |
 
 ### Dragão amigo (Parte 2) (3)
 
@@ -537,6 +578,7 @@ Cada fase precisa do chão em imagem (seguindo o gabarito) e das peças altas po
 | Ruínas Encantadas | 70×36 | **8960×4608** | `gabaritos/ruinas.png` | 🔁 chão com a textura da base; falta a pintura da fase |
 | Montanha de Brasa | 72×40 | **9216×5120** | `gabaritos/montanha.png` | 🔁 chão com a textura da base; falta a pintura da fase |
 | Vale das Raízes | 64×42 | **8192×5376** | `gabaritos/vale.png` | ✏️ falta |
+| Vila do Moinho | 46×32 | **5888×4096** | `gabaritos/vilamoinho.png` | ✏️ falta |
 | Fenda de Magma | 36×28 | **4608×3584** | `gabaritos/fenda.png` | ✏️ falta |
 | Lago Espelhado | 64×42 | **8192×5376** | `gabaritos/lago.png` | ✏️ falta |
 | Pântano Sombrio | 38×28 | **4864×3584** | `gabaritos/pantano.png` | ✏️ falta |
@@ -685,7 +727,8 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
 7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 354, os jatos de água), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.
-8. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
+8. **Monstros novos** (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os **moradores novos** (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.
+9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
 > 🧪 **Antes de lançar:** tirar o botão **🧪 Teste: ir para um mapa** do menu. Ele é temporário, só para testar: entra em qualquer mapa com o jogo zerado e não salva nada.
 
