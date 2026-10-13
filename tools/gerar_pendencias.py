@@ -397,7 +397,7 @@ for n, t in enumerate([
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.",
     "**Mapas das fases** em cima dos gabaritos (seção 8.1).",
-    "**Chefes** da Parte 2 (seção 3): o Colosso, o Titã de Magma, a Hidra e a Tempestade Viva ficaram completos; agora o resto da **Quimera Primordial** (a partir do item 375, a Quimera acordando). E os **moradores** da Parte 2.",
+    "**Chefes** da Parte 2 (seção 3): o Colosso, o Titã de Magma, a Hidra e a Tempestade Viva ficaram completos; agora o resto da **Quimera Primordial** (a partir do item 378, o arremesso de rocha). E os **moradores** da Parte 2.",
     "**Monstros novos** (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os **moradores novos** (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.",
     "**Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.",
 ], 1):

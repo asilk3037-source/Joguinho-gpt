@@ -18,7 +18,7 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
-> 🦁 **Colosso completo, derrota da Tempestade e a Quimera chegando (itens 309 a 312 e 372 a 374):** o **Colosso de Raízes** ficou **completo** (anel de espinhos, cuspe de lama, chamar sombras e cansado, com os ombros encolhidos e a flor do peito exposta); a **Tempestade Viva** ganhou a **derrota** (a nuvem se desfaz em faíscas brancas) e ficou completa; e a **Quimera Primordial**, o chefe final, chegou **dormindo** e **parada**, a maior de todos (a arte veio em quadros de 1280, e o jogo mede por ela mesma). A arte da Quimera é a da fase 1 (núcleo cinza e laranja); as outras fases usam a mesma até chegarem as suas. Tamanhos medidos pela cabeça, pela silhueta e pelo espaço entre os olhos.
+> 🦁 **Quimera acordando, atacando e pisando (itens 375 a 377):** a **Quimera Primordial** agora **acorda** (abre os olhos, ergue a cabeça, ruge e volta ao repouso), tem o **ataque genérico** (uma pata dianteira golpeia, as outras seguram o peso) e o **pisão** (ergue as patas da frente, bate no chão e solta uma onda compacta; no jogo a onda sai quando a pata encosta). Os quadros já vêm no mesmo tamanho da Quimera parada, então o tamanho é o mesmo (1,3 da Serpente) e o pé fica no mesmo chão. A arte é a da fase 1 (núcleo cinza e laranja); as outras fases usam a mesma até chegarem as suas. Os outros golpes dela usam o ataque genérico até chegarem os seus. Antes: Colosso completo e derrota da Tempestade (itens 309 a 312 e 372).
 
 > 🌳 **Colosso de Raízes, Serpente dormindo e Tempestade Viva (itens 305 a 308, 313 a 316 e 363 a 371):** o **Colosso de Raízes** agora **acorda e fica parado** com a arte nova (antes era desenhado no código), tem o **ataque genérico** (garras em arco) e as **raízes** (espinhos rosados brotando), **pisca ao apanhar**, **se desfaz em luz dourada** na derrota e, **libertado**, aparece com o coração verde agradecendo. A **Serpente** ganhou a arte dela **dormindo** enrolada. A **Tempestade Viva** ganhou **acordando**, **ataque genérico**, **raios**, **rajada**, **jatos de água**, **onda**, **leque de penas**, **cansada** e **dano**. Tamanhos medidos pelo espaço entre os olhos e pela silhueta: o Colosso fica na altura do que já era desenhado (0,8), e a nuvem da Tempestade fica do mesmo tamanho em todos os golpes e **ancorada pelo centro** (não pula de altura de uma animação para outra). Na Tempestade chamando raios, a arte trazia o raio e o círculo de aviso embaixo da nuvem: como no jogo o raio cai na heroína, ficou só a nuvem chamando. **Ainda faltam** os itens 309 a 312 (as outras artes do Colosso).
 
@@ -205,7 +205,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **608**: 378 com arte (temporária), 164 usando uma substituta, 66 desenhadas no código ou sem imagem |
+| Animações catalogadas | **608**: 381 com arte (temporária), 161 usando uma substituta, 66 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1897,7 +1897,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 608 animações. ✅ 378 com arte temporária, 🔁 164 com substituta e ✏️ 66 desenhadas no código.
+**Resumo:** 608 animações. ✅ 381 com arte temporária, 🔁 161 com substituta e ✏️ 66 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1921,7 +1921,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
-| Chefe: Quimera Primordial (Parte 2) | 22 | 2 | 20 | 0 |
+| Chefe: Quimera Primordial (Parte 2) | 22 | 5 | 17 | 0 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
@@ -2421,25 +2421,25 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 |---|---|---:|:---:|---|---|
 | `QUIMERA_SLEEP` | Quimera Primordial — dormindo (antes da luta) (item 373) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_373 |
 | `QUIMERA_IDLE` | Quimera Primordial — parado, respirando (item 374) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_374 |
-| `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | 12 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_ATTACK` | Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_SLAM` | Quimera Primordial — pisão (onda no chão) | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_WAVE` | Quimera Primordial — onda | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_GUST` | Quimera Primordial — rajada de vento | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | 10 |  | 🔁 usa `QUIMERA_IDLE` |  |
+| `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação (item 375) | 12 |  | ✅ temporária | LINE_BELL_ITEM_375 |
+| `QUIMERA_ATTACK` | Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) (item 376) | 10 |  | ✅ temporária | LINE_BELL_ITEM_376 |
+| `QUIMERA_SLAM` | Quimera Primordial — pisão (onda no chão) (item 377) | 10 |  | ✅ temporária | LINE_BELL_ITEM_377 |
+| `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_WAVE` | Quimera Primordial — onda | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_GUST` | Quimera Primordial — rajada de vento | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
+| `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | 10 |  | 🔁 usa `QUIMERA_ATTACK` |  |
 | `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) | 8 | sim | 🔁 usa `QUIMERA_IDLE` |  |
 | `QUIMERA_HIT` | Quimera Primordial — recebe dano | 4 |  | 🔁 usa `QUIMERA_IDLE` |  |
 | `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `QUIMERA_IDLE` |  |
-| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 |  | 🔁 usa `QUIMERA_IDLE` |  |
+| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 |  | 🔁 usa `QUIMERA_WAKE` |  |
 | `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | sim | 🔁 usa `QUIMERA_IDLE` |  |
 
 ### 10.22 Fogos-fátuos dos elementos (Parte 2)
@@ -3367,7 +3367,7 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** A Quimera muda de elemento a cada fase: veja a cor do núcleo para saber o que vem. / Na última fase ela usa todos os ataques e bate mais forte. Troque de heroína quando a vida baixar. / A luz sempre abre a guarda. Guarde magia para isso.
 - **Aparência:** A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo.
 
-**Arte no jogo (itens 373 e 374):** **dorme** enrolada antes da luta, com o núcleo do peito apagado, e, acordada, fica **parada** respirando: corpo de pedra e lava, juba de raízes, asas de grifo e cauda de serpente d’água. É o maior dos chefes. A arte chegou na fase 1 (núcleo cinza e laranja); as outras fases (verde e azul, arco-íris) usam a mesma arte até chegarem as suas. Golpes, cansada, dano e derrota ainda usam a pose parada (a fila continua no item 375, a Quimera acordando).
+**Arte no jogo (itens 373 a 377):** **dorme** enrolada antes da luta, com o núcleo do peito apagado, **acorda** erguendo a cabeça e rugindo, fica **parada** respirando, tem um **ataque genérico** (uma pata dianteira golpeia) e o **pisão** (ergue as patas da frente, bate no chão e solta uma onda compacta): corpo de pedra e lava, juba de raízes, asas de grifo e cauda de serpente d’água. É o maior dos chefes. A arte chegou na fase 1 (núcleo cinza e laranja); as outras fases (verde e azul, arco-íris) usam a mesma arte até chegarem as suas. Golpes, os outros golpes, cansada, dano e derrota ainda usam o ataque genérico ou a pose parada (a fila continua no item 378, o arremesso de rocha).
 
 ![Quimera Primordial com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-quimera.jpg)
 *Quimera Primordial com a arte nova, ao lado da Line para ver o tamanho*
@@ -3482,7 +3482,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
-| Chefe: Quimera Primordial (Parte 2) | 22 | 2 | 20 | 0 |
+| Chefe: Quimera Primordial (Parte 2) | 22 | 5 | 17 | 0 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
@@ -3493,7 +3493,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **608** | **378** | **164** | **66** |
+| **Total** | **608** | **381** | **161** | **66** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3793,7 +3793,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 378 de 608 animações com arte · 164 usando uma substituta · 66 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 381 de 608 animações com arte · 161 usando uma substituta · 66 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3884,25 +3884,22 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | desenho no código |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_ATTACK` | Quimera Primordial — ataque genérico (usado quando o golpe não tem arte própria) | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_SLAM` | Quimera Primordial — pisão (onda no chão) | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WAVE` | Quimera Primordial — onda | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_GUST` | Quimera Primordial — rajada de vento | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | `QUIMERA_IDLE` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WAVE` | Quimera Primordial — onda | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_GUST` | Quimera Primordial — rajada de vento | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | `QUIMERA_ATTACK` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | `QUIMERA_ATTACK` |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) | `QUIMERA_IDLE` |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_HIT` | Quimera Primordial — recebe dano | `QUIMERA_IDLE` |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | `QUIMERA_IDLE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | `QUIMERA_IDLE` |
+| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | `QUIMERA_WAKE` |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | `QUIMERA_IDLE` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | `WISP_IDLE` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | `WISP_ATTACK` |
@@ -4486,6 +4483,9 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 372 | `LINE_BELL_ITEM_372.html` | 1,08 MB |  |
 | 373 | `LINE_BELL_ITEM_373.html` | 3,46 MB |  |
 | 374 | `LINE_BELL_ITEM_374.html` | 3,43 MB |  |
+| 375 | `LINE_BELL_ITEM_375.html` | 4,02 MB |  |
+| 376 | `LINE_BELL_ITEM_376.html` | 2,75 MB |  |
+| 377 | `LINE_BELL_ITEM_377.html` | 3,00 MB |  |
 
 Itens que ainda não chegaram: 153, 240.
 
