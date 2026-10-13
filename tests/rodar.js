@@ -1214,6 +1214,7 @@ for (const [id, area, antes] of CHEFES_P2) {
       const j = LB.jogo, ch = j.chefeArena;
       for (let k = 0; k < 300 && ch.vivo && ch.estado !== 'morrendo'; k++) {
         if (ch.estado !== 'exausto') { ch.estado = 'exausto'; ch.t = 0; ch.dormindo = false; }
+        ch.intocavel = false; // (se estava no meio do mergulho quando o teste forçou o cansaço)
         ch.hp = Math.min(ch.hp, 3);
         ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50);
         if (ch.def.fases && ch.checarFase) ch.checarFase(j);
@@ -1743,10 +1744,10 @@ teste('pedidos do teste no celular: Serpente na água, monstros novos, missão m
   igual(vm.moradores, ['abilio', 'davi', 'graca', 'iolanda', 'lia', 'teo'], 'moradores novos da vila');
 });
 
-teste('parte 2: Colosso de Raízes (itens 305 a 315), Serpente dormindo (316) e Tempestade Viva (363 a 371) do mesmo tamanho em todas as animações', async (h) => {
+teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tempestade (363 a 372) e Quimera dormindo e parada (373 e 374), do mesmo tamanho em todas as animações', async (h) => {
   await h.area('vale', Object.assign({ visto_vale: true }, P2));
-  const ITENS = { COLOSSO_IDLE: 305, COLOSSO_WAKE: 306, COLOSSO_ATTACK: 307, COLOSSO_ROOTS: 308, COLOSSO_HIT: 313, COLOSSO_DEATH: 314, COLOSSO_FREED: 315, SERPENTE_SLEEP: 316,
-    TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371 };
+  const ITENS = { COLOSSO_IDLE: 305, COLOSSO_WAKE: 306, COLOSSO_ATTACK: 307, COLOSSO_ROOTS: 308, COLOSSO_THORNS: 309, COLOSSO_MUD: 310, COLOSSO_SUMMON: 311, COLOSSO_STUNNED: 312, COLOSSO_HIT: 313, COLOSSO_DEATH: 314, COLOSSO_FREED: 315, SERPENTE_SLEEP: 316,
+    TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371, TEMPESTADE_DEATH: 372, QUIMERA_SLEEP: 373, QUIMERA_IDLE: 374 };
   const r = await h.ev((ITENS) => {
     // Caixa de um quadro (o primeiro ou o último), em unidades do mundo (célula de 200 × ajuste); `claros` conta os
     // pixels de raio/anel (brancos ou ciano) da parte de baixo da célula.
@@ -1777,15 +1778,16 @@ teste('parte 2: Colosso de Raízes (itens 305 a 315), Serpente dormindo (316) e 
   for (const [cod, n] of Object.entries(ITENS)) igual(r.fontes[cod], [`LINE_BELL_ITEM_${n}.html`, 448], `${cod} vem do item ${n}, em célula grande`);
   const perto = (a, b, tol) => Math.abs(a / b - 1) <= tol;
   // Colosso: o parado (1º quadro) e os outros no quadro em que ele está de pé.
-  for (const [c, ult] of [['SLEEP', false], ['WAKE', true], ['ATTACK', false], ['ROOTS', false], ['HIT', true], ['DEATH', false], ['FREED', false]]) {
+  for (const [c, ult] of [['SLEEP', false], ['WAKE', true], ['ATTACK', false], ['ROOTS', false], ['THORNS', false], ['MUD', false], ['SUMMON', false], ['STUNNED', false], ['HIT', true], ['DEATH', false], ['FREED', false]]) {
     const m = (ult ? r.fim : r.tam)['COLOSSO_' + c];
     const porte = (x) => Math.sqrt(x.larg * x.alt); // acordando ele fica mais largo e mais baixo: compara o porte (altura × largura)
     afirmar(perto(porte(m), porte(r.tam.COLOSSO_IDLE), 0.1), `Colosso ${c} do porte do parado: ${JSON.stringify([m, r.tam.COLOSSO_IDLE])}`);
   }
   afirmar(r.tam.COLOSSO_IDLE.alt > 110 && r.tam.COLOSSO_IDLE.alt < 160, 'Colosso bem maior que a Line, na altura do que era desenhado no código: ' + r.tam.COLOSSO_IDLE.alt);
   afirmar(perto(r.tam.SERPENTE_SLEEP.larg, r.tam.SERPENTE_IDLE.larg, 0.15), 'Serpente dormindo da largura da parada: ' + JSON.stringify([r.tam.SERPENTE_SLEEP, r.tam.SERPENTE_IDLE]));
+  afirmar(perto(r.tam.QUIMERA_SLEEP.larg, r.tam.QUIMERA_IDLE.larg, 0.08) && r.tam.QUIMERA_IDLE.larg > 200, 'Quimera dormindo e parada do mesmo tamanho, a maior de todos os chefes: ' + JSON.stringify([r.tam.QUIMERA_SLEEP, r.tam.QUIMERA_IDLE]));
   // Tempestade: a largura da nuvem (com os braços) igual à da parada, em todas.
-  for (const c of ['WAKE', 'ATTACK', 'LIGHTNING', 'GUST', 'WATER_JET', 'WAVE', 'FEATHERS', 'HIT', 'STUNNED']) {
+  for (const c of ['WAKE', 'ATTACK', 'LIGHTNING', 'GUST', 'WATER_JET', 'WAVE', 'FEATHERS', 'HIT', 'STUNNED', 'DEATH']) {
     const m = (c === 'WAKE' ? r.fim : r.tam)['TEMPESTADE_' + c];
     afirmar(perto(m.larg, r.tam.TEMPESTADE_IDLE.larg, 0.17), `Tempestade ${c} com a nuvem do tamanho da parada: ${JSON.stringify([m, r.tam.TEMPESTADE_IDLE])}`);
   }
@@ -1803,17 +1805,26 @@ teste('parte 2: Colosso de Raízes (itens 305 a 315), Serpente dormindo (316) e 
     }
     const l = j.line; ch.t = 0;
     ch.escolherAtaque(j); ch.ataque = 'raizes'; ch.estado = 'atacar'; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false; ch.feito = {}; ch.perigos = [];
-    const golpe = [];
+    const golpe = [], outros = {};
     for (let i = 0; i < 60; i++) { l.hp = l.hpMax; ch.atualizar(0.05, j); if (golpe[golpe.length - 1] !== ch.anim.base) golpe.push(ch.anim.base); }
-    ch.estado = 'exausto'; ch.t = 0; ch.exposto = 9; ch.hp = ch.hpMax; ch.perigos = [];
+    for (const atq of ['espinhosAnel', 'lama', 'invocar']) {
+      ch.anim.tocar('COLOSSO_IDLE', true); ch.escolherAtaque(j); ch.ataque = atq; ch.estado = 'atacar'; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false; ch.feito = {}; ch.perigos = []; j.inimigos = j.inimigos.filter((e) => e === ch);
+      outros[atq] = [];
+      for (let i = 0; i < 60; i++) { l.hp = l.hpMax; ch.atualizar(0.05, j); if (outros[atq][outros[atq].length - 1] !== ch.anim.base) outros[atq].push(ch.anim.base); }
+    }
+    j.inimigos = j.inimigos.filter((e) => e === ch);
+    ch.estado = 'exausto'; ch.t = 0; ch.exposto = 9; ch.hp = ch.hpMax; ch.perigos = []; ch.atualizar(0.05, j);
+    const cansado = ch.anim.base;
     ch.receberGolpe(j, 1, ch.x - 30, ch.y, 50);
     const dano = ch.anim.base;
     ch.hp = 1; ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50); ch.atualizar(0.05, j);
-    return { antes, vistos, golpe, dano, morte: [ch.estado, ch.anim.base], arte: ['HIT', 'DEATH'].map((n) => LB.chefes.temArte(ch, n)) };
+    return { antes, vistos, golpe, outros, cansado, dano, morte: [ch.estado, ch.anim.base], arte: ['HIT', 'DEATH'].map((n) => LB.chefes.temArte(ch, n)) };
   });
   igual(a.antes, 'COLOSSO_SLEEP', 'antes da luta o Colosso dorme');
   afirmar(a.vistos.indexOf('COLOSSO_WAKE') >= 0 && a.vistos.indexOf('COLOSSO_IDLE') > a.vistos.indexOf('COLOSSO_WAKE'), 'acorda com o rugido (item 306) e fica parado (item 305): ' + JSON.stringify(a.vistos));
   igual(a.golpe, ['COLOSSO_ROOTS', 'COLOSSO_IDLE'], 'raízes com a arte própria (item 308) e depois parado');
+  igual(a.outros, { espinhosAnel: ['COLOSSO_THORNS', 'COLOSSO_IDLE'], lama: ['COLOSSO_MUD', 'COLOSSO_IDLE'], invocar: ['COLOSSO_SUMMON', 'COLOSSO_IDLE'] }, 'anel de espinhos (309), cuspe de lama (310) e chamar sombras (311) com a arte própria');
+  igual(a.cansado, 'COLOSSO_STUNNED', 'cansado, com a arte própria do item 312');
   igual([a.dano, a.morte, a.arte], ['COLOSSO_HIT', ['morrendo', 'COLOSSO_DEATH'], [true, true]], 'pisca com o dano (313) e se desfaz em luz na derrota (314)');
 
   // Colosso libertado (item 315) aparece nas cores verdadeiras na cena da vitória e some no fim.
@@ -1847,12 +1858,23 @@ teste('parte 2: Colosso de Raízes (itens 305 a 315), Serpente dormindo (316) e 
     }
     ch.estado = 'exausto'; ch.t = 0; ch.exposto = 9; ch.hp = ch.hpMax; ch.perigos = []; ch.atualizar(0.05, j);
     const cansada = ch.anim.base; ch.receberGolpe(j, 1, ch.x - 30, ch.y, 50);
-    return { dorme, vistos, cansada, dano: ch.anim.base };
+    const dano = ch.anim.base; ch.hp = 1; ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50); ch.atualizar(0.05, j);
+    return { dorme, vistos, cansada, dano, morte: [ch.estado, ch.anim.base] };
   });
   igual(tp.dorme, 'TEMPESTADE_SLEEP', 'a Tempestade dorme antes da luta');
   const arteT = { raios: 'LIGHTNING', rajada: 'GUST', jatos: 'WATER_JET', onda: 'WAVE', penas: 'FEATHERS' };
   for (const [atq, arte] of Object.entries(arteT)) igual(tp.vistos[atq], ['TEMPESTADE_' + arte, 'TEMPESTADE_IDLE'], `${atq}: arte própria e depois parada`);
-  igual([tp.cansada, tp.dano], ['TEMPESTADE_STUNNED', 'TEMPESTADE_HIT'], 'cansada pousa com a arte própria e pisca com o dano');
+  igual([tp.cansada, tp.dano, tp.morte], ['TEMPESTADE_STUNNED', 'TEMPESTADE_HIT', ['morrendo', 'TEMPESTADE_DEATH']], 'cansada pousa com a arte própria, pisca com o dano e se desfaz em luz na derrota (item 372)');
+
+  // Quimera: dorme e fica parada com a arte nova (itens 373 e 374).
+  await h.area('coracao', Object.assign({ visto_coracao: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true, fusaoTempestade: true, portalCoracao: true }, P2));
+  const q = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, d = () => LB.resolver(ch.anim.base, null, ch.lado).codigo;
+    const dorme = [ch.id, ch.anim.base, d()];
+    ch.acordar(j); ch.atualizar(0.05, j);
+    return { dorme, parada: [ch.anim.base, d()] };
+  });
+  igual([q.dorme, q.parada], [['quimera', 'QUIMERA_SLEEP', 'QUIMERA_SLEEP'], ['QUIMERA_IDLE', 'QUIMERA_IDLE']], 'a Quimera dorme (item 373) e fica parada (item 374)');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {
