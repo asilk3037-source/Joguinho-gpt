@@ -18,6 +18,8 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> ⛈️ **Hidra completa e a Tempestade chegando (itens 354 a 362):** a **Hidra de Lama** ganhou a arte dos **jatos de água**, da **onda**, do **mergulho** (afunda no monte de lama e volta embaixo da heroína), do **cuspe de lama**, de **cansada** (só a bolha do núcleo aparece), do **dano** e da **derrota**: ficou completa. A **Tempestade Viva** chegou **dormindo** e **parada**, pairando com braços de vento e chuva. Tamanhos medidos e acertados (os jatos e a onda vieram uns 8% menores; a Tempestade dormindo, uns 14% menor que a parada); cores conferidas com a referência.
+
 > 🎮 **Ajustes do teste jogando (13 de outubro):**
 > - **Seta e trilha do chão mais fortes:** douradas e com contorno escuro, aparecem em qualquer chão (grama clara, areia, neve).
 > - **A Serpente nada no lago:** ela dorme e luta na água em volta da ilha, meio submersa, com ondinhas. Só sobe na terra quando sai do mergulho embaixo da heroína e quando cansa: aí se arrasta até a margem, que é a hora de bater nela. Depois volta para a água.
@@ -199,7 +201,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **608**: 345 com arte (temporária), 152 usando uma substituta, 111 desenhadas no código ou sem imagem |
+| Animações catalogadas | **608**: 354 com arte (temporária), 155 usando uma substituta, 99 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1891,7 +1893,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 608 animações. ✅ 345 com arte temporária, 🔁 152 com substituta e ✏️ 111 desenhadas no código.
+**Resumo:** 608 animações. ✅ 354 com arte temporária, 🔁 155 com substituta e ✏️ 99 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1913,8 +1915,8 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
-| Chefe: Hidra de Lama (Parte 2) | 12 | 5 | 7 | 0 |
-| Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
+| Chefe: Tempestade Viva (Parte 2) | 12 | 2 | 10 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
@@ -2384,30 +2386,30 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `HIDRA_WAKE` | Hidra de Lama — acordando / rugido de apresentação (item 351) | 12 |  | ✅ temporária | LINE_BELL_ITEM_351 |
 | `HIDRA_ATTACK` | Hidra de Lama — ataque genérico (usado quando o golpe não tem arte própria) (item 352) | 10 |  | ✅ temporária | LINE_BELL_ITEM_352 |
 | `HIDRA_ROOTS` | Hidra de Lama — raízes saindo do chão em linha (item 353) | 10 |  | ✅ temporária | LINE_BELL_ITEM_353 |
-| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
-| `HIDRA_WAVE` | Hidra de Lama — onda | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
-| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
-| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 |  | 🔁 usa `HIDRA_ATTACK` |  |
-| `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | 8 | sim | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 |  | 🔁 usa `HIDRA_IDLE` |  |
-| `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `HIDRA_IDLE` |  |
+| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água (item 354) | 10 |  | ✅ temporária | LINE_BELL_ITEM_354 |
+| `HIDRA_WAVE` | Hidra de Lama — onda (item 355) | 10 |  | ✅ temporária | LINE_BELL_ITEM_355 |
+| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) (item 356) | 10 |  | ✅ temporária | LINE_BELL_ITEM_356 |
+| `HIDRA_MUD` | Hidra de Lama — cuspe de lama (item 357) | 10 |  | ✅ temporária | LINE_BELL_ITEM_357 |
+| `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) (item 358) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_358 |
+| `HIDRA_HIT` | Hidra de Lama — recebe dano (item 359) | 4 |  | ✅ temporária | LINE_BELL_ITEM_359 |
+| `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) (item 360) | 14 |  | ✅ temporária | LINE_BELL_ITEM_360 |
 
 ### 10.20 Chefe: Tempestade Viva (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `TEMPESTADE_SLEEP` | Tempestade Viva — dormindo (antes da luta) | 8 | sim | ✏️ código / falta |  |
-| `TEMPESTADE_IDLE` | Tempestade Viva — parado, respirando | 8 | sim | ✏️ código / falta |  |
-| `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | 12 |  | ✏️ código / falta |  |
-| `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | ✏️ código / falta |  |
-| `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | 10 |  | ✏️ código / falta |  |
-| `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | 10 |  | ✏️ código / falta |  |
-| `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | 10 |  | ✏️ código / falta |  |
-| `TEMPESTADE_WAVE` | Tempestade Viva — onda | 10 |  | ✏️ código / falta |  |
-| `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | 10 |  | ✏️ código / falta |  |
-| `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | 8 | sim | ✏️ código / falta |  |
-| `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | 4 |  | ✏️ código / falta |  |
-| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 |  | ✏️ código / falta |  |
+| `TEMPESTADE_SLEEP` | Tempestade Viva — dormindo (antes da luta) (item 361) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_361 |
+| `TEMPESTADE_IDLE` | Tempestade Viva — parado, respirando (item 362) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_362 |
+| `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | 12 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_WAVE` | Tempestade Viva — onda | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | 10 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | 8 | sim | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | 4 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
+| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 |  | 🔁 usa `TEMPESTADE_IDLE` |  |
 
 ### 10.21 Chefe: Quimera Primordial (Parte 2)
 
@@ -3333,7 +3335,7 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** As poças de lama deixam você lenta: fuja delas. / Ela mergulha na lama e sai embaixo das bolhas. / Cansada, ela afunda a cabeça no chão: ataque!
 - **Aparência:** Três cabeças de serpente feitas de lama e raízes saindo de um charco. O corpo fica afundado; as cabeças se mexem separadas (uma cospe lama, outra água, a do meio morde). Olhos amarelos, bocas escorrendo lama. Quando cansa, as três cabeças afundam e só o núcleo (uma bolha de lama brilhante) aparece.
 
-**Arte no jogo (itens 349 a 353):** **dorme** no charco antes da luta, **acorda** abrindo os olhos e rugindo com as três cabeças na apresentação e fica **parada** respirando; nas **raízes**, os brotos avisam e as raízes crescem em linha ao lado dela (as de verdade saem em linha na direção da heroína, com o aviso no chão); os outros golpes (jatos, onda, mergulho e cuspe de lama) usam o **ataque genérico**, a mordida da cabeça do meio, até chegar a arte de cada um. Cansada, dano e derrota ainda usam a pose parada (a fila continua no item 354, os jatos de água).
+**Arte no jogo (itens 349 a 360):** **dorme** no charco antes da luta, **acorda** abrindo os olhos e rugindo com as três cabeças na apresentação e fica **parada** respirando; cada golpe tem a sua arte: **raízes** (os brotos avisam e as raízes crescem ao lado dela; as de verdade saem em linha na direção da heroína), **jatos de água**, **onda**, **cuspe de lama** e o **mergulho** (afunda no monte de lama, só o monte segue a heroína e ela volta à tona embaixo dela); **cansada**, as três cabeças afundam e só a bolha de lama do núcleo aparece; pisca ao **receber dano**; e na **derrota** se desfaz em lama e brilhos dourados. Ficou completa.
 
 ![Hidra de Lama com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-hidra.jpg)
 *Hidra de Lama com a arte nova, ao lado da Line para ver o tamanho*
@@ -3344,6 +3346,11 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** Os raios agora caem em sequência: continue andando. / Quando ela chove forte, a rajada vem logo depois: prepare-se para andar contra o vento. / Cansada, ela desce e o olho da tempestade fica exposto.
 - **Aparência:** Uma nuvem escura com rosto (olhos brancos brilhantes e boca de trovão), braços de vento em espiral, chuva caindo por baixo e raios entre as nuvens. Paira no ar. No centro fica o **olho da tempestade**, um redemoinho claro que é o núcleo. Quando cansa, desce ao chão e o olho abre.
 
+**Arte no jogo (itens 361 e 362):** **dorme** de olhos fechados antes da luta e, acordada, fica **parada** pairando, com olhos brancos brilhantes, braços de vento e chuva. Acordando, os golpes, cansada, dano e derrota ainda usam a pose parada até chegar a arte de cada um (a fila continua no item 363, a Tempestade acordando).
+
+![Tempestade Viva com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-tempestade.jpg)
+*Tempestade Viva com a arte nova, ao lado da Line para ver o tamanho*
+
 ### Quimera Primordial — O Coração dos Elementos
 - **Elementos:** 🪨 Pedra + 🔥 Fogo + 🌱 Terra + 💧 Água + 🌪️ Ar · **Vida:** 48 no Normal · **Cansa depois de:** 4 ataques · **Onde:** Coração dos Elementos
 - **Três fases:** Pedra + Fogo → Terra + Água → Ar + Fogo + Água + Terra + Pedra. Na última, bate 2 de uma vez (menos no Fácil).
@@ -3351,8 +3358,8 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** A Quimera muda de elemento a cada fase: veja a cor do núcleo para saber o que vem. / Na última fase ela usa todos os ataques e bate mais forte. Troque de heroína quando a vida baixar. / A luz sempre abre a guarda. Guarde magia para isso.
 - **Aparência:** A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo.
 
-![Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma e a Hidra já com a arte nova; os outros ainda desenhados no código até a arte chegar](imagens/p2-chefes.jpg)
-*Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma e a Hidra já com a arte nova; os outros ainda desenhados no código até a arte chegar*
+![Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; o Colosso acordado e a Quimera ainda desenhados no código até a arte chegar](imagens/p2-chefes.jpg)
+*Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; o Colosso acordado e a Quimera ainda desenhados no código até a arte chegar*
 
 ## 21. Dicas do modo Fácil
 
@@ -3459,8 +3466,8 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Serpente das Marés (Parte 2) | 11 | 10 | 1 | 0 |
 | Chefe: Grifo da Tempestade (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
-| Chefe: Hidra de Lama (Parte 2) | 12 | 5 | 7 | 0 |
-| Chefe: Tempestade Viva (Parte 2) | 12 | 0 | 0 | 12 |
+| Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
+| Chefe: Tempestade Viva (Parte 2) | 12 | 2 | 10 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 0 | 0 | 22 |
 | Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
@@ -3472,7 +3479,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **608** | **345** | **152** | **111** |
+| **Total** | **608** | **354** | **155** | **99** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3772,7 +3779,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 345 de 608 animações com arte · 152 usando uma substituta · 111 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 354 de 608 animações com arte · 155 usando uma substituta · 99 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3874,25 +3881,16 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_DEATH` | Colosso de Raízes — derrotado (se desfaz em luz) | desenho no código |
 | Chefe: Colosso de Raízes (Parte 2) | `COLOSSO_FREED` | Colosso de Raízes — libertado, volta às cores verdadeiras e agradece | desenho no código |
 | Chefe: Serpente das Marés (Parte 2) | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | `SERPENTE_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | `HIDRA_ATTACK` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_WAVE` | Hidra de Lama — onda | `HIDRA_ATTACK` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | `HIDRA_ATTACK` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_MUD` | Hidra de Lama — cuspe de lama | `HIDRA_ATTACK` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_HIT` | Hidra de Lama — recebe dano | `HIDRA_IDLE` |
-| Chefe: Hidra de Lama (Parte 2) | `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | `HIDRA_IDLE` |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_SLEEP` | Tempestade Viva — dormindo (antes da luta) | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_IDLE` | Tempestade Viva — parado, respirando | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAVE` | Tempestade Viva — onda | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | desenho no código |
-| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | desenho no código |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_WAVE` | Tempestade Viva — onda | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | `TEMPESTADE_IDLE` |
+| Chefe: Tempestade Viva (Parte 2) | `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | `TEMPESTADE_IDLE` |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_SLEEP` | Quimera Primordial — dormindo (antes da luta) | desenho no código |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_IDLE` | Quimera Primordial — parado, respirando | desenho no código |
 | Chefe: Quimera Primordial (Parte 2) | `QUIMERA_WAKE` | Quimera Primordial — acordando / rugido de apresentação | desenho no código |
@@ -4464,6 +4462,15 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 351 | `LINE_BELL_ITEM_351.html` | 2,58 MB |  |
 | 352 | `LINE_BELL_ITEM_352.html` | 2,75 MB |  |
 | 353 | `LINE_BELL_ITEM_353.html` | 2,13 MB |  |
+| 354 | `LINE_BELL_ITEM_354.html` | 2,16 MB |  |
+| 355 | `LINE_BELL_ITEM_355.html` | 2,21 MB |  |
+| 356 | `LINE_BELL_ITEM_356.html` | 1,84 MB |  |
+| 357 | `LINE_BELL_ITEM_357.html` | 2,18 MB |  |
+| 358 | `LINE_BELL_ITEM_358.html` | 1,00 MB |  |
+| 359 | `LINE_BELL_ITEM_359.html` | 1,52 MB |  |
+| 360 | `LINE_BELL_ITEM_360.html` | 1,33 MB |  |
+| 361 | `LINE_BELL_ITEM_361.html` | 1,53 MB |  |
+| 362 | `LINE_BELL_ITEM_362.html` | 1,86 MB |  |
 
 Itens que ainda não chegaram: 153, 240, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316.
 

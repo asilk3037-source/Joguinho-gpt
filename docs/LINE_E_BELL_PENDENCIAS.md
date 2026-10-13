@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **273** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **264** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -143,34 +143,20 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 |---|---|---|---|
 | `SERPENTE_SLEEP` | Serpente das Marés — dormindo (antes da luta) | 8 | 🔁 usa `SERPENTE_IDLE` |
 
-### Chefe: Hidra de Lama (Parte 2) (7)
+### Chefe: Tempestade Viva (Parte 2) (10)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `HIDRA_WATER_JET` | Hidra de Lama — jatos de água | 10 | 🔁 usa `HIDRA_ATTACK` |
-| `HIDRA_WAVE` | Hidra de Lama — onda | 10 | 🔁 usa `HIDRA_ATTACK` |
-| `HIDRA_DIVE` | Hidra de Lama — mergulho (some e reaparece) | 10 | 🔁 usa `HIDRA_ATTACK` |
-| `HIDRA_MUD` | Hidra de Lama — cuspe de lama | 10 | 🔁 usa `HIDRA_ATTACK` |
-| `HIDRA_STUNNED` | Hidra de Lama — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_HIT` | Hidra de Lama — recebe dano | 4 | 🔁 usa `HIDRA_IDLE` |
-| `HIDRA_DEATH` | Hidra de Lama — derrotado (se desfaz em luz) | 14 | 🔁 usa `HIDRA_IDLE` |
-
-### Chefe: Tempestade Viva (Parte 2) (12)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `TEMPESTADE_SLEEP` | Tempestade Viva — dormindo (antes da luta) | 8 | ✏️ falta |
-| `TEMPESTADE_IDLE` | Tempestade Viva — parado, respirando | 8 | ✏️ falta |
-| `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | 12 | ✏️ falta |
-| `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | 10 | ✏️ falta |
-| `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | 10 | ✏️ falta |
-| `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | 10 | ✏️ falta |
-| `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | 10 | ✏️ falta |
-| `TEMPESTADE_WAVE` | Tempestade Viva — onda | 10 | ✏️ falta |
-| `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | 10 | ✏️ falta |
-| `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | 8 | ✏️ falta |
-| `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | 4 | ✏️ falta |
-| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 | ✏️ falta |
+| `TEMPESTADE_WAKE` | Tempestade Viva — acordando / rugido de apresentação | 12 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_ATTACK` | Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) | 10 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_LIGHTNING` | Tempestade Viva — chama raios | 10 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_GUST` | Tempestade Viva — rajada de vento | 10 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_WATER_JET` | Tempestade Viva — jatos de água | 10 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_WAVE` | Tempestade Viva — onda | 10 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_FEATHERS` | Tempestade Viva — leque de penas | 10 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_STUNNED` | Tempestade Viva — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_HIT` | Tempestade Viva — recebe dano | 4 | 🔁 usa `TEMPESTADE_IDLE` |
+| `TEMPESTADE_DEATH` | Tempestade Viva — derrotado (se desfaz em luz) | 14 | 🔁 usa `TEMPESTADE_IDLE` |
 
 ### Chefe: Quimera Primordial (Parte 2) (22)
 
@@ -726,7 +712,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 4. **Telas** (seção 7), começando pelo título e pela mochila.
 5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da **Hidra** (a partir do item 354, os jatos de água), a Tempestade Viva e a Quimera. E os **moradores** da Parte 2.
+7. **Chefes** da Parte 2 (seção 3): os itens **305 a 316 não chegaram** (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma e a Hidra ficaram completos; agora o resto da **Tempestade Viva** (a partir do item 363, a Tempestade acordando) e a Quimera. E os **moradores** da Parte 2.
 8. **Monstros novos** (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os **moradores novos** (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.
 9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 

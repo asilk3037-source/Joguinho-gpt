@@ -32,7 +32,7 @@ em{color:var(--mut)}
 <tr>
 <td>3. Animações pendentes</td>
 <td>animações novas (inclui a Bell jogável, os chefes, os <strong>moradores</strong> com os retratos do diálogo e as <strong>armaduras vestidas</strong>)</td>
-<td><strong>273</strong></td>
+<td><strong>264</strong></td>
 </tr>
 <tr>
 <td>4. Armaduras e itens</td>
@@ -435,7 +435,7 @@ em{color:var(--mut)}
 </tr>
 </tbody>
 </table>
-<h3 id="chefe-hidra-de-lama-parte-2-7">Chefe: Hidra de Lama (Parte 2) (7)</h3>
+<h3 id="chefe-tempestade-viva-parte-2-10">Chefe: Tempestade Viva (Parte 2) (10)</h3>
 <table>
 <thead>
 <tr>
@@ -446,132 +446,65 @@ em{color:var(--mut)}
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><code>HIDRA_WATER_JET</code></td>
-<td>Hidra de Lama — jatos de água</td>
-<td>10</td>
-<td>🔁 usa <code>HIDRA_ATTACK</code></td>
-</tr>
-<tr>
-<td><code>HIDRA_WAVE</code></td>
-<td>Hidra de Lama — onda</td>
-<td>10</td>
-<td>🔁 usa <code>HIDRA_ATTACK</code></td>
-</tr>
-<tr>
-<td><code>HIDRA_DIVE</code></td>
-<td>Hidra de Lama — mergulho (some e reaparece)</td>
-<td>10</td>
-<td>🔁 usa <code>HIDRA_ATTACK</code></td>
-</tr>
-<tr>
-<td><code>HIDRA_MUD</code></td>
-<td>Hidra de Lama — cuspe de lama</td>
-<td>10</td>
-<td>🔁 usa <code>HIDRA_ATTACK</code></td>
-</tr>
-<tr>
-<td><code>HIDRA_STUNNED</code></td>
-<td>Hidra de Lama — cansado, núcleo exposto (hora de atacar)</td>
-<td>8</td>
-<td>🔁 usa <code>HIDRA_IDLE</code></td>
-</tr>
-<tr>
-<td><code>HIDRA_HIT</code></td>
-<td>Hidra de Lama — recebe dano</td>
-<td>4</td>
-<td>🔁 usa <code>HIDRA_IDLE</code></td>
-</tr>
-<tr>
-<td><code>HIDRA_DEATH</code></td>
-<td>Hidra de Lama — derrotado (se desfaz em luz)</td>
-<td>14</td>
-<td>🔁 usa <code>HIDRA_IDLE</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="chefe-tempestade-viva-parte-2-12">Chefe: Tempestade Viva (Parte 2) (12)</h3>
-<table>
-<thead>
-<tr>
-<th>Código</th>
-<th>O que mostra</th>
-<th>Quadros</th>
-<th>Situação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>TEMPESTADE_SLEEP</code></td>
-<td>Tempestade Viva — dormindo (antes da luta)</td>
-<td>8</td>
-<td>✏️ falta</td>
-</tr>
-<tr>
-<td><code>TEMPESTADE_IDLE</code></td>
-<td>Tempestade Viva — parado, respirando</td>
-<td>8</td>
-<td>✏️ falta</td>
-</tr>
 <tr>
 <td><code>TEMPESTADE_WAKE</code></td>
 <td>Tempestade Viva — acordando / rugido de apresentação</td>
 <td>12</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_ATTACK</code></td>
 <td>Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria)</td>
 <td>10</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_LIGHTNING</code></td>
 <td>Tempestade Viva — chama raios</td>
 <td>10</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_GUST</code></td>
 <td>Tempestade Viva — rajada de vento</td>
 <td>10</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_WATER_JET</code></td>
 <td>Tempestade Viva — jatos de água</td>
 <td>10</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_WAVE</code></td>
 <td>Tempestade Viva — onda</td>
 <td>10</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_FEATHERS</code></td>
 <td>Tempestade Viva — leque de penas</td>
 <td>10</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_STUNNED</code></td>
 <td>Tempestade Viva — cansado, núcleo exposto (hora de atacar)</td>
 <td>8</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_HIT</code></td>
 <td>Tempestade Viva — recebe dano</td>
 <td>4</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 <tr>
 <td><code>TEMPESTADE_DEATH</code></td>
 <td>Tempestade Viva — derrotado (se desfaz em luz)</td>
 <td>14</td>
-<td>✏️ falta</td>
+<td>🔁 usa <code>TEMPESTADE_IDLE</code></td>
 </tr>
 </tbody>
 </table>
@@ -3144,7 +3077,7 @@ em{color:var(--mut)}
 <li><strong>Telas</strong> (seção 7), começando pelo título e pela mochila.</li>
 <li><strong>Armaduras vestidas</strong> da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.</li>
 <li><strong>Mapas das fases</strong> em cima dos gabaritos (seção 8.1).</li>
-<li><strong>Chefes</strong> da Parte 2 (seção 3): os itens <strong>305 a 316 não chegaram</strong> (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma ficou completo; agora o resto da <strong>Hidra</strong> (a partir do item 354, os jatos de água), a Tempestade Viva e a Quimera. E os <strong>moradores</strong> da Parte 2.</li>
+<li><strong>Chefes</strong> da Parte 2 (seção 3): os itens <strong>305 a 316 não chegaram</strong> (pela numeração, o resto do Colosso e a Serpente dormindo); o Titã de Magma e a Hidra ficaram completos; agora o resto da <strong>Tempestade Viva</strong> (a partir do item 363, a Tempestade acordando) e a Quimera. E os <strong>moradores</strong> da Parte 2.</li>
 <li><strong>Monstros novos</strong> (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os <strong>moradores novos</strong> (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.</li>
 <li><strong>Efeitos especiais</strong> (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.</li>
 </ol>

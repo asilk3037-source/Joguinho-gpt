@@ -80,6 +80,8 @@ w("> - **Lista completa de arte necessária** para o jogo inteiro: personagens, 
 w()
 w("> 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.")
 w()
+w("> ⛈️ **Hidra completa e a Tempestade chegando (itens 354 a 362):** a **Hidra de Lama** ganhou a arte dos **jatos de água**, da **onda**, do **mergulho** (afunda no monte de lama e volta embaixo da heroína), do **cuspe de lama**, de **cansada** (só a bolha do núcleo aparece), do **dano** e da **derrota**: ficou completa. A **Tempestade Viva** chegou **dormindo** e **parada**, pairando com braços de vento e chuva. Tamanhos medidos e acertados (os jatos e a onda vieram uns 8% menores; a Tempestade dormindo, uns 14% menor que a parada); cores conferidas com a referência.")
+w()
 w("> 🎮 **Ajustes do teste jogando (13 de outubro):**")
 w("> - **Seta e trilha do chão mais fortes:** douradas e com contorno escuro, aparecem em qualquer chão (grama clara, areia, neve).")
 w("> - **A Serpente nada no lago:** ela dorme e luta na água em volta da ilha, meio submersa, com ondinhas. Só sobe na terra quando sai do mergulho embaixo da heroína e quando cansa: aí se arrasta até a margem, que é a hora de bater nela. Depois volta para a água.")

@@ -71,10 +71,14 @@ ARTE_CHEFES = {
               "e o tremor saem na hora em que o pé bate no chão na arte), **chuva de fogo** (o fogo que cai em volta dele faz parte da magia; o de verdade "
               "cai na heroína, com o círculo de aviso lá), **arremesso de rocha** e **leque de fogo**; **cansado** mostra o núcleo; pisca ao **receber dano**; "
               "e na **derrota** se desfaz em pedras e brasas. Ficou completo."),
-    "hidra": ("itens 349 a 353", "**dorme** no charco antes da luta, **acorda** abrindo os olhos e rugindo com as três cabeças na apresentação e fica "
-              "**parada** respirando; nas **raízes**, os brotos avisam e as raízes crescem em linha ao lado dela (as de verdade saem em linha na direção "
-              "da heroína, com o aviso no chão); os outros golpes (jatos, onda, mergulho e cuspe de lama) usam o **ataque genérico**, a mordida da cabeça "
-              "do meio, até chegar a arte de cada um. Cansada, dano e derrota ainda usam a pose parada (a fila continua no item 354, os jatos de água)."),
+    "hidra": ("itens 349 a 360", "**dorme** no charco antes da luta, **acorda** abrindo os olhos e rugindo com as três cabeças na apresentação e fica "
+              "**parada** respirando; cada golpe tem a sua arte: **raízes** (os brotos avisam e as raízes crescem ao lado dela; as de verdade saem em "
+              "linha na direção da heroína), **jatos de água**, **onda**, **cuspe de lama** e o **mergulho** (afunda no monte de lama, só o monte "
+              "segue a heroína e ela volta à tona embaixo dela); **cansada**, as três cabeças afundam e só a bolha de lama do núcleo aparece; pisca ao "
+              "**receber dano**; e na **derrota** se desfaz em lama e brilhos dourados. Ficou completa."),
+    "tempestade": ("itens 361 e 362", "**dorme** de olhos fechados antes da luta e, acordada, fica **parada** pairando, com olhos brancos brilhantes, "
+                   "braços de vento e chuva. Acordando, os golpes, cansada, dano e derrota ainda usam a pose parada até chegar a arte de cada um "
+                   "(a fila continua no item 363, a Tempestade acordando)."),
 }
 
 NPCS_VISUAL = [
@@ -346,7 +350,7 @@ def escrever(w, img, inv, rot, roteiro):
             w(f"**Arte no jogo ({itens}):** {como}")
             w()
             img(f"p2-arte-{ch}", f"{c['nome']} com a arte nova, ao lado da Line para ver o tamanho")
-    img("p2-chefes", "Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma e a Hidra já com a arte nova; os outros ainda desenhados no código até a arte chegar")
+    img("p2-chefes", "Os sete chefes nas arenas: a Serpente, o Grifo, o Titã de Magma, a Hidra e a Tempestade já com a arte nova; o Colosso acordado e a Quimera ainda desenhados no código até a arte chegar")
 
     # ============================ 21 ============================
     w("## 21. Dicas do modo Fácil")
