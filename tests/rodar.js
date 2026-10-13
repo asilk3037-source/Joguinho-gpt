@@ -1563,7 +1563,50 @@ teste('parte 2: Titã de Magma completo e Hidra dormindo e parada (itens 342 a 3
   igual(hd.id, 'hidra', 'o chefe do pântano é a Hidra');
   igual(hd.dormindo, ['HIDRA_SLEEP', 'HIDRA_SLEEP'], 'antes da luta a Hidra dorme (item 349)');
   igual(hd.parada, ['HIDRA_IDLE', 'HIDRA_IDLE'], 'acordada, fica parada (item 350)');
-  igual(hd.golpe, 'HIDRA_ATTACK', 'golpe sem arte própria ainda (cuspe de lama): usa o ataque genérico (item 352)');
+  igual(hd.golpe, 'HIDRA_MUD', 'cuspe de lama com a arte própria (item 357)');
+});
+
+teste('parte 2: Hidra completa e Tempestade dormindo e parada (itens 354 a 362), do mesmo tamanho em todas as animações', async (h) => {
+  await h.area('pantano', Object.assign({ visto_pantano: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true }, P2));
+  const ITENS = { HIDRA_WATER_JET: 354, HIDRA_WAVE: 355, HIDRA_DIVE: 356, HIDRA_MUD: 357, HIDRA_STUNNED: 358, HIDRA_HIT: 359, HIDRA_DEATH: 360, TEMPESTADE_SLEEP: 361, TEMPESTADE_IDLE: 362 };
+  const r = await h.ev((ITENS) => {
+    // Largura da base (linhas de baixo) e caixa do 1º quadro, em unidades do mundo.
+    const medir = (cod) => {
+      const s = window.SPRITES[cod], img = LB.imagens[cod], c = s.cell;
+      const cv = document.createElement('canvas'); cv.width = c; cv.height = c;
+      const g = cv.getContext('2d'); g.drawImage(img, s.seq[0] * c, 0, c, c, 0, 0, c, c);
+      const d = g.getImageData(0, 0, c, c).data;
+      let x0 = c, x1 = -1, y0 = c, y1 = -1;
+      for (let y = 0; y < c; y++) for (let x = 0; x < c; x++) if (d[(y * c + x) * 4 + 3] > 100) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      let b0 = c, b1 = -1;
+      for (let y = y1 - 20; y <= y1; y++) for (let x = 0; x < c; x++) if (d[(y * c + x) * 4 + 3] > 100) { b0 = Math.min(b0, x); b1 = Math.max(b1, x); }
+      const k = 200 * (s.escala || 1) * (s.ajuste || 1) / c;
+      return { larg: (x1 - x0 + 1) * k, alt: (y1 - y0 + 1) * k, base: (b1 - b0 + 1) * k };
+    };
+    const fontes = Object.fromEntries(Object.keys(ITENS).map((k) => [k, [window.SPRITES[k] && window.SPRITES[k].item, window.SPRITES[k] && window.SPRITES[k].cell]]));
+    const tam = {};
+    for (const k of Object.keys(ITENS).concat(['HIDRA_IDLE'])) tam[k] = medir(k);
+    const j = LB.jogo, ch = j.chefeArena;
+    const arte = ['WATER_JET', 'WAVE', 'DIVE', 'MUD', 'STUNNED', 'HIT', 'DEATH'].map((n) => LB.chefes.temArte(ch, n));
+    return { fontes, tam, arte };
+  }, ITENS);
+  for (const [cod, n] of Object.entries(ITENS)) igual(r.fontes[cod], [`LINE_BELL_ITEM_${n}.html`, 448], `${cod} vem do item ${n}, em célula grande`);
+  const perto = (a, b, tol) => Math.abs(a / b - 1) <= tol;
+  // A base de lama é a mesma em todas (a cansada só tem a base, as cabeças afundam).
+  for (const c of ['WATER_JET', 'WAVE', 'DIVE', 'MUD', 'STUNNED', 'HIT', 'DEATH']) afirmar(perto(r.tam['HIDRA_' + c].base, r.tam.HIDRA_IDLE.base, 0.12), `Hidra ${c} com a base do tamanho da parada: ${JSON.stringify([r.tam['HIDRA_' + c], r.tam.HIDRA_IDLE])}`);
+  igual(r.arte, [true, true, true, true, true, true, true], 'Hidra com arte própria em todos os golpes, cansada, dano e derrota');
+  afirmar(perto(r.tam.TEMPESTADE_SLEEP.larg, r.tam.TEMPESTADE_IDLE.larg, 0.12), 'Tempestade dormindo do tamanho da parada: ' + JSON.stringify([r.tam.TEMPESTADE_SLEEP, r.tam.TEMPESTADE_IDLE]));
+  afirmar(r.tam.TEMPESTADE_IDLE.larg > 140, 'Tempestade do porte dos chefes de junção: ' + JSON.stringify(r.tam.TEMPESTADE_IDLE));
+
+  // Tempestade: dorme com a arte nova e, acordada, fica parada com a arte nova.
+  await h.area('tempestade', Object.assign({ visto_tempestade: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true }, P2));
+  const tp = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, desenho = () => LB.resolver(ch.anim.base, null, ch.lado).codigo;
+    const dorme = [ch.anim.base, desenho()];
+    ch.acordar(j); ch.atualizar(0.05, j);
+    return { id: ch.id, dorme, parada: [ch.anim.base, desenho()] };
+  });
+  igual([tp.id, tp.dorme, tp.parada], ['tempestade', ['TEMPESTADE_SLEEP', 'TEMPESTADE_SLEEP'], ['TEMPESTADE_IDLE', 'TEMPESTADE_IDLE']], 'Tempestade dorme (item 361) e fica parada (item 362)');
 });
 
 teste('parte 2: Hidra acordando, ataque genérico e raízes (itens 351 a 353), do mesmo tamanho da parada', async (h) => {
