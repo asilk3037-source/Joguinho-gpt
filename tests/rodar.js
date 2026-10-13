@@ -1116,7 +1116,7 @@ teste('parte 2: estrada do vale fechada antes do dragão acordar', async (h) => 
   await h.area('vilarejo', TODAS);
   afirmar(await h.ev(() => LB.jogo.bloqueia(59 * 32 + 16, 14 * 32)), 'saída para o vale bloqueada na Parte 1');
   const mundo = await h.ev(() => LB.mochila.MUNDO.filter((n) => n.parte2).length);
-  igual(mundo, 7, 'sete regiões novas no mapa do mundo');
+  igual(mundo, 8, 'oito regiões novas no mapa do mundo (as sete fases e a Vila do Moinho)');
 });
 
 teste('Bell jogável: troca com T, estrela, leque de luz, canção e assume quando a Line cai', async (h) => {
@@ -1615,6 +1615,89 @@ teste('parte 2: Hidra acordando, ataque genérico e raízes (itens 351 a 353), d
   });
   igual(g.vistos, ['HIDRA_ROOTS', 'HIDRA_IDLE'], 'raízes com a arte própria e depois parada');
   afirmar(g.raizes > 0, 'as raízes de verdade saem em linha na direção da heroína');
+});
+
+teste('pedidos do teste no celular: Serpente na água, monstros novos, missão minimizável, avisos discretos, passantes e Vila do Moinho', async (h) => {
+  // Serpente: dorme e luta na água em volta da ilha; sai na terra no mergulho e cansada (para apanhar), e volta.
+  await h.area('lago', Object.assign({ visto_lago: true, chefeTerra: true, fusaoMagma: true }, P2));
+  const s = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, l = j.line, agua = () => j.mapa.tileEm(ch.x, ch.y - 4) === '~';
+    const out = { dorme: agua() };
+    l.x = 32.5 * 32; l.y = 19 * 32; ch.acordar(j);
+    let fora = 0;
+    for (let i = 0; i < 150; i++) { l.hp = l.hpMax; ch.atualizar(1 / 30, j); if (ch.estado === 'observar' && !agua()) fora++; if (ch.estado !== 'observar' && ch.estado !== 'atacar') break; }
+    out.fora = fora;
+    ch.escolherAtaque(j); ch.ataque = 'mergulho'; ch.estado = 'submerso'; ch.intocavel = true; ch.t = 0; ch.feito = {}; ch.alvoMergulho = { x: l.x, y: l.y }; ch.duracaoAtaque = 2.6;
+    for (let i = 0; i < 80; i++) ch.atualizar(1 / 30, j);
+    out.mergulhoNaTerra = !agua();
+    let volta = false; for (let i = 0; i < 200 && !volta; i++) { l.hp = l.hpMax; ch.atualizar(1 / 30, j); volta = agua(); }
+    out.volta = volta;
+    ch.cansar(j); for (let i = 0; i < 90; i++) ch.atualizar(1 / 30, j);
+    out.cansadaNaTerra = !agua();
+    return out;
+  });
+  igual(s, { dorme: true, fora: 0, mergulhoNaTerra: true, volta: true, cansadaNaTerra: true }, 'Serpente na água; na terra só ao sair do mergulho e cansada');
+
+  // Monstros novos na floresta: javali investe, geleia se divide, aranha cospe teia (deixa lenta), cogumelo pula.
+  await h.area('floresta', Object.assign({ florestaVista: true, espada: true }, TODAS));
+  const m = await h.ev(() => {
+    const j = LB.jogo, l = j.line, M = LB.monstros, tipos = [...new Set(j.inimigos.map((e) => e.constructor.name))];
+    const mk = (C, dx, dy) => { j.inimigos = [new C(l.x + dx, l.y + dy)]; return j.inimigos[0]; };
+    const jv = mk(M.Javali, 150, 0); jv.estado = 'perseguir'; const vj = new Set();
+    for (let i = 0; i < 120; i++) { l.hp = l.hpMax; jv.atualizar(1 / 30, j); vj.add(jv.estado); }
+    const ge = mk(M.Geleia, 30, 0); ge.receberGolpe(j, 1, l.x, l.y); const div = j.inimigos.filter((e) => e.pequena).length;
+    const ar = mk(M.Aranha, 110, 10); j.projeteis = []; let teia = 0;
+    for (let i = 0; i < 200 && !teia; i++) { l.hp = l.hpMax; ar.atualizar(1 / 30, j); teia = j.projeteis.filter((q) => q.tipo === 'teia').length; }
+    const co = mk(M.Cogumelo, 40, 0); let z = 0; for (let i = 0; i < 60; i++) { l.hp = l.hpMax; co.atualizar(1 / 30, j); z = Math.max(z, co.z); }
+    return { tipos, investe: vj.has('investir'), div, teia, pulo: z > 10 };
+  });
+  afirmar(m.tipos.includes('Javali') && m.tipos.includes('Cogumelo'), 'a floresta tem javali e cogumelo: ' + m.tipos);
+  igual([m.investe, m.div, m.teia > 0, m.pulo], [true, 2, true, true], 'javali investe, geleia vira duas, aranha cospe teia e cogumelo pula');
+  for (const [area, flags] of [['gruta', { espada: true }], ['ruinas', { magia: true }], ['montanha', {}]]) {
+    await h.area(area, Object.assign({ ['visto_' + area]: true }, TODAS, flags));
+    const tipos = await h.ev(() => [...new Set(LB.jogo.inimigos.map((e) => e.constructor.name))]);
+    afirmar(tipos.some((n) => ['Javali', 'Cogumelo', 'Aranha', 'Geleia'].includes(n)), `${area} tem monstros novos: ${tipos}`);
+  }
+
+  // Missão minimizável (tecla O) e avisos: moedas somam num aviso só, no máximo 3 na tela.
+  const p = await h.ev(async () => {
+    const j = LB.jogo, el = document.querySelector('#objetivo');
+    LB.mochila.minimizarObjetivo(false); LB.mochila.atualizarPainel(j);
+    window.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyO' })); document.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyO' }));
+    const min = el.classList.contains('minimizado'), corpo = getComputedStyle(el.querySelector('.obj-corpo')).display;
+    LB.mochila.minimizarObjetivo(false);
+    const av = document.querySelector('#avisos'); av.innerHTML = '';
+    for (let i = 0; i < 4; i++) LB.mochila.aviso('+5 🪙');
+    const moedas = [...av.children].map((c) => c.textContent);
+    for (const s of ['a', 'b', 'c', 'd', 'e']) LB.mochila.aviso(s);
+    return { min, corpo, moedas, n: av.children.length };
+  });
+  igual([p.min, p.corpo], [true, 'none'], 'a tecla O minimiza o painel da missão');
+  igual(p.moedas, ['+20 🪙'], 'moedas seguidas somam num aviso só');
+  afirmar(p.n <= 3, 'no máximo 3 avisos na tela: ' + p.n);
+
+  // Passantes andando no vilarejo.
+  await h.area('vilarejo', P2);
+  const v = await h.ev(async () => {
+    const j = LB.jogo, ps = j.moradores.filter((mm) => mm.rota), antes = ps.map((mm) => [mm.x, mm.y]);
+    j.line.x = 3 * 32; j.line.y = 30 * 32;
+    for (let i = 0; i < 300; i++) for (const mm of ps) mm.atualizar(1 / 30, j);
+    return { n: ps.length, andaram: ps.filter((mm, i) => Math.hypot(mm.x - antes[i][0], mm.y - antes[i][1]) > 20).length };
+  });
+  afirmar(v.n >= 4 && v.andaram >= 3, 'passantes andam pelo vilarejo: ' + JSON.stringify(v));
+
+  // Vila do Moinho: estrada do sul do vale fechada antes do Colosso, aberta depois; moradores falam e dão presente.
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  const fechada = await h.ev(() => LB.jogo.bloqueia(30.9 * 32, 41.3 * 32, LB.jogo.line));
+  afirmar(fechada, 'antes do Colosso a estrada do sul fica fechada');
+  await h.area('vilamoinho', Object.assign({ chefeTerra: true }, P2));
+  const vm = await h.ev(() => {
+    const j = LB.jogo, ab = j.moradores.find((mm) => mm.id === 'abilio'), antes = LB.mochila.qtd(j, 'elixir');
+    const fala = LB.loja.falasDe(j, ab);
+    return { nome: j.mapa.def.nome, moradores: j.moradores.map((mm) => mm.id).sort(), fala: fala[0][0], ganhou: LB.mochila.qtd(j, 'elixir') - antes, casas: (j.mapa.def.entradas || []).length };
+  });
+  igual([vm.nome, vm.fala, vm.ganhou, vm.casas], ['Vila do Moinho', 'Seu Abílio', 1, 4], 'Vila do Moinho com moradores, presente e quatro casas');
+  igual(vm.moradores, ['abilio', 'davi', 'graca', 'iolanda', 'lia', 'teo'], 'moradores novos da vila');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {

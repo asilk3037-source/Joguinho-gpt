@@ -72,6 +72,25 @@
     lurdes: { nome: 'Dona Lurdes', papel: 'Moradora', roupa: '#8a5a9a', avental: '#f0e2c8', cabelo: '#5a3a2a', pele: '#e0a878' },
     pedro: { nome: 'Pedrinho', papel: 'Menino', roupa: '#e0a83a', avental: null, cabelo: '#2a1a10', pele: '#d99a6a', crianca: true },
     tobias: { nome: 'Tobias', papel: 'Caçador', roupa: '#5a6b3a', avental: '#7a5a3a', cabelo: '#6a4a2a', pele: '#d9a070', barba: true, chapeu: '#4a3a2a' },
+    // Passantes do Vilarejo do Riacho: andam pelas ruas de dia e vão para casa à noite.
+    joca: { nome: 'Seu Joca', papel: 'Carteiro', roupa: '#3a5a9a', avental: null, cabelo: '#4a3a2a', pele: '#e0a878', chapeu: '#2a3a6a', bolsa: '#8a5a2a', passante: true,
+      falas: ['Carta pra Dona Lurdes, carta pro Seu Zé... e nenhuma pra mim, como sempre!', 'Dizem que tem uma vila nova depois do Vale das Raízes, a Vila do Moinho. Ainda não levei carta pra lá.', 'Cuidado na floresta: tem javali com espinho nas costas. Quando ele raspa a pata, sai da frente!'] },
+    marta: { nome: 'Dona Marta', papel: 'Lavadeira', roupa: '#4a8a8a', avental: '#f2f2ea', cabelo: '#2a1a14', pele: '#c98a5a', coque: true, cesto: true, passante: true,
+      falas: ['Roupa lavada no riacho seca num instante com esse sol.', 'Vi cogumelo pulando na beira da floresta! Juro. Roxinho, com pinta branca.', 'Você é a moça da fazendinha? Manda um beijo pra Bell!'] },
+    nina: { nome: 'Nina', papel: 'Menina', roupa: '#e06a8a', avental: null, cabelo: '#6a3a1a', pele: '#f0c9a0', crianca: true, passante: true,
+      falas: ['Tô brincando de pega-pega com o Pedrinho, mas ele é rápido demais!', 'Uma geleia verde se dividiu em duas na gruta! O Pedrinho que contou.', 'Quando eu crescer quero ter uma espada igual a sua!'] },
+    caio: { nome: 'Caio', papel: 'Lenhador', roupa: '#8a3a2a', avental: null, cabelo: '#3a2a1a', pele: '#d9a070', barba: true, lenha: true, passante: true,
+      falas: ['Lenha boa só lá no alto da floresta. Mas tem aranha na gruta, eu não chego perto.', 'O Seu Bento compra toda a minha lenha pra forja.', 'Dia bonito pra cortar madeira, né?'] },
+    // Vila do Moinho (Parte 2, ao sul do Vale das Raízes).
+    abilio: { nome: 'Seu Abílio', papel: 'Moleiro', roupa: '#d8c8a8', avental: '#f2ead8', cabelo: '#f0f0f0', pele: '#e8b890', chapeu: '#c8b088', barba: true },
+    iolanda: { nome: 'Dona Iolanda', papel: 'Florista', roupa: '#d88a3a', avental: '#f7e8c8', cabelo: '#7a4a2a', pele: '#d99a6a', coque: true },
+    lia: { nome: 'Lia', papel: 'Menina', roupa: '#6a9ad8', avental: null, cabelo: '#e0b84a', pele: '#f0c9a0', crianca: true },
+    teo: { nome: 'Teodoro', papel: 'Pastor de cabras', roupa: '#7a8a4a', avental: null, cabelo: '#5a3a2a', pele: '#c98a5a', chapeu: '#6a5a3a', passante: true,
+      falas: ['Minhas cabras não querem mais ir pro vale: dizem que as raízes andam sozinhas.', 'Já foi ver o moinho? O Seu Abílio mói o trigo da região inteira.', 'Gente nova por aqui é raro. Seja bem-vinda à Vila do Moinho!'] },
+    graca: { nome: 'Dona Graça', papel: 'Padeira', roupa: '#b85a6a', avental: '#f7efe0', cabelo: '#9a9a9a', pele: '#f0c9a0', coque: true, cesto: true, passante: true,
+      falas: ['Pão quentinho da farinha do Seu Abílio! Pena que acabou.', 'Desde que o guardião da terra adoeceu, o trigo cresce torto. Se você puder ajudar...', 'A fonte da praça é antiga. Dizem que foi o primeiro guardião que abriu.'] },
+    davi: { nome: 'Davi', papel: 'Menino', roupa: '#4aa86a', avental: null, cabelo: '#2a1a10', pele: '#a86a3a', crianca: true, passante: true,
+      falas: ['Corre comigo! Ah, você tá numa missão? Tá bom...', 'A Lia diz que você conhece o dragão. É verdade?!', 'Eu sei onde tem um baú escondido... perto das flores amarelas!'] },
   };
 
   class Morador {
@@ -80,13 +99,31 @@
       this.cfg = Object.assign({ altura: MORADORES[def.id].crianca ? 40 : 56 }, MORADORES[def.id]);
       this.x = T(def.x); this.y = T(def.y); this.x0 = this.x;
       this.lado = 1; this.t = Math.random() * 5; this.raio = 12; this.visivel = true; this.morador = true;
+      // Passantes: rota em tiles pelas ruas; andam devagar e param um pouco em cada ponto.
+      this.rota = def.rota ? def.rota.map(([x, y]) => ({ x: T(x), y: T(y) })) : null;
+      this.passo = 0; this.parado = Math.random() * 2; this.andando = false; this.falou = 0;
+    }
+
+    andar(dt, j) {
+      this.andando = false;
+      if (!this.rota || this.fala > 0) return;
+      if (this.parado > 0) { this.parado -= dt; return; }
+      const alvo = this.rota[this.passo], dx = alvo.x - this.x, dy = alvo.y - this.y, d = Math.hypot(dx, dy);
+      if (d < 3) { this.passo = (this.passo + 1) % this.rota.length; this.parado = 1.2 + Math.random() * 2.5; return; }
+      const v = (this.cfg.crianca ? 40 : 26) * dt, nx = this.x + dx / d * Math.min(v, d), ny = this.y + dy / d * Math.min(v, d);
+      // Espera a heroína sair da frente (e quem está conversando).
+      const l = j.line;
+      if (l && Math.hypot(l.x - nx, (l.y - ny) * 1.5) < this.raio + 16) return;
+      this.x = nx; this.y = ny; this.andando = true;
+      if (Math.abs(dx) > 1) this.lado = dx < 0 ? -1 : 1;
     }
     atualizar(dt, j) {
       this.t += dt;
       // À noite os moradores do vilarejo vão para casa dormir (o Tobias, ferido na montanha, fica).
-      this.dormindo = j.mapa.id === 'vilarejo' && LB.relogio.ativo(j) && LB.relogio.noite(j);
+      this.dormindo = (j.mapa.id === 'vilarejo' || j.mapa.id === 'vilamoinho') && LB.relogio.ativo(j) && LB.relogio.noite(j);
       const l = j.line;
-      if (Math.hypot(l.x - this.x, l.y - this.y) < 140 && Math.abs(l.x - this.x) > 6) this.lado = l.x < this.x ? -1 : 1;
+      this.andar(dt, j);
+      if (!this.andando && Math.hypot(l.x - this.x, l.y - this.y) < 140 && Math.abs(l.x - this.x) > 6) this.lado = l.x < this.x ? -1 : 1;
       // O Pedrinho não para quieto.
       if (this.id === 'pedro') { this.x = this.x0 + Math.sin(this.t * 0.7) * 40; this.lado = Math.cos(this.t * 0.7) > 0 ? 1 : -1; }
       if (this.fala > 0) this.fala -= dt;
@@ -97,12 +134,17 @@
       const resp = Math.sin(this.t * 2) * 1, pulo = this.id === 'pedro' ? Math.abs(Math.sin(this.t * 6)) * 3 : 0;
       g.save(); g.translate(x, y - pulo); g.scale(this.lado * k, k);
       // Pernas e corpo.
-      g.fillStyle = '#3a2a2a'; g.fillRect(-6, -14, 5, 14); g.fillRect(2, -14, 5, 14);
+      const perna = this.andando ? Math.sin(this.t * 10) * 3 : 0;
+      g.fillStyle = '#3a2a2a'; g.fillRect(-6 + perna, -14, 5, 14); g.fillRect(2 - perna, -14, 5, 14);
       g.fillStyle = c.roupa; g.beginPath(); g.moveTo(-11, -14); g.lineTo(11, -14); g.lineTo(9, -40 + resp); g.lineTo(-9, -40 + resp); g.closePath(); g.fill();
       if (c.avental) { g.fillStyle = c.avental; g.fillRect(-7, -34 + resp, 14, 20); }
       g.fillStyle = c.roupa; g.fillRect(-13, -38 + resp, 5, 16); g.fillRect(8, -38 + resp, 5, 16);
       g.fillStyle = c.pele; g.beginPath(); g.arc(-10.5, -21 + resp, 3, 0, TAU); g.arc(10.5, -21 + resp, 3, 0, TAU); g.fill();
       if (c.bengala) { g.strokeStyle = '#6e4a2c'; g.lineWidth = 2.5; g.beginPath(); g.moveTo(12, -21); g.lineTo(15, 0); g.stroke(); }
+      // Acessórios dos passantes: bolsa de carteiro, cesto de roupa/pão, feixe de lenha.
+      if (c.bolsa) { g.fillStyle = c.bolsa; g.fillRect(-12, -28 + resp, 9, 10); g.strokeStyle = c.bolsa; g.lineWidth = 2; g.beginPath(); g.moveTo(-8, -28 + resp); g.lineTo(6, -40 + resp); g.stroke(); }
+      if (c.cesto) { g.fillStyle = '#b8864a'; g.fillRect(8, -30 + resp, 12, 8); g.fillStyle = '#f2ead8'; g.fillRect(9, -33 + resp, 10, 3); }
+      if (c.lenha) { g.fillStyle = '#7a4a2a'; for (let i = 0; i < 3; i++) g.fillRect(-14 + i * 2, -46 + resp + i * 2, 16, 3); }
       if (this.id === 'bento') { g.fillStyle = '#5a5a66'; g.fillRect(10, -30 + resp, 4, 12); g.fillStyle = '#3a3a44'; g.fillRect(7, -34 + resp, 10, 6); }
       // Cabeça.
       const hy = -52 + resp;
@@ -170,6 +212,11 @@
         if (!(f.rachaduras || []).some((k) => k.startsWith('floresta'))) return [['Pedrinho', 'Moça! Sabia que bomba quebra pedra rachada? Tem uma pedrona rachada lá na floresta, no fundo da clareira do lago!'], ['Pedrinho', 'Meu pai diz que tem tesouro atrás. Eu que não vou lá, tem sombra!']];
         return [['Pedrinho', 'VOCÊ EXPLODIU A PEDRA?! Que demais!'], ['Pedrinho', 'O carrinho da estação tá quebrado desde que eu nasci. Queria tanto andar nele...']];
     }
+    // Passantes: cada vez que conversa, uma frase diferente.
+    const cfg = MORADORES[m.id];
+    if (cfg && cfg.falas) { m.falou = (m.falou || 0) + 1; return [[cfg.nome, cfg.falas[(m.falou - 1) % cfg.falas.length]]]; }
+    const mo = LB.moinho && LB.moinho.falas(j, m);
+    if (mo) return mo;
     return [['...', '...']];
   }
 

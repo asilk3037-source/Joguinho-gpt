@@ -16,8 +16,10 @@
     el.textContent = '💡 ' + texto;
     el.classList.remove('oculto');
     clearTimeout(j.timerDica);
-    j.timerDica = setTimeout(() => el.classList.add('oculto'), (dur || 7) * 1000);
+    j.timerDica = setTimeout(() => el.classList.add('oculto'), (dur || 5) * 1000);
   }
+  // Um toque (ou clique) na dica fecha na hora.
+  document.addEventListener('click', (e) => { if (e.target && e.target.id === 'dica') e.target.classList.add('oculto'); });
 
   // Durante a luta: n = 0 ao acordar, 1 quando cansa pela primeira vez, 2 ao mudar de fase.
   function chefe(j, ch, n) {
@@ -206,6 +208,10 @@
 
   // Tudo bem discreto: brilho branco-creme, transparente, que some aos poucos.
   const COR = '255,248,232';
+  // Trilha e setinha do chão: douradas e com contorno escuro, para aparecer em qualquer chão
+  // (no creme claro elas sumiam na grama clara, na areia e na neve).
+  const COR_CHAO = '255,210,90';
+  const CONTORNO = '40,26,10';
 
   // Trilha no chão (camada de baixo): pontinhos claros e fracos só nos próximos passos,
   // com um brilho que corre devagar na direção do objetivo.
@@ -219,9 +225,11 @@
       const p = pts[i];
       const onda = Math.max(0, Math.sin(i * 0.8 - t * 3));
       const fade = Math.min(1, (n - i) / 6);
-      g.globalAlpha = (0.12 + 0.28 * onda) * fade;
-      g.fillStyle = `rgb(${COR})`;
-      g.beginPath(); g.ellipse(T(p.tx + 0.5), T(p.ty + 0.6), 2.2, 1.4, 0, 0, TAU); g.fill();
+      g.globalAlpha = (0.38 + 0.4 * onda) * fade;
+      g.fillStyle = `rgba(${CONTORNO},.55)`;
+      g.beginPath(); g.ellipse(T(p.tx + 0.5), T(p.ty + 0.6), 3.4, 2.3, 0, 0, TAU); g.fill();
+      g.fillStyle = `rgb(${COR_CHAO})`;
+      g.beginPath(); g.ellipse(T(p.tx + 0.5), T(p.ty + 0.6), 2.5, 1.6, 0, 0, TAU); g.fill();
     }
     g.restore();
   }
@@ -265,9 +273,12 @@
     if (dist < 70 || Math.hypot(dx, dy) < 4) return;
     const ang = Math.atan2(dy, dx), R = 26;
     g.save(); g.translate(l.x + Math.cos(ang) * R, l.y - 2 + Math.sin(ang) * R * 0.55); g.rotate(ang);
-    g.globalAlpha = 0.35 + 0.15 * Math.sin(t * 3);
-    g.strokeStyle = `rgb(${COR})`; g.lineWidth = 1.6; g.lineCap = 'round'; g.lineJoin = 'round';
-    g.beginPath(); g.moveTo(-3, -4.5); g.lineTo(3, 0); g.lineTo(-3, 4.5); g.stroke();
+    g.globalAlpha = 0.72 + 0.18 * Math.sin(t * 3);
+    g.lineCap = 'round'; g.lineJoin = 'round';
+    g.strokeStyle = `rgba(${CONTORNO},.7)`; g.lineWidth = 3.6;
+    g.beginPath(); g.moveTo(-3.5, -5); g.lineTo(3.5, 0); g.lineTo(-3.5, 5); g.stroke();
+    g.strokeStyle = `rgb(${COR_CHAO})`; g.lineWidth = 2;
+    g.beginPath(); g.moveTo(-3.5, -5); g.lineTo(3.5, 0); g.lineTo(-3.5, 5); g.stroke();
     g.restore();
   }
 

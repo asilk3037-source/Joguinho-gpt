@@ -270,8 +270,8 @@
       exames: [{ id: 'cacador', x: 68, y: 6, texto: 'Ler o bilhete na porta', doc: 'cacador' }],
       inimigos: [
         { x: 8, y: 3, depoisDe: 'espada' }, { x: 25, y: 3, depoisDe: 'espada' }, { x: 20, y: 6, depoisDe: 'espada' },
-        { x: 9, y: 13, depoisDe: 'espada' }, { x: 26, y: 12, depoisDe: 'espada' }, { x: 41, y: 14, depoisDe: 'espada' },
-        { x: 58, y: 9, depoisDe: 'espada' }, { x: 66, y: 31, depoisDe: 'espada' }, { x: 56, y: 33, depoisDe: 'espada' }, { x: 69, y: 24, depoisDe: 'espada' },
+        { x: 9, y: 13, tipo: 'cogumelo', depoisDe: 'espada' }, { x: 26, y: 12, tipo: 'javali', depoisDe: 'espada' }, { x: 41, y: 14, depoisDe: 'espada' },
+        { x: 58, y: 9, tipo: 'cogumelo', depoisDe: 'espada' }, { x: 66, y: 31, depoisDe: 'espada' }, { x: 56, y: 33, tipo: 'javali', depoisDe: 'espada' }, { x: 69, y: 24, tipo: 'cogumelo', depoisDe: 'espada' },
       ],
     },
 
@@ -338,6 +338,11 @@
         { id: 'ze', x: 34.5, y: 21.8 },
         { id: 'lurdes', x: 12.5, y: 32.9 },
         { id: 'pedro', x: 47.5, y: 21.8 },
+        // Passantes: andam pelas ruas (rota em tiles) e vão para casa à noite.
+        { id: 'joca', x: 6.5, y: 20.8, rota: [[6.5, 20.8], [49.5, 20.8]] },
+        { id: 'marta', x: 15.5, y: 32.8, rota: [[15.5, 32.8], [41.5, 32.8]] },
+        { id: 'nina', x: 23.5, y: 14.8, rota: [[23.5, 14.8], [37.5, 14.8], [37.5, 17.8], [23.5, 17.8]] },
+        { id: 'caio', x: 29.5, y: 3.8, rota: [[29.5, 3.8], [29.5, 24.8]] },
       ],
       decoracoes: [['carroca', 7.5, 24.9, 70, 16], ['feno_pilha', 51.5, 11.9, 40, 12], ['arbusto_b', 38.5, 27.9, 24, 8]],
       // Objetos do vilarejo (régua de tamanhos), por zona: praça, feira da loja, ferraria, casas e beira do riacho.
@@ -433,10 +438,10 @@
       // Galerias escuras: sem lanterna a Line quase não enxerga.
       escuro: [[36, 10, 63, 43]],
       inimigos: [
-        { x: 20, y: 5, depoisDe: 'espada' }, { x: 28, y: 16, depoisDe: 'espada' }, { x: 12, y: 20, depoisDe: 'espada' },
+        { x: 20, y: 5, depoisDe: 'espada' }, { x: 28, y: 16, tipo: 'geleia', depoisDe: 'espada' }, { x: 12, y: 20, tipo: 'aranha', depoisDe: 'espada' },
         { x: 24, y: 8, tipo: 'luz', depoisDe: 'magia' }, { x: 24, y: 19, tipo: 'luz', depoisDe: 'magia' },
         { x: 45, y: 20, tipo: 'morcego', depoisDe: 'espada' }, { x: 55, y: 24, tipo: 'morcego', depoisDe: 'espada' }, { x: 41, y: 27, tipo: 'morcego', depoisDe: 'espada' }, { x: 58, y: 18, tipo: 'morcego', depoisDe: 'espada' },
-        { x: 50, y: 24, depoisDe: 'espada' }, { x: 44, y: 40, tipo: 'morcego', depoisDe: 'espada' }, { x: 52, y: 4, depoisDe: 'espada' },
+        { x: 50, y: 24, tipo: 'aranha', depoisDe: 'espada' }, { x: 44, y: 40, tipo: 'morcego', depoisDe: 'espada' }, { x: 52, y: 4, tipo: 'geleia', depoisDe: 'espada' },
       ],
     },
 
@@ -537,11 +542,11 @@
       ],
       golem: { x: 19.5, y: 7.2 },
       inimigos: [
-        { x: 14, y: 31, depoisDe: 'magia' }, { x: 25, y: 31, depoisDe: 'magia' },
+        { x: 14, y: 31, depoisDe: 'magia' }, { x: 25, y: 31, tipo: 'geleia', depoisDe: 'magia' },
         { x: 10, y: 15, tipo: 'luz', depoisDe: 'magia' }, { x: 28, y: 21, tipo: 'luz', depoisDe: 'magia' },
-        { x: 20, y: 20, depoisDe: 'magia' }, { x: 14, y: 15, depoisDe: 'magia' }, { x: 30, y: 15, tipo: 'luz', depoisDe: 'magia' },
-        { x: 38, y: 27, depoisDe: 'magia' }, { x: 45, y: 31, depoisDe: 'magia' }, { x: 44, y: 16, tipo: 'luz', depoisDe: 'magia' },
-        { x: 61, y: 27, depoisDe: 'magia' }, { x: 66, y: 29, tipo: 'luz', depoisDe: 'magia' }, { x: 58, y: 15, depoisDe: 'magia' }, { x: 66, y: 18, tipo: 'luz', depoisDe: 'magia' },
+        { x: 20, y: 20, tipo: 'aranha', depoisDe: 'magia' }, { x: 14, y: 15, depoisDe: 'magia' }, { x: 30, y: 15, tipo: 'luz', depoisDe: 'magia' },
+        { x: 38, y: 27, depoisDe: 'magia' }, { x: 45, y: 31, tipo: 'javali', depoisDe: 'magia' }, { x: 44, y: 16, tipo: 'luz', depoisDe: 'magia' },
+        { x: 61, y: 27, depoisDe: 'magia' }, { x: 66, y: 29, tipo: 'luz', depoisDe: 'magia' }, { x: 58, y: 15, tipo: 'geleia', depoisDe: 'magia' }, { x: 66, y: 18, tipo: 'luz', depoisDe: 'magia' },
       ],
     },
 
@@ -613,11 +618,11 @@
         { id: 'portao', fontes: ['6,35', '30,22', '18,9'], tiles: [[15, 4, 20, 4]] },
       ],
       inimigos: [
-        { x: 24, y: 34, tipo: 'fogo' }, { x: 9, y: 34 },
-        { x: 18, y: 25, tipo: 'fogo' }, { x: 14, y: 28 }, { x: 23, y: 18 },
-        { x: 10, y: 17, tipo: 'fogo' }, { x: 26, y: 12, tipo: 'fogo' }, { x: 14, y: 9 }, { x: 22, y: 7 },
-        { x: 42, y: 20, tipo: 'fogo' }, { x: 42, y: 25 },
-        { x: 56, y: 14, tipo: 'fogo' }, { x: 66, y: 17 }, { x: 55, y: 4 }, { x: 64, y: 27, tipo: 'fogo' }, { x: 60, y: 35 }, { x: 67, y: 33, tipo: 'fogo' },
+        { x: 24, y: 34, tipo: 'fogo' }, { x: 9, y: 34, tipo: 'javali' },
+        { x: 18, y: 25, tipo: 'fogo' }, { x: 14, y: 28 }, { x: 23, y: 18, tipo: 'aranha' },
+        { x: 10, y: 17, tipo: 'fogo' }, { x: 26, y: 12, tipo: 'fogo' }, { x: 14, y: 9, tipo: 'javali' }, { x: 22, y: 7 },
+        { x: 42, y: 20, tipo: 'fogo' }, { x: 42, y: 25, tipo: 'geleia' },
+        { x: 56, y: 14, tipo: 'fogo' }, { x: 66, y: 17 }, { x: 55, y: 4 }, { x: 64, y: 27, tipo: 'fogo' }, { x: 60, y: 35, tipo: 'javali' }, { x: 67, y: 33, tipo: 'fogo' },
       ],
     },
 
@@ -664,15 +669,16 @@
         'TT..r.rrrr.:rrr.rrrr........u.:..............Q.......R........TT',
         'TT.........:.............,....:......................R....C...TT',
         'TT..rCrr.rr:r.rrrr.r..,.....T.:,.C................,..R........TT',
-        'TT.........:..................:...,..................R........TT',
+        'TT.........:.................S:...,..................R........TT',
         'TT.........:..................:......................R........TT',
-        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
       ],
       saidas: [
         { x: 0, y: 20, w: 1, h: 2, para: 'vilarejo', chegada: { x: 57.4, y: 14.2, dir: 'LEFT' } },
         { x: 30, y: 0, w: 2, h: 1, para: 'lago', requer: 'fusaoMagma', chegada: { x: 30.5, y: 39.4, dir: 'BACK' } },
         { x: 63, y: 28, w: 1, h: 2, para: 'fenda', requer: 'chefeTerra', chegada: { x: 2.5, y: 14.2, dir: 'RIGHT' } },
+        { x: 30, y: 41, w: 2, h: 1, para: 'vilamoinho', requer: 'chefeTerra', chegada: { x: 23.0, y: 2.4, dir: 'FRONT' } },
       ],
       // Casa da Dona Cora (jardineira): cesto, regador, sementes e o cantinho de jardinagem em volta da horta.
       moveis: [
@@ -682,7 +688,7 @@
         ['farm_wooden_trellis', 19.0, 9.9, 0, [1, 1]], ['farm_compost_bin', 19.0, 12.6, 0, [1, 1]],
       ],
       inicio: { x: 2.5, y: 21.2, dir: 'RIGHT' },
-      placas: { '3,18': 'Vale das Raízes. A terra aqui respira devagar. Desde que o Colosso adoeceu, as raízes andam soltas: correndo por cima delas, a gente tropeça.', '24,19': 'Fonte do Vale: beba para recuperar vida e magia (das duas). À noite dá para descansar até de manhã.', '48,18': 'A barreira de raízes só se abre com os três cristais de terra acesos: um na horta da Dona Cora, um no campo de raízes e um no bosque do leste.' },
+      placas: { '29,38': 'Estrada do Sul: Vila do Moinho. As raízes fecharam o caminho; dizem que abre quando o Colosso sossegar.', '3,18': 'Vale das Raízes. A terra aqui respira devagar. Desde que o Colosso adoeceu, as raízes andam soltas: correndo por cima delas, a gente tropeça.', '24,19': 'Fonte do Vale: beba para recuperar vida e magia (das duas). À noite dá para descansar até de manhã.', '48,18': 'A barreira de raízes só se abre com os três cristais de terra acesos: um na horta da Dona Cora, um no campo de raízes e um no bosque do leste.' },
       baus: { '5,37': { itens: [['pocao', 1]], moedas: 30 }, '33,37': { itens: [['bomba', 2]], moedas: 20 }, '58,36': { itens: [['elixir', 1]], moedas: 60 }, '36,5': { moedas: 45 } },
       chao: [{ x: 22, y: 10, doc: 'diarioCora' }, { x: 44, y: 24, moedas: 10 }],
       barreiras: [{ id: 'raizes', fontes: ['15,6', '15,34', '45,35'], tiles: [[50, 15, 52, 15]] }],
@@ -701,6 +707,74 @@
         { x: 38, y: 9, tipo: 'terra' },
         { x: 20, y: 8 },
       ],
+    },
+
+    // Vila do Moinho (Parte 2): segunda vila, ao sul do Vale das Raízes. A estrada abre depois que o
+    // Colosso é libertado. Moradores novos, passantes, a fonte da praça, a feira e o moinho do Seu Abílio.
+    vilamoinho: {
+      nome: 'Vila do Moinho',
+      tema: 'vilarejo',
+      linhas: [
+        'TTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTT::TTTTTTTTTTTTTTTTTTTTTT',
+        'TT....................::....................TT',
+        'TT.,............T....S::....T...............TT',
+        'TT...HHHHHH...........::.........HHHHHH.....TT',
+        'TT...HHHHHH.....,.....::.........HHHHHH.....TT',
+        'TT...HHHDHH...........::...,.....HHHDHH...T.TT',
+        'TT.T....:.............::............:.......TT',
+        'TT......:...FFF.......::.....FF.....:.......TT',
+        'TT......:...F.FF......::....F..F....:.....,.TT',
+        'TT.F....:....F........::......F.....:.......TT',
+        'TT......:.........b...::...b........:...M...TT',
+        'TT......:........::::::::::::.......:.......TT',
+        'TT.,....:........::S:::::::::.......:.......TT',
+        'TT......:........:::::U::::::.......:.......TT',
+        'TT..::::::::::::::::::::::::::::::::::::::..TT',
+        'TT..::::::::::::::::::::::::::::::::::::::..TT',
+        'TT...............::::::::::::...............TT',
+        'TT.........,.....::::::::::::.............,.TT',
+        'TT..F............::::::::::::...............TT',
+        'TT....................::....................TT',
+        'TT...HHHHHH.......,...::..,...T..HHHHHH.....TT',
+        'TT...HHHHHH.T..F......::.........HHHHHH...T.TT',
+        'TT...HHHDHH...........::....F....HHHDHH.....TT',
+        'TT......:.............::............:.......TT',
+        'TT.T....:.............::............:.......TT',
+        'TT......::::::::::::::::::::::::::::::.F.F..TT',
+        'TT............,.........................F.F.TT',
+        'TT..........F.............T...F........FCF..TT',
+        'TT................T..........,..............TT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+        'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
+      ],
+      saidas: [
+        { x: 22, y: 0, w: 2, h: 1, para: 'vale', chegada: { x: 30.9, y: 38.6, dir: 'BACK' } },
+      ],
+      inicio: { x: 23.0, y: 2.4, dir: 'FRONT' },
+      placas: {
+        '21,3': 'Vila do Moinho. A farinha do Seu Abílio alimenta o vale inteiro. A fonte da praça cura e guarda o caminho de volta.',
+        '19,13': 'Praça do Moinho. Feira toda manhã: flores da Dona Iolanda e pão da Dona Graça (quando tem farinha).',
+      },
+      baus: { '40,28': { itens: [['elixir', 1]], moedas: 50 } },
+      letreiros: { '8,6': 'Moleiro', '36,6': 'Flores', '36,23': 'Padaria' },
+      npcs: [
+        { id: 'abilio', x: 38.5, y: 13.0 },
+        { id: 'iolanda', x: 15.5, y: 10.9 },
+        { id: 'lia', x: 27.5, y: 16.9 },
+        { id: 'teo', x: 5.5, y: 16.8, rota: [[5.5, 16.8], [40.5, 16.8]] },
+        { id: 'graca', x: 9.5, y: 26.8, rota: [[9.5, 26.8], [36.5, 26.8], [36.5, 24.9], [36.5, 26.8]] },
+        { id: 'davi', x: 18.5, y: 12.9, rota: [[18.5, 12.9], [27.5, 12.9], [27.5, 18.9], [18.5, 18.9]] },
+      ],
+      moveis: [
+        ['farm_lantern_post', 16.5, 11.95, 0, [1, 1]], ['farm_lantern_post', 29.5, 11.95, 0, [1, 1], 0, true],
+        ['farm_garden_bench', 20.5, 19.6, 0, [2, 1, 1]], ['farm_garden_bench', 25.5, 19.6, 0, [2, 1, 1]],
+        ['farm_flower_cart', 13.4, 11.9, 0, [1, 1]], ['farm_planter_box', 31.5, 11.4, 0, [1, 1, 1]],
+        ['farm_seed_sacks', 39.6, 14.2, 0], ['farm_harvest_basket', 37.4, 12.4, 0],
+        ['farm_mailbox', 10.6, 7.95, 0, [1, 1]], ['farm_mailbox', 34.6, 24.95, 0, [1, 1]],
+        ['farm_doormat', 8.5, 7.55, 0], ['farm_doormat', 36.5, 7.55, 0], ['farm_doormat', 8.5, 24.55, 0], ['farm_doormat', 36.5, 24.55, 0],
+      ],
+      inimigos: [],
     },
 
     fenda: {
@@ -807,7 +881,8 @@
       chao: [{ x: 40, y: 36, doc: 'cancaoLago' }, { x: 50, y: 20, moedas: 15 }],
       barreiras: [{ id: 'onda', fontes: ['12,37', '12,6', '55,10'], tiles: [[31, 23, 32, 23]] }],
       npcs: [{ id: 'tiao', x: 10.5, y: 36.9 }],
-      chefe: { id: 'serpente', x: 32, y: 17, arena: [24, 13, 40, 21] },
+      // A Serpente dorme na água, ao norte da ilha; a arena é a ilha (ela nada em volta).
+      chefe: { id: 'serpente', x: 32, y: 10.4, arena: [24, 13, 40, 21] },
       inimigos: [
         { x: 20, y: 31, tipo: 'agua' },
         { x: 38, y: 33 },

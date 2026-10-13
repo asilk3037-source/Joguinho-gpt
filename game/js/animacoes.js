@@ -208,6 +208,19 @@ window.LB = window.LB || {};
     ['SHADOW_DEATH', 'Sombra — desaparecer', { nova: true }],
   ]);
 
+  // Monstros comuns da Parte 1 (monstros.js): até a arte chegar, são desenhados no código.
+  grupo('Monstros da floresta, gruta, ruínas e montanha (novo)', [
+    ['BOAR_IDLE', 'Javali-de-espinhos — parado / andando (marrom, espinhos creme nas costas, presas brancas)', { loop: true, fps: 8, quadros: 8, nova: true }],
+    ['BOAR_CHARGE', 'Javali-de-espinhos — investida em linha reta (raspa a pata antes)', { loop: true, fps: 12, quadros: 8, alt: 'BOAR_IDLE', nova: true }],
+    ['BOAR_DIZZY', 'Javali-de-espinhos — tonto depois de bater na parede (estrelinhas)', { loop: true, fps: 8, quadros: 8, alt: 'BOAR_IDLE', nova: true }],
+    ['SHROOM_HIDDEN', 'Cogumelo saltador — disfarçado de cogumelo (chapéu roxo com pintas, olhos fechados)', { loop: true, fps: 4, quadros: 4, nova: true }],
+    ['SHROOM_HOP', 'Cogumelo saltador — acordado, pulando e soltando esporos lilás', { loop: true, fps: 10, quadros: 8, alt: 'SHROOM_HIDDEN', nova: true }],
+    ['SPIDER_HANG', 'Aranha da gruta — pendurada no fio, descendo do teto', { loop: true, fps: 6, quadros: 6, nova: true }],
+    ['SPIDER_WALK', 'Aranha da gruta — andando e cuspindo teia', { loop: true, fps: 10, quadros: 8, alt: 'SPIDER_HANG', nova: true }],
+    ['SLIME_BIG', 'Geleia verde — grande, pulando (se divide em duas quando apanha)', { loop: true, fps: 8, quadros: 8, nova: true }],
+    ['SLIME_SMALL', 'Geleia verde — pequena, pulando mais rápido', { loop: true, fps: 10, quadros: 8, alt: 'SLIME_BIG', nova: true }],
+  ]);
+
   grupo('Efeitos', [
     ['FX_FIRE', 'Fogo', { loop: true }],
     ['FX_EMBERS', 'Brasas', { loop: true }],
@@ -482,6 +495,34 @@ window.LB = window.LB || {};
     ['TIAO_FISH', 'Seu Tião — pescando no píer', { loop: true, fps: 6, quadros: 12, alt: 'TIAO_IDLE', parte2: true }],
     ['BENTO_FORGE', 'Seu Bento — martelando na bigorna', { loop: true, fps: 8, quadros: 8, alt: 'BENTO_IDLE', parte2: true }],
     ['PEDRO_RUN', 'Pedrinho — correndo pra lá e pra cá', { loop: true, fps: 10, quadros: 8, alt: 'PEDRO_IDLE', parte2: true }],
+    // Moradores novos: passantes do vilarejo e a Vila do Moinho.
+    ['JOCA_IDLE', 'Seu Joca (carteiro do vilarejo, bolsa de couro) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['JOCA_TALK', 'Seu Joca (carteiro do vilarejo, bolsa de couro) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'JOCA_IDLE', nova: true }],
+    ['JOCA_WALK', 'Seu Joca (carteiro do vilarejo, bolsa de couro) — andando pela rua (de lado)', { loop: true, fps: 8, quadros: 8, alt: 'JOCA_IDLE', nova: true }],
+    ['MARTA_IDLE', 'Dona Marta (lavadeira do vilarejo, cesto de roupa) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['MARTA_TALK', 'Dona Marta (lavadeira do vilarejo, cesto de roupa) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'MARTA_IDLE', nova: true }],
+    ['MARTA_WALK', 'Dona Marta (lavadeira do vilarejo, cesto de roupa) — andando pela rua (de lado)', { loop: true, fps: 8, quadros: 8, alt: 'MARTA_IDLE', nova: true }],
+    ['NINA_IDLE', 'Nina (menina do vilarejo) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['NINA_TALK', 'Nina (menina do vilarejo) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'NINA_IDLE', nova: true }],
+    ['NINA_WALK', 'Nina (menina do vilarejo) — andando pela rua (de lado)', { loop: true, fps: 8, quadros: 8, alt: 'NINA_IDLE', nova: true }],
+    ['CAIO_IDLE', 'Caio (lenhador do vilarejo, feixe de lenha) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['CAIO_TALK', 'Caio (lenhador do vilarejo, feixe de lenha) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'CAIO_IDLE', nova: true }],
+    ['CAIO_WALK', 'Caio (lenhador do vilarejo, feixe de lenha) — andando pela rua (de lado)', { loop: true, fps: 8, quadros: 8, alt: 'CAIO_IDLE', nova: true }],
+    ['ABILIO_IDLE', 'Seu Abílio (moleiro da Vila do Moinho) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['ABILIO_TALK', 'Seu Abílio (moleiro da Vila do Moinho) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'ABILIO_IDLE', nova: true }],
+    ['IOLANDA_IDLE', 'Dona Iolanda (florista da Vila do Moinho) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['IOLANDA_TALK', 'Dona Iolanda (florista da Vila do Moinho) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'IOLANDA_IDLE', nova: true }],
+    ['LIA_IDLE', 'Lia (menina da Vila do Moinho) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['LIA_TALK', 'Lia (menina da Vila do Moinho) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'LIA_IDLE', nova: true }],
+    ['TEO_IDLE', 'Teodoro (pastor de cabras da Vila do Moinho) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['TEO_TALK', 'Teodoro (pastor de cabras da Vila do Moinho) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'TEO_IDLE', nova: true }],
+    ['TEO_WALK', 'Teodoro (pastor de cabras da Vila do Moinho) — andando pela rua (de lado)', { loop: true, fps: 8, quadros: 8, alt: 'TEO_IDLE', nova: true }],
+    ['GRACA_IDLE', 'Dona Graça (padeira da Vila do Moinho, cesto de pão) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['GRACA_TALK', 'Dona Graça (padeira da Vila do Moinho, cesto de pão) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'GRACA_IDLE', nova: true }],
+    ['GRACA_WALK', 'Dona Graça (padeira da Vila do Moinho, cesto de pão) — andando pela rua (de lado)', { loop: true, fps: 8, quadros: 8, alt: 'GRACA_IDLE', nova: true }],
+    ['DAVI_IDLE', 'Davi (menino da Vila do Moinho) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, nova: true }],
+    ['DAVI_TALK', 'Davi (menino da Vila do Moinho) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'DAVI_IDLE', nova: true }],
+    ['DAVI_WALK', 'Davi (menino da Vila do Moinho) — andando pela rua (de lado)', { loop: true, fps: 8, quadros: 8, alt: 'DAVI_IDLE', nova: true }],
   ]);
 
   grupo('Dragão amigo (Parte 2)', [

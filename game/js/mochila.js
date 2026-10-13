@@ -262,16 +262,42 @@
   }
 
   // ---------------- Avisos (toast) ----------------
+  // Discretos: no máximo 3 de cada vez, somem logo, o mesmo aviso repetido não empilha (renova o que
+  // já está na tela) e moedas seguidas somam num aviso só (+5 🪙, +10 🪙 → +15 🪙).
+  const MAX_AVISOS = 3, DURA_AVISO = 2400;
   function aviso(texto) {
     const el = $('#avisos');
     if (!el) return;
-    const d = document.createElement('div');
-    d.className = 'aviso'; d.textContent = texto;
-    el.appendChild(d);
-    setTimeout(() => d.classList.add('sumindo'), 3200);
-    setTimeout(() => d.remove(), 3800);
-    while (el.children.length > 4) el.firstChild.remove();
+    const moedas = /^([+-]\d+) 🪙$/.exec(texto);
+    let d = null;
+    for (const c of el.children) {
+      if (c.classList.contains('sumindo')) continue;
+      if (moedas && c._moedas != null) { d = c; c._moedas += Number(moedas[1]); c.textContent = `${c._moedas > 0 ? '+' : ''}${c._moedas} 🪙`; break; }
+      if (c.textContent === texto) { d = c; break; }
+    }
+    if (!d) {
+      d = document.createElement('div');
+      d.className = 'aviso'; d.textContent = texto;
+      if (moedas) d._moedas = Number(moedas[1]);
+      el.appendChild(d);
+    }
+    clearTimeout(d._t1); clearTimeout(d._t2);
+    d._t1 = setTimeout(() => d.classList.add('sumindo'), DURA_AVISO);
+    d._t2 = setTimeout(() => d.remove(), DURA_AVISO + 500);
+    while (el.children.length > MAX_AVISOS) el.firstChild.remove();
   }
+
+  // Painel de objetivo minimizado (lembra a escolha; tecla O ou toque no título).
+  let objMin = false;
+  try { objMin = localStorage.getItem('lb_objetivo_min') === '1'; } catch (e) { /* sem armazenamento */ }
+  function minimizarObjetivo(v) {
+    objMin = v == null ? !objMin : !!v;
+    try { localStorage.setItem('lb_objetivo_min', objMin ? '1' : '0'); } catch (e) { /* sem armazenamento */ }
+    const el = $('#objetivo');
+    if (el) el.classList.toggle('minimizado', objMin);
+    return objMin;
+  }
+  document.addEventListener('click', (e) => { if (e.target.closest && e.target.closest('#objetivo .obj-topo')) { e.preventDefault(); minimizarObjetivo(); } });
 
   // ---------------- Painel de objetivo e botões ----------------
   function atualizarPainel(j) {
@@ -283,8 +309,10 @@
     if (!mostrar) return;
     const toque = LB.entrada.usandoToque();
     const dica = toque ? '🎒 mochila e mapa no botão do topo' : '<kbd>I</kbd> mochila · <kbd>M</kbd> mapa · <kbd>F</kbd> item · <kbd>H</kbd> poção';
-    const html = `<b>Objetivo</b><div>${texto}</div><div class="mini">📜 ${inv(j).pistas.length}/${totalPistas()} documentos · ${dica}</div>`;
+    const tecla = toque ? '' : ' <kbd>O</kbd>';
+    const html = `<b class="obj-topo">Objetivo <span class="obj-seta"></span>${tecla}</b><div class="obj-corpo"><div>${texto}</div><div class="mini">📜 ${inv(j).pistas.length}/${totalPistas()} documentos · ${dica}</div></div>`;
     if (html !== el._html) { el.innerHTML = html; el._html = html; }
+    el.classList.toggle('minimizado', objMin);
     // Fica logo abaixo do HUD (corações, magia, moedas e itens), que muda de altura.
     const i = inv(j), linhaItens = qtd(j, 'pocao') || (i.equipado && qtd(j, i.equipado));
     const unidades = LB.hud && LB.hud.pronto() ? LB.hud.fundo(j) + 2 : (j.flags.magia ? 66 : 46) + (linhaItens ? 20 : 0) + 14;
@@ -401,6 +429,7 @@
     // Parte 2 (só aparecem depois que o dragão acorda).
     { id: 'vale', nome: 'Vale das Raízes', x: 0.8, y: 0.8, emb: '🌾', cor: '#9aa24a', parte2: true },
     { id: 'fenda', nome: 'Fenda de Magma', x: 0.93, y: 0.92, emb: '🌋', cor: '#b0502a', parte2: true },
+    { id: 'vilamoinho', nome: 'Vila do Moinho', x: 0.74, y: 0.95, emb: '🌻', cor: '#d8b04a', parte2: true },
     { id: 'lago', nome: 'Lago Espelhado', x: 0.82, y: 0.56, emb: '🌊', cor: '#4a9ad0', parte2: true },
     { id: 'pantano', nome: 'Pântano Sombrio', x: 0.94, y: 0.66, emb: '🐸', cor: '#4a6a3a', parte2: true },
     { id: 'picos', nome: 'Picos do Vento', x: 0.78, y: 0.3, emb: '🏔️', cor: '#b8c8d8', parte2: true },
@@ -408,12 +437,12 @@
     { id: 'coracao', nome: 'Coração dos Elementos', x: 0.6, y: 0.08, emb: '💠', cor: '#8a5ac0', parte2: true },
   ];
   const LIGACOES = [['fazenda', 'floresta'], ['fazenda', 'vilarejo'], ['vilarejo', 'floresta'], ['floresta', 'gruta'], ['floresta', 'ruinas'], ['gruta', 'ruinas'], ['gruta', 'montanha'], ['ruinas', 'montanha'], ['montanha', 'covil'],
-    ['vilarejo', 'vale'], ['vale', 'fenda'], ['vale', 'lago'], ['lago', 'pantano'], ['lago', 'picos'], ['picos', 'tempestade'], ['picos', 'coracao']];
+    ['vilarejo', 'vale'], ['vale', 'fenda'], ['vale', 'vilamoinho'], ['vale', 'lago'], ['lago', 'pantano'], ['lago', 'picos'], ['picos', 'tempestade'], ['picos', 'coracao']];
 
   const CORES_TILE = {
     parede: '#2a2334', chao: '#8a8f7a', caminho: '#c9b48a', agua: '#4e93c9', lava: '#ff7a2a', fenda: '#120c10', predio: '#8a5f3c', barreira: '#a58cff', porta: '#d4a93a',
     grama: '#6aa84f', fazenda: '#6aa84f', vilarejo: '#6fab50', floresta: '#4f8a3f', ruinas: '#7f8878', montanha: '#6a5750', covil: '#4b403c', gruta: '#4f6470',
-    vale: '#8aa24a', lago: '#5fae6a', pantano: '#4a6a3a', picos: '#b8bec8', tempestade: '#4a5468', coracao: '#4a3a5a',
+    vale: '#8aa24a', vilamoinho: '#7fb455', lago: '#5fae6a', pantano: '#4a6a3a', picos: '#b8bec8', tempestade: '#4a5468', coracao: '#4a3a5a',
   };
 
   function corTile(c, tema) {
@@ -837,6 +866,7 @@
   document.addEventListener('keydown', (e) => {
     const j = tela.j;
     if (!j) return;
+    if (e.code === 'KeyO' && j.estado === 'jogo' && !e.repeat) { e.preventDefault(); minimizarObjetivo(); return; }
     if (e.code === 'KeyI' || e.code === 'KeyM') {
       if (j.estado === 'jogo' && j.cena) return;
       if (j.estado !== 'jogo' && j.estado !== 'mochila') return;
@@ -850,7 +880,7 @@
 
   LB.mochila = {
     ITENS, ORDEM_ITENS, PISTAS, ORDEM_PISTAS, CONCLUSOES, TIPOS_DOC, MUNDO, inv, qtd, tem, moedas, dar, tirar, darMoedas, usar, equipar, usarEquipado, usarCuraRapida,
-    temPista, darPista, verificarConclusoes, temConclusao, totalPistas, objetivo, explorar, grade, visto, porcentagem, aviso, atualizarPainel, atualizarBotoes,
+    temPista, darPista, verificarConclusoes, temConclusao, totalPistas, objetivo, explorar, grade, visto, porcentagem, aviso, minimizarObjetivo, atualizarPainel, atualizarBotoes,
     desenharHud, desenharItemChao, desenharPorta, corTile, desenharCogumelo, tela, contagens, desenharMapaArea, desenharMundo,
   };
 })(window.LB);

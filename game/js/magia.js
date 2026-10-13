@@ -91,6 +91,8 @@
           }
         }
       } else if (l && l.estado !== 'morta' && Math.hypot(l.x - p.x, (l.y - p.y) * 1.3) < 16) {
+        // Teia da aranha: não machuca, deixa a heroína lenta por um tempo.
+        if (p.lenta && !p.dano) { l.lentidao = Math.max(l.lentidao || 0, p.lenta); p.morto = true; estourar(jogo, p); continue; }
         const r = l.receberDano(jogo, p.dano, false, p.x, p.y, { pulavel: p.tipo !== 'pedra' });
         if (r) { p.morto = true; estourar(jogo, p); }
       }
@@ -99,7 +101,7 @@
   }
 
   function estourar(jogo, p) {
-    const tipo = p.tipo === 'luz' || p.tipo === 'estrelaBell' || p.tipo === 'pena' ? 'brilho' : p.tipo === 'fogo' ? 'brasa' : p.tipo === 'pedra' ? 'pedra' : p.tipo === 'lama' || p.tipo === 'terra' ? 'poeira' : 'agua';
+    const tipo = p.tipo === 'luz' || p.tipo === 'estrelaBell' || p.tipo === 'pena' ? 'brilho' : p.tipo === 'fogo' ? 'brasa' : p.tipo === 'pedra' ? 'pedra' : p.tipo === 'lama' || p.tipo === 'terra' || p.tipo === 'teia' ? 'poeira' : 'agua';
     jogo.particulas.emitir(tipo, p.x, p.y - p.z, 8, { vel: 80, vida: 0.4, r: tipo === 'brilho' ? 5 : 3, vz: tipo === 'pedra' ? 90 : 0 });
     if (p.tipo === 'pedra') jogo.particulas.emitir('poeira', p.x, p.y, 5, { vel: 50 });
   }
@@ -112,7 +114,7 @@
       g.fillStyle = '#8a877b'; g.beginPath(); g.ellipse(X - 2, Y - 2, 4, 3, 0, 0, TAU); g.fill();
       return;
     }
-    const cores = { luz: ['255,255,255', '140,220,255'], orbe: ['230,245,255', '90,160,255'], fogo: ['255,240,170', '255,110,40'], agua: ['220,240,255', '60,140,230'], lama: ['190,160,110', '100,70,40'], pena: ['255,255,255', '200,215,235'], estrelaBell: ['255,245,250', '255,150,200'], terra: ['210,240,150', '110,150,60'] }[p.tipo] || ['255,255,255', '200,200,255'];
+    const cores = { luz: ['255,255,255', '140,220,255'], orbe: ['230,245,255', '90,160,255'], fogo: ['255,240,170', '255,110,40'], agua: ['220,240,255', '60,140,230'], lama: ['190,160,110', '100,70,40'], pena: ['255,255,255', '200,215,235'], estrelaBell: ['255,245,250', '255,150,200'], terra: ['210,240,150', '110,150,60'], teia: ['255,255,255', '215,215,230'] }[p.tipo] || ['255,255,255', '200,200,255'];
     D().sombraChao(g, p.x, p.y, 5, 0.18);
     const R = p.r * (1 + 0.15 * Math.sin(t * 30 + p.x));
     const gr = g.createRadialGradient(X, Y, 0, X, Y, R * 2.6);

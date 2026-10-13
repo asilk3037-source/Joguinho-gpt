@@ -273,6 +273,7 @@
         if (d.depoisDe && !this.flags[d.depoisDe]) continue;
         const x = T(d.x + 0.5), y = T(d.y + 0.9);
         if (d.tipo === 'morcego') this.inimigos.push(new LB.Morcego(x, y));
+        else if (LB.monstros.TIPOS[d.tipo]) this.inimigos.push(new LB.monstros.TIPOS[d.tipo](x, y));
         else this.inimigos.push(['fogo', 'luz', 'terra', 'agua', 'ar'].includes(d.tipo) ? new LB.FogoFatuo(x, y, d.tipo) : new LB.Sombra(x, y));
       }
     }
@@ -621,7 +622,7 @@
       el.textContent = texto;
       el.classList.remove('oculto');
       clearTimeout(this.timerDica);
-      this.timerDica = setTimeout(() => el.classList.add('oculto'), 6500);
+      this.timerDica = setTimeout(() => el.classList.add('oculto'), 5000);
     }
 
     mostrarBanner(texto) {
@@ -816,7 +817,7 @@
       if (this.dragao) atores.push(this.dragao);
       // Guardião libertado, na cena da vitória (já saiu da lista de inimigos).
       if (this.guardiao) atores.push(this.guardiao);
-      for (const a of atores) if (a.visivel !== false && a.desenharSombra) a.desenharSombra(g);
+      for (const a of atores) if (a.visivel !== false && a.desenharSombra) a.desenharSombra(g, this);
       if (this.dragao && this.dragao.noAlto && this.dragao.visivel && !this.chefeAtivo) LB.desenho.sombraChao(g, this.dragao.x, this.dragao.y, 70 - Math.min(40, this.dragao.alturaVoo / 8), 0.25);
 
       // Tudo que tem altura, ordenado pela linha dos pés.

@@ -16,6 +16,18 @@
     casa_vila_c: ['vilarejo', 42, 30],
     casa_vale: ['vale', 7, 7],
     casa_lago: ['lago', 6, 36],
+    casa_moinho_a: ['vilamoinho', 8, 6],
+    casa_moinho_b: ['vilamoinho', 36, 6],
+    casa_moinho_c: ['vilamoinho', 8, 23],
+    casa_moinho_d: ['vilamoinho', 36, 23],
+  };
+  // Casas da Vila do Moinho: têm a mesma planta (e os mesmos móveis) das casas do vilarejo e da Cora,
+  // que são do mesmo tamanho; só o nome muda. [planta reaproveitada, nome]
+  const MESMA_PLANTA = {
+    casa_moinho_a: ['casa_vila_a', 'Casa do Seu Abílio'],
+    casa_moinho_b: ['casa_vila_b', 'Casa da Dona Iolanda'],
+    casa_moinho_c: ['casa_vila_c', 'Casa da Lia'],
+    casa_moinho_d: ['casa_vale', 'Padaria da Dona Graça'],
   };
 
   // [nome, x, y (base, em tiles), largura no mundo, pegada [larg, alt] em tiles, altura na parede, espelhar].
@@ -93,14 +105,15 @@
   const FECHA_NOITE = { casa_loja: 'Loja da Rosa', casa_ferraria: 'Ferraria' };
 
   for (const [id, [fora, tx, ty]] of Object.entries(PORTAS)) {
-    const g = G[id], def = LB.MAPAS[fora];
+    const [planta, nome] = MESMA_PLANTA[id] || [id, null];
+    const g = G[planta], def = LB.MAPAS[fora];
     if (!g || !def) continue;
-    LB.registrarImagem('base_' + id, 'assets/cenario/base_' + id + '.webp');
+    LB.registrarImagem('base_' + planta, 'assets/cenario/base_' + planta + '.webp');
     const dentro = { x: g.saida.x + 3, y: 5 + g.fundo - 0.4, dir: 'BACK' };
     LB.MAPAS[id] = {
-      nome: g.nome, tema: 'casa', base: 'base_' + id, interior: true, linhas: g.linhas, placas: {},
+      nome: nome || g.nome, tema: 'casa', base: 'base_' + planta, interior: true, linhas: g.linhas, placas: {},
       saidas: [{ x: g.saida.x, y: g.saida.y, w: g.saida.w, h: 1, para: fora, chegada: { x: tx + 0.5, y: ty + 1.7, dir: 'FRONT' } }],
-      inicio: dentro, moveis: MOVEIS[id] || [], npcs: NPCS[id] || [],
+      inicio: dentro, moveis: MOVEIS[id] || MOVEIS[planta] || [], npcs: NPCS[id] || [],
     };
     def.entradas = (def.entradas || []).concat({ x: tx, y: ty, para: id, chegada: dentro, fechaNoite: FECHA_NOITE[id] || null, loja: (NPCS[id] || [])[0] && NPCS[id][0].loja });
   }

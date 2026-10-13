@@ -26,8 +26,8 @@
     },
     serpente: {
       nome: 'Serpente das Marés', titulo: 'Guardiã da Água', codigo: 'SERPENTE', elementos: ['agua'], forma: 'serpente', hp: 16, dano: 1, vel: 55, cansaApos: 3,
-      ataques: ['mergulho', 'jatos', 'onda'], flag: 'chefeAgua',
-      dicas: ['Quando ela mergulha, fique de olho nas bolhas: ela sai embaixo delas.', 'Pule a onda na hora que ela chegar em você.', 'Depois de três ataques ela boia cansada: ataque a cabeça!'],
+      ataques: ['mergulho', 'jatos', 'onda'], flag: 'chefeAgua', nada: true,
+      dicas: ['Quando ela mergulha, fique de olho nas bolhas: ela sai embaixo delas.', 'Pule a onda na hora que ela chegar em você.', 'Ela vive na água em volta da ilha. Depois de três ataques, cansada, ela se arrasta até a margem: ataque!'],
     },
     grifo: {
       nome: 'Grifo da Tempestade', titulo: 'Guardião do Ar', codigo: 'GRIFO', elementos: ['ar'], forma: 'ave', hp: 16, dano: 1, vel: 80, cansaApos: 3, voa: true,
@@ -82,6 +82,11 @@
     const est = new LB.Animador(ch.def.codigo + '_' + nome).estado(null, ch.lado);
     return est.duracao * q / est.n;
   }
+  // Quem nada (a Serpente) vive na água em volta da ilha: só sai para a terra quando volta do mergulho
+  // embaixo da heroína e quando cansa (se arrasta até a margem para ser atacada); depois volta.
+  const ehAgua = (j, x, y) => j.mapa.tileEm(x, y - 4) === '~';
+  const MARGEM_NADO = [6, 4, 6, 6]; // quanto a água em volta passa da arena (tiles): esquerda, cima, direita, baixo
+
   // Pisão com arte (Titã de Magma, item 342): o pé bate no chão no 6º quadro; a onda e o tremor saem ali.
   const PE_NO_CHAO = 5;
 
@@ -139,11 +144,53 @@
     }
 
     mover(dx, dy, j) {
+      if (this.def.nada) return this.nadar(dx, dy, j);
       const [ax0, ay0, ax1, ay1] = this.arena;
       const nx = Math.max(T(ax0 + 1.5), Math.min(T(ax1 - 0.5), this.x + dx)), ny = Math.max(T(ay0 + 2), Math.min(T(ay1 - 0.2), this.y + dy));
       if (this.def.voa || this.def.forma === 'serpente' || !j.mapa.colide(nx, this.y - 8, 24, 8)) this.x = nx;
       if (this.def.voa || this.def.forma === 'serpente' || !j.mapa.colide(this.x, ny - 8, 24, 8)) this.y = ny;
     }
+
+    noLago(x, y) {
+      const [ax0, ay0, ax1, ay1] = this.arena, [m0, m1, m2, m3] = MARGEM_NADO;
+      return x > T(ax0 - m0) && x < T(ax1 + 1 + m2) && y > T(ay0 - m1) && y < T(ay1 + 1 + m3);
+    }
+
+    // Nada: só passa por água (na terra, só volta para ela). Se a água acaba na frente, contorna pela margem.
+    nadar(dx, dy, j) {
+      const naTerra = !ehAgua(j, this.x, this.y);
+      for (const a of [0, 0.6, -0.6, 1.2, -1.2, 1.8, -1.8]) {
+        const c = Math.cos(a), s = Math.sin(a), nx = this.x + dx * c - dy * s, ny = this.y + dx * s + dy * c;
+        if (this.noLago(nx, ny) && (ehAgua(j, nx, ny) || naTerra)) { this.x = nx; this.y = ny; return; }
+      }
+    }
+
+    // Ponto de água mais perto (para voltar depois de sair na terra).
+    aguaMaisPerto(j) {
+      let melhor = null, dm = Infinity;
+      for (let ty = 0; ty < j.mapa.h; ty++) for (let tx = 0; tx < j.mapa.w; tx++) {
+        const x = T(tx + 0.5), y = T(ty + 0.9);
+        if (!this.noLago(x, y) || !ehAgua(j, x, y)) continue;
+        const d = Math.hypot(x - this.x, y - this.y);
+        if (d < dm) { dm = d; melhor = { x, y }; }
+      }
+      return melhor;
+    }
+
+    // Ponto de terra firme mais perto (a margem), dentro da arena: onde ela se arrasta quando cansa.
+    margemMaisPerto(j) {
+      const [ax0, ay0, ax1, ay1] = this.arena;
+      let melhor = null, dm = Infinity;
+      for (let ty = ay0; ty <= ay1; ty++) for (let tx = ax0 + 1; tx <= ax1; tx++) {
+        const x = T(tx + 0.5), y = T(ty + 0.9);
+        if (ehAgua(j, x, y) || j.mapa.colide(x, y - 8, 24, 8)) continue;
+        const d = Math.hypot(x - this.x, y - this.y);
+        if (d < dm) { dm = d; melhor = { x, y }; }
+      }
+      return melhor;
+    }
+
+    naAgua(j) { return !!this.def.nada && ehAgua(j, this.x, this.y); }
 
     atualizar(dt, j) {
       this.t += dt; this.flash = Math.max(0, this.flash - dt); this.recarga = Math.max(0, this.recarga - dt);
@@ -171,6 +218,15 @@
           const v = this.def.vel * (furia ? 1.3 : 1);
           const lat = Math.sin(this.t * 1.3) * 0.6;
           const k = d > alvo ? 1 : d < alvo * 0.6 ? -0.6 : 0;
+          const volta = this.def.nada && !this.naAgua(j) ? this.aguaMaisPerto(j) : null;
+          if (volta) {
+            // Saiu na terra (mergulho ou cansaço): volta deslizando para a água antes de atacar de novo.
+            const vx = volta.x - this.x, vy = volta.y - this.y, vd = Math.hypot(vx, vy) || 1, passo = Math.min(vd, v * 1.6 * dt);
+            this.x += vx / vd * passo; this.y += vy / vd * passo;
+            if (Math.random() < dt * 8) j.particulas.emitir('agua', this.x + (Math.random() - 0.5) * 30, this.y, 1, { vz: 40, vel: 20, vida: 0.4, r: 2 });
+            if (this.t > 1.7 * ritmo) this.t = 1.7 * ritmo;
+            break;
+          }
           this.mover((dx / d * k - dy / d * lat) * v * dt, (dy / d * k + dx / d * lat) * v * dt, j);
           if (this.t > 1.7 * ritmo) this.escolherAtaque(j);
           break;
@@ -190,6 +246,12 @@
           break;
         case 'exausto':
           this.exposto -= dt;
+          // Cansada, a Serpente se arrasta até a margem: fora da água a espada alcança.
+          if (this.praia) {
+            const px = this.praia.x - this.x, py = this.praia.y - this.y, pd = Math.hypot(px, py);
+            if (pd < 2) this.praia = null;
+            else { const passo = Math.min(pd, 110 * dt); this.x += px / pd * passo; this.y += py / pd * passo; }
+          }
           if (Math.random() < dt * 6) j.particulas.emitir('brilho', this.x + (Math.random() - 0.5) * 40, this.y - 70, 1, { vel: 20, vida: 0.5, r: 3 });
           if (this.exposto <= 0) {
             this.estado = 'observar'; this.t = -0.5; this.cansaco = 0; this.recarga = 1.2;
@@ -291,6 +353,7 @@
 
     cansar(j) {
       this.estado = 'exausto'; this.t = 0; this.exposto = 4.2 * LB.dif().guarda; this.cansaco = 0;
+      this.praia = this.naAgua(j) ? this.margemMaisPerto(j) : null;
       j.particulas.emitir('brilho', this.x, this.y - 60, 14, { vel: 90, vida: 0.7 });
       if (LB.dicas) LB.dicas.chefe(j, this, 1);
     }
@@ -343,7 +406,19 @@
       return true;
     }
 
-    desenharSombra(g) { if (!this.intocavel) D().sombraChao(g, this.x, this.y, this.def.forma === 'quimera' ? 50 : 38, 0.35); }
+    desenharSombra(g, j) {
+      if (this.intocavel) return;
+      if (j && this.naAgua(j)) {
+        // Na água: ondinhas em volta em vez da sombra.
+        const k = (j.tempo * 0.8) % 1;
+        g.strokeStyle = `rgba(230,245,255,${0.55 * (1 - k)})`; g.lineWidth = 2;
+        g.beginPath(); g.ellipse(this.x, this.y - 4, 40 + k * 18, 11 + k * 5, 0, 0, TAU); g.stroke();
+        g.strokeStyle = 'rgba(230,245,255,.45)';
+        g.beginPath(); g.ellipse(this.x, this.y - 4, 34, 9, 0, 0, TAU); g.stroke();
+        return;
+      }
+      D().sombraChao(g, this.x, this.y, this.def.forma === 'quimera' ? 50 : 38, 0.35);
+    }
     desenharAvisos(g, j) { desenharPerigos(g, this, j); }
     desenhar(g, j) { desenharChefe(g, this, j); }
   }
@@ -456,6 +531,8 @@
     // A arte da derrota já se desfaz em luz; sem ela, o chefe desbota.
     const morrendo = ch.estado === 'morrendo' && !temArte(ch, 'DEATH') ? Math.min(1, ch.t / 1.8) : 0;
     g.save();
+    // Nadando: a parte de baixo do corpo fica dentro da água.
+    if (ch.naAgua(j) && !mergulho) { g.beginPath(); g.rect(ch.x - 200, y - 300, 400, 300 - 14); g.clip(); }
     g.globalAlpha = (ch.alfa == null ? 1 : ch.alfa) * (1 - morrendo * 0.8);
     if (ch.flash > 0) g.filter = 'brightness(2)';
     if (r.sprite) {

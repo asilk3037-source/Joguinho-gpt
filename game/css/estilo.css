@@ -88,7 +88,8 @@ th { color: var(--destaque); }
 #banner.mostrar { animation: banner 3.2s ease forwards; }
 @keyframes banner { 0% { opacity: 0; transform: translate(-50%, 10px); } 15%, 75% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; } }
 
-#dica { position: fixed; top: max(14px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); width: min(560px, 80vw); background: rgba(22, 17, 32, 0.9); border: 1px solid var(--destaque); color: #ffe9c7; border-radius: 12px; padding: 10px 14px; text-align: center; font-size: 15px; z-index: 17; pointer-events: none; }
+/* Dica: menor e mais transparente; um toque fecha. */
+#dica { position: fixed; top: max(12px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); width: min(460px, 70vw); background: rgba(22, 17, 32, 0.8); border: 1px solid rgba(255, 200, 120, 0.6); color: #ffe9c7; border-radius: 10px; padding: 6px 12px; text-align: center; font-size: 13px; z-index: 17; pointer-events: auto; cursor: pointer; }
 
 /* Controles de toque */
 #toque { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
@@ -123,7 +124,7 @@ th { color: var(--destaque); }
 @media (max-height: 520px) {
   #tarefas { font-size: 10px; padding: 4px 7px; min-width: 0; max-width: 42vw; top: 44px; line-height: 1.25; background: rgba(22, 17, 32, 0.7); }
   #tarefas b { margin-bottom: 1px; }
-  #dica { font-size: 12px; padding: 6px 10px; width: min(460px, 70vw); }
+  #dica { font-size: 11px; padding: 4px 9px; width: min(380px, 62vw); }
   #banner { font-size: 20px; top: 12%; }
 }
 
@@ -186,19 +187,25 @@ th { color: var(--destaque); }
 }
 
 /* Painel de objetivo com a moldura da arte (UI_MISSION_PANEL_FRAME, 9 fatias: os cantos não esticam). */
-#objetivo { position: fixed; left: max(10px, env(safe-area-inset-left)); top: 84px; border-style: solid; border-width: 15px 13px 15px 13px; border-image: url(../assets/interface/painel_objetivo.webp) 80 62 80 62 fill stretch; padding: 2px 6px 2px 6px; font-size: 13px; z-index: 9; pointer-events: none; max-width: min(300px, 44vw); line-height: 1.3; }
+#objetivo { position: fixed; left: max(10px, env(safe-area-inset-left)); top: 84px; border-style: solid; border-width: 15px 13px 15px 13px; border-image: url(../assets/interface/painel_objetivo.webp) 80 62 80 62 fill stretch; padding: 2px 6px 2px 6px; font-size: 13px; z-index: 11; pointer-events: none; max-width: min(300px, 44vw); line-height: 1.3; }
 #objetivo::before { content: ''; position: absolute; left: 50%; top: -15px; width: 30px; height: 20px; transform: translateX(-50%); background: url(../assets/interface/painel_joia.webp) center / contain no-repeat; }
 #objetivo b { color: var(--destaque); display: block; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #b9853a; }
 #objetivo .mini { color: var(--suave); font-size: 11px; margin-top: 4px; }
+/* Título clicável: minimiza o painel (fica só a etiqueta "Objetivo ▸"). */
+#objetivo .obj-topo { pointer-events: auto; cursor: pointer; user-select: none; }
+#objetivo .obj-seta::before { content: '▾'; font-size: 0.9em; opacity: 0.8; }
+#objetivo.minimizado .obj-seta::before { content: '▸'; }
+#objetivo.minimizado .obj-corpo { display: none; }
+#objetivo.minimizado b { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
 #objetivo kbd { background: #2a2238; border: 1px solid var(--borda); border-radius: 4px; padding: 0 4px; font-family: inherit; font-size: 10px; }
 @media (max-width: 700px), (max-height: 520px) { #objetivo { font-size: 10.5px; padding: 1px 4px; border-width: 12px 10px; top: 70px; max-width: 42vw; } #objetivo::before { top: -12px; width: 24px; height: 16px; } #objetivo .mini { font-size: 9.5px; } }
 
 /* Avisos de item novo */
 #avisos { position: fixed; right: max(14px, env(safe-area-inset-right)); top: 60px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; z-index: 17; pointer-events: none; }
-#avisos .aviso { background: rgba(22, 17, 32, 0.92); border: 1px solid var(--destaque); color: #ffe9c7; border-radius: 10px; padding: 7px 12px; font-size: 13px; font-weight: 600; animation: aviso-entra 0.3s ease; max-width: 60vw; }
+#avisos .aviso { background: rgba(22, 17, 32, 0.78); border: 1px solid rgba(255, 200, 120, 0.55); color: #ffe9c7; border-radius: 9px; padding: 4px 9px; font-size: 12px; font-weight: 600; animation: aviso-entra 0.25s ease; max-width: 40vw; }
 #avisos .aviso.sumindo { opacity: 0; transition: opacity 0.6s; }
 @keyframes aviso-entra { from { opacity: 0; transform: translateX(12px); } }
-@media (max-width: 700px) { #avisos { top: 56px; } #avisos .aviso { font-size: 11px; padding: 5px 9px; } }
+@media (max-width: 700px) { #avisos { top: 56px; } #avisos .aviso { font-size: 10px; padding: 3px 7px; max-width: 46vw; } }
 
 /* Botões de toque novos */
 #b-mochila { position: absolute; top: max(12px, env(safe-area-inset-top)); right: calc(max(12px, env(safe-area-inset-right)) + 54px); pointer-events: auto; }

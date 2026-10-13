@@ -44,6 +44,28 @@
     return null;
   }
 
+  // ---------------- Vila do Moinho ----------------
+  // Moradores com nome (os passantes têm frases próprias em loja.js). Cada um dá um presentinho na primeira conversa.
+  function falasMoinho(j, m) {
+    const f = j.flags, conversou = (f.conversas || []).includes(m.id), guardioes = ['chefeTerra', 'chefeAgua', 'chefeAr'].filter((k) => f[k]).length;
+    if (m.id === 'abilio') {
+      if (!conversou) { M().dar(j, 'elixir', 1); return [['Seu Abílio', 'Visita! E das duas! Entrem, entrem, que a farinha não morde.'], ['Seu Abílio', 'O moinho parou de girar quando o vento começou a soprar de lado, lá dos picos. Agora eu mó o trigo na mão.'], ['Line', 'O vento torto é coisa do Grifo. A gente vai resolver.', 'sorriso'], ['Seu Abílio', 'Então levem esse elixir. Receita da minha avó: farinha, mel e um tantinho de coragem.']]; }
+      if (f.chefeAr) return [['Seu Abílio', 'O moinho voltou a girar! Escutem só: nhec, nhec, nhec. Música pra mim.']];
+      return [['Seu Abílio', 'Quando o vento voltar a soprar direito, esse moinho canta de novo. Tenho fé em vocês.']];
+    }
+    if (m.id === 'iolanda') {
+      if (!conversou) { M().dar(j, 'pocao', 1); return [['Dona Iolanda', 'Flores pra moça de óculos! Combinam com o seu sorriso.'], ['Bell', 'Ai, que lindas! Obrigada, Dona Iolanda.', 'riso'], ['Dona Iolanda', 'E uma poção pra moça da espada, que essa aí não para quieta. Cuidem uma da outra, viu?']]; }
+      if (guardioes >= 2) return [['Dona Iolanda', 'As flores voltaram a abrir de manhã cedo. É sinal de que a terra está feliz de novo.']];
+      return [['Dona Iolanda', 'Na beira da floresta tem um cogumelo que pula. Não confundam com os meus, que esses ficam quietinhos no vaso!']];
+    }
+    if (m.id === 'lia') {
+      if (!conversou) return [['Lia', 'Vocês são a Line e a Bell? As que conhecem o DRAGÃO?!'], ['Line', 'Somos. Ele é bem mais legal do que parece.', 'sorriso'], ['Lia', 'Quando eu crescer, vou ser guardiã de alguma coisa. Ainda não sei do quê.'], ['Bell', 'Começa guardando a sua vila. Já é um ótimo começo.', 'apaixonada']];
+      return [['Lia', 'O Davi diz que tem um baú escondido perto das flores amarelas, lá no canto de baixo. Ele nunca teve coragem de abrir.']];
+    }
+    return null;
+  }
+  LB.moinho = { falas: falasMoinho };
+
   // ---------------- Documentos novos ----------------
   Object.assign(M().PISTAS, {
     diarioCora: { tipo: 'diario', titulo: 'Diário da Dona Cora', icone: '🌱', autor: 'Dona Cora, jardineira do vale', data: 'Semana passada', onde: 'Vale das Raízes, perto da horta', marca: { area: 'vale', x: 50, y: 8, rotulo: 'Ninho do Colosso' }, texto: 'Segunda: uma sombra de muitas cores passou baixinho sobre o vale. Tinha cheiro de pedra queimada.\n\nTerça: o Colosso não veio regar as raízes. Elas acordaram sozinhas e derrubaram o Zeca da carroça.\n\nQuarta: vi o Colosso de longe. Folhas pretas nas costas. Bate no chão três vezes e depois para, ofegando, com a flor do peito aberta. Coitado. Parece que dói.' },
