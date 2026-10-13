@@ -1,5 +1,5 @@
 {
- "_leia": "Ajuste de tamanho por animação, medido pela cabeça (tools/medir_cabecas.py) e conferido a olho: o jogo multiplica a escala do desenho por este fator, para a Line e a Bell terem o mesmo tamanho em todas as animações. 1,2 = 20% maior. Nos chefes, o fator deixa cada chefe do mesmo tamanho em todas as animações dele (cada uma veio desenhada numa escala) e já leva o tamanho do chefe no jogo: Serpente 1, Grifo 1,25, Titã de Magma 1,15, Hidra de Lama 1,15 (como o Titã, o outro chefe de junção) e Tempestade Viva 1,05 (do mesmo porte dos dois) na pose parada.",
+ "_leia": "Ajuste de tamanho por animação, medido pela cabeça (tools/medir_cabecas.py) e conferido a olho: o jogo multiplica a escala do desenho por este fator, para a Line e a Bell terem o mesmo tamanho em todas as animações. 1,2 = 20% maior. Nos chefes, o fator deixa cada chefe do mesmo tamanho em todas as animações dele (cada uma veio desenhada numa escala) e já leva o tamanho do chefe no jogo: Colosso de Raízes 0,8 (a altura do Colosso que já era desenhado no código), Serpente 1, Grifo 1,25, Titã de Magma 1,15, Hidra de Lama 1,15 (como o Titã, o outro chefe de junção) e Tempestade Viva 1,05 (do mesmo porte dos dois) na pose parada.",
  "fatores": {
   "BELL_BLOCK": 0.88,
   "BELL_COMBAT_IDLE_BACK": 1.08,
@@ -18,7 +18,14 @@
   "BELL_RUN_LEFT": 0.88,
   "BELL_RUN_RIGHT": 0.88,
   "BELL_SIT_CHAIR_EAT": 0.909,
-  "COLOSSO_SLEEP": 0.8,
+  "COLOSSO_ATTACK": 0.825,
+  "COLOSSO_DEATH": 0.825,
+  "COLOSSO_FREED": 0.8,
+  "COLOSSO_HIT": 0.825,
+  "COLOSSO_IDLE": 0.8,
+  "COLOSSO_ROOTS": 0.851,
+  "COLOSSO_SLEEP": 0.785,
+  "COLOSSO_WAKE": 0.8,
   "DRAGON_SLEEP": 0.68,
   "GRIFO_ATTACK": 1.344,
   "GRIFO_DEATH": 0.833,
@@ -102,7 +109,16 @@
   "SERPENTE_WAKE": 1.01,
   "SERPENTE_WATER_JET": 1.064,
   "SERPENTE_WAVE": 1.333,
+  "TEMPESTADE_ATTACK": 1.235,
+  "TEMPESTADE_FEATHERS": 1.05,
+  "TEMPESTADE_GUST": 1.05,
+  "TEMPESTADE_HIT": 1.05,
   "TEMPESTADE_IDLE": 1.05,
-  "TEMPESTADE_SLEEP": 1.221
+  "TEMPESTADE_LIGHTNING": 1.235,
+  "TEMPESTADE_SLEEP": 1.221,
+  "TEMPESTADE_STUNNED": 1.05,
+  "TEMPESTADE_WAKE": 1.193,
+  "TEMPESTADE_WATER_JET": 1.05,
+  "TEMPESTADE_WAVE": 1.05
  }
 }

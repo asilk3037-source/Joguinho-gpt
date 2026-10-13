@@ -1369,7 +1369,7 @@ teste('parte 2: a Bell fala mexendo as mãos e comemora o guardião libertado (i
   afirmar(c.depois !== 'BELL_CELEBRATE' && !c.cena, 'e volta ao normal no fim da cena: ' + JSON.stringify(c));
 });
 
-teste('parte 2: o Colosso dorme com a arte nova (item 304), do tamanho do Colosso acordado', async (h) => {
+teste('parte 2: o Colosso dorme com a arte nova (item 304) e acorda do mesmo tamanho (item 305)', async (h) => {
   await h.area('vale', Object.assign({ visto_vale: true }, P2));
   const r = await h.ev(() => {
     const ch = LB.jogo.chefeArena, s = window.SPRITES.COLOSSO_SLEEP;
@@ -1380,8 +1380,8 @@ teste('parte 2: o Colosso dorme com a arte nova (item 304), do tamanho do Coloss
     return { dormindo: [dormindo.codigo, !!dormindo.sprite], item: s.item, ajuste: s.ajuste, acordado: [acordado.codigo, !!acordado.sprite] };
   });
   igual(r.dormindo, ['COLOSSO_SLEEP', true], 'o Colosso dorme com a arte do item 304');
-  igual([r.item, r.ajuste], ['LINE_BELL_ITEM_304.html', 0.8], 'reduzido para ter a altura do Colosso acordado (que ainda é desenhado no código)');
-  igual(r.acordado[1], false, 'acordado, ele ainda é desenhado no código até chegar a arte');
+  igual([r.item, r.ajuste], ['LINE_BELL_ITEM_304.html', 0.785], 'ajustado para ter a altura do Colosso acordado (item 305)');
+  igual(r.acordado, ['COLOSSO_IDLE', true], 'acordado, ele fica parado com a arte do item 305');
 });
 
 teste('parte 2: Serpente, Grifo e Titã de Magma com a arte nova (itens 317 a 341), do mesmo tamanho em todas as animações', async (h) => {
@@ -1741,6 +1741,118 @@ teste('pedidos do teste no celular: Serpente na água, monstros novos, missão m
   });
   igual([vm.nome, vm.fala, vm.ganhou, vm.casas], ['Vila do Moinho', 'Seu Abílio', 1, 4], 'Vila do Moinho com moradores, presente e quatro casas');
   igual(vm.moradores, ['abilio', 'davi', 'graca', 'iolanda', 'lia', 'teo'], 'moradores novos da vila');
+});
+
+teste('parte 2: Colosso de Raízes (itens 305 a 315), Serpente dormindo (316) e Tempestade Viva (363 a 371) do mesmo tamanho em todas as animações', async (h) => {
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  const ITENS = { COLOSSO_IDLE: 305, COLOSSO_WAKE: 306, COLOSSO_ATTACK: 307, COLOSSO_ROOTS: 308, COLOSSO_HIT: 313, COLOSSO_DEATH: 314, COLOSSO_FREED: 315, SERPENTE_SLEEP: 316,
+    TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371 };
+  const r = await h.ev((ITENS) => {
+    // Caixa de um quadro (o primeiro ou o último), em unidades do mundo (célula de 200 × ajuste); `claros` conta os
+    // pixels de raio/anel (brancos ou ciano) da parte de baixo da célula.
+    const medir = (cod, ultimo) => {
+      const s = window.SPRITES[cod], img = LB.imagens[cod], c = s.cell, q = ultimo ? s.seq[s.seq.length - 1] : s.seq[0];
+      const cv = document.createElement('canvas'); cv.width = c; cv.height = c;
+      const g = cv.getContext('2d'); g.drawImage(img, q * c, 0, c, c, 0, 0, c, c);
+      const d = g.getImageData(0, 0, c, c).data;
+      let x0 = c, x1 = -1, y0 = c, y1 = -1, claros = 0;
+      for (let y = 0; y < c; y++) for (let x = 0; x < c; x++) {
+        const i = (y * c + x) * 4;
+        if (d[i + 3] > 100) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); if (y >= 352 && d[i + 1] > 170 && d[i + 2] > 200) claros++; }
+      }
+      const k = 200 * (s.escala || 1) * (s.ajuste || 1) / c;
+      return { larg: (x1 - x0 + 1) * k, alt: (y1 - y0 + 1) * k, claros };
+    };
+    const fontes = Object.fromEntries(Object.keys(ITENS).map((k) => [k, [window.SPRITES[k] && window.SPRITES[k].item, window.SPRITES[k] && window.SPRITES[k].cell]]));
+    const tam = {}, fim = {};
+    for (const k of Object.keys(ITENS).concat(['COLOSSO_SLEEP', 'TEMPESTADE_IDLE', 'TEMPESTADE_SLEEP', 'SERPENTE_IDLE'])) { tam[k] = medir(k, false); fim[k] = medir(k, true); }
+    let raios = 0; const s = window.SPRITES.TEMPESTADE_LIGHTNING;
+    for (let q = 0; q < s.count; q++) { const m = medir('TEMPESTADE_LIGHTNING'); raios = m.claros; }
+    // todos os quadros do raio: nada de raio e anel abaixo da nuvem
+    const img = LB.imagens.TEMPESTADE_LIGHTNING, c = s.cell, cv = document.createElement('canvas'); cv.width = img.naturalWidth; cv.height = c;
+    const g = cv.getContext('2d'); g.drawImage(img, 0, 0); const d = g.getImageData(0, 352, cv.width, c - 352).data;
+    let abaixo = 0; for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 100 && d[i + 1] > 170 && d[i + 2] > 200) abaixo++;
+    return { fontes, tam, fim, abaixo };
+  }, ITENS);
+  for (const [cod, n] of Object.entries(ITENS)) igual(r.fontes[cod], [`LINE_BELL_ITEM_${n}.html`, 448], `${cod} vem do item ${n}, em célula grande`);
+  const perto = (a, b, tol) => Math.abs(a / b - 1) <= tol;
+  // Colosso: o parado (1º quadro) e os outros no quadro em que ele está de pé.
+  for (const [c, ult] of [['SLEEP', false], ['WAKE', true], ['ATTACK', false], ['ROOTS', false], ['HIT', true], ['DEATH', false], ['FREED', false]]) {
+    const m = (ult ? r.fim : r.tam)['COLOSSO_' + c];
+    const porte = (x) => Math.sqrt(x.larg * x.alt); // acordando ele fica mais largo e mais baixo: compara o porte (altura × largura)
+    afirmar(perto(porte(m), porte(r.tam.COLOSSO_IDLE), 0.1), `Colosso ${c} do porte do parado: ${JSON.stringify([m, r.tam.COLOSSO_IDLE])}`);
+  }
+  afirmar(r.tam.COLOSSO_IDLE.alt > 110 && r.tam.COLOSSO_IDLE.alt < 160, 'Colosso bem maior que a Line, na altura do que era desenhado no código: ' + r.tam.COLOSSO_IDLE.alt);
+  afirmar(perto(r.tam.SERPENTE_SLEEP.larg, r.tam.SERPENTE_IDLE.larg, 0.15), 'Serpente dormindo da largura da parada: ' + JSON.stringify([r.tam.SERPENTE_SLEEP, r.tam.SERPENTE_IDLE]));
+  // Tempestade: a largura da nuvem (com os braços) igual à da parada, em todas.
+  for (const c of ['WAKE', 'ATTACK', 'LIGHTNING', 'GUST', 'WATER_JET', 'WAVE', 'FEATHERS', 'HIT', 'STUNNED']) {
+    const m = (c === 'WAKE' ? r.fim : r.tam)['TEMPESTADE_' + c];
+    afirmar(perto(m.larg, r.tam.TEMPESTADE_IDLE.larg, 0.17), `Tempestade ${c} com a nuvem do tamanho da parada: ${JSON.stringify([m, r.tam.TEMPESTADE_IDLE])}`);
+  }
+  // (sobram uns poucos pontos de brilho colados nas gotas de chuva: invisíveis; o raio e o anel inteiros saíram)
+  afirmar(r.abaixo < 40, 'Tempestade chamando raios sem raio nem círculo de aviso embaixo da nuvem (os do jogo caem na heroína): ' + r.abaixo);
+
+  // Colosso: dorme, acorda com a arte e fica parado na conversa; golpe, dano e derrota com a arte própria.
+  const a = await h.ev(async () => {
+    const j = LB.jogo, ch = j.chefeArena, vistos = [], antes = ch.anim.base;
+    j.iniciarCena(LB.HISTORIA.chefeIntro, { semPular: false }, ch);
+    for (let i = 0; i < 600 && j.cena; i++) {
+      if (vistos[vistos.length - 1] !== ch.anim.base) vistos.push(ch.anim.base);
+      if (LB.dialogo.nome && LB.dialogo.nome.textContent) LB.dialogo.clicou = true;
+      await new Promise((ok) => setTimeout(ok, 30));
+    }
+    const l = j.line; ch.t = 0;
+    ch.escolherAtaque(j); ch.ataque = 'raizes'; ch.estado = 'atacar'; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false; ch.feito = {}; ch.perigos = [];
+    const golpe = [];
+    for (let i = 0; i < 60; i++) { l.hp = l.hpMax; ch.atualizar(0.05, j); if (golpe[golpe.length - 1] !== ch.anim.base) golpe.push(ch.anim.base); }
+    ch.estado = 'exausto'; ch.t = 0; ch.exposto = 9; ch.hp = ch.hpMax; ch.perigos = [];
+    ch.receberGolpe(j, 1, ch.x - 30, ch.y, 50);
+    const dano = ch.anim.base;
+    ch.hp = 1; ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50); ch.atualizar(0.05, j);
+    return { antes, vistos, golpe, dano, morte: [ch.estado, ch.anim.base], arte: ['HIT', 'DEATH'].map((n) => LB.chefes.temArte(ch, n)) };
+  });
+  igual(a.antes, 'COLOSSO_SLEEP', 'antes da luta o Colosso dorme');
+  afirmar(a.vistos.indexOf('COLOSSO_WAKE') >= 0 && a.vistos.indexOf('COLOSSO_IDLE') > a.vistos.indexOf('COLOSSO_WAKE'), 'acorda com o rugido (item 306) e fica parado (item 305): ' + JSON.stringify(a.vistos));
+  igual(a.golpe, ['COLOSSO_ROOTS', 'COLOSSO_IDLE'], 'raízes com a arte própria (item 308) e depois parado');
+  igual([a.dano, a.morte, a.arte], ['COLOSSO_HIT', ['morrendo', 'COLOSSO_DEATH'], [true, true]], 'pisca com o dano (313) e se desfaz em luz na derrota (314)');
+
+  // Colosso libertado (item 315) aparece nas cores verdadeiras na cena da vitória e some no fim.
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  const f = await h.ev(async () => {
+    const j = LB.jogo, ch = j.chefeArena;
+    ch.dormindo = false; ch.estado = 'exausto'; ch.hp = 1; ch.receberGolpe(j, 3, ch.x - 30, ch.y, 50);
+    for (let i = 0; i < 200 && !j.cena; i++) await new Promise((ok) => setTimeout(ok, 30));
+    let livre = null;
+    for (let i = 0; i < 800 && j.cena; i++) { if (j.guardiao && !livre) livre = j.guardiao.anim.base; LB.dialogo.clicou = true; await new Promise((ok) => setTimeout(ok, 30)); }
+    return { livre, depois: j.guardiao, flag: !!j.flags.chefeTerra };
+  });
+  igual([f.flag, f.livre, f.depois], [true, 'COLOSSO_FREED', null], 'Colosso vencido e libertado: aparece agradecendo e some');
+
+  // Serpente dorme com a arte do item 316.
+  await h.area('lago', Object.assign({ visto_lago: true, chefeTerra: true, fusaoMagma: true }, P2));
+  const sd = await h.ev(() => { const ch = LB.jogo.chefeArena, r = LB.resolver(ch.anim.base, null, ch.lado); return [ch.anim.base, r.codigo, !r.via]; });
+  igual(sd, ['SERPENTE_SLEEP', 'SERPENTE_SLEEP', true], 'a Serpente dorme com a arte do item 316');
+
+  // Tempestade: cada golpe com a arte própria, uma vez, e volta à pose parada.
+  await h.area('tempestade', Object.assign({ visto_tempestade: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true }, P2));
+  const tp = await h.ev(() => {
+    const j = LB.jogo, ch = j.chefeArena, l = j.line, vistos = {};
+    const dorme = ch.anim.base;
+    ch.acordar(j); ch.atualizar(0.05, j);
+    for (const atq of ['raios', 'rajada', 'jatos', 'onda', 'penas']) {
+      ch.anim.tocar('TEMPESTADE_IDLE', true);
+      ch.escolherAtaque(j); ch.ataque = atq; ch.estado = 'atacar'; ch.intocavel = false; ch.duracaoAtaque = 9; ch.t = 0; ch.golpeAcabou = false; ch.feito = {}; ch.perigos = [];
+      vistos[atq] = [];
+      for (let i = 0; i < 60; i++) { l.hp = l.hpMax; ch.atualizar(0.05, j); if (vistos[atq][vistos[atq].length - 1] !== ch.anim.base) vistos[atq].push(ch.anim.base); }
+    }
+    ch.estado = 'exausto'; ch.t = 0; ch.exposto = 9; ch.hp = ch.hpMax; ch.perigos = []; ch.atualizar(0.05, j);
+    const cansada = ch.anim.base; ch.receberGolpe(j, 1, ch.x - 30, ch.y, 50);
+    return { dorme, vistos, cansada, dano: ch.anim.base };
+  });
+  igual(tp.dorme, 'TEMPESTADE_SLEEP', 'a Tempestade dorme antes da luta');
+  const arteT = { raios: 'LIGHTNING', rajada: 'GUST', jatos: 'WATER_JET', onda: 'WAVE', penas: 'FEATHERS' };
+  for (const [atq, arte] of Object.entries(arteT)) igual(tp.vistos[atq], ['TEMPESTADE_' + arte, 'TEMPESTADE_IDLE'], `${atq}: arte própria e depois parada`);
+  igual([tp.cansada, tp.dano], ['TEMPESTADE_STUNNED', 'TEMPESTADE_HIT'], 'cansada pousa com a arte própria e pisca com o dano');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {

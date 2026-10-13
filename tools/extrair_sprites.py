@@ -293,6 +293,33 @@ def limpar_sobras(im, retangulos):
 # e o raio vai sumindo aos poucos até essa linha: fica o Grifo chamando os raios.
 RAIOS_SOLTOS = {"GRIFO_LIGHTNING": (333, 1046)}
 
+# A Tempestade chamando raios (item 365) traz o raio e o círculo de aviso embaixo da nuvem: no jogo eles
+# caem onde a heroína está. Da linha `corte` para baixo sai o que é raio, anel e faísca (a chuva fica);
+# o raio some aos poucos até a linha, e sobra a nuvem chamando os raios.
+RAIOS_DA_NUVEM = {"TEMPESTADE_LIGHTNING": (365, 975)}
+
+
+def tirar_raios_da_nuvem(im, corte, faixa=40):
+    import numpy as np
+    from scipy import ndimage
+    a = np.asarray(im.convert("RGBA")).copy().astype(int)
+    r, g, b, al = (a[..., k] for k in range(4))
+    claro = (al > 0) & ((((b > 140) & (r > 80) & (g < 190) & (b - r > 20) & (g > 80))) | ((r > 190) & (g > 190) & (b > 190)))
+    claro[:corte - faixa] = False
+    ys = np.arange(a.shape[0])[:, None] * np.ones((1, a.shape[1]))
+    k = np.clip((corte - ys) / faixa, 0, 1)
+    forte = ndimage.binary_dilation(claro & (ys >= corte), iterations=5) & (al > 0)
+    novo = np.where(claro & (ys < corte), (al * k).astype(int), al)
+    novo = np.where(forte, 0, novo)
+    # Restos soltos inteiros abaixo da linha (faíscas do raio e do anel); a chuva sai de cima da linha.
+    rot, n = ndimage.label(novo > 0, structure=np.ones((3, 3)))
+    for i in range(1, n + 1):
+        m = rot == i
+        if np.nonzero(m.any(1))[0].min() >= corte - 4:
+            novo[m] = 0
+    a[..., 3] = novo
+    return Image.fromarray(a.astype(np.uint8), "RGBA")
+
 
 def tirar_raios(im, chao, faixa=110, x0=780):
     import numpy as np
@@ -342,6 +369,10 @@ def processar(codigo, dados, origem):
     if item_sobras == numero_item(origem):
         celulas = [limpar_sobras(decodificar(u), sobras.get(i, [])).resize((lado, lado), Image.LANCZOS) for i, u in enumerate(unicos)]
         print(f"  sobras tiradas dos quadros {sorted(sobras)} (estrela que volta pelo outro lado, traços no topo)")
+    item_nuvem, corte_nuvem = RAIOS_DA_NUVEM.get(codigo, (None, None))
+    if item_nuvem == numero_item(origem):
+        celulas = [tirar_raios_da_nuvem(decodificar(u), corte_nuvem).resize((lado, lado), Image.LANCZOS) for u in unicos]
+        print("  raio e círculo de aviso de baixo da nuvem tirados (os raios do jogo caem na heroína)")
     item_raios, chao_raios = RAIOS_SOLTOS.get(codigo, (None, None))
     if item_raios == numero_item(origem):
         celulas = [tirar_raios(decodificar(u), chao_raios).resize((lado, lado), Image.LANCZOS) for u in unicos]

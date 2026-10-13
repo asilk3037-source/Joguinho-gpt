@@ -342,21 +342,21 @@ window.LB = window.LB || {};
 
   grupo('Chefe: Colosso de Raízes (Parte 2)', [
     ['COLOSSO_SLEEP', 'Colosso de Raízes — dormindo (antes da luta) (item 304)', { loop: true, fps: 4, quadros: 8, alt: 'COLOSSO_IDLE', parte2: true }],
-    ['COLOSSO_IDLE', 'Colosso de Raízes — parado, respirando', { loop: true, fps: 8, quadros: 8, parte2: true }],
-    ['COLOSSO_WAKE', 'Colosso de Raízes — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'COLOSSO_IDLE', parte2: true }],
-    ['COLOSSO_ATTACK', 'Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'COLOSSO_IDLE', parte2: true }],
-    ['COLOSSO_ROOTS', 'Colosso de Raízes — raízes saindo do chão em linha', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
+    ['COLOSSO_IDLE', 'Colosso de Raízes — parado, respirando (item 305)', { loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['COLOSSO_WAKE', 'Colosso de Raízes — acordando / rugido de apresentação (item 306)', { fps: 10, quadros: 12, alt: 'COLOSSO_IDLE', parte2: true }],
+    ['COLOSSO_ATTACK', 'Colosso de Raízes — ataque genérico (usado quando o golpe não tem arte própria) (item 307)', { fps: 10, quadros: 10, alt: 'COLOSSO_IDLE', parte2: true }],
+    ['COLOSSO_ROOTS', 'Colosso de Raízes — raízes saindo do chão em linha (item 308)', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
     ['COLOSSO_THORNS', 'Colosso de Raízes — anel de espinhos', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
     ['COLOSSO_MUD', 'Colosso de Raízes — cuspe de lama', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
     ['COLOSSO_SUMMON', 'Colosso de Raízes — chama sombras', { fps: 10, quadros: 10, alt: 'COLOSSO_ATTACK', parte2: true }],
     ['COLOSSO_STUNNED', 'Colosso de Raízes — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'COLOSSO_IDLE', parte2: true }],
-    ['COLOSSO_HIT', 'Colosso de Raízes — recebe dano', { fps: 12, quadros: 4, alt: 'COLOSSO_STUNNED', parte2: true }],
-    ['COLOSSO_DEATH', 'Colosso de Raízes — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'COLOSSO_STUNNED', parte2: true }],
-    ['COLOSSO_FREED', 'Colosso de Raízes — libertado, volta às cores verdadeiras e agradece', { loop: true, fps: 6, quadros: 12, alt: 'COLOSSO_IDLE', parte2: true }],
+    ['COLOSSO_HIT', 'Colosso de Raízes — recebe dano (item 313)', { fps: 12, quadros: 4, alt: 'COLOSSO_STUNNED', parte2: true }],
+    ['COLOSSO_DEATH', 'Colosso de Raízes — derrotado (se desfaz em luz) (item 314)', { fps: 8, quadros: 14, alt: 'COLOSSO_STUNNED', parte2: true }],
+    ['COLOSSO_FREED', 'Colosso de Raízes — libertado, volta às cores verdadeiras e agradece (item 315)', { loop: true, fps: 6, quadros: 12, alt: 'COLOSSO_IDLE', parte2: true }],
   ]);
 
   grupo('Chefe: Serpente das Marés (Parte 2)', [
-    ['SERPENTE_SLEEP', 'Serpente das Marés — dormindo (antes da luta)', { loop: true, fps: 4, quadros: 8, alt: 'SERPENTE_IDLE', parte2: true }],
+    ['SERPENTE_SLEEP', 'Serpente das Marés — dormindo (antes da luta) (item 316)', { loop: true, fps: 4, quadros: 8, alt: 'SERPENTE_IDLE', parte2: true }],
     ['SERPENTE_IDLE', 'Serpente das Marés — parado, respirando (item 317)', { loop: true, fps: 8, quadros: 8, parte2: true }],
     ['SERPENTE_WAKE', 'Serpente das Marés — acordando / rugido de apresentação (item 318)', { fps: 10, quadros: 12, alt: 'SERPENTE_IDLE', parte2: true }],
     ['SERPENTE_ATTACK', 'Serpente das Marés — ataque genérico (usado quando o golpe não tem arte própria) (item 319)', { fps: 10, quadros: 10, alt: 'SERPENTE_IDLE', parte2: true }],
@@ -413,17 +413,17 @@ window.LB = window.LB || {};
   ]);
 
   grupo('Chefe: Tempestade Viva (Parte 2)', [
-    ['TEMPESTADE_SLEEP', 'Tempestade Viva — dormindo (antes da luta) (item 361)', { loop: true, fps: 4, quadros: 8, alt: 'TEMPESTADE_IDLE', parte2: true }],
-    ['TEMPESTADE_IDLE', 'Tempestade Viva — parado, respirando (item 362)', { loop: true, fps: 8, quadros: 8, parte2: true }],
-    ['TEMPESTADE_WAKE', 'Tempestade Viva — acordando / rugido de apresentação', { fps: 10, quadros: 12, alt: 'TEMPESTADE_IDLE', parte2: true }],
-    ['TEMPESTADE_ATTACK', 'Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria)', { fps: 10, quadros: 10, alt: 'TEMPESTADE_IDLE', parte2: true }],
-    ['TEMPESTADE_LIGHTNING', 'Tempestade Viva — chama raios', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
-    ['TEMPESTADE_GUST', 'Tempestade Viva — rajada de vento', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
-    ['TEMPESTADE_WATER_JET', 'Tempestade Viva — jatos de água', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
-    ['TEMPESTADE_WAVE', 'Tempestade Viva — onda', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
-    ['TEMPESTADE_FEATHERS', 'Tempestade Viva — leque de penas', { fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
-    ['TEMPESTADE_STUNNED', 'Tempestade Viva — cansado, núcleo exposto (hora de atacar)', { loop: true, fps: 6, quadros: 8, alt: 'TEMPESTADE_IDLE', parte2: true }],
-    ['TEMPESTADE_HIT', 'Tempestade Viva — recebe dano', { fps: 12, quadros: 4, alt: 'TEMPESTADE_STUNNED', parte2: true }],
+    ['TEMPESTADE_SLEEP', 'Tempestade Viva — dormindo (antes da luta) (item 361)', { chao: 379, loop: true, fps: 4, quadros: 8, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_IDLE', 'Tempestade Viva — parado, respirando (item 362)', { chao: 397, loop: true, fps: 8, quadros: 8, parte2: true }],
+    ['TEMPESTADE_WAKE', 'Tempestade Viva — acordando / rugido de apresentação (item 363)', { chao: 382, fps: 10, quadros: 12, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_ATTACK', 'Tempestade Viva — ataque genérico (usado quando o golpe não tem arte própria) (item 364)', { chao: 378, fps: 10, quadros: 10, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_LIGHTNING', 'Tempestade Viva — chama raios (item 365)', { chao: 378, fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_GUST', 'Tempestade Viva — rajada de vento (item 366)', { chao: 397, fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_WATER_JET', 'Tempestade Viva — jatos de água (item 367)', { chao: 397, fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_WAVE', 'Tempestade Viva — onda (item 368)', { chao: 397, fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_FEATHERS', 'Tempestade Viva — leque de penas (item 369)', { chao: 397, fps: 10, quadros: 10, alt: 'TEMPESTADE_ATTACK', parte2: true }],
+    ['TEMPESTADE_STUNNED', 'Tempestade Viva — cansado, núcleo exposto (hora de atacar) (item 370)', { loop: true, fps: 6, quadros: 8, alt: 'TEMPESTADE_IDLE', parte2: true }],
+    ['TEMPESTADE_HIT', 'Tempestade Viva — recebe dano (item 371)', { fps: 12, quadros: 4, alt: 'TEMPESTADE_STUNNED', parte2: true }],
     ['TEMPESTADE_DEATH', 'Tempestade Viva — derrotado (se desfaz em luz)', { fps: 8, quadros: 14, alt: 'TEMPESTADE_STUNNED', parte2: true }],
   ]);
 
