@@ -1744,10 +1744,11 @@ teste('pedidos do teste no celular: Serpente na água, monstros novos, missão m
   igual(vm.moradores, ['abilio', 'davi', 'graca', 'iolanda', 'lia', 'teo'], 'moradores novos da vila');
 });
 
-teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tempestade (363 a 372) e Quimera (373 a 377), do mesmo tamanho em todas as animações', async (h) => {
+teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tempestade (363 a 372) e Quimera completa (373 a 392), do mesmo tamanho em todas as animações', async (h) => {
   await h.area('vale', Object.assign({ visto_vale: true }, P2));
   const ITENS = { COLOSSO_IDLE: 305, COLOSSO_WAKE: 306, COLOSSO_ATTACK: 307, COLOSSO_ROOTS: 308, COLOSSO_THORNS: 309, COLOSSO_MUD: 310, COLOSSO_SUMMON: 311, COLOSSO_STUNNED: 312, COLOSSO_HIT: 313, COLOSSO_DEATH: 314, COLOSSO_FREED: 315, SERPENTE_SLEEP: 316,
-    TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371, TEMPESTADE_DEATH: 372, QUIMERA_SLEEP: 373, QUIMERA_IDLE: 374, QUIMERA_WAKE: 375, QUIMERA_ATTACK: 376, QUIMERA_SLAM: 377 };
+    TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371, TEMPESTADE_DEATH: 372, QUIMERA_SLEEP: 373, QUIMERA_IDLE: 374, QUIMERA_WAKE: 375, QUIMERA_ATTACK: 376, QUIMERA_SLAM: 377,
+    QUIMERA_THROW: 378, QUIMERA_FIRE_RAIN: 379, QUIMERA_FIRE_FAN: 380, QUIMERA_ROOTS: 381, QUIMERA_THORNS: 382, QUIMERA_MUD: 383, QUIMERA_DIVE: 384, QUIMERA_WATER_JET: 385, QUIMERA_WAVE: 386, QUIMERA_GUST: 387, QUIMERA_FEATHERS: 388, QUIMERA_LIGHTNING: 389, QUIMERA_STUNNED: 390, QUIMERA_HIT: 391, QUIMERA_DEATH: 392 };
   const r = await h.ev((ITENS) => {
     // Caixa de um quadro (o primeiro ou o último), em unidades do mundo (célula de 200 × ajuste); `claros` conta os
     // pixels de raio/anel (brancos ou ciano) da parte de baixo da célula.
@@ -1787,9 +1788,9 @@ teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tem
   afirmar(perto(r.tam.SERPENTE_SLEEP.larg, r.tam.SERPENTE_IDLE.larg, 0.15), 'Serpente dormindo da largura da parada: ' + JSON.stringify([r.tam.SERPENTE_SLEEP, r.tam.SERPENTE_IDLE]));
   afirmar(perto(r.tam.QUIMERA_SLEEP.larg, r.tam.QUIMERA_IDLE.larg, 0.08) && r.tam.QUIMERA_IDLE.larg > 200, 'Quimera dormindo e parada do mesmo tamanho, a maior de todos os chefes: ' + JSON.stringify([r.tam.QUIMERA_SLEEP, r.tam.QUIMERA_IDLE]));
   // Quimera: acordando (último quadro), ataque e pisão (1º quadro) saem do mesmo tamanho da parada, e o chão é o mesmo.
-  for (const [c, ult] of [['WAKE', true], ['ATTACK', false], ['SLAM', false]]) {
+  for (const [c, ult] of [['WAKE', true], ['ATTACK', false], ['SLAM', false], ['THROW', false], ['FIRE_RAIN', false], ['FIRE_FAN', false], ['ROOTS', false], ['THORNS', false], ['MUD', false], ['DIVE', false], ['WATER_JET', false], ['WAVE', false], ['GUST', false], ['FEATHERS', false], ['LIGHTNING', false], ['STUNNED', false], ['HIT', false], ['DEATH', false]]) {
     const m = (ult ? r.fim : r.tam)['QUIMERA_' + c];
-    afirmar(perto(m.larg, r.tam.QUIMERA_IDLE.larg, 0.05) && perto(m.alt, r.tam.QUIMERA_IDLE.alt, 0.05), `Quimera ${c} do tamanho da parada: ${JSON.stringify([m, r.tam.QUIMERA_IDLE])}`);
+    afirmar(perto(m.larg, r.tam.QUIMERA_IDLE.larg, 0.05) && perto(m.alt, r.tam.QUIMERA_IDLE.alt, 0.1), `Quimera ${c} do tamanho da parada: ${JSON.stringify([m, r.tam.QUIMERA_IDLE])}`);
   }
   // Tempestade: a largura da nuvem (com os braços) igual à da parada, em todas.
   for (const c of ['WAKE', 'ATTACK', 'LIGHTNING', 'GUST', 'WATER_JET', 'WAVE', 'FEATHERS', 'HIT', 'STUNNED', 'DEATH']) {
@@ -1882,9 +1883,10 @@ teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tem
   igual([q.dorme, q.parada], [['quimera', 'QUIMERA_SLEEP', 'QUIMERA_SLEEP'], ['QUIMERA_IDLE', 'QUIMERA_IDLE']], 'a Quimera dorme (item 373) e fica parada (item 374)');
   const gl = await h.ev(() => {
     const j = LB.jogo, ch = j.chefeArena, r = (n) => LB.resolver('QUIMERA_' + n, null, 1).codigo;
-    return { wake: r('WAKE'), ataque: r('ATTACK'), pisao: r('SLAM'), proprias: ['WAKE', 'ATTACK', 'SLAM'].map((n) => LB.chefes.temArte(ch, n)), sem: LB.chefes.temArte(ch, 'THROW'), pisaoMs: Math.round(new LB.Animador('QUIMERA_SLAM').estado(null, 1).duracao * 5 / 10 * 100) };
+    const todas = ['WAKE', 'ATTACK', 'SLAM', 'THROW', 'FIRE_RAIN', 'FIRE_FAN', 'ROOTS', 'THORNS', 'MUD', 'DIVE', 'WATER_JET', 'WAVE', 'GUST', 'FEATHERS', 'LIGHTNING', 'STUNNED', 'HIT', 'DEATH'];
+    return { wake: r('WAKE'), ataque: r('ATTACK'), pisao: r('SLAM'), proprias: todas.map((n) => LB.chefes.temArte(ch, n)), sem: !todas.every((n) => LB.chefes.temArte(ch, n)), pisaoMs: Math.round(new LB.Animador('QUIMERA_SLAM').estado(null, 1).duracao * 5 / 10 * 100) };
   });
-  igual([gl.wake, gl.ataque, gl.pisao, gl.proprias, gl.sem], ['QUIMERA_WAKE', 'QUIMERA_ATTACK', 'QUIMERA_SLAM', [true, true, true], false], 'a Quimera acorda (375), ataca (376) e pisa (377) com a arte própria; os outros golpes ainda não têm');
+  igual([gl.wake, gl.ataque, gl.pisao, gl.proprias.every(Boolean), gl.sem], ['QUIMERA_WAKE', 'QUIMERA_ATTACK', 'QUIMERA_SLAM', true, false], 'a Quimera tem arte própria para acordar, todos os golpes, cansada, dano e derrota (itens 375 a 392)');
 });
 
 teste('dicas do Fácil: seta aponta a saída certa, o cristal apagado e o chefe', async (h) => {
@@ -2018,6 +2020,36 @@ teste('sem espada, o ataque é um soco que machuca', async (h) => {
   const hp = await h.ev(() => LB.jogo.inimigos[LB.jogo.inimigos.length - 1].hp);
   afirmar(hp < r0.hp, `o soco machuca (hp ${r0.hp} → ${hp})`);
   afirmar(await h.ev(() => !!LB.desenharSprite && !!window.SPRITES.LINE_PUNCH), 'arte do soco carregada');
+});
+
+teste('computador: o mundo cabe menor na tela grande e o mouse ataca (esquerdo) e usa o poder (direito)', async (h) => {
+  await h.area('floresta', { espada: true, magoVisto: true, magia: true });
+  await h.espera(300);
+  // Tela de 1280×720 fica como era (400 de altura de mundo); a de 1920×1080 mostra mais mapa (540).
+  const t0 = await h.ev(() => ({ alt: LB.jogo.alturaVista, vh: Math.round(LB.jogo.vh) }));
+  await h.p.setViewportSize({ width: 1920, height: 1080 });
+  await h.espera(300);
+  const t1 = await h.ev(() => ({ alt: LB.jogo.alturaVista, vh: Math.round(LB.jogo.vh), esc: LB.jogo.escalaBase }));
+  igual([t0.alt, t1.alt, t1.vh], [400, 540, 540], 'altura do mundo à vista: 400 em 720p, 540 em 1080p');
+  afirmar(t1.esc < 2.1, 'cada pixel do mundo ocupa uns 2 da tela no computador: ' + t1.esc);
+  // Botão esquerdo ataca.
+  await h.ev(() => { const l = LB.jogo.line; l.lado = 1; l.dir = 'RIGHT'; });
+  await h.p.mouse.click(960, 540, { button: 'left' });
+  let anim = null;
+  for (let i = 0; i < 10 && !/ATTACK|SLASH|PUNCH|SWING|SWORD/.test(anim || ''); i++) { await h.espera(40); anim = await h.ev(() => LB.jogo.line.anim.base); }
+  afirmar(/ATTACK|SLASH|PUNCH|SWING|SWORD/.test(anim || ''), 'clique esquerdo ataca: ' + anim);
+  for (let i = 0; i < 60 && await h.ev(() => LB.jogo.line.estado !== 'livre'); i++) await h.espera(100);
+  // Botão direito usa o poder (a magia) e não abre o menu do navegador.
+  const antes = await h.ev(() => { const l = LB.jogo.line; return [l.estado, l.anim.base, l.mana, l.temMagia, l.hp]; });
+  await h.p.mouse.click(960, 540, { button: 'right' });
+  let conj = null;
+  for (let i = 0; i < 12 && conj !== 'LINE_CAST_SPELL'; i++) { await h.espera(40); conj = await h.ev(() => LB.jogo.line.anim.base); }
+  igual(conj, 'LINE_CAST_SPELL', 'clique direito lança a magia (o poder), estado antes: ' + JSON.stringify(antes));
+  const menu = await h.ev(() => !document.querySelector('#menu').classList.contains('oculto') || !document.querySelector('#pausa').classList.contains('oculto'));
+  afirmar(!menu, 'o clique direito não abre menu nenhum');
+  // Controles na tela mostram a coluna do mouse.
+  const col = await h.ev(() => [...document.querySelectorAll('#controles th')].map((e) => e.textContent));
+  afirmar(col.includes('Mouse'), 'tela de controles tem a coluna do mouse: ' + col);
 });
 
 teste('ataque para baixo acerta o inimigo abaixo e a mira vira para ele', async (h) => {

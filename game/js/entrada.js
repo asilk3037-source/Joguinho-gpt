@@ -43,6 +43,34 @@
   });
   window.addEventListener('blur', () => segurando.clear());
 
+  // Mouse (computador): botão esquerdo ataca (segurar faz o giro, como o ⚔ do celular) e o direito usa o poder
+  // (a magia; segurar e soltar faz a Chuva de Estrelas, como a tecla Q). Só vale clicando no jogo, não nos menus.
+  function ligarMouse() {
+    const tela = document.getElementById('tela');
+    if (!tela) return;
+    let timer = null;
+    const PARA_ACAO = { 0: 'atacar', 2: 'magia' };
+    tela.addEventListener('contextmenu', (e) => e.preventDefault());
+    tela.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      modoToque = false;
+      const acao = PARA_ACAO[e.button];
+      if (!acao) return;
+      e.preventDefault();
+      apertar(acao);
+      if (acao === 'atacar') { clearTimeout(timer); timer = setTimeout(() => { apertar('especial'); setTimeout(() => segurando.delete('especial'), 60); }, 450); }
+    });
+    const soltar = (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const acao = PARA_ACAO[e.button];
+      if (acao) segurando.delete(acao);
+      if (acao === 'atacar') clearTimeout(timer);
+    };
+    window.addEventListener('pointerup', soltar);
+    tela.addEventListener('pointerleave', () => { clearTimeout(timer); segurando.delete('atacar'); segurando.delete('magia'); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ligarMouse); else ligarMouse();
+
   function ligarToque() {
     const area = document.getElementById('joystick');
     const base = document.getElementById('joystick-base');

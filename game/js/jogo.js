@@ -4,6 +4,8 @@
   const TILE = LB.TILE;
   const T = (n) => n * TILE;
   const ALTURA_VISTA = 400;
+  // Computador: cada pixel do mundo ocupa uns 2 da tela (em telas grandes), com no máximo 720 de altura de mundo à vista.
+  const ESCALA_PC = 2, ALTURA_VISTA_PC_MAX = 720;
   // A Bell levada pelo dragão fica pendurada nas garras: os pés tantas unidades abaixo da altura do voo.
   const PENDURADA = 48;
   const CHAVE_SAVE = 'lineBell.save.v1';
@@ -48,7 +50,11 @@
       const w = window.innerWidth, h = window.innerHeight;
       this.canvas.width = Math.round(w * dpr); this.canvas.height = Math.round(h * dpr);
       this.canvas.style.width = w + 'px'; this.canvas.style.height = h + 'px';
-      this.escalaBase = Math.min(h / ALTURA_VISTA, w / 400) * dpr;
+      // No computador (mouse e tela grande) o mundo aparece menor e mostra mais mapa; no celular e no tablet fica como era.
+      const pc = !!(window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+      const alturaVista = pc ? Math.min(ALTURA_VISTA_PC_MAX, Math.max(ALTURA_VISTA, h / ESCALA_PC)) : ALTURA_VISTA;
+      this.alturaVista = alturaVista;
+      this.escalaBase = Math.min(h / alturaVista, w / 400) * dpr;
       this.aplicarZoom();
     }
 
