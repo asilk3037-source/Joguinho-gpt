@@ -448,14 +448,14 @@ window.LB = window.LB || {};
     ['QUIMERA_STUNNED', 'Quimera Primordial — cansado, núcleo exposto (hora de atacar) (item 390)', { chao: 425, loop: true, fps: 6, quadros: 8, alt: 'QUIMERA_IDLE', parte2: true }],
     ['QUIMERA_HIT', 'Quimera Primordial — recebe dano (item 391)', { chao: 425, fps: 12, quadros: 4, alt: 'QUIMERA_STUNNED', parte2: true }],
     ['QUIMERA_DEATH', 'Quimera Primordial — derrotado (se desfaz em luz) (item 392)', { chao: 425, fps: 8, quadros: 14, alt: 'QUIMERA_STUNNED', parte2: true }],
-    ['QUIMERA_PHASE', 'Quimera — muda de fase (troca a cor do núcleo e o elemento)', { fps: 10, quadros: 12, alt: 'QUIMERA_WAKE', parte2: true }],
-    ['QUIMERA_CALM', 'Quimera — acalmada no final (“é... quente”)', { loop: true, fps: 4, quadros: 8, alt: 'QUIMERA_STUNNED', parte2: true }],
+    ['QUIMERA_PHASE', 'Quimera — muda de fase (troca a cor do núcleo e o elemento) (item 393)', { chao: 425, fps: 10, quadros: 12, alt: 'QUIMERA_WAKE', parte2: true }],
+    ['QUIMERA_CALM', 'Quimera — acalmada no final (“é... quente”) (item 394)', { loop: true, fps: 4, quadros: 8, alt: 'QUIMERA_STUNNED', parte2: true }],
   ]);
 
   grupo('Fogos-fátuos dos elementos (Parte 2)', [
-    ['WISP_EARTH_IDLE', 'Fogo-fátuo de terra (verde-musgo) — flutuando', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
-    ['WISP_EARTH_ATTACK', 'Fogo-fátuo de terra (verde-musgo) — atirando', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
-    ['WISP_EARTH_DEATH', 'Fogo-fátuo de terra (verde-musgo) — apagando', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
+    ['WISP_EARTH_IDLE', 'Fogo-fátuo de terra (verde-musgo) — flutuando (item 395)', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
+    ['WISP_EARTH_ATTACK', 'Fogo-fátuo de terra (verde-musgo) — atirando (item 396)', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
+    ['WISP_EARTH_DEATH', 'Fogo-fátuo de terra (verde-musgo) — apagando (item 397)', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
     ['WISP_WATER_IDLE', 'Fogo-fátuo de água (azul) — flutuando', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
     ['WISP_WATER_ATTACK', 'Fogo-fátuo de água (azul) — atirando', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
     ['WISP_WATER_DEATH', 'Fogo-fátuo de água (azul) — apagando', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],

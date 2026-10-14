@@ -14203,6 +14203,170 @@ window.SPRITES = {
   "label": "Quimera — derrotado (se desfaz em luz)",
   "item": "LINE_BELL_ITEM_392.html",
   "ajuste": 1.3
+ },
+ "QUIMERA_PHASE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/QUIMERA_PHASE.webp",
+  "cell": 448,
+  "count": 12,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "ground": 425,
+  "groundEnd": 426,
+  "bases": [
+   425,
+   428,
+   428,
+   428,
+   428,
+   427,
+   428,
+   428,
+   427,
+   426,
+   426,
+   426
+  ],
+  "label": "Quimera — mudança de fase",
+  "item": "LINE_BELL_ITEM_393.html",
+  "ajuste": 1.3
+ },
+ "QUIMERA_CALM": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/QUIMERA_CALM.webp",
+  "cell": 448,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 418,
+  "groundEnd": 418,
+  "bases": [
+   418,
+   417,
+   417,
+   419,
+   419,
+   420,
+   418,
+   418
+  ],
+  "label": "Quimera — acalmada no final",
+  "item": "LINE_BELL_ITEM_394.html",
+  "ajuste": 1.3
+ },
+ "WISP_EARTH_IDLE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_EARTH_IDLE.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 224,
+  "groundEnd": 226,
+  "bases": [
+   224,
+   223,
+   223,
+   223,
+   226,
+   226,
+   229,
+   226
+  ],
+  "label": "Fogo-fátuo de terra — flutuando",
+  "item": "LINE_BELL_ITEM_395.html"
+ },
+ "WISP_EARTH_ATTACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_EARTH_ATTACK.webp",
+  "cell": 256,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   0
+  ],
+  "ground": 224,
+  "groundEnd": 224,
+  "bases": [
+   224,
+   226,
+   226,
+   224,
+   224,
+   223,
+   225
+  ],
+  "label": "Fogo-fátuo de terra — atirando torrão",
+  "item": "LINE_BELL_ITEM_396.html"
+ },
+ "WISP_EARTH_DEATH": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_EARTH_DEATH.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 224,
+  "groundEnd": 256,
+  "bases": [
+   224,
+   224,
+   234,
+   241,
+   229,
+   227,
+   247,
+   256
+  ],
+  "label": "Fogo-fátuo de terra — apagando",
+  "item": "LINE_BELL_ITEM_397.html"
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

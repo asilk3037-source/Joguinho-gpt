@@ -266,6 +266,9 @@
     j.flashTela = 0.6; j.tremer(8, 1);
     const cores = [['Pedra', '#8a877b'], ['Fogo', '#e0503a'], ['Terra', '#6d8f3a'], ['Água', '#3f8fd6'], ['Ar', '#dfe8f0']];
     for (const [, cor] of cores) { j.particulas.emitir('brilho', e.x, e.y - 70, 14, { vel: 200, vida: 1.2, r: 6, cor }); yield c.espera(0.35); }
+    // Com a arte da Quimera acalmada, ela reaparece pequena e quieta no lugar onde se desfez em luz.
+    const calma = LB.chefes.acalmar(j, e);
+    if (calma) for (let i = 1; i <= 8; i++) { calma.alfa = i / 8; yield c.espera(0.1); }
     yield c.fala('Quimera', 'Não... não levem... eu só... queria... não ficar sozinha...');
     const bell = j.criarBell(line.x / LB.TILE + 1.1, line.y / LB.TILE, 'LEFT');
     if (j.companheira) { bell.x = j.companheira.x; bell.y = j.companheira.y; j.companheira.visivel = false; }
@@ -277,6 +280,7 @@
     for (let i = 0; i < 6; i++) { j.particulas.emitir('brilho', e.x, e.y - 60, 3, { vel: 30, vz: -20, vida: 1.4, r: 4 }); yield c.espera(0.2); }
     yield c.fala('Quimera', '...quente. É... quente.');
     yield c.escurecer(1, 1.6);
+    j.guardiao = null;
     // Epílogo: pôr do sol na fazenda, com o dragão e os guardiões no céu.
     j.epilogo();
     const dr = j.criarDragaoCena(j.duo.x + 180, j.duo.y - 20, 0);

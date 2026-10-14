@@ -197,6 +197,7 @@
       this.encantado = Math.max(0, (this.encantado || 0) - dt);
       this.dor = Math.max(0, this.dor - dt);
       this.anim.atualizar(dt);
+      if (this.animCena === 'PHASE' && this.anim.estado(null, this.lado).acabou) this.animCena = null;
       if (this.estado === 'atacar' && !this.animCena && this.anim.base === this.def.codigo + '_' + ANIM_ATAQUE[this.ataque] && this.anim.estado(null, this.lado).acabou) this.golpeAcabou = true;
       this.anim.tocar(this.def.codigo + '_' + this.animAtual());
       atualizarPerigos(this, j, dt);
@@ -391,6 +392,8 @@
       if (nova <= this.fase) return;
       this.fase = nova; this.cor = ELEM[this.elementosAtuais()[0]];
       this.estado = 'observar'; this.t = -1; this.cansaco = 0; this.perigos = [];
+      // Com a arte da mudança de fase, o núcleo troca de cor na frente do jogador antes de ela voltar a atacar.
+      if (this.animar('PHASE')) this.t = -1.5;
       j.tremer(10, 0.8); j.flashTela = 0.5;
       j.particulas.emitir('brilho', this.x, this.y - 60, 30, { vel: 160, vida: 1 });
       this.perigos.push({ tipo: 'anel', x: this.x, y: this.y, r: 30, vel: 180, max: 300, el: this.elementosAtuais()[0], dano: 1 });
@@ -644,6 +647,16 @@
     return e;
   }
 
+  // A Quimera acalmada no final (arte _CALM, pequena e quietinha): reaparece aos poucos onde ela se desfez em luz.
+  function acalmar(j, e) {
+    if (!e || !e.def || !e.anim || !temArte(e, 'CALM')) return null;
+    e.estado = 'libertado'; e.alfa = 0; e.flash = 0; e.dor = 0; e.alturaVoo = 0; e.perigos = []; e.intocavel = false;
+    e.lado = j.line && j.line.x < e.x ? -1 : 1;
+    e.animar('CALM');
+    j.guardiao = e;
+    return e;
+  }
+
   // ---------------- Colocar o chefe da área ----------------
   function prepararArea(j) {
     const d = j.mapa.def.chefe;
@@ -676,5 +689,5 @@
     g.strokeRect(T(x0), T(y0), T(x1 - x0 + 1), T(y1 - y0 + 1)); g.setLineDash([]);
   }
 
-  LB.chefes = { ELEM, CHEFES, POR_ELEMENTO, ANIM_ATAQUE, SAI_DO_MERGULHO, Chefe, temArte, quadroMergulho, libertar, prepararArea, atualizarArena, desenharArena };
+  LB.chefes = { ELEM, CHEFES, POR_ELEMENTO, ANIM_ATAQUE, SAI_DO_MERGULHO, Chefe, temArte, quadroMergulho, libertar, acalmar, prepararArea, atualizarArena, desenharArena };
 })(window.LB);

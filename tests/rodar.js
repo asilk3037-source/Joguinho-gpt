@@ -1744,11 +1744,11 @@ teste('pedidos do teste no celular: Serpente na água, monstros novos, missão m
   igual(vm.moradores, ['abilio', 'davi', 'graca', 'iolanda', 'lia', 'teo'], 'moradores novos da vila');
 });
 
-teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tempestade (363 a 372) e Quimera completa (373 a 392), do mesmo tamanho em todas as animações', async (h) => {
+teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tempestade (363 a 372) e Quimera completa (373 a 394), do mesmo tamanho em todas as animações', async (h) => {
   await h.area('vale', Object.assign({ visto_vale: true }, P2));
   const ITENS = { COLOSSO_IDLE: 305, COLOSSO_WAKE: 306, COLOSSO_ATTACK: 307, COLOSSO_ROOTS: 308, COLOSSO_THORNS: 309, COLOSSO_MUD: 310, COLOSSO_SUMMON: 311, COLOSSO_STUNNED: 312, COLOSSO_HIT: 313, COLOSSO_DEATH: 314, COLOSSO_FREED: 315, SERPENTE_SLEEP: 316,
     TEMPESTADE_WAKE: 363, TEMPESTADE_ATTACK: 364, TEMPESTADE_LIGHTNING: 365, TEMPESTADE_GUST: 366, TEMPESTADE_WATER_JET: 367, TEMPESTADE_WAVE: 368, TEMPESTADE_FEATHERS: 369, TEMPESTADE_STUNNED: 370, TEMPESTADE_HIT: 371, TEMPESTADE_DEATH: 372, QUIMERA_SLEEP: 373, QUIMERA_IDLE: 374, QUIMERA_WAKE: 375, QUIMERA_ATTACK: 376, QUIMERA_SLAM: 377,
-    QUIMERA_THROW: 378, QUIMERA_FIRE_RAIN: 379, QUIMERA_FIRE_FAN: 380, QUIMERA_ROOTS: 381, QUIMERA_THORNS: 382, QUIMERA_MUD: 383, QUIMERA_DIVE: 384, QUIMERA_WATER_JET: 385, QUIMERA_WAVE: 386, QUIMERA_GUST: 387, QUIMERA_FEATHERS: 388, QUIMERA_LIGHTNING: 389, QUIMERA_STUNNED: 390, QUIMERA_HIT: 391, QUIMERA_DEATH: 392 };
+    QUIMERA_THROW: 378, QUIMERA_FIRE_RAIN: 379, QUIMERA_FIRE_FAN: 380, QUIMERA_ROOTS: 381, QUIMERA_THORNS: 382, QUIMERA_MUD: 383, QUIMERA_DIVE: 384, QUIMERA_WATER_JET: 385, QUIMERA_WAVE: 386, QUIMERA_GUST: 387, QUIMERA_FEATHERS: 388, QUIMERA_LIGHTNING: 389, QUIMERA_STUNNED: 390, QUIMERA_HIT: 391, QUIMERA_DEATH: 392, QUIMERA_PHASE: 393, QUIMERA_CALM: 394 };
   const r = await h.ev((ITENS) => {
     // Caixa de um quadro (o primeiro ou o último), em unidades do mundo (célula de 200 × ajuste); `claros` conta os
     // pixels de raio/anel (brancos ou ciano) da parte de baixo da célula.
@@ -1788,7 +1788,7 @@ teste('parte 2: Colosso completo (itens 305 a 315), Serpente dormindo (316), Tem
   afirmar(perto(r.tam.SERPENTE_SLEEP.larg, r.tam.SERPENTE_IDLE.larg, 0.15), 'Serpente dormindo da largura da parada: ' + JSON.stringify([r.tam.SERPENTE_SLEEP, r.tam.SERPENTE_IDLE]));
   afirmar(perto(r.tam.QUIMERA_SLEEP.larg, r.tam.QUIMERA_IDLE.larg, 0.08) && r.tam.QUIMERA_IDLE.larg > 200, 'Quimera dormindo e parada do mesmo tamanho, a maior de todos os chefes: ' + JSON.stringify([r.tam.QUIMERA_SLEEP, r.tam.QUIMERA_IDLE]));
   // Quimera: acordando (último quadro), ataque e pisão (1º quadro) saem do mesmo tamanho da parada, e o chão é o mesmo.
-  for (const [c, ult] of [['WAKE', true], ['ATTACK', false], ['SLAM', false], ['THROW', false], ['FIRE_RAIN', false], ['FIRE_FAN', false], ['ROOTS', false], ['THORNS', false], ['MUD', false], ['DIVE', false], ['WATER_JET', false], ['WAVE', false], ['GUST', false], ['FEATHERS', false], ['LIGHTNING', false], ['STUNNED', false], ['HIT', false], ['DEATH', false]]) {
+  for (const [c, ult] of [['WAKE', true], ['ATTACK', false], ['SLAM', false], ['THROW', false], ['FIRE_RAIN', false], ['FIRE_FAN', false], ['ROOTS', false], ['THORNS', false], ['MUD', false], ['DIVE', false], ['WATER_JET', false], ['WAVE', false], ['GUST', false], ['FEATHERS', false], ['LIGHTNING', false], ['STUNNED', false], ['HIT', false], ['DEATH', false], ['PHASE', false]]) {
     const m = (ult ? r.fim : r.tam)['QUIMERA_' + c];
     afirmar(perto(m.larg, r.tam.QUIMERA_IDLE.larg, 0.05) && perto(m.alt, r.tam.QUIMERA_IDLE.alt, 0.1), `Quimera ${c} do tamanho da parada: ${JSON.stringify([m, r.tam.QUIMERA_IDLE])}`);
   }
@@ -2020,6 +2020,37 @@ teste('sem espada, o ataque é um soco que machuca', async (h) => {
   const hp = await h.ev(() => LB.jogo.inimigos[LB.jogo.inimigos.length - 1].hp);
   afirmar(hp < r0.hp, `o soco machuca (hp ${r0.hp} → ${hp})`);
   afirmar(await h.ev(() => !!LB.desenharSprite && !!window.SPRITES.LINE_PUNCH), 'arte do soco carregada');
+});
+
+teste('Quimera muda de fase com a arte (393), fica calma no final (394) e o fogo-fátuo de terra tem a arte própria (395 a 397)', async (h) => {
+  await h.area('coracao', Object.assign({ visto_coracao: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true, fusaoTempestade: true, portalCoracao: true }, P2));
+  const q = await h.ev(async () => {
+    const j = LB.jogo, ch = j.chefeArena;
+    ch.acordar(j); ch.atualizar(0.05, j);
+    ch.hp = Math.floor(ch.hpMax * 0.6); ch.checarFase(j);
+    const fase = [ch.fase, ch.animCena, ch.t];
+    ch.atualizar(0.05, j);
+    const durante = LB.resolver(ch.anim.base, null, ch.lado).codigo;
+    for (let i = 0; i < 60; i++) ch.atualizar(0.05, j);
+    const depois = [ch.animCena, ch.anim.base];
+    const calma = LB.chefes.acalmar(j, ch);
+    ch.atualizar(0.05, j);
+    return { fase, durante, depois, calma: !!calma, guardiao: j.guardiao === ch, base: ch.anim.base, alfa: ch.alfa };
+  });
+  igual([q.fase[0], q.fase[1]], [1, 'PHASE'], 'mudou de fase com a arte da mudança');
+  igual(q.durante, 'QUIMERA_PHASE', 'mostra a arte da mudança de fase');
+  igual(q.depois, [null, 'QUIMERA_IDLE'], 'depois da mudança volta à pose parada');
+  igual([q.calma, q.guardiao, q.base], [true, true, 'QUIMERA_CALM'], 'no final a Quimera aparece acalmada (item 394)');
+  await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  const w = await h.ev(() => {
+    const j = LB.jogo, w = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'terra'), o = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'luz');
+    const cod = (e, est) => { e.estado = est; e.atualizar(0.01, j); return LB.resolver(e.anim.base, null, 1).codigo; };
+    const s = (c) => window.SPRITES[c];
+    return { terra: [cod(w, 'vagar'), cod(w, 'mirar'), cod(w, 'morrendo')], luz: cod(o, 'vagar'), itens: ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH'].map((c) => [s(c).item, s(c).cell]) };
+  });
+  igual(w.terra, ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH'], 'o fogo-fátuo de terra usa a arte verde-musgo (flutua, atira, apaga)');
+  igual(w.luz, 'WISP_IDLE', 'o fogo-fátuo comum continua azul');
+  igual(w.itens, [['LINE_BELL_ITEM_395.html', 256], ['LINE_BELL_ITEM_396.html', 256], ['LINE_BELL_ITEM_397.html', 256]], 'artes do fogo-fátuo de terra vêm dos itens 395 a 397');
 });
 
 teste('computador: o mundo cabe menor na tela grande e o mouse ataca (esquerdo) e usa o poder (direito)', async (h) => {

@@ -376,7 +376,8 @@
       this.hp = 2; this.raio = 12; this.vivo = true; this.inimigo = true;
       this.estado = 'vagar'; this.t = Math.random() * 2; this.f = Math.random() * TAU;
       this.cd = 1.2 + Math.random() * 1.2; this.flash = 0; this.vx = 0; this.vy = 0; this.lado = 1; this.alvo = null;
-      this.anim = new LB.Animador('WISP_IDLE');
+      this.prefixo = { terra: 'WISP_EARTH_', agua: 'WISP_WATER_', ar: 'WISP_AIR_' }[this.tipo] || 'WISP_';
+      this.anim = new LB.Animador(this.prefixo + 'IDLE');
     }
 
     aoAlerta() { if (this.estado === 'vagar') { this.estado = 'cacar'; this.t = 0; } }
@@ -390,7 +391,7 @@
     atualizar(dt, jogo) {
       this.t += dt; this.f += dt; this.flash = Math.max(0, this.flash - dt);
       this.anim.atualizar(dt);
-      this.anim.tocar(this.estado === 'morrendo' ? 'WISP_DEATH' : this.estado === 'mirar' ? 'WISP_ATTACK' : 'WISP_IDLE');
+      this.anim.tocar(this.prefixo + (this.estado === 'morrendo' ? 'DEATH' : this.estado === 'mirar' ? 'ATTACK' : 'IDLE'));
       if (jogo.cena) return;
       const l = jogo.line, dx = l.x - this.x, dy = l.y - this.y, d = Math.hypot(dx, dy) || 1;
       if (Math.abs(dx) > 2) this.lado = dx < 0 ? -1 : 1;
