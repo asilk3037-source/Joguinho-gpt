@@ -18,6 +18,8 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
+> 🔮 **Quimera muda de fase e se acalma; fogo-fátuo de terra (itens 393 a 397):** quando a **Quimera** passa para a fase seguinte, agora o **núcleo troca de cor** (de laranja para verde-azulado) na frente do jogador, com a arte da mudança de fase; e, no final, depois que ela se desfaz em luz, aparece a **Quimera acalmada**, bem pequena e quietinha, enquanto diz “…quente. É… quente.”. Também chegou o **fogo-fátuo de terra** (verde-musgo, cospe torrão), que flutua, atira e se apaga com a arte própria nos lugares onde já existia (o Vale das Raízes). Os fogos-fátuos de água e de ar ainda usam o azul comum.
+> 
 > 🖱️ **Computador: tela menor e mouse (novo):** em tela grande com mouse o mundo agora aparece **menor e mostra mais mapa** (cada pixel do mundo ocupa uns 2 da tela; num monitor de 1080p são 540 de altura de mundo à vista, em vez de 400); no celular e no tablet nada mudou. O **botão esquerdo do mouse ataca** (segurar faz o ataque giratório) e o **botão direito usa o poder** (a magia; segurar e soltar faz a Chuva de Estrelas). A tela de Controles ganhou a coluna do mouse.
 > 
 > 🦁 **Quimera completa (itens 375 a 392):** a **Quimera Primordial** agora **acorda**, **ataca**, **pisa** (a onda sai quando a pata encosta), **arremessa rocha**, chove e abana **fogo**, ergue **raízes** e **espinhos**, cospe **lama**, **mergulha** (some num respingo de água e volta), lança **jatos** e **ondas** de água, solta **rajada** de vento, leque de **penas** e chama **raios**; ainda fica **cansada** com o núcleo à mostra, leva **dano** e é **derrotada** (se desfaz em faíscas de luz). Os quadros já vêm no mesmo tamanho da Quimera parada, então o tamanho é o mesmo (1,3 da Serpente) e o pé fica no mesmo chão. A arte é a da fase 1 (núcleo cinza e laranja); as outras fases usam a mesma até chegarem as suas.
@@ -207,7 +209,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **608**: 396 com arte (temporária), 146 usando uma substituta, 66 desenhadas no código ou sem imagem |
+| Animações catalogadas | **608**: 401 com arte (temporária), 141 usando uma substituta, 66 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1899,7 +1901,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 608 animações. ✅ 396 com arte temporária, 🔁 146 com substituta e ✏️ 66 desenhadas no código.
+**Resumo:** 608 animações. ✅ 401 com arte temporária, 🔁 141 com substituta e ✏️ 66 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1923,8 +1925,8 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
-| Chefe: Quimera Primordial (Parte 2) | 22 | 20 | 2 | 0 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
+| Chefe: Quimera Primordial (Parte 2) | 22 | 22 | 0 | 0 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 3 | 6 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
@@ -2441,16 +2443,16 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) (item 390) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_390 |
 | `QUIMERA_HIT` | Quimera Primordial — recebe dano (item 391) | 4 |  | ✅ temporária | LINE_BELL_ITEM_391 |
 | `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) (item 392) | 14 |  | ✅ temporária | LINE_BELL_ITEM_392 |
-| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 |  | 🔁 usa `QUIMERA_WAKE` |  |
-| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | sim | 🔁 usa `QUIMERA_STUNNED` |  |
+| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) (item 393) | 12 |  | ✅ temporária | LINE_BELL_ITEM_393 |
+| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) (item 394) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_394 |
 
 ### 10.22 Fogos-fátuos dos elementos (Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
-| `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
-| `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
+| `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando (item 395) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_395 |
+| `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando (item 396) | 7 |  | ✅ temporária | LINE_BELL_ITEM_396 |
+| `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando (item 397) | 8 |  | ✅ temporária | LINE_BELL_ITEM_397 |
 | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
 | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
 | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
@@ -3369,7 +3371,7 @@ A **Armadura da Aurora** só aparece depois de libertar **dois guardiões** (as 
 - **Dicas do Fácil:** A Quimera muda de elemento a cada fase: veja a cor do núcleo para saber o que vem. / Na última fase ela usa todos os ataques e bate mais forte. Troque de heroína quando a vida baixar. / A luz sempre abre a guarda. Guarde magia para isso.
 - **Aparência:** A fera final, feita de pedaços roubados de todos os guardiões: corpo de pedra com rachaduras de lava (pedra + fogo), juba de raízes e folhas pretas (terra), cauda de serpente d’água (água), asas de grifo (ar) e um **núcleo no peito que muda de cor** a cada fase — cinza/laranja (pedra e fogo), verde/azul (terra e água) e arco-íris pulsando (todos). Maior que o dragão. No final, acalmada (`QUIMERA_CALM`), encolhe e fica parecendo um filhote triste, quase fofo.
 
-**Arte no jogo (itens 373 a 392):** **dorme** enrolada antes da luta, com o núcleo do peito apagado, **acorda** erguendo a cabeça e rugindo, fica **parada** respirando, tem um **ataque genérico** (uma pata dianteira golpeia) e o **pisão**, e tem **uma arte por golpe** (arremesso de rocha, chuva e leque de fogo, raízes, anel de espinhos, lama, mergulho, jatos, onda, rajada, penas e raios), além de **cansada**, **dano** e **derrota**: corpo de pedra e lava, juba de raízes, asas de grifo e cauda de serpente d’água. É o maior dos chefes. A arte chegou na fase 1 (núcleo cinza e laranja); as outras fases (verde e azul, arco-íris) usam a mesma arte até chegarem as suas. Golpes, ela já está completa na fase 1; faltam a mudança de fase e a versão acalmada do final.
+**Arte no jogo (itens 373 a 394):** **dorme** enrolada antes da luta, com o núcleo do peito apagado, **acorda** erguendo a cabeça e rugindo, fica **parada** respirando, tem um **ataque genérico** (uma pata dianteira golpeia) e o **pisão**, e tem **uma arte por golpe** (arremesso de rocha, chuva e leque de fogo, raízes, anel de espinhos, lama, mergulho, jatos, onda, rajada, penas e raios), além de **cansada**, **dano**, **derrota**, a **mudança de fase** (o núcleo troca de cor na frente do jogador) e a versão **acalmada** do final (pequena e quietinha, aparece quando ela se desfaz em luz): corpo de pedra e lava, juba de raízes, asas de grifo e cauda de serpente d’água. É o maior dos chefes. A arte chegou na fase 1 (núcleo cinza e laranja); as outras fases (verde e azul, arco-íris) usam a mesma arte até chegarem as suas. Golpes, ela já está completa na fase 1; faltam só as artes das fases 2 e 3 (núcleo verde e azul, e arco-íris).
 
 ![Quimera Primordial com a arte nova, ao lado da Line para ver o tamanho](imagens/p2-arte-quimera.jpg)
 *Quimera Primordial com a arte nova, ao lado da Line para ver o tamanho*
@@ -3484,8 +3486,8 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Titã de Magma (Parte 2) | 11 | 11 | 0 | 0 |
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
-| Chefe: Quimera Primordial (Parte 2) | 22 | 20 | 2 | 0 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 0 | 9 | 0 |
+| Chefe: Quimera Primordial (Parte 2) | 22 | 22 | 0 | 0 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 3 | 6 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
@@ -3495,7 +3497,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **608** | **396** | **146** | **66** |
+| **Total** | **608** | **401** | **141** | **66** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3544,7 +3546,7 @@ Descrição visual de cada armadura: seção 19.3. **Ícones** de cada armadura 
 |---|---|---|
 | Sombra | floresta, ruínas, montanha, vale, lago, picos (e as que o Colosso chama) | `SHADOW_*` |
 | Fogo-fátuo azul e de fogo | ruínas, gruta, montanha | `WISP_*` |
-| **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` |
+| **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 395 a 397)** |
 | **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` |
 | **Fogo-fátuo de ar** (branco, atira pena) | Picos do Vento | `WISP_AIR_IDLE/ATTACK/DEATH` |
 | Morcego | Minas | desenhado no código (sem código de arte ainda) |
@@ -3795,7 +3797,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 396 de 608 animações com arte · 146 usando uma substituta · 66 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 401 de 608 animações com arte · 141 usando uma substituta · 66 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3886,11 +3888,6 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | desenho no código |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | `QUIMERA_WAKE` |
-| Chefe: Quimera Primordial (Parte 2) | `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | `QUIMERA_STUNNED` |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | `WISP_IDLE` |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | `WISP_ATTACK` |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | `WISP_DEATH` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | `WISP_IDLE` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | `WISP_ATTACK` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | `WISP_DEATH` |
@@ -4488,6 +4485,11 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 390 | `LINE_BELL_ITEM_390.html` | 9,72 MB |  |
 | 391 | `LINE_BELL_ITEM_391.html` | 3,12 MB |  |
 | 392 | `LINE_BELL_ITEM_392.html` | 8,68 MB |  |
+| 393 | `LINE_BELL_ITEM_393.html` | 14,58 MB |  |
+| 394 | `LINE_BELL_ITEM_394.html` | 3,14 MB |  |
+| 395 | `LINE_BELL_ITEM_395.html` | 0,43 MB |  |
+| 396 | `LINE_BELL_ITEM_396.html` | 0,44 MB |  |
+| 397 | `LINE_BELL_ITEM_397.html` | 0,17 MB |  |
 
 Itens que ainda não chegaram: 153, 240.
 

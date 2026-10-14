@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **222** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **217** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -121,20 +121,10 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | 8 | ✏️ falta |
 | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | 8 | ✏️ falta |
 
-### Chefe: Quimera Primordial (Parte 2) (2)
+### Fogos-fátuos dos elementos (Parte 2) (6)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 | 🔁 usa `QUIMERA_WAKE` |
-| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | 🔁 usa `QUIMERA_STUNNED` |
-
-### Fogos-fátuos dos elementos (Parte 2) (9)
-
-| Código | O que mostra | Quadros | Situação |
-|---|---|---|---|
-| `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando | 8 | 🔁 usa `WISP_IDLE` |
-| `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando | 8 | 🔁 usa `WISP_ATTACK` |
-| `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando | 8 | 🔁 usa `WISP_DEATH` |
 | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | 8 | 🔁 usa `WISP_IDLE` |
 | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | 8 | 🔁 usa `WISP_ATTACK` |
 | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | 8 | 🔁 usa `WISP_DEATH` |
@@ -655,7 +645,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 4. **Telas** (seção 7), começando pelo título e pela mochila.
 5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes** da Parte 2 (seção 3): todos os sete chefes já têm a arte da fase 1; falta da **Quimera Primordial** a **mudança de fase**, a versão **acalmada** do final e as artes das fases 2 e 3 (núcleo verde e azul, e arco-íris). E os **moradores** da Parte 2.
+7. **Chefes** da Parte 2 (seção 3): todos os sete chefes já têm a arte da fase 1; falta da **Quimera Primordial** só repetir as artes nas fases 2 e 3 (núcleo verde e azul, e arco-íris). E os **moradores** da Parte 2.
 8. **Monstros novos** (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os **moradores novos** (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.
 9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 

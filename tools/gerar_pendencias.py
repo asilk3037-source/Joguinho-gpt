@@ -397,7 +397,7 @@ for n, t in enumerate([
     "**Telas** (seção 7), começando pelo título e pela mochila.",
     "**Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.",
     "**Mapas das fases** em cima dos gabaritos (seção 8.1).",
-    "**Chefes** da Parte 2 (seção 3): todos os sete chefes já têm a arte da fase 1; falta da **Quimera Primordial** a **mudança de fase**, a versão **acalmada** do final e as artes das fases 2 e 3 (núcleo verde e azul, e arco-íris). E os **moradores** da Parte 2.",
+    "**Chefes** da Parte 2 (seção 3): todos os sete chefes já têm a arte da fase 1; falta da **Quimera Primordial** só repetir as artes nas fases 2 e 3 (núcleo verde e azul, e arco-íris). E os **moradores** da Parte 2.",
     "**Monstros novos** (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os **moradores novos** (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.",
     "**Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.",
 ], 1):

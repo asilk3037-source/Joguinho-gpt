@@ -80,9 +80,9 @@ ARTE_CHEFES = {
               "linha na direção da heroína), **jatos de água**, **onda**, **cuspe de lama** e o **mergulho** (afunda no monte de lama, só o monte "
               "segue a heroína e ela volta à tona embaixo dela); **cansada**, as três cabeças afundam e só a bolha de lama do núcleo aparece; pisca ao "
               "**receber dano**; e na **derrota** se desfaz em lama e brilhos dourados. Ficou completa."),
-    "quimera": ("itens 373 a 392", "**dorme** enrolada antes da luta, com o núcleo do peito apagado, **acorda** erguendo a cabeça e rugindo, fica **parada** respirando, tem um **ataque genérico** (uma pata dianteira golpeia) e o **pisão**, e tem **uma arte por golpe** (arremesso de rocha, chuva e leque de fogo, raízes, anel de espinhos, lama, mergulho, jatos, onda, rajada, penas e raios), além de **cansada**, **dano** e **derrota**: corpo de pedra e lava, juba de raízes, asas de grifo e cauda de serpente d’água. "
+    "quimera": ("itens 373 a 394", "**dorme** enrolada antes da luta, com o núcleo do peito apagado, **acorda** erguendo a cabeça e rugindo, fica **parada** respirando, tem um **ataque genérico** (uma pata dianteira golpeia) e o **pisão**, e tem **uma arte por golpe** (arremesso de rocha, chuva e leque de fogo, raízes, anel de espinhos, lama, mergulho, jatos, onda, rajada, penas e raios), além de **cansada**, **dano**, **derrota**, a **mudança de fase** (o núcleo troca de cor na frente do jogador) e a versão **acalmada** do final (pequena e quietinha, aparece quando ela se desfaz em luz): corpo de pedra e lava, juba de raízes, asas de grifo e cauda de serpente d’água. "
                 "É o maior dos chefes. A arte chegou na fase 1 (núcleo cinza e laranja); as outras fases (verde e azul, arco-íris) usam a mesma arte até chegarem as suas. Golpes, "
-                "ela já está completa na fase 1; faltam a mudança de fase e a versão acalmada do final."),
+                "ela já está completa na fase 1; faltam só as artes das fases 2 e 3 (núcleo verde e azul, e arco-íris)."),
     "tempestade": ("itens 361 a 372", "**dorme** de olhos fechados no chão antes da luta, **acorda** abrindo os olhos e rugindo, e paira **parada** com olhos brancos "
                    "brilhantes, braços de vento e chuva; cada golpe tem a sua arte: **chama raios** (o raio e o círculo de aviso de verdade caem na heroína; "
                    "na arte ficou só a nuvem chamando), **rajada de vento**, **jatos de água**, **onda** e **leque de penas**; **cansada** desce e fica de olhos "
@@ -449,7 +449,7 @@ def escrever_arte(w, img, inv):
     w("|---|---|---|")
     w("| Sombra | floresta, ruínas, montanha, vale, lago, picos (e as que o Colosso chama) | `SHADOW_*` |")
     w("| Fogo-fátuo azul e de fogo | ruínas, gruta, montanha | `WISP_*` |")
-    w("| **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` |")
+    w("| **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 395 a 397)** |")
     w("| **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` |")
     w("| **Fogo-fátuo de ar** (branco, atira pena) | Picos do Vento | `WISP_AIR_IDLE/ATTACK/DEATH` |")
     w("| Morcego | Minas | desenhado no código (sem código de arte ainda) |")
