@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 13/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 14/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **237** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **222** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -121,27 +121,12 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | 8 | ✏️ falta |
 | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | 8 | ✏️ falta |
 
-### Chefe: Quimera Primordial (Parte 2) (17)
+### Chefe: Quimera Primordial (Parte 2) (2)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `QUIMERA_THROW` | Quimera Primordial — arremesso de rocha | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_FIRE_RAIN` | Quimera Primordial — chuva de fogo | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_FIRE_FAN` | Quimera Primordial — leque de fogo | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_ROOTS` | Quimera Primordial — raízes saindo do chão em linha | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_THORNS` | Quimera Primordial — anel de espinhos | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_MUD` | Quimera Primordial — cuspe de lama | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_DIVE` | Quimera Primordial — mergulho (some e reaparece) | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_WATER_JET` | Quimera Primordial — jatos de água | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_WAVE` | Quimera Primordial — onda | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_GUST` | Quimera Primordial — rajada de vento | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_FEATHERS` | Quimera Primordial — leque de penas | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_LIGHTNING` | Quimera Primordial — chama raios | 10 | 🔁 usa `QUIMERA_ATTACK` |
-| `QUIMERA_STUNNED` | Quimera Primordial — cansado, núcleo exposto (hora de atacar) | 8 | 🔁 usa `QUIMERA_IDLE` |
-| `QUIMERA_HIT` | Quimera Primordial — recebe dano | 4 | 🔁 usa `QUIMERA_IDLE` |
-| `QUIMERA_DEATH` | Quimera Primordial — derrotado (se desfaz em luz) | 14 | 🔁 usa `QUIMERA_IDLE` |
 | `QUIMERA_PHASE` | Quimera — muda de fase (troca a cor do núcleo e o elemento) | 12 | 🔁 usa `QUIMERA_WAKE` |
-| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | 🔁 usa `QUIMERA_IDLE` |
+| `QUIMERA_CALM` | Quimera — acalmada no final (“é... quente”) | 8 | 🔁 usa `QUIMERA_STUNNED` |
 
 ### Fogos-fátuos dos elementos (Parte 2) (9)
 
@@ -670,7 +655,7 @@ Os 13 efeitos que já chegaram estão no jogo ✅: `FX_AMBIENT_PARTICLES`, `FX_D
 4. **Telas** (seção 7), começando pelo título e pela mochila.
 5. **Armaduras vestidas** da Line e da Bell (seção 3): a Bell jogável sem armadura já está completa.
 6. **Mapas das fases** em cima dos gabaritos (seção 8.1).
-7. **Chefes** da Parte 2 (seção 3): o Colosso, o Titã de Magma, a Hidra e a Tempestade Viva ficaram completos; agora o resto da **Quimera Primordial** (a partir do item 378, o arremesso de rocha). E os **moradores** da Parte 2.
+7. **Chefes** da Parte 2 (seção 3): todos os sete chefes já têm a arte da fase 1; falta da **Quimera Primordial** a **mudança de fase**, a versão **acalmada** do final e as artes das fases 2 e 3 (núcleo verde e azul, e arco-íris). E os **moradores** da Parte 2.
 8. **Monstros novos** (javali-de-espinhos, cogumelo saltador, aranha da gruta e geleia) e os **moradores novos** (passantes do vilarejo e a Vila do Moinho), na seção 3: hoje são desenhados no código.
 9. **Efeitos especiais** (seção 9): primeiro os de combate e magia, depois os de itens, clima e romance.
 
