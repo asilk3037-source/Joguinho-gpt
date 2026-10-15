@@ -2022,7 +2022,7 @@ teste('sem espada, o ataque é um soco que machuca', async (h) => {
   afirmar(await h.ev(() => !!LB.desenharSprite && !!window.SPRITES.LINE_PUNCH), 'arte do soco carregada');
 });
 
-teste('Quimera muda de fase com a arte (393), fica calma no final (394) e o fogo-fátuo de terra tem a arte própria (395 a 397)', async (h) => {
+teste('Quimera muda de fase com a arte (393), fica calma no final (394) e os fogos-fátuos de terra (395 a 397) e de água (398 a 400) têm a arte própria', async (h) => {
   await h.area('coracao', Object.assign({ visto_coracao: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true, fusaoTempestade: true, portalCoracao: true }, P2));
   const q = await h.ev(async () => {
     const j = LB.jogo, ch = j.chefeArena;
@@ -2046,11 +2046,14 @@ teste('Quimera muda de fase com a arte (393), fica calma no final (394) e o fogo
     const j = LB.jogo, w = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'terra'), o = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'luz');
     const cod = (e, est) => { e.estado = est; e.atualizar(0.01, j); return LB.resolver(e.anim.base, null, 1).codigo; };
     const s = (c) => window.SPRITES[c];
-    return { terra: [cod(w, 'vagar'), cod(w, 'mirar'), cod(w, 'morrendo')], luz: cod(o, 'vagar'), itens: ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH'].map((c) => [s(c).item, s(c).cell]) };
+    const a = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'agua');
+    return { terra: [cod(w, 'vagar'), cod(w, 'mirar'), cod(w, 'morrendo')], agua: [cod(a, 'vagar'), cod(a, 'mirar'), cod(a, 'morrendo')], luz: cod(o, 'vagar'), itens: ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH', 'WISP_WATER_IDLE', 'WISP_WATER_ATTACK', 'WISP_WATER_DEATH'].map((c) => [s(c).item, s(c).cell]), alt: ['WISP_IDLE', 'WISP_WATER_IDLE'].map((c) => window.SPRITES[c].ground) };
   });
   igual(w.terra, ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH'], 'o fogo-fátuo de terra usa a arte verde-musgo (flutua, atira, apaga)');
+  igual(w.agua, ['WISP_WATER_IDLE', 'WISP_WATER_ATTACK', 'WISP_WATER_DEATH'], 'o fogo-fátuo de água usa a arte com gota (flutua, atira, apaga)');
   igual(w.luz, 'WISP_IDLE', 'o fogo-fátuo comum continua azul');
-  igual(w.itens, [['LINE_BELL_ITEM_395.html', 256], ['LINE_BELL_ITEM_396.html', 256], ['LINE_BELL_ITEM_397.html', 256]], 'artes do fogo-fátuo de terra vêm dos itens 395 a 397');
+  igual(w.itens, [395, 396, 397, 398, 399, 400].map((n) => ['LINE_BELL_ITEM_' + n + '.html', 256]), 'artes dos fogos-fátuos de terra e de água vêm dos itens 395 a 400');
+  igual(w.alt[0], w.alt[1], 'o fogo-fátuo de água pisa no mesmo chão do comum');
 });
 
 teste('computador: o mundo cabe menor na tela grande e o mouse ataca (esquerdo) e usa o poder (direito)', async (h) => {

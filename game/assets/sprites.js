@@ -14367,6 +14367,98 @@ window.SPRITES = {
   ],
   "label": "Fogo-fátuo de terra — apagando",
   "item": "LINE_BELL_ITEM_397.html"
+ },
+ "WISP_WATER_IDLE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_WATER_IDLE.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 228,
+  "groundEnd": 224,
+  "bases": [
+   228,
+   222,
+   220,
+   221,
+   222,
+   224,
+   224,
+   224
+  ],
+  "label": "Fogo-fátuo de água — flutuando",
+  "item": "LINE_BELL_ITEM_398.html"
+ },
+ "WISP_WATER_ATTACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_WATER_ATTACK.webp",
+  "cell": 256,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   0
+  ],
+  "ground": 228,
+  "groundEnd": 228,
+  "bases": [
+   228,
+   222,
+   224,
+   224,
+   223,
+   224,
+   222
+  ],
+  "label": "Fogo-fátuo de água — atirando",
+  "item": "LINE_BELL_ITEM_399.html"
+ },
+ "WISP_WATER_DEATH": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_WATER_DEATH.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 228,
+  "groundEnd": 256,
+  "bases": [
+   228,
+   220,
+   239,
+   241,
+   237,
+   238,
+   247,
+   256
+  ],
+  "label": "Fogo-fátuo de água — apagando",
+  "item": "LINE_BELL_ITEM_400.html"
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};
