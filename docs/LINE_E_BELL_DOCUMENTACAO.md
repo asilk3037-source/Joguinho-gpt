@@ -18,7 +18,9 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
-> 🔮 **Quimera muda de fase e se acalma; fogo-fátuo de terra (itens 393 a 397):** quando a **Quimera** passa para a fase seguinte, agora o **núcleo troca de cor** (de laranja para verde-azulado) na frente do jogador, com a arte da mudança de fase; e, no final, depois que ela se desfaz em luz, aparece a **Quimera acalmada**, bem pequena e quietinha, enquanto diz “…quente. É… quente.”. Também chegou o **fogo-fátuo de terra** (verde-musgo, cospe torrão), que flutua, atira e se apaga com a arte própria nos lugares onde já existia (o Vale das Raízes). Os fogos-fátuos de água e de ar ainda usam o azul comum.
+> 💧 **Fogo-fátuo de água (itens 398 a 400):** chegou o **fogo-fátuo de água** (azul com gotinhas, cospe gota): flutua, atira e se apaga com a arte própria nos lugares onde já existia (o Lago Espelhado). Só falta o **fogo-fátuo de ar** (branco, atira pena); até chegar, ele usa o azul comum.
+> 
+> 🔮 **Quimera muda de fase e se acalma; fogo-fátuo de terra (itens 393 a 397):** quando a **Quimera** passa para a fase seguinte, agora o **núcleo troca de cor** (de laranja para verde-azulado) na frente do jogador, com a arte da mudança de fase; e, no final, depois que ela se desfaz em luz, aparece a **Quimera acalmada**, bem pequena e quietinha, enquanto diz “…quente. É… quente.”. Também chegou o **fogo-fátuo de terra** (verde-musgo, cospe torrão), que flutua, atira e se apaga com a arte própria nos lugares onde já existia (o Vale das Raízes). O de ar ainda usa o azul comum.
 > 
 > 🖱️ **Computador: tela menor e mouse (novo):** em tela grande com mouse o mundo agora aparece **menor e mostra mais mapa** (cada pixel do mundo ocupa uns 2 da tela; num monitor de 1080p são 540 de altura de mundo à vista, em vez de 400); no celular e no tablet nada mudou. O **botão esquerdo do mouse ataca** (segurar faz o ataque giratório) e o **botão direito usa o poder** (a magia; segurar e soltar faz a Chuva de Estrelas). A tela de Controles ganhou a coluna do mouse.
 > 
@@ -209,7 +211,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **608**: 401 com arte (temporária), 141 usando uma substituta, 66 desenhadas no código ou sem imagem |
+| Animações catalogadas | **608**: 404 com arte (temporária), 138 usando uma substituta, 66 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1901,7 +1903,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 608 animações. ✅ 401 com arte temporária, 🔁 141 com substituta e ✏️ 66 desenhadas no código.
+**Resumo:** 608 animações. ✅ 404 com arte temporária, 🔁 138 com substituta e ✏️ 66 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1926,7 +1928,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 22 | 0 | 0 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 3 | 6 | 0 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 6 | 3 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
@@ -2453,9 +2455,9 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `WISP_EARTH_IDLE` | Fogo-fátuo de terra (verde-musgo) — flutuando (item 395) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_395 |
 | `WISP_EARTH_ATTACK` | Fogo-fátuo de terra (verde-musgo) — atirando (item 396) | 7 |  | ✅ temporária | LINE_BELL_ITEM_396 |
 | `WISP_EARTH_DEATH` | Fogo-fátuo de terra (verde-musgo) — apagando (item 397) | 8 |  | ✅ temporária | LINE_BELL_ITEM_397 |
-| `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
-| `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
-| `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
+| `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando (item 398) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_398 |
+| `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando (item 399) | 7 |  | ✅ temporária | LINE_BELL_ITEM_399 |
+| `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando (item 400) | 8 |  | ✅ temporária | LINE_BELL_ITEM_400 |
 | `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
 | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
 | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
@@ -3487,7 +3489,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 22 | 0 | 0 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 3 | 6 | 0 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 6 | 3 | 0 |
 | Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
@@ -3497,7 +3499,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **608** | **401** | **141** | **66** |
+| **Total** | **608** | **404** | **138** | **66** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3547,7 +3549,7 @@ Descrição visual de cada armadura: seção 19.3. **Ícones** de cada armadura 
 | Sombra | floresta, ruínas, montanha, vale, lago, picos (e as que o Colosso chama) | `SHADOW_*` |
 | Fogo-fátuo azul e de fogo | ruínas, gruta, montanha | `WISP_*` |
 | **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 395 a 397)** |
-| **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` |
+| **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 398 a 400)** |
 | **Fogo-fátuo de ar** (branco, atira pena) | Picos do Vento | `WISP_AIR_IDLE/ATTACK/DEATH` |
 | Morcego | Minas | desenhado no código (sem código de arte ainda) |
 
@@ -3797,7 +3799,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 401 de 608 animações com arte · 141 usando uma substituta · 66 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 404 de 608 animações com arte · 138 usando uma substituta · 66 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3888,9 +3890,6 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | `WISP_IDLE` |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | `WISP_ATTACK` |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | `WISP_DEATH` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | `WISP_IDLE` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | `WISP_ATTACK` |
 | Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | `WISP_DEATH` |
@@ -4490,6 +4489,9 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 395 | `LINE_BELL_ITEM_395.html` | 0,43 MB |  |
 | 396 | `LINE_BELL_ITEM_396.html` | 0,44 MB |  |
 | 397 | `LINE_BELL_ITEM_397.html` | 0,17 MB |  |
+| 398 | `LINE_BELL_ITEM_398.html` | 2,80 MB |  |
+| 399 | `LINE_BELL_ITEM_399.html` | 2,76 MB |  |
+| 400 | `LINE_BELL_ITEM_400.html` | 1,04 MB |  |
 
 Itens que ainda não chegaram: 153, 240.
 

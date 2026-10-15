@@ -450,7 +450,7 @@ def escrever_arte(w, img, inv):
     w("| Sombra | floresta, ruínas, montanha, vale, lago, picos (e as que o Colosso chama) | `SHADOW_*` |")
     w("| Fogo-fátuo azul e de fogo | ruínas, gruta, montanha | `WISP_*` |")
     w("| **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 395 a 397)** |")
-    w("| **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` |")
+    w("| **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 398 a 400)** |")
     w("| **Fogo-fátuo de ar** (branco, atira pena) | Picos do Vento | `WISP_AIR_IDLE/ATTACK/DEATH` |")
     w("| Morcego | Minas | desenhado no código (sem código de arte ainda) |")
     w()

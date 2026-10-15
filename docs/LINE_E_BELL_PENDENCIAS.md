@@ -1,6 +1,6 @@
 # Line & Bell — o que falta (pendências de arte)
 
-*Atualizado em 14/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
+*Atualizado em 15/10/2026. Este documento lista só o que **falta fazer ou refazer**. O que já está pronto fica na documentação completa (`LINE_E_BELL_DOCUMENTACAO.md`). As regras da seção 1 valem para tudo e não mudam.*
 
 **Como usar:** cada linha tem o **código** exato que a arte precisa ter (o jogo procura a imagem pelo código). Quando a arte chega com o código certo, ela entra no jogo sozinha, no lugar da provisória. ✅ = já chegou · 🔁 = o jogo usa uma substituta até chegar · ✏️ = falta e nada substitui · ♻️ = existe, mas precisa refazer.
 
@@ -11,7 +11,7 @@
 | Seção | O que é | Quantas faltam |
 |---|---|---|
 | 2. Artes que precisam ser refeitas | animações e **cenário antigo mal recortado** (árvores, plantas, horta e objetos da fazenda) que existem, mas precisam ser refeitos | **28** |
-| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **217** |
+| 3. Animações pendentes | animações novas (inclui a Bell jogável, os chefes, os **moradores** com os retratos do diálogo e as **armaduras vestidas**) | **214** |
 | 4. Armaduras e itens | ícones das armaduras e dos itens | **19** |
 | 5. Botões e controles | ícones dos botões | **11** |
 | 6. HUD do jogador | peças do HUD | **8** |
@@ -121,13 +121,10 @@ Agrupadas como no jogo. 🔁 = o jogo usa a substituta indicada até a arte cheg
 | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | 8 | ✏️ falta |
 | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | 8 | ✏️ falta |
 
-### Fogos-fátuos dos elementos (Parte 2) (6)
+### Fogos-fátuos dos elementos (Parte 2) (3)
 
 | Código | O que mostra | Quadros | Situação |
 |---|---|---|---|
-| `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando | 8 | 🔁 usa `WISP_IDLE` |
-| `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando | 8 | 🔁 usa `WISP_ATTACK` |
-| `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando | 8 | 🔁 usa `WISP_DEATH` |
 | `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | 8 | 🔁 usa `WISP_IDLE` |
 | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 | 🔁 usa `WISP_ATTACK` |
 | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 | 🔁 usa `WISP_DEATH` |
