@@ -18,7 +18,7 @@
 
 > 📋 **Documento só com o que falta:** `docs/LINE_E_BELL_PENDENCIAS.md` (e `.html`) reúne todas as regras da arte, o que precisa ser refeito (o **cenário antigo mal recortado, começando pelas árvores**, e a comemoração da Bell), as animações pendentes, as armaduras e os ícones dos itens, os botões, o HUD, as telas e os mapas. Gerado por `tools/gerar_pendencias.py`.
 
-> 💧 **Fogo-fátuo de água (itens 398 a 400):** chegou o **fogo-fátuo de água** (azul com gotinhas, cospe gota): flutua, atira e se apaga com a arte própria nos lugares onde já existia (o Lago Espelhado). Só falta o **fogo-fátuo de ar** (branco, atira pena); até chegar, ele usa o azul comum.
+> 🌱 **Fogo-fátuo de ar e Dona Cora (itens 401 a 405):** chegou o **fogo-fátuo de ar** (branco, atira pena), que completa os quatro fogos-fátuos (comum, terra, água e ar) com arte própria, e a **Dona Cora**, a jardineira do Vale das Raízes, que agora aparece com a arte dela (parada e falando, com chapéu de palha e pá na mão) em vez do desenho feito por código. A Cora fica um pouco mais baixa que a Line, como uma senhora idosa. Antes: fogo-fátuo de água (itens 398 a 400).
 > 
 > 🔮 **Quimera muda de fase e se acalma; fogo-fátuo de terra (itens 393 a 397):** quando a **Quimera** passa para a fase seguinte, agora o **núcleo troca de cor** (de laranja para verde-azulado) na frente do jogador, com a arte da mudança de fase; e, no final, depois que ela se desfaz em luz, aparece a **Quimera acalmada**, bem pequena e quietinha, enquanto diz “…quente. É… quente.”. Também chegou o **fogo-fátuo de terra** (verde-musgo, cospe torrão), que flutua, atira e se apaga com a arte própria nos lugares onde já existia (o Vale das Raízes). O de ar ainda usa o azul comum.
 > 
@@ -211,7 +211,7 @@
 | Mochila | 13 itens, cada um com uma função, item no atalho (F), caderno de documentos e mapa que só acende onde a Line passou |
 | Dificuldade | Fácil, Normal ou Difícil (menu inicial e pausa) |
 | Salvamento | Automático, no navegador, ao entrar em cada área e nas fontes |
-| Animações catalogadas | **608**: 404 com arte (temporária), 138 usando uma substituta, 66 desenhadas no código ou sem imagem |
+| Animações catalogadas | **608**: 409 com arte (temporária), 136 usando uma substituta, 63 desenhadas no código ou sem imagem |
 
 ## 2. Personagens
 
@@ -1903,7 +1903,7 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 - 🔁 **Substituta:** ainda não tem arte própria. O jogo usa outra animação parecida no lugar (indicada na tabela).
 - ✏️ **Desenho no código:** ainda não tem arte. O jogo desenha uma forma provisória ou usa uma imagem parada.
 
-**Resumo:** 608 animações. ✅ 404 com arte temporária, 🔁 138 com substituta e ✏️ 66 desenhadas no código.
+**Resumo:** 608 animações. ✅ 409 com arte temporária, 🔁 136 com substituta e ✏️ 63 desenhadas no código.
 
 | Grupo | Total | ✅ | 🔁 | ✏️ |
 |---|---:|---:|---:|---:|
@@ -1928,8 +1928,8 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 22 | 0 | 0 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 6 | 3 | 0 |
-| Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 9 | 0 | 0 |
+| Moradores (todos, incluindo os da Parte 2) | 57 | 2 | 1 | 54 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
 | Line com armadura: Cota de Malha | 23 | 0 | 23 | 0 |
@@ -2458,17 +2458,17 @@ Esta é a lista de **todas** as animações que o jogo usa ou vai usar. O códig
 | `WISP_WATER_IDLE` | Fogo-fátuo de água (azul) — flutuando (item 398) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_398 |
 | `WISP_WATER_ATTACK` | Fogo-fátuo de água (azul) — atirando (item 399) | 7 |  | ✅ temporária | LINE_BELL_ITEM_399 |
 | `WISP_WATER_DEATH` | Fogo-fátuo de água (azul) — apagando (item 400) | 8 |  | ✅ temporária | LINE_BELL_ITEM_400 |
-| `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | 8 | sim | 🔁 usa `WISP_IDLE` |  |
-| `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | 8 |  | 🔁 usa `WISP_ATTACK` |  |
-| `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | 8 |  | 🔁 usa `WISP_DEATH` |  |
+| `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando (item 401) | 8 | sim | ✅ temporária | LINE_BELL_ITEM_401 |
+| `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando (item 402) | 7 |  | ✅ temporária | LINE_BELL_ITEM_402 |
+| `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando (item 403) | 8 |  | ✅ temporária | LINE_BELL_ITEM_403 |
 
 ### 10.23 Moradores (todos, incluindo os da Parte 2)
 
 | Código | O que é | Quadros | Loop | Status | Origem da arte atual |
 |---|---|---:|:---:|---|---|
-| `CORA_IDLE` | Dona Cora (jardineira do vale) — parado | 8 | sim | ✏️ código / falta |  |
-| `CORA_TALK` | Dona Cora (jardineira do vale) — falando | 8 | sim | ✏️ código / falta |  |
-| `CORA_SLEEP` | Dona Cora (jardineira do vale) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
+| `CORA_IDLE` | Dona Cora (jardineira do vale) — parado (item 404) | 5 | sim | ✅ temporária | LINE_BELL_ITEM_404 |
+| `CORA_TALK` | Dona Cora (jardineira do vale) — falando (item 405) | 6 | sim | ✅ temporária | LINE_BELL_ITEM_405 |
+| `CORA_SLEEP` | Dona Cora (jardineira do vale) — dormindo (noite) | 4 | sim | 🔁 usa `CORA_IDLE` |  |
 | `TIAO_IDLE` | Seu Tião (pescador do lago) — parado | 8 | sim | ✏️ código / falta |  |
 | `TIAO_TALK` | Seu Tião (pescador do lago) — falando | 8 | sim | ✏️ código / falta |  |
 | `TIAO_SLEEP` | Seu Tião (pescador do lago) — dormindo (noite) | 4 | sim | ✏️ código / falta |  |
@@ -3489,8 +3489,8 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Chefe: Hidra de Lama (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Tempestade Viva (Parte 2) | 12 | 12 | 0 | 0 |
 | Chefe: Quimera Primordial (Parte 2) | 22 | 22 | 0 | 0 |
-| Fogos-fátuos dos elementos (Parte 2) | 9 | 6 | 3 | 0 |
-| Moradores (todos, incluindo os da Parte 2) | 57 | 0 | 0 | 57 |
+| Fogos-fátuos dos elementos (Parte 2) | 9 | 9 | 0 | 0 |
+| Moradores (todos, incluindo os da Parte 2) | 57 | 2 | 1 | 54 |
 | Dragão amigo (Parte 2) | 3 | 0 | 3 | 0 |
 | Line com armadura: Túnica Acolchoada | 23 | 0 | 23 | 0 |
 | Line com armadura: Cota de Malha | 23 | 0 | 23 | 0 |
@@ -3499,7 +3499,7 @@ O jogo sempre mostra **400 unidades de altura** do mundo na tela e aumenta tudo 
 | Bell com armadura: Manto Estelar | 21 | 0 | 21 | 0 |
 | Bell com armadura: Armadura da Aurora | 21 | 0 | 21 | 0 |
 | Outras animações recebidas | 3 | 3 | 0 | 0 |
-| **Total** | **608** | **404** | **138** | **66** |
+| **Total** | **608** | **409** | **136** | **63** |
 
 A lista com cada código está na seção 10 e, só com o que falta, na seção 23.
 
@@ -3550,7 +3550,7 @@ Descrição visual de cada armadura: seção 19.3. **Ícones** de cada armadura 
 | Fogo-fátuo azul e de fogo | ruínas, gruta, montanha | `WISP_*` |
 | **Fogo-fátuo de terra** (verde-musgo, cospe torrão) | Vale das Raízes | `WISP_EARTH_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 395 a 397)** |
 | **Fogo-fátuo de água** (azul, cospe gota) | Lago Espelhado | `WISP_WATER_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 398 a 400)** |
-| **Fogo-fátuo de ar** (branco, atira pena) | Picos do Vento | `WISP_AIR_IDLE/ATTACK/DEATH` |
+| **Fogo-fátuo de ar** (branco, atira pena) | Picos do Vento | `WISP_AIR_IDLE/ATTACK/DEATH` — **✅ arte chegou (itens 401 a 403)** |
 | Morcego | Minas | desenhado no código (sem código de arte ainda) |
 
 ### 22.5 Chefes
@@ -3799,7 +3799,7 @@ O **gabarito** de cada fase (a planta, em `arte/referencias/gabaritos/<fase>.png
 
 > Esta seção junta o que antes ficava em arquivos soltos (`ANIMACOES_PENDENTES.md`, `LINE_BELL_INDICE_PARTES.md`, `LINE_BELL_PLANO_ANIMACOES_POR_ITEM.md`, `docs/ARTES_NECESSARIAS.md`, `arte/theo/LAYOUT_OFICIAL.md` e `game/README.md`). Agora **tudo fica só neste documento**: o que falta está aqui, o índice dos itens na seção 24, o plano por item na 25, como rodar e editar o jogo na 26, a lista completa de arte na 22 e o layout oficial do Theo na 2.
 
-**Status:** 404 de 608 animações com arte · 138 usando uma substituta · 66 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
+**Status:** 409 de 608 animações com arte · 136 usando uma substituta · 63 desenhadas no código. A lista com todas, e o status de cada uma, está na seção 10 e no próprio jogo, em **Menu → Animações**. Toda a arte atual é temporária até a criação completa.
 
 ### 23.1 Reenviar ou mandar
 
@@ -3890,12 +3890,7 @@ O jogo já toca cada animação no ritmo certo (andar e correr no mesmo passo pa
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SPIDER_WALK` | Aranha da gruta — andando e cuspindo teia | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_BIG` | Geleia verde — grande, pulando (se divide em duas quando apanha) | desenho no código |
 | Monstros da floresta, gruta, ruínas e montanha (novo) | `SLIME_SMALL` | Geleia verde — pequena, pulando mais rápido | desenho no código |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_IDLE` | Fogo-fátuo de ar (branco) — flutuando | `WISP_IDLE` |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_ATTACK` | Fogo-fátuo de ar (branco) — atirando | `WISP_ATTACK` |
-| Fogos-fátuos dos elementos (Parte 2) | `WISP_AIR_DEATH` | Fogo-fátuo de ar (branco) — apagando | `WISP_DEATH` |
-| Moradores (todos, incluindo os da Parte 2) | `CORA_IDLE` | Dona Cora (jardineira do vale) — parado | desenho no código |
-| Moradores (todos, incluindo os da Parte 2) | `CORA_TALK` | Dona Cora (jardineira do vale) — falando | desenho no código |
-| Moradores (todos, incluindo os da Parte 2) | `CORA_SLEEP` | Dona Cora (jardineira do vale) — dormindo (noite) | desenho no código |
+| Moradores (todos, incluindo os da Parte 2) | `CORA_SLEEP` | Dona Cora (jardineira do vale) — dormindo (noite) | `CORA_IDLE` |
 | Moradores (todos, incluindo os da Parte 2) | `TIAO_IDLE` | Seu Tião (pescador do lago) — parado | desenho no código |
 | Moradores (todos, incluindo os da Parte 2) | `TIAO_TALK` | Seu Tião (pescador do lago) — falando | desenho no código |
 | Moradores (todos, incluindo os da Parte 2) | `TIAO_SLEEP` | Seu Tião (pescador do lago) — dormindo (noite) | desenho no código |
@@ -4492,6 +4487,11 @@ Cada item é um HTML autossuficiente na raiz do repositório, com menos de 25 MB
 | 398 | `LINE_BELL_ITEM_398.html` | 2,80 MB |  |
 | 399 | `LINE_BELL_ITEM_399.html` | 2,76 MB |  |
 | 400 | `LINE_BELL_ITEM_400.html` | 1,04 MB |  |
+| 401 | `LINE_BELL_ITEM_401.html` | 2,48 MB |  |
+| 402 | `LINE_BELL_ITEM_402.html` | 2,57 MB |  |
+| 403 | `LINE_BELL_ITEM_403.html` | 0,84 MB |  |
+| 404 | `LINE_BELL_ITEM_404.html` | 1,10 MB |  |
+| 405 | `LINE_BELL_ITEM_405.html` | 1,10 MB |  |
 
 Itens que ainda não chegaram: 153, 240.
 
