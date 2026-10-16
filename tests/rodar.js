@@ -2022,7 +2022,7 @@ teste('sem espada, o ataque é um soco que machuca', async (h) => {
   afirmar(await h.ev(() => !!LB.desenharSprite && !!window.SPRITES.LINE_PUNCH), 'arte do soco carregada');
 });
 
-teste('Quimera muda de fase com a arte (393), fica calma no final (394) e os fogos-fátuos de terra (395 a 397) e de água (398 a 400) têm a arte própria', async (h) => {
+teste('Quimera muda de fase com a arte (393), fica calma no final (394) e os três fogos-fátuos (395 a 403) e a Dona Cora (404 e 405) têm a arte própria', async (h) => {
   await h.area('coracao', Object.assign({ visto_coracao: true, chefeTerra: true, fusaoMagma: true, chefeAgua: true, fusaoLama: true, chefeAr: true, fusaoTempestade: true, portalCoracao: true }, P2));
   const q = await h.ev(async () => {
     const j = LB.jogo, ch = j.chefeArena;
@@ -2042,17 +2042,24 @@ teste('Quimera muda de fase com a arte (393), fica calma no final (394) e os fog
   igual(q.depois, [null, 'QUIMERA_IDLE'], 'depois da mudança volta à pose parada');
   igual([q.calma, q.guardiao, q.base], [true, true, 'QUIMERA_CALM'], 'no final a Quimera aparece acalmada (item 394)');
   await h.area('vale', Object.assign({ visto_vale: true }, P2));
+  await h.espera(300);
   const w = await h.ev(() => {
     const j = LB.jogo, w = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'terra'), o = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'luz');
     const cod = (e, est) => { e.estado = est; e.atualizar(0.01, j); return LB.resolver(e.anim.base, null, 1).codigo; };
     const s = (c) => window.SPRITES[c];
     const a = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'agua');
-    return { terra: [cod(w, 'vagar'), cod(w, 'mirar'), cod(w, 'morrendo')], agua: [cod(a, 'vagar'), cod(a, 'mirar'), cod(a, 'morrendo')], luz: cod(o, 'vagar'), itens: ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH', 'WISP_WATER_IDLE', 'WISP_WATER_ATTACK', 'WISP_WATER_DEATH'].map((c) => [s(c).item, s(c).cell]), alt: ['WISP_IDLE', 'WISP_WATER_IDLE'].map((c) => window.SPRITES[c].ground) };
+    const r = new LB.FogoFatuo(j.line.x + 120, j.line.y, 'ar');
+    const m = j.moradores.find((x) => x.id === 'cora'), cv = document.createElement('canvas'); cv.width = 200; cv.height = 200;
+    let cora = null;
+    if (m) { m.fala = 0; const e0 = m.estadoArte(); m.fala = 2; const e1 = m.estadoArte(); m.desenhar(cv.getContext('2d')); cora = [e0 && e0.r.codigo, e1 && e1.r.codigo]; }
+    return { cora, ar: [cod(r, 'vagar'), cod(r, 'mirar'), cod(r, 'morrendo')], terra: [cod(w, 'vagar'), cod(w, 'mirar'), cod(w, 'morrendo')], agua: [cod(a, 'vagar'), cod(a, 'mirar'), cod(a, 'morrendo')], luz: cod(o, 'vagar'), itens: ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH', 'WISP_WATER_IDLE', 'WISP_WATER_ATTACK', 'WISP_WATER_DEATH', 'WISP_AIR_IDLE', 'WISP_AIR_ATTACK', 'WISP_AIR_DEATH', 'CORA_IDLE', 'CORA_TALK'].map((c) => [s(c).item, s(c).cell]), alt: ['WISP_IDLE', 'WISP_WATER_IDLE'].map((c) => window.SPRITES[c].ground) };
   });
   igual(w.terra, ['WISP_EARTH_IDLE', 'WISP_EARTH_ATTACK', 'WISP_EARTH_DEATH'], 'o fogo-fátuo de terra usa a arte verde-musgo (flutua, atira, apaga)');
   igual(w.agua, ['WISP_WATER_IDLE', 'WISP_WATER_ATTACK', 'WISP_WATER_DEATH'], 'o fogo-fátuo de água usa a arte com gota (flutua, atira, apaga)');
   igual(w.luz, 'WISP_IDLE', 'o fogo-fátuo comum continua azul');
-  igual(w.itens, [395, 396, 397, 398, 399, 400].map((n) => ['LINE_BELL_ITEM_' + n + '.html', 256]), 'artes dos fogos-fátuos de terra e de água vêm dos itens 395 a 400');
+  igual(w.itens, [395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405].map((n) => ['LINE_BELL_ITEM_' + n + '.html', 256]), 'artes dos fogos-fátuos e da Dona Cora vêm dos itens 395 a 405');
+  igual(w.ar, ['WISP_AIR_IDLE', 'WISP_AIR_ATTACK', 'WISP_AIR_DEATH'], 'o fogo-fátuo de ar usa a arte branca (flutua, atira, apaga)');
+  igual(w.cora, ['CORA_IDLE', 'CORA_TALK'], 'a Dona Cora usa a arte própria, parada e falando');
   igual(w.alt[0], w.alt[1], 'o fogo-fátuo de água pisa no mesmo chão do comum');
 });
 

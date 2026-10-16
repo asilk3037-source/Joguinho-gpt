@@ -14459,6 +14459,157 @@ window.SPRITES = {
   ],
   "label": "Fogo-fátuo de água — apagando",
   "item": "LINE_BELL_ITEM_400.html"
+ },
+ "WISP_AIR_IDLE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_AIR_IDLE.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 225,
+  "groundEnd": 227,
+  "bases": [
+   225,
+   222,
+   224,
+   223,
+   225,
+   226,
+   228,
+   227
+  ],
+  "label": "Fogo-fátuo de ar — flutuando",
+  "item": "LINE_BELL_ITEM_401.html"
+ },
+ "WISP_AIR_ATTACK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_AIR_ATTACK.webp",
+  "cell": 256,
+  "count": 7,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   0
+  ],
+  "ground": 225,
+  "groundEnd": 225,
+  "bases": [
+   225,
+   224,
+   223,
+   224,
+   225,
+   226,
+   226
+  ],
+  "label": "Fogo-fátuo de ar — atirando",
+  "item": "LINE_BELL_ITEM_402.html"
+ },
+ "WISP_AIR_DEATH": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/WISP_AIR_DEATH.webp",
+  "cell": 256,
+  "count": 8,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "ground": 225,
+  "groundEnd": 256,
+  "bases": [
+   225,
+   220,
+   231,
+   240,
+   245,
+   229,
+   256,
+   256
+  ],
+  "label": "Fogo-fátuo de ar — apagando",
+  "item": "LINE_BELL_ITEM_403.html"
+ },
+ "CORA_IDLE": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/CORA_IDLE.webp",
+  "cell": 256,
+  "count": 5,
+  "seq": [
+   0,
+   1,
+   2,
+   1,
+   3,
+   4,
+   3,
+   0
+  ],
+  "ground": 239,
+  "groundEnd": 239,
+  "bases": [
+   239,
+   239,
+   239,
+   239,
+   239
+  ],
+  "label": "Dona Cora — parada",
+  "item": "LINE_BELL_ITEM_404.html",
+  "ajuste": 0.96
+ },
+ "CORA_TALK": {
+  "ritmo": 1,
+  "fpsArte": 8,
+  "src": "assets/sprites/CORA_TALK.webp",
+  "cell": 256,
+  "count": 6,
+  "seq": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   4,
+   5,
+   0
+  ],
+  "ground": 239,
+  "groundEnd": 239,
+  "bases": [
+   239,
+   239,
+   239,
+   239,
+   239,
+   239
+  ],
+  "label": "Dona Cora — falando",
+  "item": "LINE_BELL_ITEM_405.html",
+  "ajuste": 0.96
  }
 };
 window.RETRATOS = {"line": {"src": "assets/retratos/line.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/line_extra.webp", "rostos": ["bravo", "chorando"]}}, "bell": {"src": "assets/retratos/bell.webp", "cell": 128, "colunas": 3, "extras": {"src": "assets/retratos/bell_extra.webp", "rostos": ["envergonhada"]}}};

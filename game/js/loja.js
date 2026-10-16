@@ -123,15 +123,28 @@
       this.dormindo = (j.mapa.id === 'vilarejo' || j.mapa.id === 'vilamoinho') && LB.relogio.ativo(j) && LB.relogio.noite(j);
       const l = j.line;
       this.andar(dt, j);
+      if (this.anim) this.anim.atualizar(dt);
       if (!this.andando && Math.hypot(l.x - this.x, l.y - this.y) < 140 && Math.abs(l.x - this.x) > 6) this.lado = l.x < this.x ? -1 : 1;
       // O Pedrinho não para quieto.
       if (this.id === 'pedro') { this.x = this.x0 + Math.sin(this.t * 0.7) * 40; this.lado = Math.cos(this.t * 0.7) > 0 ? 1 : -1; }
       if (this.fala > 0) this.fala -= dt;
     }
     desenharSombra(g) { LB.desenho.sombraChao(g, this.x, this.y, 12, 0.25); }
+
+    // Morador com arte própria (ex.: CORA_IDLE / CORA_TALK): devolve o quadro de agora; sem arte, desenha por código.
+    estadoArte() {
+      const cod = this.id.toUpperCase();
+      if (!window.SPRITES || !window.SPRITES[cod + '_IDLE']) return null;
+      const nome = cod + (this.fala > 0 ? '_TALK' : '_IDLE');
+      if (!this.anim) this.anim = new LB.Animador(nome);
+      this.anim.tocar(nome);
+      return this.anim.estado(null, this.lado);
+    }
     desenhar(g) {
       const c = this.cfg, x = this.x, y = this.y, k = c.crianca ? 0.75 : 1;
       const resp = Math.sin(this.t * 2) * 1, pulo = this.id === 'pedro' ? Math.abs(Math.sin(this.t * 6)) * 3 : 0;
+      const arte = !this.loja && this.estadoArte();
+      if (arte) { LB.desenharSprite(g, arte.r, arte.quadro, x, y - pulo, 74); return; }
       g.save(); g.translate(x, y - pulo); g.scale(this.lado * k, k);
       // Pernas e corpo.
       const perna = this.andando ? Math.sin(this.t * 10) * 3 : 0;

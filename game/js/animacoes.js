@@ -459,14 +459,14 @@ window.LB = window.LB || {};
     ['WISP_WATER_IDLE', 'Fogo-fátuo de água (azul) — flutuando (item 398)', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
     ['WISP_WATER_ATTACK', 'Fogo-fátuo de água (azul) — atirando (item 399)', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
     ['WISP_WATER_DEATH', 'Fogo-fátuo de água (azul) — apagando (item 400)', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
-    ['WISP_AIR_IDLE', 'Fogo-fátuo de ar (branco) — flutuando', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
-    ['WISP_AIR_ATTACK', 'Fogo-fátuo de ar (branco) — atirando', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
-    ['WISP_AIR_DEATH', 'Fogo-fátuo de ar (branco) — apagando', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
+    ['WISP_AIR_IDLE', 'Fogo-fátuo de ar (branco) — flutuando (item 401)', { loop: true, fps: 8, quadros: 8, alt: 'WISP_IDLE', parte2: true }],
+    ['WISP_AIR_ATTACK', 'Fogo-fátuo de ar (branco) — atirando (item 402)', { fps: 8, quadros: 8, alt: 'WISP_ATTACK', parte2: true }],
+    ['WISP_AIR_DEATH', 'Fogo-fátuo de ar (branco) — apagando (item 403)', { fps: 8, quadros: 8, alt: 'WISP_DEATH', parte2: true }],
   ]);
 
   grupo('Moradores (todos, incluindo os da Parte 2)', [
-    ['CORA_IDLE', 'Dona Cora (jardineira do vale) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
-    ['CORA_TALK', 'Dona Cora (jardineira do vale) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'CORA_IDLE', parte2: true }],
+    ['CORA_IDLE', 'Dona Cora (jardineira do vale) — parado (item 404)', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
+    ['CORA_TALK', 'Dona Cora (jardineira do vale) — falando (item 405)', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'CORA_IDLE', parte2: true }],
     ['CORA_SLEEP', 'Dona Cora (jardineira do vale) — dormindo (noite)', { loop: true, face: 'F', fps: 3, quadros: 4, alt: 'CORA_IDLE', parte2: true }],
     ['TIAO_IDLE', 'Seu Tião (pescador do lago) — parado', { loop: true, face: 'F', fps: 6, quadros: 8, parte2: true }],
     ['TIAO_TALK', 'Seu Tião (pescador do lago) — falando', { loop: true, face: 'F', fps: 6, quadros: 8, alt: 'TIAO_IDLE', parte2: true }],
